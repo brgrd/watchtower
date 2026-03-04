@@ -1,6 +1,8 @@
 name: Watchtower — Agentic InfraSec Monitor
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
   schedule:
     - cron: "5 * * * *"
@@ -19,6 +21,7 @@ jobs:
   run:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
 
     steps:
       - uses: actions/checkout@v4
@@ -54,6 +57,7 @@ jobs:
           PY
 
       - name: Run Watchtower (plan → act → observe)
+        if: steps.gate.outputs.within == 'true' || github.event_name == 'workflow_dispatch'
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           WATCHTOWER_PLACEHOLDER_MODE: "false"
@@ -67,7 +71,7 @@ jobs:
             git config user.name  "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add reports/ state/ || true
-            git commit -m "chore(watchtower): briefing update [skip ci]" || true
+            git commit -m "chore(watchtower): briefing update" || true
             git push
           fi
 
