@@ -9,3 +9,4 @@
 {"ts": "2026-03-04T18:28:55.897725+00:00", "counts": {"feeds": 4, "polled": 0, "enriched": 0, "clusters": 0}, "hot_domains": [], "plan_steps": 1, "placeholder_mode": false}
 {"ts": "2026-03-04T19:04:45.681830+00:00", "counts": {"feeds": 4, "polled": 230, "enriched": 30, "clusters": 15}, "hot_domains": ["uncategorised"], "plan_steps": 1, "placeholder_mode": false}
 {"ts": "2026-03-04T20:00:19.259194+00:00", "counts": {"feeds": 14, "polled": 152, "enriched": 30, "clusters": 15}, "hot_domains": ["uncategorised"], "placeholder_mode": false}
+{"ts": "2026-03-04T22:11:39.438894+00:00", "counts": {"feeds": 22, "polled": 27, "enriched": 25, "clusters": 15}, "hot_domains": ["browser_ext", "os_kernel", "supply_chain"], "placeholder_mode": false}
