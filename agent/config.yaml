@@ -1,0 +1,102 @@
+budgets:
+  max_agent_steps: 20
+  max_feeds_polled: 80
+  max_new_feeds: 3
+  max_url_fetches: 30
+  max_fetch_workers: 6
+  max_clusters_output: 15
+  max_links_per_cluster: 5
+  max_runtime_seconds: 600
+  since_hours: 6
+
+runtime:
+  placeholder_mode_default: true   # safest/free default for local demo
+
+feeds:
+  - id: nvd
+    url: "https://services.nvd.nist.gov/rest/json/cves/2.0"
+    category: "vulns"
+    type: json_api
+    enabled: true
+  - id: cisa_kev
+    url: "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+    category: "vulns"
+    type: json_api
+    enabled: true
+  - id: gh_security_blog
+    url: "https://github.blog/changelog/security/feed/"
+    category: "blog"
+    type: rss
+    enabled: true
+  - id: cisa_alerts
+    url: "https://www.cisa.gov/cybersecurity-advisories/all.xml"
+    category: "advisories"
+    type: rss
+    enabled: true
+
+model:
+  name: "llama-3.1-8b-instant"
+  temperature: 0.2
+  max_tokens: 1200
+
+report:
+  clusters_limit: 15
+  links_per_cluster_limit: 5
+
+domain_taxonomy:
+  pkg_npm:
+    label: "npm / Node"
+    icon: "📦"
+    signals: ["npm", "node", "package.json", "yarn", "pnpm"]
+  pkg_pypi:
+    label: "PyPI / Python"
+    icon: "🐍"
+    signals: ["pypi", "pip", "python package", "pyproject"]
+  pkg_maven:
+    label: "Maven / Java"
+    icon: "☕"
+    signals: ["maven", "gradle", "java", "spring", "log4j"]
+  pkg_nuget:
+    label: ".NET / NuGet"
+    icon: "🔷"
+    signals: [".net", "nuget", "asp.net", "dotnet", "csharp", "c#"]
+  pkg_gem:
+    label: "RubyGems"
+    icon: "💎"
+    signals: ["rubygems", "ruby gem", "bundler", "gemfile"]
+  browser_ext:
+    label: "Browser Extensions"
+    icon: "🧩"
+    signals: ["browser extension", "chrome extension", "firefox addon", "manifest v"]
+  ca_trust:
+    label: "CA / PKI Trust"
+    icon: "🔐"
+    signals: ["certificate authority", "root certificate", "x.509", "ocsp", "code signing cert"]
+  cloud_iam:
+    label: "Cloud / IAM"
+    icon: "☁️"
+    signals: ["iam", "aws", "azure", "gcp", "access key", "service account", "secrets manager"]
+  container:
+    label: "Containers / K8s"
+    icon: "🐳"
+    signals: ["docker", "container", "kubernetes", "helm", "k8s"]
+  os_kernel:
+    label: "OS / Kernel"
+    icon: "🖥️"
+    signals: ["linux kernel", "windows kernel", "privilege escalation", "lpe", "ebpf"]
+  web_framework:
+    label: "Web / Servers"
+    icon: "🌐"
+    signals: ["nginx", "apache", "iis", "express", "django", "rails", "fastapi"]
+  crypto_lib:
+    label: "Crypto Libraries"
+    icon: "🔑"
+    signals: ["openssl", "libssl", "mbedtls", "gnutls", "cipher", "ecdsa", "rsa key"]
+  supply_chain:
+    label: "Supply Chain"
+    icon: "⛓️"
+    signals: ["supply chain", "typosquat", "malicious package", "dependency confusion", "repo hijack"]
+  identity:
+    label: "Identity / Auth"
+    icon: "🪪"
+    signals: ["active directory", "ldap", "kerberos", "sso", "oidc", "oauth", "jwt"]

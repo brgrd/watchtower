@@ -1,0 +1,6 @@
+# append-only; each line is a JSON object of run metadata
+{"ts": "2026-03-03T17:21:58.866533+00:00", "error": "cannot access local variable 'html' where it is not associated with a value"}
+{"ts": "2026-03-03T17:22:11.950207+00:00", "counts": {"feeds": 4, "polled": 0, "enriched": 0, "clusters": 0}, "hot_domains": [], "plan_steps": 1, "placeholder_mode": true}
+{"ts": "2026-03-03T17:30:24.208070+00:00", "error": "No module named 'agent'"}
+{"ts": "2026-03-03T17:30:32.859193+00:00", "counts": {"feeds": 4, "polled": 3, "enriched": 3, "clusters": 3}, "hot_domains": ["crypto_lib"], "plan_steps": 1, "placeholder_mode": true}
+{"ts": "2026-03-04T17:36:45.000269+00:00", "counts": {"feeds": 4, "polled": 1591, "enriched": 30, "clusters": 15}, "hot_domains": ["uncategorised"], "plan_steps": 1, "placeholder_mode": false}
