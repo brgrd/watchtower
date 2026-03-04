@@ -411,56 +411,6 @@ def groq_chat(messages, model, temperature=0.2, max_tokens=1200):
     raise RuntimeError("Groq rate limited repeatedly")
 
 
-def request_action_plan(goal, budget, context):
-    if placeholder_mode():
-        return {
-            "run_goal": goal,
-            "budget": budget,
-            "steps": [
-                {
-                    "tool": "CLUSTER",
-                    "args": {"window_hours": CONFIG["budgets"].get("since_hours", 6)},
-                }
-            ],
-        }
-
-    sys_prompt = "You are a planner. Output strict JSON only."
-    user = {
-        "run_goal": goal,
-        "budget": budget,
-        "context": {"recent_sources": [s["url"] for s in context[:10]]},
-        "schema": {
-            "steps": [
-                {"tool": "POLL_FEED", "args": {"feed_id": "str", "since_hours": "int"}},
-                {"tool": "ADD_FEED", "args": {"url": "str", "category": "str"}},
-                {"tool": "CLUSTER", "args": {"window_hours": "int"}},
-                {"tool": "SELECT_SOURCES", "args": {"cluster_id": "str"}},
-            ]
-        },
-    }
-
-    content, _ = groq_chat(
-        [
-            {"role": "system", "content": sys_prompt},
-            {"role": "user", "content": json.dumps(user)},
-        ],
-        model=CONFIG["model"]["name"],
-        temperature=0.1,
-        max_tokens=600,
-    )
-
-    try:
-        plan = json.loads(content)
-        assert isinstance(plan.get("steps"), list)
-        return plan
-    except Exception:
-        return {
-            "run_goal": goal,
-            "budget": budget,
-            "steps": [{"tool": "CLUSTER", "args": {"window_hours": 6}}],
-        }
-
-
 def groq_summarize_clusters(cards: list, max_clusters: int = 8) -> tuple:
     """Single Groq call: (executive_summary_str, {card_id: summary_str}).
 
@@ -648,7 +598,19 @@ def load_seen() -> set:
     return set(d.get("hashes", []))
 
 
+def _purge_seen_ttl(seen: set, ttl_days: int = 7) -> set:
+    """Seen hashes carry no timestamp, so this caps the set at a rolling
+    50 000-item window every run; a configurable hard cap acts as the TTL proxy."""
+    ttl_cap = CONFIG.get("budgets", {}).get("seen_ttl_days", ttl_days)
+    max_size = ttl_cap * 2000  # ~2 k items/day estimate; never grows forever
+    if len(seen) > max_size:
+        # keep only the most-recent slice (list ordering preserves insertion)
+        return set(list(seen)[-max_size:])
+    return seen
+
+
 def save_seen(seen: set):
+    seen = _purge_seen_ttl(seen)
     save_json(SEEN_FILE, {"hashes": list(seen)[-50_000:]})
 
 
@@ -722,12 +684,13 @@ def _write_index_html(path: str, cards: list, heatmap: dict, geo_heatmap: dict, 
             if d != "uncategorised"
         )
         rows += f"""
-        <section class=\"cluster\">
-                    <h2><span class=\"badge\" style=\"background:{badge_bg};color:{badge_fg}\">{c['risk_score']}</span>{html.escape(c['title'])}</h2>
-          <div class=\"domain-tags\">{tags}</div>
-                    <p>{html.escape(c['summary'])}</p>
-          <ul>{links}</ul>
-        </section>"""
+        <details class="cluster">
+          <summary><span class="badge" style="background:{badge_bg};color:{badge_fg}">{c['risk_score']}</span>{html.escape(c['title'])}<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline">{tags}</div></summary>
+          <div class="cluster-body">
+            <p>{html.escape(c['summary'])}</p>
+            <ul>{links}</ul>
+          </div>
+        </details>"""
 
     page_html = f"""<!doctype html>
 <html lang=\"en\">
@@ -740,7 +703,12 @@ h1{{border-bottom:2px solid #e1e4e8;padding-bottom:.4rem}}
 .heatmap{{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin:1.2rem 0 2rem}}
 .hm-cell{{border-radius:6px;padding:.6rem .5rem;text-align:center;border:1px solid rgba(0,0,0,.08)}}
 .hm-icon{{display:block;font-size:1.4rem}} .hm-label{{display:block;font-size:.68rem;font-weight:600;margin:.2rem 0}} .hm-score{{display:block;font-size:1.1rem;font-weight:700}}
-.cluster{{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:1rem;margin:1rem 0}}
+.cluster{{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:0;margin:1rem 0;overflow:hidden}}
+.cluster summary{{list-style:none;padding:.75rem 1rem;cursor:pointer;display:flex;align-items:center;gap:.4rem;user-select:none}}
+.cluster summary::-webkit-details-marker{{display:none}}
+.cluster summary::before{{content:"▶";font-size:.7rem;transition:transform .15s;flex-shrink:0}}
+.cluster[open] summary::before{{transform:rotate(90deg)}}
+.cluster-body{{padding:.25rem 1rem 1rem}}
 .badge{{border-radius:3px;padding:2px 8px;font-size:.8rem;font-weight:700;margin-right:.5rem}}
 .domain-tags{{margin:.3rem 0 .6rem}} .domain-tag{{display:inline-block;background:#e1e4e8;border-radius:3px;font-size:.7rem;padding:1px 6px;margin:0 3px 3px 0}}
 a{{color:#0366d6}}
@@ -909,7 +877,6 @@ def _run():
                 "clusters": len(cards),
             },
             "hot_domains": hot_domains,
-            "plan_steps": len(plan.get("steps", [])),
             "placeholder_mode": placeholder_mode(),
         },
     )

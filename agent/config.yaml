@@ -74,6 +74,22 @@ feeds:
     type: rss
     country: "AU"
     enabled: true
+  - id: github_changelog
+    url: "https://github.blog/changelog/feed/"
+    category: "blog"
+    type: rss
+    enabled: true
+  - id: snyk_blog
+    url: "https://snyk.io/blog/feed/"
+    category: "vulns"
+    type: rss
+    enabled: true
+  - id: gcp_security
+    url: "https://cloud.google.com/feeds/gcp-security-bulletins.xml"
+    category: "advisories"
+    type: rss
+    country: "US"
+    enabled: true
 
 model:
   name: "llama-3.1-8b-instant"
