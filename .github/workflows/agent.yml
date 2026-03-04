@@ -2,15 +2,6 @@ name: Watchtower — Agentic InfraSec Monitor
 
 on:
   workflow_dispatch:
-    inputs:
-      force_run:
-        description: "Run immediately (still respects NY-hour gate unless gate_override=true)"
-        required: false
-        default: "true"
-      gate_override:
-        description: "Set true to bypass NY-hour gate for manual testing"
-        required: false
-        default: "false"
   schedule:
     - cron: "5 * * * *"
 
@@ -63,11 +54,11 @@ print(f"NY_HOUR={ny_hour} within={within}")
 PY
 
       - name: Exit outside window
-        if: steps.gate.outputs.within != 'true' && github.event.inputs.gate_override != 'true'
+        if: steps.gate.outputs.within != 'true' && github.event_name != 'workflow_dispatch'
         run: echo "Skipping: outside approved NY hours"
 
       - name: Run Watchtower (plan → act → observe)
-        if: steps.gate.outputs.within == 'true' || github.event.inputs.gate_override == 'true'
+        if: steps.gate.outputs.within == 'true' || github.event_name == 'workflow_dispatch'
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           WATCHTOWER_PLACEHOLDER_MODE: "false"
