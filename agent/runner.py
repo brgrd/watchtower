@@ -257,11 +257,17 @@ def _poll_nvd_api(url: str, since_hours: int, ignore: dict) -> list:
         headers["apiKey"] = os.getenv("NVD_API_KEY")
 
     items = []
+    rate_limit_retries = 0
     while True:
         r = requests.get(url, params=params, headers=headers, timeout=30)
         if r.status_code == 429:
+            rate_limit_retries += 1
+            if rate_limit_retries > 3:
+                print("[WARN] NVD API rate-limited repeatedly; stopping pagination")
+                break
             time.sleep(30)
             continue
+        rate_limit_retries = 0
         r.raise_for_status()
         data = r.json()
 
@@ -290,7 +296,7 @@ def _poll_nvd_api(url: str, since_hours: int, ignore: dict) -> list:
 
         total = data.get("totalResults", 0)
         params["startIndex"] += data.get("resultsPerPage", 100)
-        if params["startIndex"] >= total:
+        if params["startIndex"] >= total or params["startIndex"] >= 500:
             break
         time.sleep(6)
     return items
@@ -413,42 +419,63 @@ def groq_chat(messages, model, temperature=0.2, max_tokens=1200):
     raise RuntimeError("Groq rate limited repeatedly")
 
 
-def groq_summarize_clusters(cards: list, max_clusters: int = 8) -> tuple:
-    """Single Groq call: (executive_summary_str, {card_id: summary_str}).
+def groq_analyze_briefing(
+    kev_items: list, nvd_items: list, news_items: list
+) -> tuple:
+    """Single Groq call: analyze KEV entries, NVD CVEs, and news articles together.
 
-    Token budget: ~1500 input + ~900 output ≈ 2400 tokens per run.
-    Returns empty strings/dict on placeholder mode or any failure.
+    Returns (executive_summary: str, findings: list).
+    Each finding: {title, summary, risk_score, domains, references: [{title, url}]}
+    References point back to URLs from news_items so Top Findings are citable.
     """
     if placeholder_mode() or not GROQ_API_KEY:
-        return "", {}
+        return "", []
 
-    cluster_inputs = [
+    kev_block = [
         {
-            "id": c["id"],
-            "title": c["title"],
-            "risk_score": c["risk_score"],
-            "domains": c.get("domains", []),
-            "snippet": c.get("_raw_snippets", "")[:800],
+            "cve": it["title"].split("\u2014")[0].strip(),
+            "description": it.get("summary", "")[:200],
         }
-        for c in cards[:max_clusters]
+        for it in kev_items[:15]
+    ]
+    nvd_block = [
+        {"cve": it["title"], "description": it.get("summary", "")[:150]}
+        for it in nvd_items[:20]
+    ]
+    article_block = [
+        {
+            "headline": it["title"][:150],
+            "source": tldextract.extract(it.get("url", "")).registered_domain or "unknown",
+            "snippet": (it.get("extracted_text", "") or it.get("summary", ""))[:400],
+            "url": it.get("url", ""),
+        }
+        for it in news_items[:30]
     ]
 
+    domain_keys = ", ".join(_TAXONOMY.keys())
     prompt = {
-        "task": "infrasec_briefing_summary",
-        "clusters": cluster_inputs,
+        "task": "infrasec_briefing",
+        "exploited_vulnerabilities": kev_block,
+        "recent_cves": nvd_block,
+        "news_articles": article_block,
         "instructions": (
             "You are a senior threat intelligence analyst. "
-            "Review ALL clusters provided and produce two things: "
-            "(1) executive_summary: 2-3 sentences synthesizing the ENTIRE threat "
-            "landscape across all clusters — identify dominant themes, what technology "
-            "stacks are most at risk, any geographic or actor patterns visible across "
-            "the data, and the single most urgent action item for a security team. "
-            "Do NOT focus on one cluster. Write as a cohesive paragraph. "
-            "(2) summaries: a JSON object keyed by cluster id, each value a 1-2 "
-            "sentence analyst note on what is affected, exploit/patch status, and "
-            "urgency. "
-            "Output ONLY strict JSON, no markdown: "
-            '{"executive_summary":"...","summaries":{"<id>":"...","<id>":"..."}}'
+            "Review all inputs: exploited vulnerabilities (CISA KEV), recent CVEs (NVD), "
+            "and news articles. Produce: "
+            "(1) executive_summary: 2-3 sentences covering the overall threat landscape — "
+            "dominant themes, most at-risk technology stacks, and the single most urgent "
+            "action item for a security team. "
+            "(2) findings: JSON array of up to 12 distinct threat or vulnerability findings. "
+            "For each finding: title (under 100 chars), summary (1-2 sentence analyst note "
+            "on what is affected, exploit/patch status, urgency), risk_score (integer 0-100: "
+            "base 40 for known CVE, +30 if actively exploited in the wild, +15 if PoC exists, "
+            "+15 if critical infrastructure), domains (array of matching keys from: "
+            + domain_keys
+            + "), references (array of {title, url} — cite ONLY urls that appear verbatim "
+            "in the news_articles input, 1-3 most relevant per finding). "
+            'Output ONLY strict JSON, no markdown fences: {"executive_summary":"...",'
+            '"findings":[{"title":"...","summary":"...","risk_score":0,"domains":[],'
+            '"references":[{"title":"...","url":"..."}]}]}'
         ),
     }
 
@@ -463,17 +490,17 @@ def groq_summarize_clusters(cards: list, max_clusters: int = 8) -> tuple:
             ],
             model=CONFIG["model"]["name"],
             temperature=0.2,
-            max_tokens=1400,
+            max_tokens=2000,
         )
         content = content.strip()
         if content.startswith("```"):
             content = re.sub(r"^```[a-z]*\n?", "", content)
             content = re.sub(r"\n?```$", "", content.strip())
         data = json.loads(content)
-        return data.get("executive_summary", ""), data.get("summaries", {})
+        return data.get("executive_summary", ""), data.get("findings", [])
     except Exception as exc:
-        print(f"[WARN] Groq summarization failed: {exc}")
-        return "", {}
+        print(f"[WARN] Groq analysis failed: {exc}")
+        return "", []
 
 
 # -----------------------------
@@ -567,13 +594,6 @@ def to_cluster_card(key, items):
         for d in classify_domains(it):
             if d not in domains:
                 domains.append(d)
-    # Aggregate raw text for Groq summarization (stripped from final output)
-    raw_snippets = []
-    for it in items[:3]:
-        if it.get("summary"):
-            raw_snippets.append(it["summary"][:300])
-        if it.get("extracted_text"):
-            raw_snippets.append(it["extracted_text"][:500])
     countries = list({it["country"] for it in items if it.get("country")})
     return {
         "id": sha256(key)[:12],
@@ -582,7 +602,6 @@ def to_cluster_card(key, items):
         "countries": countries,
         "title": items[0]["title"][:140] if items else key,
         "summary": "",
-        "_raw_snippets": " | ".join(raw_snippets)[:1000],
         "sources": {
             "primary": [
                 {"title": it["title"][:120], "url": it["url"]} for it in items[:5]
@@ -590,6 +609,43 @@ def to_cluster_card(key, items):
             "secondary": [],
         },
     }
+
+
+def _findings_to_cards(findings: list) -> list:
+    """Convert Groq findings into cluster-card dicts compatible with _write_index_html.
+
+    Each finding's `references` list maps to `sources.primary` so the rendered
+    Top Findings section shows cited article links beneath each Groq-authored note.
+    """
+    cards = []
+    for f in findings:
+        try:
+            score = max(0, min(100, int(f.get("risk_score", 40))))
+        except (ValueError, TypeError):
+            score = 40
+        refs = f.get("references", [])
+        cards.append(
+            {
+                "id": sha256(f.get("title", str(len(cards))))[:12],
+                "risk_score": score,
+                "domains": f.get("domains", ["uncategorised"]),
+                "countries": [],
+                "title": f.get("title", "")[:140],
+                "summary": f.get("summary", ""),
+                "sources": {
+                    "primary": [
+                        {
+                            "title": r.get("title", r.get("url", ""))[:120],
+                            "url": r.get("url", ""),
+                        }
+                        for r in refs
+                        if r.get("url")
+                    ],
+                    "secondary": [],
+                },
+            }
+        )
+    return sorted(cards, key=lambda c: c["risk_score"], reverse=True)
 
 
 # -----------------------------
@@ -710,10 +766,12 @@ def _write_index_html(
 
     # Build geo data JSON for SVG world map (injected into page as JS vars)
     geo_json = json.dumps({cc: gdata["max_score"] for cc, gdata in geo_heatmap.items()})
-    geo_labels_json = json.dumps({
-        cc: f"{gdata['label']}: {gdata['count']} source(s), max score {gdata['max_score']}"
-        for cc, gdata in geo_heatmap.items()
-    })
+    geo_labels_json = json.dumps(
+        {
+            cc: f"{gdata['label']}: {gdata['count']} source(s), max score {gdata['max_score']}"
+            for cc, gdata in geo_heatmap.items()
+        }
+    )
 
     history_section = ""
     if history:
@@ -910,14 +968,25 @@ def _run():
         : budgets["max_clusters_output"]
     ]
 
-    # Groq: generate per-cluster summaries + executive narrative (single call)
-    executive, summaries = groq_summarize_clusters(cards, max_clusters=12)
-    for c in cards:
-        if c["id"] in summaries and summaries[c["id"]]:
-            c["summary"] = summaries[c["id"]]
-        elif not c["summary"]:
-            c["summary"] = f"{len(c['sources']['primary'])} related updates."
-        c.pop("_raw_snippets", None)  # remove internal field before output
+    # Groq: analyze KEV entries, NVD CVEs, and news articles as distinct inputs
+    all_items = enriched or polled
+    kev_items = [it for it in all_items if "known_exploited" in it.get("source", "")]
+    nvd_items = [it for it in all_items if "services.nvd.nist.gov" in it.get("source", "")]
+    news_items = [
+        it
+        for it in all_items
+        if "known_exploited" not in it.get("source", "")
+        and "services.nvd.nist.gov" not in it.get("source", "")
+    ]
+    executive, findings = groq_analyze_briefing(kev_items, nvd_items, news_items)
+    if findings:
+        # Groq returned structured findings with cited article references
+        cards = _findings_to_cards(findings)[: budgets["max_clusters_output"]]
+    else:
+        # Fallback: use cluster cards with basic summaries (placeholder mode or Groq failure)
+        for c in cards:
+            if not c["summary"]:
+                c["summary"] = f"{len(c['sources']['primary'])} related updates."
 
     ts = datetime.utcnow().strftime("%Y-%m-%d_%H-%M")
     out_md = os.path.join(REPORTS_DIR, f"briefing_{ts}.md")

@@ -6,8 +6,8 @@ budgets:
   max_fetch_workers: 6
   max_clusters_output: 15
   max_links_per_cluster: 5
-  max_runtime_seconds: 600
-  since_hours: 24
+  max_runtime_seconds: 480
+  since_hours: 6
   seen_ttl_days: 7
 
 runtime:
@@ -90,6 +90,46 @@ feeds:
     category: "advisories"
     type: rss
     country: "US"
+    enabled: true
+  - id: securityweek
+    url: "https://www.securityweek.com/feed/"
+    category: "news"
+    type: rss
+    enabled: true
+  - id: darkreading
+    url: "https://www.darkreading.com/rss.xml"
+    category: "news"
+    type: rss
+    enabled: true
+  - id: cyberscoop
+    url: "https://cyberscoop.com/feed/"
+    category: "news"
+    type: rss
+    enabled: true
+  - id: therecord
+    url: "https://therecord.media/feed/"
+    category: "news"
+    type: rss
+    enabled: true
+  - id: portswigger_daily
+    url: "https://portswigger.net/daily-swig/rss"
+    category: "news"
+    type: rss
+    enabled: true
+  - id: talos_blog
+    url: "https://blog.talosintelligence.com/feeds/posts/default"
+    category: "news"
+    type: rss
+    enabled: true
+  - id: unit42
+    url: "https://unit42.paloaltonetworks.com/feed/"
+    category: "news"
+    type: rss
+    enabled: true
+  - id: malwarebytes_blog
+    url: "https://blog.malwarebytes.com/feed/"
+    category: "news"
+    type: rss
     enabled: true
 
 model:
