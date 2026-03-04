@@ -13,11 +13,15 @@ h1{border-bottom:2px solid #e1e4e8;padding-bottom:.4rem}
 .badge{border-radius:3px;padding:2px 8px;font-size:.8rem;font-weight:700;margin-right:.5rem}
 .domain-tags{margin:.3rem 0 .6rem} .domain-tag{display:inline-block;background:#e1e4e8;border-radius:3px;font-size:.7rem;padding:1px 6px;margin:0 3px 3px 0}
 a{color:#0366d6}
+.executive{background:#fff8e1;border-left:4px solid #f9c74f;border-radius:4px;padding:.8rem 1.1rem;margin:1rem 0 1.8rem}
+.executive h2{margin:0 0 .4rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:#7a5c00}
+.executive p{margin:0;line-height:1.75;font-size:.95rem}
 </style>
 </head>
 <body>
 <h1>🔭 Watchtower — Infrastructure Security Briefing</h1>
-<p>Generated <strong>2026-03-04 18-28</strong> UTC | <a href="latest.md">latest.md</a></p>
+<p>Generated <strong>2026-03-04 19-04</strong> UTC | <a href="latest.md">latest.md</a></p>
+<div class="executive"><h2>Analyst Summary</h2><p>Multiple vulnerabilities have been identified in Weintek cMT-3072XH2 easyweb, including authentication bypass, command injection, and hardcoded encryption keys, with a high risk of exploitation. The top action item is to patch the vulnerabilities as soon as possible to prevent potential attacks.</p></div>
 <h2>Domain Heat Map</h2>
 <div class="heatmap">
                     <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="npm / Node: 0 finding(s), max score —">
@@ -55,10 +59,10 @@ a{color:#0366d6}
                         <span class="hm-label">CA / PKI Trust</span>
             <span class="hm-score">—</span>
           </div>
-                    <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="Cloud / IAM: 0 finding(s), max score —">
+                    <div class="hm-cell" style="background:#f9c74f;color:#24292e" title="Cloud / IAM: 1 finding(s), max score 40">
                         <span class="hm-icon">☁️</span>
                         <span class="hm-label">Cloud / IAM</span>
-            <span class="hm-score">—</span>
+            <span class="hm-score">40</span>
           </div>
                     <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="Containers / K8s: 0 finding(s), max score —">
                         <span class="hm-icon">🐳</span>
@@ -89,8 +93,103 @@ a{color:#0366d6}
                         <span class="hm-icon">🪪</span>
                         <span class="hm-label">Identity / Auth</span>
             <span class="hm-score">—</span>
+          </div>
+                    <div class="hm-cell" style="background:#f77f00;color:#fff" title="Other: 14 finding(s), max score 70">
+                        <span class="hm-icon">❓</span>
+                        <span class="hm-label">Other</span>
+            <span class="hm-score">70</span>
           </div></div>
 <h2>Top Findings</h2>
 
+        <section class="cluster">
+                    <h2><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-29022</h2>
+          <div class="domain-tags"></div>
+                    <p>The dr_libs library version 0.14.4 and earlier contains a heap buffer overflow vulnerability in the drwav__read_smpl_to_metadata_obj() function, allowing attackers to exploit memory corruption via crafted WAV files. The vulnerability has been fixed in commit 8a7258c.</p>
+          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-29022" target="_blank" rel="noopener noreferrer">CVE-2026-29022</a></li></ul>
+        </section>
+        <section class="cluster">
+                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55019</h2>
+          <div class="domain-tags"></div>
+                    <p>The Weintek cMT-3072XH2 easyweb Web Version v2.1.53, OS v20231011 contains an incorrect access control in the component download_wb.cgi, allowing unauthenticated attackers to download arbitrary files. The vulnerability has been patched.</p>
+          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55019" target="_blank" rel="noopener noreferrer">CVE-2024-55019</a></li></ul>
+        </section>
+        <section class="cluster">
+                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55024</h2>
+          <div class="domain-tags"><span class="domain-tag">☁️ Cloud / IAM</span></div>
+                    <p>The Weintek cMT-3072XH2 easyweb v2.1.53, OS v20231011 contains an authentication bypass vulnerability in the authorization mechanism, allowing unauthorized attackers to perform Administrative actions using service accounts. The vulnerability has been patched.</p>
+          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55024" target="_blank" rel="noopener noreferrer">CVE-2024-55024</a></li></ul>
+        </section>
+        <section class="cluster">
+                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55023</h2>
+          <div class="domain-tags"></div>
+                    <p>The Weintek cMT-3072XH2 easyweb v2.1.53, OS v20231011 contains a hardcoded encryption key, allowing attackers to access sensitive information. The vulnerability has been patched.</p>
+          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55023" target="_blank" rel="noopener noreferrer">CVE-2024-55023</a></li></ul>
+        </section>
+        <section class="cluster">
+                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55020</h2>
+          <div class="domain-tags"></div>
+                    <p>The Weintek cMT-3072XH2 easyweb Web Version v2.1.53, OS v20231011 contains a command injection vulnerability in the DHCP activation feature, allowing attackers to execute arbitrary commands with root privileges. The vulnerability has been patched.</p>
+          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55020" target="_blank" rel="noopener noreferrer">CVE-2024-55020</a></li></ul>
+        </section>
+        <section class="cluster">
+                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55022</h2>
+          <div class="domain-tags"></div>
+                    <p>The Weintek cMT-3072XH2 easyweb v2.1.53, OS v20231011 contains an authenticated command injection vulnerability via the HMI Name parameter, allowing attackers to execute arbitrary commands. The vulnerability has been patched.</p>
+          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55022" target="_blank" rel="noopener noreferrer">CVE-2024-55022</a></li></ul>
+        </section>
+        <section class="cluster">
+                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55021</h2>
+          <div class="domain-tags"></div>
+                    <p>The Weintek cMT-3072XH2 easyweb v2.1.53, OS v20231011 contains a hardcoded password in the FTP protocol, allowing attackers to access sensitive information. The vulnerability has been patched.</p>
+          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55021" target="_blank" rel="noopener noreferrer">CVE-2024-55021</a></li></ul>
+        </section>
+        <section class="cluster">
+                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55025</h2>
+          <div class="domain-tags"></div>
+                    <p>The Weintek cMT-3072XH2 easyweb v2.1.53, OS v20231011 contains an incorrect access control in the VNC component, allowing unauthorized attackers to access the HMI system. The vulnerability has been patched.</p>
+          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55025" target="_blank" rel="noopener noreferrer">CVE-2024-55025</a></li></ul>
+        </section>
+        <section class="cluster">
+                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55027</h2>
+          <div class="domain-tags"></div>
+                    <p>1 related updates.</p>
+          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55027" target="_blank" rel="noopener noreferrer">CVE-2024-55027</a></li></ul>
+        </section>
+        <section class="cluster">
+                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55026</h2>
+          <div class="domain-tags"></div>
+                    <p>1 related updates.</p>
+          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55026" target="_blank" rel="noopener noreferrer">CVE-2024-55026</a></li></ul>
+        </section>
+        <section class="cluster">
+                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2025-13616</h2>
+          <div class="domain-tags"></div>
+                    <p>1 related updates.</p>
+          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-13616" target="_blank" rel="noopener noreferrer">CVE-2025-13616</a></li></ul>
+        </section>
+        <section class="cluster">
+                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2025-14604</h2>
+          <div class="domain-tags"></div>
+                    <p>1 related updates.</p>
+          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-14604" target="_blank" rel="noopener noreferrer">CVE-2025-14604</a></li></ul>
+        </section>
+        <section class="cluster">
+                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2025-14923</h2>
+          <div class="domain-tags"></div>
+                    <p>1 related updates.</p>
+          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-14923" target="_blank" rel="noopener noreferrer">CVE-2025-14923</a></li></ul>
+        </section>
+        <section class="cluster">
+                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2025-13734</h2>
+          <div class="domain-tags"></div>
+                    <p>1 related updates.</p>
+          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-13734" target="_blank" rel="noopener noreferrer">CVE-2025-13734</a></li></ul>
+        </section>
+        <section class="cluster">
+                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2025-66945</h2>
+          <div class="domain-tags"></div>
+                    <p>1 related updates.</p>
+          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-66945" target="_blank" rel="noopener noreferrer">CVE-2025-66945</a></li></ul>
+        </section>
 <footer>Watchtower · local-safe placeholder mode: false</footer>
 </body></html>
