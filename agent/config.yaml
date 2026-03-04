@@ -7,7 +7,7 @@ budgets:
   max_clusters_output: 15
   max_links_per_cluster: 5
   max_runtime_seconds: 600
-  since_hours: 6
+  since_hours: 24
 
 runtime:
   placeholder_mode_default: true   # safest/free default for local demo
