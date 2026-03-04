@@ -9,21 +9,29 @@ h1{border-bottom:2px solid #e1e4e8;padding-bottom:.4rem}
 .heatmap{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin:1.2rem 0 2rem}
 .hm-cell{border-radius:6px;padding:.6rem .5rem;text-align:center;border:1px solid rgba(0,0,0,.08)}
 .hm-icon{display:block;font-size:1.4rem} .hm-label{display:block;font-size:.68rem;font-weight:600;margin:.2rem 0} .hm-score{display:block;font-size:1.1rem;font-weight:700}
-.cluster{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:1rem;margin:1rem 0}
+.cluster{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:0;margin:1rem 0;overflow:hidden}
+.cluster summary{list-style:none;padding:.75rem 1rem;cursor:pointer;display:flex;align-items:center;gap:.4rem;user-select:none}
+.cluster summary::-webkit-details-marker{display:none}
+.cluster summary::before{content:"▶";font-size:.7rem;transition:transform .15s;flex-shrink:0}
+.cluster[open] summary::before{transform:rotate(90deg)}
+.cluster-body{padding:.25rem 1rem 1rem}
 .badge{border-radius:3px;padding:2px 8px;font-size:.8rem;font-weight:700;margin-right:.5rem}
 .domain-tags{margin:.3rem 0 .6rem} .domain-tag{display:inline-block;background:#e1e4e8;border-radius:3px;font-size:.7rem;padding:1px 6px;margin:0 3px 3px 0}
 a{color:#0366d6}
 .executive{background:#fff8e1;border-left:4px solid #f9c74f;border-radius:4px;padding:.8rem 1.1rem;margin:1rem 0 1.8rem}
 .executive h2{margin:0 0 .4rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:#7a5c00}
 .executive p{margin:0;line-height:1.75;font-size:.95rem}
+.hm-tabs{display:flex;gap:8px;margin:.4rem 0 .8rem}
+.hm-tab{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:4px;padding:.3rem .9rem;cursor:pointer;font-size:.85rem;font-family:inherit}
+.hm-tab.active{background:#0366d6;color:#fff;border-color:#0366d6}
 </style>
 </head>
 <body>
 <h1>🔭 Watchtower — Infrastructure Security Briefing</h1>
-<p>Generated <strong>2026-03-04 19-04</strong> UTC | <a href="latest.md">latest.md</a></p>
-<div class="executive"><h2>Analyst Summary</h2><p>Multiple vulnerabilities have been identified in Weintek cMT-3072XH2 easyweb, including authentication bypass, command injection, and hardcoded encryption keys, with a high risk of exploitation. The top action item is to patch the vulnerabilities as soon as possible to prevent potential attacks.</p></div>
-<h2>Domain Heat Map</h2>
-<div class="heatmap">
+<p>Generated <strong>2026-03-04 20-00</strong> UTC | <a href="latest.md">latest.md</a></p>
+<div class="executive"><h2>Analyst Summary</h2><p>The current threat landscape is dominated by vulnerabilities in network security and firewall technologies, particularly those from Cisco, with multiple clusters highlighting issues in OSPF protocol and CLI features. This suggests a high risk to organizations relying on these technologies, particularly those in the finance and government sectors. The most urgent action item for a security team is to immediately patch or mitigate the vulnerabilities in Cisco Secure Firewall ASA Software and Cisco Secure FTD Software.</p></div>
+<div class="hm-tabs"><button class="hm-tab active" onclick="switchTab('domain')">🏷️ Domains</button> <button class="hm-tab" onclick="switchTab('geo')">🌍 Geography</button></div>
+<div id="hm-domain" class="heatmap">
                     <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="npm / Node: 0 finding(s), max score —">
                         <span class="hm-icon">📦</span>
                         <span class="hm-label">npm / Node</span>
@@ -59,10 +67,10 @@ a{color:#0366d6}
                         <span class="hm-label">CA / PKI Trust</span>
             <span class="hm-score">—</span>
           </div>
-                    <div class="hm-cell" style="background:#f9c74f;color:#24292e" title="Cloud / IAM: 1 finding(s), max score 40">
+                    <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="Cloud / IAM: 0 finding(s), max score —">
                         <span class="hm-icon">☁️</span>
                         <span class="hm-label">Cloud / IAM</span>
-            <span class="hm-score">40</span>
+            <span class="hm-score">—</span>
           </div>
                     <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="Containers / K8s: 0 finding(s), max score —">
                         <span class="hm-icon">🐳</span>
@@ -94,102 +102,130 @@ a{color:#0366d6}
                         <span class="hm-label">Identity / Auth</span>
             <span class="hm-score">—</span>
           </div>
-                    <div class="hm-cell" style="background:#f77f00;color:#fff" title="Other: 14 finding(s), max score 70">
+                    <div class="hm-cell" style="background:#f77f00;color:#fff" title="Other: 15 finding(s), max score 70">
                         <span class="hm-icon">❓</span>
                         <span class="hm-label">Other</span>
             <span class="hm-score">70</span>
           </div></div>
+<div id="hm-geo" class="heatmap" style="display:none">
+                    <div class="hm-cell" style="background:#f77f00;color:#fff" title="United States: 12 advisory source(s), max score 70">
+                        <span class="hm-icon">🇺🇸</span>
+                        <span class="hm-label">United States</span>
+                        <span class="hm-score">70</span>
+                    </div></div>
 <h2>Top Findings</h2>
 
-        <section class="cluster">
-                    <h2><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-29022</h2>
-          <div class="domain-tags"></div>
-                    <p>The dr_libs library version 0.14.4 and earlier contains a heap buffer overflow vulnerability in the drwav__read_smpl_to_metadata_obj() function, allowing attackers to exploit memory corruption via crafted WAV files. The vulnerability has been fixed in commit 8a7258c.</p>
-          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-29022" target="_blank" rel="noopener noreferrer">CVE-2026-29022</a></li></ul>
-        </section>
-        <section class="cluster">
-                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55019</h2>
-          <div class="domain-tags"></div>
-                    <p>The Weintek cMT-3072XH2 easyweb Web Version v2.1.53, OS v20231011 contains an incorrect access control in the component download_wb.cgi, allowing unauthenticated attackers to download arbitrary files. The vulnerability has been patched.</p>
-          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55019" target="_blank" rel="noopener noreferrer">CVE-2024-55019</a></li></ul>
-        </section>
-        <section class="cluster">
-                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55024</h2>
-          <div class="domain-tags"><span class="domain-tag">☁️ Cloud / IAM</span></div>
-                    <p>The Weintek cMT-3072XH2 easyweb v2.1.53, OS v20231011 contains an authentication bypass vulnerability in the authorization mechanism, allowing unauthorized attackers to perform Administrative actions using service accounts. The vulnerability has been patched.</p>
-          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55024" target="_blank" rel="noopener noreferrer">CVE-2024-55024</a></li></ul>
-        </section>
-        <section class="cluster">
-                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55023</h2>
-          <div class="domain-tags"></div>
-                    <p>The Weintek cMT-3072XH2 easyweb v2.1.53, OS v20231011 contains a hardcoded encryption key, allowing attackers to access sensitive information. The vulnerability has been patched.</p>
-          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55023" target="_blank" rel="noopener noreferrer">CVE-2024-55023</a></li></ul>
-        </section>
-        <section class="cluster">
-                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55020</h2>
-          <div class="domain-tags"></div>
-                    <p>The Weintek cMT-3072XH2 easyweb Web Version v2.1.53, OS v20231011 contains a command injection vulnerability in the DHCP activation feature, allowing attackers to execute arbitrary commands with root privileges. The vulnerability has been patched.</p>
-          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55020" target="_blank" rel="noopener noreferrer">CVE-2024-55020</a></li></ul>
-        </section>
-        <section class="cluster">
-                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55022</h2>
-          <div class="domain-tags"></div>
-                    <p>The Weintek cMT-3072XH2 easyweb v2.1.53, OS v20231011 contains an authenticated command injection vulnerability via the HMI Name parameter, allowing attackers to execute arbitrary commands. The vulnerability has been patched.</p>
-          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55022" target="_blank" rel="noopener noreferrer">CVE-2024-55022</a></li></ul>
-        </section>
-        <section class="cluster">
-                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55021</h2>
-          <div class="domain-tags"></div>
-                    <p>The Weintek cMT-3072XH2 easyweb v2.1.53, OS v20231011 contains a hardcoded password in the FTP protocol, allowing attackers to access sensitive information. The vulnerability has been patched.</p>
-          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55021" target="_blank" rel="noopener noreferrer">CVE-2024-55021</a></li></ul>
-        </section>
-        <section class="cluster">
-                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55025</h2>
-          <div class="domain-tags"></div>
-                    <p>The Weintek cMT-3072XH2 easyweb v2.1.53, OS v20231011 contains an incorrect access control in the VNC component, allowing unauthorized attackers to access the HMI system. The vulnerability has been patched.</p>
-          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55025" target="_blank" rel="noopener noreferrer">CVE-2024-55025</a></li></ul>
-        </section>
-        <section class="cluster">
-                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55027</h2>
-          <div class="domain-tags"></div>
-                    <p>1 related updates.</p>
-          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55027" target="_blank" rel="noopener noreferrer">CVE-2024-55027</a></li></ul>
-        </section>
-        <section class="cluster">
-                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2024-55026</h2>
-          <div class="domain-tags"></div>
-                    <p>1 related updates.</p>
-          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-55026" target="_blank" rel="noopener noreferrer">CVE-2024-55026</a></li></ul>
-        </section>
-        <section class="cluster">
-                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2025-13616</h2>
-          <div class="domain-tags"></div>
-                    <p>1 related updates.</p>
-          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-13616" target="_blank" rel="noopener noreferrer">CVE-2025-13616</a></li></ul>
-        </section>
-        <section class="cluster">
-                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2025-14604</h2>
-          <div class="domain-tags"></div>
-                    <p>1 related updates.</p>
-          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-14604" target="_blank" rel="noopener noreferrer">CVE-2025-14604</a></li></ul>
-        </section>
-        <section class="cluster">
-                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2025-14923</h2>
-          <div class="domain-tags"></div>
-                    <p>1 related updates.</p>
-          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-14923" target="_blank" rel="noopener noreferrer">CVE-2025-14923</a></li></ul>
-        </section>
-        <section class="cluster">
-                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2025-13734</h2>
-          <div class="domain-tags"></div>
-                    <p>1 related updates.</p>
-          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-13734" target="_blank" rel="noopener noreferrer">CVE-2025-13734</a></li></ul>
-        </section>
-        <section class="cluster">
-                    <h2><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2025-66945</h2>
-          <div class="domain-tags"></div>
-                    <p>1 related updates.</p>
-          <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-66945" target="_blank" rel="noopener noreferrer">CVE-2025-66945</a></li></ul>
-        </section>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-20020<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div></summary>
+          <div class="cluster-body">
+            <p>A vulnerability in the OSPF protocol of Cisco Secure Firewall ASA Software and Cisco Secure FTD Software could allow an unauthenticated, adjacent attacker to cause an affected device to reload unexpectedly, resulting in a DoS condition. Patch status: unknown.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-20020" target="_blank" rel="noopener noreferrer">CVE-2026-20020</a></li></ul>
+          </div>
+        </details>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-20021<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div></summary>
+          <div class="cluster-body">
+            <p>A vulnerability in the OSPF protocol of Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defense (FTD) Software could allow an authenticated, adjacent attacker to exhaust memory on an affected device, resulting in a denial of service (DoS) condition. Patch status: unknown.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-20021" target="_blank" rel="noopener noreferrer">CVE-2026-20021</a></li></ul>
+          </div>
+        </details>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-20016<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div></summary>
+          <div class="cluster-body">
+            <p>A vulnerability in the Cisco FXOS Software CLI feature for Cisco Secure Firewall ASA Software and Secure FTD Software could allow an authenticated, local attacker to execute arbitrary commands on the underlying operating system with root-level privileges. Patch status: unknown.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-20016" target="_blank" rel="noopener noreferrer">CVE-2026-20016</a></li></ul>
+          </div>
+        </details>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-20023<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div></summary>
+          <div class="cluster-body">
+            <p>A vulnerability in the OSPF protocol of Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defense (FTD) Software could allow an unauthenticated, adjacent attacker to corrupt memory on an affected device, resulting in a denial of service (DoS) condition. Patch status: unknown.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-20023" target="_blank" rel="noopener noreferrer">CVE-2026-20023</a></li></ul>
+          </div>
+        </details>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-20064<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div></summary>
+          <div class="cluster-body">
+            <p>A vulnerability in of Cisco Secure Firewall Threat Defense (FTD) Software could allow an authenticated, local attacker to cause the device to unexpectedly reload, causing a denial of service (DoS) condition. Patch status: unknown.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-20064" target="_blank" rel="noopener noreferrer">CVE-2026-20064</a></li></ul>
+          </div>
+        </details>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-20024<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div></summary>
+          <div class="cluster-body">
+            <p>A vulnerability in the OSPF protocol of Cisco Secure Firewall ASA Software and Cisco Secure FTD Software could allow an authenticated, adjacent attacker to cause an affected device to reload unexpectedly, resulting in a DoS condition. Patch status: unknown.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-20024" target="_blank" rel="noopener noreferrer">CVE-2026-20024</a></li></ul>
+          </div>
+        </details>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-20025<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div></summary>
+          <div class="cluster-body">
+            <p>A vulnerability in the OSPF protocol of Cisco Secure Firewall ASA Software and Cisco Secure FTD Software could allow an authenticated, adjacent attacker to cause an affected device to reload unexpectedly, resulting in a DoS condition. Patch status: unknown.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-20025" target="_blank" rel="noopener noreferrer">CVE-2026-20025</a></li></ul>
+          </div>
+        </details>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-20022<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div></summary>
+          <div class="cluster-body">
+            <p>A vulnerability in the OSPF protocol of Cisco Secure Firewall ASA Software and Cisco Secure FTD Software could allow an unauthenticated, adjacent attacker to cause an affected device to reload unexpectedly, resulting in a DoS condition when OSPF canonicalization debug is enabled by using the command. Patch status: unknown.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-20022" target="_blank" rel="noopener noreferrer">CVE-2026-20022</a></li></ul>
+          </div>
+        </details>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CISA flags VMware Aria Operations RCE flaw as exploited in attacks<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div></summary>
+          <div class="cluster-body">
+            <p>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has added a VMware Aria Operations vulnerability tracked as CVE-2026-22719 to its Known Exploited Vulnerabilities catalog, flagging the flaw as exploited in attacks. Patch status: unknown.</p>
+            <ul><li><a href="https://www.bleepingcomputer.com/news/security/cisa-flags-vmware-aria-operations-rce-flaw-as-exploited-in-attacks/" target="_blank" rel="noopener noreferrer">CISA flags VMware Aria Operations RCE flaw as exploited in attacks</a></li><li><a href="https://thehackernews.com/2026/03/cisa-adds-actively-exploited-vmware.html" target="_blank" rel="noopener noreferrer">CISA Adds Actively Exploited VMware Aria Operations Flaw CVE-2026-22719 to KEV Catalog</a></li></ul>
+          </div>
+        </details>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f77f00;color:#fff">60</span>CVE-2026-3125<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div></summary>
+          <div class="cluster-body">
+            <p>A Server-Side Request Forgery (SSRF) vulnerability was identified in the @opennextjs/cloudflare package, resulting from a path normalization bypass in the /cdn-cgi/image/ handler. Patch status: unknown.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-3125" target="_blank" rel="noopener noreferrer">CVE-2026-3125</a></li></ul>
+          </div>
+        </details>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2025-70223<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div></summary>
+          <div class="cluster-body">
+            <p>Stack buffer overflow vulnerability in D-Link DIR-513 v1.10 via the curTime parameter to goform/formAdvNetwork. Patch status: unknown.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-70223" target="_blank" rel="noopener noreferrer">CVE-2025-70223</a></li></ul>
+          </div>
+        </details>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2026-0847<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div></summary>
+          <div class="cluster-body">
+            <p>A vulnerability in NLTK versions up to and including 3.9.2 allows arbitrary file read via path traversal in multiple CorpusReader classes, including WordListCorpusReader, TaggedCorpusReader, and BracketParseCorpusReader. Patch status: unknown.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-0847" target="_blank" rel="noopener noreferrer">CVE-2026-0847</a></li></ul>
+          </div>
+        </details>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f9c74f;color:#24292e">40</span>CVE-2025-70226<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div></summary>
+          <div class="cluster-body">
+            <p>1 related updates.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-70226" target="_blank" rel="noopener noreferrer">CVE-2025-70226</a></li></ul>
+          </div>
+        </details>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f9c74f;color:#24292e">30</span>Spyware-grade Coruna iOS exploit kit now used in crypto theft attacks<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div></summary>
+          <div class="cluster-body">
+            <p>1 related updates.</p>
+            <ul><li><a href="https://www.bleepingcomputer.com/news/security/spyware-grade-coruna-ios-exploit-kit-now-used-in-crypto-theft-attacks/" target="_blank" rel="noopener noreferrer">Spyware-grade Coruna iOS exploit kit now used in crypto theft attacks</a></li></ul>
+          </div>
+        </details>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f9c74f;color:#24292e">30</span>Coruna iOS Exploit Kit Uses 23 Exploits Across Five Chains Targeting iOS 13–17.2.1<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div></summary>
+          <div class="cluster-body">
+            <p>1 related updates.</p>
+            <ul><li><a href="https://thehackernews.com/2026/03/coruna-ios-exploit-kit-uses-23-exploits.html" target="_blank" rel="noopener noreferrer">Coruna iOS Exploit Kit Uses 23 Exploits Across Five Chains Targeting iOS 13–17.2.1</a></li></ul>
+          </div>
+        </details>
 <footer>Watchtower · local-safe placeholder mode: false</footer>
+<script>
+function switchTab(t){
+  document.getElementById('hm-domain').style.display=t==='domain'?'grid':'none';
+  document.getElementById('hm-geo').style.display=t==='geo'?'grid':'none';
+  document.querySelectorAll('.hm-tab').forEach(function(b,i){b.classList.toggle('active',i===(t==='domain'?0:1))});
+}
+</script>
 </body></html>
