@@ -4,3 +4,4 @@
 {"ts": "2026-03-03T17:30:24.208070+00:00", "error": "No module named 'agent'"}
 {"ts": "2026-03-03T17:30:32.859193+00:00", "counts": {"feeds": 4, "polled": 3, "enriched": 3, "clusters": 3}, "hot_domains": ["crypto_lib"], "plan_steps": 1, "placeholder_mode": true}
 {"ts": "2026-03-04T17:36:45.000269+00:00", "counts": {"feeds": 4, "polled": 1591, "enriched": 30, "clusters": 15}, "hot_domains": ["uncategorised"], "plan_steps": 1, "placeholder_mode": false}
+{"ts": "2026-03-04T18:20:28.192668+00:00", "error": "No module named 'agent'"}
