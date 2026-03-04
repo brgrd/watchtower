@@ -36,8 +36,8 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 </head>
 <body>
 <h1>Watchtower — Infrastructure Security Briefing</h1>
-<p>Generated <strong>2026-03-04 23-14</strong> UTC | <a href="latest.md">latest.md</a></p>
-<div class="executive"><h2>Analyst Summary</h2><p>The current threat landscape is dominated by actively exploited vulnerabilities in Google Chrome and D-Link DIR-513 devices, with a high risk of sandbox escapes and out-of-bounds memory access. The most at-risk technology stacks include Google Chrome and D-Link DIR-513 devices, with a single most urgent action item for a security team being to patch Google Chrome to version 145.0.7632.159.</p></div>
+<p>Generated <strong>2026-03-04 23-51</strong> UTC | <a href="latest.md">latest.md</a></p>
+<div class="executive"><h2>Analyst Summary</h2><p>The current threat landscape is dominated by vulnerabilities in web frameworks and applications, with a high risk of exploitation in the wild. The most at-risk technology stacks include web applications and frameworks, particularly those using JavaScript runtimes. The single most urgent action item for a security team is to patch or mitigate the recently disclosed vulnerabilities in Hono and BioStar 2.</p></div>
 <div class="hm-tabs"><button class="hm-tab active" onclick="switchTab('domain')">Domains</button> <button class="hm-tab" onclick="switchTab('geo')">Geography</button></div>
 <div id="hm-domain" class="heatmap">
                     <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="npm / Node: 0 finding(s), max score —">
@@ -60,9 +60,9 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
                         <span class="hm-label">RubyGems</span>
             <span class="hm-score">—</span>
           </div>
-                    <div class="hm-cell" style="background:#d62828;color:#fff" title="Browser Extensions: 10 finding(s), max score 90">
+                    <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="Browser Extensions: 0 finding(s), max score —">
                         <span class="hm-label">Browser Extensions</span>
-            <span class="hm-score">90</span>
+            <span class="hm-score">—</span>
           </div>
                     <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="CA / PKI Trust: 0 finding(s), max score —">
                         <span class="hm-label">CA / PKI Trust</span>
@@ -72,145 +72,75 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
                         <span class="hm-label">Cloud / IAM</span>
             <span class="hm-score">—</span>
           </div>
-                    <div class="hm-cell" style="background:#d62828;color:#fff" title="Containers / K8s: 4 finding(s), max score 80">
+                    <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="Containers / K8s: 0 finding(s), max score —">
                         <span class="hm-label">Containers / K8s</span>
-            <span class="hm-score">80</span>
+            <span class="hm-score">—</span>
           </div>
                     <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="OS / Kernel: 0 finding(s), max score —">
                         <span class="hm-label">OS / Kernel</span>
             <span class="hm-score">—</span>
           </div>
-                    <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="Web / Servers: 0 finding(s), max score —">
+                    <div class="hm-cell" style="background:#d62828;color:#fff" title="Web / Servers: 3 finding(s), max score 80">
                         <span class="hm-label">Web / Servers</span>
-            <span class="hm-score">—</span>
+            <span class="hm-score">80</span>
           </div>
-                    <div class="hm-cell" style="background:#f77f00;color:#fff" title="Crypto Libraries: 1 finding(s), max score 60">
+                    <div class="hm-cell" style="background:#f77f00;color:#fff" title="Crypto Libraries: 1 finding(s), max score 70">
                         <span class="hm-label">Crypto Libraries</span>
-            <span class="hm-score">60</span>
+            <span class="hm-score">70</span>
           </div>
                     <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="Supply Chain: 0 finding(s), max score —">
                         <span class="hm-label">Supply Chain</span>
             <span class="hm-score">—</span>
           </div>
-                    <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="Identity / Auth: 0 finding(s), max score —">
+                    <div class="hm-cell" style="background:#d62828;color:#fff" title="Identity / Auth: 1 finding(s), max score 85">
                         <span class="hm-label">Identity / Auth</span>
-            <span class="hm-score">—</span>
+            <span class="hm-score">85</span>
           </div></div>
 <div id="hm-geo" style="display:none;margin:1rem 0 2rem"><div id="world-map" style="height:340px"></div><div id="geo-legend" style="display:flex;flex-wrap:wrap;gap:6px;margin:.6rem 0 1rem"></div></div>
-<div class="history-panel"><span class="hs-label">Fresh&nbsp;items</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,20.0 10.0,20.0 20.0,2.0 30.0,19.4 40.0,20.0 50.0,17.4 60.0,18.3 70.0,20.0 80.0,19.6" fill="none" stroke="#0366d6" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="19.6" r="2.5" fill="#0366d6"/></svg>&nbsp;<span class="hs-val">38</span>&emsp;<span class="hs-label">Clusters</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,20.0 10.0,16.4 20.0,2.0 30.0,2.0 40.0,20.0 50.0,2.0 60.0,2.0 70.0,16.4 80.0,2.0" fill="none" stroke="#28a745" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="2.0" r="2.5" fill="#28a745"/></svg>&nbsp;<span class="hs-val">15</span>&emsp;<span class="hs-label">Runs&nbsp;logged</span>&nbsp;<span class="hs-val">9</span></div>
+<div class="history-panel"><span class="hs-label">Fresh&nbsp;items</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,20.0 8.9,20.0 17.8,2.0 26.7,19.4 35.6,20.0 44.4,17.4 53.3,18.3 62.2,20.0 71.1,19.6 80.0,19.9" fill="none" stroke="#0366d6" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="19.9" r="2.5" fill="#0366d6"/></svg>&nbsp;<span class="hs-val">6</span>&emsp;<span class="hs-label">Clusters</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,20.0 8.9,16.4 17.8,2.0 26.7,2.0 35.6,20.0 44.4,2.0 53.3,2.0 62.2,16.4 71.1,2.0 80.0,14.0" fill="none" stroke="#28a745" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="14.0" r="2.5" fill="#28a745"/></svg>&nbsp;<span class="hs-val">5</span>&emsp;<span class="hs-label">Runs&nbsp;logged</span>&nbsp;<span class="hs-val">10</span></div>
 <h2>Top Findings</h2>
 
         <details class="cluster">
-          <summary><span class="badge" style="background:#d62828;color:#fff">90</span>CVE-2026-3539: Object Lifecycle Issue in DevTools in Google Chrome<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Browser Extensions</span></div></summary>
+          <summary><span class="badge" style="background:#d62828;color:#fff">85</span>CVE-2025-41257: BioStar 2 Vulnerability<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Identity / Auth</span></div></summary>
           <div class="cluster-body">
-            <p>An attacker can potentially exploit a sandbox escape via a crafted extension.</p>
-            <ul></ul>
+            <p>Suprema&#x27;s BioStar 2 in version 2.9.11.6 allows users to set new passwords without providing the current one, allowing attackers to gain unauthorized access. A patch is available, but exploitation in the wild has been reported.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-41257" target="_blank" rel="noopener noreferrer">CVE-2025-41257</a></li></ul>
           </div>
         </details>
         <details class="cluster">
-          <summary><span class="badge" style="background:#d62828;color:#fff">90</span>CVE-2026-3545: Insufficient Data Validation in Navigation in Google Chrome<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Browser Extensions</span></div></summary>
+          <summary><span class="badge" style="background:#d62828;color:#fff">80</span>CVE-2026-29086: Hono Web Application Framework Vulnerability<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div></summary>
           <div class="cluster-body">
-            <p>A remote attacker can potentially perform a sandbox escape via a crafted URL.</p>
-            <ul></ul>
+            <p>Prior to version 4.12.4, Hono&#x27;s setCookie utility did not validate cookie values, allowing attackers to inject malicious data. A patch is available, but exploitation in the wild has been reported.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-29086" target="_blank" rel="noopener noreferrer">CVE-2026-29086</a></li></ul>
           </div>
         </details>
         <details class="cluster">
-          <summary><span class="badge" style="background:#d62828;color:#fff">80</span>CVE-2025-70219: Stack Buffer Overflow in D-Link DIR-513<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Containers / K8s</span></div></summary>
+          <summary><span class="badge" style="background:#f77f00;color:#fff">75</span>CVE-2026-29045: Hono Web Application Framework Vulnerability<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div></summary>
           <div class="cluster-body">
-            <p>A remote attacker can potentially perform a stack buffer overflow via the goform/formDeviceReboot component.</p>
-            <ul><li><a href="https://www.bleepingcomputer.com/news/security/mail2shell-zero-click-attack-lets-hackers-hijack-freescout-mail-servers/" target="_blank" rel="noopener noreferrer">Mail2Shell zero-click attack lets hackers hijack FreeScout mail servers</a></li></ul>
+            <p>Prior to version 4.12.4, Hono&#x27;s serveStatic feature is vulnerable to a bug that allows attackers to access sensitive information. A patch is available, but exploitation in the wild has been reported.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-29045" target="_blank" rel="noopener noreferrer">CVE-2026-29045</a></li></ul>
           </div>
         </details>
         <details class="cluster">
-          <summary><span class="badge" style="background:#d62828;color:#fff">80</span>CVE-2025-46108: Buffer Overflow in D-Link DIR-513<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Containers / K8s</span></div></summary>
+          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-26002: Open OnDemand Files Application Vulnerability<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div></summary>
           <div class="cluster-body">
-            <p>A remote attacker can potentially perform a buffer overflow via the function formTcpipSetup.</p>
-            <ul></ul>
+            <p>The Files application in Open OnDemand versions prior to 4.0.9 and 4.1.3 is susceptible to a vulnerability that allows attackers to access sensitive information. A patch is available, but exploitation in the wild has been reported.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-26002" target="_blank" rel="noopener noreferrer">CVE-2026-26002</a></li></ul>
           </div>
         </details>
         <details class="cluster">
-          <summary><span class="badge" style="background:#d62828;color:#fff">80</span>CVE-2025-70225: Stack Buffer Overflow in D-Link DIR-513<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Containers / K8s</span></div></summary>
+          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-2297: CPython Legacy File Loader Vulnerability<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Crypto Libraries</span></div></summary>
           <div class="cluster-body">
-            <p>A remote attacker can potentially perform a stack buffer overflow via the curtime parameter to the goform/formEasySetupWWConfig component.</p>
-            <ul></ul>
-          </div>
-        </details>
-        <details class="cluster">
-          <summary><span class="badge" style="background:#d62828;color:#fff">80</span>CVE-2025-70222: Stack Buffer Overflow in D-Link DIR-513<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Containers / K8s</span></div></summary>
-          <div class="cluster-body">
-            <p>A remote attacker can potentially perform a stack buffer overflow via the curTime parameter to goform/formLogin,goform/getAuthCode.</p>
-            <ul></ul>
-          </div>
-        </details>
-        <details class="cluster">
-          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-3536: Integer Overflow in ANGLE in Google Chrome<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Browser Extensions</span></div></summary>
-          <div class="cluster-body">
-            <p>A remote attacker can potentially perform out of bounds memory access via a crafted URL. Patched in Google Chrome 145.0.7632.159.</p>
-            <ul><li><a href="https://www.bleepingcomputer.com/news/security/bitwarden-adds-support-for-passkey-login-on-windows-11/" target="_blank" rel="noopener noreferrer">Bitwarden adds support for passkey login on Windows 11</a></li></ul>
-          </div>
-        </details>
-        <details class="cluster">
-          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-3537: Object Lifecycle Issue in PowerVR in Google Chrome<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Browser Extensions</span></div></summary>
-          <div class="cluster-body">
-            <p>A remote attacker can potentially exploit heap corruption via a crafted URL.</p>
-            <ul><li><a href="https://www.bleepingcomputer.com/news/microsoft/windows-10-kb5075039-update-fixes-broken-recovery-environment/" target="_blank" rel="noopener noreferrer">Windows 10 KB5075039 update fixes broken Recovery Environment</a></li></ul>
-          </div>
-        </details>
-        <details class="cluster">
-          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-3538: Integer Overflow in Skia in Google Chrome<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Browser Extensions</span></div></summary>
-          <div class="cluster-body">
-            <p>A remote attacker can potentially perform out of bounds memory access via a crafted URL.</p>
-            <ul></ul>
-          </div>
-        </details>
-        <details class="cluster">
-          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-3542: Inappropriate Implementation in WebAssembly in Google Chrome<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Browser Extensions</span></div></summary>
-          <div class="cluster-body">
-            <p>A remote attacker can potentially perform out of bounds memory access via a crafted URL.</p>
-            <ul></ul>
-          </div>
-        </details>
-        <details class="cluster">
-          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-3540: Inappropriate Implementation in WebAudio in Google Chrome<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Browser Extensions</span></div></summary>
-          <div class="cluster-body">
-            <p>A remote attacker can potentially perform out of bounds memory access via a crafted URL.</p>
-            <ul></ul>
-          </div>
-        </details>
-        <details class="cluster">
-          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-3544: Heap Buffer Overflow in WebCodecs in Google Chrome<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Browser Extensions</span></div></summary>
-          <div class="cluster-body">
-            <p>A remote attacker can potentially perform an out of bounds memory write via a crafted URL.</p>
-            <ul></ul>
-          </div>
-        </details>
-        <details class="cluster">
-          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-3543: Inappropriate Implementation in V8 in Google Chrome<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Browser Extensions</span></div></summary>
-          <div class="cluster-body">
-            <p>A remote attacker can potentially perform out of bounds memory access via a crafted URL.</p>
-            <ul></ul>
-          </div>
-        </details>
-        <details class="cluster">
-          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2026-3541: Inappropriate Implementation in CSS in Google Chrome<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Browser Extensions</span></div></summary>
-          <div class="cluster-body">
-            <p>A remote attacker can potentially perform an out of bounds memory read via a crafted URL.</p>
-            <ul></ul>
-          </div>
-        </details>
-        <details class="cluster">
-          <summary><span class="badge" style="background:#f77f00;color:#fff">60</span>CVE-2026-28434: Heap Corruption in cpp-httplib<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Crypto Libraries</span></div></summary>
-          <div class="cluster-body">
-            <p>A remote attacker can potentially exploit heap corruption via a crafted request handler.</p>
-            <ul></ul>
+            <p>The import hook in CPython that handles legacy *.pyc files is incorrectly handled, allowing attackers to access sensitive information. A patch is available, but exploitation in the wild has been reported.</p>
+            <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-2297" target="_blank" rel="noopener noreferrer">CVE-2026-2297</a></li></ul>
           </div>
         </details>
 <footer>Watchtower · local-safe placeholder mode: {str(placeholder_mode()).lower()}</footer>
 <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js"></script>
 <script>
-var GEO_DATA={};
-var GEO_LABELS={};
+var GEO_DATA={"US": 85};
+var GEO_LABELS={"US": "United States: 5 source(s), max score 85"};
 var _mapInit=false;
 function initMap(){
   if(_mapInit)return;_mapInit=true;
