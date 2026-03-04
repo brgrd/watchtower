@@ -419,9 +419,7 @@ def groq_chat(messages, model, temperature=0.2, max_tokens=1200):
     raise RuntimeError("Groq rate limited repeatedly")
 
 
-def groq_analyze_briefing(
-    kev_items: list, nvd_items: list, news_items: list
-) -> tuple:
+def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) -> tuple:
     """Single Groq call: analyze KEV entries, NVD CVEs, and news articles together.
 
     Returns (executive_summary: str, findings: list).
@@ -445,7 +443,8 @@ def groq_analyze_briefing(
     article_block = [
         {
             "headline": it["title"][:150],
-            "source": tldextract.extract(it.get("url", "")).registered_domain or "unknown",
+            "source": tldextract.extract(it.get("url", "")).registered_domain
+            or "unknown",
             "snippet": (it.get("extracted_text", "") or it.get("summary", ""))[:400],
             "url": it.get("url", ""),
         }
@@ -611,25 +610,55 @@ def to_cluster_card(key, items):
     }
 
 
-def _findings_to_cards(findings: list) -> list:
+_VALID_DOMAIN_KEYS = set(_TAXONOMY.keys()) | {"uncategorised"}
+
+
+def _findings_to_cards(findings: list, all_items: list = None) -> list:
     """Convert Groq findings into cluster-card dicts compatible with _write_index_html.
 
     Each finding's `references` list maps to `sources.primary` so the rendered
     Top Findings section shows cited article links beneath each Groq-authored note.
+
+    all_items is used to:
+    - Propagate country codes from the original feed items onto each finding
+      (matched via the reference URLs Groq cited).
+    - That in turn populates the Geography heatmap and world map.
     """
+    # Build URL → country lookup from polled/enriched items
+    url_to_country: dict = {}
+    if all_items:
+        for it in all_items:
+            cc = it.get("country", "")
+            url = it.get("url", "")
+            if cc and url:
+                url_to_country[url] = cc
+
     cards = []
     for f in findings:
         try:
             score = max(0, min(100, int(f.get("risk_score", 40))))
         except (ValueError, TypeError):
             score = 40
+
+        # Validate Groq's domain keys — reject any key not in the taxonomy
+        raw_domains = f.get("domains", [])
+        domains = [d for d in raw_domains if d in _VALID_DOMAIN_KEYS]
+        if not domains:
+            domains = ["uncategorised"]
+
         refs = f.get("references", [])
+
+        # Derive countries from reference URLs that match polled item URLs
+        countries = list(
+            {url_to_country[r["url"]] for r in refs if r.get("url") in url_to_country}
+        )
+
         cards.append(
             {
                 "id": sha256(f.get("title", str(len(cards))))[:12],
                 "risk_score": score,
-                "domains": f.get("domains", ["uncategorised"]),
-                "countries": [],
+                "domains": domains,
+                "countries": countries,
                 "title": f.get("title", "")[:140],
                 "summary": f.get("summary", ""),
                 "sources": {
@@ -971,7 +1000,9 @@ def _run():
     # Groq: analyze KEV entries, NVD CVEs, and news articles as distinct inputs
     all_items = enriched or polled
     kev_items = [it for it in all_items if "known_exploited" in it.get("source", "")]
-    nvd_items = [it for it in all_items if "services.nvd.nist.gov" in it.get("source", "")]
+    nvd_items = [
+        it for it in all_items if "services.nvd.nist.gov" in it.get("source", "")
+    ]
     news_items = [
         it
         for it in all_items
@@ -981,7 +1012,9 @@ def _run():
     executive, findings = groq_analyze_briefing(kev_items, nvd_items, news_items)
     if findings:
         # Groq returned structured findings with cited article references
-        cards = _findings_to_cards(findings)[: budgets["max_clusters_output"]]
+        cards = _findings_to_cards(findings, all_items=all_items)[
+            : budgets["max_clusters_output"]
+        ]
     else:
         # Fallback: use cluster cards with basic summaries (placeholder mode or Groq failure)
         for c in cards:
