@@ -644,7 +644,46 @@ def _heatmap_cell_color(max_score: int, count: int):
     return "#d62828", "#fff"
 
 
-def _write_index_html(path: str, cards: list, heatmap: dict, geo_heatmap: dict, ts: str, executive: str = ""):
+def _read_ledger_history(n: int = 20) -> list:
+    """Return last N successful run entries from ledger.jsonl."""
+    if not os.path.exists(LEDGER_FILE):
+        return []
+    entries = []
+    with open(LEDGER_FILE, "r", encoding="utf-8") as f:
+        for line in f:
+            try:
+                obj = json.loads(line.strip())
+                if "error" not in obj and "counts" in obj:
+                    entries.append(obj)
+            except Exception:
+                pass
+    return entries[-n:]
+
+
+def _sparkline_svg(values: list, width: int = 80, height: int = 22, color: str = "#0366d6") -> str:
+    if len(values) < 2:
+        return f'<span style="font-size:.8rem;color:#57606a">{values[-1] if values else 0}</span>'
+    mn, mx = min(values), max(values)
+    rng = mx - mn or 1
+    pad = 2
+    step = width / max(len(values) - 1, 1)
+    pts = " ".join(
+        f"{i * step:.1f},{height - pad - (v - mn) / rng * (height - pad * 2):.1f}"
+        for i, v in enumerate(values)
+    )
+    lx = (len(values) - 1) * step
+    ly = height - pad - (values[-1] - mn) / rng * (height - pad * 2)
+    return (
+        f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}"'
+        f' style="vertical-align:middle;overflow:visible">'
+        f'<polyline points="{pts}" fill="none" stroke="{color}"'
+        f' stroke-width="1.5" stroke-linejoin="round"/>'
+        f'<circle cx="{lx:.1f}" cy="{ly:.1f}" r="2.5" fill="{color}"/>'
+        f'</svg>'
+    )
+
+
+def _write_index_html(path: str, cards: list, heatmap: dict, geo_heatmap: dict, ts: str, executive: str = "", history: list = None):
     heat_cells = ""
     for bucket_id, data in heatmap.items():
         if data["count"] == 0 and bucket_id == "uncategorised":
@@ -670,6 +709,20 @@ def _write_index_html(path: str, cards: list, heatmap: dict, geo_heatmap: dict, 
                     </div>"""
     if not geo_cells:
         geo_cells = '<p style="color:#57606a;font-style:italic;padding:.4rem 0">No country-tagged advisories in this window.</p>'
+
+    history_section = ""
+    if history:
+        polled_vals = [e["counts"]["polled"] for e in history]
+        cluster_vals = [e["counts"]["clusters"] for e in history]
+        p_spark = _sparkline_svg(polled_vals, color="#0366d6")
+        c_spark = _sparkline_svg(cluster_vals, color="#28a745")
+        history_section = (
+            f'<div class="history-panel">'
+            f'<span class="hs-label">Fresh&nbsp;items</span>&nbsp;{p_spark}&nbsp;<span class="hs-val">{polled_vals[-1]}</span>'
+            f'&emsp;<span class="hs-label">Clusters</span>&nbsp;{c_spark}&nbsp;<span class="hs-val">{cluster_vals[-1]}</span>'
+            f'&emsp;<span class="hs-label">Runs&nbsp;logged</span>&nbsp;<span class="hs-val">{len(history)}</span>'
+            f'</div>'
+        )
 
     rows = ""
     for c in cards:
@@ -718,6 +771,9 @@ a{{color:#0366d6}}
 .hm-tabs{{display:flex;gap:8px;margin:.4rem 0 .8rem}}
 .hm-tab{{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:4px;padding:.3rem .9rem;cursor:pointer;font-size:.85rem;font-family:inherit}}
 .hm-tab.active{{background:#0366d6;color:#fff;border-color:#0366d6}}
+.history-panel{{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:4px;padding:.45rem 1rem;margin:0 0 1.2rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}}
+.hs-label{{color:#57606a;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:.68rem}}
+.hs-val{{font-weight:700;font-size:.85rem}}
 </style>
 </head>
 <body>
@@ -727,6 +783,7 @@ a{{color:#0366d6}}
 <div class="hm-tabs"><button class="hm-tab active" onclick="switchTab('domain')">🏷️ Domains</button> <button class="hm-tab" onclick="switchTab('geo')">🌍 Geography</button></div>
 <div id="hm-domain" class="heatmap">{heat_cells}</div>
 <div id="hm-geo" class="heatmap" style="display:none">{geo_cells}</div>
+{history_section}
 <h2>Top Findings</h2>
 {rows}
 <footer>Watchtower · local-safe placeholder mode: {str(placeholder_mode()).lower()}</footer>
@@ -863,7 +920,6 @@ def _run():
 
     heatmap = build_domain_heatmap(cards)
     geo_heatmap = build_geo_heatmap(cards)
-    _write_index_html(index_html, cards, heatmap, geo_heatmap, ts, executive)
 
     hot_domains = [k for k, v in heatmap.items() if v["max_score"] >= 60]
     append_jsonl(
@@ -880,6 +936,9 @@ def _run():
             "placeholder_mode": placeholder_mode(),
         },
     )
+
+    history = _read_ledger_history()
+    _write_index_html(index_html, cards, heatmap, geo_heatmap, ts, executive, history)
 
     print("### Watchtower run")
     print(f"UTC: {now_utc_iso()}")

@@ -8,6 +8,7 @@ budgets:
   max_links_per_cluster: 5
   max_runtime_seconds: 600
   since_hours: 24
+  seen_ttl_days: 7
 
 runtime:
   placeholder_mode_default: true   # safest/free default for local demo
