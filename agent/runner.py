@@ -443,6 +443,64 @@ def request_action_plan(goal, budget, context):
         }
 
 
+def groq_summarize_clusters(cards: list, max_clusters: int = 8) -> tuple:
+    """Single Groq call: (executive_summary_str, {card_id: summary_str}).
+
+    Token budget: ~1500 input + ~900 output ≈ 2400 tokens per run.
+    Returns empty strings/dict on placeholder mode or any failure.
+    """
+    if placeholder_mode() or not GROQ_API_KEY:
+        return "", {}
+
+    cluster_inputs = [
+        {
+            "id": c["id"],
+            "title": c["title"],
+            "risk_score": c["risk_score"],
+            "domains": c.get("domains", []),
+            "snippet": c.get("_raw_snippets", "")[:800],
+        }
+        for c in cards[:max_clusters]
+    ]
+
+    prompt = {
+        "task": "infrasec_briefing_summary",
+        "clusters": cluster_inputs,
+        "instructions": (
+            "For each cluster write a 2-sentence analyst summary covering: what is "
+            "affected, exploitation/patch status, and urgency. "
+            "Also write an executive_summary (3 sentences max) covering the overall "
+            "threat picture, any notable geographic or actor patterns, and the top "
+            "action item. "
+            'Output ONLY strict JSON (no markdown): '
+            '{"executive_summary":"...","summaries":{"<id>":"2-sentence summary..."}}'
+        ),
+    }
+
+    try:
+        content, _ = groq_chat(
+            [
+                {
+                    "role": "system",
+                    "content": "You are a cybersecurity analyst. Output strict JSON only. No markdown fences.",
+                },
+                {"role": "user", "content": json.dumps(prompt)},
+            ],
+            model=CONFIG["model"]["name"],
+            temperature=0.2,
+            max_tokens=900,
+        )
+        content = content.strip()
+        if content.startswith("```"):
+            content = re.sub(r"^```[a-z]*\n?", "", content)
+            content = re.sub(r"\n?```$", "", content.strip())
+        data = json.loads(content)
+        return data.get("executive_summary", ""), data.get("summaries", {})
+    except Exception as exc:
+        print(f"[WARN] Groq summarization failed: {exc}")
+        return "", {}
+
+
 # -----------------------------
 # Taxonomy / scoring / clustering
 # -----------------------------
@@ -514,12 +572,20 @@ def to_cluster_card(key, items):
         for d in classify_domains(it):
             if d not in domains:
                 domains.append(d)
+    # Aggregate raw text for Groq summarization (stripped from final output)
+    raw_snippets = []
+    for it in items[:3]:
+        if it.get("summary"):
+            raw_snippets.append(it["summary"][:300])
+        if it.get("extracted_text"):
+            raw_snippets.append(it["extracted_text"][:500])
     return {
         "id": sha256(key)[:12],
         "risk_score": score_cluster(key, items),
         "domains": domains,
         "title": items[0]["title"][:140] if items else key,
-        "summary": f"{len(items)} related updates.",
+        "summary": "",
+        "_raw_snippets": " | ".join(raw_snippets)[:1000],
         "sources": {
             "primary": [
                 {"title": it["title"][:120], "url": it["url"]} for it in items[:5]
@@ -571,7 +637,7 @@ def _heatmap_cell_color(max_score: int, count: int):
     return "#d62828", "#fff"
 
 
-def _write_index_html(path: str, cards: list, heatmap: dict, ts: str):
+def _write_index_html(path: str, cards: list, heatmap: dict, ts: str, executive: str = ""):
     heat_cells = ""
     for bucket_id, data in heatmap.items():
         if data["count"] == 0 and bucket_id == "uncategorised":
@@ -620,11 +686,15 @@ h1{{border-bottom:2px solid #e1e4e8;padding-bottom:.4rem}}
 .badge{{border-radius:3px;padding:2px 8px;font-size:.8rem;font-weight:700;margin-right:.5rem}}
 .domain-tags{{margin:.3rem 0 .6rem}} .domain-tag{{display:inline-block;background:#e1e4e8;border-radius:3px;font-size:.7rem;padding:1px 6px;margin:0 3px 3px 0}}
 a{{color:#0366d6}}
+.executive{{background:#fff8e1;border-left:4px solid #f9c74f;border-radius:4px;padding:.8rem 1.1rem;margin:1rem 0 1.8rem}}
+.executive h2{{margin:0 0 .4rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:#7a5c00}}
+.executive p{{margin:0;line-height:1.75;font-size:.95rem}}
 </style>
 </head>
 <body>
 <h1>🔭 Watchtower — Infrastructure Security Briefing</h1>
-<p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href=\"latest.md\">latest.md</a></p>
+<p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a></p>
+{f'<div class="executive"><h2>Analyst Summary</h2><p>{html.escape(executive)}</p></div>' if executive else ''}
 <h2>Domain Heat Map</h2>
 <div class=\"heatmap\">{heat_cells}</div>
 <h2>Top Findings</h2>
@@ -687,7 +757,8 @@ def _run():
             return None, None, None
         url = item["url"]
         try:
-            _ = fetch_url(url)
+            text = fetch_url(url)
+            item["extracted_text"] = text[:1500]
             item["extracted_text_hash"] = sha256(
                 (item.get("title", "") + item.get("summary", ""))[:5000]
             )
@@ -717,6 +788,15 @@ def _run():
         : budgets["max_clusters_output"]
     ]
 
+    # Groq: generate per-cluster summaries + executive narrative (single call)
+    executive, summaries = groq_summarize_clusters(cards)
+    for c in cards:
+        if c["id"] in summaries and summaries[c["id"]]:
+            c["summary"] = summaries[c["id"]]
+        elif not c["summary"]:
+            c["summary"] = f"{len(c['sources']['primary'])} related updates."
+        c.pop("_raw_snippets", None)  # remove internal field before output
+
     ts = datetime.utcnow().strftime("%Y-%m-%d_%H-%M")
     out_md = os.path.join(REPORTS_DIR, f"briefing_{ts}.md")
     out_jsonl = os.path.join(REPORTS_DIR, f"briefing_{ts}.jsonl")
@@ -732,6 +812,8 @@ def _run():
         "# Watchtower — Infrastructure Security Briefing",
         "",
     ]
+    if executive:
+        lines += ["## Analyst Summary", "", executive, ""]
     for c in cards:
         lines.append(f"## {c['title']} (risk: {c['risk_score']})")
         lines.append(c["summary"])
@@ -750,7 +832,7 @@ def _run():
             f.write(json.dumps(c, ensure_ascii=False) + "\n")
 
     heatmap = build_domain_heatmap(cards)
-    _write_index_html(index_html, cards, heatmap, ts)
+    _write_index_html(index_html, cards, heatmap, ts, executive)
 
     hot_domains = [k for k, v in heatmap.items() if v["max_score"] >= 60]
     append_jsonl(
