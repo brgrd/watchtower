@@ -104,57 +104,57 @@ report:
 domain_taxonomy:
   pkg_npm:
     label: "npm / Node"
-    icon: "📦"
-    signals: ["npm", "node", "package.json", "yarn", "pnpm"]
+    icon: "pkg"
+    signals: ["npm", "node", "package.json", "yarn", "pnpm", "node.js", "nodejs", "javascript package", "js package", "npx"]
   pkg_pypi:
     label: "PyPI / Python"
-    icon: "🐍"
-    signals: ["pypi", "pip", "python package", "pyproject"]
+    icon: "py"
+    signals: ["pypi", "pip", "python package", "pyproject", "python", "pip install", "requirements.txt", "poetry", "setuptools"]
   pkg_maven:
     label: "Maven / Java"
-    icon: "☕"
-    signals: ["maven", "gradle", "java", "spring", "log4j"]
+    icon: "java"
+    signals: ["maven", "gradle", "java", "spring", "log4j", "apache", "struts", "hibernate", "tomcat", "jvm"]
   pkg_nuget:
     label: ".NET / NuGet"
-    icon: "🔷"
-    signals: [".net", "nuget", "asp.net", "dotnet", "csharp", "c#"]
+    icon: ".net"
+    signals: [".net", "nuget", "asp.net", "dotnet", "csharp", "c#", "microsoft", "powershell", "blazor"]
   pkg_gem:
     label: "RubyGems"
-    icon: "💎"
-    signals: ["rubygems", "ruby gem", "bundler", "gemfile"]
+    icon: "gem"
+    signals: ["rubygems", "ruby gem", "bundler", "gemfile", "ruby", "rails gem"]
   browser_ext:
     label: "Browser Extensions"
-    icon: "🧩"
-    signals: ["browser extension", "chrome extension", "firefox addon", "manifest v"]
+    icon: "ext"
+    signals: ["browser extension", "chrome extension", "firefox addon", "manifest v", "webstore", "browser plugin", "add-on"]
   ca_trust:
     label: "CA / PKI Trust"
-    icon: "🔐"
-    signals: ["certificate authority", "root certificate", "x.509", "ocsp", "code signing cert"]
+    icon: "pki"
+    signals: ["certificate authority", "root certificate", "x.509", "ocsp", "code signing cert", "ca bundle", "trust store", "intermediate ca"]
   cloud_iam:
     label: "Cloud / IAM"
-    icon: "☁️"
-    signals: ["iam", "aws", "azure", "gcp", "access key", "service account", "secrets manager"]
+    icon: "cloud"
+    signals: ["iam", "aws", "azure", "gcp", "access key", "service account", "secrets manager", "cloud", "s3", "ec2", "eks", "lambda", "azure ad", "entra", "gke", "cloudflare", "google cloud", "cloud storage", "bucket"]
   container:
     label: "Containers / K8s"
-    icon: "🐳"
-    signals: ["docker", "container", "kubernetes", "helm", "k8s"]
+    icon: "k8s"
+    signals: ["docker", "container", "kubernetes", "helm", "k8s", "pod", "image", "registry", "oci", "containerd", "runc", "kubectl", "ingress", "rbac", "namespace"]
   os_kernel:
     label: "OS / Kernel"
-    icon: "🖥️"
-    signals: ["linux kernel", "windows kernel", "privilege escalation", "lpe", "ebpf"]
+    icon: "os"
+    signals: ["linux kernel", "windows kernel", "privilege escalation", "lpe", "ebpf", "windows", "linux", "ubuntu", "debian", "rhel", "android", "macos", "cve-", "patch tuesday", "zero-day", "zeroday", "rce", "remote code execution", "arbitrary code", "exploit", "vulnerability", "advisory", "security update", "patch"]
   web_framework:
     label: "Web / Servers"
-    icon: "🌐"
-    signals: ["nginx", "apache", "iis", "express", "django", "rails", "fastapi"]
+    icon: "web"
+    signals: ["nginx", "apache", "iis", "express", "django", "rails", "fastapi", "next.js", "nextjs", "react", "wordpress", "php", "http", "web application", "sql injection", "sqli", "xss", "csrf", "flask", "tomcat", "server-side", "api endpoint"]
   crypto_lib:
     label: "Crypto Libraries"
-    icon: "🔑"
-    signals: ["openssl", "libssl", "mbedtls", "gnutls", "cipher", "ecdsa", "rsa key"]
+    icon: "tls"
+    signals: ["openssl", "libssl", "mbedtls", "gnutls", "cipher", "ecdsa", "rsa key", "tls", "ssl", "certificate", "encryption", "key management", "hash", "sha", "rsa", "aes", "cryptographic"]
   supply_chain:
     label: "Supply Chain"
-    icon: "⛓️"
-    signals: ["supply chain", "typosquat", "malicious package", "dependency confusion", "repo hijack"]
+    icon: "sc"
+    signals: ["supply chain", "typosquat", "malicious package", "dependency confusion", "repo hijack", "malicious", "backdoor", "trojan", "compromised", "poisoned", "solarwinds", "software bill", "sbom", "open source"]
   identity:
     label: "Identity / Auth"
-    icon: "🪪"
-    signals: ["active directory", "ldap", "kerberos", "sso", "oidc", "oauth", "jwt"]
+    icon: "id"
+    signals: ["active directory", "ldap", "kerberos", "sso", "oidc", "oauth", "jwt", "saml", "mfa", "2fa", "password", "credential", "token", "session hijack", "phishing", "authentication", "authorization", "brute force", "account takeover"]

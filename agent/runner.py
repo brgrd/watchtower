@@ -68,16 +68,16 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 GROQ_BASE = "https://api.groq.com/openai/v1"
 
 COUNTRY_META: dict = {
-    "US": {"label": "United States", "flag": "🇺🇸"},
-    "GB": {"label": "United Kingdom", "flag": "🇬🇧"},
-    "DE": {"label": "Germany", "flag": "🇩🇪"},
-    "FR": {"label": "France", "flag": "🇫🇷"},
-    "AU": {"label": "Australia", "flag": "🇦🇺"},
-    "EU": {"label": "EU / CERT-EU", "flag": "🇪🇺"},
-    "JP": {"label": "Japan", "flag": "🇯🇵"},
-    "CA": {"label": "Canada", "flag": "🇨🇦"},
-    "SG": {"label": "Singapore", "flag": "🇸🇬"},
-    "NZ": {"label": "New Zealand", "flag": "🇳🇿"},
+    "US": {"label": "United States", "cc": "US"},
+    "GB": {"label": "United Kingdom", "cc": "GB"},
+    "DE": {"label": "Germany", "cc": "DE"},
+    "FR": {"label": "France", "cc": "FR"},
+    "AU": {"label": "Australia", "cc": "AU"},
+    "EU": {"label": "EU / CERT-EU", "cc": "EU"},
+    "JP": {"label": "Japan", "cc": "JP"},
+    "CA": {"label": "Canada", "cc": "CA"},
+    "SG": {"label": "Singapore", "cc": "SG"},
+    "NZ": {"label": "New Zealand", "cc": "NZ"},
 }
 
 
@@ -339,7 +339,9 @@ def poll_feed(feed_cfg: dict, since_hours: int, ignore: dict) -> list:
             elif "cisa.gov" in url and "known_exploited" in url:
                 items = _poll_cisa_kev(url, ignore, since_hours)
             else:
-                r = requests.get(url, headers={"User-Agent": "Watchtower/1.0"}, timeout=30)
+                r = requests.get(
+                    url, headers={"User-Agent": "Watchtower/1.0"}, timeout=30
+                )
                 r.raise_for_status()
                 raw = r.json()
                 entries = (
@@ -445,7 +447,7 @@ def groq_summarize_clusters(cards: list, max_clusters: int = 8) -> tuple:
             "(2) summaries: a JSON object keyed by cluster id, each value a 1-2 "
             "sentence analyst note on what is affected, exploit/patch status, and "
             "urgency. "
-            'Output ONLY strict JSON, no markdown: '
+            "Output ONLY strict JSON, no markdown: "
             '{"executive_summary":"...","summaries":{"<id>":"...","<id>":"..."}}'
         ),
     }
@@ -491,10 +493,10 @@ def classify_domains(item: dict) -> list:
 
 def build_domain_heatmap(cards: list) -> dict:
     heat = {
-        k: {"label": v["label"], "icon": v.get("icon", ""), "max_score": 0, "count": 0}
+        k: {"label": v["label"], "max_score": 0, "count": 0}
         for k, v in _TAXONOMY.items()
     }
-    heat["uncategorised"] = {"label": "Other", "icon": "❓", "max_score": 0, "count": 0}
+    heat["uncategorised"] = {"label": "Other", "max_score": 0, "count": 0}
     for c in cards:
         for bucket in c.get("domains", ["uncategorised"]):
             if bucket not in heat:
@@ -512,10 +514,10 @@ def build_geo_heatmap(cards: list) -> dict:
             if not cc:
                 continue
             if cc not in heat:
-                meta = COUNTRY_META.get(cc, {"label": cc, "flag": "🌍"})
+                meta = COUNTRY_META.get(cc, {"label": cc, "cc": cc})
                 heat[cc] = {
                     "label": meta["label"],
-                    "flag": meta["flag"],
+                    "cc": meta.get("cc", cc),
                     "max_score": 0,
                     "count": 0,
                 }
@@ -660,7 +662,9 @@ def _read_ledger_history(n: int = 20) -> list:
     return entries[-n:]
 
 
-def _sparkline_svg(values: list, width: int = 80, height: int = 22, color: str = "#0366d6") -> str:
+def _sparkline_svg(
+    values: list, width: int = 80, height: int = 22, color: str = "#0366d6"
+) -> str:
     if len(values) < 2:
         return f'<span style="font-size:.8rem;color:#57606a">{values[-1] if values else 0}</span>'
     mn, mx = min(values), max(values)
@@ -679,11 +683,19 @@ def _sparkline_svg(values: list, width: int = 80, height: int = 22, color: str =
         f'<polyline points="{pts}" fill="none" stroke="{color}"'
         f' stroke-width="1.5" stroke-linejoin="round"/>'
         f'<circle cx="{lx:.1f}" cy="{ly:.1f}" r="2.5" fill="{color}"/>'
-        f'</svg>'
+        f"</svg>"
     )
 
 
-def _write_index_html(path: str, cards: list, heatmap: dict, geo_heatmap: dict, ts: str, executive: str = "", history: list = None):
+def _write_index_html(
+    path: str,
+    cards: list,
+    heatmap: dict,
+    geo_heatmap: dict,
+    ts: str,
+    executive: str = "",
+    history: list = None,
+):
     heat_cells = ""
     for bucket_id, data in heatmap.items():
         if data["count"] == 0 and bucket_id == "uncategorised":
@@ -692,23 +704,16 @@ def _write_index_html(path: str, cards: list, heatmap: dict, geo_heatmap: dict, 
         score_txt = str(data["max_score"]) if data["count"] > 0 else "—"
         heat_cells += f"""
                     <div class=\"hm-cell\" style=\"background:{bg};color:{fg}\" title=\"{html.escape(data['label'])}: {data['count']} finding(s), max score {score_txt}\">
-                        <span class=\"hm-icon\">{html.escape(data['icon'])}</span>
                         <span class=\"hm-label\">{html.escape(data['label'])}</span>
             <span class=\"hm-score\">{score_txt}</span>
           </div>"""
 
-    geo_cells = ""
-    for cc, gdata in sorted(geo_heatmap.items(), key=lambda x: -x[1]["count"]):
-        bg, fg = _heatmap_cell_color(gdata["max_score"], gdata["count"])
-        score_txt = str(gdata["max_score"]) if gdata["count"] > 0 else "—"
-        geo_cells += f"""
-                    <div class="hm-cell" style="background:{bg};color:{fg}" title="{html.escape(gdata['label'])}: {gdata['count']} advisory source(s), max score {score_txt}">
-                        <span class="hm-icon">{html.escape(gdata['flag'])}</span>
-                        <span class="hm-label">{html.escape(gdata['label'])}</span>
-                        <span class="hm-score">{score_txt}</span>
-                    </div>"""
-    if not geo_cells:
-        geo_cells = '<p style="color:#57606a;font-style:italic;padding:.4rem 0">No country-tagged advisories in this window.</p>'
+    # Build geo data JSON for SVG world map (injected into page as JS vars)
+    geo_json = json.dumps({cc: gdata["max_score"] for cc, gdata in geo_heatmap.items()})
+    geo_labels_json = json.dumps({
+        cc: f"{gdata['label']}: {gdata['count']} source(s), max score {gdata['max_score']}"
+        for cc, gdata in geo_heatmap.items()
+    })
 
     history_section = ""
     if history:
@@ -721,7 +726,7 @@ def _write_index_html(path: str, cards: list, heatmap: dict, geo_heatmap: dict, 
             f'<span class="hs-label">Fresh&nbsp;items</span>&nbsp;{p_spark}&nbsp;<span class="hs-val">{polled_vals[-1]}</span>'
             f'&emsp;<span class="hs-label">Clusters</span>&nbsp;{c_spark}&nbsp;<span class="hs-val">{cluster_vals[-1]}</span>'
             f'&emsp;<span class="hs-label">Runs&nbsp;logged</span>&nbsp;<span class="hs-val">{len(history)}</span>'
-            f'</div>'
+            f"</div>"
         )
 
     rows = ""
@@ -732,7 +737,7 @@ def _write_index_html(path: str, cards: list, heatmap: dict, geo_heatmap: dict, 
         )
         badge_bg, badge_fg = _heatmap_cell_color(c["risk_score"], 1)
         tags = " ".join(
-            f'<span class="domain-tag">{html.escape(_TAXONOMY.get(d, {}).get("icon", ""))} {html.escape(_TAXONOMY.get(d, {}).get("label", d))}</span>'
+            f'<span class="domain-tag">{html.escape(_TAXONOMY.get(d, {}).get("label", d))}</span>'
             for d in c.get("domains", [])
             if d != "uncategorised"
         )
@@ -751,47 +756,73 @@ def _write_index_html(path: str, cards: list, heatmap: dict, geo_heatmap: dict, 
 <meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">
 <title>Watchtower — InfraSec Briefing</title>
 <style>
-body{{font-family:system-ui,sans-serif;max-width:960px;margin:2rem auto;padding:0 1rem;color:#24292e}}
-h1{{border-bottom:2px solid #e1e4e8;padding-bottom:.4rem}}
-.heatmap{{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin:1.2rem 0 2rem}}
-.hm-cell{{border-radius:6px;padding:.6rem .5rem;text-align:center;border:1px solid rgba(0,0,0,.08)}}
-.hm-icon{{display:block;font-size:1.4rem}} .hm-label{{display:block;font-size:.68rem;font-weight:600;margin:.2rem 0}} .hm-score{{display:block;font-size:1.1rem;font-weight:700}}
-.cluster{{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;padding:0;margin:1rem 0;overflow:hidden}}
-.cluster summary{{list-style:none;padding:.75rem 1rem;cursor:pointer;display:flex;align-items:center;gap:.4rem;user-select:none}}
+*{{box-sizing:border-box}}
+body{{font-family:system-ui,sans-serif;max-width:960px;margin:2rem auto;padding:0 1rem;background:#0d1117;color:#c9d1d9}}
+h1{{border-bottom:2px solid #30363d;padding-bottom:.4rem;color:#e6edf3}}
+h2{{color:#e6edf3}}
+a{{color:#58a6ff}}
+p{{color:#c9d1d9}}
+.heatmap{{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin:1.2rem 0 2rem}}
+.hm-cell{{border-radius:6px;padding:.6rem .5rem;text-align:center;border:1px solid rgba(255,255,255,.08)}}
+.hm-label{{display:block;font-size:.68rem;font-weight:600;margin:.2rem 0}} .hm-score{{display:block;font-size:1.1rem;font-weight:700}}
+.cluster{{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:0;margin:1rem 0;overflow:hidden}}
+.cluster summary{{list-style:none;padding:.75rem 1rem;cursor:pointer;display:flex;align-items:center;gap:.4rem;user-select:none;color:#c9d1d9}}
 .cluster summary::-webkit-details-marker{{display:none}}
-.cluster summary::before{{content:"▶";font-size:.7rem;transition:transform .15s;flex-shrink:0}}
+.cluster summary::before{{content:"▶";font-size:.7rem;transition:transform .15s;flex-shrink:0;color:#8b949e}}
 .cluster[open] summary::before{{transform:rotate(90deg)}}
-.cluster-body{{padding:.25rem 1rem 1rem}}
+.cluster-body{{padding:.25rem 1rem 1rem;color:#c9d1d9}}
 .badge{{border-radius:3px;padding:2px 8px;font-size:.8rem;font-weight:700;margin-right:.5rem}}
-.domain-tags{{margin:.3rem 0 .6rem}} .domain-tag{{display:inline-block;background:#e1e4e8;border-radius:3px;font-size:.7rem;padding:1px 6px;margin:0 3px 3px 0}}
-a{{color:#0366d6}}
-.executive{{background:#fff8e1;border-left:4px solid #f9c74f;border-radius:4px;padding:.8rem 1.1rem;margin:1rem 0 1.8rem}}
-.executive h2{{margin:0 0 .4rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:#7a5c00}}
-.executive p{{margin:0;line-height:1.75;font-size:.95rem}}
+.domain-tags{{margin:.3rem 0 .6rem}} .domain-tag{{display:inline-block;background:#21262d;color:#8b949e;border:1px solid #30363d;border-radius:3px;font-size:.7rem;padding:1px 6px;margin:0 3px 3px 0}}
+.executive{{background:#1c1a10;border-left:4px solid #d4a017;border-radius:4px;padding:.8rem 1.1rem;margin:1rem 0 1.8rem}}
+.executive h2{{margin:0 0 .4rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:#d4a017}}
+.executive p{{margin:0;line-height:1.75;font-size:.95rem;color:#c9d1d9}}
 .hm-tabs{{display:flex;gap:8px;margin:.4rem 0 .8rem}}
-.hm-tab{{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:4px;padding:.3rem .9rem;cursor:pointer;font-size:.85rem;font-family:inherit}}
-.hm-tab.active{{background:#0366d6;color:#fff;border-color:#0366d6}}
-.history-panel{{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:4px;padding:.45rem 1rem;margin:0 0 1.2rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}}
-.hs-label{{color:#57606a;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:.68rem}}
-.hs-val{{font-weight:700;font-size:.85rem}}
+.hm-tab{{background:#161b22;border:1px solid #30363d;border-radius:4px;padding:.3rem .9rem;cursor:pointer;font-size:.85rem;font-family:inherit;color:#c9d1d9}}
+.hm-tab.active{{background:#1f6feb;color:#fff;border-color:#1f6feb}}
+.history-panel{{background:#161b22;border:1px solid #30363d;border-radius:4px;padding:.45rem 1rem;margin:0 0 1.2rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}}
+.hs-label{{color:#8b949e;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:.68rem}}
+.hs-val{{font-weight:700;font-size:.85rem;color:#e6edf3}}
+footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-top:1px solid #30363d}}
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css">
 </head>
 <body>
-<h1>🔭 Watchtower — Infrastructure Security Briefing</h1>
+<h1>Watchtower — Infrastructure Security Briefing</h1>
 <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a></p>
 {f'<div class="executive"><h2>Analyst Summary</h2><p>{html.escape(executive)}</p></div>' if executive else ''}
-<div class="hm-tabs"><button class="hm-tab active" onclick="switchTab('domain')">🏷️ Domains</button> <button class="hm-tab" onclick="switchTab('geo')">🌍 Geography</button></div>
+<div class="hm-tabs"><button class="hm-tab active" onclick="switchTab('domain')">Domains</button> <button class="hm-tab" onclick="switchTab('geo')">Geography</button></div>
 <div id="hm-domain" class="heatmap">{heat_cells}</div>
-<div id="hm-geo" class="heatmap" style="display:none">{geo_cells}</div>
+<div id="hm-geo" style="display:none;margin:1rem 0 2rem"><div id="world-map" style="height:340px"></div><div id="geo-legend" style="display:flex;flex-wrap:wrap;gap:6px;margin:.6rem 0 1rem"></div></div>
 {history_section}
 <h2>Top Findings</h2>
 {rows}
-<footer>Watchtower · local-safe placeholder mode: {str(placeholder_mode()).lower()}</footer>
+<footer>Watchtower · local-safe placeholder mode: {{str(placeholder_mode()).lower()}}</footer>
+<script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js"></script>
 <script>
+var GEO_DATA={geo_json};
+var GEO_LABELS={geo_labels_json};
+var _mapInit=false;
+function initMap(){{
+  if(_mapInit)return;_mapInit=true;
+  new jsVectorMap({{selector:'#world-map',map:'world',backgroundColor:'#0d1117',zoomButtons:false,
+    regionStyle:{{initial:{{fill:'#21262d',stroke:'#30363d',strokeWidth:0.5}},hover:{{fill:'#388bfd',cursor:'pointer'}}}},
+    onRegionTooltipShow:function(e,tip,code){{tip.text(GEO_LABELS[code]||code,true);}},
+    series:{{regions:[{{values:GEO_DATA,scale:['#1a3a1a','#8b0000'],normalizeFunction:'polynomial',attribute:'fill'}}]}}
+  }});
+  var leg=document.getElementById('geo-legend');
+  Object.keys(GEO_DATA).sort(function(a,b){{return GEO_DATA[b]-GEO_DATA[a];}}).forEach(function(cc){{
+    var el=document.createElement('span');
+    el.style.cssText='background:#161b22;border:1px solid #30363d;border-radius:4px;padding:3px 10px;font-size:.75rem;color:#c9d1d9';
+    el.textContent=GEO_LABELS[cc]||cc;
+    leg.appendChild(el);
+  }});
+}}
 function switchTab(t){{
   document.getElementById('hm-domain').style.display=t==='domain'?'grid':'none';
-  document.getElementById('hm-geo').style.display=t==='geo'?'grid':'none';
-  document.querySelectorAll('.hm-tab').forEach(function(b,i){{b.classList.toggle('active',i===(t==='domain'?0:1))}});
+  document.getElementById('hm-geo').style.display=t==='geo'?'block':'none';
+  document.querySelectorAll('.hm-tab').forEach(function(b,i){{b.classList.toggle('active',i===(t==='domain'?0:1));}});
+  if(t==='geo')initMap();
 }}
 </script>
 </body></html>"""
@@ -831,7 +862,11 @@ def _run():
 
     polled = dispatch_plan(
         {"steps": [{"tool": "CLUSTER", "args": {"window_hours": since_hours}}]},
-        polled, ignore, budgets, since_hours, run_deadline,
+        polled,
+        ignore,
+        budgets,
+        since_hours,
+        run_deadline,
     )
 
     enriched = []
