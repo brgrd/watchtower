@@ -283,12 +283,20 @@ def _poll_nvd_api(url: str, since_hours: int, ignore: dict) -> list:
     return items
 
 
-def _poll_cisa_kev(url: str, ignore: dict) -> list:
+def _poll_cisa_kev(url: str, ignore: dict, since_hours: int = 24) -> list:
     r = requests.get(url, headers={"User-Agent": "Watchtower/1.0"}, timeout=30)
     r.raise_for_status()
     data = r.json()
+    cutoff = (datetime.utcnow() - timedelta(hours=since_hours)).date()
     items = []
     for v in data.get("vulnerabilities", []):
+        # dateAdded is "YYYY-MM-DD"; skip entries older than the lookback window
+        date_added = v.get("dateAdded", "")
+        try:
+            if date_added and datetime.strptime(date_added, "%Y-%m-%d").date() < cutoff:
+                continue
+        except ValueError:
+            pass
         cve_id = v.get("cveID", "")
         detail_url = f"https://nvd.nist.gov/vuln/detail/{cve_id}"
         if is_ignored(ignore, detail_url):
@@ -315,7 +323,7 @@ def poll_feed(feed_cfg: dict, since_hours: int, ignore: dict) -> list:
             if "nvd.nist.gov" in url or "services.nvd.nist.gov" in url:
                 return _poll_nvd_api(url, since_hours, ignore)
             if "cisa.gov" in url and "known_exploited" in url:
-                return _poll_cisa_kev(url, ignore)
+                return _poll_cisa_kev(url, ignore, since_hours)
 
             r = requests.get(url, headers={"User-Agent": "Watchtower/1.0"}, timeout=30)
             r.raise_for_status()
