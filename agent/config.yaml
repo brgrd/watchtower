@@ -22,6 +22,7 @@ feeds:
     url: "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
     category: "vulns"
     type: json_api
+    country: "US"
     enabled: true
   - id: gh_security_blog
     url: "https://github.blog/changelog/security/feed/"
@@ -32,6 +33,45 @@ feeds:
     url: "https://www.cisa.gov/cybersecurity-advisories/all.xml"
     category: "advisories"
     type: rss
+    country: "US"
+    enabled: true
+  - id: bleepingcomputer
+    url: "https://www.bleepingcomputer.com/feed/"
+    category: "news"
+    type: rss
+    enabled: true
+  - id: krebs
+    url: "https://krebsonsecurity.com/feed/"
+    category: "news"
+    type: rss
+    enabled: true
+  - id: thehackernews
+    url: "https://feeds.feedburner.com/TheHackersNews"
+    category: "news"
+    type: rss
+    enabled: true
+  - id: cloudflare_blog
+    url: "https://blog.cloudflare.com/rss/"
+    category: "blog"
+    type: rss
+    enabled: true
+  - id: ncsc_uk
+    url: "https://www.ncsc.gov.uk/api/1/services/v1/report-rss-feed.xml"
+    category: "advisories"
+    type: rss
+    country: "GB"
+    enabled: true
+  - id: bsi_germany
+    url: "https://wid.cert-bund.de/content/public/securityAdvisory/rss"
+    category: "advisories"
+    type: rss
+    country: "DE"
+    enabled: true
+  - id: acsc_australia
+    url: "https://www.cyber.gov.au/about-us/view-all-content/alerts-and-advisories/rss"
+    category: "advisories"
+    type: rss
+    country: "AU"
     enabled: true
 
 model:

@@ -67,6 +67,19 @@ CONFIG = yaml.safe_load(
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 GROQ_BASE = "https://api.groq.com/openai/v1"
 
+COUNTRY_META: dict = {
+    "US": {"label": "United States", "flag": "🇺🇸"},
+    "GB": {"label": "United Kingdom", "flag": "🇬🇧"},
+    "DE": {"label": "Germany", "flag": "🇩🇪"},
+    "FR": {"label": "France", "flag": "🇫🇷"},
+    "AU": {"label": "Australia", "flag": "🇦🇺"},
+    "EU": {"label": "EU / CERT-EU", "flag": "🇪🇺"},
+    "JP": {"label": "Japan", "flag": "🇯🇵"},
+    "CA": {"label": "Canada", "flag": "🇨🇦"},
+    "SG": {"label": "Singapore", "flag": "🇸🇬"},
+    "NZ": {"label": "New Zealand", "flag": "🇳🇿"},
+}
+
 
 def placeholder_mode() -> bool:
     val = os.getenv("WATCHTOWER_PLACEHOLDER_MODE")
@@ -318,42 +331,47 @@ def poll_feed(feed_cfg: dict, since_hours: int, ignore: dict) -> list:
 
     url = feed_cfg["url"]
     feed_type = feed_cfg.get("type", "rss")
+    items: list = []
     try:
         if feed_type == "json_api":
             if "nvd.nist.gov" in url or "services.nvd.nist.gov" in url:
-                return _poll_nvd_api(url, since_hours, ignore)
-            if "cisa.gov" in url and "known_exploited" in url:
-                return _poll_cisa_kev(url, ignore, since_hours)
-
-            r = requests.get(url, headers={"User-Agent": "Watchtower/1.0"}, timeout=30)
-            r.raise_for_status()
-            raw = r.json()
-            entries = (
-                raw
-                if isinstance(raw, list)
-                else raw.get("items", raw.get("entries", []))
-            )
-            out = []
-            for e in entries:
-                link = str(e.get("url", e.get("link", "")))
-                if not link:
-                    continue
-                out.append(
-                    {
-                        "title": str(e.get("title", ""))[:200],
-                        "url": link,
-                        "summary": str(e.get("summary", e.get("description", "")))[
-                            :500
-                        ],
-                        "source": url,
-                    }
+                items = _poll_nvd_api(url, since_hours, ignore)
+            elif "cisa.gov" in url and "known_exploited" in url:
+                items = _poll_cisa_kev(url, ignore, since_hours)
+            else:
+                r = requests.get(url, headers={"User-Agent": "Watchtower/1.0"}, timeout=30)
+                r.raise_for_status()
+                raw = r.json()
+                entries = (
+                    raw
+                    if isinstance(raw, list)
+                    else raw.get("items", raw.get("entries", []))
                 )
-            return out
-
-        return _poll_rss(url, since_hours, ignore)
+                items = []
+                for e in entries:
+                    link = str(e.get("url", e.get("link", "")))
+                    if not link:
+                        continue
+                    items.append(
+                        {
+                            "title": str(e.get("title", ""))[:200],
+                            "url": link,
+                            "summary": str(e.get("summary", e.get("description", "")))[
+                                :500
+                            ],
+                            "source": url,
+                        }
+                    )
+        else:
+            items = _poll_rss(url, since_hours, ignore)
     except Exception as exc:
         print(f"[WARN] poll_feed failed for {url}: {exc}")
         return []
+    country = feed_cfg.get("country", "")
+    if country:
+        for it in items:
+            it["country"] = country
+    return items
 
 
 # -----------------------------
@@ -531,6 +549,26 @@ def build_domain_heatmap(cards: list) -> dict:
     return heat
 
 
+def build_geo_heatmap(cards: list) -> dict:
+    """Country-keyed heatmap derived from source-country tags on feed items."""
+    heat: dict = {}
+    for c in cards:
+        for cc in c.get("countries", []):
+            if not cc:
+                continue
+            if cc not in heat:
+                meta = COUNTRY_META.get(cc, {"label": cc, "flag": "🌍"})
+                heat[cc] = {
+                    "label": meta["label"],
+                    "flag": meta["flag"],
+                    "max_score": 0,
+                    "count": 0,
+                }
+            heat[cc]["count"] += 1
+            heat[cc]["max_score"] = max(heat[cc]["max_score"], c["risk_score"])
+    return heat
+
+
 def normalize_item_text(item):
     return " ".join([item.get("title", ""), item.get("summary", "")])
 
@@ -579,10 +617,12 @@ def to_cluster_card(key, items):
             raw_snippets.append(it["summary"][:300])
         if it.get("extracted_text"):
             raw_snippets.append(it["extracted_text"][:500])
+    countries = list({it["country"] for it in items if it.get("country")})
     return {
         "id": sha256(key)[:12],
         "risk_score": score_cluster(key, items),
         "domains": domains,
+        "countries": countries,
         "title": items[0]["title"][:140] if items else key,
         "summary": "",
         "_raw_snippets": " | ".join(raw_snippets)[:1000],
@@ -637,7 +677,7 @@ def _heatmap_cell_color(max_score: int, count: int):
     return "#d62828", "#fff"
 
 
-def _write_index_html(path: str, cards: list, heatmap: dict, ts: str, executive: str = ""):
+def _write_index_html(path: str, cards: list, heatmap: dict, geo_heatmap: dict, ts: str, executive: str = ""):
     heat_cells = ""
     for bucket_id, data in heatmap.items():
         if data["count"] == 0 and bucket_id == "uncategorised":
@@ -650,6 +690,19 @@ def _write_index_html(path: str, cards: list, heatmap: dict, ts: str, executive:
                         <span class=\"hm-label\">{html.escape(data['label'])}</span>
             <span class=\"hm-score\">{score_txt}</span>
           </div>"""
+
+    geo_cells = ""
+    for cc, gdata in sorted(geo_heatmap.items(), key=lambda x: -x[1]["count"]):
+        bg, fg = _heatmap_cell_color(gdata["max_score"], gdata["count"])
+        score_txt = str(gdata["max_score"]) if gdata["count"] > 0 else "—"
+        geo_cells += f"""
+                    <div class="hm-cell" style="background:{bg};color:{fg}" title="{html.escape(gdata['label'])}: {gdata['count']} advisory source(s), max score {score_txt}">
+                        <span class="hm-icon">{html.escape(gdata['flag'])}</span>
+                        <span class="hm-label">{html.escape(gdata['label'])}</span>
+                        <span class="hm-score">{score_txt}</span>
+                    </div>"""
+    if not geo_cells:
+        geo_cells = '<p style="color:#57606a;font-style:italic;padding:.4rem 0">No country-tagged advisories in this window.</p>'
 
     rows = ""
     for c in cards:
@@ -689,17 +742,28 @@ a{{color:#0366d6}}
 .executive{{background:#fff8e1;border-left:4px solid #f9c74f;border-radius:4px;padding:.8rem 1.1rem;margin:1rem 0 1.8rem}}
 .executive h2{{margin:0 0 .4rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:#7a5c00}}
 .executive p{{margin:0;line-height:1.75;font-size:.95rem}}
+.hm-tabs{{display:flex;gap:8px;margin:.4rem 0 .8rem}}
+.hm-tab{{background:#f6f8fa;border:1px solid #e1e4e8;border-radius:4px;padding:.3rem .9rem;cursor:pointer;font-size:.85rem;font-family:inherit}}
+.hm-tab.active{{background:#0366d6;color:#fff;border-color:#0366d6}}
 </style>
 </head>
 <body>
 <h1>🔭 Watchtower — Infrastructure Security Briefing</h1>
 <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a></p>
 {f'<div class="executive"><h2>Analyst Summary</h2><p>{html.escape(executive)}</p></div>' if executive else ''}
-<h2>Domain Heat Map</h2>
-<div class=\"heatmap\">{heat_cells}</div>
+<div class="hm-tabs"><button class="hm-tab active" onclick="switchTab('domain')">🏷️ Domains</button> <button class="hm-tab" onclick="switchTab('geo')">🌍 Geography</button></div>
+<div id="hm-domain" class="heatmap">{heat_cells}</div>
+<div id="hm-geo" class="heatmap" style="display:none">{geo_cells}</div>
 <h2>Top Findings</h2>
 {rows}
 <footer>Watchtower · local-safe placeholder mode: {str(placeholder_mode()).lower()}</footer>
+<script>
+function switchTab(t){{
+  document.getElementById('hm-domain').style.display=t==='domain'?'grid':'none';
+  document.getElementById('hm-geo').style.display=t==='geo'?'grid':'none';
+  document.querySelectorAll('.hm-tab').forEach(function(b,i){{b.classList.toggle('active',i===(t==='domain'?0:1))}});
+}}
+</script>
 </body></html>"""
 
     with open(path, "w", encoding="utf-8") as f:
@@ -832,7 +896,8 @@ def _run():
             f.write(json.dumps(c, ensure_ascii=False) + "\n")
 
     heatmap = build_domain_heatmap(cards)
-    _write_index_html(index_html, cards, heatmap, ts, executive)
+    geo_heatmap = build_geo_heatmap(cards)
+    _write_index_html(index_html, cards, heatmap, geo_heatmap, ts, executive)
 
     hot_domains = [k for k, v in heatmap.items() if v["max_score"] >= 60]
     append_jsonl(
