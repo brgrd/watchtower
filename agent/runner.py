@@ -485,13 +485,18 @@ def groq_summarize_clusters(cards: list, max_clusters: int = 8) -> tuple:
         "task": "infrasec_briefing_summary",
         "clusters": cluster_inputs,
         "instructions": (
-            "For each cluster write a 2-sentence analyst summary covering: what is "
-            "affected, exploitation/patch status, and urgency. "
-            "Also write an executive_summary (3 sentences max) covering the overall "
-            "threat picture, any notable geographic or actor patterns, and the top "
-            "action item. "
-            'Output ONLY strict JSON (no markdown): '
-            '{"executive_summary":"...","summaries":{"<id>":"2-sentence summary..."}}'
+            "You are a senior threat intelligence analyst. "
+            "Review ALL clusters provided and produce two things: "
+            "(1) executive_summary: 2-3 sentences synthesizing the ENTIRE threat "
+            "landscape across all clusters — identify dominant themes, what technology "
+            "stacks are most at risk, any geographic or actor patterns visible across "
+            "the data, and the single most urgent action item for a security team. "
+            "Do NOT focus on one cluster. Write as a cohesive paragraph. "
+            "(2) summaries: a JSON object keyed by cluster id, each value a 1-2 "
+            "sentence analyst note on what is affected, exploit/patch status, and "
+            "urgency. "
+            'Output ONLY strict JSON, no markdown: '
+            '{"executive_summary":"...","summaries":{"<id>":"...","<id>":"..."}}'
         ),
     }
 
@@ -506,7 +511,7 @@ def groq_summarize_clusters(cards: list, max_clusters: int = 8) -> tuple:
             ],
             model=CONFIG["model"]["name"],
             temperature=0.2,
-            max_tokens=900,
+            max_tokens=1400,
         )
         content = content.strip()
         if content.startswith("```"):
@@ -799,17 +804,10 @@ def _run():
     polled, seen = deduplicate(polled, seen)
     save_seen(seen)
 
-    plan = request_action_plan(
-        goal="Produce infrastructure security briefing",
-        budget={
-            "max_steps": budgets["max_agent_steps"],
-            "max_url_fetches": budgets["max_url_fetches"],
-            "max_new_feeds": budgets["max_new_feeds"],
-        },
-        context=polled,
+    polled = dispatch_plan(
+        {"steps": [{"tool": "CLUSTER", "args": {"window_hours": since_hours}}]},
+        polled, ignore, budgets, since_hours, run_deadline,
     )
-
-    polled = dispatch_plan(plan, polled, ignore, budgets, since_hours, run_deadline)
 
     enriched = []
     candidates = [it for it in polled if not is_ignored(ignore, it["url"])][
@@ -853,7 +851,7 @@ def _run():
     ]
 
     # Groq: generate per-cluster summaries + executive narrative (single call)
-    executive, summaries = groq_summarize_clusters(cards)
+    executive, summaries = groq_summarize_clusters(cards, max_clusters=12)
     for c in cards:
         if c["id"] in summaries and summaries[c["id"]]:
             c["summary"] = summaries[c["id"]]
