@@ -67,19 +67,6 @@ CONFIG = yaml.safe_load(
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 GROQ_BASE = "https://api.groq.com/openai/v1"
 
-COUNTRY_META: dict = {
-    "US": {"label": "United States", "cc": "US"},
-    "GB": {"label": "United Kingdom", "cc": "GB"},
-    "DE": {"label": "Germany", "cc": "DE"},
-    "FR": {"label": "France", "cc": "FR"},
-    "AU": {"label": "Australia", "cc": "AU"},
-    "EU": {"label": "EU / CERT-EU", "cc": "EU"},
-    "JP": {"label": "Japan", "cc": "JP"},
-    "CA": {"label": "Canada", "cc": "CA"},
-    "SG": {"label": "Singapore", "cc": "SG"},
-    "NZ": {"label": "New Zealand", "cc": "NZ"},
-}
-
 
 def placeholder_mode() -> bool:
     val = os.getenv("WATCHTOWER_PLACEHOLDER_MODE")
@@ -92,7 +79,7 @@ def placeholder_mode() -> bool:
 # Utilities
 # -----------------------------
 def now_utc_iso() -> str:
-    return datetime.utcnow().replace(tzinfo=timezone.utc).isoformat()
+    return datetime.now(timezone.utc).isoformat()
 
 
 def sha256(s: str) -> str:
@@ -176,7 +163,7 @@ def fetch_url(url: str, timeout=10, max_redirects=5) -> str:
 
 def add_ignore(ignore: dict, typ: str, key: str, ttl_days: int):
     bucket = f"ignore_{typ}"
-    ttl = (datetime.utcnow() + timedelta(days=ttl_days)).date().isoformat()
+    ttl = (datetime.now(timezone.utc) + timedelta(days=ttl_days)).date().isoformat()
     ignore.setdefault(bucket, {})
     ignore[bucket][key] = ttl
 
@@ -220,7 +207,7 @@ def _sample_items() -> list:
 def _poll_rss(url: str, since_hours: int, ignore: dict) -> list:
     fp = feedparser.parse(url)
     items = []
-    cutoff = datetime.utcnow() - timedelta(hours=since_hours)
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=since_hours)
     for e in fp.entries:
         link = getattr(e, "link", None) or getattr(e, "id", None)
         if not link or is_ignored(ignore, link):
@@ -233,22 +220,26 @@ def _poll_rss(url: str, since_hours: int, ignore: dict) -> list:
                 break
         if published and published < cutoff:
             continue
+        published_iso = (
+            published.replace(tzinfo=timezone.utc).isoformat() if published else ""
+        )
         items.append(
             {
                 "title": getattr(e, "title", "")[:200],
                 "url": link,
                 "summary": getattr(e, "summary", "")[:500],
                 "source": url,
+                "published_at": published_iso,
             }
         )
     return items
 
 
 def _poll_nvd_api(url: str, since_hours: int, ignore: dict) -> list:
-    cutoff = datetime.utcnow() - timedelta(hours=since_hours)
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=since_hours)
     params = {
         "pubStartDate": cutoff.strftime("%Y-%m-%dT%H:%M:%S.000"),
-        "pubEndDate": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000"),
+        "pubEndDate": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000"),
         "resultsPerPage": 100,
         "startIndex": 0,
     }
@@ -291,6 +282,7 @@ def _poll_nvd_api(url: str, since_hours: int, ignore: dict) -> list:
                     "url": detail_url,
                     "summary": desc[:500],
                     "source": url,
+                    "published_at": cve.get("published", ""),
                 }
             )
 
@@ -306,7 +298,7 @@ def _poll_cisa_kev(url: str, ignore: dict, since_hours: int = 24) -> list:
     r = requests.get(url, headers={"User-Agent": "Watchtower/1.0"}, timeout=30)
     r.raise_for_status()
     data = r.json()
-    cutoff = (datetime.utcnow() - timedelta(hours=since_hours)).date()
+    cutoff = (datetime.now(timezone.utc) - timedelta(hours=since_hours)).date()
     items = []
     for v in data.get("vulnerabilities", []):
         # dateAdded is "YYYY-MM-DD"; skip entries older than the lookback window
@@ -326,6 +318,7 @@ def _poll_cisa_kev(url: str, ignore: dict, since_hours: int = 24) -> list:
                 "url": detail_url,
                 "summary": v.get("shortDescription", "")[:500],
                 "source": url,
+                "published_at": date_added,
             }
         )
     return items
@@ -376,10 +369,143 @@ def poll_feed(feed_cfg: dict, since_hours: int, ignore: dict) -> list:
         print(f"[WARN] poll_feed failed for {url}: {exc}")
         return []
     country = feed_cfg.get("country", "")
-    if country:
-        for it in items:
+    for it in items:
+        it["source_id"] = feed_cfg.get("id", "")
+        it["source_type"] = feed_cfg.get("type", "rss")
+        it["source_category"] = feed_cfg.get("category", "")
+        it["source_country"] = country
+        if country:
             it["country"] = country
     return items
+
+
+_CVE_RE = re.compile(r"\bCVE-\d{4}-\d{4,7}\b", re.I)
+
+
+def _compact_text(s: str) -> str:
+    return " ".join((s or "").split()).strip()
+
+
+def _extract_cves(s: str) -> list:
+    return sorted({m.group(0).upper() for m in _CVE_RE.finditer(s or "")})
+
+
+def _contains_any(txt: str, terms: tuple) -> bool:
+    low = (txt or "").lower()
+    return any(t in low for t in terms)
+
+
+def _build_corroboration_map(items: list) -> dict:
+    counts: dict = {}
+    for it in items:
+        key = sha256(_compact_text(it.get("title", "")).lower())[:16]
+        counts[key] = counts.get(key, 0) + 1
+    return counts
+
+
+def _infer_vendor_product(item: dict) -> tuple:
+    title = _compact_text(item.get("title", ""))
+    dom = tldextract.extract(item.get("url", "")).registered_domain or ""
+    if dom:
+        root = dom.split(".")[0]
+        return root, title[:80]
+    return "unknown", title[:80]
+
+
+def _infer_control_plane_impact(domains: list) -> str:
+    if any(d in domains for d in ("identity", "cloud_iam", "supply_chain")):
+        return "high"
+    if any(d in domains for d in ("container", "web_framework", "os_kernel")):
+        return "limited"
+    return "none"
+
+
+def _build_groq_item_package(idx: int, item: dict, corroboration: dict) -> dict:
+    title = _compact_text(item.get("title", ""))
+    summary = _compact_text(item.get("summary", ""))
+    blob = f"{title} {summary}"
+    cves = _extract_cves(blob)
+    domains = classify_domains(item)
+    vendor, product = _infer_vendor_product(item)
+    key = sha256(title.lower())[:16]
+
+    exploited = "known_exploited" in (item.get("source", "") or "") or _contains_any(
+        blob,
+        (
+            "exploited in the wild",
+            "actively exploited",
+            "in-the-wild",
+            "zero-day",
+        ),
+    )
+    patch_available = _contains_any(
+        blob,
+        ("patch available", "security update", "fixed in", "upgrade to", "hotfix"),
+    )
+    workaround_available = _contains_any(
+        blob,
+        (
+            "mitigation",
+            "workaround",
+            "temporary fix",
+            "block",
+            "disable",
+        ),
+    )
+    internet_exposed = (
+        "high"
+        if _contains_any(
+            blob,
+            (
+                "vpn",
+                "gateway",
+                "edge",
+                "internet-facing",
+                "appliance",
+                "publicly exposed",
+            ),
+        )
+        else (
+            "medium"
+            if _contains_any(blob, ("remote", "http", "https", "web", "api"))
+            else "low"
+        )
+    )
+
+    confidence = 0.7
+    if item.get("source_type") == "json_api":
+        confidence = 0.9
+    elif item.get("source_category") in {"advisories", "vulns"}:
+        confidence = 0.8
+
+    return {
+        "item_id": f"wt-{idx:03d}-{sha256(item.get('url', '') + title)[:10]}",
+        "source_id": item.get("source_id", ""),
+        "source_type": item.get("source_type", "rss"),
+        "source_category": item.get("source_category", ""),
+        "source_country": item.get("source_country", item.get("country", "")),
+        "published_at": item.get("published_at", ""),
+        "first_seen_at": item.get("first_seen_at", ""),
+        "url": item.get("url", ""),
+        "title": title[:200],
+        "summary": summary[:600],
+        "vendor": vendor,
+        "product": product,
+        "technology_domain": domains,
+        "cves": cves,
+        "cvss_base": None,
+        "cwe": [],
+        "kev_listed": "known_exploited" in (item.get("source", "") or ""),
+        "epss_score": None,
+        "exploited_in_wild": exploited,
+        "patch_available": patch_available,
+        "workaround_available": workaround_available,
+        "internet_exposed_likelihood": internet_exposed,
+        "control_plane_impact": _infer_control_plane_impact(domains),
+        "confidence": confidence,
+        "dedupe_hash": sha256(item.get("url", "") + title),
+        "corroboration_count": corroboration.get(key, 1),
+    }
 
 
 # -----------------------------
@@ -429,6 +555,8 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
     if placeholder_mode() or not GROQ_API_KEY:
         return "", []
 
+    all_items = (kev_items or []) + (nvd_items or []) + (news_items or [])
+    corroboration = _build_corroboration_map(all_items)
     kev_block = [
         {
             "cve": it["title"].split("\u2014")[0].strip(),
@@ -450,13 +578,19 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
         }
         for it in news_items[:30]
     ]
+    package_items = [
+        _build_groq_item_package(i, it, corroboration)
+        for i, it in enumerate(all_items[:80], start=1)
+    ]
 
     domain_keys = ", ".join(_TAXONOMY.keys())
     prompt = {
         "task": "infrasec_briefing",
+        "schema_version": "watchtower.groq.package.v1",
         "exploited_vulnerabilities": kev_block,
         "recent_cves": nvd_block,
         "news_articles": article_block,
+        "normalized_items": package_items,
         "instructions": (
             "You are a senior threat intelligence analyst. "
             "Review all inputs: exploited vulnerabilities (CISA KEV), recent CVEs (NVD), "
@@ -471,10 +605,13 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
             "+15 if critical infrastructure), domains (array of matching keys from: "
             + domain_keys
             + "), references (array of {title, url} — cite ONLY urls that appear verbatim "
-            "in the news_articles input, 1-3 most relevant per finding). "
+            "in the news_articles input, 1-3 most relevant per finding), priority (P1|P2|P3), "
+            "why_now (short sentence), recommended_actions_24h (array up to 4), "
+            "recommended_actions_7d (array up to 4), confidence (0..1). "
             'Output ONLY strict JSON, no markdown fences: {"executive_summary":"...",'
             '"findings":[{"title":"...","summary":"...","risk_score":0,"domains":[],'
-            '"references":[{"title":"...","url":"..."}]}]}'
+            '"references":[{"title":"...","url":"..."}],"priority":"P2",'
+            '"why_now":"...","recommended_actions_24h":[],"recommended_actions_7d":[],"confidence":0.6}]}'
         ),
     }
 
@@ -529,26 +666,6 @@ def build_domain_heatmap(cards: list) -> dict:
                 continue
             heat[bucket]["count"] += 1
             heat[bucket]["max_score"] = max(heat[bucket]["max_score"], c["risk_score"])
-    return heat
-
-
-def build_geo_heatmap(cards: list) -> dict:
-    """Country-keyed heatmap derived from source-country tags on feed items."""
-    heat: dict = {}
-    for c in cards:
-        for cc in c.get("countries", []):
-            if not cc:
-                continue
-            if cc not in heat:
-                meta = COUNTRY_META.get(cc, {"label": cc, "cc": cc})
-                heat[cc] = {
-                    "label": meta["label"],
-                    "cc": meta.get("cc", cc),
-                    "max_score": 0,
-                    "count": 0,
-                }
-            heat[cc]["count"] += 1
-            heat[cc]["max_score"] = max(heat[cc]["max_score"], c["risk_score"])
     return heat
 
 
@@ -653,6 +770,16 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
             domains = ["uncategorised"]
 
         refs = f.get("references", [])
+        why_now = f.get("why_now", "")
+        pri = f.get("priority", "")
+        confidence = f.get("confidence", None)
+        summary = f.get("summary", "")
+        if why_now:
+            summary = f"{summary} Why now: {why_now}".strip()
+        if pri:
+            summary = f"[{pri}] {summary}".strip()
+        if isinstance(confidence, (int, float)):
+            summary = f"{summary} (confidence: {max(0.0, min(1.0, float(confidence))):.2f})".strip()
 
         # Derive countries: try exact URL match first, fall back to registered domain.
         countries = list(
@@ -671,10 +798,19 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
             {
                 "id": sha256(f.get("title", str(len(cards))))[:12],
                 "risk_score": score,
+                "priority": f.get("priority", ""),
+                "confidence": (
+                    max(0.0, min(1.0, float(f.get("confidence", 0.0))))
+                    if isinstance(f.get("confidence", None), (int, float))
+                    else None
+                ),
+                "why_now": why_now,
+                "recommended_actions_24h": f.get("recommended_actions_24h", []),
+                "recommended_actions_7d": f.get("recommended_actions_7d", []),
                 "domains": domains,
                 "countries": countries,
                 "title": f.get("title", "")[:140],
-                "summary": f.get("summary", ""),
+                "summary": summary,
                 "sources": {
                     "primary": [
                         {
@@ -786,35 +922,345 @@ def _sparkline_svg(
     )
 
 
+# ──────────────────────────────────────────────
+# Threat constellation map — Python-rendered SVG
+# ──────────────────────────────────────────────
+
+_TM_NODES: dict = {
+    # key: (cx, cy, display_label)   — radial mesh, no dominant axis
+    "identity": (534, 132, "Identity / Auth"),
+    "ca_trust": (345, 184, "CA / PKI"),
+    "cloud_iam": (737, 197, "Cloud / IAM"),
+    "crypto_lib": (180, 329, "Crypto Libs"),
+    "web_framework": (478, 342, "Web / Servers"),
+    "container": (659, 360, "Containers"),
+    "browser_ext": (847, 307, "Browser Ext"),
+    "os_kernel": (337, 460, "OS / Kernel"),
+    "supply_chain": (119, 471, "Supply Chain"),
+    "pkg_npm": (221, 583, "npm / Node"),
+    "pkg_pypi": (381, 609, "PyPI / Python"),
+    "pkg_maven": (534, 623, "Maven / Java"),
+    "pkg_nuget": (690, 570, ".NET / NuGet"),
+    "pkg_gem": (806, 473, "RubyGems"),
+    "uncategorised": (858, 171, "Other"),
+}
+
+_TM_EDGES: list = [
+    ("supply_chain", "pkg_npm"),
+    ("supply_chain", "pkg_pypi"),
+    ("supply_chain", "pkg_maven"),
+    ("supply_chain", "pkg_nuget"),
+    ("supply_chain", "pkg_gem"),
+    ("supply_chain", "cloud_iam"),
+    ("supply_chain", "identity"),
+    ("pkg_npm", "web_framework"),
+    ("pkg_npm", "os_kernel"),
+    ("pkg_pypi", "web_framework"),
+    ("pkg_maven", "web_framework"),
+    ("pkg_nuget", "web_framework"),
+    ("pkg_gem", "web_framework"),
+    ("pkg_gem", "container"),
+    ("web_framework", "os_kernel"),
+    ("web_framework", "container"),
+    ("web_framework", "cloud_iam"),
+    ("web_framework", "identity"),
+    ("os_kernel", "crypto_lib"),
+    ("os_kernel", "container"),
+    ("container", "cloud_iam"),
+    ("container", "crypto_lib"),
+    ("cloud_iam", "identity"),
+    ("cloud_iam", "ca_trust"),
+    ("identity", "ca_trust"),
+    ("identity", "browser_ext"),
+    ("ca_trust", "crypto_lib"),
+    ("browser_ext", "cloud_iam"),
+    ("browser_ext", "ca_trust"),
+]
+
+
+def _is_exploitish(c: dict) -> bool:
+    """Return True if a card's text signals active exploitation."""
+    t = f"{c.get('title', '')} {c.get('summary', '')}".lower()
+    return any(
+        k in t
+        for k in (
+            "exploit",
+            "in the wild",
+            "actively exploited",
+            "known exploited",
+            "zero-day",
+        )
+    )
+
+
+def _build_threat_map_svg(cards: list, heatmap: dict) -> str:
+    """Return an inline SVG constellation threat map, heat-coloured by domain activity."""
+    # Raw per-domain heat score
+    raw: dict[str, int] = {}
+    for key in _TM_NODES:
+        sub = [c for c in cards if key in c.get("domains", [])]
+        cnt = len(sub)
+        mx = max((c.get("risk_score", 0) for c in sub), default=0)
+        p1 = sum(1 for c in sub if str(c.get("priority", "")).upper() == "P1")
+        ex = sum(1 for c in sub if _is_exploitish(c))
+        raw[key] = min(
+            100,
+            round(
+                cnt * 8
+                + mx * 0.55
+                + (p1 / cnt * 24 if cnt else 0)
+                + (ex / cnt * 18 if cnt else 0)
+            ),
+        )
+
+    # Ambient heat: neighbours bleed 20 % of their score
+    nbrs: dict[str, list] = {k: [] for k in _TM_NODES}
+    for a, b in _TM_EDGES:
+        if a in nbrs and b in nbrs:
+            nbrs[a].append(b)
+            nbrs[b].append(a)
+    scores: dict[str, int] = {}
+    for key in _TM_NODES:
+        nb_max = max((raw[n] for n in nbrs[key] if n in raw), default=0)
+        scores[key] = max(raw[key], int(nb_max * 0.08))
+
+    def _heat(s: int):
+        """Dark-center aura: outer bloom behind opaque disc, edge ring on perimeter."""
+        t = max(0.06, s / 100.0)
+        bloom_op = round(0.20 + t * 0.72, 3)  # outer aura fill: 0.24 → 0.92
+        ring_op = round(0.40 + t * 0.55, 3)  # edge ring stroke: 0.43 → 0.95
+        if s >= 85:
+            bloom = f"rgba(255,40,40,{bloom_op})"
+            ring = f"rgba(255,80,80,{ring_op})"
+        else:
+            bloom = f"rgba(30,110,255,{bloom_op})"
+            ring = f"rgba(70,155,255,{ring_op})"
+        return bloom, ring
+
+    def _edge_style(sa: int, sb: int):
+        s = max(sa, sb)
+        t = min(1.0, s / 100.0)
+        glow_op = round(0.10 + t * 0.40, 3)  # blurred glow behind: 0.10 → 0.50
+        line_op = round(0.18 + t * 0.45, 3)  # crisp line on top:   0.18 → 0.63
+        return glow_op, line_op
+
+    W, H = 960, 760
+    p: list[str] = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '
+        'preserveAspectRatio="xMidYMid meet" '
+        'style="width:100%;height:auto;display:block;background:#090d18;border-radius:8px;border:1px solid #161d2a">',
+        "<defs>",
+        '<filter id="f-outer" x="-300%" y="-300%" width="700%" height="700%">'
+        '<feGaussianBlur stdDeviation="18"/>'
+        "</filter>",
+        '<filter id="f-mid" x="-150%" y="-150%" width="400%" height="400%">'
+        '<feGaussianBlur stdDeviation="7"/>'
+        "</filter>",
+        '<filter id="edge-glow" x="-100%" y="-100%" width="300%" height="300%">'
+        '<feGaussianBlur stdDeviation="4"/>'
+        "</filter>",
+        "</defs>",
+    ]
+    # Subtle background grid dots
+    p.append('<g opacity="0.04">')
+    for gx in range(44, W, 62):
+        for gy in range(32, H, 62):
+            p.append(f'<circle cx="{gx}" cy="{gy}" r="1" fill="#7090a8"/>')
+    p.append("</g>")
+
+    # Edges — glow pass first (behind), crisp line pass on top
+    for a, b in _TM_EDGES:
+        if a not in _TM_NODES or b not in _TM_NODES:
+            continue
+        ax, ay, _ = _TM_NODES[a]
+        bx, by, _ = _TM_NODES[b]
+        glow_op, _ = _edge_style(scores[a], scores[b])
+        p.append(
+            f'<line x1="{ax}" y1="{ay}" x2="{bx}" y2="{by}" '
+            f'stroke="rgba(55,110,195,{glow_op:.3f})" stroke-width="5.5" '
+            f'stroke-linecap="round" filter="url(#edge-glow)"/>'
+        )
+    for a, b in _TM_EDGES:
+        if a not in _TM_NODES or b not in _TM_NODES:
+            continue
+        ax, ay, _ = _TM_NODES[a]
+        bx, by, _ = _TM_NODES[b]
+        _, line_op = _edge_style(scores[a], scores[b])
+        p.append(
+            f'<line x1="{ax}" y1="{ay}" x2="{bx}" y2="{by}" '
+            f'stroke="rgba(70,130,210,{line_op:.3f})" stroke-width="1.1" '
+            f'stroke-linecap="round"/>'
+        )
+
+    # Nodes
+    node_id = 0
+    for key, (cx, cy, lbl) in _TM_NODES.items():
+        s = scores[key]
+        outer, ring_color = _heat(s)
+        R = 24
+        lf = "#c8d8e8" if s >= 20 else "#5a6a7a"
+
+        p.append(
+            f'<g class="tm-node" data-domain="{key}" '
+            f'onclick="selectDomain(\'{key}\')" style="cursor:pointer">'
+        )
+        # Layer 1: Outer aura — large fill, heavy blur, sits BEHIND disc
+        p.append(
+            f'<circle cx="{cx}" cy="{cy}" r="{R+16}" fill="{outer}" filter="url(#f-outer)"/>'
+        )
+        # Layer 2: Opaque dark disc — covers center so only perimeter glow shows
+        p.append(
+            f'<circle class="node-disc" cx="{cx}" cy="{cy}" r="{R}" '
+            f'fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>'
+        )
+        # Layer 3: Edge ring — stroke-only at disc radius, medium blur, glows outward from rim
+        p.append(
+            f'<circle cx="{cx}" cy="{cy}" r="{R}" '
+            f'fill="none" stroke="{ring_color}" stroke-width="4" filter="url(#f-mid)"/>'
+        )
+        # Selection ring — simple white ring, hidden at rest
+        p.append(
+            f'<circle class="sel-indicator" cx="{cx}" cy="{cy}" r="{R+5}" '
+            f'fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>'
+        )
+        # Label
+        ly = cy + R + 13
+        p.append(
+            f'<text x="{cx}" y="{ly}" text-anchor="middle" '
+            f'font-family="system-ui,sans-serif" font-size="10" font-weight="600" '
+            f'fill="{lf}" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">{lbl}</text>'
+        )
+        p.append("</g>")
+        node_id += 1
+
+    p.append("</svg>")
+    return "\n".join(p)
+
+
+def _build_domain_rank_html(cards: list, heatmap: dict) -> str:
+    """Ranked domain bar list for the threat map side panel."""
+    rows: list[str] = []
+    domain_scores: list[tuple] = []
+    for key, (_, _, lbl) in _TM_NODES.items():
+        sub = [c for c in cards if key in c.get("domains", [])]
+        cnt = len(sub)
+        mx = max((c.get("risk_score", 0) for c in sub), default=0)
+        p1 = sum(1 for c in sub if str(c.get("priority", "")).upper() == "P1")
+        ex = sum(1 for c in sub if _is_exploitish(c))
+        sc = min(
+            100,
+            round(
+                cnt * 8
+                + mx * 0.55
+                + (p1 / cnt * 24 if cnt else 0)
+                + (ex / cnt * 18 if cnt else 0)
+            ),
+        )
+        domain_scores.append((sc, cnt, key, lbl))
+
+    domain_scores.sort(reverse=True)
+    bar_colors = ["#1c2e42", "#223450", "#283e5e", "#2e4a6e", "#5a1a1a"]
+
+    for sc, cnt, key, lbl in domain_scores:
+        if sc == 0 and cnt == 0:
+            continue
+        pct = sc
+        bidx = 0 if sc < 18 else 1 if sc < 38 else 2 if sc < 62 else 3 if sc < 82 else 4
+        bcol = bar_colors[bidx]
+        lc = "#8a3030" if sc >= 85 else "#6a8898"
+        vc = "#5a2020" if sc >= 85 else "#3a5568"
+        rows.append(
+            f'<div class="rank-row" onclick="selectDomain(\'{key}\')">'
+            f'<span class="rank-label" style="color:{lc}" title="{lbl}">{lbl}</span>'
+            f'<div class="rank-bar-wrap"><div class="rank-bar" style="width:{pct}%;background:{bcol}"></div></div>'
+            f'<span class="rank-val" style="color:{vc}">{sc}</span>'
+            f"</div>"
+        )
+    if not rows:
+        return '<div class="muted" style="font-size:.78rem;padding:.4rem 0">No active findings in this window.</div>'
+    return "".join(rows)
+
+
 def _write_index_html(
     path: str,
     cards: list,
     heatmap: dict,
-    geo_heatmap: dict,
     ts: str,
     executive: str = "",
     history: list = None,
+    since_hours: int = 6,
 ):
-    heat_cells = ""
-    for bucket_id, data in heatmap.items():
-        if data["count"] == 0 and bucket_id == "uncategorised":
-            continue
-        bg, fg = _heatmap_cell_color(data["max_score"], data["count"])
-        score_txt = str(data["max_score"]) if data["count"] > 0 else "—"
-        heat_cells += f"""
-                    <div class=\"hm-cell\" style=\"background:{bg};color:{fg}\" title=\"{html.escape(data['label'])}: {data['count']} finding(s), max score {score_txt}\">
-                        <span class=\"hm-label\">{html.escape(data['label'])}</span>
-            <span class=\"hm-score\">{score_txt}</span>
-          </div>"""
+    def _derive_priority(card: dict) -> str:
+        p = str(card.get("priority", "") or "").upper()
+        if p in {"P1", "P2", "P3"}:
+            return p
+        rs = int(card.get("risk_score", 0))
+        if rs >= 85:
+            return "P1"
+        if rs >= 60:
+            return "P2"
+        return "P3"
 
-    # Build geo data JSON for SVG world map (injected into page as JS vars)
-    geo_json = json.dumps({cc: gdata["max_score"] for cc, gdata in geo_heatmap.items()})
-    geo_labels_json = json.dumps(
-        {
-            cc: f"{gdata['label']}: {gdata['count']} source(s), max score {gdata['max_score']}"
-            for cc, gdata in geo_heatmap.items()
-        }
+    # KPI stats
+    total_findings = len(cards)
+    p1_count = sum(1 for c in cards if _derive_priority(c) == "P1")
+    exploited_count = sum(1 for c in cards if _is_exploitish(c))
+    control_plane_count = sum(
+        1
+        for c in cards
+        if any(
+            d in c.get("domains", []) for d in ("cloud_iam", "identity", "supply_chain")
+        )
     )
+    top_domain_key = (
+        max(
+            heatmap.keys(),
+            key=lambda k: (heatmap[k].get("max_score", 0), heatmap[k].get("count", 0)),
+        )
+        if heatmap
+        else "uncategorised"
+    )
+    top_domain_label = heatmap.get(top_domain_key, {}).get("label", "Other")
+
+    trend_txt = "—"
+    if history and len(history) >= 2:
+        a = history[-2]["counts"]["clusters"]
+        b = history[-1]["counts"]["clusters"]
+        delta = b - a
+        trend_txt = f"{delta:+d}"
+
+    kpi_html = f"""
+        <section class="kpi-grid">
+            <div class="kpi"><span class="k">Findings</span><span class="v">{total_findings}</span></div>
+            <div class="kpi"><span class="k">P1</span><span class="v">{p1_count}</span></div>
+            <div class="kpi"><span class="k">Exploited</span><span class="v">{exploited_count}</span></div>
+            <div class="kpi"><span class="k">Control Plane</span><span class="v">{control_plane_count}</span></div>
+            <div class="kpi"><span class="k">Top Domain</span><span class="v v-sm">{html.escape(top_domain_label)}</span></div>
+            <div class="kpi"><span class="k">Trend 24h</span><span class="v">{trend_txt}</span></div>
+        </section>
+        """
+
+    # Feed contribution from cited source links (includes newly added feeds as domains appear)
+    feed_rollup: dict = {}
+    for c in cards:
+        rs = int(c.get("risk_score", 0))
+        for s in c.get("sources", {}).get("primary", []):
+            dom = tldextract.extract(s.get("url", "")).registered_domain or "unknown"
+            cur = feed_rollup.setdefault(dom, {"count": 0, "max_score": 0})
+            cur["count"] += 1
+            cur["max_score"] = max(cur["max_score"], rs)
+    top_feeds = sorted(
+        feed_rollup.items(),
+        key=lambda kv: (kv[1]["count"], kv[1]["max_score"]),
+        reverse=True,
+    )[:10]
+    feed_rows = "".join(
+        f"<tr><td>{html.escape(dom)}</td><td>{vals['count']}</td><td>{vals['max_score']}</td></tr>"
+        for dom, vals in top_feeds
+    )
+
+    threat_svg = _build_threat_map_svg(cards, heatmap)
+    domain_rank_html = _build_domain_rank_html(cards, heatmap)
 
     history_section = ""
     if history:
@@ -825,7 +1271,7 @@ def _write_index_html(
         history_section = (
             f'<div class="history-panel">'
             f'<span class="hs-label">Fresh&nbsp;items</span>&nbsp;{p_spark}&nbsp;<span class="hs-val">{polled_vals[-1]}</span>'
-            f'&emsp;<span class="hs-label">Clusters</span>&nbsp;{c_spark}&nbsp;<span class="hs-val">{cluster_vals[-1]}</span>'
+            f'&emsp;<span class="hs-label">Findings over time</span>&nbsp;{c_spark}&nbsp;<span class="hs-val">{cluster_vals[-1]}</span>'
             f'&emsp;<span class="hs-label">Runs&nbsp;logged</span>&nbsp;<span class="hs-val">{len(history)}</span>'
             f"</div>"
         )
@@ -837,19 +1283,133 @@ def _write_index_html(
             for s in c["sources"]["primary"]
         )
         badge_bg, badge_fg = _heatmap_cell_color(c["risk_score"], 1)
+        pri = _derive_priority(c)
+        pri_cls = "p1" if pri == "P1" else "p2" if pri == "P2" else "p3"
+        conf = c.get("confidence", None)
+        conf_txt = (
+            f'<span class="confidence">confidence {float(conf):.2f}</span>'
+            if isinstance(conf, (int, float))
+            else ""
+        )
         tags = " ".join(
             f'<span class="domain-tag">{html.escape(_TAXONOMY.get(d, {}).get("label", d))}</span>'
             for d in c.get("domains", [])
             if d != "uncategorised"
         )
+        actions24 = c.get("recommended_actions_24h", [])[:4]
+        actions7 = c.get("recommended_actions_7d", [])[:4]
+        act24_html = "".join(f"<li>{html.escape(str(a))}</li>" for a in actions24)
+        act7_html = "".join(f"<li>{html.escape(str(a))}</li>" for a in actions7)
+        domains_attr = " ".join(c.get("domains", []))
+        why_now = html.escape(c.get("why_now", ""))
         rows += f"""
-        <details class="cluster">
-          <summary><span class="badge" style="background:{badge_bg};color:{badge_fg}">{c['risk_score']}</span>{html.escape(c['title'])}<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline">{tags}</div></summary>
-          <div class="cluster-body">
-            <p>{html.escape(c['summary'])}</p>
-            <ul>{links}</ul>
-          </div>
-        </details>"""
+                <details class="cluster" data-domains="{html.escape(domains_attr)}">
+                    <summary>
+                        <span class="badge" style="background:{badge_bg};color:{badge_fg}">{c['risk_score']}</span>
+                        <span class="priority {pri_cls}">{pri}</span>
+                        {html.escape(c['title'])}
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline">{tags}</div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>{html.escape(c['summary'])}</p>
+                        {f'<p class="why-now"><strong>Why now:</strong> {why_now}</p>' if why_now else ''}
+                        {conf_txt}
+                        {f'<div class="actions"><div><strong>Next 24h</strong><ul>{act24_html}</ul></div><div><strong>Next 7d</strong><ul>{act7_html}</ul></div></div>' if (act24_html or act7_html) else ''}
+                        <ul>{links}</ul>
+                    </div>
+                </details>"""
+
+    # Holistic stress matrix (adjacency feel): domain x indicator intensity
+    indicator_defs = [
+        ("volume", "Volume"),
+        ("severity", "Severity"),
+        ("urgency", "Urgency"),
+        ("exploit", "Exploit"),
+        ("confidence", "Confidence"),
+    ]
+    domain_order = [k for k in _TAXONOMY.keys() if k != "uncategorised"]
+    if "uncategorised" in _TAXONOMY:
+        domain_order.append("uncategorised")
+
+    domain_stats = {}
+    for dk in domain_order:
+        subset = [c for c in cards if dk in c.get("domains", [])]
+        count = len(subset)
+        max_risk = max((int(c.get("risk_score", 0)) for c in subset), default=0)
+        p1 = sum(1 for c in subset if _derive_priority(c) == "P1")
+        exploit = sum(1 for c in subset if _is_exploitish(c))
+        conf_vals = [
+            float(c.get("confidence"))
+            for c in subset
+            if isinstance(c.get("confidence", None), (int, float))
+        ]
+        avg_conf = (sum(conf_vals) / len(conf_vals)) if conf_vals else 0.0
+        domain_stats[dk] = {
+            "count": count,
+            "max_risk": max_risk,
+            "p1_ratio": (p1 / count) if count else 0.0,
+            "exploit_ratio": (exploit / count) if count else 0.0,
+            "avg_conf": avg_conf,
+        }
+
+    max_count = max((v["count"] for v in domain_stats.values()), default=0)
+
+    def _indicator_val(dk: str, ik: str) -> int:
+        ds = domain_stats.get(dk, {})
+        if ik == "volume":
+            return int(
+                round(((ds.get("count", 0) / max_count) if max_count else 0.0) * 100)
+            )
+        if ik == "severity":
+            return int(ds.get("max_risk", 0))
+        if ik == "urgency":
+            return int(round(ds.get("p1_ratio", 0.0) * 100))
+        if ik == "exploit":
+            return int(round(ds.get("exploit_ratio", 0.0) * 100))
+        if ik == "confidence":
+            return int(round(ds.get("avg_conf", 0.0) * 100))
+        return 0
+
+    matrix_head = "".join(f"<th>{lbl}</th>" for _, lbl in indicator_defs)
+    matrix_rows = ""
+    for dk in domain_order:
+        dlabel = _TAXONOMY.get(dk, {}).get("label", dk)
+        tds = ""
+        for ik, ilabel in indicator_defs:
+            val = max(0, min(100, _indicator_val(dk, ik)))
+            alpha = 0.06 + (0.72 * (val / 100.0))
+            glow = 2 + int((val / 100.0) * 14)
+            tds += (
+                f'<td class="mx-cell" style="background:rgba(31,111,235,{alpha:.3f});box-shadow:inset 0 0 {glow}px rgba(88,166,255,.35)" '
+                f'title="{html.escape(dlabel)} · {ilabel}: {val}">'
+                f'<span class="mx-dot" style="opacity:{0.2 + (val/100.0)*0.8:.3f}"></span>'
+                f'<span class="mx-count">{val}</span>'
+                f"</td>"
+            )
+        matrix_rows += f'<tr><th class="mx-row">{html.escape(dlabel)}</th>{tds}</tr>'
+
+    matrix_section = f"""
+        <section class="panel matrix-panel">
+            <h3 style="margin:.1rem 0 .5rem">Holistic Domain Matrix</h3>
+            <div class="muted" style="margin:0 0 .55rem">Uniform adjacency-style grid. Cell intensity tracks domain indicators.</div>
+            <table class="risk-matrix">
+                <thead><tr><th>Domain</th>{matrix_head}</tr></thead>
+                <tbody>{matrix_rows}</tbody>
+            </table>
+        </section>
+    """
+
+    card_data = []
+    for c in cards:
+        card_data.append(
+            {
+                "title": c.get("title", ""),
+                "risk_score": int(c.get("risk_score", 0)),
+                "priority": _derive_priority(c),
+                "domains": c.get("domains", []),
+                "summary": c.get("summary", ""),
+            }
+        )
 
     page_html = f"""<!doctype html>
 <html lang=\"en\">
@@ -858,72 +1418,139 @@ def _write_index_html(
 <title>Watchtower — InfraSec Briefing</title>
 <style>
 *{{box-sizing:border-box}}
+::-webkit-scrollbar{{width:6px;height:6px}}
+::-webkit-scrollbar-track{{background:#080c12}}
+::-webkit-scrollbar-thumb{{background:#1e2c3a;border-radius:3px}}
+::-webkit-scrollbar-thumb:hover{{background:#2c3e50}}
+*{{scrollbar-width:thin;scrollbar-color:#1e2c3a #080c12}}
 body{{font-family:system-ui,sans-serif;max-width:960px;margin:2rem auto;padding:0 1rem;background:#0d1117;color:#c9d1d9}}
 h1{{border-bottom:2px solid #30363d;padding-bottom:.4rem;color:#e6edf3}}
 h2{{color:#e6edf3}}
 a{{color:#58a6ff}}
 p{{color:#c9d1d9}}
-.heatmap{{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin:1.2rem 0 2rem}}
-.hm-cell{{border-radius:6px;padding:.6rem .5rem;text-align:center;border:1px solid rgba(255,255,255,.08)}}
-.hm-label{{display:block;font-size:.68rem;font-weight:600;margin:.2rem 0}} .hm-score{{display:block;font-size:1.1rem;font-weight:700}}
-.cluster{{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:0;margin:1rem 0;overflow:hidden}}
-.cluster summary{{list-style:none;padding:.75rem 1rem;cursor:pointer;display:flex;align-items:center;gap:.4rem;user-select:none;color:#c9d1d9}}
+.kpi-grid{{display:grid;grid-template-columns:repeat(6,minmax(120px,1fr));gap:8px;margin:1rem 0 1.2rem}}
+.kpi{{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:.55rem .7rem;display:flex;flex-direction:column;gap:.2rem}}
+.kpi .k{{font-size:.68rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700}}
+.kpi .v{{font-size:1.2rem;color:#e6edf3;font-weight:800}}
+.kpi .v-sm{{font-size:.95rem}}
+.hm-cell{{border-radius:6px;padding:.7rem .55rem;text-align:center;border:1px solid rgba(255,255,255,.08);cursor:pointer;font-family:inherit}}
+.hm-cell.active{{outline:2px solid #1f6feb;outline-offset:1px}}
+.hm-label{{display:block;font-size:.72rem;font-weight:700;margin:.15rem 0}} 
+.hm-meta{{display:block;font-size:.66rem;opacity:.85}}
+.hm-score{{display:block;font-size:1.15rem;font-weight:800;margin-top:.2rem}}
+.panel{{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:.7rem .8rem}}
+.panel h3{{margin:.2rem 0 .5rem;font-size:.92rem;color:#e6edf3}}
+.panel .muted{{color:#8b949e;font-size:.8rem}}
+.feed-table{{width:100%;border-collapse:collapse;font-size:.78rem}}
+.feed-table th,.feed-table td{{border-bottom:1px solid #30363d;padding:.3rem .2rem;text-align:left}}
+.matrix-panel{{margin:.2rem 0 1rem}}
+.risk-matrix{{width:100%;border-collapse:separate;border-spacing:4px;table-layout:fixed}}
+.risk-matrix th{{font-size:.68rem;color:#8b949e;font-weight:700;text-align:center;letter-spacing:.02em}}
+.risk-matrix .mx-row{{text-align:left;padding-left:.3rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px}}
+.mx-cell{{height:44px;border:1px solid #30363d;border-radius:6px;position:relative;text-align:center;vertical-align:middle;overflow:hidden;transition:filter .12s ease,transform .12s ease}}
+.mx-cell:hover{{filter:brightness(1.1);transform:translateY(-1px)}}
+.mx-dot{{position:absolute;left:50%;top:50%;width:20px;height:20px;border-radius:999px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(88,166,255,.75) 0%, rgba(88,166,255,.05) 70%)}}
+.mx-count{{position:relative;display:block;font-size:.82rem;font-weight:800;color:#e6edf3;line-height:1}}
+.cluster{{background:rgba(255,255,255,0.01);border:1px solid #2b313a;border-radius:6px;padding:0;margin:.55rem 0;overflow:hidden}}
+.cluster summary{{list-style:none;padding:.62rem .85rem;cursor:pointer;display:flex;align-items:center;gap:.35rem;user-select:none;color:#c9d1d9;font-size:.92rem}}
 .cluster summary::-webkit-details-marker{{display:none}}
 .cluster summary::before{{content:"▶";font-size:.7rem;transition:transform .15s;flex-shrink:0;color:#8b949e}}
 .cluster[open] summary::before{{transform:rotate(90deg)}}
-.cluster-body{{padding:.25rem 1rem 1rem;color:#c9d1d9}}
-.badge{{border-radius:3px;padding:2px 8px;font-size:.8rem;font-weight:700;margin-right:.5rem}}
+.cluster-body{{padding:.2rem .9rem .85rem;color:#c9d1d9}}
+.badge{{border-radius:999px;padding:2px 8px;font-size:.72rem;font-weight:700;margin-right:.35rem;background:rgba(255,255,255,.06)!important;color:#c9d1d9!important}}
+.priority{{border-radius:999px;padding:2px 8px;font-size:.68rem;font-weight:800;letter-spacing:.02em;margin-right:.3rem;border:1px solid #30363d}}
+.priority.p1{{background:rgba(170,28,28,.16);color:#c88888;border-color:rgba(170,28,28,.36)}}
+.priority.p2{{background:rgba(50,80,125,.15);color:#8aa8c0;border-color:rgba(50,80,125,.30)}}
+.priority.p3{{background:#21262d;color:#c9d1d9}}
 .domain-tags{{margin:.3rem 0 .6rem}} .domain-tag{{display:inline-block;background:#21262d;color:#8b949e;border:1px solid #30363d;border-radius:3px;font-size:.7rem;padding:1px 6px;margin:0 3px 3px 0}}
-.executive{{background:#1c1a10;border-left:4px solid #d4a017;border-radius:4px;padding:.8rem 1.1rem;margin:1rem 0 1.8rem}}
-.executive h2{{margin:0 0 .4rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:#d4a017}}
+.executive{{background:#0e1620;border-left:3px solid #2e5070;border-radius:4px;padding:.8rem 1.1rem;margin:1rem 0 1.8rem}}
+.executive h2{{margin:0 0 .4rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:#4e7898}}
 .executive p{{margin:0;line-height:1.75;font-size:.95rem;color:#c9d1d9}}
-.hm-tabs{{display:flex;gap:8px;margin:.4rem 0 .8rem}}
-.hm-tab{{background:#161b22;border:1px solid #30363d;border-radius:4px;padding:.3rem .9rem;cursor:pointer;font-size:.85rem;font-family:inherit;color:#c9d1d9}}
-.hm-tab.active{{background:#1f6feb;color:#fff;border-color:#1f6feb}}
 .history-panel{{background:#161b22;border:1px solid #30363d;border-radius:4px;padding:.45rem 1rem;margin:0 0 1.2rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}}
 .hs-label{{color:#8b949e;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:.68rem}}
 .hs-val{{font-weight:700;font-size:.85rem;color:#e6edf3}}
+.actions{{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:.4rem 0 .7rem}}
+.actions ul{{margin:.3rem 0 .2rem 1rem;padding:0}}
+.confidence{{display:inline-block;font-size:.72rem;color:#8b949e;border:1px solid #30363d;border-radius:999px;padding:2px 8px;margin-bottom:.3rem}}
+.threat-section{{display:grid;grid-template-columns:2fr 1fr;gap:12px;align-items:start;margin:0 0 1rem}}
+.threat-main{{padding:.3rem .4rem .5rem}}
+.threat-toolbar{{display:flex;justify-content:space-between;align-items:center;padding:.3rem .3rem .45rem}}
+.threat-title{{font-size:.9rem;font-weight:700;color:#e6edf3}}
+.threat-sub{{font-size:.72rem;color:#8b949e}}
+.threat-side{{overflow-y:auto;max-height:580px}}
+.tm-node .node-disc{{transition:stroke .12s,stroke-width .12s}}
+.tm-node:hover .node-disc{{stroke:rgba(120,160,220,0.5)!important;stroke-width:1.4px!important}}
+.tm-node .sel-indicator{{opacity:0;transition:opacity .18s}}
+.tm-node.tm-selected .sel-indicator{{opacity:1}}
+.rank-row{{display:flex;align-items:center;gap:6px;padding:.28rem 0;border-bottom:1px solid #161d2a;cursor:pointer;border-radius:3px}}
+.rank-row:hover{{background:rgba(255,255,255,.03)}}
+.rank-label{{font-size:.77rem;flex:0 0 92px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.rank-bar-wrap{{flex:1;background:#0e1520;border-radius:2px;height:3px}}
+.rank-bar{{height:3px;border-radius:2px;min-width:1px}}
+.rank-val{{font-size:.7rem;font-weight:700;flex:0 0 22px;text-align:right}}
+.chip{{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid #30363d;background:#21262d;color:#c9d1d9;font-size:.72rem}}
 footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-top:1px solid #30363d}}
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css">
-</head>
-<body>
-<h1>Watchtower — Infrastructure Security Briefing</h1>
-<p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a></p>
-{f'<div class="executive"><h2>Analyst Summary</h2><p>{html.escape(executive)}</p></div>' if executive else ''}
-<div class="hm-tabs"><button class="hm-tab active" onclick="switchTab('domain')">Domains</button> <button class="hm-tab" onclick="switchTab('geo')">Geography</button></div>
-<div id="hm-domain" class="heatmap">{heat_cells}</div>
-<div id="hm-geo" style="display:none;margin:1rem 0 2rem"><div id="world-map" style="height:340px"></div><div id="geo-legend" style="display:flex;flex-wrap:wrap;gap:6px;margin:.6rem 0 1rem"></div></div>
+@media (max-width:900px){{.kpi-grid{{grid-template-columns:repeat(3,minmax(110px,1fr));}}.threat-section{{grid-template-columns:1fr;}}}}
+        </style>
+        </head>
+        <body>
+        <h1>Watchtower — Infrastructure Security Briefing</h1>
+        <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a></p>
+        {f'<div class="executive"><h2>Analyst Summary</h2><p>{html.escape(executive)}</p></div>' if executive else ''}
+{kpi_html}
+<section class="threat-section">
+  <div class="panel threat-main">
+    <div class="threat-toolbar">
+      <div>
+        <div class="threat-title">Surface Threat Map</div>
+        <div class="threat-sub">Domain constellation — node intensity shows activity heat, edges show blast-radius pathways. Click any node to filter findings.</div>
+      </div>
+      <span class="chip">Window {since_hours}h</span>
+    </div>
+    {threat_svg}
+  </div>
+  <aside class="panel threat-side">
+    <h3 style="margin:.2rem 0 .45rem">Domain Activity</h3>
+    {domain_rank_html}
+    <h3 style="margin:.7rem 0 .35rem">Selected Domain</h3>
+    <div id="tm-detail" class="muted" style="font-size:.8rem">Click a node to inspect findings.</div>
+    <h3 style="margin:.7rem 0 .35rem">Feed Contribution</h3>
+    <table class="feed-table"><thead><tr><th>Feed domain</th><th>Refs</th><th>Max risk</th></tr></thead><tbody>{feed_rows}</tbody></table>
+  </aside>
+</section>
 {history_section}
 <h2>Top Findings</h2>
 {rows}
-<footer>Watchtower · local-safe placeholder mode: {{str(placeholder_mode()).lower()}}</footer>
-<script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js"></script>
+<footer>Watchtower · local-safe placeholder mode: {str(placeholder_mode()).lower()}</footer>
 <script>
-var GEO_DATA={geo_json};
-var GEO_LABELS={geo_labels_json};
-var _mapInit=false;
-function initMap(){{
-  if(_mapInit)return;_mapInit=true;
-  new jsVectorMap({{selector:'#world-map',map:'world',backgroundColor:'#0d1117',zoomButtons:false,
-    regionStyle:{{initial:{{fill:'#21262d',stroke:'#30363d',strokeWidth:0.5}},hover:{{fill:'#388bfd',cursor:'pointer'}}}},
-    onRegionTooltipShow:function(e,tip,code){{tip.text(GEO_LABELS[code]||code,true);}},
-    series:{{regions:[{{values:GEO_DATA,scale:['#1a3a1a','#8b0000'],normalizeFunction:'polynomial',attribute:'fill'}}]}}
-  }});
-  var leg=document.getElementById('geo-legend');
-  Object.keys(GEO_DATA).sort(function(a,b){{return GEO_DATA[b]-GEO_DATA[a];}}).forEach(function(cc){{
-    var el=document.createElement('span');
-    el.style.cssText='background:#161b22;border:1px solid #30363d;border-radius:4px;padding:3px 10px;font-size:.75rem;color:#c9d1d9';
-    el.textContent=GEO_LABELS[cc]||cc;
-    leg.appendChild(el);
-  }});
-}}
-function switchTab(t){{
-  document.getElementById('hm-domain').style.display=t==='domain'?'grid':'none';
-  document.getElementById('hm-geo').style.display=t==='geo'?'block':'none';
-  document.querySelectorAll('.hm-tab').forEach(function(b,i){{b.classList.toggle('active',i===(t==='domain'?0:1));}});
-  if(t==='geo')initMap();
+var CARDS={json.dumps(card_data)};
+var CURRENT_DOMAIN='all';
+var DOMAIN_LABELS={json.dumps({k: v.get('label', k) for k, v in heatmap.items()})};
+
+function selectDomain(domain){{
+    CURRENT_DOMAIN = domain||'all';
+    document.querySelectorAll('.tm-node').forEach(function(g){{ g.classList.remove('tm-selected'); }});
+    if(domain&&domain!=='all'){{
+        var n=document.querySelector('.tm-node[data-domain="'+domain+'"]');
+        if(n) n.classList.add('tm-selected');
+    }}
+    document.querySelectorAll('.cluster').forEach(function(el){{
+        if(CURRENT_DOMAIN==='all'){{el.style.display='block';return;}}
+        var ds=(el.getAttribute('data-domains')||'').split(/\\s+/);
+        el.style.display=ds.indexOf(CURRENT_DOMAIN)>=0?'block':'none';
+    }});
+    var subset=CURRENT_DOMAIN==='all'?CARDS:CARDS.filter(function(c){{return(c.domains||[]).indexOf(CURRENT_DOMAIN)>=0;}});
+    var p1=subset.filter(function(c){{return c.priority==='P1';}}).length;
+    var maxRisk=subset.reduce(function(m,c){{return Math.max(m,c.risk_score||0);}},0);
+    var lbl=DOMAIN_LABELS[domain]||domain||'All domains';
+    var lines=subset.slice().sort(function(a,b){{return(b.risk_score||0)-(a.risk_score||0);}}).slice(0,5)
+        .map(function(c){{return '<li style="margin:.2rem 0">'+c.title+' <span style="color:#5a7090">('+c.risk_score+')</span></li>';}}).join('');
+    var t=document.getElementById('tm-detail');
+    if(t){{
+        t.innerHTML='<strong style="color:#c9d1d9">'+lbl+'</strong>'
+            +'<div style="color:#6a7f98;font-size:.75rem;margin:.2rem 0 .35rem">Findings: '+subset.length+' &middot; P1: '+p1+' &middot; Max risk: '+maxRisk+'</div>'
+            +(lines?'<ul style="margin:.3rem 0 0 1rem;padding:0;font-size:.78rem">'+lines+'</ul>':'<div style="color:#5a7090;font-size:.78rem">No findings in this window.</div>');
+    }}
 }}
 </script>
 </body></html>"""
@@ -960,6 +1587,10 @@ def _run():
 
     polled, seen = deduplicate(polled, seen)
     save_seen(seen)
+
+    first_seen = now_utc_iso()
+    for it in polled:
+        it.setdefault("first_seen_at", first_seen)
 
     polled = dispatch_plan(
         {"steps": [{"tool": "CLUSTER", "args": {"window_hours": since_hours}}]},
@@ -1035,7 +1666,7 @@ def _run():
             if not c["summary"]:
                 c["summary"] = f"{len(c['sources']['primary'])} related updates."
 
-    ts = datetime.utcnow().strftime("%Y-%m-%d_%H-%M")
+    ts = datetime.now(timezone.utc).strftime("%Y-%m-%d_%H-%M")
     out_md = os.path.join(REPORTS_DIR, f"briefing_{ts}.md")
     out_jsonl = os.path.join(REPORTS_DIR, f"briefing_{ts}.jsonl")
     latest_md = os.path.join(REPORTS_DIR, "latest.md")
@@ -1070,7 +1701,6 @@ def _run():
             f.write(json.dumps(c, ensure_ascii=False) + "\n")
 
     heatmap = build_domain_heatmap(cards)
-    geo_heatmap = build_geo_heatmap(cards)
 
     hot_domains = [k for k, v in heatmap.items() if v["max_score"] >= 60]
     append_jsonl(
@@ -1089,7 +1719,9 @@ def _run():
     )
 
     history = _read_ledger_history()
-    _write_index_html(index_html, cards, heatmap, geo_heatmap, ts, executive, history)
+    _write_index_html(
+        index_html, cards, heatmap, ts, executive, history, since_hours=since_hours
+    )
 
     print("### Watchtower run")
     print(f"UTC: {now_utc_iso()}")
