@@ -76,13 +76,17 @@ p{color:#c9d1d9}
 .rank-bar{height:3px;border-radius:2px;min-width:1px}
 .rank-val{font-size:.7rem;font-weight:700;flex:0 0 22px;text-align:right}
 .chip{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid #30363d;background:#21262d;color:#c9d1d9;font-size:.72rem}
+.next-run{display:inline-flex;align-items:center;gap:5px;padding:2px 10px;border-radius:999px;border:1px solid #1a3a5c;background:#0d1f30;color:#58a6ff;font-size:.72rem;font-variant-numeric:tabular-nums;margin-left:.6rem}
+.next-run.soon{border-color:#4a2a00;background:#1c1000;color:#e3a020}
+.next-run.now{border-color:#1a3a1a;background:#0a1f0a;color:#3fb950;animation:pulse-now 1s ease-in-out infinite}
+@keyframes pulse-now{0%,100%{opacity:1}50%{opacity:.55}}
 footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-top:1px solid #30363d}
 @media (max-width:900px){.kpi-grid{grid-template-columns:repeat(3,minmax(110px,1fr));}.threat-section{grid-template-columns:1fr;}}
         </style>
         </head>
         <body>
         <h1>Watchtower — Infrastructure Security Briefing</h1>
-        <p>Generated <strong>2026-03-05 21-18</strong> UTC | <a href="latest.md">latest.md</a></p>
+        <p>Generated <strong>2026-03-05 21-35</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 00:05, 06:05, 12:05, 18:05 ET">⏱ next run —</span></p>
         
 
         <section class="kpi-grid">
@@ -91,7 +95,7 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
             <div class="kpi"><span class="k">Exploited</span><span class="v">1</span></div>
             <div class="kpi"><span class="k">Control Plane</span><span class="v">1</span></div>
             <div class="kpi"><span class="k">Top Domain</span><span class="v v-sm">OS / Kernel</span></div>
-            <div class="kpi"><span class="k">Trend 24h</span><span class="v">+3</span></div>
+            <div class="kpi"><span class="k">Trend 24h</span><span class="v">+0</span></div>
         </section>
         
 <section class="threat-section">
@@ -465,7 +469,7 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
     <table class="feed-table"><thead><tr><th>Feed domain</th><th>Refs</th><th>Max risk</th></tr></thead><tbody><tr><td>example.org</td><td>3</td><td>100</td></tr></tbody></table>
   </aside>
 </section>
-<div class="history-panel"><span class="hs-label">Fresh&nbsp;items</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,20.0 5.0,20.0 10.0,2.0 15.0,19.4 20.0,20.0 25.0,17.4 30.0,18.3 35.0,20.0 40.0,19.6 45.0,19.9 50.0,19.7 55.0,15.1 60.0,19.6 65.0,20.0 70.0,20.0 75.0,20.0 80.0,20.0" fill="none" stroke="#0366d6" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="20.0" r="2.5" fill="#0366d6"/></svg>&nbsp;<span class="hs-val">3</span>&emsp;<span class="hs-label">Findings over time</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,20.0 5.0,16.4 10.0,2.0 15.0,2.0 20.0,20.0 25.0,2.0 30.0,2.0 35.0,16.4 40.0,2.0 45.0,14.0 50.0,11.6 55.0,10.4 60.0,12.8 65.0,20.0 70.0,20.0 75.0,20.0 80.0,16.4" fill="none" stroke="#28a745" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="16.4" r="2.5" fill="#28a745"/></svg>&nbsp;<span class="hs-val">3</span>&emsp;<span class="hs-label">Runs&nbsp;logged</span>&nbsp;<span class="hs-val">17</span></div>
+<div class="history-panel"><span class="hs-label">Fresh&nbsp;items</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,20.0 4.7,20.0 9.4,2.0 14.1,19.4 18.8,20.0 23.5,17.4 28.2,18.3 32.9,20.0 37.6,19.6 42.4,19.9 47.1,19.7 51.8,15.1 56.5,19.6 61.2,20.0 65.9,20.0 70.6,20.0 75.3,20.0 80.0,20.0" fill="none" stroke="#0366d6" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="20.0" r="2.5" fill="#0366d6"/></svg>&nbsp;<span class="hs-val">3</span>&emsp;<span class="hs-label">Findings over time</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,20.0 4.7,16.4 9.4,2.0 14.1,2.0 18.8,20.0 23.5,2.0 28.2,2.0 32.9,16.4 37.6,2.0 42.4,14.0 47.1,11.6 51.8,10.4 56.5,12.8 61.2,20.0 65.9,20.0 70.6,20.0 75.3,16.4 80.0,16.4" fill="none" stroke="#28a745" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="16.4" r="2.5" fill="#28a745"/></svg>&nbsp;<span class="hs-val">3</span>&emsp;<span class="hs-label">Runs&nbsp;logged</span>&nbsp;<span class="hs-val">18</span></div>
 <h2>Top Findings</h2>
 
                 <details class="cluster" data-domains="os_kernel crypto_lib">
@@ -513,7 +517,7 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
                         <ul><li><a href="https://example.org/advisory/k8s-ingress-lpe" target="_blank" rel="noopener noreferrer">Kubernetes ingress privilege escalation advisory</a></li></ul>
                     </div>
                 </details>
-<footer>Watchtower · local-safe placeholder mode: true</footer>
+<footer>Watchtower · scheduled 00:05 / 06:05 / 12:05 / 18:05 ET · placeholder mode: true</footer>
 <script>
 var CARDS=[{"title": "CVE-2026-12345 in OpenSSL exploited in the wild", "risk_score": 100, "priority": "P1", "domains": ["os_kernel", "crypto_lib"], "summary": "1 related updates."}, {"title": "Malicious npm package typosquat campaign", "risk_score": 20, "priority": "P3", "domains": ["pkg_npm", "supply_chain"], "summary": "1 related updates."}, {"title": "Kubernetes ingress privilege escalation advisory", "risk_score": 15, "priority": "P3", "domains": ["container", "os_kernel"], "summary": "1 related updates."}];
 var CURRENT_DOMAIN='all';
@@ -544,5 +548,35 @@ function selectDomain(domain){
             +(lines?'<ul style="margin:.3rem 0 0 1rem;padding:0;font-size:.78rem">'+lines+'</ul>':'<div style="color:#5a7090;font-size:.78rem">No findings in this window.</div>');
     }
 }
+(function(){
+  var SLOTS=[0,6,12,18],MIN=5;
+  var el=document.getElementById('next-run-cd');
+  if(!el)return;
+  var fmt=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+  function etP(d){return fmt.formatToParts(d).reduce(function(a,p){if(p.type!='literal')a[p.type]=+p.value;return a;},{});}
+  function nextRun(now){
+    var et=etP(now);
+    for(var d=0;d<2;d++){
+      for(var i=0;i<SLOTS.length;i++){
+        if(d===0&&(SLOTS[i]<et.hour||(SLOTS[i]===et.hour&&MIN<=et.minute)))continue;
+        var noon=new Date(Date.UTC(et.year,et.month-1,et.day+d,12,0,0));
+        var off=12-etP(noon).hour;
+        var cand=new Date(Date.UTC(et.year,et.month-1,et.day+d,SLOTS[i]+off,MIN,0));
+        if(cand>now)return cand;
+      }
+    }
+    return new Date(now.getTime()+7*3600*1000);
+  }
+  function pad(n){return String(n).padStart(2,'0');}
+  function tick(){
+    var now=new Date(),next=nextRun(now);
+    var diff=Math.max(0,Math.floor((next-now)/1000));
+    var h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
+    el.textContent='⏱ '+pad(h)+':'+pad(m)+':'+pad(s);
+    el.title='Next run: '+next.toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'2-digit',minute:'2-digit'})+' ET';
+    el.className='next-run'+(diff<600?' soon':'')+(diff<60?' now':'');
+  }
+  tick();setInterval(tick,1000);
+})();
 </script>
 </body></html>

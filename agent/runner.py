@@ -1509,13 +1509,17 @@ p{{color:#c9d1d9}}
 .rank-bar{{height:3px;border-radius:2px;min-width:1px}}
 .rank-val{{font-size:.7rem;font-weight:700;flex:0 0 22px;text-align:right}}
 .chip{{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid #30363d;background:#21262d;color:#c9d1d9;font-size:.72rem}}
+.next-run{{display:inline-flex;align-items:center;gap:5px;padding:2px 10px;border-radius:999px;border:1px solid #1a3a5c;background:#0d1f30;color:#58a6ff;font-size:.72rem;font-variant-numeric:tabular-nums;margin-left:.6rem}}
+.next-run.soon{{border-color:#4a2a00;background:#1c1000;color:#e3a020}}
+.next-run.now{{border-color:#1a3a1a;background:#0a1f0a;color:#3fb950;animation:pulse-now 1s ease-in-out infinite}}
+@keyframes pulse-now{{0%,100%{{opacity:1}}50%{{opacity:.55}}}}
 footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-top:1px solid #30363d}}
 @media (max-width:900px){{.kpi-grid{{grid-template-columns:repeat(3,minmax(110px,1fr));}}.threat-section{{grid-template-columns:1fr;}}}}
         </style>
         </head>
         <body>
         <h1>Watchtower — Infrastructure Security Briefing</h1>
-        <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a></p>
+        <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 00:05, 06:05, 12:05, 18:05 ET">⏱ next run —</span></p>
         {f'<div class="executive"><h2>Analyst Summary</h2><p>{html.escape(executive)}</p></div>' if executive else ''}
 {kpi_html}
 <section class="threat-section">
@@ -1541,7 +1545,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
 {history_section}
 <h2>Top Findings</h2>
 {rows}
-<footer>Watchtower · local-safe placeholder mode: {str(placeholder_mode()).lower()}</footer>
+<footer>Watchtower · scheduled 00:05 / 06:05 / 12:05 / 18:05 ET · placeholder mode: {str(placeholder_mode()).lower()}</footer>
 <script>
 var CARDS={json.dumps(card_data)};
 var CURRENT_DOMAIN='all';
@@ -1572,6 +1576,36 @@ function selectDomain(domain){{
             +(lines?'<ul style="margin:.3rem 0 0 1rem;padding:0;font-size:.78rem">'+lines+'</ul>':'<div style="color:#5a7090;font-size:.78rem">No findings in this window.</div>');
     }}
 }}
+(function(){{
+  var SLOTS=[0,6,12,18],MIN=5;
+  var el=document.getElementById('next-run-cd');
+  if(!el)return;
+  var fmt=new Intl.DateTimeFormat('en-US',{{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}});
+  function etP(d){{return fmt.formatToParts(d).reduce(function(a,p){{if(p.type!='literal')a[p.type]=+p.value;return a;}},{{}});}}
+  function nextRun(now){{
+    var et=etP(now);
+    for(var d=0;d<2;d++){{
+      for(var i=0;i<SLOTS.length;i++){{
+        if(d===0&&(SLOTS[i]<et.hour||(SLOTS[i]===et.hour&&MIN<=et.minute)))continue;
+        var noon=new Date(Date.UTC(et.year,et.month-1,et.day+d,12,0,0));
+        var off=12-etP(noon).hour;
+        var cand=new Date(Date.UTC(et.year,et.month-1,et.day+d,SLOTS[i]+off,MIN,0));
+        if(cand>now)return cand;
+      }}
+    }}
+    return new Date(now.getTime()+7*3600*1000);
+  }}
+  function pad(n){{return String(n).padStart(2,'0');}}
+  function tick(){{
+    var now=new Date(),next=nextRun(now);
+    var diff=Math.max(0,Math.floor((next-now)/1000));
+    var h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
+    el.textContent='⏱ '+pad(h)+':'+pad(m)+':'+pad(s);
+    el.title='Next run: '+next.toLocaleTimeString('en-US',{{timeZone:'America/New_York',hour:'2-digit',minute:'2-digit'}})+' ET';
+    el.className='next-run'+(diff<600?' soon':'')+(diff<60?' now':'');
+  }}
+  tick();setInterval(tick,1000);
+}})();
 </script>
 </body></html>"""
 
