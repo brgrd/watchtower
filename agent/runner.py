@@ -624,14 +624,20 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
       (matched via the reference URLs Groq cited).
     - That in turn populates the Geography heatmap and world map.
     """
-    # Build URL → country lookup from polled/enriched items
+    # Build URL → country and registered-domain → country lookups from polled items.
+    # Domain-based matching is the primary strategy because Groq's cited reference URLs
+    # rarely match polled item URLs byte-for-byte (trailing slashes, query params, etc.).
     url_to_country: dict = {}
+    domain_to_country: dict = {}
     if all_items:
         for it in all_items:
             cc = it.get("country", "")
             url = it.get("url", "")
             if cc and url:
                 url_to_country[url] = cc
+                dom = tldextract.extract(url).registered_domain
+                if dom and dom not in domain_to_country:
+                    domain_to_country[dom] = cc
 
     cards = []
     for f in findings:
@@ -648,9 +654,17 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
 
         refs = f.get("references", [])
 
-        # Derive countries from reference URLs that match polled item URLs
+        # Derive countries: try exact URL match first, fall back to registered domain.
         countries = list(
-            {url_to_country[r["url"]] for r in refs if r.get("url") in url_to_country}
+            {
+                url_to_country.get(r["url"])
+                or domain_to_country.get(
+                    tldextract.extract(r.get("url", "")).registered_domain
+                )
+                for r in refs
+                if r.get("url")
+            }
+            - {None}
         )
 
         cards.append(

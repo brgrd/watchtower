@@ -30,6 +30,7 @@ feeds:
     url: "https://github.blog/changelog/security/feed/"
     category: "blog"
     type: rss
+    country: "US"
     enabled: true
   - id: cisa_alerts
     url: "https://www.cisa.gov/cybersecurity-advisories/all.xml"
@@ -41,21 +42,25 @@ feeds:
     url: "https://www.bleepingcomputer.com/feed/"
     category: "news"
     type: rss
+    country: "US"
     enabled: true
   - id: krebs
     url: "https://krebsonsecurity.com/feed/"
     category: "news"
     type: rss
+    country: "US"
     enabled: true
   - id: thehackernews
     url: "https://feeds.feedburner.com/TheHackersNews"
     category: "news"
     type: rss
+    country: "US"
     enabled: true
   - id: cloudflare_blog
     url: "https://blog.cloudflare.com/rss/"
     category: "blog"
     type: rss
+    country: "US"
     enabled: true
   - id: ncsc_uk
     url: "https://www.ncsc.gov.uk/api/1/services/v1/report-rss-feed.xml"
@@ -79,11 +84,13 @@ feeds:
     url: "https://github.blog/changelog/feed/"
     category: "blog"
     type: rss
+    country: "US"
     enabled: true
   - id: snyk_blog
     url: "https://snyk.io/blog/feed/"
     category: "vulns"
     type: rss
+    country: "US"
     enabled: true
   - id: gcp_security
     url: "https://cloud.google.com/feeds/gcp-security-bulletins.xml"
@@ -95,41 +102,61 @@ feeds:
     url: "https://www.securityweek.com/feed/"
     category: "news"
     type: rss
+    country: "US"
     enabled: true
   - id: darkreading
     url: "https://www.darkreading.com/rss.xml"
     category: "news"
     type: rss
+    country: "US"
     enabled: true
   - id: cyberscoop
     url: "https://cyberscoop.com/feed/"
     category: "news"
     type: rss
+    country: "US"
     enabled: true
   - id: therecord
     url: "https://therecord.media/feed/"
     category: "news"
     type: rss
+    country: "US"
     enabled: true
   - id: portswigger_daily
     url: "https://portswigger.net/daily-swig/rss"
     category: "news"
     type: rss
+    country: "GB"
     enabled: true
   - id: talos_blog
     url: "https://blog.talosintelligence.com/feeds/posts/default"
     category: "news"
     type: rss
+    country: "US"
     enabled: true
   - id: unit42
     url: "https://unit42.paloaltonetworks.com/feed/"
     category: "news"
     type: rss
+    country: "US"
     enabled: true
   - id: malwarebytes_blog
     url: "https://blog.malwarebytes.com/feed/"
     category: "news"
     type: rss
+    country: "US"
+    enabled: true
+  - id: aws_security_blog
+    url: "https://aws.amazon.com/blogs/security/feed/"
+    category: "blog"
+    type: rss
+    country: "US"
+    enabled: true
+  - id: ms_security_blog
+    url: "https://www.microsoft.com/en-us/security/blog/feed/"
+    category: "blog"
+    type: rss
+    country: "US"
     enabled: true
 
 model:
