@@ -993,6 +993,19 @@ def _is_exploitish(c: dict) -> bool:
     )
 
 
+def _derive_priority(card: dict) -> str:
+    """Map an explicit priority tag or risk score to P1/P2/P3."""
+    p = str(card.get("priority", "") or "").upper()
+    if p in {"P1", "P2", "P3"}:
+        return p
+    rs = int(card.get("risk_score", 0))
+    if rs >= 85:
+        return "P1"
+    if rs >= 60:
+        return "P2"
+    return "P3"
+
+
 def _build_threat_map_svg(cards: list, heatmap: dict) -> str:
     """Return an inline SVG constellation threat map, heat-coloured by domain activity."""
     # Raw per-domain heat score
@@ -1190,17 +1203,6 @@ def _write_index_html(
     history: list = None,
     since_hours: int = 6,
 ):
-    def _derive_priority(card: dict) -> str:
-        p = str(card.get("priority", "") or "").upper()
-        if p in {"P1", "P2", "P3"}:
-            return p
-        rs = int(card.get("risk_score", 0))
-        if rs >= 85:
-            return "P1"
-        if rs >= 60:
-            return "P2"
-        return "P3"
-
     # KPI stats
     total_findings = len(cards)
     p1_count = sum(1 for c in cards if _derive_priority(c) == "P1")

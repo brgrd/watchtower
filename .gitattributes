@@ -1,0 +1,23 @@
+# Enforce LF line endings in the repo, regardless of OS.
+# This eliminates the CRLF-will-be-replaced-by-LF warnings on Windows.
+*           text=auto eol=lf
+
+# Explicitly text files
+*.py        text eol=lf
+*.yaml      text eol=lf
+*.yml       text eol=lf
+*.json      text eol=lf
+*.jsonl     text eol=lf
+*.md        text eol=lf
+*.txt       text eol=lf
+*.html      text eol=lf
+*.toml      text eol=lf
+*.cfg       text eol=lf
+*.ini       text eol=lf
+*.sh        text eol=lf
+
+# Binary — never mangle
+*.png       binary
+*.jpg       binary
+*.ico       binary
+*.woff2     binary

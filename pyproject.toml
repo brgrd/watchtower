@@ -1,0 +1,32 @@
+[project]
+name = "watchtower"
+version = "0.1.0"
+description = "Agentic infra-sec monitor — RSS-bounded threat briefing via Groq"
+requires-python = ">=3.11"
+
+# Runtime deps are in requirements.txt (pinned for reproducibility).
+# Dev/test deps are in requirements-dev.txt.
+
+[tool.pytest.ini_options]
+testpaths  = ["tests"]
+addopts    = "--tb=short -q --strict-markers"
+markers    = [
+    "unit: pure unit tests — no I/O, no external services",
+    "integration: tests that touch external APIs (skip in CI without keys)",
+]
+
+[tool.coverage.run]
+source  = ["agent"]
+branch  = true
+omit    = [
+    "agent/__init__.py",
+    "agent/__pycache__/*",
+]
+
+[tool.coverage.report]
+show_missing  = true
+skip_covered  = false
+fail_under    = 70
+
+[tool.coverage.html]
+directory = "htmlcov"
