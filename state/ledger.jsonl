@@ -15,3 +15,7 @@
 {"ts": "2026-03-05T06:02:19.834934+00:00", "counts": {"feeds": 22, "polled": 23, "enriched": 22, "clusters": 7}, "hot_domains": ["pkg_npm", "pkg_pypi", "browser_ext"], "placeholder_mode": false}
 {"ts": "2026-03-05T11:48:21.322844+00:00", "counts": {"feeds": 22, "polled": 431, "enriched": 30, "clusters": 8}, "hot_domains": ["web_framework"], "placeholder_mode": false}
 {"ts": "2026-03-05T16:09:15.669014+00:00", "counts": {"feeds": 24, "polled": 31, "enriched": 19, "clusters": 6}, "hot_domains": ["container", "os_kernel", "web_framework", "crypto_lib"], "placeholder_mode": false}
+{"ts": "2026-03-05T21:17:35.103897+00:00", "counts": {"feeds": 24, "polled": 0, "enriched": 0, "clusters": 0}, "hot_domains": [], "placeholder_mode": true}
+{"ts": "2026-03-05T21:17:47.226659+00:00", "counts": {"feeds": 24, "polled": 0, "enriched": 0, "clusters": 0}, "hot_domains": [], "placeholder_mode": true}
+{"ts": "2026-03-05T21:18:07.303500+00:00", "counts": {"feeds": 24, "polled": 0, "enriched": 0, "clusters": 0}, "hot_domains": [], "placeholder_mode": true}
+{"ts": "2026-03-05T21:18:41.898423+00:00", "counts": {"feeds": 24, "polled": 3, "enriched": 3, "clusters": 3}, "hot_domains": ["os_kernel", "crypto_lib"], "placeholder_mode": true}
