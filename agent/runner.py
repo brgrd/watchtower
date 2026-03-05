@@ -555,6 +555,14 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
     if placeholder_mode() or not GROQ_API_KEY:
         return "", []
 
+    # Build a 3-month reporting window label (current month + 2 prior)
+    _now = datetime.now(timezone.utc)
+    _months = [
+        (_now.replace(day=1) - timedelta(days=30 * i)).strftime("%B %Y")
+        for i in range(3)
+    ]
+    reporting_window = f"{_months[2]} – {_months[0]}"
+
     all_items = (kev_items or []) + (nvd_items or []) + (news_items or [])
     corroboration = _build_corroboration_map(all_items)
     kev_block = [
@@ -587,17 +595,27 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
     prompt = {
         "task": "infrasec_briefing",
         "schema_version": "watchtower.groq.package.v1",
+        "reporting_window": reporting_window,
         "exploited_vulnerabilities": kev_block,
         "recent_cves": nvd_block,
         "news_articles": article_block,
         "normalized_items": package_items,
         "instructions": (
-            "You are a senior threat intelligence analyst. "
+            "You are a senior threat intelligence analyst writing a concise briefing "
+            f"for the period {reporting_window}. "
             "Review all inputs: exploited vulnerabilities (CISA KEV), recent CVEs (NVD), "
             "and news articles. Produce: "
-            "(1) executive_summary: 2-3 sentences covering the overall threat landscape — "
-            "dominant themes, most at-risk technology stacks, and the single most urgent "
-            "action item for a security team. "
+            "(1) executive_summary: exactly 3 sentences grounded in the data provided. "
+            "Sentence 1 — name the 2-3 specific CVE IDs, software products, or vendor platforms "
+            "that represent the highest-risk items this period (e.g. 'CVE-2026-XXXX in Palo Alto PAN-OS' "
+            "or 'Apache Tomcat RCE'). "
+            "Sentence 2 — identify which specific infrastructure resources or system types are most "
+            "exposed right now and why (e.g. internet-facing firewalls, container orchestration nodes, "
+            "VPN appliances), referencing patch or exploitation status from the data. "
+            "Sentence 3 — state the single most time-sensitive action: be specific about what to patch, "
+            "isolate, or monitor, and name the affected product/version if available. "
+            "Do NOT use vague language like 'various systems' or 'multiple vendors' — always name names. "
+            "Keep the summary anchored to the reporting window and only reference items present in the input data. "
             "(2) findings: JSON array of up to 12 distinct threat or vulnerability findings. "
             "For each finding: title (under 100 chars), summary (1-2 sentence analyst note "
             "on what is affected, exploit/patch status, urgency), risk_score (integer 0-100: "
