@@ -12,3 +12,4 @@
 {"ts": "2026-03-04T21:39:41.320359+00:00", "counts": {"feeds": 14, "polled": 3, "enriched": 3, "clusters": 3}, "hot_domains": ["os_kernel", "crypto_lib"], "placeholder_mode": true}
 {"ts": "2026-03-04T23:14:22.476303+00:00", "counts": {"feeds": 22, "polled": 38, "enriched": 30, "clusters": 15}, "hot_domains": ["browser_ext", "container", "crypto_lib"], "placeholder_mode": false}
 {"ts": "2026-03-04T23:51:19.184550+00:00", "counts": {"feeds": 22, "polled": 6, "enriched": 0, "clusters": 5}, "hot_domains": ["web_framework", "crypto_lib", "identity"], "placeholder_mode": false}
+{"ts": "2026-03-05T06:02:19.834934+00:00", "counts": {"feeds": 22, "polled": 23, "enriched": 22, "clusters": 7}, "hot_domains": ["pkg_npm", "pkg_pypi", "browser_ext"], "placeholder_mode": false}
