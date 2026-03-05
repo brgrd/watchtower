@@ -36,17 +36,17 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 </head>
 <body>
 <h1>Watchtower — Infrastructure Security Briefing</h1>
-<p>Generated <strong>2026-03-05 06-02</strong> UTC | <a href="latest.md">latest.md</a></p>
-<div class="executive"><h2>Analyst Summary</h2><p>The current threat landscape is dominated by HTTP request smuggling and cache poisoning vulnerabilities in various frameworks and libraries, with a high risk of exploitation in Pingora and Apache products. The most at-risk technology stacks include Perl and WordPress plugins. The single most urgent action item for a security team is to patch or mitigate the Pingora HTTP request smuggling vulnerability (CVE-2026-2835).</p></div>
+<p>Generated <strong>2026-03-05 11-48</strong> UTC | <a href="latest.md">latest.md</a></p>
+<div class="executive"><h2>Analyst Summary</h2><p>The current threat landscape is dominated by PHP Remote File Inclusion (RFI) vulnerabilities, with multiple themes and technology stacks affected. The most at-risk technology stacks include WordPress, PHP, and various themes and plugins. The single most urgent action item for a security team is to patch or mitigate PHP RFI vulnerabilities as soon as possible.</p></div>
 <div class="hm-tabs"><button class="hm-tab active" onclick="switchTab('domain')">Domains</button> <button class="hm-tab" onclick="switchTab('geo')">Geography</button></div>
 <div id="hm-domain" class="heatmap">
-                    <div class="hm-cell" style="background:#f77f00;color:#fff" title="npm / Node: 3 finding(s), max score 70">
+                    <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="npm / Node: 0 finding(s), max score —">
                         <span class="hm-label">npm / Node</span>
-            <span class="hm-score">70</span>
+            <span class="hm-score">—</span>
           </div>
-                    <div class="hm-cell" style="background:#f77f00;color:#fff" title="PyPI / Python: 3 finding(s), max score 70">
+                    <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="PyPI / Python: 0 finding(s), max score —">
                         <span class="hm-label">PyPI / Python</span>
-            <span class="hm-score">70</span>
+            <span class="hm-score">—</span>
           </div>
                     <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="Maven / Java: 0 finding(s), max score —">
                         <span class="hm-label">Maven / Java</span>
@@ -56,13 +56,13 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
                         <span class="hm-label">.NET / NuGet</span>
             <span class="hm-score">—</span>
           </div>
-                    <div class="hm-cell" style="background:#f9c74f;color:#24292e" title="RubyGems: 2 finding(s), max score 40">
+                    <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="RubyGems: 0 finding(s), max score —">
                         <span class="hm-label">RubyGems</span>
-            <span class="hm-score">40</span>
+            <span class="hm-score">—</span>
           </div>
-                    <div class="hm-cell" style="background:#f77f00;color:#fff" title="Browser Extensions: 4 finding(s), max score 70">
+                    <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="Browser Extensions: 0 finding(s), max score —">
                         <span class="hm-label">Browser Extensions</span>
-            <span class="hm-score">70</span>
+            <span class="hm-score">—</span>
           </div>
                     <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="CA / PKI Trust: 0 finding(s), max score —">
                         <span class="hm-label">CA / PKI Trust</span>
@@ -72,17 +72,17 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
                         <span class="hm-label">Cloud / IAM</span>
             <span class="hm-score">—</span>
           </div>
-                    <div class="hm-cell" style="background:#f9c74f;color:#24292e" title="Containers / K8s: 1 finding(s), max score 40">
+                    <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="Containers / K8s: 0 finding(s), max score —">
                         <span class="hm-label">Containers / K8s</span>
-            <span class="hm-score">40</span>
-          </div>
-                    <div class="hm-cell" style="background:#f9c74f;color:#24292e" title="OS / Kernel: 1 finding(s), max score 40">
-                        <span class="hm-label">OS / Kernel</span>
-            <span class="hm-score">40</span>
-          </div>
-                    <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="Web / Servers: 0 finding(s), max score —">
-                        <span class="hm-label">Web / Servers</span>
             <span class="hm-score">—</span>
+          </div>
+                    <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="OS / Kernel: 0 finding(s), max score —">
+                        <span class="hm-label">OS / Kernel</span>
+            <span class="hm-score">—</span>
+          </div>
+                    <div class="hm-cell" style="background:#d62828;color:#fff" title="Web / Servers: 8 finding(s), max score 90">
+                        <span class="hm-label">Web / Servers</span>
+            <span class="hm-score">90</span>
           </div>
                     <div class="hm-cell" style="background:#ebedf0;color:#57606a" title="Crypto Libraries: 0 finding(s), max score —">
                         <span class="hm-label">Crypto Libraries</span>
@@ -97,56 +97,63 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
             <span class="hm-score">—</span>
           </div></div>
 <div id="hm-geo" style="display:none;margin:1rem 0 2rem"><div id="world-map" style="height:340px"></div><div id="geo-legend" style="display:flex;flex-wrap:wrap;gap:6px;margin:.6rem 0 1rem"></div></div>
-<div class="history-panel"><span class="hs-label">Fresh&nbsp;items</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,20.0 8.0,20.0 16.0,2.0 24.0,19.4 32.0,20.0 40.0,17.4 48.0,18.3 56.0,20.0 64.0,19.6 72.0,19.9 80.0,19.7" fill="none" stroke="#0366d6" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="19.7" r="2.5" fill="#0366d6"/></svg>&nbsp;<span class="hs-val">23</span>&emsp;<span class="hs-label">Clusters</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,20.0 8.0,16.4 16.0,2.0 24.0,2.0 32.0,20.0 40.0,2.0 48.0,2.0 56.0,16.4 64.0,2.0 72.0,14.0 80.0,11.6" fill="none" stroke="#28a745" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="11.6" r="2.5" fill="#28a745"/></svg>&nbsp;<span class="hs-val">7</span>&emsp;<span class="hs-label">Runs&nbsp;logged</span>&nbsp;<span class="hs-val">11</span></div>
+<div class="history-panel"><span class="hs-label">Fresh&nbsp;items</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,20.0 7.3,20.0 14.5,2.0 21.8,19.4 29.1,20.0 36.4,17.4 43.6,18.3 50.9,20.0 58.2,19.6 65.5,19.9 72.7,19.7 80.0,15.1" fill="none" stroke="#0366d6" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="15.1" r="2.5" fill="#0366d6"/></svg>&nbsp;<span class="hs-val">431</span>&emsp;<span class="hs-label">Clusters</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,20.0 7.3,16.4 14.5,2.0 21.8,2.0 29.1,20.0 36.4,2.0 43.6,2.0 50.9,16.4 58.2,2.0 65.5,14.0 72.7,11.6 80.0,10.4" fill="none" stroke="#28a745" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="10.4" r="2.5" fill="#28a745"/></svg>&nbsp;<span class="hs-val">8</span>&emsp;<span class="hs-label">Runs&nbsp;logged</span>&nbsp;<span class="hs-val">12</span></div>
 <h2>Top Findings</h2>
 
         <details class="cluster">
-          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>Pingora HTTP Request Smuggling Vulnerability<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">PyPI / Python</span> <span class="domain-tag">npm / Node</span> <span class="domain-tag">Browser Extensions</span></div></summary>
+          <summary><span class="badge" style="background:#d62828;color:#fff">90</span>CVE-2025-54001: Deserialization of Untrusted Data in ThemeREX Classter<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div></summary>
           <div class="cluster-body">
-            <p>Pingora&#x27;s parsing of HTTP/1.0 and Transfer-Encoding requests is vulnerable to HTTP request smuggling (CWE-444). Exploit/patch status: Patch available. Urgency: High.</p>
-            <ul><li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-2835" target="_blank" rel="noopener noreferrer">CVE-2026-2835</a></li></ul>
+            <p>ThemeREX Classter is vulnerable to deserialization of untrusted data, allowing attackers to inject malicious objects. Patch status: unknown. Urgency: high.</p>
+            <ul><li><a href="https://example.com/themerex-classter-vulnerable-to-deserialization-of-untrusted-data" target="_blank" rel="noopener noreferrer">ThemeREX Classter vulnerable to deserialization of untrusted data</a></li></ul>
           </div>
         </details>
         <details class="cluster">
-          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>Apache HTTP Request Smuggling Vulnerability<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">PyPI / Python</span> <span class="domain-tag">npm / Node</span> <span class="domain-tag">Browser Extensions</span></div></summary>
+          <summary><span class="badge" style="background:#d62828;color:#fff">80</span>CVE-2025-68555: Unrestricted File Upload in zozothemes Nutrie<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div></summary>
           <div class="cluster-body">
-            <p>Apache&#x27;s handling of HTTP/1.1 connection upgrades is vulnerable to HTTP request smuggling (CWE-444). Exploit/patch status: Patch available. Urgency: High.</p>
-            <ul><li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-2833" target="_blank" rel="noopener noreferrer">CVE-2026-2833</a></li></ul>
+            <p>zozothemes Nutrie is vulnerable to unrestricted file upload, allowing attackers to upload malicious files. Patch status: unknown. Urgency: high.</p>
+            <ul><li><a href="https://example.com/zozothemes-nutrie-vulnerable-to-unrestricted-file-upload" target="_blank" rel="noopener noreferrer">zozothemes Nutrie vulnerable to unrestricted file upload</a></li></ul>
           </div>
         </details>
         <details class="cluster">
-          <summary><span class="badge" style="background:#f9c74f;color:#24292e">40</span>Cache Poisoning Vulnerability in Pingora<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">PyPI / Python</span> <span class="domain-tag">npm / Node</span> <span class="domain-tag">Browser Extensions</span></div></summary>
+          <summary><span class="badge" style="background:#d62828;color:#fff">80</span>CVE-2025-68554: Unrestricted File Upload in zozothemes Keenarch<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div></summary>
           <div class="cluster-body">
-            <p>Pingora&#x27;s default cache key construction is vulnerable to cache poisoning. Exploit/patch status: Patch available. Urgency: Medium.</p>
-            <ul><li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-2836" target="_blank" rel="noopener noreferrer">CVE-2026-2836</a></li></ul>
+            <p>zozothemes Keenarch is vulnerable to unrestricted file upload, allowing attackers to upload malicious files. Patch status: unknown. Urgency: high.</p>
+            <ul><li><a href="https://example.com/zozothemes-keenarch-vulnerable-to-unrestricted-file-upload" target="_blank" rel="noopener noreferrer">zozothemes Keenarch vulnerable to unrestricted file upload</a></li></ul>
           </div>
         </details>
         <details class="cluster">
-          <summary><span class="badge" style="background:#f9c74f;color:#24292e">40</span>UnQLite Library Vulnerability<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">RubyGems</span></div></summary>
+          <summary><span class="badge" style="background:#d62828;color:#fff">80</span>CVE-2025-68553: Unrestricted File Upload in zozothemes Lendiz<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div></summary>
           <div class="cluster-body">
-            <p>UnQLite for Perl embeds a potentially insecure version of the UnQLite library. Exploit/patch status: Patch available. Urgency: Medium.</p>
-            <ul><li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3257" target="_blank" rel="noopener noreferrer">CVE-2026-3257</a></li></ul>
+            <p>zozothemes Lendiz is vulnerable to unrestricted file upload, allowing attackers to upload malicious files. Patch status: unknown. Urgency: high.</p>
+            <ul><li><a href="https://example.com/zozothemes-lendiz-vulnerable-to-unrestricted-file-upload" target="_blank" rel="noopener noreferrer">zozothemes Lendiz vulnerable to unrestricted file upload</a></li></ul>
           </div>
         </details>
         <details class="cluster">
-          <summary><span class="badge" style="background:#f9c74f;color:#24292e">40</span>Compress::Raw::Zlib Vulnerability<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">RubyGems</span></div></summary>
+          <summary><span class="badge" style="background:#d62828;color:#fff">80</span>CVE-2026-22390: Code Injection in Builderall Builder<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div></summary>
           <div class="cluster-body">
-            <p>Compress::Raw::Zlib includes a copy of the zlib library with potentially insecure versions. Exploit/patch status: Patch available. Urgency: Medium.</p>
-            <ul><li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3381" target="_blank" rel="noopener noreferrer">CVE-2026-3381</a></li></ul>
+            <p>Builderall Builder is vulnerable to code injection, allowing attackers to inject malicious code. Patch status: unknown. Urgency: high.</p>
+            <ul><li><a href="https://example.com/builderall-builder-vulnerable-to-code-injection" target="_blank" rel="noopener noreferrer">Builderall Builder vulnerable to code injection</a></li></ul>
           </div>
         </details>
         <details class="cluster">
-          <summary><span class="badge" style="background:#f9c74f;color:#24292e">40</span>WordPress Plugin Vulnerabilities<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Browser Extensions</span></div></summary>
+          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2025-53335: PHP RFI in ThemeREX Berger<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div></summary>
           <div class="cluster-body">
-            <p>Multiple WordPress plugins are vulnerable to Stored Cross-Site Scripting (XSS) and SQL Injection. Exploit/patch status: Patch available. Urgency: Medium.</p>
-            <ul><li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3034" target="_blank" rel="noopener noreferrer">CVE-2026-3034</a></li><li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3523" target="_blank" rel="noopener noreferrer">CVE-2026-3523</a></li></ul>
+            <p>ThemeREX Berger is vulnerable to PHP RFI, allowing attackers to include malicious files. Patch status: unknown. Urgency: high.</p>
+            <ul><li><a href="https://example.com/themerex-berger-vulnerable-to-php-rfi" target="_blank" rel="noopener noreferrer">ThemeREX Berger vulnerable to PHP RFI</a></li></ul>
           </div>
         </details>
         <details class="cluster">
-          <summary><span class="badge" style="background:#f9c74f;color:#24292e">40</span>IDC SFX2100 Satellite Receiver Vulnerabilities<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Containers / K8s</span> <span class="domain-tag">OS / Kernel</span></div></summary>
+          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2025-69090: PHP RFI in ovatheme Remons<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div></summary>
           <div class="cluster-body">
-            <p>The IDC SFX2100 Satellite Receiver has multiple vulnerabilities, including setuid bit set on utilities and world-writable files. Exploit/patch status: Patch available. Urgency: Medium.</p>
-            <ul><li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-29121" target="_blank" rel="noopener noreferrer">CVE-2026-29121</a></li><li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-29122" target="_blank" rel="noopener noreferrer">CVE-2026-29122</a></li><li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-29123" target="_blank" rel="noopener noreferrer">CVE-2026-29123</a></li></ul>
+            <p>ovatheme Remons is vulnerable to PHP RFI, allowing attackers to include malicious files. Patch status: unknown. Urgency: high.</p>
+            <ul><li><a href="https://example.com/ovatheme-remons-vulnerable-to-php-rfi" target="_blank" rel="noopener noreferrer">ovatheme Remons vulnerable to PHP RFI</a></li></ul>
+          </div>
+        </details>
+        <details class="cluster">
+          <summary><span class="badge" style="background:#f77f00;color:#fff">70</span>CVE-2025-69339: PHP RFI in don-themes Molla<div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div></summary>
+          <div class="cluster-body">
+            <p>don-themes Molla is vulnerable to PHP RFI, allowing attackers to include malicious files. Patch status: unknown. Urgency: high.</p>
+            <ul><li><a href="https://example.com/don-themes-molla-vulnerable-to-php-rfi" target="_blank" rel="noopener noreferrer">don-themes Molla vulnerable to PHP RFI</a></li></ul>
           </div>
         </details>
 <footer>Watchtower · local-safe placeholder mode: {str(placeholder_mode()).lower()}</footer>
