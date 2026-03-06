@@ -160,7 +160,7 @@ feeds:
     enabled: true
 
 model:
-  name: "llama-3.1-8b-instant"
+  name: "meta-llama/llama-4-scout-17b-16e-instruct"
   temperature: 0.2
   max_tokens: 1200
 
