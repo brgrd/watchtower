@@ -82,6 +82,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main   # must be main — not the trigger SHA — so we get the report pushed by the run job
       - name: Upload briefing site
         uses: actions/upload-pages-artifact@v3
         with:
