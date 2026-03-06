@@ -606,11 +606,6 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
         }
         for it in news_items[:12]
     ]
-    package_items = [
-        _build_groq_item_package(i, it, corroboration)
-        for i, it in enumerate(all_items[:25], start=1)
-    ]
-
     domain_keys = ", ".join(_TAXONOMY.keys())
     prompt = {
         "task": "infrasec_briefing",
@@ -619,7 +614,6 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
         "exploited_vulnerabilities": kev_block,
         "recent_cves": nvd_block,
         "news_articles": article_block,
-        "normalized_items": package_items,
         "instructions": (
             "You are a senior threat intelligence analyst writing a concise briefing "
             f"for the period {reporting_window}. "
@@ -655,9 +649,8 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
 
     try:
         user_content = json.dumps(prompt)
-        # Guard: Groq free tier rejects payloads that resolve to much more than ~4k tokens.
-        # Rough estimate: 1 token ≈ 4 chars. Bail early if we're clearly over budget.
-        if len(user_content) > 14_000:
+        print(f"[INFO] Groq payload: {len(user_content):,} chars")
+        if len(user_content) > 20_000:
             print(
                 f"[WARN] Groq prompt too large ({len(user_content)} chars), skipping to avoid 413"
             )
