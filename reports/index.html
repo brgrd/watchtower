@@ -86,16 +86,16 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
         </head>
         <body>
         <h1>Watchtower — Infrastructure Security Briefing</h1>
-        <p>Generated <strong>2026-03-06 17-48</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 00:05, 06:05, 12:05, 18:05 ET">⏱ next run —</span></p>
-        <div class="executive"><h2>Analyst Summary</h2><p>The highest-risk items this period include CVE-2026-29783 in GitHub Copilot CLI, CVE-2025-15602 in Snipe-IT, and CVE-2026-29082 in Kestra. Internet-facing infrastructure resources, particularly those utilizing container orchestration nodes and REST API-based systems, are most exposed due to the recent CVEs with known exploits or PoCs. The single most time-sensitive action is to patch GitHub Copilot CLI versions prior to and including 0.0.422 to prevent potential exploitation of CVE-2026-29783.</p></div>
+        <p>Generated <strong>2026-03-06 23-37</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 00:05, 06:05, 12:05, 18:05 ET">⏱ next run —</span></p>
+        <div class="executive"><h2>Analyst Summary</h2><p>The highest-risk items this period include CVE-2026-29087 in @hono/node-server, CVE-2026-28514 in Rocket.Chat, and CVE-2025-69645 in Binutils objdump. Internet-facing systems with Binutils installed, such as development environments and build servers, are most exposed due to the denial-of-service vulnerabilities. The single most time-sensitive action is to patch Binutils objdump to prevent denial-of-service attacks, specifically upgrading to a version that addresses CVE-2025-69645.</p></div>
 
         <section class="kpi-grid">
-            <div class="kpi"><span class="k">Findings</span><span class="v">6</span></div>
-            <div class="kpi"><span class="k">P1</span><span class="v">1</span></div>
-            <div class="kpi"><span class="k">Exploited</span><span class="v">6</span></div>
+            <div class="kpi"><span class="k">Findings</span><span class="v">10</span></div>
+            <div class="kpi"><span class="k">P1</span><span class="v">4</span></div>
+            <div class="kpi"><span class="k">Exploited</span><span class="v">10</span></div>
             <div class="kpi"><span class="k">Control Plane</span><span class="v">0</span></div>
-            <div class="kpi"><span class="k">Top Domain</span><span class="v v-sm">PyPI / Python</span></div>
-            <div class="kpi"><span class="k">Trend 24h</span><span class="v">+3</span></div>
+            <div class="kpi"><span class="k">Top Domain</span><span class="v v-sm">OS / Kernel</span></div>
+            <div class="kpi"><span class="k">Trend 24h</span><span class="v">+4</span></div>
         </section>
         
 <section class="threat-section">
@@ -295,64 +295,64 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <circle cx="912" cy="652" r="1" fill="#7090a8"/>
 <circle cx="912" cy="714" r="1" fill="#7090a8"/>
 </g>
-<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(55,110,195,0.404)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(55,110,195,0.324)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(55,110,195,0.116)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(55,110,195,0.116)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(55,110,195,0.116)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(55,110,195,0.116)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(55,110,195,0.116)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(55,110,195,0.116)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
 <line x1="221" y1="583" x2="478" y2="342" stroke="rgba(55,110,195,0.324)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(55,110,195,0.116)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(55,110,195,0.404)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(55,110,195,0.484)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(55,110,195,0.324)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
 <line x1="534" y1="623" x2="478" y2="342" stroke="rgba(55,110,195,0.324)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
 <line x1="690" y1="570" x2="478" y2="342" stroke="rgba(55,110,195,0.324)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
 <line x1="806" y1="473" x2="478" y2="342" stroke="rgba(55,110,195,0.324)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(55,110,195,0.348)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(55,110,195,0.324)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(55,110,195,0.348)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(55,110,195,0.128)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(55,110,195,0.484)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(55,110,195,0.324)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
 <line x1="478" y1="342" x2="737" y2="197" stroke="rgba(55,110,195,0.324)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
 <line x1="478" y1="342" x2="534" y2="132" stroke="rgba(55,110,195,0.324)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(55,110,195,0.116)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(55,110,195,0.348)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(55,110,195,0.348)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(55,110,195,0.348)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(55,110,195,0.484)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(55,110,195,0.484)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(55,110,195,0.128)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(55,110,195,0.292)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
 <line x1="737" y1="197" x2="534" y2="132" stroke="rgba(55,110,195,0.116)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
 <line x1="737" y1="197" x2="345" y2="184" stroke="rgba(55,110,195,0.116)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
 <line x1="534" y1="132" x2="345" y2="184" stroke="rgba(55,110,195,0.116)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
 <line x1="534" y1="132" x2="847" y2="307" stroke="rgba(55,110,195,0.116)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(55,110,195,0.116)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(55,110,195,0.292)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
 <line x1="847" y1="307" x2="737" y2="197" stroke="rgba(55,110,195,0.116)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(55,110,195,0.100)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(70,130,210,0.522)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(55,110,195,0.112)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(70,130,210,0.432)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(70,130,210,0.198)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(70,130,210,0.198)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(70,130,210,0.198)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(70,130,210,0.198)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(70,130,210,0.198)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(70,130,210,0.198)" stroke-width="1.1" stroke-linecap="round"/>
 <line x1="221" y1="583" x2="478" y2="342" stroke="rgba(70,130,210,0.432)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(70,130,210,0.198)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(70,130,210,0.522)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(70,130,210,0.612)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(70,130,210,0.432)" stroke-width="1.1" stroke-linecap="round"/>
 <line x1="534" y1="623" x2="478" y2="342" stroke="rgba(70,130,210,0.432)" stroke-width="1.1" stroke-linecap="round"/>
 <line x1="690" y1="570" x2="478" y2="342" stroke="rgba(70,130,210,0.432)" stroke-width="1.1" stroke-linecap="round"/>
 <line x1="806" y1="473" x2="478" y2="342" stroke="rgba(70,130,210,0.432)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(70,130,210,0.459)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(70,130,210,0.432)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(70,130,210,0.459)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(70,130,210,0.211)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(70,130,210,0.612)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(70,130,210,0.432)" stroke-width="1.1" stroke-linecap="round"/>
 <line x1="478" y1="342" x2="737" y2="197" stroke="rgba(70,130,210,0.432)" stroke-width="1.1" stroke-linecap="round"/>
 <line x1="478" y1="342" x2="534" y2="132" stroke="rgba(70,130,210,0.432)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(70,130,210,0.198)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(70,130,210,0.459)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(70,130,210,0.459)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(70,130,210,0.459)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(70,130,210,0.612)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(70,130,210,0.612)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(70,130,210,0.211)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(70,130,210,0.396)" stroke-width="1.1" stroke-linecap="round"/>
 <line x1="737" y1="197" x2="534" y2="132" stroke="rgba(70,130,210,0.198)" stroke-width="1.1" stroke-linecap="round"/>
 <line x1="737" y1="197" x2="345" y2="184" stroke="rgba(70,130,210,0.198)" stroke-width="1.1" stroke-linecap="round"/>
 <line x1="534" y1="132" x2="345" y2="184" stroke="rgba(70,130,210,0.198)" stroke-width="1.1" stroke-linecap="round"/>
 <line x1="534" y1="132" x2="847" y2="307" stroke="rgba(70,130,210,0.198)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(70,130,210,0.198)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(70,130,210,0.396)" stroke-width="1.1" stroke-linecap="round"/>
 <line x1="847" y1="307" x2="737" y2="197" stroke="rgba(70,130,210,0.198)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(70,130,210,0.180)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(70,130,210,0.194)" stroke-width="1.1" stroke-linecap="round"/>
 <g class="tm-node" data-domain="identity" onclick="selectDomain('identity')" style="cursor:pointer">
 <circle cx="534" cy="132" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="534" cy="132" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
@@ -375,11 +375,11 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <text x="737" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Cloud / IAM</text>
 </g>
 <g class="tm-node" data-domain="crypto_lib" onclick="selectDomain('crypto_lib')" style="cursor:pointer">
-<circle cx="180" cy="329" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
+<circle cx="180" cy="329" r="40" fill="rgba(30,110,255,0.546)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="180" cy="329" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
-<circle cx="180" cy="329" r="24" fill="none" stroke="rgba(70,155,255,0.433)" stroke-width="4" filter="url(#f-mid)"/>
+<circle cx="180" cy="329" r="24" fill="none" stroke="rgba(70,155,255,0.664)" stroke-width="4" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="180" cy="329" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
-<text x="180" y="366" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Crypto Libs</text>
+<text x="180" y="366" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Crypto Libs</text>
 </g>
 <g class="tm-node" data-domain="web_framework" onclick="selectDomain('web_framework')" style="cursor:pointer">
 <circle cx="478" cy="342" r="40" fill="rgba(30,110,255,0.603)" filter="url(#f-outer)"/>
@@ -389,11 +389,11 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <text x="478" y="379" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Web / Servers</text>
 </g>
 <g class="tm-node" data-domain="container" onclick="selectDomain('container')" style="cursor:pointer">
-<circle cx="659" cy="360" r="40" fill="rgba(30,110,255,0.646)" filter="url(#f-outer)"/>
+<circle cx="659" cy="360" r="40" fill="rgba(30,110,255,0.25)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="659" cy="360" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
-<circle cx="659" cy="360" r="24" fill="none" stroke="rgba(70,155,255,0.741)" stroke-width="4" filter="url(#f-mid)"/>
+<circle cx="659" cy="360" r="24" fill="none" stroke="rgba(70,155,255,0.439)" stroke-width="4" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="659" cy="360" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
-<text x="659" y="397" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Containers</text>
+<text x="659" y="397" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Containers</text>
 </g>
 <g class="tm-node" data-domain="browser_ext" onclick="selectDomain('browser_ext')" style="cursor:pointer">
 <circle cx="847" cy="307" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
@@ -403,11 +403,11 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <text x="847" y="344" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Browser Ext</text>
 </g>
 <g class="tm-node" data-domain="os_kernel" onclick="selectDomain('os_kernel')" style="cursor:pointer">
-<circle cx="337" cy="460" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
+<circle cx="337" cy="460" r="40" fill="rgba(255,40,40,0.891)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="337" cy="460" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
-<circle cx="337" cy="460" r="24" fill="none" stroke="rgba(70,155,255,0.433)" stroke-width="4" filter="url(#f-mid)"/>
+<circle cx="337" cy="460" r="24" fill="none" stroke="rgba(255,80,80,0.928)" stroke-width="4" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="337" cy="460" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
-<text x="337" y="497" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">OS / Kernel</text>
+<text x="337" y="497" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">OS / Kernel</text>
 </g>
 <g class="tm-node" data-domain="supply_chain" onclick="selectDomain('supply_chain')" style="cursor:pointer">
 <circle cx="119" cy="471" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
@@ -417,18 +417,18 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <text x="119" y="508" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Supply Chain</text>
 </g>
 <g class="tm-node" data-domain="pkg_npm" onclick="selectDomain('pkg_npm')" style="cursor:pointer">
-<circle cx="221" cy="583" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
+<circle cx="221" cy="583" r="40" fill="rgba(30,110,255,0.603)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="221" cy="583" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
-<circle cx="221" cy="583" r="24" fill="none" stroke="rgba(70,155,255,0.433)" stroke-width="4" filter="url(#f-mid)"/>
+<circle cx="221" cy="583" r="24" fill="none" stroke="rgba(70,155,255,0.708)" stroke-width="4" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="221" cy="583" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
-<text x="221" y="620" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">npm / Node</text>
+<text x="221" y="620" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">npm / Node</text>
 </g>
 <g class="tm-node" data-domain="pkg_pypi" onclick="selectDomain('pkg_pypi')" style="cursor:pointer">
-<circle cx="381" cy="609" r="40" fill="rgba(30,110,255,0.747)" filter="url(#f-outer)"/>
+<circle cx="381" cy="609" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="381" cy="609" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
-<circle cx="381" cy="609" r="24" fill="none" stroke="rgba(70,155,255,0.818)" stroke-width="4" filter="url(#f-mid)"/>
+<circle cx="381" cy="609" r="24" fill="none" stroke="rgba(70,155,255,0.433)" stroke-width="4" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="381" cy="609" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
-<text x="381" y="646" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">PyPI / Python</text>
+<text x="381" y="646" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">PyPI / Python</text>
 </g>
 <g class="tm-node" data-domain="pkg_maven" onclick="selectDomain('pkg_maven')" style="cursor:pointer">
 <circle cx="534" cy="623" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
@@ -452,68 +452,158 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <text x="806" y="510" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">RubyGems</text>
 </g>
 <g class="tm-node" data-domain="uncategorised" onclick="selectDomain('uncategorised')" style="cursor:pointer">
-<circle cx="858" cy="171" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
+<circle cx="858" cy="171" r="40" fill="rgba(30,110,255,0.546)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="858" cy="171" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
-<circle cx="858" cy="171" r="24" fill="none" stroke="rgba(70,155,255,0.433)" stroke-width="4" filter="url(#f-mid)"/>
+<circle cx="858" cy="171" r="24" fill="none" stroke="rgba(70,155,255,0.664)" stroke-width="4" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="858" cy="171" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
-<text x="858" y="208" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Other</text>
+<text x="858" y="208" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Other</text>
 </g>
 </svg>
   </div>
   <aside class="panel threat-side">
     <h3 style="margin:.2rem 0 .45rem">Domain Activity</h3>
-    <div class="rank-row" onclick="selectDomain('pkg_pypi')"><span class="rank-label" style="color:#6a8898" title="PyPI / Python">PyPI / Python</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:76%;background:#2e4a6e"></div></div><span class="rank-val" style="color:#3a5568">76</span></div><div class="rank-row" onclick="selectDomain('container')"><span class="rank-label" style="color:#6a8898" title="Containers">Containers</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:62%;background:#2e4a6e"></div></div><span class="rank-val" style="color:#3a5568">62</span></div><div class="rank-row" onclick="selectDomain('web_framework')"><span class="rank-label" style="color:#6a8898" title="Web / Servers">Web / Servers</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:56%;background:#283e5e"></div></div><span class="rank-val" style="color:#3a5568">56</span></div>
+    <div class="rank-row" onclick="selectDomain('os_kernel')"><span class="rank-label" style="color:#8a3030" title="OS / Kernel">OS / Kernel</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:96%;background:#5a1a1a"></div></div><span class="rank-val" style="color:#5a2020">96</span></div><div class="rank-row" onclick="selectDomain('web_framework')"><span class="rank-label" style="color:#6a8898" title="Web / Servers">Web / Servers</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:56%;background:#283e5e"></div></div><span class="rank-val" style="color:#3a5568">56</span></div><div class="rank-row" onclick="selectDomain('pkg_npm')"><span class="rank-label" style="color:#6a8898" title="npm / Node">npm / Node</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:56%;background:#283e5e"></div></div><span class="rank-val" style="color:#3a5568">56</span></div><div class="rank-row" onclick="selectDomain('uncategorised')"><span class="rank-label" style="color:#6a8898" title="Other">Other</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:48%;background:#283e5e"></div></div><span class="rank-val" style="color:#3a5568">48</span></div><div class="rank-row" onclick="selectDomain('crypto_lib')"><span class="rank-label" style="color:#6a8898" title="Crypto Libs">Crypto Libs</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:48%;background:#283e5e"></div></div><span class="rank-val" style="color:#3a5568">48</span></div>
     <h3 style="margin:.7rem 0 .35rem">Selected Domain</h3>
     <div id="tm-detail" class="muted" style="font-size:.8rem">Click a node to inspect findings.</div>
     <h3 style="margin:.7rem 0 .35rem">Feed Contribution</h3>
     <table class="feed-table"><thead><tr><th>Feed domain</th><th>Refs</th><th>Max risk</th></tr></thead><tbody></tbody></table>
   </aside>
 </section>
-<div class="history-panel"><span class="hs-label">Fresh&nbsp;items</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,20.0 4.2,10.4 8.4,13.7 12.6,19.9 16.8,18.4 21.1,19.7 25.3,19.0 29.5,2.0 33.7,18.7 37.9,20.0 42.1,20.0 46.3,20.0 50.5,19.9 54.7,19.9 58.9,14.9 63.2,17.0 67.4,18.8 71.6,18.1 75.8,19.6 80.0,19.7" fill="none" stroke="#0366d6" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="19.7" r="2.5" fill="#0366d6"/></svg>&nbsp;<span class="hs-val">6</span>&emsp;<span class="hs-label">Findings over time</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,20.0 4.2,2.0 8.4,2.0 12.6,16.4 16.8,2.0 21.1,14.0 25.3,11.6 29.5,10.4 33.7,12.8 37.9,20.0 42.1,20.0 46.3,20.0 50.5,16.4 54.7,16.4 58.9,2.0 63.2,2.0 67.4,2.0 71.6,2.0 75.8,16.4 80.0,12.8" fill="none" stroke="#28a745" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="12.8" r="2.5" fill="#28a745"/></svg>&nbsp;<span class="hs-val">6</span>&emsp;<span class="hs-label">Runs&nbsp;logged</span>&nbsp;<span class="hs-val">20</span></div>
+<div class="history-panel"><span class="hs-label">Fresh&nbsp;items</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,10.4 4.2,13.7 8.4,19.9 12.6,18.4 16.8,19.7 21.1,19.0 25.3,2.0 29.5,18.7 33.7,20.0 37.9,20.0 42.1,20.0 46.3,19.9 50.5,19.9 54.7,14.9 58.9,17.0 63.2,18.8 67.4,18.1 71.6,19.6 75.8,19.7 80.0,17.8" fill="none" stroke="#0366d6" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="17.8" r="2.5" fill="#0366d6"/></svg>&nbsp;<span class="hs-val">52</span>&emsp;<span class="hs-label">Findings over time</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,2.0 4.2,2.0 8.4,16.4 12.6,2.0 16.8,14.0 21.1,11.6 25.3,10.4 29.5,12.8 33.7,20.0 37.9,20.0 42.1,20.0 46.3,16.4 50.5,16.4 54.7,2.0 58.9,2.0 63.2,2.0 67.4,2.0 71.6,16.4 75.8,12.8 80.0,8.0" fill="none" stroke="#28a745" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="8.0" r="2.5" fill="#28a745"/></svg>&nbsp;<span class="hs-val">10</span>&emsp;<span class="hs-label">Runs&nbsp;logged</span>&nbsp;<span class="hs-val">20</span></div>
 <h2>Top Findings</h2>
 
-                <details class="cluster" data-domains="pkg_pypi">
+                <details class="cluster" data-domains="pkg_npm">
                     <summary>
-                        <span class="badge" style="background:#f9c74f;color:#24292e">55</span>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
+                        <span class="priority p2">P2</span>
+                        CVE-2026-29087 in @hono/node-server
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">npm / Node</span></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>[P2] CVE-2026-29087 allows running the Hono application on Node.js with a vulnerability that could lead to security issues. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)</p>
+                        <p class="why-now"><strong>Why now:</strong> Newly disclosed CVE</p>
+                        <span class="confidence">confidence 0.60</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Review @hono/node-server usage</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch or upgrade to a fixed version</li></ul></div></div>
+                        <ul></ul>
+                    </div>
+                </details>
+                <details class="cluster" data-domains="web_framework">
+                    <summary>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
+                        <span class="priority p2">P2</span>
+                        CVE-2026-28514 in Rocket.Chat
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>[P2] Rocket.Chat has a vulnerability that could impact its users. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)</p>
+                        <p class="why-now"><strong>Why now:</strong> Newly disclosed CVE</p>
+                        <span class="confidence">confidence 0.60</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Review Rocket.Chat usage</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch or upgrade to a fixed version</li></ul></div></div>
+                        <ul></ul>
+                    </div>
+                </details>
+                <details class="cluster" data-domains="os_kernel">
+                    <summary>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
                         <span class="priority p1">P1</span>
-                        CVE-2026-29783 in GitHub Copilot CLI
-                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">PyPI / Python</span></div>
+                        CVE-2025-69645 in Binutils objdump
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">OS / Kernel</span></div>
                     </summary>
                     <div class="cluster-body">
-                        <p>[P1] GitHub Copilot CLI versions prior to and including 0.0.422 are vulnerable to a shell tool exploit. Patching is urgently required as a PoC may exist. Why now: Newly disclosed CVE with potential for exploitation (confidence: 0.80)</p>
-                        <p class="why-now"><strong>Why now:</strong> Newly disclosed CVE with potential for exploitation</p>
+                        <p>[P1] Binutils objdump contains a denial-of-service vulnerability when processing certain files. No patch or exploitation status is provided. Why now: High risk of denial-of-service attacks (confidence: 0.80)</p>
+                        <p class="why-now"><strong>Why now:</strong> High risk of denial-of-service attacks</p>
                         <span class="confidence">confidence 0.80</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch GitHub Copilot CLI to version &gt; 0.0.422</li></ul></div><div><strong>Next 7d</strong><ul><li>Review and audit access controls for Copilot CLI usage</li></ul></div></div>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Isolate systems with Binutils installed</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch or upgrade to a fixed version</li></ul></div></div>
                         <ul></ul>
                     </div>
                 </details>
-                <details class="cluster" data-domains="container">
+                <details class="cluster" data-domains="os_kernel">
                     <summary>
-                        <span class="badge" style="background:#f9c74f;color:#24292e">50</span>
-                        <span class="priority p2">P2</span>
-                        CVE-2026-29082 in Kestra
-                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Containers / K8s</span></div>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
+                        <span class="priority p1">P1</span>
+                        CVE-2025-69646 in Binutils objdump
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">OS / Kernel</span></div>
                     </summary>
                     <div class="cluster-body">
-                        <p>[P2] Kestra versions from 1.1.10 and prior contain an incorrect access control vulnerability in the REST API. Exploitation could lead to unauthorized access. Why now: Newly disclosed CVE with potential for exploitation (confidence: 0.70)</p>
-                        <p class="why-now"><strong>Why now:</strong> Newly disclosed CVE with potential for exploitation</p>
-                        <span class="confidence">confidence 0.70</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Review Kestra REST API access controls</li></ul></div><div><strong>Next 7d</strong><ul><li>Patch Kestra to a version without the vulnerability</li></ul></div></div>
+                        <p>[P1] Binutils objdump contains another denial-of-service vulnerability when processing certain files. No patch or exploitation status is provided. Why now: High risk of denial-of-service attacks (confidence: 0.80)</p>
+                        <p class="why-now"><strong>Why now:</strong> High risk of denial-of-service attacks</p>
+                        <span class="confidence">confidence 0.80</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Isolate systems with Binutils installed</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch or upgrade to a fixed version</li></ul></div></div>
                         <ul></ul>
                     </div>
                 </details>
-                <details class="cluster" data-domains="container">
+                <details class="cluster" data-domains="os_kernel">
                     <summary>
-                        <span class="badge" style="background:#f9c74f;color:#24292e">45</span>
-                        <span class="priority p2">P2</span>
-                        CVE-2026-29064 in Zarf
-                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Containers / K8s</span></div>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
+                        <span class="priority p1">P1</span>
+                        CVE-2025-69644 in Binutils
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">OS / Kernel</span></div>
                     </summary>
                     <div class="cluster-body">
-                        <p>[P2] Zarf versions from 0.54.0 and prior contain an Airgap Native Packager Manager vulnerability. Exploitation could lead to unauthorized access. Why now: Newly disclosed CVE with potential for exploitation (confidence: 0.60)</p>
-                        <p class="why-now"><strong>Why now:</strong> Newly disclosed CVE with potential for exploitation</p>
+                        <p>[P1] Binutils before 2.46 has a denial-of-service vulnerability in objdump. No patch or exploitation status is provided. Why now: High risk of denial-of-service attacks (confidence: 0.80)</p>
+                        <p class="why-now"><strong>Why now:</strong> High risk of denial-of-service attacks</p>
+                        <span class="confidence">confidence 0.80</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Isolate systems with Binutils installed</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch or upgrade to a fixed version</li></ul></div></div>
+                        <ul></ul>
+                    </div>
+                </details>
+                <details class="cluster" data-domains="os_kernel">
+                    <summary>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
+                        <span class="priority p1">P1</span>
+                        CVE-2025-69651 in GNU Binutils
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">OS / Kernel</span></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>[P1] GNU Binutils thru 2.46 readelf contains a vulnerability that leads to an invalid memory access. No patch or exploitation status is provided. Why now: High risk of denial-of-service attacks (confidence: 0.80)</p>
+                        <p class="why-now"><strong>Why now:</strong> High risk of denial-of-service attacks</p>
+                        <span class="confidence">confidence 0.80</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Isolate systems with GNU Binutils installed</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch or upgrade to a fixed version</li></ul></div></div>
+                        <ul></ul>
+                    </div>
+                </details>
+                <details class="cluster" data-domains="pkg_npm">
+                    <summary>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
+                        <span class="priority p2">P2</span>
+                        CVE-2026-29091 in Locutus
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">npm / Node</span></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>[P2] Locutus brings stdlibs of other programming languages to JavaScript for education and research. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)</p>
+                        <p class="why-now"><strong>Why now:</strong> Newly disclosed CVE</p>
                         <span class="confidence">confidence 0.60</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Review Zarf configurations and access controls</li></ul></div><div><strong>Next 7d</strong><ul><li>Patch Zarf to a version without the vulnerability</li></ul></div></div>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Review Locutus usage</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch or upgrade to a fixed version</li></ul></div></div>
+                        <ul></ul>
+                    </div>
+                </details>
+                <details class="cluster" data-domains="uncategorised">
+                    <summary>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
+                        <span class="priority p2">P2</span>
+                        CVE-2026-29089 in TimescaleDB
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>[P2] TimescaleDB is a time-series database for high-performance real-time analytics. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)</p>
+                        <p class="why-now"><strong>Why now:</strong> Newly disclosed CVE</p>
+                        <span class="confidence">confidence 0.60</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Review TimescaleDB usage</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch or upgrade to a fixed version</li></ul></div></div>
+                        <ul></ul>
+                    </div>
+                </details>
+                <details class="cluster" data-domains="crypto_lib">
+                    <summary>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
+                        <span class="priority p2">P2</span>
+                        CVE-2026-29110 in Cryptomator
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Crypto Libraries</span></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>[P2] Cryptomator encrypts data being stored on cloud infrastructure. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)</p>
+                        <p class="why-now"><strong>Why now:</strong> Newly disclosed CVE</p>
+                        <span class="confidence">confidence 0.60</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Review Cryptomator usage</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch or upgrade to a fixed version</li></ul></div></div>
                         <ul></ul>
                     </div>
                 </details>
@@ -521,50 +611,20 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
                     <summary>
                         <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
                         <span class="priority p2">P2</span>
-                        CVE-2025-15602 in Snipe-IT
+                        CVE-2026-30833 in Rocket.Chat
                         <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div>
                     </summary>
                     <div class="cluster-body">
-                        <p>[P2] Snipe-IT versions prior to 8.3.7 contain sensitive user attributes related to access control. Exploitation could lead to unauthorized access. Why now: Recently disclosed CVE with potential for data exposure (confidence: 0.60)</p>
-                        <p class="why-now"><strong>Why now:</strong> Recently disclosed CVE with potential for data exposure</p>
+                        <p>[P2] Rocket.Chat has another vulnerability that could impact its users. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)</p>
+                        <p class="why-now"><strong>Why now:</strong> Newly disclosed CVE</p>
                         <span class="confidence">confidence 0.60</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Review Snipe-IT access controls and user attributes</li></ul></div><div><strong>Next 7d</strong><ul><li>Patch Snipe-IT to version 8.3.7 or later</li></ul></div></div>
-                        <ul></ul>
-                    </div>
-                </details>
-                <details class="cluster" data-domains="web_framework">
-                    <summary>
-                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
-                        <span class="priority p2">P2</span>
-                        CVE-2025-70363 in Ibexa &amp; Ciril GROUP eZ Platform
-                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div>
-                    </summary>
-                    <div class="cluster-body">
-                        <p>[P2] Incorrect access control in the REST API of Ibexa &amp; Ciril GROUP eZ Platform / Ci. Exploitation could lead to unauthorized access. Why now: Recently disclosed CVE with potential for data exposure (confidence: 0.60)</p>
-                        <p class="why-now"><strong>Why now:</strong> Recently disclosed CVE with potential for data exposure</p>
-                        <span class="confidence">confidence 0.60</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Review Ibexa &amp; Ciril GROUP eZ Platform access controls</li></ul></div><div><strong>Next 7d</strong><ul><li>Patch Ibexa &amp; Ciril GROUP eZ Platform to a version without the vulnerability</li></ul></div></div>
-                        <ul></ul>
-                    </div>
-                </details>
-                <details class="cluster" data-domains="pkg_pypi">
-                    <summary>
-                        <span class="badge" style="background:#f9c74f;color:#24292e">35</span>
-                        <span class="priority p3">P3</span>
-                        CVE-2026-29075 in Mesa
-                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">PyPI / Python</span></div>
-                    </summary>
-                    <div class="cluster-body">
-                        <p>[P3] Mesa is vulnerable to a simulation compromise via agent-based modeling. Exploitation could lead to data exposure or manipulation. Why now: Recently disclosed CVE with potential for data exposure (confidence: 0.50)</p>
-                        <p class="why-now"><strong>Why now:</strong> Recently disclosed CVE with potential for data exposure</p>
-                        <span class="confidence">confidence 0.50</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Review Mesa simulation configurations</li></ul></div><div><strong>Next 7d</strong><ul><li>Patch Mesa to a version without the vulnerability</li></ul></div></div>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Review Rocket.Chat usage</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch or upgrade to a fixed version</li></ul></div></div>
                         <ul></ul>
                     </div>
                 </details>
 <footer>Watchtower · scheduled 00:05 / 06:05 / 12:05 / 18:05 ET · placeholder mode: false</footer>
 <script>
-var CARDS=[{"title": "CVE-2026-29783 in GitHub Copilot CLI", "risk_score": 55, "priority": "P1", "domains": ["pkg_pypi"], "summary": "[P1] GitHub Copilot CLI versions prior to and including 0.0.422 are vulnerable to a shell tool exploit. Patching is urgently required as a PoC may exist. Why now: Newly disclosed CVE with potential for exploitation (confidence: 0.80)"}, {"title": "CVE-2026-29082 in Kestra", "risk_score": 50, "priority": "P2", "domains": ["container"], "summary": "[P2] Kestra versions from 1.1.10 and prior contain an incorrect access control vulnerability in the REST API. Exploitation could lead to unauthorized access. Why now: Newly disclosed CVE with potential for exploitation (confidence: 0.70)"}, {"title": "CVE-2026-29064 in Zarf", "risk_score": 45, "priority": "P2", "domains": ["container"], "summary": "[P2] Zarf versions from 0.54.0 and prior contain an Airgap Native Packager Manager vulnerability. Exploitation could lead to unauthorized access. Why now: Newly disclosed CVE with potential for exploitation (confidence: 0.60)"}, {"title": "CVE-2025-15602 in Snipe-IT", "risk_score": 40, "priority": "P2", "domains": ["web_framework"], "summary": "[P2] Snipe-IT versions prior to 8.3.7 contain sensitive user attributes related to access control. Exploitation could lead to unauthorized access. Why now: Recently disclosed CVE with potential for data exposure (confidence: 0.60)"}, {"title": "CVE-2025-70363 in Ibexa & Ciril GROUP eZ Platform", "risk_score": 40, "priority": "P2", "domains": ["web_framework"], "summary": "[P2] Incorrect access control in the REST API of Ibexa & Ciril GROUP eZ Platform / Ci. Exploitation could lead to unauthorized access. Why now: Recently disclosed CVE with potential for data exposure (confidence: 0.60)"}, {"title": "CVE-2026-29075 in Mesa", "risk_score": 35, "priority": "P3", "domains": ["pkg_pypi"], "summary": "[P3] Mesa is vulnerable to a simulation compromise via agent-based modeling. Exploitation could lead to data exposure or manipulation. Why now: Recently disclosed CVE with potential for data exposure (confidence: 0.50)"}];
+var CARDS=[{"title": "CVE-2026-29087 in @hono/node-server", "risk_score": 40, "priority": "P2", "domains": ["pkg_npm"], "summary": "[P2] CVE-2026-29087 allows running the Hono application on Node.js with a vulnerability that could lead to security issues. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)"}, {"title": "CVE-2026-28514 in Rocket.Chat", "risk_score": 40, "priority": "P2", "domains": ["web_framework"], "summary": "[P2] Rocket.Chat has a vulnerability that could impact its users. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)"}, {"title": "CVE-2025-69645 in Binutils objdump", "risk_score": 40, "priority": "P1", "domains": ["os_kernel"], "summary": "[P1] Binutils objdump contains a denial-of-service vulnerability when processing certain files. No patch or exploitation status is provided. Why now: High risk of denial-of-service attacks (confidence: 0.80)"}, {"title": "CVE-2025-69646 in Binutils objdump", "risk_score": 40, "priority": "P1", "domains": ["os_kernel"], "summary": "[P1] Binutils objdump contains another denial-of-service vulnerability when processing certain files. No patch or exploitation status is provided. Why now: High risk of denial-of-service attacks (confidence: 0.80)"}, {"title": "CVE-2025-69644 in Binutils", "risk_score": 40, "priority": "P1", "domains": ["os_kernel"], "summary": "[P1] Binutils before 2.46 has a denial-of-service vulnerability in objdump. No patch or exploitation status is provided. Why now: High risk of denial-of-service attacks (confidence: 0.80)"}, {"title": "CVE-2025-69651 in GNU Binutils", "risk_score": 40, "priority": "P1", "domains": ["os_kernel"], "summary": "[P1] GNU Binutils thru 2.46 readelf contains a vulnerability that leads to an invalid memory access. No patch or exploitation status is provided. Why now: High risk of denial-of-service attacks (confidence: 0.80)"}, {"title": "CVE-2026-29091 in Locutus", "risk_score": 40, "priority": "P2", "domains": ["pkg_npm"], "summary": "[P2] Locutus brings stdlibs of other programming languages to JavaScript for education and research. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)"}, {"title": "CVE-2026-29089 in TimescaleDB", "risk_score": 40, "priority": "P2", "domains": ["uncategorised"], "summary": "[P2] TimescaleDB is a time-series database for high-performance real-time analytics. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)"}, {"title": "CVE-2026-29110 in Cryptomator", "risk_score": 40, "priority": "P2", "domains": ["crypto_lib"], "summary": "[P2] Cryptomator encrypts data being stored on cloud infrastructure. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)"}, {"title": "CVE-2026-30833 in Rocket.Chat", "risk_score": 40, "priority": "P2", "domains": ["web_framework"], "summary": "[P2] Rocket.Chat has another vulnerability that could impact its users. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)"}];
 var CURRENT_DOMAIN='all';
 var DOMAIN_LABELS={"pkg_npm": "npm / Node", "pkg_pypi": "PyPI / Python", "pkg_maven": "Maven / Java", "pkg_nuget": ".NET / NuGet", "pkg_gem": "RubyGems", "browser_ext": "Browser Extensions", "ca_trust": "CA / PKI Trust", "cloud_iam": "Cloud / IAM", "container": "Containers / K8s", "os_kernel": "OS / Kernel", "web_framework": "Web / Servers", "crypto_lib": "Crypto Libraries", "supply_chain": "Supply Chain", "identity": "Identity / Auth", "uncategorised": "Other"};
 

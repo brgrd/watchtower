@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-03-06T17:48:08.010258+00:00
+generated_at: 2026-03-06T23:37:09.624408+00:00
 model: meta-llama/llama-4-scout-17b-16e-instruct
 project: Watchtower
 ---
@@ -7,28 +7,44 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period include CVE-2026-29783 in GitHub Copilot CLI, CVE-2025-15602 in Snipe-IT, and CVE-2026-29082 in Kestra. Internet-facing infrastructure resources, particularly those utilizing container orchestration nodes and REST API-based systems, are most exposed due to the recent CVEs with known exploits or PoCs. The single most time-sensitive action is to patch GitHub Copilot CLI versions prior to and including 0.0.422 to prevent potential exploitation of CVE-2026-29783.
+The highest-risk items this period include CVE-2026-29087 in @hono/node-server, CVE-2026-28514 in Rocket.Chat, and CVE-2025-69645 in Binutils objdump. Internet-facing systems with Binutils installed, such as development environments and build servers, are most exposed due to the denial-of-service vulnerabilities. The single most time-sensitive action is to patch Binutils objdump to prevent denial-of-service attacks, specifically upgrading to a version that addresses CVE-2025-69645.
 
-## CVE-2026-29783 in GitHub Copilot CLI (risk: 55)
-[P1] GitHub Copilot CLI versions prior to and including 0.0.422 are vulnerable to a shell tool exploit. Patching is urgently required as a PoC may exist. Why now: Newly disclosed CVE with potential for exploitation (confidence: 0.80)
-
-
-## CVE-2026-29082 in Kestra (risk: 50)
-[P2] Kestra versions from 1.1.10 and prior contain an incorrect access control vulnerability in the REST API. Exploitation could lead to unauthorized access. Why now: Newly disclosed CVE with potential for exploitation (confidence: 0.70)
+## CVE-2026-29087 in @hono/node-server (risk: 40)
+[P2] CVE-2026-29087 allows running the Hono application on Node.js with a vulnerability that could lead to security issues. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)
 
 
-## CVE-2026-29064 in Zarf (risk: 45)
-[P2] Zarf versions from 0.54.0 and prior contain an Airgap Native Packager Manager vulnerability. Exploitation could lead to unauthorized access. Why now: Newly disclosed CVE with potential for exploitation (confidence: 0.60)
+## CVE-2026-28514 in Rocket.Chat (risk: 40)
+[P2] Rocket.Chat has a vulnerability that could impact its users. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)
 
 
-## CVE-2025-15602 in Snipe-IT (risk: 40)
-[P2] Snipe-IT versions prior to 8.3.7 contain sensitive user attributes related to access control. Exploitation could lead to unauthorized access. Why now: Recently disclosed CVE with potential for data exposure (confidence: 0.60)
+## CVE-2025-69645 in Binutils objdump (risk: 40)
+[P1] Binutils objdump contains a denial-of-service vulnerability when processing certain files. No patch or exploitation status is provided. Why now: High risk of denial-of-service attacks (confidence: 0.80)
 
 
-## CVE-2025-70363 in Ibexa & Ciril GROUP eZ Platform (risk: 40)
-[P2] Incorrect access control in the REST API of Ibexa & Ciril GROUP eZ Platform / Ci. Exploitation could lead to unauthorized access. Why now: Recently disclosed CVE with potential for data exposure (confidence: 0.60)
+## CVE-2025-69646 in Binutils objdump (risk: 40)
+[P1] Binutils objdump contains another denial-of-service vulnerability when processing certain files. No patch or exploitation status is provided. Why now: High risk of denial-of-service attacks (confidence: 0.80)
 
 
-## CVE-2026-29075 in Mesa (risk: 35)
-[P3] Mesa is vulnerable to a simulation compromise via agent-based modeling. Exploitation could lead to data exposure or manipulation. Why now: Recently disclosed CVE with potential for data exposure (confidence: 0.50)
+## CVE-2025-69644 in Binutils (risk: 40)
+[P1] Binutils before 2.46 has a denial-of-service vulnerability in objdump. No patch or exploitation status is provided. Why now: High risk of denial-of-service attacks (confidence: 0.80)
+
+
+## CVE-2025-69651 in GNU Binutils (risk: 40)
+[P1] GNU Binutils thru 2.46 readelf contains a vulnerability that leads to an invalid memory access. No patch or exploitation status is provided. Why now: High risk of denial-of-service attacks (confidence: 0.80)
+
+
+## CVE-2026-29091 in Locutus (risk: 40)
+[P2] Locutus brings stdlibs of other programming languages to JavaScript for education and research. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)
+
+
+## CVE-2026-29089 in TimescaleDB (risk: 40)
+[P2] TimescaleDB is a time-series database for high-performance real-time analytics. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)
+
+
+## CVE-2026-29110 in Cryptomator (risk: 40)
+[P2] Cryptomator encrypts data being stored on cloud infrastructure. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)
+
+
+## CVE-2026-30833 in Rocket.Chat (risk: 40)
+[P2] Rocket.Chat has another vulnerability that could impact its users. No patch or exploitation status is provided. Why now: Newly disclosed CVE (confidence: 0.60)
 
