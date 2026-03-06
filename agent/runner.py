@@ -205,7 +205,19 @@ def _sample_items() -> list:
 
 
 def _poll_rss(url: str, since_hours: int, ignore: dict) -> list:
-    fp = feedparser.parse(url)
+    # Pre-fetch with requests so we get a real socket timeout.
+    # feedparser.parse(url) uses urllib with no timeout and can hang indefinitely.
+    try:
+        resp = requests.get(
+            url,
+            headers={"User-Agent": "Watchtower/1.0"},
+            timeout=15,
+        )
+        resp.raise_for_status()
+        fp = feedparser.parse(resp.content)
+    except Exception as exc:
+        print(f"[WARN] RSS fetch failed for {url}: {exc}")
+        return []
     items = []
     cutoff = datetime.now(timezone.utc) - timedelta(hours=since_hours)
     for e in fp.entries:
@@ -1650,11 +1662,24 @@ def _run():
     run_deadline = time.monotonic() + budgets["max_runtime_seconds"]
 
     polled = []
-    for fcfg in feeds_cfg[: budgets["max_feeds_polled"]]:
+    feed_workers = budgets.get("max_fetch_workers", 6)
+    feeds_to_poll = feeds_cfg[: budgets["max_feeds_polled"]]
+
+    def _poll_one(fcfg):
         if time.monotonic() > run_deadline:
-            print("[WARN] Runtime budget reached during feed polling")
-            break
-        polled.extend(poll_feed(fcfg, since_hours, ignore))
+            return []
+        return poll_feed(fcfg, since_hours, ignore)
+
+    with ThreadPoolExecutor(max_workers=feed_workers) as pool:
+        futs = [pool.submit(_poll_one, fcfg) for fcfg in feeds_to_poll]
+        for fut in as_completed(futs):
+            if time.monotonic() > run_deadline:
+                print("[WARN] Runtime budget reached during feed polling")
+                break
+            try:
+                polled.extend(fut.result())
+            except Exception as exc:
+                print(f"[WARN] Feed poll task failed: {exc}")
 
     polled, seen = deduplicate(polled, seen)
     save_seen(seen)
