@@ -548,12 +548,18 @@ def groq_chat(messages, model, temperature=0.2, max_tokens=1200):
 def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) -> tuple:
     """Single Groq call: analyze KEV entries, NVD CVEs, and news articles together.
 
-    Returns (executive_summary: str, findings: list).
+    Returns (executive_summary: str, findings: list, status: str).
     Each finding: {title, summary, risk_score, domains, references: [{title, url}]}
     References point back to URLs from news_items so Top Findings are citable.
     """
-    if placeholder_mode() or not GROQ_API_KEY:
-        return "", []
+    if placeholder_mode():
+        print("[INFO] Groq skipped: placeholder mode is on")
+        return "", [], "placeholder"
+    if not GROQ_API_KEY:
+        print(
+            "[WARN] Groq skipped: GROQ_API_KEY is not set — check GitHub repo secrets"
+        )
+        return "", [], "no_api_key"
 
     # Build a 3-month reporting window label (current month + 2 prior)
     _now = datetime.now(timezone.utc)
@@ -565,30 +571,32 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
 
     all_items = (kev_items or []) + (nvd_items or []) + (news_items or [])
     corroboration = _build_corroboration_map(all_items)
+    # Caps kept tight to stay within Groq free-tier request size (~3k input tokens).
+    # The successful baseline was 2525 tokens for 30 items; 413s occur at 72+ items.
     kev_block = [
         {
             "cve": it["title"].split("\u2014")[0].strip(),
-            "description": it.get("summary", "")[:200],
+            "description": it.get("summary", "")[:120],
         }
-        for it in kev_items[:15]
+        for it in kev_items[:6]
     ]
     nvd_block = [
-        {"cve": it["title"], "description": it.get("summary", "")[:150]}
-        for it in nvd_items[:20]
+        {"cve": it["title"], "description": it.get("summary", "")[:80]}
+        for it in nvd_items[:10]
     ]
     article_block = [
         {
-            "headline": it["title"][:150],
+            "headline": it["title"][:100],
             "source": tldextract.extract(it.get("url", "")).registered_domain
             or "unknown",
-            "snippet": (it.get("extracted_text", "") or it.get("summary", ""))[:400],
+            "snippet": (it.get("extracted_text", "") or it.get("summary", ""))[:200],
             "url": it.get("url", ""),
         }
-        for it in news_items[:30]
+        for it in news_items[:12]
     ]
     package_items = [
         _build_groq_item_package(i, it, corroboration)
-        for i, it in enumerate(all_items[:80], start=1)
+        for i, it in enumerate(all_items[:25], start=1)
     ]
 
     domain_keys = ", ".join(_TAXONOMY.keys())
@@ -634,13 +642,21 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
     }
 
     try:
+        user_content = json.dumps(prompt)
+        # Guard: Groq free tier rejects payloads that resolve to much more than ~4k tokens.
+        # Rough estimate: 1 token ≈ 4 chars. Bail early if we're clearly over budget.
+        if len(user_content) > 14_000:
+            print(
+                f"[WARN] Groq prompt too large ({len(user_content)} chars), skipping to avoid 413"
+            )
+            return "", [], "payload_too_large"
         content, _ = groq_chat(
             [
                 {
                     "role": "system",
                     "content": "You are a cybersecurity analyst. Output strict JSON only. No markdown fences.",
                 },
-                {"role": "user", "content": json.dumps(prompt)},
+                {"role": "user", "content": user_content},
             ],
             model=CONFIG["model"]["name"],
             temperature=0.2,
@@ -651,10 +667,10 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
             content = re.sub(r"^```[a-z]*\n?", "", content)
             content = re.sub(r"\n?```$", "", content.strip())
         data = json.loads(content)
-        return data.get("executive_summary", ""), data.get("findings", [])
+        return data.get("executive_summary", ""), data.get("findings", []), "ok"
     except Exception as exc:
         print(f"[WARN] Groq analysis failed: {exc}")
-        return "", []
+        return "", [], f"error: {exc}"
 
 
 # -----------------------------
@@ -1220,6 +1236,7 @@ def _write_index_html(
     executive: str = "",
     history: list = None,
     since_hours: int = 6,
+    groq_status: str = "unknown",
 ):
     # KPI stats
     total_findings = len(cards)
@@ -1708,7 +1725,12 @@ def _run():
         if "known_exploited" not in it.get("source", "")
         and "services.nvd.nist.gov" not in it.get("source", "")
     ]
-    executive, findings = groq_analyze_briefing(kev_items, nvd_items, news_items)
+    executive, findings, groq_status = groq_analyze_briefing(
+        kev_items, nvd_items, news_items
+    )
+    print(
+        f"[INFO] Groq status: {groq_status} | executive={'yes' if executive else 'no'} | findings={len(findings)}"
+    )
     if findings:
         # Groq returned structured findings with cited article references
         cards = _findings_to_cards(findings, all_items=all_items)[
@@ -1774,7 +1796,14 @@ def _run():
 
     history = _read_ledger_history()
     _write_index_html(
-        index_html, cards, heatmap, ts, executive, history, since_hours=since_hours
+        index_html,
+        cards,
+        heatmap,
+        ts,
+        executive,
+        history,
+        since_hours=since_hours,
+        groq_status=groq_status,
     )
 
     print("### Watchtower run")
