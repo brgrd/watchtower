@@ -25,3 +25,4 @@
 {"ts": "2026-03-06T11:43:07.730830+00:00", "counts": {"feeds": 24, "polled": 28, "enriched": 28, "clusters": 15}, "hot_domains": ["pkg_pypi", "os_kernel", "web_framework"], "placeholder_mode": false}
 {"ts": "2026-03-06T15:45:58.142196+00:00", "counts": {"feeds": 24, "polled": 46, "enriched": 30, "clusters": 15}, "hot_domains": ["os_kernel", "identity"], "placeholder_mode": false}
 {"ts": "2026-03-06T16:44:17.239507+00:00", "counts": {"feeds": 24, "polled": 10, "enriched": 10, "clusters": 3}, "hot_domains": ["os_kernel", "web_framework"], "placeholder_mode": false}
+{"ts": "2026-03-06T17:48:08.010544+00:00", "counts": {"feeds": 24, "polled": 6, "enriched": 6, "clusters": 6}, "hot_domains": [], "placeholder_mode": false}
