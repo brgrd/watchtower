@@ -86,16 +86,16 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
         </head>
         <body>
         <h1>Watchtower — Infrastructure Security Briefing</h1>
-        <p>Generated <strong>2026-03-07 17-32</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 00:05, 06:05, 12:05, 18:05 ET">⏱ next run —</span></p>
-        <div class="executive"><h2>Analyst Summary</h2><p>The highest-risk items this period include CVE-2026-3662 and CVE-2026-3661 in Wavlink WL-NU516U1 240425, and CVE-2026-29185 in Backstage. Internet-facing developer portals and identity management platforms are most exposed due to recent CVEs with available PoCs and potential for RCE. The single most time-sensitive action is to patch Wavlink WL-NU516U1 240425 for CVE-2026-3662 and CVE-2026-3661.</p></div>
+        <p>Generated <strong>2026-03-07 23-32</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 00:05, 06:05, 12:05, 18:05 ET">⏱ next run —</span></p>
+        <div class="executive"><h2>Analyst Summary</h2><p>The highest-risk items this period include CVE-2026-3674, CVE-2026-3669, and CVE-2026-3680, affecting Freedom Factory dGEN1 and RyuzakiShinji biome-mcp-server. Internet-facing systems, particularly those using Freedom Factory dGEN1 up to 20260221 and Tenda FH451 1.0.0.9, are most exposed due to unpatched vulnerabilities. The single most time-sensitive action is to patch Freedom Factory dGEN1 up to 20260221 for CVE-2026-3674.</p></div>
 
         <section class="kpi-grid">
-            <div class="kpi"><span class="k">Findings</span><span class="v">4</span></div>
+            <div class="kpi"><span class="k">Findings</span><span class="v">10</span></div>
             <div class="kpi"><span class="k">P1</span><span class="v">1</span></div>
-            <div class="kpi"><span class="k">Exploited</span><span class="v">0</span></div>
+            <div class="kpi"><span class="k">Exploited</span><span class="v">3</span></div>
             <div class="kpi"><span class="k">Control Plane</span><span class="v">1</span></div>
-            <div class="kpi"><span class="k">Top Domain</span><span class="v v-sm">Web / Servers</span></div>
-            <div class="kpi"><span class="k">Trend 24h</span><span class="v">-6</span></div>
+            <div class="kpi"><span class="k">Top Domain</span><span class="v v-sm">OS / Kernel</span></div>
+            <div class="kpi"><span class="k">Trend 24h</span><span class="v">+6</span></div>
         </section>
         
 <section class="threat-section">
@@ -295,70 +295,70 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <circle cx="912" cy="652" r="1" fill="#7090a8"/>
 <circle cx="912" cy="714" r="1" fill="#7090a8"/>
 </g>
-<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(55,110,195,0.276)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="221" y1="583" x2="478" y2="342" stroke="rgba(55,110,195,0.400)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(55,110,195,0.416)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(55,110,195,0.400)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="534" y1="623" x2="478" y2="342" stroke="rgba(55,110,195,0.400)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="690" y1="570" x2="478" y2="342" stroke="rgba(55,110,195,0.400)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="806" y1="473" x2="478" y2="342" stroke="rgba(55,110,195,0.400)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(55,110,195,0.416)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(55,110,195,0.400)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="478" y1="342" x2="737" y2="197" stroke="rgba(55,110,195,0.400)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="478" y1="342" x2="534" y2="132" stroke="rgba(55,110,195,0.400)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(55,110,195,0.416)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(55,110,195,0.416)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(55,110,195,0.264)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="737" y1="197" x2="534" y2="132" stroke="rgba(55,110,195,0.276)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="737" y1="197" x2="345" y2="184" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="534" y1="132" x2="345" y2="184" stroke="rgba(55,110,195,0.276)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="534" y1="132" x2="847" y2="307" stroke="rgba(55,110,195,0.276)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(55,110,195,0.264)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="847" y1="307" x2="737" y2="197" stroke="rgba(55,110,195,0.124)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(55,110,195,0.112)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(70,130,210,0.378)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="221" y1="583" x2="478" y2="342" stroke="rgba(70,130,210,0.518)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(70,130,210,0.536)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(70,130,210,0.518)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="534" y1="623" x2="478" y2="342" stroke="rgba(70,130,210,0.518)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="690" y1="570" x2="478" y2="342" stroke="rgba(70,130,210,0.518)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="806" y1="473" x2="478" y2="342" stroke="rgba(70,130,210,0.518)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(70,130,210,0.536)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(70,130,210,0.518)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="478" y1="342" x2="737" y2="197" stroke="rgba(70,130,210,0.518)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="478" y1="342" x2="534" y2="132" stroke="rgba(70,130,210,0.518)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(70,130,210,0.536)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(70,130,210,0.536)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(70,130,210,0.364)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="737" y1="197" x2="534" y2="132" stroke="rgba(70,130,210,0.378)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="737" y1="197" x2="345" y2="184" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="534" y1="132" x2="345" y2="184" stroke="rgba(70,130,210,0.378)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="534" y1="132" x2="847" y2="307" stroke="rgba(70,130,210,0.378)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(70,130,210,0.364)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="847" y1="307" x2="737" y2="197" stroke="rgba(70,130,210,0.207)" stroke-width="1.1" stroke-linecap="round"/>
-<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(70,130,210,0.194)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(55,110,195,0.292)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(55,110,195,0.292)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(55,110,195,0.292)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(55,110,195,0.292)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(55,110,195,0.292)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(55,110,195,0.292)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(55,110,195,0.292)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="221" y1="583" x2="478" y2="342" stroke="rgba(55,110,195,0.132)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(55,110,195,0.132)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="534" y1="623" x2="478" y2="342" stroke="rgba(55,110,195,0.132)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="690" y1="570" x2="478" y2="342" stroke="rgba(55,110,195,0.132)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="806" y1="473" x2="478" y2="342" stroke="rgba(55,110,195,0.132)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(55,110,195,0.220)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(55,110,195,0.220)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="737" y2="197" stroke="rgba(55,110,195,0.132)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="534" y2="132" stroke="rgba(55,110,195,0.132)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(55,110,195,0.220)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(55,110,195,0.220)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="737" y1="197" x2="534" y2="132" stroke="rgba(55,110,195,0.112)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="737" y1="197" x2="345" y2="184" stroke="rgba(55,110,195,0.112)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="534" y1="132" x2="345" y2="184" stroke="rgba(55,110,195,0.112)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="534" y1="132" x2="847" y2="307" stroke="rgba(55,110,195,0.112)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(55,110,195,0.132)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="847" y1="307" x2="737" y2="197" stroke="rgba(55,110,195,0.112)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(55,110,195,0.100)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(70,130,210,0.396)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(70,130,210,0.396)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(70,130,210,0.396)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(70,130,210,0.396)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(70,130,210,0.396)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(70,130,210,0.396)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(70,130,210,0.396)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="221" y1="583" x2="478" y2="342" stroke="rgba(70,130,210,0.216)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(70,130,210,0.216)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="534" y1="623" x2="478" y2="342" stroke="rgba(70,130,210,0.216)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="690" y1="570" x2="478" y2="342" stroke="rgba(70,130,210,0.216)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="806" y1="473" x2="478" y2="342" stroke="rgba(70,130,210,0.216)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(70,130,210,0.315)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(70,130,210,0.315)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="737" y2="197" stroke="rgba(70,130,210,0.216)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="534" y2="132" stroke="rgba(70,130,210,0.216)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(70,130,210,0.315)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(70,130,210,0.315)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="737" y1="197" x2="534" y2="132" stroke="rgba(70,130,210,0.194)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="737" y1="197" x2="345" y2="184" stroke="rgba(70,130,210,0.194)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="534" y1="132" x2="345" y2="184" stroke="rgba(70,130,210,0.194)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="534" y1="132" x2="847" y2="307" stroke="rgba(70,130,210,0.194)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(70,130,210,0.216)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="847" y1="307" x2="737" y2="197" stroke="rgba(70,130,210,0.194)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(70,130,210,0.180)" stroke-width="1.1" stroke-linecap="round"/>
 <g class="tm-node" data-domain="identity" onclick="selectDomain('identity')" style="cursor:pointer">
-<circle cx="534" cy="132" r="40" fill="rgba(30,110,255,0.517)" filter="url(#f-outer)"/>
+<circle cx="534" cy="132" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="534" cy="132" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
-<circle cx="534" cy="132" r="24" fill="none" stroke="rgba(70,155,255,0.642)" stroke-width="4" filter="url(#f-mid)"/>
+<circle cx="534" cy="132" r="24" fill="none" stroke="rgba(70,155,255,0.433)" stroke-width="4" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="534" cy="132" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
-<text x="534" y="169" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Identity / Auth</text>
+<text x="534" y="169" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Identity / Auth</text>
 </g>
 <g class="tm-node" data-domain="ca_trust" onclick="selectDomain('ca_trust')" style="cursor:pointer">
 <circle cx="345" cy="184" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
@@ -375,25 +375,25 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <text x="737" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Cloud / IAM</text>
 </g>
 <g class="tm-node" data-domain="crypto_lib" onclick="selectDomain('crypto_lib')" style="cursor:pointer">
-<circle cx="180" cy="329" r="40" fill="rgba(30,110,255,0.495)" filter="url(#f-outer)"/>
+<circle cx="180" cy="329" r="40" fill="rgba(30,110,255,0.258)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="180" cy="329" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
-<circle cx="180" cy="329" r="24" fill="none" stroke="rgba(70,155,255,0.626)" stroke-width="4" filter="url(#f-mid)"/>
+<circle cx="180" cy="329" r="24" fill="none" stroke="rgba(70,155,255,0.444)" stroke-width="4" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="180" cy="329" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
-<text x="180" y="366" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Crypto Libs</text>
+<text x="180" y="366" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Crypto Libs</text>
 </g>
 <g class="tm-node" data-domain="web_framework" onclick="selectDomain('web_framework')" style="cursor:pointer">
-<circle cx="478" cy="342" r="40" fill="rgba(30,110,255,0.74)" filter="url(#f-outer)"/>
+<circle cx="478" cy="342" r="40" fill="rgba(30,110,255,0.258)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="478" cy="342" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
-<circle cx="478" cy="342" r="24" fill="none" stroke="rgba(70,155,255,0.812)" stroke-width="4" filter="url(#f-mid)"/>
+<circle cx="478" cy="342" r="24" fill="none" stroke="rgba(70,155,255,0.444)" stroke-width="4" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="478" cy="342" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
-<text x="478" y="379" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Web / Servers</text>
+<text x="478" y="379" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Web / Servers</text>
 </g>
 <g class="tm-node" data-domain="container" onclick="selectDomain('container')" style="cursor:pointer">
-<circle cx="659" cy="360" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
+<circle cx="659" cy="360" r="40" fill="rgba(30,110,255,0.416)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="659" cy="360" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
-<circle cx="659" cy="360" r="24" fill="none" stroke="rgba(70,155,255,0.433)" stroke-width="4" filter="url(#f-mid)"/>
+<circle cx="659" cy="360" r="24" fill="none" stroke="rgba(70,155,255,0.565)" stroke-width="4" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="659" cy="360" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
-<text x="659" y="397" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Containers</text>
+<text x="659" y="397" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Containers</text>
 </g>
 <g class="tm-node" data-domain="browser_ext" onclick="selectDomain('browser_ext')" style="cursor:pointer">
 <circle cx="847" cy="307" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
@@ -403,23 +403,23 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <text x="847" y="344" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Browser Ext</text>
 </g>
 <g class="tm-node" data-domain="os_kernel" onclick="selectDomain('os_kernel')" style="cursor:pointer">
-<circle cx="337" cy="460" r="40" fill="rgba(30,110,255,0.769)" filter="url(#f-outer)"/>
+<circle cx="337" cy="460" r="40" fill="rgba(255,40,40,0.92)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="337" cy="460" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
-<circle cx="337" cy="460" r="24" fill="none" stroke="rgba(70,155,255,0.835)" stroke-width="4" filter="url(#f-mid)"/>
+<circle cx="337" cy="460" r="24" fill="none" stroke="rgba(255,80,80,0.95)" stroke-width="4" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="337" cy="460" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
 <text x="337" y="497" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">OS / Kernel</text>
 </g>
 <g class="tm-node" data-domain="supply_chain" onclick="selectDomain('supply_chain')" style="cursor:pointer">
-<circle cx="119" cy="471" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
+<circle cx="119" cy="471" r="40" fill="rgba(30,110,255,0.546)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="119" cy="471" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
-<circle cx="119" cy="471" r="24" fill="none" stroke="rgba(70,155,255,0.433)" stroke-width="4" filter="url(#f-mid)"/>
+<circle cx="119" cy="471" r="24" fill="none" stroke="rgba(70,155,255,0.664)" stroke-width="4" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="119" cy="471" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
-<text x="119" y="508" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Supply Chain</text>
+<text x="119" y="508" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Supply Chain</text>
 </g>
 <g class="tm-node" data-domain="pkg_npm" onclick="selectDomain('pkg_npm')" style="cursor:pointer">
-<circle cx="221" cy="583" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
+<circle cx="221" cy="583" r="40" fill="rgba(30,110,255,0.258)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="221" cy="583" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
-<circle cx="221" cy="583" r="24" fill="none" stroke="rgba(70,155,255,0.433)" stroke-width="4" filter="url(#f-mid)"/>
+<circle cx="221" cy="583" r="24" fill="none" stroke="rgba(70,155,255,0.444)" stroke-width="4" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="221" cy="583" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
 <text x="221" y="620" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">npm / Node</text>
 </g>
@@ -462,79 +462,169 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
   </div>
   <aside class="panel threat-side">
     <h3 style="margin:.2rem 0 .45rem">Domain Activity</h3>
-    <div class="rank-row" onclick="selectDomain('os_kernel')"><span class="rank-label" style="color:#6a8898" title="OS / Kernel">OS / Kernel</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:79%;background:#2e4a6e"></div></div><span class="rank-val" style="color:#3a5568">79</span></div><div class="rank-row" onclick="selectDomain('web_framework')"><span class="rank-label" style="color:#6a8898" title="Web / Servers">Web / Servers</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:75%;background:#2e4a6e"></div></div><span class="rank-val" style="color:#3a5568">75</span></div><div class="rank-row" onclick="selectDomain('identity')"><span class="rank-label" style="color:#6a8898" title="Identity / Auth">Identity / Auth</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:44%;background:#283e5e"></div></div><span class="rank-val" style="color:#3a5568">44</span></div><div class="rank-row" onclick="selectDomain('crypto_lib')"><span class="rank-label" style="color:#6a8898" title="Crypto Libs">Crypto Libs</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:41%;background:#283e5e"></div></div><span class="rank-val" style="color:#3a5568">41</span></div>
+    <div class="rank-row" onclick="selectDomain('os_kernel')"><span class="rank-label" style="color:#8a3030" title="OS / Kernel">OS / Kernel</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:100%;background:#5a1a1a"></div></div><span class="rank-val" style="color:#5a2020">100</span></div><div class="rank-row" onclick="selectDomain('supply_chain')"><span class="rank-label" style="color:#6a8898" title="Supply Chain">Supply Chain</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:48%;background:#283e5e"></div></div><span class="rank-val" style="color:#3a5568">48</span></div><div class="rank-row" onclick="selectDomain('container')"><span class="rank-label" style="color:#6a8898" title="Containers">Containers</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:30%;background:#223450"></div></div><span class="rank-val" style="color:#3a5568">30</span></div>
     <h3 style="margin:.7rem 0 .35rem">Selected Domain</h3>
     <div id="tm-detail" class="muted" style="font-size:.8rem">Click a node to inspect findings.</div>
     <h3 style="margin:.7rem 0 .35rem">Feed Contribution</h3>
     <table class="feed-table"><thead><tr><th>Feed domain</th><th>Refs</th><th>Max risk</th></tr></thead><tbody></tbody></table>
   </aside>
 </section>
-<div class="history-panel"><span class="hs-label">Fresh&nbsp;items</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,18.4 4.2,19.7 8.4,19.0 12.6,2.0 16.8,18.7 21.1,20.0 25.3,20.0 29.5,20.0 33.7,19.9 37.9,19.9 42.1,14.9 46.3,17.0 50.5,18.8 54.7,18.1 58.9,19.6 63.2,19.7 67.4,17.8 71.6,19.1 75.8,18.6 80.0,18.2" fill="none" stroke="#0366d6" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="18.2" r="2.5" fill="#0366d6"/></svg>&nbsp;<span class="hs-val">44</span>&emsp;<span class="hs-label">Findings over time</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,2.0 4.2,14.0 8.4,11.6 12.6,10.4 16.8,12.8 21.1,20.0 25.3,20.0 29.5,20.0 33.7,16.4 37.9,16.4 42.1,2.0 46.3,2.0 50.5,2.0 54.7,2.0 58.9,16.4 63.2,12.8 67.4,8.0 71.6,12.8 75.8,8.0 80.0,15.2" fill="none" stroke="#28a745" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="15.2" r="2.5" fill="#28a745"/></svg>&nbsp;<span class="hs-val">4</span>&emsp;<span class="hs-label">Runs&nbsp;logged</span>&nbsp;<span class="hs-val">20</span></div>
+<div class="history-panel"><span class="hs-label">Fresh&nbsp;items</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,19.7 4.2,19.0 8.4,2.0 12.6,18.7 16.8,20.0 21.1,20.0 25.3,20.0 29.5,19.9 33.7,19.9 37.9,14.9 42.1,17.0 46.3,18.8 50.5,18.1 54.7,19.6 58.9,19.7 63.2,17.8 67.4,19.1 71.6,18.6 75.8,18.2 80.0,19.5" fill="none" stroke="#0366d6" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="19.5" r="2.5" fill="#0366d6"/></svg>&nbsp;<span class="hs-val">12</span>&emsp;<span class="hs-label">Findings over time</span>&nbsp;<svg width="80" height="22" viewBox="0 0 80 22" style="vertical-align:middle;overflow:visible"><polyline points="0.0,14.0 4.2,11.6 8.4,10.4 12.6,12.8 16.8,20.0 21.1,20.0 25.3,20.0 29.5,16.4 33.7,16.4 37.9,2.0 42.1,2.0 46.3,2.0 50.5,2.0 54.7,16.4 58.9,12.8 63.2,8.0 67.4,12.8 71.6,8.0 75.8,15.2 80.0,8.0" fill="none" stroke="#28a745" stroke-width="1.5" stroke-linejoin="round"/><circle cx="80.0" cy="8.0" r="2.5" fill="#28a745"/></svg>&nbsp;<span class="hs-val">10</span>&emsp;<span class="hs-label">Runs&nbsp;logged</span>&nbsp;<span class="hs-val">20</span></div>
 <h2>Top Findings</h2>
 
-                <details class="cluster" data-domains="os_kernel web_framework">
+                <details class="cluster" data-domains="os_kernel">
                     <summary>
-                        <span class="badge" style="background:#d62828;color:#fff">85</span>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">55</span>
                         <span class="priority p1">P1</span>
-                        Wavlink WL-NU516U1 240425 Multiple Vulnerabilities
-                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">OS / Kernel</span> <span class="domain-tag">Web / Servers</span></div>
+                        CVE-2026-3674 in Freedom Factory dGEN1
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">OS / Kernel</span></div>
                     </summary>
                     <div class="cluster-body">
-                        <p>[P1] Wavlink WL-NU516U1 240425 is vulnerable to multiple issues, including CVE-2026-3662 and CVE-2026-3661. These vulnerabilities have available PoCs and could lead to RCE. Why now: Newly disclosed vulnerabilities with available PoCs (confidence: 0.80)</p>
-                        <p class="why-now"><strong>Why now:</strong> Newly disclosed vulnerabilities with available PoCs</p>
+                        <p>[P1] A vulnerability was found in Freedom Factory dGEN1 up to 20260221. Affected by this vulnerability is an unknown function. The exploit has been disclosed to the public and a patch is available. Why now: Newly disclosed vulnerability with public exploit (confidence: 0.80)</p>
+                        <p class="why-now"><strong>Why now:</strong> Newly disclosed vulnerability with public exploit</p>
                         <span class="confidence">confidence 0.80</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch Wavlink WL-NU516U1 240425 for CVE-2026-3662 and CVE-2026-3661</li></ul></div><div><strong>Next 7d</strong><ul><li>Isolate Wavlink WL-NU516U1 240425 until patched</li><li>Monitor for exploitation attempts</li></ul></div></div>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch Freedom Factory dGEN1 up to 20260221</li></ul></div><div><strong>Next 7d</strong><ul><li>Monitor for exploitation attempts</li></ul></div></div>
                         <ul></ul>
                     </div>
                 </details>
-                <details class="cluster" data-domains="web_framework">
+                <details class="cluster" data-domains="os_kernel">
                     <summary>
-                        <span class="badge" style="background:#f77f00;color:#fff">70</span>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">45</span>
                         <span class="priority p2">P2</span>
-                        Backstage Multiple Vulnerabilities
-                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div>
+                        CVE-2026-3679 in Tenda FH451
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">OS / Kernel</span></div>
                     </summary>
                     <div class="cluster-body">
-                        <p>[P2] Backstage is vulnerable to multiple issues, including CVE-2026-29185 and CVE-2026-29184. These vulnerabilities have available PoCs and could lead to RCE. Why now: Newly disclosed vulnerabilities with available PoCs (confidence: 0.60)</p>
-                        <p class="why-now"><strong>Why now:</strong> Newly disclosed vulnerabilities with available PoCs</p>
+                        <p>[P2] A vulnerability was identified in Tenda FH451 1.0.0.9. Affected by this vulnerability is an unknown function. The exploit has been disclosed to the public. Why now: Public exploit available (confidence: 0.70)</p>
+                        <p class="why-now"><strong>Why now:</strong> Public exploit available</p>
+                        <span class="confidence">confidence 0.70</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch Tenda FH451 1.0.0.9</li></ul></div><div><strong>Next 7d</strong><ul><li>Monitor for exploitation attempts</li></ul></div></div>
+                        <ul></ul>
+                    </div>
+                </details>
+                <details class="cluster" data-domains="container">
+                    <summary>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
+                        <span class="priority p2">P2</span>
+                        CVE-2026-3680 in RyuzakiShinji biome-mcp-server
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Containers / K8s</span></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>[P2] A security flaw has been discovered in RyuzakiShinji biome-mcp-server up to 1.0. The vulnerability affects an unknown part of the component. A patch is available. Why now: Newly disclosed vulnerability (confidence: 0.60)</p>
+                        <p class="why-now"><strong>Why now:</strong> Newly disclosed vulnerability</p>
                         <span class="confidence">confidence 0.60</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch Backstage for CVE-2026-29185 and CVE-2026-29184</li></ul></div><div><strong>Next 7d</strong><ul><li>Monitor for exploitation attempts</li></ul></div></div>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch RyuzakiShinji biome-mcp-server up to 1.0</li></ul></div><div><strong>Next 7d</strong><ul></ul></div></div>
                         <ul></ul>
                     </div>
                 </details>
-                <details class="cluster" data-domains="identity">
+                <details class="cluster" data-domains="supply_chain">
                     <summary>
-                        <span class="badge" style="background:#f77f00;color:#fff">65</span>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
                         <span class="priority p2">P2</span>
-                        ZITADEL Multiple Vulnerabilities
-                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Identity / Auth</span></div>
+                        CVE-2026-2671 in Mendi Neurofeedback Headset V4
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Supply Chain</span></div>
                     </summary>
                     <div class="cluster-body">
-                        <p>[P2] ZITADEL is vulnerable to multiple issues, including CVE-2026-29067 and CVE-2026-29193. These vulnerabilities have available PoCs and could lead to RCE. Why now: Newly disclosed vulnerabilities with available PoCs (confidence: 0.50)</p>
-                        <p class="why-now"><strong>Why now:</strong> Newly disclosed vulnerabilities with available PoCs</p>
-                        <span class="confidence">confidence 0.50</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch ZITADEL for CVE-2026-29067 and CVE-2026-29193</li></ul></div><div><strong>Next 7d</strong><ul><li>Monitor for exploitation attempts</li></ul></div></div>
+                        <p>[P2] A vulnerability was detected in Mendi Neurofeedback Headset V4. Affected by this vulnerability is an unknown part of the component. The exploit has been disclosed to the public. Why now: Public exploit available (confidence: 0.60)</p>
+                        <p class="why-now"><strong>Why now:</strong> Public exploit available</p>
+                        <span class="confidence">confidence 0.60</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch Mendi Neurofeedback Headset V4</li></ul></div><div><strong>Next 7d</strong><ul></ul></div></div>
                         <ul></ul>
                     </div>
                 </details>
-                <details class="cluster" data-domains="crypto_lib">
+                <details class="cluster" data-domains="os_kernel">
                     <summary>
-                        <span class="badge" style="background:#f77f00;color:#fff">60</span>
-                        <span class="priority p3">P3</span>
-                        xlnt-community xlnt Multiple Vulnerabilities
-                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Crypto Libraries</span></div>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
+                        <span class="priority p2">P2</span>
+                        CVE-2026-3677 in Tenda FH451
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">OS / Kernel</span></div>
                     </summary>
                     <div class="cluster-body">
-                        <p>[P3] xlnt-community xlnt is vulnerable to multiple issues, including CVE-2026-3664 and CVE-2026-3663. These vulnerabilities have available PoCs and could lead to RCE. Why now: Newly disclosed vulnerabilities with available PoCs (confidence: 0.40)</p>
-                        <p class="why-now"><strong>Why now:</strong> Newly disclosed vulnerabilities with available PoCs</p>
-                        <span class="confidence">confidence 0.40</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch xlnt-community xlnt for CVE-2026-3664 and CVE-2026-3663</li></ul></div><div><strong>Next 7d</strong><ul></ul></div></div>
+                        <p>[P2] A vulnerability was found in Tenda FH451 1.0.0.9. This impacts the function from an unknown part of the component. Why now: Newly disclosed vulnerability (confidence: 0.60)</p>
+                        <p class="why-now"><strong>Why now:</strong> Newly disclosed vulnerability</p>
+                        <span class="confidence">confidence 0.60</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch Tenda FH451 1.0.0.9</li></ul></div><div><strong>Next 7d</strong><ul></ul></div></div>
+                        <ul></ul>
+                    </div>
+                </details>
+                <details class="cluster" data-domains="os_kernel">
+                    <summary>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
+                        <span class="priority p2">P2</span>
+                        CVE-2026-3670 in Freedom Factory dGEN1
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">OS / Kernel</span></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>[P2] A vulnerability was detected in Freedom Factory dGEN1 up to 20260221. Affected is an unknown part of the component. Why now: Newly disclosed vulnerability (confidence: 0.60)</p>
+                        <p class="why-now"><strong>Why now:</strong> Newly disclosed vulnerability</p>
+                        <span class="confidence">confidence 0.60</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch Freedom Factory dGEN1 up to 20260221</li></ul></div><div><strong>Next 7d</strong><ul></ul></div></div>
+                        <ul></ul>
+                    </div>
+                </details>
+                <details class="cluster" data-domains="os_kernel">
+                    <summary>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
+                        <span class="priority p2">P2</span>
+                        CVE-2026-3671 in Freedom Factory dGEN1
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">OS / Kernel</span></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>[P2] A flaw has been found in Freedom Factory dGEN1 up to 20260221. Affected by this vulnerability is an unknown function. Why now: Newly disclosed vulnerability (confidence: 0.60)</p>
+                        <p class="why-now"><strong>Why now:</strong> Newly disclosed vulnerability</p>
+                        <span class="confidence">confidence 0.60</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch Freedom Factory dGEN1 up to 20260221</li></ul></div><div><strong>Next 7d</strong><ul></ul></div></div>
+                        <ul></ul>
+                    </div>
+                </details>
+                <details class="cluster" data-domains="os_kernel">
+                    <summary>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
+                        <span class="priority p2">P2</span>
+                        CVE-2026-3675 in Freedom Factory dGEN1
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">OS / Kernel</span></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>[P2] A vulnerability was determined in Freedom Factory dGEN1 up to 20260221. Affected by this vulnerability is an unknown part of the component. Why now: Newly disclosed vulnerability (confidence: 0.60)</p>
+                        <p class="why-now"><strong>Why now:</strong> Newly disclosed vulnerability</p>
+                        <span class="confidence">confidence 0.60</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch Freedom Factory dGEN1 up to 20260221</li></ul></div><div><strong>Next 7d</strong><ul></ul></div></div>
+                        <ul></ul>
+                    </div>
+                </details>
+                <details class="cluster" data-domains="os_kernel">
+                    <summary>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
+                        <span class="priority p2">P2</span>
+                        CVE-2026-3669 in Freedom Factory dGEN1
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">OS / Kernel</span></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>[P2] A security vulnerability has been detected in Freedom Factory dGEN1 up to 202602. Why now: Newly disclosed vulnerability (confidence: 0.60)</p>
+                        <p class="why-now"><strong>Why now:</strong> Newly disclosed vulnerability</p>
+                        <span class="confidence">confidence 0.60</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch Freedom Factory dGEN1 up to 202602</li></ul></div><div><strong>Next 7d</strong><ul></ul></div></div>
+                        <ul></ul>
+                    </div>
+                </details>
+                <details class="cluster" data-domains="os_kernel">
+                    <summary>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">40</span>
+                        <span class="priority p2">P2</span>
+                        CVE-2026-3678 in Tenda FH451
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">OS / Kernel</span></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>[P2] A vulnerability was determined in Tenda FH451 1.0.0.9. Affected is the function from an unknown part of the component. Why now: Newly disclosed vulnerability (confidence: 0.60)</p>
+                        <p class="why-now"><strong>Why now:</strong> Newly disclosed vulnerability</p>
+                        <span class="confidence">confidence 0.60</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch Tenda FH451 1.0.0.9</li></ul></div><div><strong>Next 7d</strong><ul></ul></div></div>
                         <ul></ul>
                     </div>
                 </details>
 <footer>Watchtower · scheduled 00:05 / 06:05 / 12:05 / 18:05 ET · placeholder mode: false</footer>
 <script>
-var CARDS=[{"title": "Wavlink WL-NU516U1 240425 Multiple Vulnerabilities", "risk_score": 85, "priority": "P1", "domains": ["os_kernel", "web_framework"], "summary": "[P1] Wavlink WL-NU516U1 240425 is vulnerable to multiple issues, including CVE-2026-3662 and CVE-2026-3661. These vulnerabilities have available PoCs and could lead to RCE. Why now: Newly disclosed vulnerabilities with available PoCs (confidence: 0.80)"}, {"title": "Backstage Multiple Vulnerabilities", "risk_score": 70, "priority": "P2", "domains": ["web_framework"], "summary": "[P2] Backstage is vulnerable to multiple issues, including CVE-2026-29185 and CVE-2026-29184. These vulnerabilities have available PoCs and could lead to RCE. Why now: Newly disclosed vulnerabilities with available PoCs (confidence: 0.60)"}, {"title": "ZITADEL Multiple Vulnerabilities", "risk_score": 65, "priority": "P2", "domains": ["identity"], "summary": "[P2] ZITADEL is vulnerable to multiple issues, including CVE-2026-29067 and CVE-2026-29193. These vulnerabilities have available PoCs and could lead to RCE. Why now: Newly disclosed vulnerabilities with available PoCs (confidence: 0.50)"}, {"title": "xlnt-community xlnt Multiple Vulnerabilities", "risk_score": 60, "priority": "P3", "domains": ["crypto_lib"], "summary": "[P3] xlnt-community xlnt is vulnerable to multiple issues, including CVE-2026-3664 and CVE-2026-3663. These vulnerabilities have available PoCs and could lead to RCE. Why now: Newly disclosed vulnerabilities with available PoCs (confidence: 0.40)"}];
+var CARDS=[{"title": "CVE-2026-3674 in Freedom Factory dGEN1", "risk_score": 55, "priority": "P1", "domains": ["os_kernel"], "summary": "[P1] A vulnerability was found in Freedom Factory dGEN1 up to 20260221. Affected by this vulnerability is an unknown function. The exploit has been disclosed to the public and a patch is available. Why now: Newly disclosed vulnerability with public exploit (confidence: 0.80)"}, {"title": "CVE-2026-3679 in Tenda FH451", "risk_score": 45, "priority": "P2", "domains": ["os_kernel"], "summary": "[P2] A vulnerability was identified in Tenda FH451 1.0.0.9. Affected by this vulnerability is an unknown function. The exploit has been disclosed to the public. Why now: Public exploit available (confidence: 0.70)"}, {"title": "CVE-2026-3680 in RyuzakiShinji biome-mcp-server", "risk_score": 40, "priority": "P2", "domains": ["container"], "summary": "[P2] A security flaw has been discovered in RyuzakiShinji biome-mcp-server up to 1.0. The vulnerability affects an unknown part of the component. A patch is available. Why now: Newly disclosed vulnerability (confidence: 0.60)"}, {"title": "CVE-2026-2671 in Mendi Neurofeedback Headset V4", "risk_score": 40, "priority": "P2", "domains": ["supply_chain"], "summary": "[P2] A vulnerability was detected in Mendi Neurofeedback Headset V4. Affected by this vulnerability is an unknown part of the component. The exploit has been disclosed to the public. Why now: Public exploit available (confidence: 0.60)"}, {"title": "CVE-2026-3677 in Tenda FH451", "risk_score": 40, "priority": "P2", "domains": ["os_kernel"], "summary": "[P2] A vulnerability was found in Tenda FH451 1.0.0.9. This impacts the function from an unknown part of the component. Why now: Newly disclosed vulnerability (confidence: 0.60)"}, {"title": "CVE-2026-3670 in Freedom Factory dGEN1", "risk_score": 40, "priority": "P2", "domains": ["os_kernel"], "summary": "[P2] A vulnerability was detected in Freedom Factory dGEN1 up to 20260221. Affected is an unknown part of the component. Why now: Newly disclosed vulnerability (confidence: 0.60)"}, {"title": "CVE-2026-3671 in Freedom Factory dGEN1", "risk_score": 40, "priority": "P2", "domains": ["os_kernel"], "summary": "[P2] A flaw has been found in Freedom Factory dGEN1 up to 20260221. Affected by this vulnerability is an unknown function. Why now: Newly disclosed vulnerability (confidence: 0.60)"}, {"title": "CVE-2026-3675 in Freedom Factory dGEN1", "risk_score": 40, "priority": "P2", "domains": ["os_kernel"], "summary": "[P2] A vulnerability was determined in Freedom Factory dGEN1 up to 20260221. Affected by this vulnerability is an unknown part of the component. Why now: Newly disclosed vulnerability (confidence: 0.60)"}, {"title": "CVE-2026-3669 in Freedom Factory dGEN1", "risk_score": 40, "priority": "P2", "domains": ["os_kernel"], "summary": "[P2] A security vulnerability has been detected in Freedom Factory dGEN1 up to 202602. Why now: Newly disclosed vulnerability (confidence: 0.60)"}, {"title": "CVE-2026-3678 in Tenda FH451", "risk_score": 40, "priority": "P2", "domains": ["os_kernel"], "summary": "[P2] A vulnerability was determined in Tenda FH451 1.0.0.9. Affected is the function from an unknown part of the component. Why now: Newly disclosed vulnerability (confidence: 0.60)"}];
 var CURRENT_DOMAIN='all';
 var DOMAIN_LABELS={"pkg_npm": "npm / Node", "pkg_pypi": "PyPI / Python", "pkg_maven": "Maven / Java", "pkg_nuget": ".NET / NuGet", "pkg_gem": "RubyGems", "browser_ext": "Browser Extensions", "ca_trust": "CA / PKI Trust", "cloud_iam": "Cloud / IAM", "container": "Containers / K8s", "os_kernel": "OS / Kernel", "web_framework": "Web / Servers", "crypto_lib": "Crypto Libraries", "supply_chain": "Supply Chain", "identity": "Identity / Auth", "uncategorised": "Other"};
 
