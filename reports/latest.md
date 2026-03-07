@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-03-07T05:47:30.600145+00:00
+generated_at: 2026-03-07T11:30:40.365003+00:00
 model: meta-llama/llama-4-scout-17b-16e-instruct
 project: Watchtower
 ---
@@ -7,28 +7,44 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period include CVE-2026-1981 in the HUMN-1 AI Website Scanner & Human Certification by Winston AI plugin for WordPress, CVE-2026-25071 in XikeStor SKS8310-8X Network Switch firmware versions 1.04.B07 and prior, and CVE-2026-1644 in the WP Frontend Profile plugin for WordPress. Internet-facing WordPress plugins and XikeStor network switches are most exposed due to their vulnerability to SQL injection, cross-site request forgery, and other attacks, with many lacking patches. The most time-sensitive action is to patch the WP Frontend Profile plugin for WordPress vulnerable to Cross-Site Request Forgery (CVE-2026-1644).
+The highest-risk items this period are CVE-2026-27797 in Homarr, CVE-2026-30825 in hoppscotch, and CVE-2026-27796 in Homarr, which have been identified as having potential for significant impact due to their unauthenticated access and RCE capabilities. Internet-facing applications and dashboards are most exposed right now due to the lack of patches and publicly available exploits. The single most time-sensitive action is to patch Homarr version prior to 1.54.0 for CVE-2026-27797 and CVE-2026-27796.
 
-## CVE-2026-1644 in WP Frontend Profile (risk: 70)
-[P1] The WP Frontend Profile plugin for WordPress is vulnerable to Cross-Site Request Forgery, with a patch available. Why now: High-risk vulnerability in popular WordPress plugin, patch available (confidence: 0.90)
-
-
-## CVE-2026-2429 in Community Events plugin (risk: 60)
-[P1] The Community Events plugin for WordPress is vulnerable to SQL Injection, with a patch available. Why now: High-risk vulnerability in popular WordPress plugin, patch available (confidence: 0.80)
+## CVE-2026-27797 in Homarr (risk: 70)
+[P1] Homarr is vulnerable to unauthenticated access, potentially leading to RCE. No patch is available for versions prior to 1.54.0. Why now: Newly disclosed CVE with high impact (confidence: 0.80)
 
 
-## CVE-2026-1981 in Winston AI plugin (risk: 40)
-[P2] The HUMN-1 AI Website Scanner & Human Certification by Winston AI plugin for WordPress is vulnerable, with no patch available. Why now: Newly disclosed vulnerability in popular WordPress plugin (confidence: 0.80)
+## CVE-2026-27796 in Homarr (risk: 70)
+[P1] Homarr integration has a vulnerability potentially leading to RCE. No patch is available for versions prior to 1.54.0. Why now: Newly disclosed CVE with high impact (confidence: 0.80)
 
 
-## CVE-2026-25071 in XikeStor SKS8310-8X (risk: 40)
-[P2] XikeStor SKS8310-8X Network Switch firmware versions 1.04.B07 and prior are vulnerable, with no patch available. Why now: Newly disclosed vulnerability in network switch firmware (confidence: 0.70)
+## CVE-2026-30825 in hoppscotch (risk: 60)
+[P2] hoppscotch has a vulnerability potentially leading to RCE. No patch is available. Why now: Newly disclosed CVE with potential impact (confidence: 0.60)
 
 
-## CVE-2026-2371 in Greenshift plugin (risk: 40)
-[P2] The Greenshift – animation and page builder blocks plugin for WordPress is vulnerable, with no patch available. Why now: Newly disclosed vulnerability in popular WordPress plugin (confidence: 0.60)
+## CVE-2026-30823 in Flowise (risk: 60)
+[P2] Flowise has a vulnerability potentially leading to RCE. No patch is available. Why now: Newly disclosed CVE with potential impact (confidence: 0.60)
 
 
-## CVE-2026-2020 in JS Archive List plugin (risk: 40)
-[P2] The JS Archive List plugin for WordPress is vulnerable to PHP Object Injection, with no patch available. Why now: Newly disclosed vulnerability in popular WordPress plugin (confidence: 0.70)
+## CVE-2026-30824 in Flowise (risk: 60)
+[P2] Flowise has another vulnerability potentially leading to RCE. No patch is available. Why now: Newly disclosed CVE with potential impact (confidence: 0.60)
+
+
+## CVE-2026-30830 in Defuddle (risk: 60)
+[P2] Defuddle has a vulnerability potentially leading to RCE. No patch is available. Why now: Newly disclosed CVE with potential impact (confidence: 0.60)
+
+
+## CVE-2026-30827 in express-rate-limit (risk: 60)
+[P2] express-rate-limit has a vulnerability potentially leading to DOS. No patch is available. Why now: Newly disclosed CVE with potential impact (confidence: 0.60)
+
+
+## CVE-2026-30829 in Checkmate (risk: 60)
+[P2] Checkmate has a vulnerability potentially leading to RCE. No patch is available. Why now: Newly disclosed CVE with potential impact (confidence: 0.60)
+
+
+## CVE-2026-30828 in Wallos (risk: 60)
+[P2] Wallos has a vulnerability potentially leading to RCE. No patch is available. Why now: Newly disclosed CVE with potential impact (confidence: 0.60)
+
+
+## CVE-2025-8899 in Paid Videochat Turnkey Site (risk: 60)
+[P2] Paid Videochat Turnkey Site has a vulnerability potentially leading to RCE. No patch is available. Why now: Newly disclosed CVE with potential impact (confidence: 0.60)
 
