@@ -1472,7 +1472,7 @@ def _build_history_accordion(days: list, today_str: str = "") -> str:
         )
     return (
         '<section class="panel ha-section">'
-        '<h3 style="margin:.2rem 0 .5rem">&#128197;&nbsp;7-Day Briefing History</h3>'
+        '<h3 style="margin:.2rem 0 .5rem">7-Day Briefing History</h3>'
         + "".join(items)
         + "</section>"
     )
@@ -1608,7 +1608,7 @@ def _build_weekly_section(aggregate: dict) -> str:
     )
     return (
         '<section class="panel weekly-scope">'
-        f'<h3 style="margin:.2rem 0 .6rem">&#128197;&nbsp;{window}-Day Weekly Scope</h3>'
+        f'<h3 style="margin:.2rem 0 .6rem">{window}-Day Weekly Scope</h3>'
         '<div class="weekly-kpi-row">'
         f'<div class="wkpi"><span class="wk">Total Findings</span><span class="wv">{total}</span></div>'
         f'<div class="wkpi"><span class="wk">Unique CVEs</span><span class="wv">{unique_cves}</span></div>'
@@ -1660,8 +1660,8 @@ def _write_index_html(
     if history and len(history) >= 2:
         a = history[-2]["counts"]["clusters"]
         b = history[-1]["counts"]["clusters"]
-        delta = b - a
-        trend_txt = f"{delta:+d}"
+        _trend_delta = b - a
+        trend_txt = f"{_trend_delta:+d}"
 
     kpi_html = f"""
         <section class="kpi-grid">
@@ -1720,11 +1720,11 @@ def _write_index_html(
                 )
             if n_elev:
                 chips.append(
-                    f'<span class="delta-chip delta-chip--elevated">&#8679;{n_elev}&nbsp;Elevated</span>'
+                    f'<span class="delta-chip delta-chip--elevated">{n_elev}&nbsp;Elevated</span>'
                 )
             if n_res:
                 chips.append(
-                    f'<span class="delta-chip delta-chip--resolved">&#10003;{n_res}&nbsp;Resolved</span>'
+                    f'<span class="delta-chip delta-chip--resolved">{n_res}&nbsp;Resolved</span>'
                 )
             delta_strip_html = f'<div class="delta-strip">{"  ".join(chips)}</div>'
         if delta.get("resolved"):
@@ -1735,7 +1735,7 @@ def _write_index_html(
             )
             resolved_drawer_html = (
                 f'<details class="resolved-drawer">'
-                f"<summary>&#10003; {n_res} resolved since previous run</summary>"
+                f"<summary>{n_res} resolved since previous run</summary>"
                 f'<table><thead><tr><th>Finding</th><th style="text-align:right">Prev&nbsp;risk</th></tr></thead>'
                 f"<tbody>{res_rows}</tbody></table></details>"
             )
@@ -1943,8 +1943,8 @@ p{{color:#c9d1d9}}
 .cluster{{background:rgba(255,255,255,0.01);border:1px solid #2b313a;border-radius:6px;padding:0;margin:.55rem 0;overflow:hidden}}
 .cluster summary{{list-style:none;padding:.62rem .85rem;cursor:pointer;display:flex;align-items:center;gap:.35rem;user-select:none;color:#c9d1d9;font-size:.92rem}}
 .cluster summary::-webkit-details-marker{{display:none}}
-.cluster summary::before{{content:"▶";font-size:.7rem;transition:transform .15s;flex-shrink:0;color:#8b949e}}
-.cluster[open] summary::before{{transform:rotate(90deg)}}
+.cluster summary::before{{content:"–";font-size:.75rem;transition:transform .15s;flex-shrink:0;color:#8b949e;display:inline-block;width:.7rem;text-align:center}}
+.cluster[open] summary::before{{transform:none;content:"+"}}
 .cluster-body{{padding:.2rem .9rem .85rem;color:#c9d1d9}}
 .badge{{border-radius:999px;padding:2px 8px;font-size:.72rem;font-weight:700;margin-right:.35rem;background:rgba(255,255,255,.06)!important;color:#c9d1d9!important}}
 .priority{{border-radius:999px;padding:2px 8px;font-size:.68rem;font-weight:800;letter-spacing:.02em;margin-right:.3rem;border:1px solid #30363d}}
@@ -1980,7 +1980,6 @@ p{{color:#c9d1d9}}
 .resolved-drawer td{{padding:.25rem .4rem;border-bottom:1px solid #21262d}}
 .ha-section{{margin:0 0 1rem}}.ha-day{{border-bottom:1px solid #21262d}}.ha-day:last-child{{border-bottom:none}}
 .ha-summary{{display:flex;align-items:center;gap:.7rem;padding:.42rem .3rem;cursor:pointer;list-style:none;font-size:.82rem}}.ha-summary::-webkit-details-marker{{display:none}}
-.ha-day[open] .ha-summary::before{{transform:rotate(90deg)}}
 .ha-date{{font-weight:700;color:#e6edf3;flex:0 0 92px}}.ha-meta{{color:#c9d1d9;flex:1;font-size:.78rem}}.ha-ts{{color:#8b949e;font-size:.68rem;margin-left:auto;flex-shrink:0}}
 .ha-body{{padding:.25rem .2rem .5rem .5rem}}.ha-table{{width:100%;border-collapse:collapse;font-size:.76rem}}.ha-table th{{font-size:.67rem;color:#6a7f98;font-weight:700;border-bottom:1px solid #21262d;padding:.2rem .35rem}}
 .ha-table td{{padding:.22rem .35rem;border-bottom:1px solid #161b22;vertical-align:top}}.ha-title{{max-width:520px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}.ha-risk{{text-align:right;font-weight:700;color:#e6edf3;min-width:30px}}.ha-pri,.ha-ps{{text-align:center;min-width:40px;white-space:nowrap}}
@@ -2019,7 +2018,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
         </head>
         <body>
         <h1>Watchtower — Infrastructure Security Briefing</h1>
-        <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 00:05, 06:05, 12:05, 18:05 ET">⏱ next run —</span></p>
+        <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 00:05, 06:05, 12:05, 18:05 ET">Next run —</span></p>
         {f'<div class="executive"><h2>Analyst Summary</h2><p>{html.escape(executive)}</p></div>' if executive else ''}
 {kpi_html}
 {delta_strip_html}
@@ -2103,7 +2102,7 @@ function selectDomain(domain){{
     var now=new Date(),next=nextRun(now);
     var diff=Math.max(0,Math.floor((next-now)/1000));
     var h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
-    el.textContent='⏱ '+pad(h)+':'+pad(m)+':'+pad(s);
+    el.textContent='Next run '+pad(h)+':'+pad(m)+':'+pad(s);
     el.title='Next run: '+next.toLocaleTimeString('en-US',{{timeZone:'America/New_York',hour:'2-digit',minute:'2-digit'}})+' ET';
     el.className='next-run'+(diff<600?' soon':'')+(diff<60?' now':'');
   }}
@@ -2247,8 +2246,8 @@ def _run():
     delta = _compute_delta(cards, last_run_cards)
     print(
         f"[INFO] Delta: +{len(delta['new'])} new  "
-        f"\u2191{len(delta['elevated'])} elevated  "
-        f"\u2713{len(delta['resolved'])} resolved"
+        f"^{len(delta['elevated'])} elevated  "
+        f"+{len(delta['resolved'])} resolved"
     )
 
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%d_%H-%M")

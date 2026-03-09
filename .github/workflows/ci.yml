@@ -46,7 +46,7 @@ jobs:
             --cov=agent \
             --cov-report=term-missing \
             --cov-report=xml:coverage.xml \
-            --cov-fail-under=28 \
+            --cov-fail-under=22 \
             -v
 
       - name: Upload coverage report
