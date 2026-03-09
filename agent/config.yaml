@@ -168,6 +168,223 @@ report:
   clusters_limit: 15
   links_per_cluster_limit: 5
 
+# Mainstream services, platforms, and packages that warrant extra attention.
+# Findings whose title or summary match any entry here are tagged "high-profile".
+# Match is case-insensitive substring. Add entries freely — keep them specific
+# enough to avoid false positives (e.g. "Spring" not "sp").
+high_profile_targets:
+  # --- Microsoft ---
+  - Windows
+  - Active Directory
+  - Exchange Server
+  - SharePoint
+  - Microsoft Teams
+  - Microsoft 365
+  - Office 365
+  - Azure
+  - Azure AD
+  - Entra ID
+  - Hyper-V
+  - MSHTML
+  - Outlook
+  - OneDrive
+  - Defender
+  - NTLM
+  - Kerberos
+  - BitLocker
+  - RDP
+  - SMB
+  # --- Linux / Unix ---
+  - Linux kernel
+  - Ubuntu
+  - Debian
+  - Red Hat
+  - RHEL
+  - CentOS
+  - Fedora
+  - SUSE
+  - Alpine Linux
+  - glibc
+  - sudo
+  - OpenSSH
+  - Bash
+  - systemd
+  - eBPF
+  # --- Apple ---
+  - macOS
+  - iOS
+  - iPadOS
+  - Safari
+  - WebKit
+  - XNU
+  - Xcode
+  # --- Google / Android ---
+  - Android
+  - Chrome
+  - Chromium
+  - V8
+  - Pixel
+  # --- Mozilla ---
+  - Firefox
+  - Thunderbird
+  # --- VMware / Broadcom ---
+  - VMware
+  - vCenter
+  - ESXi
+  - vSphere
+  - NSX
+  - Workstation
+  # --- Cisco ---
+  - Cisco IOS
+  - Cisco ASA
+  - Cisco Firepower
+  - Cisco Webex
+  - Cisco NX-OS
+  - Cisco ISE
+  - Cisco Meraki
+  - Cisco Catalyst
+  # --- Palo Alto ---
+  - PAN-OS
+  - GlobalProtect
+  - Prisma
+  # --- Fortinet ---
+  - FortiOS
+  - FortiGate
+  - FortiClient
+  - FortiManager
+  - FortiWeb
+  - FortiAnalyzer
+  # --- Juniper ---
+  - Junos
+  - Juniper SRX
+  # --- F5 ---
+  - F5 BIG-IP
+  - TMUI
+  # --- SonicWall ---
+  - SonicWall
+  - SonicOS
+  # --- Ivanti ---
+  - Ivanti
+  - Ivanti Connect Secure
+  - Ivanti Pulse
+  # --- Citrix ---
+  - Citrix
+  - NetScaler
+  - Citrix ADC
+  # --- Cloud providers ---
+  - AWS
+  - Amazon S3
+  - Amazon EC2
+  - Amazon EKS
+  - Amazon Lambda
+  - GCP
+  - Google Cloud
+  - Google Kubernetes Engine
+  - GKE
+  - Cloudflare
+  # --- Containers / Orchestration ---
+  - Docker
+  - Kubernetes
+  - Helm
+  - containerd
+  - runc
+  - Podman
+  # --- Web servers / proxies ---
+  - Apache HTTP Server
+  - Nginx
+  - IIS
+  - Tomcat
+  - HAProxy
+  - Traefik
+  # --- Databases ---
+  - MySQL
+  - PostgreSQL
+  - MongoDB
+  - Redis
+  - Elasticsearch
+  - OpenSearch
+  - Oracle Database
+  - Microsoft SQL Server
+  - MSSQL
+  - SQLite
+  - Cassandra
+  - ClickHouse
+  # --- Identity / SSO ---
+  - Okta
+  - CyberArk
+  - HashiCorp Vault
+  - Ping Identity
+  - SailPoint
+  - BeyondTrust
+  - OneLogin
+  # --- Security tooling ---
+  - CrowdStrike
+  - SentinelOne
+  - Tenable
+  - Qualys
+  - Rapid7
+  - Splunk
+  - Elastic SIEM
+  - Wazuh
+  - Snyk
+  # --- DevOps / CI-CD ---
+  - Jenkins
+  - GitLab
+  - GitHub Actions
+  - Bitbucket
+  - Artifactory
+  - Nexus Repository
+  - ArgoCD
+  # --- Crypto / PKI ---
+  - OpenSSL
+  - LibreSSL
+  - BouncyCastle
+  - GnuTLS
+  - NSS
+  - Let's Encrypt
+  # --- Languages / Runtimes ---
+  - Python
+  - Node.js
+  - PHP
+  - Java
+  - Go
+  - Ruby on Rails
+  - .NET
+  - Spring Framework
+  - Log4j
+  - Jackson
+  # --- Network / VPN ---
+  - OpenVPN
+  - WireGuard
+  - strongSwan
+  - Netscaler VPN
+  - Pulse Secure
+  - Check Point
+  - Barracuda
+  # --- Productivity / Collab ---
+  - Zoom
+  - Slack
+  - Atlassian
+  - Confluence
+  - Jira
+  - ServiceNow
+  - Salesforce
+  - SAP
+  # --- CDN / DDoS ---
+  - Akamai
+  - Fastly
+  - Imperva
+  # --- Firmware / Embedded ---
+  - OpenWRT
+  - DD-WRT
+  - U-Boot
+  - UEFI
+  - BIOS
+  - iLO
+  - iDRAC
+  - Baseboard Management Controller
+  - BMC
+
 domain_taxonomy:
   pkg_npm:
     label: "npm / Node"

@@ -781,6 +781,20 @@ def to_cluster_card(key, items):
 
 _VALID_DOMAIN_KEYS = set(_TAXONOMY.keys()) | {"uncategorised"}
 
+_HIGH_PROFILE_TARGETS: list = CONFIG.get("high_profile_targets", [])
+_HP_LOWER: list = [t.lower() for t in _HIGH_PROFILE_TARGETS]
+
+
+def _match_high_profile(text: str) -> list:
+    """Return list of high-profile target names found in *text* (case-insensitive).
+
+    Only targets that appear in the text are returned, so the output list is
+    empty for niche/obscure findings and non-empty only when a well-known
+    platform or package is explicitly mentioned.
+    """
+    tl = text.lower()
+    return [_HIGH_PROFILE_TARGETS[i] for i, lw in enumerate(_HP_LOWER) if lw in tl]
+
 
 def _findings_to_cards(findings: list, all_items: list = None) -> list:
     """Convert Groq findings into cluster-card dicts compatible with _write_index_html.
@@ -882,6 +896,10 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
         else:
             patch_status = "unknown"
 
+        matched_targets = _match_high_profile(
+            f.get("title", "") + " " + f.get("summary", "")
+        )
+
         cards.append(
             {
                 "id": sha256(f.get("title", str(len(cards))))[:12],
@@ -900,6 +918,7 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                 "title": f.get("title", "")[:140],
                 "summary": summary,
                 "patch_status": patch_status,
+                "matched_targets": matched_targets,
                 "sources": {
                     "primary": [
                         {
@@ -1639,6 +1658,7 @@ def _write_index_html(
     total_findings = len(cards)
     p1_count = sum(1 for c in cards if _derive_priority(c) == "P1")
     exploited_count = sum(1 for c in cards if _is_exploitish(c))
+    hp_count = sum(1 for c in cards if c.get("matched_targets"))
     control_plane_count = sum(
         1
         for c in cards
@@ -1668,6 +1688,7 @@ def _write_index_html(
             <div class="kpi"><span class="k">Findings</span><span class="v">{total_findings}</span></div>
             <div class="kpi"><span class="k">P1</span><span class="v">{p1_count}</span></div>
             <div class="kpi"><span class="k">Exploited</span><span class="v">{exploited_count}</span></div>
+            <div class="kpi"><span class="k">High-Profile</span><span class="v">{hp_count}</span></div>
             <div class="kpi"><span class="k">Control Plane</span><span class="v">{control_plane_count}</span></div>
             <div class="kpi"><span class="k">Top Domain</span><span class="v v-sm">{html.escape(top_domain_label)}</span></div>
             <div class="kpi"><span class="k">Trend 24h</span><span class="v">{trend_txt}</span></div>
@@ -1740,6 +1761,27 @@ def _write_index_html(
                 f"<tbody>{res_rows}</tbody></table></details>"
             )
 
+    # --- High-profile target panel (only rendered when matches exist) ---
+    hp_panel_html = ""
+    if hp_count:
+        # Collect all matched targets across cards, count occurrences, sort by count desc
+        from collections import Counter
+        target_counter: Counter = Counter()
+        for c in cards:
+            for t in c.get("matched_targets", []):
+                target_counter[t] += 1
+        chips_html = "".join(
+            f'<span class="hp-chip">{html.escape(name)}'
+            f'<span class="hp-chip-count">{cnt}</span></span>'
+            for name, cnt in target_counter.most_common()
+        )
+        hp_panel_html = (
+            f'<section class="hp-panel">'
+            f'<div class="hp-panel-title">High-Profile Targets in This Window</div>'
+            f'<div class="hp-chip-list">{chips_html}</div>'
+            f'</section>'
+        )
+
     rows = ""
     for c in cards:
         links = "".join(
@@ -1790,12 +1832,18 @@ def _write_index_html(
         patch_badge_html = (
             f'<span class="patch-badge {_patch_badge_cls}">{_patch_badge_lbl}</span>'
         )
+        _hp_targets = c.get("matched_targets", [])
+        hp_badge_html = (
+            f'<span class="hp-badge" title="{html.escape(", ".join(_hp_targets[:5]))}">High-Profile</span>'
+            if _hp_targets else ""
+        )
         rows += f"""
                 <details class="cluster" data-domains="{html.escape(domains_attr)}">
                     <summary>
                         <span class="badge" style="background:{badge_bg};color:{badge_fg}">{c['risk_score']}</span>
                         <span class="priority {pri_cls}">{pri}</span>
                         {patch_badge_html}
+                        {hp_badge_html}
                         {html.escape(c['title'])}
                         <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline">{tags}</div>
                     </summary>
@@ -1927,7 +1975,7 @@ h1{{border-bottom:2px solid #333;padding-bottom:.4rem;color:#e6edf3}}
 h2{{color:#e6edf3}}
 a{{color:#999}}
 p{{color:#c9d1d9}}
-.kpi-grid{{display:grid;grid-template-columns:repeat(6,minmax(120px,1fr));gap:8px;margin:1rem 0 1.2rem}}
+.kpi-grid{{display:grid;grid-template-columns:repeat(7,minmax(110px,1fr));gap:8px;margin:1rem 0 1.2rem}}
 .kpi{{background:#1a1a1a;border:1px solid #333;border-radius:6px;padding:.55rem .7rem;display:flex;flex-direction:column;gap:.2rem}}
 .kpi .k{{font-size:.68rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700}}
 .kpi .v{{font-size:1.2rem;color:#e6edf3;font-weight:800}}
@@ -1976,6 +2024,12 @@ p{{color:#c9d1d9}}
 .patch-badge--workaround{{background:rgba(158,106,3,.18);color:#d29922;border:1px solid rgba(158,106,3,.35)}}
 .patch-badge--no-fix{{background:rgba(170,28,28,.18);color:#f85149;border:1px solid rgba(170,28,28,.35)}}
 .patch-badge--unknown{{background:rgba(60,60,60,.5);color:#8b949e;border:1px solid #333}}
+.hp-badge{{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.04em;border-radius:3px;padding:1px 7px;margin-left:.45rem;vertical-align:middle;text-transform:uppercase;background:rgba(139,92,246,.15);color:#a78bfa;border:1px solid rgba(139,92,246,.3)}}
+.hp-panel{{background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:6px;padding:.65rem 1rem .7rem;margin:.2rem 0 1rem}}
+.hp-panel-title{{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#a78bfa;margin-bottom:.5rem}}
+.hp-chip-list{{display:flex;flex-wrap:wrap;gap:.35rem}}
+.hp-chip{{display:inline-flex;align-items:center;gap:.3rem;background:rgba(139,92,246,.1);color:#c4b5fd;border:1px solid rgba(139,92,246,.25);border-radius:999px;font-size:.71rem;padding:2px 10px;font-weight:600}}
+.hp-chip-count{{background:rgba(139,92,246,.3);color:#ede9fe;border-radius:999px;font-size:.65rem;font-weight:700;padding:0 5px;min-width:1.2em;text-align:center}}
 .delta-strip{{display:flex;align-items:center;gap:.5rem;margin:.2rem 0 1rem;flex-wrap:wrap;min-height:1.6rem}}
 .delta-chip{{display:inline-flex;align-items:center;border-radius:999px;padding:3px 11px;font-size:.71rem;font-weight:700;border:1px solid;letter-spacing:.03em}}
 .delta-chip--new{{background:rgba(100,100,100,.12);color:#aaa;border-color:rgba(100,100,100,.3)}}
@@ -2069,6 +2123,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
         {f'<div class="executive"><h2>Analyst Summary</h2><p>{html.escape(executive)}</p></div>' if executive else ''}
 {kpi_html}
 {delta_strip_html}
+{hp_panel_html}
 <section class="threat-section">
   <div class="panel threat-main">
     <div class="threat-toolbar">
