@@ -60,6 +60,7 @@ STATE_DIR = os.path.join(ROOT, "state")
 IGNORE_FILE = os.path.join(STATE_DIR, "ignore_registry.json")
 LEDGER_FILE = os.path.join(STATE_DIR, "ledger.jsonl")
 SEEN_FILE = os.path.join(STATE_DIR, "seen_hashes.json")
+LAST_RUN_CARDS_FILE = os.path.join(STATE_DIR, "last_run_cards.json")
 CONFIG = yaml.safe_load(
     open(os.path.join(ROOT, "agent", "config.yaml"), "r", encoding="utf-8")
 )
@@ -589,11 +590,20 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
         {
             "cve": it["title"].split("\u2014")[0].strip(),
             "description": it.get("summary", "")[:120],
+            "patch_available": it.get("patch_available", False),
+            "workaround_available": it.get("workaround_available", False),
+            "exploited_in_wild": it.get("exploited_in_wild", True),
         }
         for it in kev_items[:6]
     ]
     nvd_block = [
-        {"cve": it["title"], "description": it.get("summary", "")[:80]}
+        {
+            "cve": it["title"],
+            "description": it.get("summary", "")[:80],
+            "patch_available": it.get("patch_available", False),
+            "workaround_available": it.get("workaround_available", False),
+            "exploited_in_wild": it.get("exploited_in_wild", False),
+        }
         for it in nvd_items[:10]
     ]
     article_block = [
@@ -615,8 +625,8 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
         "recent_cves": nvd_block,
         "news_articles": article_block,
         "instructions": (
-            "You are a senior threat intelligence analyst writing a concise briefing "
-            f"for the period {reporting_window}. "
+            "You are a senior threat intelligence analyst writing a concise daily briefing "
+            f"for the 24-hour period ending now ({reporting_window}). "
             "Review all inputs: exploited vulnerabilities (CISA KEV), recent CVEs (NVD), "
             "and news articles. Produce: "
             "(1) executive_summary: exactly 3 sentences grounded in the data provided. "
@@ -627,7 +637,8 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
             "exposed right now and why (e.g. internet-facing firewalls, container orchestration nodes, "
             "VPN appliances), referencing patch or exploitation status from the data. "
             "Sentence 3 — state the single most time-sensitive action: be specific about what to patch, "
-            "isolate, or monitor, and name the affected product/version if available. "
+            "isolate, or monitor, name the affected product/version, and state whether a patch is "
+            "currently available or not. "
             "Do NOT use vague language like 'various systems' or 'multiple vendors' — always name names. "
             "Keep the summary anchored to the reporting window and only reference items present in the input data. "
             "(2) findings: JSON array of up to 12 distinct threat or vulnerability findings. "
@@ -636,8 +647,9 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
             "base 40 for known CVE, +30 if actively exploited in the wild, +15 if PoC exists, "
             "+15 if critical infrastructure), domains (array of matching keys from: "
             + domain_keys
-            + "), references (array of {title, url} — cite ONLY urls that appear verbatim "
-            "in the news_articles input, 1-3 most relevant per finding), priority (P1|P2|P3), "
+            + "), references (array of {title, url} — cite urls from any of the three input "
+            "blocks: exploited_vulnerabilities, recent_cves, or news_articles; "
+            "1-3 most relevant per finding), priority (P1|P2|P3), "
             "why_now (short sentence), recommended_actions_24h (array up to 4), "
             "recommended_actions_7d (array up to 4), confidence (0..1). "
             'Output ONLY strict JSON, no markdown fences: {"executive_summary":"...",'
@@ -785,6 +797,8 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
     # rarely match polled item URLs byte-for-byte (trailing slashes, query params, etc.).
     url_to_country: dict = {}
     domain_to_country: dict = {}
+    # Also build CVE → patch/exploit status from polled items so we can annotate cards.
+    cve_to_status: dict = {}
     if all_items:
         for it in all_items:
             cc = it.get("country", "")
@@ -794,6 +808,19 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                 dom = tldextract.extract(url).registered_domain
                 if dom and dom not in domain_to_country:
                     domain_to_country[dom] = cc
+            # Index patch/exploit status keyed by CVE ID extracted from item title
+            for cve_id in _extract_cves(
+                it.get("title", "") + " " + it.get("summary", "")
+            ):
+                existing = cve_to_status.get(cve_id, {})
+                cve_to_status[cve_id] = {
+                    "patch_available": existing.get("patch_available")
+                    or it.get("patch_available", False),
+                    "workaround_available": existing.get("workaround_available")
+                    or it.get("workaround_available", False),
+                    "exploited_in_wild": existing.get("exploited_in_wild")
+                    or it.get("exploited_in_wild", False),
+                }
 
     cards = []
     for f in findings:
@@ -833,6 +860,27 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
             - {None}
         )
 
+        # Derive patch_status from polled item data keyed on CVEs in the finding title.
+        finding_cves = _extract_cves(f.get("title", "") + " " + f.get("summary", ""))
+        patch_available = False
+        workaround_available = False
+        exploited_in_wild = False
+        for cve_id in finding_cves:
+            st = cve_to_status.get(cve_id, {})
+            patch_available = patch_available or st.get("patch_available", False)
+            workaround_available = workaround_available or st.get(
+                "workaround_available", False
+            )
+            exploited_in_wild = exploited_in_wild or st.get("exploited_in_wild", False)
+        if patch_available:
+            patch_status = "patched"
+        elif workaround_available:
+            patch_status = "workaround"
+        elif exploited_in_wild:
+            patch_status = "no_fix"
+        else:
+            patch_status = "unknown"
+
         cards.append(
             {
                 "id": sha256(f.get("title", str(len(cards))))[:12],
@@ -850,6 +898,7 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                 "countries": countries,
                 "title": f.get("title", "")[:140],
                 "summary": summary,
+                "patch_status": patch_status,
                 "sources": {
                     "primary": [
                         {
@@ -864,6 +913,60 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
             }
         )
     return sorted(cards, key=lambda c: c["risk_score"], reverse=True)
+
+
+# -----------------------------
+# Delta comparison
+# -----------------------------
+def _compute_delta(current_cards: list, last_cards: list) -> dict:
+    """Compare current run cards against previous run by CVE IDs in titles/summaries.
+    Returns {"new": [...], "elevated": [...], "resolved": [...]}.
+    Elevated cards carry an extra "_score_delta" key.
+    On first run (empty last_cards) all current cards are classified as new.
+    """
+    def _cves(card: dict) -> set:
+        raw = card.get("title", "") + " " + card.get("summary", "")
+        return set(_extract_cves(raw))
+
+    last_by_cve: dict = {}
+    for c in last_cards:
+        for cve in _cves(c):
+            last_by_cve[cve] = c
+
+    current_by_cve: dict = {}
+    for c in current_cards:
+        for cve in _cves(c):
+            current_by_cve[cve] = c
+
+    new_cards: list = []
+    elevated_cards: list = []
+    seen_titles: set = set()
+    for c in current_cards:
+        cvs = _cves(c)
+        if not cvs:
+            continue
+        matched = next((last_by_cve[cv] for cv in cvs if cv in last_by_cve), None)
+        title = c.get("title", "")
+        if title in seen_titles:
+            continue
+        seen_titles.add(title)
+        if matched is None:
+            new_cards.append(c)
+        else:
+            diff = int(c.get("risk_score", 0)) - int(matched.get("risk_score", 0))
+            if diff >= 10:
+                elevated_cards.append({**c, "_score_delta": diff})
+
+    resolved_cards: list = []
+    seen_resolved: set = set()
+    for cv, card in last_by_cve.items():
+        if cv not in current_by_cve:
+            title = card.get("title", "")
+            if title not in seen_resolved:
+                seen_resolved.add(title)
+                resolved_cards.append(card)
+
+    return {"new": new_cards, "elevated": elevated_cards, "resolved": resolved_cards}
 
 
 # -----------------------------
@@ -1242,6 +1345,7 @@ def _write_index_html(
     history: list = None,
     since_hours: int = 6,
     groq_status: str = "unknown",
+    delta: dict = None,
 ):
     # KPI stats
     total_findings = len(cards)
@@ -1318,6 +1422,41 @@ def _write_index_html(
             f"</div>"
         )
 
+    # --- Delta strip ---
+    delta_strip_html = ""
+    resolved_drawer_html = ""
+    if delta is not None:
+        n_new = len(delta.get("new", []))
+        n_elev = len(delta.get("elevated", []))
+        n_res = len(delta.get("resolved", []))
+        if n_new == 0 and n_elev == 0 and n_res == 0:
+            delta_strip_html = (
+                '<div class="delta-strip">'
+                '<span class="delta-chip delta-chip--quiet">No changes from previous run</span>'
+                "</div>"
+            )
+        else:
+            chips = []
+            if n_new:
+                chips.append(f'<span class="delta-chip delta-chip--new">+{n_new}&nbsp;New</span>')
+            if n_elev:
+                chips.append(f'<span class="delta-chip delta-chip--elevated">&#8679;{n_elev}&nbsp;Elevated</span>')
+            if n_res:
+                chips.append(f'<span class="delta-chip delta-chip--resolved">&#10003;{n_res}&nbsp;Resolved</span>')
+            delta_strip_html = f'<div class="delta-strip">{"  ".join(chips)}</div>'
+        if delta.get("resolved"):
+            res_rows = "".join(
+                f'<tr><td>{html.escape(c.get("title", "")[:90])}</td>'
+                f'<td style="text-align:right;padding-right:.6rem">{int(c.get("risk_score", 0))}</td></tr>'
+                for c in delta["resolved"]
+            )
+            resolved_drawer_html = (
+                f'<details class="resolved-drawer">'
+                f'<summary>&#10003; {n_res} resolved since previous run</summary>'
+                f'<table><thead><tr><th>Finding</th><th style="text-align:right">Prev&nbsp;risk</th></tr></thead>'
+                f"<tbody>{res_rows}</tbody></table></details>"
+            )
+
     rows = ""
     for c in cards:
         links = "".join(
@@ -1344,11 +1483,36 @@ def _write_index_html(
         act7_html = "".join(f"<li>{html.escape(str(a))}</li>" for a in actions7)
         domains_attr = " ".join(c.get("domains", []))
         why_now = html.escape(c.get("why_now", ""))
+        _ps = c.get("patch_status", "unknown")
+        _patch_badge_cls = (
+            "patch-badge--fixed"
+            if _ps == "patched"
+            else (
+                "patch-badge--workaround"
+                if _ps == "workaround"
+                else (
+                    "patch-badge--no-fix" if _ps == "no_fix" else "patch-badge--unknown"
+                )
+            )
+        )
+        _patch_badge_lbl = (
+            "Patch Available"
+            if _ps == "patched"
+            else (
+                "Workaround"
+                if _ps == "workaround"
+                else "No Fix · Exploited" if _ps == "no_fix" else "Status Unknown"
+            )
+        )
+        patch_badge_html = (
+            f'<span class="patch-badge {_patch_badge_cls}">{_patch_badge_lbl}</span>'
+        )
         rows += f"""
                 <details class="cluster" data-domains="{html.escape(domains_attr)}">
                     <summary>
                         <span class="badge" style="background:{badge_bg};color:{badge_fg}">{c['risk_score']}</span>
                         <span class="priority {pri_cls}">{pri}</span>
+                        {patch_badge_html}
                         {html.escape(c['title'])}
                         <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline">{tags}</div>
                     </summary>
@@ -1514,6 +1678,23 @@ p{{color:#c9d1d9}}
 .actions{{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:.4rem 0 .7rem}}
 .actions ul{{margin:.3rem 0 .2rem 1rem;padding:0}}
 .confidence{{display:inline-block;font-size:.72rem;color:#8b949e;border:1px solid #30363d;border-radius:999px;padding:2px 8px;margin-bottom:.3rem}}
+.patch-badge{{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.04em;border-radius:3px;padding:1px 7px;margin-left:.45rem;vertical-align:middle;text-transform:uppercase}}
+.patch-badge--fixed{{background:rgba(35,134,54,.18);color:#3fb950;border:1px solid rgba(35,134,54,.35)}}
+.patch-badge--workaround{{background:rgba(158,106,3,.18);color:#d29922;border:1px solid rgba(158,106,3,.35)}}
+.patch-badge--no-fix{{background:rgba(170,28,28,.18);color:#f85149;border:1px solid rgba(170,28,28,.35)}}
+.patch-badge--unknown{{background:rgba(48,54,61,.5);color:#8b949e;border:1px solid #30363d}}
+.delta-strip{{display:flex;align-items:center;gap:.5rem;margin:.2rem 0 1rem;flex-wrap:wrap;min-height:1.6rem}}
+.delta-chip{{display:inline-flex;align-items:center;border-radius:999px;padding:3px 11px;font-size:.71rem;font-weight:700;border:1px solid;letter-spacing:.03em}}
+.delta-chip--new{{background:rgba(31,111,235,.12);color:#58a6ff;border-color:rgba(31,111,235,.3)}}
+.delta-chip--elevated{{background:rgba(158,106,3,.12);color:#d29922;border-color:rgba(158,106,3,.3)}}
+.delta-chip--resolved{{background:rgba(35,134,54,.12);color:#3fb950;border-color:rgba(35,134,54,.3)}}
+.delta-chip--quiet{{color:#8b949e;border-color:#30363d;background:transparent}}
+.resolved-drawer{{margin:.5rem 0 1rem;color:#8b949e}}
+.resolved-drawer summary{{font-size:.8rem;cursor:pointer;padding:.3rem 0;list-style:none}}
+.resolved-drawer summary::-webkit-details-marker{{display:none}}
+.resolved-drawer table{{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:.4rem}}
+.resolved-drawer th{{font-size:.68rem;color:#6a7f98;font-weight:700;border-bottom:1px solid #21262d;padding:.2rem .4rem}}
+.resolved-drawer td{{padding:.25rem .4rem;border-bottom:1px solid #21262d}}
 .threat-section{{display:grid;grid-template-columns:2fr 1fr;gap:12px;align-items:start;margin:0 0 1rem}}
 .threat-main{{padding:.3rem .4rem .5rem}}
 .threat-toolbar{{display:flex;justify-content:space-between;align-items:center;padding:.3rem .3rem .45rem}}
@@ -1544,6 +1725,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
         <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 00:05, 06:05, 12:05, 18:05 ET">⏱ next run —</span></p>
         {f'<div class="executive"><h2>Analyst Summary</h2><p>{html.escape(executive)}</p></div>' if executive else ''}
 {kpi_html}
+{delta_strip_html}
 <section class="threat-section">
   <div class="panel threat-main">
     <div class="threat-toolbar">
@@ -1567,6 +1749,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
 {history_section}
 <h2>Top Findings</h2>
 {rows}
+{resolved_drawer_html}
 <footer>Watchtower · scheduled 00:05 / 06:05 / 12:05 / 18:05 ET · placeholder mode: {str(placeholder_mode()).lower()}</footer>
 <script>
 var CARDS={json.dumps(card_data)};
@@ -1643,6 +1826,9 @@ def _run():
 
     os.makedirs(REPORTS_DIR, exist_ok=True)
     os.makedirs(STATE_DIR, exist_ok=True)
+
+    last_run_data = load_json(LAST_RUN_CARDS_FILE, {"ts": "", "cards": []})
+    last_run_cards = last_run_data.get("cards", [])
 
     ignore = load_json(
         IGNORE_FILE, {"ignore_url": {}, "ignore_domain": {}, "ignore_url_prefix": {}}
@@ -1760,6 +1946,13 @@ def _run():
             if not c["summary"]:
                 c["summary"] = f"{len(c['sources']['primary'])} related updates."
 
+    delta = _compute_delta(cards, last_run_cards)
+    print(
+        f"[INFO] Delta: +{len(delta['new'])} new  "
+        f"\u2191{len(delta['elevated'])} elevated  "
+        f"\u2713{len(delta['resolved'])} resolved"
+    )
+
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%d_%H-%M")
     out_md = os.path.join(REPORTS_DIR, f"briefing_{ts}.md")
     out_jsonl = os.path.join(REPORTS_DIR, f"briefing_{ts}.jsonl")
@@ -1822,6 +2015,25 @@ def _run():
         history,
         since_hours=since_hours,
         groq_status=groq_status,
+        delta=delta,
+    )
+
+    save_json(
+        LAST_RUN_CARDS_FILE,
+        {
+            "ts": now_utc_iso(),
+            "cards": [
+                {
+                    "title": c.get("title", ""),
+                    "risk_score": int(c.get("risk_score", 0)),
+                    "summary": c.get("summary", "")[:300],
+                    "cves": list(
+                        _extract_cves(c.get("title", "") + " " + c.get("summary", ""))
+                    ),
+                }
+                for c in cards
+            ],
+        },
     )
 
     print("### Watchtower run")

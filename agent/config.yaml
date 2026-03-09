@@ -7,8 +7,8 @@ budgets:
   max_clusters_output: 15
   max_links_per_cluster: 5
   max_runtime_seconds: 480
-  since_hours: 6
-  seen_ttl_days: 7
+  since_hours: 24
+  seen_ttl_days: 14
 
 runtime:
   placeholder_mode_default: false  # use real feeds; set WATCHTOWER_PLACEHOLDER_MODE=true for local dev
@@ -160,7 +160,7 @@ feeds:
     enabled: true
 
 model:
-  name: "meta-llama/llama-4-scout-17b-16e-instruct"
+  name: "llama-3.3-70b-versatile"
   temperature: 0.2
   max_tokens: 1200
 

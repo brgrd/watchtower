@@ -170,11 +170,11 @@ class TestDeduplication:
         assert [it["title"] for it in fresh] == [f"item {i}" for i in range(5)]
 
     def test_purge_seen_caps_oversized_set(self):
-        # _purge_seen_ttl reads CONFIG budgets.seen_ttl_days (=7) rather than
-        # the passed ttl_days argument, giving max_size = 7 * 2000 = 14 000.
+        # _purge_seen_ttl reads CONFIG budgets.seen_ttl_days (=14) rather than
+        # the passed ttl_days argument, giving max_size = 14 * 2000 = 28 000.
         huge = {str(i) for i in range(100_000)}
-        purged = _purge_seen_ttl(huge, ttl_days=7)
-        assert len(purged) <= 14_000
+        purged = _purge_seen_ttl(huge, ttl_days=14)
+        assert len(purged) <= 28_000
 
     def test_purge_seen_does_not_shrink_small_set(self):
         small = {"a", "b", "c"}

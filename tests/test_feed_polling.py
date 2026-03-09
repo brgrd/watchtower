@@ -6,6 +6,7 @@ All network I/O is intercepted — no real HTTP calls are made.
 
 import pytest
 from unittest.mock import MagicMock, patch
+from datetime import datetime, timezone, timedelta
 
 from agent.runner import _poll_cisa_kev, add_ignore, deduplicate, item_hash
 
@@ -15,7 +16,8 @@ pytestmark = pytest.mark.unit
 # Fixtures
 # ---------------------------------------------------------------------------
 
-RECENT_DATE = "2026-03-04"  # Within any reasonable since_hours window
+# Use dates relative to now so tests don't rot as calendar advances
+RECENT_DATE = (datetime.now(timezone.utc) - timedelta(hours=12)).strftime("%Y-%m-%d")
 OLD_DATE = "2024-01-01"  # Always outside the window
 
 SAMPLE_KEV_PAYLOAD = {
