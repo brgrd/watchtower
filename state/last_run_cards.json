@@ -1,4 +1,20 @@
 {
-  "ts": "2026-03-09T08:47:47.247723+00:00",
-  "cards": []
+  "ts": "2026-03-09T09:05:17.832682+00:00",
+  "cards": [
+    {
+      "title": "Atop Switch Vuln",
+      "risk_score": 40,
+      "summary": "[P2] Atop Technologies EHG2408 series switch is vulnerable to a stack-based buffer overflow, with no patch available. This vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with no patch available (confidence: 0.80)",
+      "cves": []
+    },
+    {
+      "title": "Tenda FH1202 Vuln",
+      "risk_score": 40,
+      "summary": "[P2] Tenda FH1202 devices are vulnerable to multiple vulnerabilities, including CVE-2026-3810 and CVE-2026-3809, with no patches available. These vulnerabilities have not been exploited in the wild yet. Why now: Newly disclosed vulnerabilities with no patches available (confidence: 0.80)",
+      "cves": [
+        "CVE-2026-3809",
+        "CVE-2026-3810"
+      ]
+    }
+  ]
 }
