@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Watchtower — InfraSec Briefing</title>
+<style>
+:root{--rail-width-expanded:360px;--rail-width-collapsed:64px;--rail-width:var(--rail-width-expanded);--rail-min-width:320px;--rail-max-width:480px;--rail-gap:16px;--page-gutter:16px}
+*{box-sizing:border-box}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:#080c12}
+::-webkit-scrollbar-thumb{background:#1e2c3a;border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:#2c3e50}
+*{scrollbar-width:thin;scrollbar-color:#1e2c3a #080c12}
+body{font-family:system-ui,sans-serif;margin:0;padding:1.2rem var(--page-gutter) 1.4rem;background:#0d1117;color:#c9d1d9}
+.page-wrap{max-width:1320px;margin:0 auto;position:relative}
+.app-shell{position:relative}
+.app-main{padding-right:calc(var(--rail-width) + var(--rail-gap));transition:padding-right .2s ease}
+body.rail-collapsed .app-main{padding-right:calc(var(--rail-width-collapsed) + var(--rail-gap))}
+h1{border-bottom:2px solid #30363d;padding-bottom:.4rem;color:#e6edf3}
+h2{color:#e6edf3}
+a{color:#58a6ff}
+p{color:#c9d1d9}
+.kpi-grid{display:grid;grid-template-columns:repeat(6,minmax(120px,1fr));gap:8px;margin:1rem 0 1.2rem}
+.kpi{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:.55rem .7rem;display:flex;flex-direction:column;gap:.2rem}
+.kpi .k{font-size:.68rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+.kpi .v{font-size:1.2rem;color:#e6edf3;font-weight:800}
+.kpi .v-sm{font-size:.95rem}
+.hm-cell{border-radius:6px;padding:.7rem .55rem;text-align:center;border:1px solid rgba(255,255,255,.08);cursor:pointer;font-family:inherit}
+.hm-cell.active{outline:2px solid #1f6feb;outline-offset:1px}
+.hm-label{display:block;font-size:.72rem;font-weight:700;margin:.15rem 0} 
+.hm-meta{display:block;font-size:.66rem;opacity:.85}
+.hm-score{display:block;font-size:1.15rem;font-weight:800;margin-top:.2rem}
+.panel{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:.7rem .8rem}
+.panel h3{margin:.2rem 0 .5rem;font-size:.92rem;color:#e6edf3}
+.panel .muted{color:#8b949e;font-size:.8rem}
+.feed-table{width:100%;border-collapse:collapse;font-size:.78rem}
+.feed-table th,.feed-table td{border-bottom:1px solid #30363d;padding:.3rem .2rem;text-align:left}
+.matrix-panel{margin:.2rem 0 1rem}
+.risk-matrix{width:100%;border-collapse:separate;border-spacing:4px;table-layout:fixed}
+.risk-matrix th{font-size:.68rem;color:#8b949e;font-weight:700;text-align:center;letter-spacing:.02em}
+.risk-matrix .mx-row{text-align:left;padding-left:.3rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px}
+.mx-cell{height:44px;border:1px solid #30363d;border-radius:6px;position:relative;text-align:center;vertical-align:middle;overflow:hidden;transition:filter .12s ease,transform .12s ease}
+.mx-cell:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.mx-dot{position:absolute;left:50%;top:50%;width:20px;height:20px;border-radius:999px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(88,166,255,.75) 0%, rgba(88,166,255,.05) 70%)}
+.mx-count{position:relative;display:block;font-size:.82rem;font-weight:800;color:#e6edf3;line-height:1}
+.cluster{background:rgba(255,255,255,0.01);border:1px solid #2b313a;border-radius:6px;padding:0;margin:.55rem 0;overflow:hidden}
+.cluster summary{list-style:none;padding:.62rem .85rem;cursor:pointer;display:flex;align-items:center;gap:.35rem;user-select:none;color:#c9d1d9;font-size:.92rem}
+.cluster summary::-webkit-details-marker{display:none}
+.cluster summary::before{content:"–";font-size:.75rem;transition:transform .15s;flex-shrink:0;color:#8b949e;display:inline-block;width:.7rem;text-align:center}
+.cluster[open] summary::before{transform:none;content:"+"}
+.cluster-body{padding:.2rem .9rem .85rem;color:#c9d1d9}
+.badge{border-radius:999px;padding:2px 8px;font-size:.72rem;font-weight:700;margin-right:.35rem;background:rgba(255,255,255,.06)!important;color:#c9d1d9!important}
+.priority{border-radius:999px;padding:2px 8px;font-size:.68rem;font-weight:800;letter-spacing:.02em;margin-right:.3rem;border:1px solid #30363d}
+.priority.p1{background:rgba(170,28,28,.16);color:#c88888;border-color:rgba(170,28,28,.36)}
+.priority.p2{background:rgba(50,80,125,.15);color:#8aa8c0;border-color:rgba(50,80,125,.30)}
+.priority.p3{background:#21262d;color:#c9d1d9}
+.domain-tags{margin:.3rem 0 .6rem} .domain-tag{display:inline-block;background:#21262d;color:#8b949e;border:1px solid #30363d;border-radius:3px;font-size:.7rem;padding:1px 6px;margin:0 3px 3px 0}
+.executive{background:#0e1620;border-left:3px solid #2e5070;border-radius:4px;padding:.8rem 1.1rem;margin:1rem 0 1.8rem}
+.executive h2{margin:0 0 .4rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:#4e7898}
+.executive p{margin:0;line-height:1.75;font-size:.95rem;color:#c9d1d9}
+.history-panel{background:#161b22;border:1px solid #30363d;border-radius:4px;padding:.45rem 1rem;margin:0 0 1.2rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.hs-label{color:#8b949e;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:.68rem}
+.hs-val{font-weight:700;font-size:.85rem;color:#e6edf3}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:.4rem 0 .7rem}
+.actions ul{margin:.3rem 0 .2rem 1rem;padding:0}
+.confidence{display:inline-block;font-size:.72rem;color:#8b949e;border:1px solid #30363d;border-radius:999px;padding:2px 8px;margin-bottom:.3rem}
+.patch-badge{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.04em;border-radius:3px;padding:1px 7px;margin-left:.45rem;vertical-align:middle;text-transform:uppercase}
+.patch-badge--fixed{background:rgba(35,134,54,.18);color:#3fb950;border:1px solid rgba(35,134,54,.35)}
+.patch-badge--workaround{background:rgba(158,106,3,.18);color:#d29922;border:1px solid rgba(158,106,3,.35)}
+.patch-badge--no-fix{background:rgba(170,28,28,.18);color:#f85149;border:1px solid rgba(170,28,28,.35)}
+.patch-badge--unknown{background:rgba(48,54,61,.5);color:#8b949e;border:1px solid #30363d}
+.delta-strip{display:flex;align-items:center;gap:.5rem;margin:.2rem 0 1rem;flex-wrap:wrap;min-height:1.6rem}
+.delta-chip{display:inline-flex;align-items:center;border-radius:999px;padding:3px 11px;font-size:.71rem;font-weight:700;border:1px solid;letter-spacing:.03em}
+.delta-chip--new{background:rgba(31,111,235,.12);color:#58a6ff;border-color:rgba(31,111,235,.3)}
+.delta-chip--elevated{background:rgba(158,106,3,.12);color:#d29922;border-color:rgba(158,106,3,.3)}
+.delta-chip--resolved{background:rgba(35,134,54,.12);color:#3fb950;border-color:rgba(35,134,54,.3)}
+.delta-chip--quiet{color:#8b949e;border-color:#30363d;background:transparent}
+.resolved-drawer{margin:.5rem 0 1rem;color:#8b949e}
+.resolved-drawer summary{font-size:.8rem;cursor:pointer;padding:.3rem 0;list-style:none}
+.resolved-drawer summary::-webkit-details-marker{display:none}
+.resolved-drawer table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:.4rem}
+.resolved-drawer th{font-size:.68rem;color:#6a7f98;font-weight:700;border-bottom:1px solid #21262d;padding:.2rem .4rem}
+.resolved-drawer td{padding:.25rem .4rem;border-bottom:1px solid #21262d}
+.ha-section{margin:0 0 1rem}.ha-day{border-bottom:1px solid #21262d}.ha-day:last-child{border-bottom:none}
+.ha-summary{display:flex;align-items:center;gap:.7rem;padding:.42rem .3rem;cursor:pointer;list-style:none;font-size:.82rem}.ha-summary::-webkit-details-marker{display:none}
+.ha-date{font-weight:700;color:#e6edf3;flex:0 0 92px}.ha-meta{color:#c9d1d9;flex:1;font-size:.78rem}.ha-ts{color:#8b949e;font-size:.68rem;margin-left:auto;flex-shrink:0}
+.ha-body{padding:.25rem .2rem .5rem .5rem}.ha-table{width:100%;border-collapse:collapse;font-size:.76rem}.ha-table th{font-size:.67rem;color:#6a7f98;font-weight:700;border-bottom:1px solid #21262d;padding:.2rem .35rem}
+.ha-table td{padding:.22rem .35rem;border-bottom:1px solid #161b22;vertical-align:top}.ha-title{max-width:520px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ha-risk{text-align:right;font-weight:700;color:#e6edf3;min-width:30px}.ha-pri,.ha-ps{text-align:center;min-width:40px;white-space:nowrap}
+.weekly-scope{margin:0 0 1rem}.weekly-kpi-row{display:flex;gap:10px;flex-wrap:wrap;margin:.4rem 0 .75rem}
+.wkpi{background:#0d1117;border:1px solid #21262d;border-radius:5px;padding:.4rem .65rem;display:flex;flex-direction:column;gap:.15rem;min-width:110px}
+.wk{font-size:.65rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700}.wv{font-size:1.1rem;color:#e6edf3;font-weight:800}.wv-sm{font-size:.85rem}
+.weekly-review-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:#4e7898;margin:.3rem 0 .2rem}
+.weekly-review-text{margin:0 0 .7rem;line-height:1.75;font-size:.9rem;color:#c9d1d9}
+.wcve-details{margin:.3rem 0 0}.wcve-details summary{font-size:.78rem;color:#8b949e;cursor:pointer;padding:.25rem 0;list-style:none}.wcve-details summary::-webkit-details-marker{display:none}
+.wcve-table{width:100%;border-collapse:collapse;font-size:.76rem;margin-top:.35rem}.wcve-table th{font-size:.67rem;color:#6a7f98;font-weight:700;border-bottom:1px solid #21262d;padding:.2rem .4rem}.wcve-table td{padding:.22rem .4rem;border-bottom:1px solid #161b22}
+.wcve-id{font-family:monospace;color:#58a6ff;font-size:.75rem}.wcve-bar-cell{min-width:80px}.wcve-bar-inner{height:5px;background:#1f6feb;border-radius:2px;min-width:2px}.wcve-count{text-align:right;font-weight:700;color:#e6edf3;min-width:22px}
+.threat-section{display:block;margin:0 0 1rem}
+.threat-main{padding:.3rem .4rem .5rem}
+.threat-toolbar{display:flex;justify-content:space-between;align-items:center;padding:.3rem .3rem .45rem}
+.threat-title{font-size:.9rem;font-weight:700;color:#e6edf3}
+.threat-sub{font-size:.72rem;color:#8b949e}
+.right-rail{position:fixed;right:var(--page-gutter);top:84px;bottom:16px;width:var(--rail-width);padding:.6rem .7rem;display:flex;flex-direction:column;overflow:hidden;z-index:15;transition:width .2s ease,transform .22s ease}
+body.rail-collapsed .right-rail{width:var(--rail-width-collapsed);padding:.6rem .45rem}
+.rail-header{display:flex;align-items:center;justify-content:space-between;gap:.4rem;padding:0 0 .45rem;border-bottom:1px solid #21262d}
+.rail-actions{display:flex;gap:.35rem;align-items:center}
+.rail-btn{background:#0d1622;border:1px solid #2d3f54;color:#8fb4d6;border-radius:4px;font-size:.72rem;padding:.2rem .45rem;cursor:pointer}
+.rail-btn:hover{background:#122030}
+.rail-content{overflow:auto;padding:.5rem .05rem .2rem;display:flex;flex-direction:column;gap:.35rem}
+body.rail-collapsed .rail-content,body.rail-collapsed .rail-header h3{display:none}
+.rail-collapsed-pill{display:none;writing-mode:vertical-rl;transform:rotate(180deg);font-size:.72rem;letter-spacing:.04em;color:#8b949e;margin:.2rem auto 0}
+body.rail-collapsed .rail-collapsed-pill{display:block}
+.rail-handle{position:absolute;left:-4px;top:0;bottom:0;width:8px;cursor:ew-resize;background:linear-gradient(to right,rgba(88,166,255,.25),rgba(88,166,255,0));border-radius:3px;opacity:.55}
+.rail-handle:hover{opacity:.95}
+.rail-tablist{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:.1rem 0 .2rem}
+.rail-tab{border:1px solid #30363d;background:#0f1621;color:#8ea0b3;font-size:.68rem;padding:.24rem .2rem;border-radius:4px;text-align:center;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rail-tab[aria-selected="true"]{background:#1a2a3b;color:#c9d1d9;border-color:#365e84}
+.rail-panel{display:none}
+.rail-panel.active{display:block}
+.rail-placeholder{font-size:.78rem;color:#8b949e;line-height:1.5;padding:.3rem 0}
+.rail-mobile-toggle{display:none;position:fixed;right:14px;bottom:14px;z-index:16;background:#10243a;border:1px solid #295883;color:#c7ddf0;border-radius:999px;padding:.42rem .8rem;font-size:.74rem;cursor:pointer}
+.rail-backdrop{display:none;position:fixed;inset:0;background:rgba(1,4,8,.58);backdrop-filter:blur(1px);z-index:14}
+body.rail-open .rail-backdrop{display:block}
+.tm-node .node-disc{transition:stroke .12s,stroke-width .12s}
+.tm-node:hover .node-disc{stroke:rgba(120,160,220,0.5)!important;stroke-width:1.4px!important}
+.tm-node .sel-indicator{opacity:0;transition:opacity .18s}
+.tm-node.tm-selected .sel-indicator{opacity:1}
+.rank-row{display:flex;align-items:center;gap:6px;padding:.28rem 0;border-bottom:1px solid #161d2a;cursor:pointer;border-radius:3px}
+.rank-row:hover{background:rgba(255,255,255,.03)}
+.rank-label{font-size:.77rem;flex:0 0 92px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rank-bar-wrap{flex:1;background:#0e1520;border-radius:2px;height:3px}
+.rank-bar{height:3px;border-radius:2px;min-width:1px}
+.rank-val{font-size:.7rem;font-weight:700;flex:0 0 22px;text-align:right}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid #30363d;background:#21262d;color:#c9d1d9;font-size:.72rem}
+.next-run{display:inline-flex;align-items:center;gap:5px;padding:2px 10px;border-radius:999px;border:1px solid #1a3a5c;background:#0d1f30;color:#58a6ff;font-size:.72rem;font-variant-numeric:tabular-nums;margin-left:.6rem}
+.next-run.soon{border-color:#4a2a00;background:#1c1000;color:#e3a020}
+.next-run.now{border-color:#1a3a1a;background:#0a1f0a;color:#3fb950;animation:pulse-now 1s ease-in-out infinite}
+@keyframes pulse-now{0%,100%{opacity:1}50%{opacity:.55}}
+footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-top:1px solid #30363d}
+@media (max-width:1279px){body{padding-right:12px;padding-left:12px}.right-rail{top:78px}}
+@media (max-width:900px){
+  .kpi-grid{grid-template-columns:repeat(3,minmax(110px,1fr));}
+  .app-main{padding-right:0}
+  body.rail-collapsed .app-main{padding-right:0}
+  .right-rail{right:10px;top:12px;bottom:12px;width:min(92vw,420px);max-width:92vw;transform:translateX(112%);}
+  body.rail-open .right-rail{transform:translateX(0)}
+  .rail-mobile-toggle{display:inline-flex;align-items:center;gap:6px}
+}
+        </style>
+        </head>
+        <body>
+    <div class="rail-backdrop" id="rail-backdrop"></div>
+    <button id="rail-mobile-toggle" class="rail-mobile-toggle" type="button" aria-controls="domain-rail" aria-expanded="false">Domain Activity</button>
+    <div class="page-wrap">
+        <h1>Watchtower — Infrastructure Security Briefing</h1>
+        <p>Generated <strong>2026-03-09 08-00</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 00:05, 06:05, 12:05, 18:05 ET">Next run —</span></p>
+    <div class="app-shell">
+    <main class="app-main">
+        <div class="executive"><h2>Analyst Summary</h2><p>Demo briefing showcasing the new right-anchored Domain Activity rail with tabs, resize, collapse, and telemetry.</p></div>
+
+        <section class="kpi-grid">
+            <div class="kpi"><span class="k">Findings</span><span class="v">3</span></div>
+            <div class="kpi"><span class="k">P1</span><span class="v">1</span></div>
+            <div class="kpi"><span class="k">Exploited</span><span class="v">1</span></div>
+            <div class="kpi"><span class="k">Control Plane</span><span class="v">2</span></div>
+            <div class="kpi"><span class="k">Top Domain</span><span class="v v-sm">Cloud / IAM</span></div>
+            <div class="kpi"><span class="k">Trend 24h</span><span class="v">—</span></div>
+        </section>
+        
+<div class="delta-strip"><span class="delta-chip delta-chip--new">+1&nbsp;New</span>  <span class="delta-chip delta-chip--elevated">1&nbsp;Elevated</span></div>
+<section class="threat-section">
+  <div class="panel threat-main">
+    <div class="threat-toolbar">
+      <div>
+        <div class="threat-title">Surface Threat Map</div>
+        <div class="threat-sub">Domain constellation — node intensity shows activity heat, edges show blast-radius pathways. Click any node to filter findings.</div>
+      </div>
+      <span class="chip">Window 24h</span>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#090d18;border-radius:8px;border:1px solid #161d2a">
+<defs>
+<filter id="f-outer" x="-300%" y="-300%" width="700%" height="700%"><feGaussianBlur stdDeviation="18"/></filter>
+<filter id="f-mid" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="7"/></filter>
+<filter id="edge-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4"/></filter>
+</defs>
+<g opacity="0.04">
+<circle cx="44" cy="32" r="1" fill="#7090a8"/>
+<circle cx="44" cy="94" r="1" fill="#7090a8"/>
+<circle cx="44" cy="156" r="1" fill="#7090a8"/>
+<circle cx="44" cy="218" r="1" fill="#7090a8"/>
+<circle cx="44" cy="280" r="1" fill="#7090a8"/>
+<circle cx="44" cy="342" r="1" fill="#7090a8"/>
+<circle cx="44" cy="404" r="1" fill="#7090a8"/>
+<circle cx="44" cy="466" r="1" fill="#7090a8"/>
+<circle cx="44" cy="528" r="1" fill="#7090a8"/>
+<circle cx="44" cy="590" r="1" fill="#7090a8"/>
+<circle cx="44" cy="652" r="1" fill="#7090a8"/>
+<circle cx="44" cy="714" r="1" fill="#7090a8"/>
+<circle cx="106" cy="32" r="1" fill="#7090a8"/>
+<circle cx="106" cy="94" r="1" fill="#7090a8"/>
+<circle cx="106" cy="156" r="1" fill="#7090a8"/>
+<circle cx="106" cy="218" r="1" fill="#7090a8"/>
+<circle cx="106" cy="280" r="1" fill="#7090a8"/>
+<circle cx="106" cy="342" r="1" fill="#7090a8"/>
+<circle cx="106" cy="404" r="1" fill="#7090a8"/>
+<circle cx="106" cy="466" r="1" fill="#7090a8"/>
+<circle cx="106" cy="528" r="1" fill="#7090a8"/>
+<circle cx="106" cy="590" r="1" fill="#7090a8"/>
+<circle cx="106" cy="652" r="1" fill="#7090a8"/>
+<circle cx="106" cy="714" r="1" fill="#7090a8"/>
+<circle cx="168" cy="32" r="1" fill="#7090a8"/>
+<circle cx="168" cy="94" r="1" fill="#7090a8"/>
+<circle cx="168" cy="156" r="1" fill="#7090a8"/>
+<circle cx="168" cy="218" r="1" fill="#7090a8"/>
+<circle cx="168" cy="280" r="1" fill="#7090a8"/>
+<circle cx="168" cy="342" r="1" fill="#7090a8"/>
+<circle cx="168" cy="404" r="1" fill="#7090a8"/>
+<circle cx="168" cy="466" r="1" fill="#7090a8"/>
+<circle cx="168" cy="528" r="1" fill="#7090a8"/>
+<circle cx="168" cy="590" r="1" fill="#7090a8"/>
+<circle cx="168" cy="652" r="1" fill="#7090a8"/>
+<circle cx="168" cy="714" r="1" fill="#7090a8"/>
+<circle cx="230" cy="32" r="1" fill="#7090a8"/>
+<circle cx="230" cy="94" r="1" fill="#7090a8"/>
+<circle cx="230" cy="156" r="1" fill="#7090a8"/>
+<circle cx="230" cy="218" r="1" fill="#7090a8"/>
+<circle cx="230" cy="280" r="1" fill="#7090a8"/>
+<circle cx="230" cy="342" r="1" fill="#7090a8"/>
+<circle cx="230" cy="404" r="1" fill="#7090a8"/>
+<circle cx="230" cy="466" r="1" fill="#7090a8"/>
+<circle cx="230" cy="528" r="1" fill="#7090a8"/>
+<circle cx="230" cy="590" r="1" fill="#7090a8"/>
+<circle cx="230" cy="652" r="1" fill="#7090a8"/>
+<circle cx="230" cy="714" r="1" fill="#7090a8"/>
+<circle cx="292" cy="32" r="1" fill="#7090a8"/>
+<circle cx="292" cy="94" r="1" fill="#7090a8"/>
+<circle cx="292" cy="156" r="1" fill="#7090a8"/>
+<circle cx="292" cy="218" r="1" fill="#7090a8"/>
+<circle cx="292" cy="280" r="1" fill="#7090a8"/>
+<circle cx="292" cy="342" r="1" fill="#7090a8"/>
+<circle cx="292" cy="404" r="1" fill="#7090a8"/>
+<circle cx="292" cy="466" r="1" fill="#7090a8"/>
+<circle cx="292" cy="528" r="1" fill="#7090a8"/>
+<circle cx="292" cy="590" r="1" fill="#7090a8"/>
+<circle cx="292" cy="652" r="1" fill="#7090a8"/>
+<circle cx="292" cy="714" r="1" fill="#7090a8"/>
+<circle cx="354" cy="32" r="1" fill="#7090a8"/>
+<circle cx="354" cy="94" r="1" fill="#7090a8"/>
+<circle cx="354" cy="156" r="1" fill="#7090a8"/>
+<circle cx="354" cy="218" r="1" fill="#7090a8"/>
+<circle cx="354" cy="280" r="1" fill="#7090a8"/>
+<circle cx="354" cy="342" r="1" fill="#7090a8"/>
+<circle cx="354" cy="404" r="1" fill="#7090a8"/>
+<circle cx="354" cy="466" r="1" fill="#7090a8"/>
+<circle cx="354" cy="528" r="1" fill="#7090a8"/>
+<circle cx="354" cy="590" r="1" fill="#7090a8"/>
+<circle cx="354" cy="652" r="1" fill="#7090a8"/>
+<circle cx="354" cy="714" r="1" fill="#7090a8"/>
+<circle cx="416" cy="32" r="1" fill="#7090a8"/>
+<circle cx="416" cy="94" r="1" fill="#7090a8"/>
+<circle cx="416" cy="156" r="1" fill="#7090a8"/>
+<circle cx="416" cy="218" r="1" fill="#7090a8"/>
+<circle cx="416" cy="280" r="1" fill="#7090a8"/>
+<circle cx="416" cy="342" r="1" fill="#7090a8"/>
+<circle cx="416" cy="404" r="1" fill="#7090a8"/>
+<circle cx="416" cy="466" r="1" fill="#7090a8"/>
+<circle cx="416" cy="528" r="1" fill="#7090a8"/>
+<circle cx="416" cy="590" r="1" fill="#7090a8"/>
+<circle cx="416" cy="652" r="1" fill="#7090a8"/>
+<circle cx="416" cy="714" r="1" fill="#7090a8"/>
+<circle cx="478" cy="32" r="1" fill="#7090a8"/>
+<circle cx="478" cy="94" r="1" fill="#7090a8"/>
+<circle cx="478" cy="156" r="1" fill="#7090a8"/>
+<circle cx="478" cy="218" r="1" fill="#7090a8"/>
+<circle cx="478" cy="280" r="1" fill="#7090a8"/>
+<circle cx="478" cy="342" r="1" fill="#7090a8"/>
+<circle cx="478" cy="404" r="1" fill="#7090a8"/>
+<circle cx="478" cy="466" r="1" fill="#7090a8"/>
+<circle cx="478" cy="528" r="1" fill="#7090a8"/>
+<circle cx="478" cy="590" r="1" fill="#7090a8"/>
+<circle cx="478" cy="652" r="1" fill="#7090a8"/>
+<circle cx="478" cy="714" r="1" fill="#7090a8"/>
+<circle cx="540" cy="32" r="1" fill="#7090a8"/>
+<circle cx="540" cy="94" r="1" fill="#7090a8"/>
+<circle cx="540" cy="156" r="1" fill="#7090a8"/>
+<circle cx="540" cy="218" r="1" fill="#7090a8"/>
+<circle cx="540" cy="280" r="1" fill="#7090a8"/>
+<circle cx="540" cy="342" r="1" fill="#7090a8"/>
+<circle cx="540" cy="404" r="1" fill="#7090a8"/>
+<circle cx="540" cy="466" r="1" fill="#7090a8"/>
+<circle cx="540" cy="528" r="1" fill="#7090a8"/>
+<circle cx="540" cy="590" r="1" fill="#7090a8"/>
+<circle cx="540" cy="652" r="1" fill="#7090a8"/>
+<circle cx="540" cy="714" r="1" fill="#7090a8"/>
+<circle cx="602" cy="32" r="1" fill="#7090a8"/>
+<circle cx="602" cy="94" r="1" fill="#7090a8"/>
+<circle cx="602" cy="156" r="1" fill="#7090a8"/>
+<circle cx="602" cy="218" r="1" fill="#7090a8"/>
+<circle cx="602" cy="280" r="1" fill="#7090a8"/>
+<circle cx="602" cy="342" r="1" fill="#7090a8"/>
+<circle cx="602" cy="404" r="1" fill="#7090a8"/>
+<circle cx="602" cy="466" r="1" fill="#7090a8"/>
+<circle cx="602" cy="528" r="1" fill="#7090a8"/>
+<circle cx="602" cy="590" r="1" fill="#7090a8"/>
+<circle cx="602" cy="652" r="1" fill="#7090a8"/>
+<circle cx="602" cy="714" r="1" fill="#7090a8"/>
+<circle cx="664" cy="32" r="1" fill="#7090a8"/>
+<circle cx="664" cy="94" r="1" fill="#7090a8"/>
+<circle cx="664" cy="156" r="1" fill="#7090a8"/>
+<circle cx="664" cy="218" r="1" fill="#7090a8"/>
+<circle cx="664" cy="280" r="1" fill="#7090a8"/>
+<circle cx="664" cy="342" r="1" fill="#7090a8"/>
+<circle cx="664" cy="404" r="1" fill="#7090a8"/>
+<circle cx="664" cy="466" r="1" fill="#7090a8"/>
+<circle cx="664" cy="528" r="1" fill="#7090a8"/>
+<circle cx="664" cy="590" r="1" fill="#7090a8"/>
+<circle cx="664" cy="652" r="1" fill="#7090a8"/>
+<circle cx="664" cy="714" r="1" fill="#7090a8"/>
+<circle cx="726" cy="32" r="1" fill="#7090a8"/>
+<circle cx="726" cy="94" r="1" fill="#7090a8"/>
+<circle cx="726" cy="156" r="1" fill="#7090a8"/>
+<circle cx="726" cy="218" r="1" fill="#7090a8"/>
+<circle cx="726" cy="280" r="1" fill="#7090a8"/>
+<circle cx="726" cy="342" r="1" fill="#7090a8"/>
+<circle cx="726" cy="404" r="1" fill="#7090a8"/>
+<circle cx="726" cy="466" r="1" fill="#7090a8"/>
+<circle cx="726" cy="528" r="1" fill="#7090a8"/>
+<circle cx="726" cy="590" r="1" fill="#7090a8"/>
+<circle cx="726" cy="652" r="1" fill="#7090a8"/>
+<circle cx="726" cy="714" r="1" fill="#7090a8"/>
+<circle cx="788" cy="32" r="1" fill="#7090a8"/>
+<circle cx="788" cy="94" r="1" fill="#7090a8"/>
+<circle cx="788" cy="156" r="1" fill="#7090a8"/>
+<circle cx="788" cy="218" r="1" fill="#7090a8"/>
+<circle cx="788" cy="280" r="1" fill="#7090a8"/>
+<circle cx="788" cy="342" r="1" fill="#7090a8"/>
+<circle cx="788" cy="404" r="1" fill="#7090a8"/>
+<circle cx="788" cy="466" r="1" fill="#7090a8"/>
+<circle cx="788" cy="528" r="1" fill="#7090a8"/>
+<circle cx="788" cy="590" r="1" fill="#7090a8"/>
+<circle cx="788" cy="652" r="1" fill="#7090a8"/>
+<circle cx="788" cy="714" r="1" fill="#7090a8"/>
+<circle cx="850" cy="32" r="1" fill="#7090a8"/>
+<circle cx="850" cy="94" r="1" fill="#7090a8"/>
+<circle cx="850" cy="156" r="1" fill="#7090a8"/>
+<circle cx="850" cy="218" r="1" fill="#7090a8"/>
+<circle cx="850" cy="280" r="1" fill="#7090a8"/>
+<circle cx="850" cy="342" r="1" fill="#7090a8"/>
+<circle cx="850" cy="404" r="1" fill="#7090a8"/>
+<circle cx="850" cy="466" r="1" fill="#7090a8"/>
+<circle cx="850" cy="528" r="1" fill="#7090a8"/>
+<circle cx="850" cy="590" r="1" fill="#7090a8"/>
+<circle cx="850" cy="652" r="1" fill="#7090a8"/>
+<circle cx="850" cy="714" r="1" fill="#7090a8"/>
+<circle cx="912" cy="32" r="1" fill="#7090a8"/>
+<circle cx="912" cy="94" r="1" fill="#7090a8"/>
+<circle cx="912" cy="156" r="1" fill="#7090a8"/>
+<circle cx="912" cy="218" r="1" fill="#7090a8"/>
+<circle cx="912" cy="280" r="1" fill="#7090a8"/>
+<circle cx="912" cy="342" r="1" fill="#7090a8"/>
+<circle cx="912" cy="404" r="1" fill="#7090a8"/>
+<circle cx="912" cy="466" r="1" fill="#7090a8"/>
+<circle cx="912" cy="528" r="1" fill="#7090a8"/>
+<circle cx="912" cy="590" r="1" fill="#7090a8"/>
+<circle cx="912" cy="652" r="1" fill="#7090a8"/>
+<circle cx="912" cy="714" r="1" fill="#7090a8"/>
+</g>
+<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(55,110,195,0.280)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(55,110,195,0.280)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(55,110,195,0.280)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(55,110,195,0.280)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(55,110,195,0.280)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(55,110,195,0.280)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="221" y1="583" x2="478" y2="342" stroke="rgba(55,110,195,0.280)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(55,110,195,0.252)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="534" y1="623" x2="478" y2="342" stroke="rgba(55,110,195,0.252)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="690" y1="570" x2="478" y2="342" stroke="rgba(55,110,195,0.252)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="806" y1="473" x2="478" y2="342" stroke="rgba(55,110,195,0.252)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="737" y2="197" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="534" y2="132" stroke="rgba(55,110,195,0.252)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="737" y1="197" x2="534" y2="132" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="737" y1="197" x2="345" y2="184" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="534" y1="132" x2="345" y2="184" stroke="rgba(55,110,195,0.132)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="534" y1="132" x2="847" y2="307" stroke="rgba(55,110,195,0.132)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(55,110,195,0.252)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="847" y1="307" x2="737" y2="197" stroke="rgba(55,110,195,0.500)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(55,110,195,0.132)" stroke-width="5.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(70,130,210,0.383)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(70,130,210,0.383)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(70,130,210,0.383)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(70,130,210,0.383)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(70,130,210,0.383)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(70,130,210,0.383)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="221" y1="583" x2="478" y2="342" stroke="rgba(70,130,210,0.383)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(70,130,210,0.351)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="534" y1="623" x2="478" y2="342" stroke="rgba(70,130,210,0.351)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="690" y1="570" x2="478" y2="342" stroke="rgba(70,130,210,0.351)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="806" y1="473" x2="478" y2="342" stroke="rgba(70,130,210,0.351)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="737" y2="197" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="534" y2="132" stroke="rgba(70,130,210,0.351)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="737" y1="197" x2="534" y2="132" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="737" y1="197" x2="345" y2="184" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="534" y1="132" x2="345" y2="184" stroke="rgba(70,130,210,0.216)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="534" y1="132" x2="847" y2="307" stroke="rgba(70,130,210,0.216)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(70,130,210,0.351)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="847" y1="307" x2="737" y2="197" stroke="rgba(70,130,210,0.630)" stroke-width="1.1" stroke-linecap="round"/>
+<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(70,130,210,0.216)" stroke-width="1.1" stroke-linecap="round"/>
+<g class="tm-node" data-domain="identity" onclick="selectDomain('identity')" style="cursor:pointer">
+<circle cx="534" cy="132" r="40" fill="rgba(30,110,255,0.258)" filter="url(#f-outer)"/>
+<circle class="node-disc" cx="534" cy="132" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
+<circle cx="534" cy="132" r="24" fill="none" stroke="rgba(70,155,255,0.444)" stroke-width="4" filter="url(#f-mid)"/>
+<circle class="sel-indicator" cx="534" cy="132" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+<text x="534" y="169" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Identity / Auth</text>
+</g>
+<g class="tm-node" data-domain="ca_trust" onclick="selectDomain('ca_trust')" style="cursor:pointer">
+<circle cx="345" cy="184" r="40" fill="rgba(30,110,255,0.258)" filter="url(#f-outer)"/>
+<circle class="node-disc" cx="345" cy="184" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
+<circle cx="345" cy="184" r="24" fill="none" stroke="rgba(70,155,255,0.444)" stroke-width="4" filter="url(#f-mid)"/>
+<circle class="sel-indicator" cx="345" cy="184" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+<text x="345" y="221" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">CA / PKI</text>
+</g>
+<g class="tm-node" data-domain="cloud_iam" onclick="selectDomain('cloud_iam')" style="cursor:pointer">
+<circle cx="737" cy="197" r="40" fill="rgba(255,40,40,0.92)" filter="url(#f-outer)"/>
+<circle class="node-disc" cx="737" cy="197" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
+<circle cx="737" cy="197" r="24" fill="none" stroke="rgba(255,80,80,0.95)" stroke-width="4" filter="url(#f-mid)"/>
+<circle class="sel-indicator" cx="737" cy="197" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+<text x="737" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Cloud / IAM</text>
+</g>
+<g class="tm-node" data-domain="crypto_lib" onclick="selectDomain('crypto_lib')" style="cursor:pointer">
+<circle cx="180" cy="329" r="40" fill="rgba(30,110,255,0.474)" filter="url(#f-outer)"/>
+<circle class="node-disc" cx="180" cy="329" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
+<circle cx="180" cy="329" r="24" fill="none" stroke="rgba(70,155,255,0.609)" stroke-width="4" filter="url(#f-mid)"/>
+<circle class="sel-indicator" cx="180" cy="329" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+<text x="180" y="366" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Crypto Libs</text>
+</g>
+<g class="tm-node" data-domain="web_framework" onclick="selectDomain('web_framework')" style="cursor:pointer">
+<circle cx="478" cy="342" r="40" fill="rgba(30,110,255,0.474)" filter="url(#f-outer)"/>
+<circle class="node-disc" cx="478" cy="342" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
+<circle cx="478" cy="342" r="24" fill="none" stroke="rgba(70,155,255,0.609)" stroke-width="4" filter="url(#f-mid)"/>
+<circle class="sel-indicator" cx="478" cy="342" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+<text x="478" y="379" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Web / Servers</text>
+</g>
+<g class="tm-node" data-domain="container" onclick="selectDomain('container')" style="cursor:pointer">
+<circle cx="659" cy="360" r="40" fill="rgba(255,40,40,0.92)" filter="url(#f-outer)"/>
+<circle class="node-disc" cx="659" cy="360" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
+<circle cx="659" cy="360" r="24" fill="none" stroke="rgba(255,80,80,0.95)" stroke-width="4" filter="url(#f-mid)"/>
+<circle class="sel-indicator" cx="659" cy="360" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+<text x="659" y="397" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Containers</text>
+</g>
+<g class="tm-node" data-domain="browser_ext" onclick="selectDomain('browser_ext')" style="cursor:pointer">
+<circle cx="847" cy="307" r="40" fill="rgba(30,110,255,0.258)" filter="url(#f-outer)"/>
+<circle class="node-disc" cx="847" cy="307" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
+<circle cx="847" cy="307" r="24" fill="none" stroke="rgba(70,155,255,0.444)" stroke-width="4" filter="url(#f-mid)"/>
+<circle class="sel-indicator" cx="847" cy="307" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+<text x="847" y="344" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Browser Ext</text>
+</g>
+<g class="tm-node" data-domain="os_kernel" onclick="selectDomain('os_kernel')" style="cursor:pointer">
+<circle cx="337" cy="460" r="40" fill="rgba(255,40,40,0.92)" filter="url(#f-outer)"/>
+<circle class="node-disc" cx="337" cy="460" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
+<circle cx="337" cy="460" r="24" fill="none" stroke="rgba(255,80,80,0.95)" stroke-width="4" filter="url(#f-mid)"/>
+<circle class="sel-indicator" cx="337" cy="460" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+<text x="337" y="497" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">OS / Kernel</text>
+</g>
+<g class="tm-node" data-domain="supply_chain" onclick="selectDomain('supply_chain')" style="cursor:pointer">
+<circle cx="119" cy="471" r="40" fill="rgba(30,110,255,0.524)" filter="url(#f-outer)"/>
+<circle class="node-disc" cx="119" cy="471" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
+<circle cx="119" cy="471" r="24" fill="none" stroke="rgba(70,155,255,0.648)" stroke-width="4" filter="url(#f-mid)"/>
+<circle class="sel-indicator" cx="119" cy="471" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+<text x="119" y="508" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Supply Chain</text>
+</g>
+<g class="tm-node" data-domain="pkg_npm" onclick="selectDomain('pkg_npm')" style="cursor:pointer">
+<circle cx="221" cy="583" r="40" fill="rgba(30,110,255,0.524)" filter="url(#f-outer)"/>
+<circle class="node-disc" cx="221" cy="583" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
+<circle cx="221" cy="583" r="24" fill="none" stroke="rgba(70,155,255,0.648)" stroke-width="4" filter="url(#f-mid)"/>
+<circle class="sel-indicator" cx="221" cy="583" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+<text x="221" y="620" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#c8d8e8" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">npm / Node</text>
+</g>
+<g class="tm-node" data-domain="pkg_pypi" onclick="selectDomain('pkg_pypi')" style="cursor:pointer">
+<circle cx="381" cy="609" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
+<circle class="node-disc" cx="381" cy="609" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
+<circle cx="381" cy="609" r="24" fill="none" stroke="rgba(70,155,255,0.433)" stroke-width="4" filter="url(#f-mid)"/>
+<circle class="sel-indicator" cx="381" cy="609" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+<text x="381" y="646" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">PyPI / Python</text>
+</g>
+<g class="tm-node" data-domain="pkg_maven" onclick="selectDomain('pkg_maven')" style="cursor:pointer">
+<circle cx="534" cy="623" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
+<circle class="node-disc" cx="534" cy="623" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
+<circle cx="534" cy="623" r="24" fill="none" stroke="rgba(70,155,255,0.433)" stroke-width="4" filter="url(#f-mid)"/>
+<circle class="sel-indicator" cx="534" cy="623" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+<text x="534" y="660" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Maven / Java</text>
+</g>
+<g class="tm-node" data-domain="pkg_nuget" onclick="selectDomain('pkg_nuget')" style="cursor:pointer">
+<circle cx="690" cy="570" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
+<circle class="node-disc" cx="690" cy="570" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
+<circle cx="690" cy="570" r="24" fill="none" stroke="rgba(70,155,255,0.433)" stroke-width="4" filter="url(#f-mid)"/>
+<circle class="sel-indicator" cx="690" cy="570" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+<text x="690" y="607" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">.NET / NuGet</text>
+</g>
+<g class="tm-node" data-domain="pkg_gem" onclick="selectDomain('pkg_gem')" style="cursor:pointer">
+<circle cx="806" cy="473" r="40" fill="rgba(30,110,255,0.258)" filter="url(#f-outer)"/>
+<circle class="node-disc" cx="806" cy="473" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
+<circle cx="806" cy="473" r="24" fill="none" stroke="rgba(70,155,255,0.444)" stroke-width="4" filter="url(#f-mid)"/>
+<circle class="sel-indicator" cx="806" cy="473" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+<text x="806" y="510" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">RubyGems</text>
+</g>
+<g class="tm-node" data-domain="uncategorised" onclick="selectDomain('uncategorised')" style="cursor:pointer">
+<circle cx="858" cy="171" r="40" fill="rgba(30,110,255,0.243)" filter="url(#f-outer)"/>
+<circle class="node-disc" cx="858" cy="171" r="24" fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>
+<circle cx="858" cy="171" r="24" fill="none" stroke="rgba(70,155,255,0.433)" stroke-width="4" filter="url(#f-mid)"/>
+<circle class="sel-indicator" cx="858" cy="171" r="29" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>
+<text x="858" y="208" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#5a6a7a" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">Other</text>
+</g>
+</svg>
+  </div>
+</section>
+<div class="history-panel muted" style="font-size:.78rem;padding:.4rem 0">No briefing history available yet.</div>
+
+<h2>Top Findings</h2>
+
+                <details class="cluster" data-domains="container os_kernel cloud_iam">
+                    <summary>
+                        <span class="badge" style="background:#d62828;color:#fff">92</span>
+                        <span class="priority p1">P1</span>
+                        <span class="patch-badge patch-badge--fixed">Patch Available</span>
+                        CVE-2026-3823 — Critical container runtime RCE
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Containers / K8s</span> <span class="domain-tag">OS / Kernel</span> <span class="domain-tag">Cloud / IAM</span></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>Heap overflow allows escape from container isolation. Actively exploited in cloud environments.</p>
+                        <p class="why-now"><strong>Why now:</strong> Active KEV listing</p>
+                        <span class="confidence">confidence 0.95</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Patch runtime to v1.9.3+</li><li>Restart affected pods</li></ul></div><div><strong>Next 7d</strong><ul><li>Complete cluster audit</li><li>Implement runtime hardening</li></ul></div></div>
+                        <ul><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-3823" target="_blank" rel="noopener noreferrer">NVD CVE-2026-3823</a></li></ul>
+                    </div>
+                </details>
+                <details class="cluster" data-domains="pkg_npm supply_chain">
+                    <summary>
+                        <span class="badge" style="background:#f77f00;color:#fff">68</span>
+                        <span class="priority p2">P2</span>
+                        <span class="patch-badge patch-badge--workaround">Workaround</span>
+                        Supply-chain npm package typosquat
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">npm / Node</span> <span class="domain-tag">Supply Chain</span></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>Malicious package lodash-extras mimics popular library. Exfiltrates environment vars.</p>
+                        
+                        <span class="confidence">confidence 0.82</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Scan package-lock.json</li><li>Block malicious package</li></ul></div><div><strong>Next 7d</strong><ul><li>Vendor review of deps</li></ul></div></div>
+                        <ul><li><a href="https://www.bleepingcomputer.com/news/security/npm-typosquat" target="_blank" rel="noopener noreferrer">BleepingComputer report</a></li></ul>
+                    </div>
+                </details>
+                <details class="cluster" data-domains="crypto_lib web_framework">
+                    <summary>
+                        <span class="badge" style="background:#f9c74f;color:#24292e">55</span>
+                        <span class="priority p2">P2</span>
+                        <span class="patch-badge patch-badge--fixed">Patch Available</span>
+                        OpenSSL 3.x TLS cipher downgrade
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Crypto Libraries</span> <span class="domain-tag">Web / Servers</span></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>Protocol negotiation bug allows attacker-in-the-middle to force weak cipher.</p>
+                        
+                        <span class="confidence">confidence 0.89</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Update OpenSSL</li><li>Test connections</li></ul></div><div><strong>Next 7d</strong><ul><li>Inventory all TLS endpoints</li></ul></div></div>
+                        <ul><li><a href="https://www.openssl.org/news/secadv/20260309.txt" target="_blank" rel="noopener noreferrer">OpenSSL Advisory</a></li></ul>
+                    </div>
+                </details>
+
+<footer>Watchtower · scheduled 00:05 / 06:05 / 12:05 / 18:05 ET · placeholder mode: true</footer>
+                </main>
+                <aside id="domain-rail" class="panel right-rail" role="complementary" aria-label="Domain Activity">
+                    <div class="rail-handle" id="rail-handle" role="separator" aria-orientation="vertical" aria-label="Resize Domain Activity panel"></div>
+                    <div class="rail-header">
+                        <h3 style="margin:.2rem 0 .2rem">Domain Activity</h3>
+                        <div class="rail-actions">
+                            <button id="rail-toggle" class="rail-btn" type="button" aria-expanded="true">Collapse</button>
+                            <button id="rail-close" class="rail-btn" type="button" style="display:none">Close</button>
+                        </div>
+                    </div>
+                    <div class="rail-collapsed-pill">DOMAIN ACTIVITY</div>
+                    <div class="rail-content" id="rail-content">
+                        <div class="rail-tablist" role="tablist" aria-label="Domain Activity modules">
+                            <button class="rail-tab" type="button" id="tab-overview" role="tab" aria-controls="panel-overview" aria-selected="true" data-tab="overview">Overview</button>
+                            <button class="rail-tab" type="button" id="tab-feeds" role="tab" aria-controls="panel-feeds" aria-selected="false" data-tab="feeds">Feeds</button>
+                            <button class="rail-tab" type="button" id="tab-alerts" role="tab" aria-controls="panel-alerts" aria-selected="false" data-tab="alerts">Alerts</button>
+                            <button class="rail-tab" type="button" id="tab-forensics" role="tab" aria-controls="panel-forensics" aria-selected="false" data-tab="forensics">Forensics</button>
+                        </div>
+                        <section class="rail-panel active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
+                            <h3 style="margin:.2rem 0 .45rem">Domain Activity</h3>
+                            <div class="rank-row" onclick="selectDomain('os_kernel')"><span class="rank-label" style="color:#8a3030" title="OS / Kernel">OS / Kernel</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:100%;background:#5a1a1a"></div></div><span class="rank-val" style="color:#5a2020">100</span></div><div class="rank-row" onclick="selectDomain('container')"><span class="rank-label" style="color:#8a3030" title="Containers">Containers</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:100%;background:#5a1a1a"></div></div><span class="rank-val" style="color:#5a2020">100</span></div><div class="rank-row" onclick="selectDomain('cloud_iam')"><span class="rank-label" style="color:#8a3030" title="Cloud / IAM">Cloud / IAM</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:100%;background:#5a1a1a"></div></div><span class="rank-val" style="color:#5a2020">100</span></div><div class="rank-row" onclick="selectDomain('supply_chain')"><span class="rank-label" style="color:#6a8898" title="Supply Chain">Supply Chain</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:45%;background:#283e5e"></div></div><span class="rank-val" style="color:#3a5568">45</span></div><div class="rank-row" onclick="selectDomain('pkg_npm')"><span class="rank-label" style="color:#6a8898" title="npm / Node">npm / Node</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:45%;background:#283e5e"></div></div><span class="rank-val" style="color:#3a5568">45</span></div><div class="rank-row" onclick="selectDomain('web_framework')"><span class="rank-label" style="color:#6a8898" title="Web / Servers">Web / Servers</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:38%;background:#283e5e"></div></div><span class="rank-val" style="color:#3a5568">38</span></div><div class="rank-row" onclick="selectDomain('crypto_lib')"><span class="rank-label" style="color:#6a8898" title="Crypto Libs">Crypto Libs</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:38%;background:#283e5e"></div></div><span class="rank-val" style="color:#3a5568">38</span></div>
+                            <h3 style="margin:.7rem 0 .35rem">Selected Domain</h3>
+                            <div id="tm-detail" class="muted" style="font-size:.8rem">Click a node to inspect findings.</div>
+                        </section>
+                        <section class="rail-panel" id="panel-feeds" role="tabpanel" aria-labelledby="tab-feeds">
+                            <h3 style="margin:.2rem 0 .35rem">Feed Contribution</h3>
+                            <table class="feed-table"><thead><tr><th>Feed domain</th><th>Refs</th><th>Max risk</th></tr></thead><tbody><tr><td>nist.gov</td><td>1</td><td>92</td></tr><tr><td>bleepingcomputer.com</td><td>1</td><td>68</td></tr><tr><td>openssl.org</td><td>1</td><td>55</td></tr></tbody></table>
+                        </section>
+                        <section class="rail-panel" id="panel-alerts" role="tabpanel" aria-labelledby="tab-alerts" data-lazy="true">
+                            <h3 style="margin:.2rem 0 .35rem">Alerts</h3>
+                            <div class="rail-placeholder">Reserved module slot. Use this area for triage queues, ownership routing, and SLA timers.</div>
+                        </section>
+                        <section class="rail-panel" id="panel-forensics" role="tabpanel" aria-labelledby="tab-forensics" data-lazy="true">
+                            <h3 style="margin:.2rem 0 .35rem">Forensics</h3>
+                            <div class="rail-placeholder">Reserved module slot. Use this area for IOCs, kill-chain pivots, and evidence links.</div>
+                        </section>
+                    </div>
+                </aside>
+                </div>
+                </div>
+<script>
+var CARDS=[{"title": "CVE-2026-3823 \u2014 Critical container runtime RCE", "risk_score": 92, "priority": "P1", "domains": ["container", "os_kernel", "cloud_iam"], "summary": "Heap overflow allows escape from container isolation. Actively exploited in cloud environments."}, {"title": "Supply-chain npm package typosquat", "risk_score": 68, "priority": "P2", "domains": ["pkg_npm", "supply_chain"], "summary": "Malicious package lodash-extras mimics popular library. Exfiltrates environment vars."}, {"title": "OpenSSL 3.x TLS cipher downgrade", "risk_score": 55, "priority": "P2", "domains": ["crypto_lib", "web_framework"], "summary": "Protocol negotiation bug allows attacker-in-the-middle to force weak cipher."}];
+var CURRENT_DOMAIN='all';
+var DOMAIN_LABELS={"pkg_npm": "npm / Node", "pkg_pypi": "PyPI / Python", "pkg_maven": "Maven / Java", "pkg_nuget": ".NET / NuGet", "pkg_gem": "RubyGems", "browser_ext": "Browser Extensions", "ca_trust": "CA / PKI Trust", "cloud_iam": "Cloud / IAM", "container": "Containers / K8s", "os_kernel": "OS / Kernel", "web_framework": "Web / Servers", "crypto_lib": "Crypto Libraries", "supply_chain": "Supply Chain", "identity": "Identity / Auth", "uncategorised": "Other"};
+var WT_TELEMETRY=[];
+
+function trackUi(evt,payload){
+        var e={event:evt,ts:new Date().toISOString(),payload:payload||{}};
+        WT_TELEMETRY.push(e);
+}
+
+function isNarrow(){return window.matchMedia('(max-width: 900px)').matches;}
+
+function applyRailWidth(w){
+        var min=320,max=480;
+        var n=Math.max(min,Math.min(max,Math.round(w||360)));
+        document.documentElement.style.setProperty('--rail-width',n+'px');
+        try{localStorage.setItem('wt.rail.width',String(n));}catch(e){}
+        window.dispatchEvent(new Event('resize'));
+}
+
+function setRailCollapsed(collapsed,persist){
+        document.body.classList.toggle('rail-collapsed',!!collapsed);
+        var t=document.getElementById('rail-toggle');
+        if(t){
+                t.textContent=collapsed?'Expand':'Collapse';
+                t.setAttribute('aria-expanded',(!collapsed).toString());
+        }
+        if(persist!==false){
+                try{localStorage.setItem('wt.rail.collapsed',collapsed?'1':'0');}catch(e){}
+        }
+        trackUi(collapsed?'rail_collapsed':'rail_expanded');
+        window.dispatchEvent(new Event('resize'));
+}
+
+function setRailOpen(open,persist){
+        document.body.classList.toggle('rail-open',!!open);
+        var mt=document.getElementById('rail-mobile-toggle');
+        if(mt) mt.setAttribute('aria-expanded',open?'true':'false');
+        if(persist!==false){
+                try{localStorage.setItem('wt.rail.mobileOpen',open?'1':'0');}catch(e){}
+        }
+        trackUi(open?'rail_opened':'rail_closed',{mobile:isNarrow()});
+}
+
+function setRailTab(tab){
+        document.querySelectorAll('.rail-tab').forEach(function(btn){
+                var active=btn.getAttribute('data-tab')===tab;
+                btn.setAttribute('aria-selected',active?'true':'false');
+                btn.tabIndex=active?0:-1;
+        });
+        document.querySelectorAll('.rail-panel').forEach(function(p){
+                p.classList.toggle('active',p.id==='panel-'+tab);
+        });
+        try{localStorage.setItem('wt.rail.tab',tab);}catch(e){}
+        trackUi('rail_tab',{tab:tab});
+}
+
+function initRightRail(){
+        var toggle=document.getElementById('rail-toggle');
+        var close=document.getElementById('rail-close');
+        var mobileToggle=document.getElementById('rail-mobile-toggle');
+        var backdrop=document.getElementById('rail-backdrop');
+        var handle=document.getElementById('rail-handle');
+
+        var initialTab='overview';
+        try{initialTab=localStorage.getItem('wt.rail.tab')||'overview';}catch(e){}
+        setRailTab(initialTab);
+
+        var savedW=360;
+        try{savedW=parseInt(localStorage.getItem('wt.rail.width')||'360',10)||360;}catch(e){}
+        applyRailWidth(savedW);
+
+        var collapsed=false;
+        try{collapsed=localStorage.getItem('wt.rail.collapsed')==='1';}catch(e){}
+        if(!isNarrow()) setRailCollapsed(collapsed,false);
+
+        document.querySelectorAll('.rail-tab').forEach(function(btn){
+                btn.addEventListener('click',function(){ setRailTab(btn.getAttribute('data-tab')); });
+        });
+
+        if(toggle) toggle.addEventListener('click',function(){ setRailCollapsed(!document.body.classList.contains('rail-collapsed')); });
+        if(mobileToggle) mobileToggle.addEventListener('click',function(){ setRailOpen(true); });
+        if(close) close.addEventListener('click',function(){ setRailOpen(false); });
+        if(backdrop) backdrop.addEventListener('click',function(){ setRailOpen(false); });
+        document.addEventListener('keydown',function(e){ if(e.key==='Escape') setRailOpen(false); });
+
+        if(handle){
+                var dragging=false;
+                handle.addEventListener('pointerdown',function(e){
+                        if(isNarrow()) return;
+                        dragging=true;
+                        handle.setPointerCapture(e.pointerId);
+                        document.body.style.userSelect='none';
+                        trackUi('rail_resize_start');
+                });
+                handle.addEventListener('pointermove',function(e){
+                        if(!dragging||isNarrow()) return;
+                        var w=(window.innerWidth-e.clientX)-parseInt(getComputedStyle(document.documentElement).getPropertyValue('--page-gutter')||16,10);
+                        applyRailWidth(w);
+                });
+                handle.addEventListener('pointerup',function(){
+                        if(!dragging) return;
+                        dragging=false;
+                        document.body.style.userSelect='';
+                        var cur=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--rail-width')||'360',10);
+                        trackUi('rail_resized',{width:cur});
+                });
+        }
+
+        var mq=window.matchMedia('(max-width: 900px)');
+        function onViewport(){
+                if(close) close.style.display=isNarrow()?'inline-block':'none';
+                if(!isNarrow()){ setRailOpen(false,false); }
+                window.dispatchEvent(new Event('resize'));
+        }
+        if(mq.addEventListener) mq.addEventListener('change',onViewport); else mq.addListener(onViewport);
+        onViewport();
+}
+
+function selectDomain(domain){
+    CURRENT_DOMAIN = domain||'all';
+    document.querySelectorAll('.tm-node').forEach(function(g){ g.classList.remove('tm-selected'); });
+    if(domain&&domain!=='all'){
+        var n=document.querySelector('.tm-node[data-domain="'+domain+'"]');
+        if(n) n.classList.add('tm-selected');
+    }
+    document.querySelectorAll('.cluster').forEach(function(el){
+        if(CURRENT_DOMAIN==='all'){el.style.display='block';return;}
+        var ds=(el.getAttribute('data-domains')||'').split(/\s+/);
+        el.style.display=ds.indexOf(CURRENT_DOMAIN)>=0?'block':'none';
+    });
+    var subset=CURRENT_DOMAIN==='all'?CARDS:CARDS.filter(function(c){return(c.domains||[]).indexOf(CURRENT_DOMAIN)>=0;});
+    var p1=subset.filter(function(c){return c.priority==='P1';}).length;
+    var maxRisk=subset.reduce(function(m,c){return Math.max(m,c.risk_score||0);},0);
+    var lbl=DOMAIN_LABELS[domain]||domain||'All domains';
+    var lines=subset.slice().sort(function(a,b){return(b.risk_score||0)-(a.risk_score||0);}).slice(0,5)
+        .map(function(c){return '<li style="margin:.2rem 0">'+c.title+' <span style="color:#5a7090">('+c.risk_score+')</span></li>';}).join('');
+    var t=document.getElementById('tm-detail');
+    if(t){
+        t.innerHTML='<strong style="color:#c9d1d9">'+lbl+'</strong>'
+            +'<div style="color:#6a7f98;font-size:.75rem;margin:.2rem 0 .35rem">Findings: '+subset.length+' &middot; P1: '+p1+' &middot; Max risk: '+maxRisk+'</div>'
+            +(lines?'<ul style="margin:.3rem 0 0 1rem;padding:0;font-size:.78rem">'+lines+'</ul>':'<div style="color:#5a7090;font-size:.78rem">No findings in this window.</div>');
+    }
+    trackUi('domain_selected',{domain:CURRENT_DOMAIN,count:subset.length,maxRisk:maxRisk});
+}
+(function(){
+  var SLOTS=[0,6,12,18],MIN=5;
+  var el=document.getElementById('next-run-cd');
+  if(!el)return;
+  var fmt=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+  function etP(d){return fmt.formatToParts(d).reduce(function(a,p){if(p.type!='literal')a[p.type]=+p.value;return a;},{});}
+  function nextRun(now){
+    var et=etP(now);
+    for(var d=0;d<2;d++){
+      for(var i=0;i<SLOTS.length;i++){
+        if(d===0&&(SLOTS[i]<et.hour||(SLOTS[i]===et.hour&&MIN<=et.minute)))continue;
+        var noon=new Date(Date.UTC(et.year,et.month-1,et.day+d,12,0,0));
+        var off=12-etP(noon).hour;
+        var cand=new Date(Date.UTC(et.year,et.month-1,et.day+d,SLOTS[i]+off,MIN,0));
+        if(cand>now)return cand;
+      }
+    }
+    return new Date(now.getTime()+7*3600*1000);
+  }
+  function pad(n){return String(n).padStart(2,'0');}
+  function tick(){
+    var now=new Date(),next=nextRun(now);
+    var diff=Math.max(0,Math.floor((next-now)/1000));
+    var h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
+    el.textContent='Next run '+pad(h)+':'+pad(m)+':'+pad(s);
+    el.title='Next run: '+next.toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'2-digit',minute:'2-digit'})+' ET';
+    el.className='next-run'+(diff<600?' soon':'')+(diff<60?' now':'');
+  }
+  tick();setInterval(tick,1000);
+})();
+initRightRail();
+selectDomain('all');
+</script>
+</body></html>

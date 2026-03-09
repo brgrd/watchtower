@@ -1184,14 +1184,14 @@ def _build_threat_map_svg(cards: list, heatmap: dict) -> str:
     def _heat(s: int):
         """Dark-center aura: outer bloom behind opaque disc, edge ring on perimeter."""
         t = max(0.06, s / 100.0)
-        bloom_op = round(0.20 + t * 0.72, 3)  # outer aura fill: 0.24 → 0.92
-        ring_op = round(0.40 + t * 0.55, 3)  # edge ring stroke: 0.43 → 0.95
+        bloom_op = round(0.18 + t * 0.55, 3)  # outer aura fill: 0.18 → 0.73
+        ring_op = round(0.35 + t * 0.50, 3)  # edge ring stroke: 0.35 → 0.85
         if s >= 85:
             bloom = f"rgba(255,40,40,{bloom_op})"
             ring = f"rgba(255,80,80,{ring_op})"
         else:
-            bloom = f"rgba(30,110,255,{bloom_op})"
-            ring = f"rgba(70,155,255,{ring_op})"
+            bloom = f"rgba(200,200,200,{bloom_op})"
+            ring = f"rgba(220,220,220,{ring_op})"
         return bloom, ring
 
     def _edge_style(sa: int, sb: int):
@@ -1205,7 +1205,7 @@ def _build_threat_map_svg(cards: list, heatmap: dict) -> str:
     p: list[str] = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '
         'preserveAspectRatio="xMidYMid meet" '
-        'style="width:100%;height:auto;display:block;background:#090d18;border-radius:8px;border:1px solid #161d2a">',
+        'style="width:100%;height:auto;display:block;background:#0a0a0a;border-radius:8px;border:1px solid #333">',
         "<defs>",
         '<filter id="f-outer" x="-300%" y="-300%" width="700%" height="700%">'
         '<feGaussianBlur stdDeviation="18"/>'
@@ -1219,10 +1219,10 @@ def _build_threat_map_svg(cards: list, heatmap: dict) -> str:
         "</defs>",
     ]
     # Subtle background grid dots
-    p.append('<g opacity="0.04">')
+    p.append('<g opacity="0.03">')
     for gx in range(44, W, 62):
         for gy in range(32, H, 62):
-            p.append(f'<circle cx="{gx}" cy="{gy}" r="1" fill="#7090a8"/>')
+            p.append(f'<circle cx="{gx}" cy="{gy}" r="1" fill="#666"/>')
     p.append("</g>")
 
     # Edges — glow pass first (behind), crisp line pass on top
@@ -1234,7 +1234,7 @@ def _build_threat_map_svg(cards: list, heatmap: dict) -> str:
         glow_op, _ = _edge_style(scores[a], scores[b])
         p.append(
             f'<line x1="{ax}" y1="{ay}" x2="{bx}" y2="{by}" '
-            f'stroke="rgba(55,110,195,{glow_op:.3f})" stroke-width="5.5" '
+            f'stroke="rgba(150,150,150,{glow_op:.3f})" stroke-width="4.5" '
             f'stroke-linecap="round" filter="url(#edge-glow)"/>'
         )
     for a, b in _TM_EDGES:
@@ -1245,7 +1245,7 @@ def _build_threat_map_svg(cards: list, heatmap: dict) -> str:
         _, line_op = _edge_style(scores[a], scores[b])
         p.append(
             f'<line x1="{ax}" y1="{ay}" x2="{bx}" y2="{by}" '
-            f'stroke="rgba(70,130,210,{line_op:.3f})" stroke-width="1.1" '
+            f'stroke="rgba(180,180,180,{line_op:.3f})" stroke-width="1.0" '
             f'stroke-linecap="round"/>'
         )
 
@@ -1255,7 +1255,7 @@ def _build_threat_map_svg(cards: list, heatmap: dict) -> str:
         s = scores[key]
         outer, ring_color = _heat(s)
         R = 24
-        lf = "#c8d8e8" if s >= 20 else "#5a6a7a"
+        lf = "#e6e6e6" if s >= 20 else "#888"
 
         p.append(
             f'<g class="tm-node" data-domain="{key}" '
@@ -1263,29 +1263,29 @@ def _build_threat_map_svg(cards: list, heatmap: dict) -> str:
         )
         # Layer 1: Outer aura — large fill, heavy blur, sits BEHIND disc
         p.append(
-            f'<circle cx="{cx}" cy="{cy}" r="{R+16}" fill="{outer}" filter="url(#f-outer)"/>'
+            f'<circle cx="{cx}" cy="{cy}" r="{R+14}" fill="{outer}" filter="url(#f-outer)"/>'
         )
         # Layer 2: Opaque dark disc — covers center so only perimeter glow shows
         p.append(
             f'<circle class="node-disc" cx="{cx}" cy="{cy}" r="{R}" '
-            f'fill="rgba(4,8,18,0.92)" stroke="rgba(80,110,160,0.25)" stroke-width="0.8"/>'
+            f'fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>'
         )
         # Layer 3: Edge ring — stroke-only at disc radius, medium blur, glows outward from rim
         p.append(
             f'<circle cx="{cx}" cy="{cy}" r="{R}" '
-            f'fill="none" stroke="{ring_color}" stroke-width="4" filter="url(#f-mid)"/>'
+            f'fill="none" stroke="{ring_color}" stroke-width="3.5" filter="url(#f-mid)"/>'
         )
         # Selection ring — simple white ring, hidden at rest
         p.append(
             f'<circle class="sel-indicator" cx="{cx}" cy="{cy}" r="{R+5}" '
-            f'fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5"/>'
+            f'fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>'
         )
         # Label
         ly = cy + R + 13
         p.append(
             f'<text x="{cx}" y="{ly}" text-anchor="middle" '
             f'font-family="system-ui,sans-serif" font-size="10" font-weight="600" '
-            f'fill="{lf}" stroke="#03060e" stroke-width="2.5" paint-order="stroke fill">{lbl}</text>'
+            f'fill="{lf}" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">{lbl}</text>'
         )
         p.append("</g>")
         node_id += 1
@@ -1906,119 +1906,166 @@ def _write_index_html(
 <meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">
 <title>Watchtower — InfraSec Briefing</title>
 <style>
+:root{{--rail-width-expanded:360px;--rail-width-collapsed:64px;--rail-width:var(--rail-width-expanded);--rail-min-width:320px;--rail-max-width:480px;--rail-gap:8px;--page-gutter:16px}}
 *{{box-sizing:border-box}}
 ::-webkit-scrollbar{{width:6px;height:6px}}
-::-webkit-scrollbar-track{{background:#080c12}}
-::-webkit-scrollbar-thumb{{background:#1e2c3a;border-radius:3px}}
-::-webkit-scrollbar-thumb:hover{{background:#2c3e50}}
-*{{scrollbar-width:thin;scrollbar-color:#1e2c3a #080c12}}
-body{{font-family:system-ui,sans-serif;max-width:960px;margin:2rem auto;padding:0 1rem;background:#0d1117;color:#c9d1d9}}
-h1{{border-bottom:2px solid #30363d;padding-bottom:.4rem;color:#e6edf3}}
+::-webkit-scrollbar-track{{background:#0a0a0a}}
+::-webkit-scrollbar-thumb{{background:#2a2a2a;border-radius:3px}}
+::-webkit-scrollbar-thumb:hover{{background:#3a3a3a}}
+*{{scrollbar-width:thin;scrollbar-color:#2a2a2a #0a0a0a}}
+body{{font-family:system-ui,sans-serif;margin:0;padding:0;background:#0f0f0f;color:#c9d1d9}}
+.page-wrap{{max-width:1320px;margin:0 auto;position:relative}}
+.app-shell{{position:relative;padding-top:88px}}
+.app-main{{padding:0 var(--page-gutter) 1.4rem;padding-right:calc(var(--rail-width) + var(--rail-gap) + var(--page-gutter));transition:padding-right .2s ease}}
+body.rail-collapsed .app-main{{padding-right:calc(var(--rail-width-collapsed) + var(--rail-gap) + var(--page-gutter))}}
+.header-bar{{position:fixed;top:0;left:0;right:0;background:#0f0f0f;border-bottom:1px solid #2a2a2a;z-index:20;padding:.8rem var(--page-gutter);box-shadow:0 2px 8px rgba(0,0,0,.2)}}
+.header-content{{max-width:1320px;margin:0 auto;padding-right:calc(var(--rail-width) + var(--rail-gap))}}
+body.rail-collapsed .header-content{{padding-right:calc(var(--rail-width-collapsed) + var(--rail-gap))}}
+.header-bar h1{{margin:0;padding:0;border:none;font-size:1.35rem}}
+.header-bar p{{margin:.25rem 0 0;font-size:.82rem;color:#8b949e}}
+h1{{border-bottom:2px solid #333;padding-bottom:.4rem;color:#e6edf3}}
 h2{{color:#e6edf3}}
-a{{color:#58a6ff}}
+a{{color:#999}}
 p{{color:#c9d1d9}}
 .kpi-grid{{display:grid;grid-template-columns:repeat(6,minmax(120px,1fr));gap:8px;margin:1rem 0 1.2rem}}
-.kpi{{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:.55rem .7rem;display:flex;flex-direction:column;gap:.2rem}}
+.kpi{{background:#1a1a1a;border:1px solid #333;border-radius:6px;padding:.55rem .7rem;display:flex;flex-direction:column;gap:.2rem}}
 .kpi .k{{font-size:.68rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700}}
 .kpi .v{{font-size:1.2rem;color:#e6edf3;font-weight:800}}
 .kpi .v-sm{{font-size:.95rem}}
 .hm-cell{{border-radius:6px;padding:.7rem .55rem;text-align:center;border:1px solid rgba(255,255,255,.08);cursor:pointer;font-family:inherit}}
-.hm-cell.active{{outline:2px solid #1f6feb;outline-offset:1px}}
+.hm-cell.active{{outline:2px solid #666;outline-offset:1px}}
 .hm-label{{display:block;font-size:.72rem;font-weight:700;margin:.15rem 0}} 
 .hm-meta{{display:block;font-size:.66rem;opacity:.85}}
 .hm-score{{display:block;font-size:1.15rem;font-weight:800;margin-top:.2rem}}
-.panel{{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:.7rem .8rem}}
+.panel{{background:#1a1a1a;border:1px solid #333;border-radius:6px;padding:.7rem .8rem}}
 .panel h3{{margin:.2rem 0 .5rem;font-size:.92rem;color:#e6edf3}}
 .panel .muted{{color:#8b949e;font-size:.8rem}}
 .feed-table{{width:100%;border-collapse:collapse;font-size:.78rem}}
-.feed-table th,.feed-table td{{border-bottom:1px solid #30363d;padding:.3rem .2rem;text-align:left}}
+.feed-table th,.feed-table td{{border-bottom:1px solid #333;padding:.3rem .2rem;text-align:left}}
 .matrix-panel{{margin:.2rem 0 1rem}}
 .risk-matrix{{width:100%;border-collapse:separate;border-spacing:4px;table-layout:fixed}}
 .risk-matrix th{{font-size:.68rem;color:#8b949e;font-weight:700;text-align:center;letter-spacing:.02em}}
 .risk-matrix .mx-row{{text-align:left;padding-left:.3rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px}}
-.mx-cell{{height:44px;border:1px solid #30363d;border-radius:6px;position:relative;text-align:center;vertical-align:middle;overflow:hidden;transition:filter .12s ease,transform .12s ease}}
+.mx-cell{{height:44px;border:1px solid #333;border-radius:6px;position:relative;text-align:center;vertical-align:middle;overflow:hidden;transition:filter .12s ease,transform .12s ease}}
 .mx-cell:hover{{filter:brightness(1.1);transform:translateY(-1px)}}
-.mx-dot{{position:absolute;left:50%;top:50%;width:20px;height:20px;border-radius:999px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(88,166,255,.75) 0%, rgba(88,166,255,.05) 70%)}}
+.mx-dot{{position:absolute;left:50%;top:50%;width:20px;height:20px;border-radius:999px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(180,180,180,.75) 0%, rgba(180,180,180,.05) 70%)}}
 .mx-count{{position:relative;display:block;font-size:.82rem;font-weight:800;color:#e6edf3;line-height:1}}
-.cluster{{background:rgba(255,255,255,0.01);border:1px solid #2b313a;border-radius:6px;padding:0;margin:.55rem 0;overflow:hidden}}
+.cluster{{background:rgba(255,255,255,0.01);border:1px solid #2a2a2a;border-radius:6px;padding:0;margin:.55rem 0;overflow:hidden}}
 .cluster summary{{list-style:none;padding:.62rem .85rem;cursor:pointer;display:flex;align-items:center;gap:.35rem;user-select:none;color:#c9d1d9;font-size:.92rem}}
 .cluster summary::-webkit-details-marker{{display:none}}
 .cluster summary::before{{content:"–";font-size:.75rem;transition:transform .15s;flex-shrink:0;color:#8b949e;display:inline-block;width:.7rem;text-align:center}}
 .cluster[open] summary::before{{transform:none;content:"+"}}
 .cluster-body{{padding:.2rem .9rem .85rem;color:#c9d1d9}}
 .badge{{border-radius:999px;padding:2px 8px;font-size:.72rem;font-weight:700;margin-right:.35rem;background:rgba(255,255,255,.06)!important;color:#c9d1d9!important}}
-.priority{{border-radius:999px;padding:2px 8px;font-size:.68rem;font-weight:800;letter-spacing:.02em;margin-right:.3rem;border:1px solid #30363d}}
+.priority{{border-radius:999px;padding:2px 8px;font-size:.68rem;font-weight:800;letter-spacing:.02em;margin-right:.3rem;border:1px solid #333}}
 .priority.p1{{background:rgba(170,28,28,.16);color:#c88888;border-color:rgba(170,28,28,.36)}}
-.priority.p2{{background:rgba(50,80,125,.15);color:#8aa8c0;border-color:rgba(50,80,125,.30)}}
-.priority.p3{{background:#21262d;color:#c9d1d9}}
-.domain-tags{{margin:.3rem 0 .6rem}} .domain-tag{{display:inline-block;background:#21262d;color:#8b949e;border:1px solid #30363d;border-radius:3px;font-size:.7rem;padding:1px 6px;margin:0 3px 3px 0}}
-.executive{{background:#0e1620;border-left:3px solid #2e5070;border-radius:4px;padding:.8rem 1.1rem;margin:1rem 0 1.8rem}}
-.executive h2{{margin:0 0 .4rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:#4e7898}}
+.priority.p2{{background:rgba(100,100,100,.15);color:#aaa;border-color:rgba(100,100,100,.30)}}
+.priority.p3{{background:#252525;color:#c9d1d9}}
+.domain-tags{{margin:.3rem 0 .6rem}} .domain-tag{{display:inline-block;background:#252525;color:#8b949e;border:1px solid #333;border-radius:3px;font-size:.7rem;padding:1px 6px;margin:0 3px 3px 0}}
+.executive{{background:#1a1a1a;border-left:3px solid #555;border-radius:4px;padding:.8rem 1.1rem;margin:1rem 0 1.8rem}}
+.executive h2{{margin:0 0 .4rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:#999}}
 .executive p{{margin:0;line-height:1.75;font-size:.95rem;color:#c9d1d9}}
-.history-panel{{background:#161b22;border:1px solid #30363d;border-radius:4px;padding:.45rem 1rem;margin:0 0 1.2rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}}
+.history-panel{{background:#1a1a1a;border:1px solid #333;border-radius:4px;padding:.45rem 1rem;margin:0 0 1.2rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}}
 .hs-label{{color:#8b949e;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:.68rem}}
 .hs-val{{font-weight:700;font-size:.85rem;color:#e6edf3}}
 .actions{{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:.4rem 0 .7rem}}
 .actions ul{{margin:.3rem 0 .2rem 1rem;padding:0}}
-.confidence{{display:inline-block;font-size:.72rem;color:#8b949e;border:1px solid #30363d;border-radius:999px;padding:2px 8px;margin-bottom:.3rem}}
+.confidence{{display:inline-block;font-size:.72rem;color:#8b949e;border:1px solid #333;border-radius:999px;padding:2px 8px;margin-bottom:.3rem}}
 .patch-badge{{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.04em;border-radius:3px;padding:1px 7px;margin-left:.45rem;vertical-align:middle;text-transform:uppercase}}
 .patch-badge--fixed{{background:rgba(35,134,54,.18);color:#3fb950;border:1px solid rgba(35,134,54,.35)}}
 .patch-badge--workaround{{background:rgba(158,106,3,.18);color:#d29922;border:1px solid rgba(158,106,3,.35)}}
 .patch-badge--no-fix{{background:rgba(170,28,28,.18);color:#f85149;border:1px solid rgba(170,28,28,.35)}}
-.patch-badge--unknown{{background:rgba(48,54,61,.5);color:#8b949e;border:1px solid #30363d}}
+.patch-badge--unknown{{background:rgba(60,60,60,.5);color:#8b949e;border:1px solid #333}}
 .delta-strip{{display:flex;align-items:center;gap:.5rem;margin:.2rem 0 1rem;flex-wrap:wrap;min-height:1.6rem}}
 .delta-chip{{display:inline-flex;align-items:center;border-radius:999px;padding:3px 11px;font-size:.71rem;font-weight:700;border:1px solid;letter-spacing:.03em}}
-.delta-chip--new{{background:rgba(31,111,235,.12);color:#58a6ff;border-color:rgba(31,111,235,.3)}}
+.delta-chip--new{{background:rgba(100,100,100,.12);color:#aaa;border-color:rgba(100,100,100,.3)}}
 .delta-chip--elevated{{background:rgba(158,106,3,.12);color:#d29922;border-color:rgba(158,106,3,.3)}}
 .delta-chip--resolved{{background:rgba(35,134,54,.12);color:#3fb950;border-color:rgba(35,134,54,.3)}}
-.delta-chip--quiet{{color:#8b949e;border-color:#30363d;background:transparent}}
+.delta-chip--quiet{{color:#8b949e;border-color:#333;background:transparent}}
 .resolved-drawer{{margin:.5rem 0 1rem;color:#8b949e}}
 .resolved-drawer summary{{font-size:.8rem;cursor:pointer;padding:.3rem 0;list-style:none}}
 .resolved-drawer summary::-webkit-details-marker{{display:none}}
 .resolved-drawer table{{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:.4rem}}
-.resolved-drawer th{{font-size:.68rem;color:#6a7f98;font-weight:700;border-bottom:1px solid #21262d;padding:.2rem .4rem}}
-.resolved-drawer td{{padding:.25rem .4rem;border-bottom:1px solid #21262d}}
-.ha-section{{margin:0 0 1rem}}.ha-day{{border-bottom:1px solid #21262d}}.ha-day:last-child{{border-bottom:none}}
+.resolved-drawer th{{font-size:.68rem;color:#777;font-weight:700;border-bottom:1px solid #252525;padding:.2rem .4rem}}
+.resolved-drawer td{{padding:.25rem .4rem;border-bottom:1px solid #252525}}
+.ha-section{{margin:0 0 1rem}}.ha-day{{border-bottom:1px solid #252525}}.ha-day:last-child{{border-bottom:none}}
 .ha-summary{{display:flex;align-items:center;gap:.7rem;padding:.42rem .3rem;cursor:pointer;list-style:none;font-size:.82rem}}.ha-summary::-webkit-details-marker{{display:none}}
 .ha-date{{font-weight:700;color:#e6edf3;flex:0 0 92px}}.ha-meta{{color:#c9d1d9;flex:1;font-size:.78rem}}.ha-ts{{color:#8b949e;font-size:.68rem;margin-left:auto;flex-shrink:0}}
-.ha-body{{padding:.25rem .2rem .5rem .5rem}}.ha-table{{width:100%;border-collapse:collapse;font-size:.76rem}}.ha-table th{{font-size:.67rem;color:#6a7f98;font-weight:700;border-bottom:1px solid #21262d;padding:.2rem .35rem}}
-.ha-table td{{padding:.22rem .35rem;border-bottom:1px solid #161b22;vertical-align:top}}.ha-title{{max-width:520px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}.ha-risk{{text-align:right;font-weight:700;color:#e6edf3;min-width:30px}}.ha-pri,.ha-ps{{text-align:center;min-width:40px;white-space:nowrap}}
+.ha-body{{padding:.25rem .2rem .5rem .5rem}}.ha-table{{width:100%;border-collapse:collapse;font-size:.76rem}}.ha-table th{{font-size:.67rem;color:#777;font-weight:700;border-bottom:1px solid #252525;padding:.2rem .35rem}}
+.ha-table td{{padding:.22rem .35rem;border-bottom:1px solid #1a1a1a;vertical-align:top}}.ha-title{{max-width:520px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}.ha-risk{{text-align:right;font-weight:700;color:#e6edf3;min-width:30px}}.ha-pri,.ha-ps{{text-align:center;min-width:40px;white-space:nowrap}}
 .weekly-scope{{margin:0 0 1rem}}.weekly-kpi-row{{display:flex;gap:10px;flex-wrap:wrap;margin:.4rem 0 .75rem}}
-.wkpi{{background:#0d1117;border:1px solid #21262d;border-radius:5px;padding:.4rem .65rem;display:flex;flex-direction:column;gap:.15rem;min-width:110px}}
+.wkpi{{background:#0f0f0f;border:1px solid #252525;border-radius:5px;padding:.4rem .65rem;display:flex;flex-direction:column;gap:.15rem;min-width:110px}}
 .wk{{font-size:.65rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700}}.wv{{font-size:1.1rem;color:#e6edf3;font-weight:800}}.wv-sm{{font-size:.85rem}}
-.weekly-review-label{{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:#4e7898;margin:.3rem 0 .2rem}}
+.weekly-review-label{{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:#999;margin:.3rem 0 .2rem}}
 .weekly-review-text{{margin:0 0 .7rem;line-height:1.75;font-size:.9rem;color:#c9d1d9}}
 .wcve-details{{margin:.3rem 0 0}}.wcve-details summary{{font-size:.78rem;color:#8b949e;cursor:pointer;padding:.25rem 0;list-style:none}}.wcve-details summary::-webkit-details-marker{{display:none}}
-.wcve-table{{width:100%;border-collapse:collapse;font-size:.76rem;margin-top:.35rem}}.wcve-table th{{font-size:.67rem;color:#6a7f98;font-weight:700;border-bottom:1px solid #21262d;padding:.2rem .4rem}}.wcve-table td{{padding:.22rem .4rem;border-bottom:1px solid #161b22}}
-.wcve-id{{font-family:monospace;color:#58a6ff;font-size:.75rem}}.wcve-bar-cell{{min-width:80px}}.wcve-bar-inner{{height:5px;background:#1f6feb;border-radius:2px;min-width:2px}}.wcve-count{{text-align:right;font-weight:700;color:#e6edf3;min-width:22px}}
-.threat-section{{display:grid;grid-template-columns:2fr 1fr;gap:12px;align-items:start;margin:0 0 1rem}}
+.wcve-table{{width:100%;border-collapse:collapse;font-size:.76rem;margin-top:.35rem}}.wcve-table th{{font-size:.67rem;color:#777;font-weight:700;border-bottom:1px solid #252525;padding:.2rem .4rem}}.wcve-table td{{padding:.22rem .4rem;border-bottom:1px solid #1a1a1a}}
+.wcve-id{{font-family:monospace;color:#999;font-size:.75rem}}.wcve-bar-cell{{min-width:80px}}.wcve-bar-inner{{height:5px;background:#666;border-radius:2px;min-width:2px}}.wcve-count{{text-align:right;font-weight:700;color:#e6edf3;min-width:22px}}
+.threat-section{{display:block;margin:0 0 1rem}}
 .threat-main{{padding:.3rem .4rem .5rem}}
 .threat-toolbar{{display:flex;justify-content:space-between;align-items:center;padding:.3rem .3rem .45rem}}
 .threat-title{{font-size:.9rem;font-weight:700;color:#e6edf3}}
 .threat-sub{{font-size:.72rem;color:#8b949e}}
-.threat-side{{overflow-y:auto;max-height:580px}}
+.right-rail{{position:fixed;right:0;top:0;bottom:0;width:var(--rail-width);padding:.8rem .7rem;display:flex;flex-direction:column;overflow:hidden;z-index:25;transition:width .2s ease,transform .22s ease;background:#1a1a1a;border:none;border-left:1px solid #2a2a2a;border-radius:0;box-shadow:-2px 0 8px rgba(0,0,0,.15)}}
+body.rail-collapsed .right-rail{{width:var(--rail-width-collapsed);padding:.8rem .45rem}}
+.rail-header{{display:flex;align-items:center;justify-content:space-between;gap:.4rem;padding:0 0 .45rem;border-bottom:1px solid #2a2a2a}}
+.rail-actions{{display:flex;gap:.35rem;align-items:center}}
+.rail-btn{{background:#151515;border:1px solid #3a3a3a;color:#aaa;border-radius:4px;font-size:.72rem;padding:.2rem .45rem;cursor:pointer}}
+.rail-btn:hover{{background:#202020}}
+.rail-content{{overflow:auto;padding:.5rem .05rem .2rem;display:flex;flex-direction:column;gap:.35rem}}
+body.rail-collapsed .rail-content,body.rail-collapsed .rail-header h3{{display:none}}
+.rail-collapsed-pill{{display:none;writing-mode:vertical-rl;transform:rotate(180deg);font-size:.72rem;letter-spacing:.04em;color:#8b949e;margin:.2rem auto 0}}
+body.rail-collapsed .rail-collapsed-pill{{display:block}}
+.rail-handle{{position:absolute;left:-4px;top:0;bottom:0;width:8px;cursor:ew-resize;background:linear-gradient(to right,rgba(160,160,160,.18),rgba(160,160,160,0));border-radius:3px;opacity:.4}}
+.rail-handle:hover{{opacity:.85;background:linear-gradient(to right,rgba(180,180,180,.35),rgba(180,180,180,0))}}
+.rail-tablist{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:.1rem 0 .2rem}}
+.rail-tab{{border:1px solid #333;background:#181818;color:#999;font-size:.68rem;padding:.24rem .2rem;border-radius:4px;text-align:center;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.rail-tab[aria-selected="true"]{{background:#2a2a2a;color:#c9d1d9;border-color:#555}}
+.rail-panel{{display:none}}
+.rail-panel.active{{display:block}}
+.rail-placeholder{{font-size:.78rem;color:#8b949e;line-height:1.5;padding:.3rem 0}}
+.rail-mobile-toggle{{display:none;position:fixed;right:14px;bottom:14px;z-index:16;background:#252525;border:1px solid #444;color:#ccc;border-radius:999px;padding:.42rem .8rem;font-size:.74rem;cursor:pointer}}
+.rail-backdrop{{display:none;position:fixed;inset:0;background:rgba(0,0,0,.58);backdrop-filter:blur(1px);z-index:14}}
+body.rail-open .rail-backdrop{{display:block}}
 .tm-node .node-disc{{transition:stroke .12s,stroke-width .12s}}
-.tm-node:hover .node-disc{{stroke:rgba(120,160,220,0.5)!important;stroke-width:1.4px!important}}
+.tm-node:hover .node-disc{{stroke:rgba(160,160,160,0.5)!important;stroke-width:1.4px!important}}
 .tm-node .sel-indicator{{opacity:0;transition:opacity .18s}}
 .tm-node.tm-selected .sel-indicator{{opacity:1}}
-.rank-row{{display:flex;align-items:center;gap:6px;padding:.28rem 0;border-bottom:1px solid #161d2a;cursor:pointer;border-radius:3px}}
+.rank-row{{display:flex;align-items:center;gap:6px;padding:.28rem 0;border-bottom:1px solid #222;cursor:pointer;border-radius:3px}}
 .rank-row:hover{{background:rgba(255,255,255,.03)}}
 .rank-label{{font-size:.77rem;flex:0 0 92px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
-.rank-bar-wrap{{flex:1;background:#0e1520;border-radius:2px;height:3px}}
+.rank-bar-wrap{{flex:1;background:#181818;border-radius:2px;height:3px}}
 .rank-bar{{height:3px;border-radius:2px;min-width:1px}}
 .rank-val{{font-size:.7rem;font-weight:700;flex:0 0 22px;text-align:right}}
-.chip{{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid #30363d;background:#21262d;color:#c9d1d9;font-size:.72rem}}
-.next-run{{display:inline-flex;align-items:center;gap:5px;padding:2px 10px;border-radius:999px;border:1px solid #1a3a5c;background:#0d1f30;color:#58a6ff;font-size:.72rem;font-variant-numeric:tabular-nums;margin-left:.6rem}}
+.chip{{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid #333;background:#252525;color:#c9d1d9;font-size:.72rem}}
+.next-run{{display:inline-flex;align-items:center;gap:5px;padding:2px 10px;border-radius:999px;border:1px solid #3a3a3a;background:#1a1a1a;color:#999;font-size:.72rem;font-variant-numeric:tabular-nums;margin-left:.6rem}}
 .next-run.soon{{border-color:#4a2a00;background:#1c1000;color:#e3a020}}
-.next-run.now{{border-color:#1a3a1a;background:#0a1f0a;color:#3fb950;animation:pulse-now 1s ease-in-out infinite}}
+.next-run.now{{border-color:#2a3a2a;background:#151f15;color:#3fb950;animation:pulse-now 1s ease-in-out infinite}}
 @keyframes pulse-now{{0%,100%{{opacity:1}}50%{{opacity:.55}}}}
-footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-top:1px solid #30363d}}
-@media (max-width:900px){{.kpi-grid{{grid-template-columns:repeat(3,minmax(110px,1fr));}}.threat-section{{grid-template-columns:1fr;}}}}
+footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-top:1px solid #333}}
+@media (max-width:1279px){{}}
+@media (max-width:900px){{.header-bar{{padding:.6rem 12px}}
+  .kpi-grid{{grid-template-columns:repeat(3,minmax(110px,1fr));}}
+  .app-main{{padding-right:0}}
+  body.rail-collapsed .app-main{{padding-right:0}}
+  .right-rail{{right:0;top:0;bottom:0;width:min(92vw,420px);max-width:92vw;transform:translateX(100%);border-radius:0;box-shadow:-4px 0 12px rgba(0,0,0,.25)}}
+  body.rail-open .right-rail{{transform:translateX(0)}}
+  .rail-mobile-toggle{{display:inline-flex;align-items:center;gap:6px}}
+}}
         </style>
         </head>
         <body>
-        <h1>Watchtower — Infrastructure Security Briefing</h1>
-        <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 00:05, 06:05, 12:05, 18:05 ET">Next run —</span></p>
+        <div class="rail-backdrop" id="rail-backdrop"></div>
+        <button id="rail-mobile-toggle" class="rail-mobile-toggle" type="button" aria-controls="domain-rail" aria-expanded="false">Domain Activity</button>
+        <header class="header-bar">
+          <div class="header-content">
+            <h1>Watchtower — Infrastructure Security Briefing</h1>
+            <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 00:05, 06:05, 12:05, 18:05 ET">Next run —</span></p>
+          </div>
+        </header>
+        <div class="page-wrap">
+        <div class="app-shell">
+        <main class="app-main">
         {f'<div class="executive"><h2>Analyst Summary</h2><p>{html.escape(executive)}</p></div>' if executive else ''}
 {kpi_html}
 {delta_strip_html}
@@ -2033,14 +2080,6 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
     </div>
     {threat_svg}
   </div>
-  <aside class="panel threat-side">
-    <h3 style="margin:.2rem 0 .45rem">Domain Activity</h3>
-    {domain_rank_html}
-    <h3 style="margin:.7rem 0 .35rem">Selected Domain</h3>
-    <div id="tm-detail" class="muted" style="font-size:.8rem">Click a node to inspect findings.</div>
-    <h3 style="margin:.7rem 0 .35rem">Feed Contribution</h3>
-    <table class="feed-table"><thead><tr><th>Feed domain</th><th>Refs</th><th>Max risk</th></tr></thead><tbody>{feed_rows}</tbody></table>
-  </aside>
 </section>
 {history_section}
 {weekly_html}
@@ -2048,10 +2087,165 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
 {rows}
 {resolved_drawer_html}
 <footer>Watchtower · scheduled 00:05 / 06:05 / 12:05 / 18:05 ET · placeholder mode: {str(placeholder_mode()).lower()}</footer>
+                </main>
+                <aside id="domain-rail" class="panel right-rail" role="complementary" aria-label="Domain Activity">
+                    <div class="rail-handle" id="rail-handle" role="separator" aria-orientation="vertical" aria-label="Resize Domain Activity panel"></div>
+                    <div class="rail-header">
+                        <h3 style="margin:.2rem 0 .2rem">Domain Activity</h3>
+                        <div class="rail-actions">
+                            <button id="rail-toggle" class="rail-btn" type="button" aria-expanded="true">Collapse</button>
+                            <button id="rail-close" class="rail-btn" type="button" style="display:none">Close</button>
+                        </div>
+                    </div>
+                    <div class="rail-collapsed-pill">DOMAIN ACTIVITY</div>
+                    <div class="rail-content" id="rail-content">
+                        <div class="rail-tablist" role="tablist" aria-label="Domain Activity modules">
+                            <button class="rail-tab" type="button" id="tab-overview" role="tab" aria-controls="panel-overview" aria-selected="true" data-tab="overview">Overview</button>
+                            <button class="rail-tab" type="button" id="tab-feeds" role="tab" aria-controls="panel-feeds" aria-selected="false" data-tab="feeds">Feeds</button>
+                            <button class="rail-tab" type="button" id="tab-alerts" role="tab" aria-controls="panel-alerts" aria-selected="false" data-tab="alerts">Alerts</button>
+                            <button class="rail-tab" type="button" id="tab-forensics" role="tab" aria-controls="panel-forensics" aria-selected="false" data-tab="forensics">Forensics</button>
+                        </div>
+                        <section class="rail-panel active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
+                            <h3 style="margin:.2rem 0 .45rem">Domain Activity</h3>
+                            {domain_rank_html}
+                            <h3 style="margin:.7rem 0 .35rem">Selected Domain</h3>
+                            <div id="tm-detail" class="muted" style="font-size:.8rem">Click a node to inspect findings.</div>
+                        </section>
+                        <section class="rail-panel" id="panel-feeds" role="tabpanel" aria-labelledby="tab-feeds">
+                            <h3 style="margin:.2rem 0 .35rem">Feed Contribution</h3>
+                            <table class="feed-table"><thead><tr><th>Feed domain</th><th>Refs</th><th>Max risk</th></tr></thead><tbody>{feed_rows}</tbody></table>
+                        </section>
+                        <section class="rail-panel" id="panel-alerts" role="tabpanel" aria-labelledby="tab-alerts" data-lazy="true">
+                            <h3 style="margin:.2rem 0 .35rem">Alerts</h3>
+                            <div class="rail-placeholder">Reserved module slot. Use this area for triage queues, ownership routing, and SLA timers.</div>
+                        </section>
+                        <section class="rail-panel" id="panel-forensics" role="tabpanel" aria-labelledby="tab-forensics" data-lazy="true">
+                            <h3 style="margin:.2rem 0 .35rem">Forensics</h3>
+                            <div class="rail-placeholder">Reserved module slot. Use this area for IOCs, kill-chain pivots, and evidence links.</div>
+                        </section>
+                    </div>
+                </aside>
+                </div>
+                </div>
 <script>
 var CARDS={json.dumps(card_data)};
 var CURRENT_DOMAIN='all';
 var DOMAIN_LABELS={json.dumps({k: v.get('label', k) for k, v in heatmap.items()})};
+var WT_TELEMETRY=[];
+
+function trackUi(evt,payload){{
+        var e={{event:evt,ts:new Date().toISOString(),payload:payload||{{}}}};
+        WT_TELEMETRY.push(e);
+}}
+
+function isNarrow(){{return window.matchMedia('(max-width: 900px)').matches;}}
+
+function applyRailWidth(w){{
+        var min=320,max=480;
+        var n=Math.max(min,Math.min(max,Math.round(w||360)));
+        document.documentElement.style.setProperty('--rail-width',n+'px');
+        try{{localStorage.setItem('wt.rail.width',String(n));}}catch(e){{}}
+        window.dispatchEvent(new Event('resize'));
+}}
+
+function setRailCollapsed(collapsed,persist){{
+        document.body.classList.toggle('rail-collapsed',!!collapsed);
+        var t=document.getElementById('rail-toggle');
+        if(t){{
+                t.textContent=collapsed?'Expand':'Collapse';
+                t.setAttribute('aria-expanded',(!collapsed).toString());
+        }}
+        if(persist!==false){{
+                try{{localStorage.setItem('wt.rail.collapsed',collapsed?'1':'0');}}catch(e){{}}
+        }}
+        trackUi(collapsed?'rail_collapsed':'rail_expanded');
+        window.dispatchEvent(new Event('resize'));
+}}
+
+function setRailOpen(open,persist){{
+        document.body.classList.toggle('rail-open',!!open);
+        var mt=document.getElementById('rail-mobile-toggle');
+        if(mt) mt.setAttribute('aria-expanded',open?'true':'false');
+        if(persist!==false){{
+                try{{localStorage.setItem('wt.rail.mobileOpen',open?'1':'0');}}catch(e){{}}
+        }}
+        trackUi(open?'rail_opened':'rail_closed',{{mobile:isNarrow()}});
+}}
+
+function setRailTab(tab){{
+        document.querySelectorAll('.rail-tab').forEach(function(btn){{
+                var active=btn.getAttribute('data-tab')===tab;
+                btn.setAttribute('aria-selected',active?'true':'false');
+                btn.tabIndex=active?0:-1;
+        }});
+        document.querySelectorAll('.rail-panel').forEach(function(p){{
+                p.classList.toggle('active',p.id==='panel-'+tab);
+        }});
+        try{{localStorage.setItem('wt.rail.tab',tab);}}catch(e){{}}
+        trackUi('rail_tab',{{tab:tab}});
+}}
+
+function initRightRail(){{
+        var toggle=document.getElementById('rail-toggle');
+        var close=document.getElementById('rail-close');
+        var mobileToggle=document.getElementById('rail-mobile-toggle');
+        var backdrop=document.getElementById('rail-backdrop');
+        var handle=document.getElementById('rail-handle');
+
+        var initialTab='overview';
+        try{{initialTab=localStorage.getItem('wt.rail.tab')||'overview';}}catch(e){{}}
+        setRailTab(initialTab);
+
+        var savedW=360;
+        try{{savedW=parseInt(localStorage.getItem('wt.rail.width')||'360',10)||360;}}catch(e){{}}
+        applyRailWidth(savedW);
+
+        var collapsed=false;
+        try{{collapsed=localStorage.getItem('wt.rail.collapsed')==='1';}}catch(e){{}}
+        if(!isNarrow()) setRailCollapsed(collapsed,false);
+
+        document.querySelectorAll('.rail-tab').forEach(function(btn){{
+                btn.addEventListener('click',function(){{ setRailTab(btn.getAttribute('data-tab')); }});
+        }});
+
+        if(toggle) toggle.addEventListener('click',function(){{ setRailCollapsed(!document.body.classList.contains('rail-collapsed')); }});
+        if(mobileToggle) mobileToggle.addEventListener('click',function(){{ setRailOpen(true); }});
+        if(close) close.addEventListener('click',function(){{ setRailOpen(false); }});
+        if(backdrop) backdrop.addEventListener('click',function(){{ setRailOpen(false); }});
+        document.addEventListener('keydown',function(e){{ if(e.key==='Escape') setRailOpen(false); }});
+
+        if(handle){{
+                var dragging=false;
+                handle.addEventListener('pointerdown',function(e){{
+                        if(isNarrow()) return;
+                        dragging=true;
+                        handle.setPointerCapture(e.pointerId);
+                        document.body.style.userSelect='none';
+                        trackUi('rail_resize_start');
+                }});
+                handle.addEventListener('pointermove',function(e){{
+                        if(!dragging||isNarrow()) return;
+                        var w=(window.innerWidth-e.clientX)-parseInt(getComputedStyle(document.documentElement).getPropertyValue('--page-gutter')||16,10);
+                        applyRailWidth(w);
+                }});
+                handle.addEventListener('pointerup',function(){{
+                        if(!dragging) return;
+                        dragging=false;
+                        document.body.style.userSelect='';
+                        var cur=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--rail-width')||'360',10);
+                        trackUi('rail_resized',{{width:cur}});
+                }});
+        }}
+
+        var mq=window.matchMedia('(max-width: 900px)');
+        function onViewport(){{
+                if(close) close.style.display=isNarrow()?'inline-block':'none';
+                if(!isNarrow()){{ setRailOpen(false,false); }}
+                window.dispatchEvent(new Event('resize'));
+        }}
+        if(mq.addEventListener) mq.addEventListener('change',onViewport); else mq.addListener(onViewport);
+        onViewport();
+}}
 
 function selectDomain(domain){{
     CURRENT_DOMAIN = domain||'all';
@@ -2077,6 +2271,7 @@ function selectDomain(domain){{
             +'<div style="color:#6a7f98;font-size:.75rem;margin:.2rem 0 .35rem">Findings: '+subset.length+' &middot; P1: '+p1+' &middot; Max risk: '+maxRisk+'</div>'
             +(lines?'<ul style="margin:.3rem 0 0 1rem;padding:0;font-size:.78rem">'+lines+'</ul>':'<div style="color:#5a7090;font-size:.78rem">No findings in this window.</div>');
     }}
+    trackUi('domain_selected',{{domain:CURRENT_DOMAIN,count:subset.length,maxRisk:maxRisk}});
 }}
 (function(){{
   var SLOTS=[0,6,12,18],MIN=5;
@@ -2108,6 +2303,8 @@ function selectDomain(domain){{
   }}
   tick();setInterval(tick,1000);
 }})();
+initRightRail();
+selectDomain('all');
 </script>
 </body></html>"""
 
