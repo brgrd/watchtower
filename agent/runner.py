@@ -61,6 +61,7 @@ IGNORE_FILE = os.path.join(STATE_DIR, "ignore_registry.json")
 LEDGER_FILE = os.path.join(STATE_DIR, "ledger.jsonl")
 SEEN_FILE = os.path.join(STATE_DIR, "seen_hashes.json")
 LAST_RUN_CARDS_FILE = os.path.join(STATE_DIR, "last_run_cards.json")
+WEEKLY_AGGREGATE_FILE = os.path.join(STATE_DIR, "weekly_aggregate.json")
 CONFIG = yaml.safe_load(
     open(os.path.join(ROOT, "agent", "config.yaml"), "r", encoding="utf-8")
 )
@@ -924,6 +925,7 @@ def _compute_delta(current_cards: list, last_cards: list) -> dict:
     Elevated cards carry an extra "_score_delta" key.
     On first run (empty last_cards) all current cards are classified as new.
     """
+
     def _cves(card: dict) -> set:
         raw = card.get("title", "") + " " + card.get("summary", "")
         return set(_extract_cves(raw))
@@ -1336,6 +1338,290 @@ def _build_domain_rank_html(cards: list, heatmap: dict) -> str:
     return "".join(rows)
 
 
+# -----------------------------
+# P3: 7-day history helpers
+# -----------------------------
+def _prune_old_briefings(reports_dir: str, keep_days: int = 10) -> None:
+    """Delete briefing_*.jsonl and briefing_*.md files older than keep_days."""
+    cutoff = datetime.now(timezone.utc) - timedelta(days=keep_days)
+    if not os.path.isdir(reports_dir):
+        return
+    for fname in os.listdir(reports_dir):
+        if not fname.startswith("briefing_"):
+            continue
+        if not (fname.endswith(".jsonl") or fname.endswith(".md")):
+            continue
+        ext = ".jsonl" if fname.endswith(".jsonl") else ".md"
+        stem = fname[len("briefing_") : -len(ext)]
+        try:
+            dt = datetime.strptime(stem, "%Y-%m-%d_%H-%M").replace(tzinfo=timezone.utc)
+            if dt < cutoff:
+                os.remove(os.path.join(reports_dir, fname))
+        except Exception:
+            pass
+
+
+def _load_history_days(reports_dir: str, n: int = 7) -> list:
+    """Scan briefing_*.jsonl files, group by ET date (UTC-5), return up to n days
+    sorted newest-first.  Each entry: {date_str, ts_str, cards: [...]}.
+    """
+    ET_OFFSET = timedelta(hours=5)
+    runs: list = []
+    if not os.path.isdir(reports_dir):
+        return []
+    for fname in os.listdir(reports_dir):
+        if not (fname.startswith("briefing_") and fname.endswith(".jsonl")):
+            continue
+        stem = fname[len("briefing_") : -len(".jsonl")]
+        try:
+            dt = datetime.strptime(stem, "%Y-%m-%d_%H-%M").replace(tzinfo=timezone.utc)
+            runs.append((dt, os.path.join(reports_dir, fname)))
+        except Exception:
+            pass
+    days_map: dict = {}
+    for dt, fp in runs:
+        et_date = (dt - ET_OFFSET).strftime("%Y-%m-%d")
+        existing = days_map.get(et_date)
+        if existing is None or dt > existing[0]:
+            days_map[et_date] = (dt, fp)
+    sorted_dates = sorted(days_map.keys(), reverse=True)[:n]
+    result = []
+    for date_str in sorted_dates:
+        dt, fp = days_map[date_str]
+        cards: list = []
+        try:
+            with open(fp, "r", encoding="utf-8") as fh:
+                for line in fh:
+                    try:
+                        cards.append(json.loads(line.strip()))
+                    except Exception:
+                        pass
+        except Exception:
+            pass
+        result.append(
+            {
+                "date_str": date_str,
+                "ts_str": dt.strftime("%Y-%m-%d %H:%M UTC"),
+                "cards": cards,
+            }
+        )
+    return result
+
+
+def _build_history_accordion(days: list, today_str: str = "") -> str:
+    """Build a 7-day briefing history accordion `<section>` element."""
+    if not days:
+        return (
+            '<div class="history-panel muted" style="font-size:.78rem;padding:.4rem 0">'
+            "No briefing history available yet.</div>"
+        )
+    items: list[str] = []
+    for day in days:
+        date_str = day["date_str"]
+        ts_str = day["ts_str"]
+        cards = day["cards"]
+        count = len(cards)
+        p1 = sum(1 for c in cards if _derive_priority(c) == "P1")
+        exploited = sum(1 for c in cards if _is_exploitish(c))
+        meta_parts = [f"{count} finding{'s' if count != 1 else ''}"]
+        if p1:
+            meta_parts.append(f"P1: {p1}")
+        if exploited:
+            meta_parts.append(f"exploited: {exploited}")
+        meta_txt = " \u00b7 ".join(meta_parts)
+        trows_list: list[str] = []
+        for c in sorted(cards, key=lambda x: int(x.get("risk_score", 0)), reverse=True):
+            pri = _derive_priority(c)
+            pri_cls = "p1" if pri == "P1" else "p2" if pri == "P2" else "p3"
+            ps = c.get("patch_status", "unknown")
+            ps_cls = (
+                "patch-badge--fixed"
+                if ps == "patched"
+                else (
+                    "patch-badge--workaround"
+                    if ps == "workaround"
+                    else (
+                        "patch-badge--no-fix"
+                        if ps == "no_fix"
+                        else "patch-badge--unknown"
+                    )
+                )
+            )
+            trows_list.append(
+                "<tr>"
+                f'<td class="ha-title">{html.escape(c.get("title", "")[:80])}</td>'
+                f'<td class="ha-risk">{int(c.get("risk_score", 0))}</td>'
+                f'<td class="ha-pri"><span class="priority {pri_cls}">{pri}</span></td>'
+                f'<td class="ha-ps"><span class="patch-badge {ps_cls}" style="font-size:.58rem">{ps.replace("_"," ")}</span></td>'
+                "</tr>"
+            )
+        trows = "".join(trows_list)
+        open_attr = " open" if date_str == today_str else ""
+        items.append(
+            f'<details class="ha-day"{open_attr}>'
+            f'<summary class="ha-summary">'
+            f'<span class="ha-date">{html.escape(date_str)}</span>'
+            f'<span class="ha-meta">{html.escape(meta_txt)}</span>'
+            f'<span class="ha-ts">{html.escape(ts_str)}</span>'
+            f"</summary>"
+            f'<div class="ha-body">'
+            f'<table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th><th>Patch</th></tr></thead>'
+            f"<tbody>{trows}</tbody></table>"
+            f"</div>"
+            f"</details>"
+        )
+    return (
+        '<section class="panel ha-section">'
+        '<h3 style="margin:.2rem 0 .5rem">&#128197;&nbsp;7-Day Briefing History</h3>'
+        + "".join(items)
+        + "</section>"
+    )
+
+
+# -----------------------------
+# P4: weekly aggregate helpers
+# -----------------------------
+def _rebuild_weekly_aggregate(reports_dir: str, days: list = None) -> dict:
+    """Scan last 7 days of briefing JSONLs and build aggregate statistics."""
+    if days is None:
+        days = _load_history_days(reports_dir, n=7)
+    cve_counts: dict = {}
+    domain_set: set = set()
+    total_cards = 0
+    day_counts: dict = {}
+    for day in days:
+        date_str = day["date_str"]
+        cards = day["cards"]
+        total_cards += len(cards)
+        day_counts[date_str] = len(cards)
+        for c in cards:
+            raw = c.get("title", "") + " " + c.get("summary", "")
+            for cve in _extract_cves(raw):
+                cve_counts[cve] = cve_counts.get(cve, 0) + 1
+            for d in c.get("domains", []):
+                if d and d != "uncategorised":
+                    domain_set.add(d)
+    top_cves = sorted(cve_counts.items(), key=lambda x: x[1], reverse=True)[:20]
+    most_active_day = max(day_counts, key=lambda k: day_counts[k]) if day_counts else ""
+    existing = load_json(WEEKLY_AGGREGATE_FILE, {})
+    return {
+        "rebuilt_at": now_utc_iso(),
+        "window_days": len(days),
+        "total_cards": total_cards,
+        "unique_cves": len(cve_counts),
+        "active_domains": sorted(domain_set),
+        "most_active_day": most_active_day,
+        "day_counts": day_counts,
+        "top_cves": [{"cve": k, "count": v} for k, v in top_cves],
+        "weekly_summary": existing.get("weekly_summary", ""),
+        "weekly_summary_ts": existing.get("weekly_summary_ts", ""),
+    }
+
+
+def groq_weekly_review(aggregate: dict) -> str:
+    """Return a week-in-review paragraph, caching once per UTC day."""
+    today_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    if aggregate.get("weekly_summary_ts") == today_utc and aggregate.get(
+        "weekly_summary"
+    ):
+        return aggregate["weekly_summary"]
+    if placeholder_mode() or not GROQ_API_KEY:
+        return aggregate.get("weekly_summary", "")
+    top_cves_txt = (
+        ", ".join(
+            f"{item['cve']} (\u00d7{item['count']})"
+            for item in aggregate.get("top_cves", [])[:10]
+        )
+        or "none"
+    )
+    domains_txt = (
+        ", ".join(
+            _TAXONOMY.get(d, {}).get("label", d)
+            for d in aggregate.get("active_domains", [])[:8]
+        )
+        or "none"
+    )
+    prompt = (
+        "You are a senior infrastructure security analyst. "
+        f"Write a single cohesive paragraph (90-130 words) summarising the security "
+        f"landscape for the past {aggregate.get('window_days', 7)} days. "
+        "Base your summary strictly on the data below — do not fabricate CVE IDs or events.\n\n"
+        "Data:\n"
+        f"- Total findings: {aggregate.get('total_cards', 0)}\n"
+        f"- Unique CVEs tracked: {aggregate.get('unique_cves', 0)}\n"
+        f"- Most frequently seen CVEs: {top_cves_txt}\n"
+        f"- Active security domains: {domains_txt}\n"
+        f"- Most active day: {aggregate.get('most_active_day', 'unknown')}\n\n"
+        "Write professional, concise prose suitable for a CISO briefing. No bullet points. No headings. No preamble."
+    )
+    try:
+        content, _ = groq_chat(
+            [{"role": "user", "content": prompt}],
+            CONFIG["model"]["name"],
+            temperature=0.3,
+            max_tokens=250,
+        )
+        print("[INFO] Weekly Groq review generated")
+        return content.strip()
+    except Exception as exc:
+        print(f"[WARN] Weekly Groq review failed: {exc}")
+        return aggregate.get("weekly_summary", "")
+
+
+def _build_weekly_section(aggregate: dict) -> str:
+    """Build the weekly scope <section> HTML block."""
+    if not aggregate or aggregate.get("total_cards", 0) == 0:
+        return ""
+    total = aggregate.get("total_cards", 0)
+    unique_cves = aggregate.get("unique_cves", 0)
+    n_domains = len(aggregate.get("active_domains", []))
+    most_active = aggregate.get("most_active_day", "\u2014")
+    window = aggregate.get("window_days", 7)
+    summary_txt = aggregate.get("weekly_summary", "")
+    top_cves = aggregate.get("top_cves", [])
+    max_count = top_cves[0]["count"] if top_cves else 1
+    cve_rows = "".join(
+        "<tr>"
+        f'<td class="wcve-id">{html.escape(item["cve"])}</td>'
+        f'<td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:{min(100, round(item["count"] / max_count * 100))}%"></div></td>'
+        f'<td class="wcve-count">{item["count"]}</td>'
+        "</tr>"
+        for item in top_cves
+    )
+    summary_html = (
+        f'<p class="weekly-review-text">{html.escape(summary_txt)}</p>'
+        if summary_txt
+        else '<p class="weekly-review-text muted">Week-in-review will appear after the next Groq analysis.</p>'
+    )
+    cve_block = (
+        (
+            '<details class="wcve-details">'
+            f"<summary>Top CVEs this week ({len(top_cves)} tracked)</summary>"
+            '<table class="wcve-table"><thead><tr>'
+            "<th>CVE</th><th>Frequency</th><th>#</th>"
+            "</tr></thead>"
+            f"<tbody>{cve_rows}</tbody></table>"
+            "</details>"
+        )
+        if top_cves
+        else ""
+    )
+    return (
+        '<section class="panel weekly-scope">'
+        f'<h3 style="margin:.2rem 0 .6rem">&#128197;&nbsp;{window}-Day Weekly Scope</h3>'
+        '<div class="weekly-kpi-row">'
+        f'<div class="wkpi"><span class="wk">Total Findings</span><span class="wv">{total}</span></div>'
+        f'<div class="wkpi"><span class="wk">Unique CVEs</span><span class="wv">{unique_cves}</span></div>'
+        f'<div class="wkpi"><span class="wk">Active Domains</span><span class="wv">{n_domains}</span></div>'
+        f'<div class="wkpi"><span class="wk">Most Active Day</span><span class="wv wv-sm">{html.escape(most_active)}</span></div>'
+        "</div>"
+        '<div class="weekly-review-label">Week-in-Review</div>'
+        + summary_html
+        + cve_block
+        + "</section>"
+    )
+
+
 def _write_index_html(
     path: str,
     cards: list,
@@ -1346,6 +1632,8 @@ def _write_index_html(
     since_hours: int = 6,
     groq_status: str = "unknown",
     delta: dict = None,
+    history_days: list = None,
+    weekly_html: str = "",
 ):
     # KPI stats
     total_findings = len(cards)
@@ -1408,19 +1696,8 @@ def _write_index_html(
     threat_svg = _build_threat_map_svg(cards, heatmap)
     domain_rank_html = _build_domain_rank_html(cards, heatmap)
 
-    history_section = ""
-    if history:
-        polled_vals = [e["counts"]["polled"] for e in history]
-        cluster_vals = [e["counts"]["clusters"] for e in history]
-        p_spark = _sparkline_svg(polled_vals, color="#0366d6")
-        c_spark = _sparkline_svg(cluster_vals, color="#28a745")
-        history_section = (
-            f'<div class="history-panel">'
-            f'<span class="hs-label">Fresh&nbsp;items</span>&nbsp;{p_spark}&nbsp;<span class="hs-val">{polled_vals[-1]}</span>'
-            f'&emsp;<span class="hs-label">Findings over time</span>&nbsp;{c_spark}&nbsp;<span class="hs-val">{cluster_vals[-1]}</span>'
-            f'&emsp;<span class="hs-label">Runs&nbsp;logged</span>&nbsp;<span class="hs-val">{len(history)}</span>'
-            f"</div>"
-        )
+    _today_et = (datetime.now(timezone.utc) - timedelta(hours=5)).strftime("%Y-%m-%d")
+    history_section = _build_history_accordion(history_days or [], today_str=_today_et)
 
     # --- Delta strip ---
     delta_strip_html = ""
@@ -1438,11 +1715,17 @@ def _write_index_html(
         else:
             chips = []
             if n_new:
-                chips.append(f'<span class="delta-chip delta-chip--new">+{n_new}&nbsp;New</span>')
+                chips.append(
+                    f'<span class="delta-chip delta-chip--new">+{n_new}&nbsp;New</span>'
+                )
             if n_elev:
-                chips.append(f'<span class="delta-chip delta-chip--elevated">&#8679;{n_elev}&nbsp;Elevated</span>')
+                chips.append(
+                    f'<span class="delta-chip delta-chip--elevated">&#8679;{n_elev}&nbsp;Elevated</span>'
+                )
             if n_res:
-                chips.append(f'<span class="delta-chip delta-chip--resolved">&#10003;{n_res}&nbsp;Resolved</span>')
+                chips.append(
+                    f'<span class="delta-chip delta-chip--resolved">&#10003;{n_res}&nbsp;Resolved</span>'
+                )
             delta_strip_html = f'<div class="delta-strip">{"  ".join(chips)}</div>'
         if delta.get("resolved"):
             res_rows = "".join(
@@ -1452,7 +1735,7 @@ def _write_index_html(
             )
             resolved_drawer_html = (
                 f'<details class="resolved-drawer">'
-                f'<summary>&#10003; {n_res} resolved since previous run</summary>'
+                f"<summary>&#10003; {n_res} resolved since previous run</summary>"
                 f'<table><thead><tr><th>Finding</th><th style="text-align:right">Prev&nbsp;risk</th></tr></thead>'
                 f"<tbody>{res_rows}</tbody></table></details>"
             )
@@ -1695,6 +1978,20 @@ p{{color:#c9d1d9}}
 .resolved-drawer table{{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:.4rem}}
 .resolved-drawer th{{font-size:.68rem;color:#6a7f98;font-weight:700;border-bottom:1px solid #21262d;padding:.2rem .4rem}}
 .resolved-drawer td{{padding:.25rem .4rem;border-bottom:1px solid #21262d}}
+.ha-section{{margin:0 0 1rem}}.ha-day{{border-bottom:1px solid #21262d}}.ha-day:last-child{{border-bottom:none}}
+.ha-summary{{display:flex;align-items:center;gap:.7rem;padding:.42rem .3rem;cursor:pointer;list-style:none;font-size:.82rem}}.ha-summary::-webkit-details-marker{{display:none}}
+.ha-day[open] .ha-summary::before{{transform:rotate(90deg)}}
+.ha-date{{font-weight:700;color:#e6edf3;flex:0 0 92px}}.ha-meta{{color:#c9d1d9;flex:1;font-size:.78rem}}.ha-ts{{color:#8b949e;font-size:.68rem;margin-left:auto;flex-shrink:0}}
+.ha-body{{padding:.25rem .2rem .5rem .5rem}}.ha-table{{width:100%;border-collapse:collapse;font-size:.76rem}}.ha-table th{{font-size:.67rem;color:#6a7f98;font-weight:700;border-bottom:1px solid #21262d;padding:.2rem .35rem}}
+.ha-table td{{padding:.22rem .35rem;border-bottom:1px solid #161b22;vertical-align:top}}.ha-title{{max-width:520px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}.ha-risk{{text-align:right;font-weight:700;color:#e6edf3;min-width:30px}}.ha-pri,.ha-ps{{text-align:center;min-width:40px;white-space:nowrap}}
+.weekly-scope{{margin:0 0 1rem}}.weekly-kpi-row{{display:flex;gap:10px;flex-wrap:wrap;margin:.4rem 0 .75rem}}
+.wkpi{{background:#0d1117;border:1px solid #21262d;border-radius:5px;padding:.4rem .65rem;display:flex;flex-direction:column;gap:.15rem;min-width:110px}}
+.wk{{font-size:.65rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700}}.wv{{font-size:1.1rem;color:#e6edf3;font-weight:800}}.wv-sm{{font-size:.85rem}}
+.weekly-review-label{{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:#4e7898;margin:.3rem 0 .2rem}}
+.weekly-review-text{{margin:0 0 .7rem;line-height:1.75;font-size:.9rem;color:#c9d1d9}}
+.wcve-details{{margin:.3rem 0 0}}.wcve-details summary{{font-size:.78rem;color:#8b949e;cursor:pointer;padding:.25rem 0;list-style:none}}.wcve-details summary::-webkit-details-marker{{display:none}}
+.wcve-table{{width:100%;border-collapse:collapse;font-size:.76rem;margin-top:.35rem}}.wcve-table th{{font-size:.67rem;color:#6a7f98;font-weight:700;border-bottom:1px solid #21262d;padding:.2rem .4rem}}.wcve-table td{{padding:.22rem .4rem;border-bottom:1px solid #161b22}}
+.wcve-id{{font-family:monospace;color:#58a6ff;font-size:.75rem}}.wcve-bar-cell{{min-width:80px}}.wcve-bar-inner{{height:5px;background:#1f6feb;border-radius:2px;min-width:2px}}.wcve-count{{text-align:right;font-weight:700;color:#e6edf3;min-width:22px}}
 .threat-section{{display:grid;grid-template-columns:2fr 1fr;gap:12px;align-items:start;margin:0 0 1rem}}
 .threat-main{{padding:.3rem .4rem .5rem}}
 .threat-toolbar{{display:flex;justify-content:space-between;align-items:center;padding:.3rem .3rem .45rem}}
@@ -1747,6 +2044,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
   </aside>
 </section>
 {history_section}
+{weekly_html}
 <h2>Top Findings</h2>
 {rows}
 {resolved_drawer_html}
@@ -2006,6 +2304,19 @@ def _run():
     )
 
     history = _read_ledger_history()
+    _prune_old_briefings(REPORTS_DIR)
+    history_days = _load_history_days(REPORTS_DIR)
+    aggregate = _rebuild_weekly_aggregate(REPORTS_DIR, days=history_days)
+    weekly_summary = groq_weekly_review(aggregate)
+    _today_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    if weekly_summary and (
+        weekly_summary != aggregate.get("weekly_summary")
+        or aggregate.get("weekly_summary_ts") != _today_utc
+    ):
+        aggregate["weekly_summary"] = weekly_summary
+        aggregate["weekly_summary_ts"] = _today_utc
+        save_json(WEEKLY_AGGREGATE_FILE, aggregate)
+    weekly_html = _build_weekly_section(aggregate)
     _write_index_html(
         index_html,
         cards,
@@ -2016,6 +2327,8 @@ def _run():
         since_hours=since_hours,
         groq_status=groq_status,
         delta=delta,
+        history_days=history_days,
+        weekly_html=weekly_html,
     )
 
     save_json(
