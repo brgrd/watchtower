@@ -35,3 +35,5 @@
 {"ts": "2026-03-08T10:37:11.846066+00:00", "counts": {"feeds": 24, "polled": 16, "enriched": 16, "clusters": 3}, "hot_domains": ["os_kernel", "web_framework"], "placeholder_mode": false}
 {"ts": "2026-03-08T16:41:12.709890+00:00", "counts": {"feeds": 24, "polled": 21, "enriched": 21, "clusters": 9}, "hot_domains": ["os_kernel", "crypto_lib"], "placeholder_mode": false}
 {"ts": "2026-03-08T22:36:13.658569+00:00", "counts": {"feeds": 24, "polled": 22, "enriched": 22, "clusters": 10}, "hot_domains": [], "placeholder_mode": false}
+{"ts": "2026-03-09T06:28:40.292493+00:00", "counts": {"feeds": 24, "polled": 25, "enriched": 25, "clusters": 11}, "hot_domains": ["container", "os_kernel", "web_framework", "crypto_lib", "supply_chain"], "placeholder_mode": false}
+{"ts": "2026-03-09T06:28:40.832846+00:00", "error": "'int' object has no attribute 'get'"}

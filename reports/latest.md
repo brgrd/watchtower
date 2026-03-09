@@ -1,50 +1,65 @@
 ---
-generated_at: 2026-03-08T22:36:13.658168+00:00
-model: meta-llama/llama-4-scout-17b-16e-instruct
+generated_at: 2026-03-09T06:28:40.292002+00:00
+model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
 ## Analyst Summary
 
-The highest-risk items this period include CVE-2026-3750 in ContiNew Admin up to 4.2.0, CVE-2026-3754 in SourceCodester Sales and Inventory System 1.0, and CVE-2026-3757 in projectworlds Online Art Gallery Shop 1.0. Internet-facing applications and systems, particularly those using vulnerable software products like SourceCodester Sales and Inventory System and ContiNew Admin, are most exposed due to publicly available exploits and lack of patches. The single most time-sensitive action is to patch ContiNew Admin up to 4.2.0 for CVE-2026-3750.
+The highest-risk items this period are CVE-2026-3788 in Bytedesk, CVE-2026-3790 in SourceCodester Sales and Inventory System, and CVE-2026-3786 in EasyCMS. Internet-facing systems and Windows-based infrastructure are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems running Bytedesk up to 1.3.9, as no patch is currently available.
 
-## CVE-2026-3750 in ContiNew Admin (risk: 40)
-[P1] A security vulnerability has been detected in ContiNew Admin up to 4.2.0. This vulnerability is considered high risk due to potential for exploitation. Why now: Newly disclosed vulnerability with potential for exploitation (confidence: 0.80)
+## Bytedesk RCE (risk: 70)
+[P1] CVE-2026-3788 affects Bytedesk up to 1.3.9, allowing remote code execution. No patch is available. Why now: Lack of patch availability (confidence: 0.80)
 
+- [CVE-2026-3788](https://nvd.nist.gov/v1/nvdidata.feeds.nvd.json)
 
-## CVE-2026-3754 in SourceCodester Sales and Inventory System (risk: 40)
-[P2] A vulnerability was found in SourceCodester Sales and Inventory System 1.0. This vulnerability could lead to system compromise. Why now: Newly disclosed vulnerability (confidence: 0.60)
+## SourceCodester Sales Vulnerability (risk: 70)
+[P1] CVE-2026-3790 affects SourceCodester Sales and Inventory System 1.0, allowing unauthorized access. No patch is available. Why now: Lack of patch availability (confidence: 0.70)
 
+- [CVE-2026-3790](https://nvd.nist.gov/v1/nvdidata.feeds.nvd.json)
 
-## CVE-2026-3757 in projectworlds Online Art Gallery Shop (risk: 40)
-[P2] A security flaw has been discovered in projectworlds Online Art Gallery Shop 1.0. This could lead to unauthorized access. Why now: Newly disclosed vulnerability (confidence: 0.60)
+## EasyCMS Vulnerability (risk: 70)
+[P1] CVE-2026-3786 affects EasyCMS up to 1.6, allowing security bypass. No patch is available. Why now: Lack of patch availability (confidence: 0.80)
 
+- [CVE-2026-3786](https://nvd.nist.gov/v1/nvdidata.feeds.nvd.json)
 
-## CVE-2026-3751 in SourceCodester Employee Task Management System (risk: 40)
-[P2] A vulnerability was detected in SourceCodester Employee Task Management System 1.0. This could lead to system compromise. Why now: Newly disclosed vulnerability (confidence: 0.60)
+## UltraVNC Vulnerability (risk: 70)
+[P2] CVE-2026-3787 affects UltraVNC 1.6.4.0 on Windows, allowing unauthorized access. No patch is available. Why now: Lack of patch availability (confidence: 0.60)
 
+- [CVE-2026-3787](https://nvd.nist.gov/v1/nvdidata.feeds.nvd.json)
 
-## CVE-2026-3752 in SourceCodester Employee Task Management System (risk: 40)
-[P2] A flaw has been found in SourceCodester Employee Task Management System up to 1.0. This could lead to unauthorized access. Why now: Newly disclosed vulnerability (confidence: 0.60)
+## Doramart DoraCMS Vulnerability (risk: 70)
+[P2] CVE-2026-3794 affects doramart DoraCMS 3.0.x, allowing security bypass. No patch is available. Why now: Lack of patch availability (confidence: 0.70)
 
+- [CVE-2026-3794](https://nvd.nist.gov/v1/nvdidata.feeds.nvd.json)
 
-## CVE-2026-3753 in SourceCodester Sales and Inventory System (risk: 40)
-[P2] A vulnerability has been found in SourceCodester Sales and Inventory System up to 1.0. This could lead to system compromise. Why now: Newly disclosed vulnerability (confidence: 0.60)
+## SourceCodester Sales and Inventory System Vulnerability (risk: 70)
+[P2] CVE-2026-3791 affects SourceCodester Sales and Inventory System 1.0, allowing unauthorized access. No patch is available. Why now: Lack of patch availability (confidence: 0.60)
 
+- [CVE-2026-3791](https://nvd.nist.gov/v1/nvdidata.feeds.nvd.json)
 
-## CVE-2026-3755 in SourceCodester Sales and Inventory System (risk: 40)
-[P2] A vulnerability was determined in SourceCodester Sales and Inventory System 1.0. This could lead to unauthorized access. Why now: Newly disclosed vulnerability (confidence: 0.60)
+## Bytedesk Vulnerability (risk: 70)
+[P2] CVE-2026-3789 affects Bytedesk up to 1.3.9, allowing remote code execution. No patch is available. Why now: Lack of patch availability (confidence: 0.80)
 
+- [CVE-2026-3789](https://nvd.nist.gov/v1/nvdidata.feeds.nvd.json)
 
-## CVE-2026-3756 in SourceCodester Sales and Inventory System (risk: 40)
-[P2] A vulnerability was identified in SourceCodester Sales and Inventory System up to 1.0. This could lead to system compromise. Why now: Newly disclosed vulnerability (confidence: 0.60)
+## EasyCMS Security Flaw (risk: 70)
+[P2] CVE-2026-3785 affects EasyCMS up to 1.6, allowing security bypass. No patch is available. Why now: Lack of patch availability (confidence: 0.70)
 
+- [CVE-2026-3785](https://nvd.nist.gov/v1/nvdidata.feeds.nvd.json)
 
-## CVE-2026-3759 in projectworlds Online Art Gallery Shop (risk: 40)
-[P2] A security vulnerability has been detected in projectworlds Online Art Gallery Shop 1.0. This could lead to unauthorized access. Why now: Newly disclosed vulnerability (confidence: 0.60)
+## Doramart DoraCMS Security Flaw (risk: 70)
+[P2] CVE-2026-3795 affects doramart DoraCMS 3.0.x, allowing security bypass. No patch is available. Why now: Lack of patch availability (confidence: 0.60)
 
+- [CVE-2026-3795](https://nvd.nist.gov/v1/nvdidata.feeds.nvd.json)
 
-## CVE-2026-3763 in code-projects Simple Flight Ticket Booking System (risk: 40)
-[P2] A vulnerability was found in code-projects Simple Flight Ticket Booking System 1.0. This could lead to system compromise. Why now: Newly disclosed vulnerability (confidence: 0.60)
+## SourceCodester Sales and Inventory System Security Flaw (risk: 70)
+[P2] CVE-2026-3793 affects SourceCodester Sales and Inventory System 1.0, allowing unauthorized access. No patch is available. Why now: Lack of patch availability (confidence: 0.60)
 
+- [CVE-2026-3793](https://nvd.nist.gov/v1/nvdidata.feeds.nvd.json)
+
+## UltraVNC Security Flaw (risk: 70)
+[P3] CVE-2026-3787 affects UltraVNC 1.6.4.0 on Windows, allowing unauthorized access. No patch is available. Why now: Lack of patch availability (confidence: 0.50)
+
+- [CVE-2026-3787](https://nvd.nist.gov/v1/nvdidata.feeds.nvd.json)

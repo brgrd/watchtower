@@ -1,0 +1,106 @@
+{
+  "rebuilt_at": "2026-03-09T06:28:40.294039+00:00",
+  "window_days": 4,
+  "total_cards": 25,
+  "unique_cves": 21,
+  "active_domains": [
+    "container",
+    "crypto_lib",
+    "identity",
+    "os_kernel",
+    "pkg_npm",
+    "supply_chain",
+    "web_framework"
+  ],
+  "most_active_day": "2026-03-09",
+  "day_counts": {
+    "2026-03-09": 11,
+    "2026-03-05": 6,
+    "2026-03-04": 5,
+    "2026-03-03": 3
+  },
+  "top_cves": [
+    {
+      "cve": "CVE-2026-3787",
+      "count": 2
+    },
+    {
+      "cve": "CVE-2026-3788",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-3790",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-3786",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-3794",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-3791",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-3789",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-3785",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-3795",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-3793",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-27750",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-27749",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-2599",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-30791",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-3598",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2025-41257",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-29086",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-29045",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-26002",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-2297",
+      "count": 1
+    }
+  ],
+  "weekly_summary": "Over the past four days, our security landscape has been characterized by 25 total findings, with 21 unique CVEs tracked, including multiple instances of CVE-2026-3787. The most active day was 2026-03-09, with various security domains impacted, notably Containers, Crypto Libraries, Identity and Authentication, and Web Servers. While no single CVE dominated the landscape, several were observed, including CVE-2026-3788, CVE-2026-3790, and others, highlighting the diversity of vulnerabilities across different domains, and underscoring the need for continued vigilance and monitoring.",
+  "weekly_summary_ts": "2026-03-09"
+}
