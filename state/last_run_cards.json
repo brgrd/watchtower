@@ -1,29 +1,77 @@
 {
-  "ts": "2026-03-09T10:59:58.428378+00:00",
+  "ts": "2026-03-09T16:09:51.306847+00:00",
   "cards": [
     {
-      "title": "Eventobot SQL Injection",
-      "risk_score": 70,
-      "summary": "[P1] CVE-2025-40639 is a SQL injection vulnerability in Eventobot, with no available patch. This vulnerability can be exploited to extract sensitive data. Why now: Lack of available patch (confidence: 0.80)",
-      "cves": [
-        "CVE-2025-40639"
-      ]
-    },
-    {
-      "title": "Eventobot XSS",
-      "risk_score": 70,
-      "summary": "[P1] CVE-2025-40638 is a reflected Cross-Site Scripting (XSS) vulnerability in Eventobot, with no available patch. This vulnerability can be exploited to steal user credentials. Why now: Lack of available patch (confidence: 0.80)",
-      "cves": [
-        "CVE-2025-40638"
-      ]
-    },
-    {
-      "title": "opencc JFlow Vulnerability",
+      "title": "AWS Auth Manager Vuln",
       "risk_score": 40,
-      "summary": "[P2] CVE-2026-3813 is a vulnerability in opencc JFlow, with no available patch. This vulnerability can be exploited to gain unauthorized access. Why now: Newly disclosed vulnerability (confidence: 0.60)",
+      "summary": "[P1] CVE-2026-25604 in AWS Auth manager could allow unauthorized access, no patch available Why now: No patch available (confidence: 0.80)",
       "cves": [
-        "CVE-2026-3813"
+        "CVE-2026-25604"
       ]
+    },
+    {
+      "title": "DB Entry Vuln",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2025-69219 in database entries could allow data manipulation, no patch available Why now: No patch available (confidence: 0.70)",
+      "cves": [
+        "CVE-2025-69219"
+      ]
+    },
+    {
+      "title": "UTT HiPER 810G Vuln",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2026-3815 in UTT HiPER 810G could allow unauthorized access, no patch available Why now: No patch available (confidence: 0.70)",
+      "cves": [
+        "CVE-2026-3815"
+      ]
+    },
+    {
+      "title": "OWASP DefectDojo Vuln",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2026-3816 in OWASP DefectDojo could allow unauthorized access, no patch available Why now: No patch available (confidence: 0.70)",
+      "cves": [
+        "CVE-2026-3816"
+      ]
+    },
+    {
+      "title": "SourceCodester Patients Vuln",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2026-3817 in SourceCodester Patients Waiting Area Queue Management could allow unauthorized access, no patch available Why now: No patch available (confidence: 0.70)",
+      "cves": [
+        "CVE-2026-3817"
+      ]
+    },
+    {
+      "title": "blocklistd Vuln",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2026-2261 in blocklistd could allow unauthorized access, no patch available Why now: No patch available (confidence: 0.70)",
+      "cves": [
+        "CVE-2026-2261"
+      ]
+    },
+    {
+      "title": "Apache Tomcat RCE",
+      "risk_score": 40,
+      "summary": "[P3] No specific CVE, but Apache Tomcat is a common target for RCE attacks Why now: Common target for RCE attacks (confidence: 0.50)",
+      "cves": []
+    },
+    {
+      "title": "Palo Alto PAN-OS Vuln",
+      "risk_score": 40,
+      "summary": "[P3] No specific CVE, but Palo Alto PAN-OS is a common target for vulnerabilities Why now: Common target for vulnerabilities (confidence: 0.50)",
+      "cves": []
+    },
+    {
+      "title": "Container Orchestration Vuln",
+      "risk_score": 40,
+      "summary": "[P3] No specific CVE, but container orchestration nodes are a common target for attacks Why now: Common target for attacks (confidence: 0.50)",
+      "cves": []
+    },
+    {
+      "title": "VPN Appliance Vuln",
+      "risk_score": 40,
+      "summary": "[P3] No specific CVE, but VPN appliances are a common target for vulnerabilities Why now: Common target for vulnerabilities (confidence: 0.50)",
+      "cves": []
     }
   ]
 }
