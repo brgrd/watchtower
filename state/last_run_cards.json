@@ -1,76 +1,22 @@
 {
-  "ts": "2026-03-09T16:09:51.306847+00:00",
+  "ts": "2026-03-09T22:40:30.857665+00:00",
   "cards": [
     {
-      "title": "AWS Auth Manager Vuln",
-      "risk_score": 40,
-      "summary": "[P1] CVE-2026-25604 in AWS Auth manager could allow unauthorized access, no patch available Why now: No patch available (confidence: 0.80)",
-      "cves": [
-        "CVE-2026-25604"
-      ]
-    },
-    {
-      "title": "DB Entry Vuln",
-      "risk_score": 40,
-      "summary": "[P2] CVE-2025-69219 in database entries could allow data manipulation, no patch available Why now: No patch available (confidence: 0.70)",
-      "cves": [
-        "CVE-2025-69219"
-      ]
-    },
-    {
-      "title": "UTT HiPER 810G Vuln",
-      "risk_score": 40,
-      "summary": "[P2] CVE-2026-3815 in UTT HiPER 810G could allow unauthorized access, no patch available Why now: No patch available (confidence: 0.70)",
-      "cves": [
-        "CVE-2026-3815"
-      ]
-    },
-    {
-      "title": "OWASP DefectDojo Vuln",
-      "risk_score": 40,
-      "summary": "[P2] CVE-2026-3816 in OWASP DefectDojo could allow unauthorized access, no patch available Why now: No patch available (confidence: 0.70)",
-      "cves": [
-        "CVE-2026-3816"
-      ]
-    },
-    {
-      "title": "SourceCodester Patients Vuln",
-      "risk_score": 40,
-      "summary": "[P2] CVE-2026-3817 in SourceCodester Patients Waiting Area Queue Management could allow unauthorized access, no patch available Why now: No patch available (confidence: 0.70)",
-      "cves": [
-        "CVE-2026-3817"
-      ]
-    },
-    {
-      "title": "blocklistd Vuln",
-      "risk_score": 40,
-      "summary": "[P2] CVE-2026-2261 in blocklistd could allow unauthorized access, no patch available Why now: No patch available (confidence: 0.70)",
-      "cves": [
-        "CVE-2026-2261"
-      ]
-    },
-    {
-      "title": "Apache Tomcat RCE",
-      "risk_score": 40,
-      "summary": "[P3] No specific CVE, but Apache Tomcat is a common target for RCE attacks Why now: Common target for RCE attacks (confidence: 0.50)",
+      "title": "SolarWinds Deserialization Vuln",
+      "risk_score": 100,
+      "summary": "[P1] SolarWinds Web Help Desk contains a deserialization of untrusted data vulnerability, actively exploited in the wild with no available patch. This vulnerability poses a significant risk to internet-facing systems. Why now: Active exploitation in the wild (confidence: 0.90)",
       "cves": []
     },
     {
-      "title": "Palo Alto PAN-OS Vuln",
-      "risk_score": 40,
-      "summary": "[P3] No specific CVE, but Palo Alto PAN-OS is a common target for vulnerabilities Why now: Common target for vulnerabilities (confidence: 0.50)",
+      "title": "Omnissa Workspace One UEM SSRF",
+      "risk_score": 100,
+      "summary": "[P1] Omnissa Workspace One UEM contains a server-side request forgery vulnerability, exploited in the wild with no available patch. This vulnerability poses a risk to internal systems. Why now: Active exploitation in the wild (confidence: 0.90)",
       "cves": []
     },
     {
-      "title": "Container Orchestration Vuln",
-      "risk_score": 40,
-      "summary": "[P3] No specific CVE, but container orchestration nodes are a common target for attacks Why now: Common target for attacks (confidence: 0.50)",
-      "cves": []
-    },
-    {
-      "title": "VPN Appliance Vuln",
-      "risk_score": 40,
-      "summary": "[P3] No specific CVE, but VPN appliances are a common target for vulnerabilities Why now: Common target for vulnerabilities (confidence: 0.50)",
+      "title": "Ivanti Endpoint Manager Auth Bypass",
+      "risk_score": 100,
+      "summary": "[P1] Ivanti Endpoint Manager contains an authentication bypass vulnerability, exploited in the wild with no available patch. This vulnerability poses a significant risk to internal systems. Why now: Active exploitation in the wild (confidence: 0.90)",
       "cves": []
     }
   ]
