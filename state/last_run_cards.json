@@ -1,4 +1,37 @@
 {
-  "ts": "2026-03-10T04:49:50.963224+00:00",
-  "cards": []
+  "ts": "2026-03-10T10:55:25.778077+00:00",
+  "cards": [
+    {
+      "title": "Camaleon CMS RCE",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2026-1776 affects Camaleon CMS versions 2.4.5.0 through 2.9.0, allowing remote code execution without a patch or workaround available. The vulnerability has not been exploited in the wild yet. Why now: Lack of patch or workaround (confidence: 0.80)",
+      "cves": [
+        "CVE-2026-1776"
+      ]
+    },
+    {
+      "title": "Misskey RCE",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2026-28433 affects all Misskey servers, allowing remote code execution without a patch or workaround available. The vulnerability has not been exploited in the wild yet. Why now: Lack of patch or workaround (confidence: 0.80)",
+      "cves": [
+        "CVE-2026-28433"
+      ]
+    },
+    {
+      "title": "Ghostty RCE",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2026-26982 affects Ghostty, allowing control characters to be injected, without a patch or workaround available. The vulnerability has not been exploited in the wild yet. Why now: Lack of patch or workaround (confidence: 0.80)",
+      "cves": [
+        "CVE-2026-26982"
+      ]
+    },
+    {
+      "title": "ImageMagick RCE",
+      "risk_score": 40,
+      "summary": "[P1] CVE-2026-28494 affects ImageMagick, allowing remote code execution without a patch available. The vulnerability has not been exploited in the wild yet. Why now: High-risk vulnerability without patch (confidence: 0.90)",
+      "cves": [
+        "CVE-2026-28494"
+      ]
+    }
+  ]
 }
