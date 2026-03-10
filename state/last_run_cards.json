@@ -1,4 +1,85 @@
 {
-  "ts": "2026-03-10T16:10:38.641595+00:00",
-  "cards": []
+  "ts": "2026-03-10T22:39:59.628966+00:00",
+  "cards": [
+    {
+      "title": "Tutor LMS Pro Vuln",
+      "risk_score": 40,
+      "summary": "[P1] CVE-2026-0953 affects Tutor LMS Pro, allowing authentication bypass. No patch is available. Why now: No patch available (confidence: 0.80)",
+      "cves": [
+        "CVE-2026-0953"
+      ]
+    },
+    {
+      "title": "Hitachi Data Integration Vuln",
+      "risk_score": 40,
+      "summary": "[P1] CVE-2025-11158 affects Hitachi Vantara Pentaho Data Integration & Analytics, with no patch available. This is a critical vulnerability. Why now: No patch available (confidence: 0.70)",
+      "cves": [
+        "CVE-2025-11158"
+      ]
+    },
+    {
+      "title": "Unspecified Software Vuln",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2026-0489 affects unspecified software, with no patch available. This is a significant vulnerability. Why now: No patch available (confidence: 0.60)",
+      "cves": [
+        "CVE-2026-0489"
+      ]
+    },
+    {
+      "title": "SAP Customer Checkout Vuln",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2026-24311 affects SAP Customer Checkout, with no patch available. This is a significant vulnerability. Why now: No patch available (confidence: 0.70)",
+      "cves": [
+        "CVE-2026-24311"
+      ]
+    },
+    {
+      "title": "SAP NetWeaver Vuln",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2026-24310 affects SAP NetWeaver Application Server for ABAP, with no patch available. This is a significant vulnerability. Why now: No patch available (confidence: 0.70)",
+      "cves": [
+        "CVE-2026-24310"
+      ]
+    },
+    {
+      "title": "Booking Calendar Vuln",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2026-1919 affects Booking Calendar for Appointments and Service Businesses, with no patch available. This is a significant vulnerability. Why now: No patch available (confidence: 0.60)",
+      "cves": [
+        "CVE-2026-1919"
+      ]
+    },
+    {
+      "title": "Court Reservation Vuln",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2026-1508 affects Court Reservation WordPress plugin, with no patch available. This is a significant vulnerability. Why now: No patch available (confidence: 0.60)",
+      "cves": [
+        "CVE-2026-1508"
+      ]
+    },
+    {
+      "title": "IBM Planning Analytics Vuln",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2025-36105 affects IBM Planning Analytics Advanced Certified Containers, with no patch available. This is a significant vulnerability. Why now: No patch available (confidence: 0.70)",
+      "cves": [
+        "CVE-2025-36105"
+      ]
+    },
+    {
+      "title": "InfoSphere Data Architect Vuln",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2025-36173 affects InfoSphere Data Architect, with no patch available. This is a significant vulnerability. Why now: No patch available (confidence: 0.70)",
+      "cves": [
+        "CVE-2025-36173"
+      ]
+    },
+    {
+      "title": "Improper Validation Vuln",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2025-2399 affects unspecified software, with no patch available. This is a significant vulnerability. Why now: No patch available (confidence: 0.60)",
+      "cves": [
+        "CVE-2025-2399"
+      ]
+    }
+  ]
 }
