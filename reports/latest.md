@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-03-11T10:55:30.168738+00:00
+generated_at: 2026-03-11T22:37:17.498139+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,54 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-CVE-2026-1753 in Gutena Forms WordPress plugin, CVE-2026-2413 in Ally Web Accessibility & Usability plugin, and CVE-2026-24448 in MR-GM5L-S1 and MR-GM5A-L1 devices represent the highest-risk items this period. Internet-facing WordPress servers and IoT devices from MR-GM5L-S1 and MR-GM5A-L1 are most exposed due to the lack of available patches for these vulnerabilities. The single most time-sensitive action is to isolate and monitor WordPress servers using the Gutena Forms plugin, as no patch is currently available for CVE-2026-1753.
+The highest-risk items this period are CVE-2025-68613 in n8n, CVE-2026-3784 in curl, and CVE-2026-3178 in the Name Directory plugin for WordPress. Internet-facing servers and applications using these vulnerable software products are most exposed right now due to the lack of available patches and potential for exploitation. The single most time-sensitive action is to monitor and isolate systems using n8n and curl, as no patches are currently available for these vulnerabilities.
 
-## Gutena Forms RCE (risk: 70)
-[P1] The Gutena Forms WordPress plugin is vulnerable to remote code execution, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)
+## n8n RCE (risk: 100)
+[P1] n8n contains an improper control of dynamically managed code resources vulnerability, which is being exploited in the wild. No patch is available. Why now: Exploited in the wild (confidence: 0.90)
 
-- [CVE-2026-1753](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-1753)
+- [CVE-2025-68613](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2025-68613)
 
-## Ally Web Accessibility RCE (risk: 70)
-[P1] The Ally Web Accessibility & Usability plugin is vulnerable to remote code execution, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)
+## curl HTTP Proxy Vulnerability (risk: 70)
+[P2] curl would wrongly reuse an existing HTTP proxy connection, potentially allowing unauthorized access. No patch is available. Why now: Newly disclosed vulnerability (confidence: 0.60)
 
-- [CVE-2026-2413](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-2413)
+- [CVE-2026-3784](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-3784)
 
-## MR-GM5L-S1 Code Injection (risk: 70)
-[P1] MR-GM5L-S1 and MR-GM5A-L1 devices are vulnerable to code injection, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)
+## Name Directory Plugin RCE (risk: 70)
+[P2] The Name Directory plugin for WordPress is vulnerable to Stored Cross-Site Scripting, potentially allowing unauthorized access. No patch is available. Why now: Newly disclosed vulnerability (confidence: 0.60)
 
-- [CVE-2026-20892](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-20892)
-
-## MR-GM5L-S1 Hard-Coded Credentials (risk: 70)
-[P1] MR-GM5L-S1 and MR-GM5A-L1 devices have hard-coded credentials, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)
-
-- [CVE-2026-24448](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-24448)
-
-## DukaPress WordPress Plugin Vulnerability (risk: 70)
-[P1] The DukaPress WordPress plugin is vulnerable to remote code execution, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)
-
-- [CVE-2026-2466](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-2466)
-
-## Divi-Booster WordPress Plugin Vulnerability (risk: 70)
-[P1] The divi-booster WordPress plugin is vulnerable to remote code execution, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)
-
-- [CVE-2026-2626](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-2626)
-
-## MR-GM5L-S1 Authentication Bypass (risk: 70)
-[P1] MR-GM5L-S1 and MR-GM5A-L1 devices are vulnerable to authentication bypass, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)
-
-- [CVE-2026-27842](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-27842)
-
-## Guest Posting WordPress Plugin Vulnerability (risk: 70)
-[P1] The Guest posting WordPress plugin is vulnerable to remote code execution, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)
-
-- [CVE-2026-1867](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-1867)
-
-## Royal Addons Elementor Plugin Vulnerability (risk: 70)
-[P1] The Royal Addons for Elementor plugin is vulnerable to arbitrary file upload, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)
-
-- [CVE-2025-13067](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2025-13067)
-
-## Netbox-Docker Default Credentials (risk: 70)
-[P1] Netbox-docker has a superuser account with default credentials, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)
-
-- [CVE-2023-27573](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2023-27573)
+- [CVE-2026-3178](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-3178)
