@@ -1,35 +1,65 @@
 {
-  "ts": "2026-03-11T04:51:17.604209+00:00",
+  "ts": "2026-03-11T10:55:30.172347+00:00",
   "cards": [
     {
-      "title": "Intel UEFI Firmware Vulnerabilities",
+      "title": "Gutena Forms RCE",
       "risk_score": 70,
-      "summary": "[P1] CVE-2025-20028, CVE-2025-20027, and CVE-2025-20005 are vulnerable to improper input validation and buffer restrictions, with no patches currently available. These vulnerabilities affect Intel UEFI firmware and could be exploited by attackers. Why now: No patches are currently available for thes",
-      "cves": [
-        "CVE-2025-20005",
-        "CVE-2025-20027",
-        "CVE-2025-20028"
-      ]
+      "summary": "[P1] The Gutena Forms WordPress plugin is vulnerable to remote code execution, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)",
+      "cves": []
     },
     {
-      "title": "UEFI Firmware Exploitation",
+      "title": "Ally Web Accessibility RCE",
       "risk_score": 70,
-      "summary": "[P1] Attackers could exploit vulnerabilities in UEFI firmware to gain access to systems. CVE-2025-20028, CVE-2025-20027, and CVE-2025-20005 are vulnerable to improper input validation and buffer restrictions. Why now: No patches are currently available for these vulnerabilities. (confidence: 0.80)",
-      "cves": [
-        "CVE-2025-20005",
-        "CVE-2025-20027",
-        "CVE-2025-20028"
-      ]
+      "summary": "[P1] The Ally Web Accessibility & Usability plugin is vulnerable to remote code execution, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)",
+      "cves": []
     },
     {
-      "title": "Intel UEFI Firmware Patching",
+      "title": "MR-GM5L-S1 Code Injection",
       "risk_score": 70,
-      "summary": "[P1] No patches are currently available for CVE-2025-20028, CVE-2025-20027, and CVE-2025-20005. These vulnerabilities affect Intel UEFI firmware and could be exploited by attackers. Why now: No patches are currently available for these vulnerabilities. (confidence: 0.80)",
-      "cves": [
-        "CVE-2025-20005",
-        "CVE-2025-20027",
-        "CVE-2025-20028"
-      ]
+      "summary": "[P1] MR-GM5L-S1 and MR-GM5A-L1 devices are vulnerable to code injection, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)",
+      "cves": []
+    },
+    {
+      "title": "MR-GM5L-S1 Hard-Coded Credentials",
+      "risk_score": 70,
+      "summary": "[P1] MR-GM5L-S1 and MR-GM5A-L1 devices have hard-coded credentials, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)",
+      "cves": []
+    },
+    {
+      "title": "DukaPress WordPress Plugin Vulnerability",
+      "risk_score": 70,
+      "summary": "[P1] The DukaPress WordPress plugin is vulnerable to remote code execution, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)",
+      "cves": []
+    },
+    {
+      "title": "Divi-Booster WordPress Plugin Vulnerability",
+      "risk_score": 70,
+      "summary": "[P1] The divi-booster WordPress plugin is vulnerable to remote code execution, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)",
+      "cves": []
+    },
+    {
+      "title": "MR-GM5L-S1 Authentication Bypass",
+      "risk_score": 70,
+      "summary": "[P1] MR-GM5L-S1 and MR-GM5A-L1 devices are vulnerable to authentication bypass, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)",
+      "cves": []
+    },
+    {
+      "title": "Guest Posting WordPress Plugin Vulnerability",
+      "risk_score": 70,
+      "summary": "[P1] The Guest posting WordPress plugin is vulnerable to remote code execution, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)",
+      "cves": []
+    },
+    {
+      "title": "Royal Addons Elementor Plugin Vulnerability",
+      "risk_score": 70,
+      "summary": "[P1] The Royal Addons for Elementor plugin is vulnerable to arbitrary file upload, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)",
+      "cves": []
+    },
+    {
+      "title": "Netbox-Docker Default Credentials",
+      "risk_score": 70,
+      "summary": "[P1] Netbox-docker has a superuser account with default credentials, with no patch available. Exploitation is not yet reported in the wild. Why now: Lack of available patch (confidence: 0.80)",
+      "cves": []
     }
   ]
 }
