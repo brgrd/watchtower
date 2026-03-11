@@ -1,8 +1,8 @@
 {
-  "rebuilt_at": "2026-03-10T04:49:50.374390+00:00",
+  "rebuilt_at": "2026-03-11T04:51:17.107007+00:00",
   "window_days": 4,
-  "total_cards": 14,
-  "unique_cves": 11,
+  "total_cards": 17,
+  "unique_cves": 14,
   "active_domains": [
     "container",
     "crypto_lib",
@@ -14,12 +14,24 @@
   ],
   "most_active_day": "2026-03-05",
   "day_counts": {
-    "2026-03-09": 0,
+    "2026-03-10": 3,
     "2026-03-05": 6,
     "2026-03-04": 5,
     "2026-03-03": 3
   },
   "top_cves": [
+    {
+      "cve": "CVE-2025-20005",
+      "count": 3
+    },
+    {
+      "cve": "CVE-2025-20027",
+      "count": 3
+    },
+    {
+      "cve": "CVE-2025-20028",
+      "count": 3
+    },
     {
       "cve": "CVE-2026-27750",
       "count": 1
@@ -65,6 +77,6 @@
       "count": 1
     }
   ],
-  "weekly_summary": "Over the past four days, our security landscape has been characterized by a total of 14 findings, spanning 11 unique CVEs, with each of the identified vulnerabilities appearing only once. The affected security domains include Containers and Kubernetes, Crypto Libraries, Identity and Authentication, OS and Kernel, npm and Node, Supply Chain, and Web Servers. Notably, the most active day was March 5, 2026, indicating a recent surge in security incidents, highlighting the need for continued vigilance across these critical areas to mitigate potential threats.",
-  "weekly_summary_ts": "2026-03-10"
+  "weekly_summary": "Over the past four days, our security landscape has been characterized by 17 total findings across 14 unique CVEs, with CVE-2025-20005, CVE-2025-20027, and CVE-2025-20028 being the most frequently observed, each occurring three times. The most active day was March 5, 2026, with various security domains being impacted, including Containers, Crypto Libraries, Identity and Authentication, OS and Kernel, npm and Node, Supply Chain, and Web Servers, highlighting the broad scope of potential vulnerabilities that require attention and mitigation to ensure the security and integrity of our infrastructure.",
+  "weekly_summary_ts": "2026-03-11"
 }
