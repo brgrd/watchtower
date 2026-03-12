@@ -1,23 +1,125 @@
 {
-  "ts": "2026-03-11T22:37:17.501432+00:00",
+  "ts": "2026-03-12T04:55:54.976077+00:00",
   "cards": [
     {
-      "title": "n8n RCE",
-      "risk_score": 100,
-      "summary": "[P1] n8n contains an improper control of dynamically managed code resources vulnerability, which is being exploited in the wild. No patch is available. Why now: Exploited in the wild (confidence: 0.90)",
-      "cves": []
+      "title": "CVE-2026-3963",
+      "risk_score": 70,
+      "summary": "1 related updates.",
+      "cves": [
+        "CVE-2026-3963"
+      ]
     },
     {
-      "title": "curl HTTP Proxy Vulnerability",
+      "title": "CVE-2026-3962",
       "risk_score": 70,
-      "summary": "[P2] curl would wrongly reuse an existing HTTP proxy connection, potentially allowing unauthorized access. No patch is available. Why now: Newly disclosed vulnerability (confidence: 0.60)",
-      "cves": []
+      "summary": "1 related updates.",
+      "cves": [
+        "CVE-2026-3962"
+      ]
     },
     {
-      "title": "Name Directory Plugin RCE",
+      "title": "CVE-2026-3964",
       "risk_score": 70,
-      "summary": "[P2] The Name Directory plugin for WordPress is vulnerable to Stored Cross-Site Scripting, potentially allowing unauthorized access. No patch is available. Why now: Newly disclosed vulnerability (confidence: 0.60)",
-      "cves": []
+      "summary": "1 related updates.",
+      "cves": [
+        "CVE-2026-3964"
+      ]
+    },
+    {
+      "title": "CVE-2026-3966",
+      "risk_score": 70,
+      "summary": "1 related updates.",
+      "cves": [
+        "CVE-2026-3966"
+      ]
+    },
+    {
+      "title": "CVE-2026-3965",
+      "risk_score": 70,
+      "summary": "1 related updates.",
+      "cves": [
+        "CVE-2026-3965"
+      ]
+    },
+    {
+      "title": "CVE-2026-3967",
+      "risk_score": 70,
+      "summary": "1 related updates.",
+      "cves": [
+        "CVE-2026-3967"
+      ]
+    },
+    {
+      "title": "CVE-2026-3968",
+      "risk_score": 70,
+      "summary": "1 related updates.",
+      "cves": [
+        "CVE-2026-3968"
+      ]
+    },
+    {
+      "title": "CVE-2026-3970",
+      "risk_score": 70,
+      "summary": "1 related updates.",
+      "cves": [
+        "CVE-2026-3970"
+      ]
+    },
+    {
+      "title": "CVE-2026-3969",
+      "risk_score": 70,
+      "summary": "1 related updates.",
+      "cves": [
+        "CVE-2026-3969"
+      ]
+    },
+    {
+      "title": "CVE-2026-3971",
+      "risk_score": 70,
+      "summary": "1 related updates.",
+      "cves": [
+        "CVE-2026-3971"
+      ]
+    },
+    {
+      "title": "CVE-2025-59388",
+      "risk_score": 70,
+      "summary": "1 related updates.",
+      "cves": [
+        "CVE-2025-59388"
+      ]
+    },
+    {
+      "title": "CVE-2026-3972",
+      "risk_score": 70,
+      "summary": "1 related updates.",
+      "cves": [
+        "CVE-2026-3972"
+      ]
+    },
+    {
+      "title": "CVE-2026-1878",
+      "risk_score": 70,
+      "summary": "1 related updates.",
+      "cves": [
+        "CVE-2026-1878"
+      ]
+    },
+    {
+      "title": "CVE-2026-3973",
+      "risk_score": 70,
+      "summary": "1 related updates.",
+      "cves": [
+        "CVE-2026-3973"
+      ]
+    },
+    {
+      "title": "CVE-2026-3975",
+      "risk_score": 70,
+      "summary": "1 related updates.",
+      "cves": [
+        "CVE-2026-3975"
+      ]
     }
   ]
 }
