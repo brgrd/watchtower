@@ -151,12 +151,12 @@ def _poll_rss(url: str, since_hours: int, ignore: dict) -> list:
         for k in ("published_parsed", "updated_parsed"):
             val = getattr(e, k, None)
             if val:
-                published = datetime(*val[:6])
+                published = datetime(*val[:6], tzinfo=timezone.utc)
                 break
         if published and published < cutoff:
             continue
         published_iso = (
-            published.replace(tzinfo=timezone.utc).isoformat() if published else ""
+            published.isoformat() if published else ""
         )
         items.append(
             {

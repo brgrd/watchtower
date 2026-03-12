@@ -251,12 +251,12 @@ def _poll_rss(url: str, since_hours: int, ignore: dict) -> list:
         for k in ("published_parsed", "updated_parsed"):
             val = getattr(e, k, None)
             if val:
-                published = datetime(*val[:6])
+                published = datetime(*val[:6], tzinfo=timezone.utc)
                 break
         if published and published < cutoff:
             continue
         published_iso = (
-            published.replace(tzinfo=timezone.utc).isoformat() if published else ""
+            published.isoformat() if published else ""
         )
         items.append(
             {
@@ -2647,11 +2647,11 @@ def _run():
             "ts": now_utc_iso(),
             "cards": [
                 {
-                    "title": c.get("title", ""),
-                    "risk_score": int(c.get("risk_score", 0)),
-                    "summary": c.get("summary", "")[:300],
+                    "title": c.get("title", "") if isinstance(c, dict) else str(c)[:50],
+                    "risk_score": int(c.get("risk_score", 0)) if isinstance(c, dict) else 0,
+                    "summary": c.get("summary", "")[:300] if isinstance(c, dict) else "",
                     "cves": list(
-                        _extract_cves(c.get("title", "") + " " + c.get("summary", ""))
+                        _extract_cves((c.get("title", "") if isinstance(c, dict) else "") + " " + (c.get("summary", "") if isinstance(c, dict) else ""))
                     ),
                 }
                 for c in cards

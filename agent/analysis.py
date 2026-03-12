@@ -286,7 +286,11 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
             content = re.sub(r"^```[a-z]*\n?", "", content)
             content = re.sub(r"\n?```$", "", content.strip())
         data = json.loads(content)
-        return data.get("executive_summary", ""), data.get("findings", []), "ok"
+        findings = data.get("findings", [])
+        if not isinstance(findings, list):
+            print(f"[WARN] Groq findings not a list, got {type(findings).__name__}")
+            findings = []
+        return data.get("executive_summary", ""), findings, "ok"
     except Exception as exc:
         print(f"[WARN] Groq analysis failed: {exc}")
         return "", [], f"error: {exc}"
