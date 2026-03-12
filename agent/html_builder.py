@@ -663,10 +663,15 @@ def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
             nvd_url = f"https://nvd.nist.gov/vuln/detail/{esc}"
             cve_rows.append(
                 "<tr><td>"
-                + '<a href="' + nvd_url + '" target="_blank" rel="noopener noreferrer"'
+                + '<a href="'
+                + nvd_url
+                + '" target="_blank" rel="noopener noreferrer"'
                 + ' style="color:#79c0ff;font-family:monospace" onclick="event.stopPropagation()">'
-                + esc + "</a>"
-                + '<button onclick="forensicsCveClick(\'' + esc + '\')"'
+                + esc
+                + "</a>"
+                + "<button onclick=\"forensicsCveClick('"
+                + esc
+                + "')\""
                 + ' title="Filter findings by this CVE"'
                 + ' style="background:none;border:none;color:#58a6ff;cursor:pointer;'
                 + 'font-size:.75rem;padding:0 0 0 .4rem;vertical-align:middle;opacity:.7">'
@@ -683,7 +688,7 @@ def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
         cve_html = (
             '<h4 class="forensics-section-title">CVE Reference Index</h4>'
             '<p class="forensics-hint">Click the CVE ID to open the NVD advisory. '
-            'Click \u2295 to filter findings in the Overview tab.</p>'
+            "Click \u2295 to filter findings in the Overview tab.</p>"
             '<table class="forensics-table"><thead><tr>'
             "<th>CVE</th><th>Findings</th><th>Patch</th>"
             "</tr></thead><tbody>" + "".join(cve_rows) + "</tbody></table>"
@@ -846,8 +851,10 @@ def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
             persist_badge = (
                 '<span style="background:#f77f00;color:#000;font-size:.63rem;'
                 'padding:.05rem .3rem;border-radius:8px;margin-left:.3rem">'
-                + str(rc) + "\u00d7</span>"
-                if rc > 1 else ""
+                + str(rc)
+                + "\u00d7</span>"
+                if rc > 1
+                else ""
             )
             type_label = html.escape(ioc.get("ioc_type", "IOC"))
             snippet = ioc.get("context_snippet", "")
@@ -859,32 +866,41 @@ def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
             src_url = ioc.get("source_url", "")
             src_title = ioc.get("source_title", "Source article")[:60]
             src_cell = (
-                '<a href="' + html.escape(src_url)
+                '<a href="'
+                + html.escape(src_url)
                 + '" target="_blank" rel="noopener noreferrer"'
                 + ' style="color:#58a6ff;font-size:.72rem">'
-                + html.escape(src_title) + " \u2197</a>"
+                + html.escape(src_title)
+                + " \u2197</a>"
                 if src_url
                 else '<span style="color:#8b949e;font-size:.72rem">'
-                + html.escape(src_title) + "</span>"
+                + html.escape(src_title)
+                + "</span>"
             )
             ioc_rows.append(
                 "<tr>"
                 + '<td style="white-space:nowrap;vertical-align:top;padding-top:.35rem">'
                 + '<span style="color:#8b949e;font-size:.68rem;text-transform:uppercase;'
-                + 'letter-spacing:.04em">' + type_label + "</span>"
-                + persist_badge + "</td>"
+                + 'letter-spacing:.04em">'
+                + type_label
+                + "</span>"
+                + persist_badge
+                + "</td>"
                 + '<td style="font-size:.74rem;color:#c9d1d9;font-style:italic;padding:0 .4rem">'
-                + snippet_html + "</td>"
-                + '<td style="vertical-align:top;padding-top:.3rem">' + src_cell + "</td>"
+                + snippet_html
+                + "</td>"
+                + '<td style="vertical-align:top;padding-top:.3rem">'
+                + src_cell
+                + "</td>"
                 + "</tr>"
             )
         ioc_html = (
             '<h4 class="forensics-section-title">IOC Intelligence</h4>'
             '<p class="forensics-hint">Indicators observed in source articles. '
-            'Raw values are stored internally only \u2014 click the source link to read the original advisory.</p>'
+            "Raw values are stored internally only \u2014 click the source link to read the original advisory.</p>"
             '<table class="forensics-table"><thead><tr>'
-            '<th>Type</th><th>Context</th><th>Source</th>'
-            '</tr></thead><tbody>' + "".join(ioc_rows) + '</tbody></table>'
+            "<th>Type</th><th>Context</th><th>Source</th>"
+            "</tr></thead><tbody>" + "".join(ioc_rows) + "</tbody></table>"
         )
     else:
         ioc_html = (
@@ -1161,9 +1177,10 @@ def _write_index_html(
         )
         attr_badge_html = (
             '<span class="attr-badge" title="This finding contains nation-state attribution '
-            'sourced from a news article. Attribution is unverified and should be '
+            "sourced from a news article. Attribution is unverified and should be "
             'treated with appropriate scrutiny.">\u26a0 Attribution Unverified</span>'
-            if c.get("attribution_flag") else ""
+            if c.get("attribution_flag")
+            else ""
         )
         rows += f"""
                 <details class="cluster" data-domains="{html.escape(domains_attr)}" data-tactic="{html.escape(_tactic)}">

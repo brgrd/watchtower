@@ -71,12 +71,12 @@ def _extract_iocs(corpus_items: list, source_domains: set = None) -> list:
         frag = text[left:right].strip()
         # Trim to word boundaries so we don’t break mid-word
         if left > 0 and " " in frag:
-            frag = frag[frag.index(" ") + 1:]
+            frag = frag[frag.index(" ") + 1 :]
         if right < len(text) and " " in frag:
             frag = frag[: frag.rindex(" ")]
         return frag[:280]
 
-    for item in (corpus_items or []):
+    for item in corpus_items or []:
         text = item.get("text", "")
         source_url = item.get("url", "")
         source_title = item.get("title", "")
@@ -86,13 +86,15 @@ def _extract_iocs(corpus_items: list, source_domains: set = None) -> list:
             key = f"ip:{ip_str}"
             if key not in seen_keys and _is_public_ip(ip_str):
                 seen_keys.add(key)
-                results.append({
-                    "_key": key,
-                    "ioc_type": "Network IOC",
-                    "context_snippet": _snippet(text, m.start(), m.end()),
-                    "source_url": source_url,
-                    "source_title": source_title,
-                })
+                results.append(
+                    {
+                        "_key": key,
+                        "ioc_type": "Network IOC",
+                        "context_snippet": _snippet(text, m.start(), m.end()),
+                        "source_url": source_url,
+                        "source_title": source_title,
+                    }
+                )
 
         for m in _HASH_RE.finditer(text):
             h = m.group(0).lower()
@@ -100,25 +102,29 @@ def _extract_iocs(corpus_items: list, source_domains: set = None) -> list:
             if key not in seen_keys:
                 seen_keys.add(key)
                 htype = "sha256" if len(h) == 64 else "sha1" if len(h) == 40 else "md5"
-                results.append({
-                    "_key": key,
-                    "ioc_type": f"File Hash ({htype.upper()})",
-                    "context_snippet": _snippet(text, m.start(), m.end()),
-                    "source_url": source_url,
-                    "source_title": source_title,
-                })
+                results.append(
+                    {
+                        "_key": key,
+                        "ioc_type": f"File Hash ({htype.upper()})",
+                        "context_snippet": _snippet(text, m.start(), m.end()),
+                        "source_url": source_url,
+                        "source_title": source_title,
+                    }
+                )
 
         for m in _REGISTRY_RE.finditer(text):
             key = f"registry:{m.group(0)}"
             if key not in seen_keys:
                 seen_keys.add(key)
-                results.append({
-                    "_key": key,
-                    "ioc_type": "Registry Key",
-                    "context_snippet": _snippet(text, m.start(), m.end()),
-                    "source_url": source_url,
-                    "source_title": source_title,
-                })
+                results.append(
+                    {
+                        "_key": key,
+                        "ioc_type": "Registry Key",
+                        "context_snippet": _snippet(text, m.start(), m.end()),
+                        "source_url": source_url,
+                        "source_title": source_title,
+                    }
+                )
 
     return results[:20]
 

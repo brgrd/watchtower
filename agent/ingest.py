@@ -340,7 +340,7 @@ def _merge_by_cve(items: list) -> list:
         return frozenset(m.group(0).upper() for m in _CVE_DEDUP_RE.finditer(text))
 
     # Separate items with CVEs from those without
-    cve_items: list = []   # (item, frozenset_of_cves)
+    cve_items: list = []  # (item, frozenset_of_cves)
     no_cve: list = []
     for item in items:
         cves = _item_cves(item)
@@ -374,6 +374,7 @@ def _merge_by_cve(items: list) -> list:
 
     # Collect groups by root
     from collections import defaultdict
+
     groups: dict = defaultdict(list)
     for idx in range(n):
         groups[_find(idx)].append(idx)
@@ -394,8 +395,7 @@ def _merge_by_cve(items: list) -> list:
 
         # Combine text from all group members for richer Groq context
         texts = [
-            g.get("extracted_text", "") or g.get("summary", "")
-            for g in group_items
+            g.get("extracted_text", "") or g.get("summary", "") for g in group_items
         ]
         combined = " ".join(t for t in texts if t)[:1500]
 
