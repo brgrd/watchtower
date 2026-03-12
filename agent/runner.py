@@ -72,6 +72,7 @@ LAST_RUN_CARDS_FILE = os.path.join(STATE_DIR, "last_run_cards.json")
 WEEKLY_AGGREGATE_FILE = os.path.join(STATE_DIR, "weekly_aggregate.json")
 FEED_HEALTH_FILE = os.path.join(STATE_DIR, "feed_health.json")
 FINDING_SHELF_FILE = os.path.join(STATE_DIR, "finding_shelf.json")
+IOC_LEDGER_FILE = os.path.join(STATE_DIR, "ioc_ledger.json")
 CONFIG = yaml.safe_load(
     open(os.path.join(ROOT, "agent", "config.yaml"), "r", encoding="utf-8")
 )
@@ -1367,6 +1368,7 @@ _rebuild_weekly_aggregate = (
         reports_dir, WEEKLY_AGGREGATE_FILE, days=days
     )
 )
+_update_ioc_ledger = state_mod._update_ioc_ledger
 
 _extract_cves = scoring_mod._extract_cves
 _compact_text = scoring_mod._compact_text
@@ -1398,6 +1400,7 @@ _build_history_accordion = html_builder_mod._build_history_accordion
 _build_weekly_section = html_builder_mod._build_weekly_section
 _build_enrichment_html = html_builder_mod._build_enrichment_html
 _write_index_html = html_builder_mod._write_index_html
+_build_forensics_html = html_builder_mod._build_forensics_html
 
 # -----------------------------
 # Run helpers
@@ -1661,6 +1664,7 @@ def _run():
     )
 
     _update_shelf(cards)
+    ioc_ledger = _update_ioc_ledger(cards, IOC_LEDGER_FILE)
     history = _read_ledger_history()
     _prune_old_briefings(REPORTS_DIR)
     history_days = _load_history_days(REPORTS_DIR)
@@ -1692,6 +1696,7 @@ def _run():
         run_metrics=run_metrics,
         feed_run_metrics=feed_run_metrics,
         velocity=velocity,
+        ioc_ledger=ioc_ledger,
     )
 
     save_json(

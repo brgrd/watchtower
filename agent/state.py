@@ -265,3 +265,55 @@ def _rebuild_weekly_aggregate(
         "weekly_summary": existing.get("weekly_summary", ""),
         "weekly_summary_ts": existing.get("weekly_summary_ts", ""),
     }
+
+
+_IOC_LEDGER_FILE = os.path.join(ROOT, "state", "ioc_ledger.json")
+
+
+def _update_ioc_ledger(cards: list, ledger_file: str = None) -> dict:
+    """Persist IOC observations across runs in ``state/ioc_ledger.json``.
+
+    Each entry is keyed by ``<type>:<value>`` and tracks ``first_seen``,
+    ``last_seen``, ``run_count``, and the most recent card titles that cited
+    it.  Entries older than 30 days are pruned on every call.
+
+    Returns the updated ledger dict (also written to disk).
+    """
+    if ledger_file is None:
+        ledger_file = _IOC_LEDGER_FILE
+    os.makedirs(os.path.dirname(ledger_file), exist_ok=True)
+    ledger: dict = load_json(ledger_file, {})
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=30)).strftime("%Y-%m-%d")
+
+    for card in cards:
+        if not isinstance(card, dict):
+            continue
+        iocs: dict = card.get("enrichment", {}).get("iocs", {})
+        card_title: str = card.get("title", "")[:80]
+
+        def _touch(key: str, ioc_type: str, value: str) -> None:
+            entry = ledger.get(key) or {
+                "type": ioc_type,
+                "value": value,
+                "first_seen": today,
+                "run_count": 0,
+                "cards": [],
+            }
+            entry["last_seen"] = today
+            entry["run_count"] = entry.get("run_count", 0) + 1
+            if card_title and card_title not in entry.get("cards", []):
+                entry["cards"] = (entry.get("cards", []) + [card_title])[-10:]
+            ledger[key] = entry
+
+        for ip in iocs.get("ips", []):
+            _touch(f"ip:{ip}", "ip", ip)
+        for h in iocs.get("hashes", []):
+            _touch(f"hash:{h['value']}", h["type"], h["value"])
+        for reg in iocs.get("registry", []):
+            _touch(f"registry:{reg}", "registry", reg)
+
+    # Prune entries last seen before the 30-day cutoff
+    ledger = {k: v for k, v in ledger.items() if v.get("last_seen", today) >= cutoff}
+    save_json(ledger_file, ledger)
+    return ledger

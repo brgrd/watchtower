@@ -10,7 +10,7 @@ import requests
 import tldextract
 import yaml
 
-from agent.scoring import _TAXONOMY, _extract_cves, classify_domains
+from agent.scoring import _TAXONOMY, _extract_cves, _extract_iocs, classify_domains
 from agent.state import sha256
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
@@ -531,6 +531,14 @@ def _enrich_cards_from_sources(cards: list, all_items: list) -> None:
             if lede:
                 break
 
+        # IOCs: public IPs, file hashes, Windows registry keys
+        source_domains: set = set()
+        for url in ref_urls:
+            dom = tldextract.extract(url).registered_domain
+            if dom:
+                source_domains.add(dom.lower())
+        iocs = _extract_iocs(corpus, source_domains)
+
         card["enrichment"] = {
             "source_count": len(corpus_parts),
             "cves": card_cves + extra_cves,
@@ -539,6 +547,7 @@ def _enrich_cards_from_sources(cards: list, all_items: list) -> None:
             "versions": versions,
             "dates": all_dates,
             "lede": lede,
+            "iocs": iocs,
         }
 
 

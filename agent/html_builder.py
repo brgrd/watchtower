@@ -81,7 +81,6 @@ _TM_EDGES: list = [
 ]
 
 
-
 def _sparkline_svg(
     values: list, width: int = 80, height: int = 22, color: str = "#0366d6"
 ) -> str:
@@ -105,7 +104,6 @@ def _sparkline_svg(
         f'<circle cx="{lx:.1f}" cy="{ly:.1f}" r="2.5" fill="{color}"/>'
         f"</svg>"
     )
-
 
 
 def _build_threat_map_svg(cards: list, heatmap: dict, velocity: dict = None) -> str:
@@ -443,7 +441,6 @@ def _build_calendar_html(history_days: list) -> str:
     )
 
 
-
 def _build_history_accordion(days: list, today_str: str = "") -> str:
     """Build a 7-day briefing history accordion `<section>` element."""
     if not days:
@@ -514,7 +511,6 @@ def _build_history_accordion(days: list, today_str: str = "") -> str:
     )
 
 
-
 def _build_weekly_section(aggregate: dict) -> str:
     """Build the weekly scope <section> HTML block."""
     if not aggregate or aggregate.get("total_cards", 0) == 0:
@@ -576,9 +572,7 @@ def _build_enrichment_html(enrichment: dict) -> str:
     parts: list = []
     lede = enrichment.get("lede", "")
     if lede:
-        parts.append(
-            f'<p class="enrich-lede">{html.escape(lede)}</p>'
-        )
+        parts.append(f'<p class="enrich-lede">{html.escape(lede)}</p>')
     all_cves = enrichment.get("cves", [])
     extra_cves = enrichment.get("extra_cves", [])
     if all_cves:
@@ -586,28 +580,35 @@ def _build_enrichment_html(enrichment: dict) -> str:
             f'<span class="enrich-cve{" enrich-cve--extra" if c in extra_cves else ""}">{html.escape(c)}</span>'
             for c in all_cves[:10]
         )
-        parts.append(f'<div class="enrich-row"><span class="enrich-label">CVEs</span>{chips}</div>')
+        parts.append(
+            f'<div class="enrich-row"><span class="enrich-label">CVEs</span>{chips}</div>'
+        )
     products = enrichment.get("products", [])
     if products:
         chips = "".join(
             f'<span class="enrich-product">{html.escape(p)}</span>'
             for p in products[:8]
         )
-        parts.append(f'<div class="enrich-row"><span class="enrich-label">Affected</span>{chips}</div>')
+        parts.append(
+            f'<div class="enrich-row"><span class="enrich-label">Affected</span>{chips}</div>'
+        )
     versions = enrichment.get("versions", [])
     if versions:
         chips = "".join(
             f'<span class="enrich-version">{html.escape(v)}</span>'
             for v in versions[:6]
         )
-        parts.append(f'<div class="enrich-row"><span class="enrich-label">Versions</span>{chips}</div>')
+        parts.append(
+            f'<div class="enrich-row"><span class="enrich-label">Versions</span>{chips}</div>'
+        )
     dates = enrichment.get("dates", [])
     if dates:
         chips = "".join(
-            f'<span class="enrich-date">{html.escape(d)}</span>'
-            for d in dates[:4]
+            f'<span class="enrich-date">{html.escape(d)}</span>' for d in dates[:4]
         )
-        parts.append(f'<div class="enrich-row"><span class="enrich-label">Dates</span>{chips}</div>')
+        parts.append(
+            f'<div class="enrich-row"><span class="enrich-label">Dates</span>{chips}</div>'
+        )
     if not parts:
         return ""
     src_count = enrichment.get("source_count", 0)
@@ -616,10 +617,243 @@ def _build_enrichment_html(enrichment: dict) -> str:
         f'<details class="enrich-block">'
         f'<summary class="enrich-summary">&#128269; Extracted context '
         f'<span class="enrich-src-count">{src_count} source{"s" if src_count != 1 else ""}</span>'
-        f'</summary>'
+        f"</summary>"
         f'<div class="enrich-body">{inner}</div>'
-        f'</details>'
+        f"</details>"
     )
+
+
+def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
+    """Build the Forensics rail-tab content: CVE index, kill-chain breakdown,
+    affected product matrix, and IOC intelligence panel.
+
+    All four panels are generated from the current-window ``cards`` list and
+    the cross-run ``ioc_ledger`` dict.  No network or model calls are made.
+    """
+    ioc_ledger = ioc_ledger or {}
+
+    _PATCH_RANK = {"patched": 3, "workaround": 2, "no_fix": 1, "unknown": 0}
+    _PATCH_LABELS = {
+        "patched":    ("\u2713 Patched",    "#2ea043"),
+        "workaround": ("~ Workaround",     "#f9c74f"),
+        "no_fix":     ("\u2717 No Fix",     "#d62828"),
+        "unknown":    ("? Unknown",         "#8b949e"),
+    }
+
+    # ── Panel A: CVE Reference Index ───────────────────────────────────────────────────
+    cve_map: dict = {}
+    for card in cards:
+        cves = card.get("enrichment", {}).get("cves") or _extract_cves(
+            card.get("title", "") + " " + card.get("summary", "")
+        )
+        ps = card.get("patch_status", "unknown")
+        for cve in cves:
+            entry = cve_map.setdefault(cve, {"count": 0, "patch_status": "unknown"})
+            entry["count"] += 1
+            if _PATCH_RANK.get(ps, 0) > _PATCH_RANK.get(entry["patch_status"], 0):
+                entry["patch_status"] = ps
+
+    if cve_map:
+        cve_rows = []
+        for cve, data in sorted(
+            cve_map.items(), key=lambda x: x[1]["count"], reverse=True
+        )[:30]:
+            lbl, col = _PATCH_LABELS.get(data["patch_status"], ("? Unknown", "#8b949e"))
+            esc = html.escape(cve)
+            cve_rows.append(
+                '<tr class="forensics-cve-row" onclick="forensicsCveClick(\''
+                + esc + '\')" style="cursor:pointer"><td>'
+                + '<code style="color:#79c0ff">' + esc + "</code></td>"
+                + '<td style="text-align:center">' + str(data["count"]) + "</td>"
+                + '<td><span style="color:' + col + ';font-size:.75rem">' + lbl + "</span></td></tr>"
+            )
+        cve_html = (
+            '<h4 class="forensics-section-title">CVE Reference Index</h4>'
+            '<p class="forensics-hint">Click a row to filter findings.</p>'
+            '<table class="forensics-table"><thead><tr>'
+            "<th>CVE</th><th>Findings</th><th>Patch</th>"
+            "</tr></thead><tbody>" + "".join(cve_rows) + "</tbody></table>"
+        )
+    else:
+        cve_html = (
+            '<h4 class="forensics-section-title">CVE Reference Index</h4>'
+            '<div class="forensics-empty">No CVEs found in this window.</div>'
+        )
+
+    # ── Panel B: Kill-Chain Breakdown ─────────────────────────────────────────────────
+    tactic_map: dict = {}
+    for card in cards:
+        tactic = card.get("tactic_name", "")
+        if tactic:
+            tactic_map.setdefault(tactic, []).append(card)
+
+    _TACTIC_ORDER = [
+        "Reconnaissance", "Resource Development", "Initial Access", "Execution",
+        "Persistence", "Privilege Escalation", "Defense Evasion", "Credential Access",
+        "Discovery", "Lateral Movement", "Collection", "Command & Control",
+        "Exfiltration", "Impact",
+    ]
+    if tactic_map:
+        tactic_rows = []
+        for tactic in _TACTIC_ORDER:
+            if tactic not in tactic_map:
+                continue
+            tac_cards = sorted(
+                tactic_map[tactic], key=lambda c: c.get("risk_score", 0), reverse=True
+            )
+            inner = "".join(
+                '<div style="padding:.2rem 0;border-bottom:1px solid #1e1e1e;font-size:.75rem">'
+                + '<span style="color:#e6edf3">' + html.escape(c.get("title", "")[:72]) + "</span>"
+                + (
+                    ' <code style="color:#8b949e;font-size:.67rem">'
+                    + html.escape(c.get("technique_name", "")[:42]) + "</code>"
+                    if c.get("technique_name") else ""
+                )
+                + "</div>"
+                for c in tac_cards[:8]
+            )
+            count = len(tac_cards)
+            tactic_rows.append(
+                '<details class="forensics-acc"><summary>'
+                + '<span class="tactic-chip" style="font-size:.7rem">'
+                + html.escape(tactic) + "</span>"
+                + '<span style="margin-left:.4rem;color:#8b949e;font-size:.72rem">'
+                + str(count) + " finding" + ("s" if count != 1 else "") + "</span>"
+                + "</summary>"
+                + '<div style="padding:.25rem .5rem">' + inner + "</div></details>"
+            )
+        killchain_html = (
+            '<h4 class="forensics-section-title">Kill-Chain Breakdown</h4>'
+            + "".join(tactic_rows)
+        )
+    else:
+        killchain_html = (
+            '<h4 class="forensics-section-title">Kill-Chain Breakdown</h4>'
+            '<div class="forensics-empty">No MITRE tactics mapped in this window.</div>'
+        )
+
+    # ── Panel C: Affected Product Matrix ──────────────────────────────────────────────
+    product_map: dict = {}
+    for card in cards:
+        prods = card.get("enrichment", {}).get("products", [])
+        rs = card.get("risk_score", 0)
+        for prod in prods:
+            pm = product_map.setdefault(prod, {"count": 0, "max_score": 0})
+            pm["count"] += 1
+            if rs > pm["max_score"]:
+                pm["max_score"] = rs
+
+    if product_map:
+        prod_rows = []
+        for prod, data in sorted(
+            product_map.items(),
+            key=lambda x: (x[1]["max_score"], x[1]["count"]),
+            reverse=True,
+        )[:20]:
+            sc = data["max_score"]
+            sc_col = "#d62828" if sc >= 80 else "#f77f00" if sc >= 60 else "#f9c74f" if sc >= 30 else "#8b949e"
+            prod_rows.append(
+                '<tr><td style="color:#e6edf3;font-size:.78rem">'
+                + html.escape(prod) + "</td>"
+                + '<td style="text-align:center">' + str(data["count"]) + "</td>"
+                + '<td><span style="color:' + sc_col + ';font-weight:700">'
+                + str(sc) + "</span></td></tr>"
+            )
+        product_html = (
+            '<h4 class="forensics-section-title">Affected Products</h4>'
+            '<table class="forensics-table"><thead><tr>'
+            "<th>Product</th><th>Findings</th><th>Max Risk</th>"
+            "</tr></thead><tbody>" + "".join(prod_rows) + "</tbody></table>"
+        )
+    else:
+        product_html = (
+            '<h4 class="forensics-section-title">Affected Products</h4>'
+            '<div class="forensics-empty">No product mentions found in this window.</div>'
+        )
+
+    # ── Panel D: IOC Intelligence ─────────────────────────────────────────────────────
+    run_ips: dict = {}
+    run_hashes: dict = {}
+    run_registry: dict = {}
+    for card in cards:
+        iocs = card.get("enrichment", {}).get("iocs", {})
+        title = card.get("title", "")[:60]
+        for ip in iocs.get("ips", []):
+            run_ips.setdefault(ip, []).append(title)
+        for h in iocs.get("hashes", []):
+            run_hashes.setdefault(h["value"], {"type": h["type"], "cards": []})["cards"].append(title)
+        for reg in iocs.get("registry", []):
+            run_registry.setdefault(reg, []).append(title)
+
+    def _run_badge(key: str) -> str:
+        rc = ioc_ledger.get(key, {}).get("run_count", 1)
+        if rc <= 1:
+            return ""
+        return (
+            '<span style="background:#f77f00;color:#000;font-size:.63rem;'
+            'padding:.05rem .28rem;border-radius:8px;margin-left:.25rem">'
+            + str(rc) + "\u00d7</span>"
+        )
+
+    ioc_sections: list = []
+    if run_ips:
+        ip_rows = "".join(
+            "<tr><td>"
+            + '<code style="color:#79c0ff;font-size:.75rem">' + html.escape(ip) + "</code>"
+            + _run_badge("ip:" + ip)
+            + "</td>"
+            + '<td style="font-size:.72rem;color:#8b949e">' + html.escape(titles[0]) + "</td></tr>"
+            for ip, titles in sorted(run_ips.items())[:15]
+        )
+        ioc_sections.append(
+            '<h5 class="forensics-ioc-type">IP Addresses</h5>'
+            '<table class="forensics-table"><thead><tr><th>IP</th><th>Finding</th></tr></thead>'
+            "<tbody>" + ip_rows + "</tbody></table>"
+        )
+
+    if run_hashes:
+        hash_rows = "".join(
+            "<tr><td>"
+            + '<code style="color:#f9c74f;word-break:break-all;font-size:.67rem">'
+            + html.escape(hval[:28]) + "\u2026</code>"
+            + '<span style="color:#8b949e;font-size:.63rem;margin-left:.2rem">(' + hdata.get("type", "hash") + ")</span>"
+            + _run_badge("hash:" + hval)
+            + "</td>"
+            + '<td style="font-size:.72rem;color:#8b949e">'
+            + html.escape((hdata.get("cards") or [""])[0][:50]) + "</td></tr>"
+            for hval, hdata in list(run_hashes.items())[:10]
+        )
+        ioc_sections.append(
+            '<h5 class="forensics-ioc-type">File Hashes</h5>'
+            '<table class="forensics-table"><thead><tr><th>Hash</th><th>Finding</th></tr></thead>'
+            "<tbody>" + hash_rows + "</tbody></table>"
+        )
+
+    if run_registry:
+        reg_rows = "".join(
+            "<tr><td>"
+            + '<code style="color:#d4a4eb;word-break:break-all;font-size:.72rem">'
+            + html.escape(reg[:60]) + "</code></td>"
+            + '<td style="font-size:.72rem;color:#8b949e">'
+            + html.escape(titles[0][:50]) + "</td></tr>"
+            for reg, titles in list(run_registry.items())[:10]
+        )
+        ioc_sections.append(
+            '<h5 class="forensics-ioc-type">Registry Keys</h5>'
+            '<table class="forensics-table"><thead><tr><th>Key</th><th>Finding</th></tr></thead>'
+            "<tbody>" + reg_rows + "</tbody></table>"
+        )
+
+    ioc_html = (
+        '<h4 class="forensics-section-title">IOC Intelligence</h4>'
+        + (
+            "".join(ioc_sections)
+            if ioc_sections
+            else '<div class="forensics-empty">No network IOCs extracted from this window\u2019s articles.</div>'
+        )
+    )
+
+    return cve_html + killchain_html + product_html + ioc_html
 
 
 def _write_index_html(
@@ -638,6 +872,7 @@ def _write_index_html(
     run_metrics: dict = None,
     feed_run_metrics: dict = None,
     velocity: dict = None,
+    ioc_ledger: dict = None,
 ):
     # KPI stats
     total_findings = len(cards)
@@ -1053,6 +1288,8 @@ def _write_index_html(
             }
         )
 
+    forensics_html = _build_forensics_html(cards, ioc_ledger or {})
+
     page_html = f"""<!doctype html>
 <html lang=\"en\">
 <head>
@@ -1302,6 +1539,20 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
   .cluster-body{{padding:.15rem .7rem .7rem}}
   footer{{font-size:.72rem}}
 }}
+.forensics-section-title{{font-size:.78rem;color:#e6edf3;text-transform:uppercase;letter-spacing:.05em;font-weight:700;margin:.9rem 0 .3rem;padding-top:.55rem;border-top:1px solid #2a2a2a}}
+.forensics-section-title:first-child{{margin-top:.1rem;border-top:none}}
+.forensics-hint{{font-size:.7rem;color:#6a7f98;margin:.1rem 0 .35rem;font-style:italic}}
+.forensics-empty{{color:#8b949e;font-size:.77rem;font-style:italic;padding:.25rem 0}}
+.forensics-table{{width:100%;border-collapse:collapse;font-size:.77rem}}
+.forensics-table th,.forensics-table td{{border-bottom:1px solid #222;padding:.3rem .2rem;text-align:left}}
+.forensics-table th{{color:#8b949e;font-size:.67rem;text-transform:uppercase;letter-spacing:.03em}}
+.forensics-table tr:hover{{background:rgba(255,255,255,.03)}}
+.forensics-acc{{border:1px solid #2a2a2a;border-radius:4px;margin:.2rem 0}}
+.forensics-acc summary{{padding:.32rem .5rem;cursor:pointer;color:#c9d1d9;font-size:.82rem;list-style:none;display:flex;align-items:center;gap:.4rem}}
+.forensics-acc summary::-webkit-details-marker{{display:none}}
+.forensics-acc summary::before{{content:"›";font-size:.85rem;transition:transform .15s;flex-shrink:0;color:#8b949e;width:.7rem;text-align:center}}
+.forensics-acc[open] summary::before{{transform:rotate(90deg)}}
+.forensics-ioc-type{{color:#8b949e;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;margin:.55rem 0 .2rem;padding:0}}
         </style>
         </head>
         <body>
@@ -1380,9 +1631,9 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
                             <h3 style="margin:.2rem 0 .35rem">Alerts</h3>
                             <div class="rail-placeholder">Reserved module slot. Use this area for triage queues, ownership routing, and SLA timers.</div>
                         </section>
-                        <section class="rail-panel" id="panel-forensics" role="tabpanel" aria-labelledby="tab-forensics" data-lazy="true">
+                        <section class="rail-panel" id="panel-forensics" role="tabpanel" aria-labelledby="tab-forensics">
                             <h3 style="margin:.2rem 0 .35rem">Forensics</h3>
-                            <div class="rail-placeholder">Reserved module slot. Use this area for IOCs, kill-chain pivots, and evidence links.</div>
+                            {forensics_html}
                         </section>
                     </div>
                 </aside>
@@ -1589,6 +1840,12 @@ function initFindingsFilter(){{
       applyFilters();
     }});
   }});
+}}
+function forensicsCveClick(cve){{
+    var inp=document.getElementById('findings-search');
+    if(inp){{inp.value=cve;inp.dispatchEvent(new Event('input'));}}
+    var overBtn=document.querySelector('[data-tab="overview"]');
+    if(overBtn)overBtn.click();
 }}
 initRightRail();
 selectDomain('all');

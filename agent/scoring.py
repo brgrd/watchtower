@@ -1,6 +1,7 @@
 """Scoring, clustering, and taxonomy helpers for Watchtower."""
 
 import hashlib
+import ipaddress
 import os
 import re
 
@@ -14,6 +15,72 @@ CONFIG = yaml.safe_load(
 _TAXONOMY = CONFIG.get("domain_taxonomy", {})
 
 _CVE_RE = re.compile(r"\bCVE-\d{4}-\d{4,7}\b", re.I)
+_IPV4_RE = re.compile(
+    r"\b(?:(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d\d?)\b"
+)
+_HASH_RE = re.compile(r"\b([0-9a-fA-F]{64}|[0-9a-fA-F]{40}|[0-9a-fA-F]{32})\b")
+_REGISTRY_RE = re.compile(
+    r"\b(HKEY_(?:LOCAL_MACHINE|CURRENT_USER|CLASSES_ROOT|USERS|CURRENT_CONFIG)"
+    r"(?:\\[\w\s.\-]+){1,8})\b",
+    re.I,
+)
+_PRIVATE_NETS = [
+    ipaddress.ip_network("10.0.0.0/8"),
+    ipaddress.ip_network("172.16.0.0/12"),
+    ipaddress.ip_network("192.168.0.0/16"),
+    ipaddress.ip_network("127.0.0.0/8"),
+    ipaddress.ip_network("169.254.0.0/16"),
+    ipaddress.ip_network("224.0.0.0/4"),
+    ipaddress.ip_network("240.0.0.0/4"),
+]
+
+
+def _is_public_ip(ip_str: str) -> bool:
+    """Return True if the string is a valid, publicly routable IPv4 address."""
+    try:
+        addr = ipaddress.ip_address(ip_str)
+        return not any(addr in net for net in _PRIVATE_NETS)
+    except ValueError:
+        return False
+
+
+def _extract_iocs(corpus: str, source_domains: set = None) -> dict:
+    """Extract network / host IOCs from article text.
+
+    Returns a dict with three keys:
+      ``ips``       — list of public IPv4 address strings (up to 12)
+      ``hashes``    — list of ``{value, type}`` dicts (sha256=64 hex chars,
+                       sha1=40, md5=32)  (up to 8)
+      ``registry``  — list of Windows registry key path strings (up to 6)
+    """
+    source_domains = source_domains or set()
+
+    ips: list = []
+    seen_ips: set = set()
+    for m in _IPV4_RE.finditer(corpus):
+        ip_str = m.group(0)
+        if ip_str not in seen_ips and _is_public_ip(ip_str):
+            seen_ips.add(ip_str)
+            ips.append(ip_str)
+
+    hashes: list = []
+    seen_hashes: set = set()
+    for m in _HASH_RE.finditer(corpus):
+        h = m.group(0).lower()
+        if h not in seen_hashes:
+            seen_hashes.add(h)
+            htype = "sha256" if len(h) == 64 else "sha1" if len(h) == 40 else "md5"
+            hashes.append({"value": h, "type": htype})
+
+    registry = list(
+        dict.fromkeys(m.group(0) for m in _REGISTRY_RE.finditer(corpus))
+    )[:6]
+
+    return {
+        "ips": ips[:12],
+        "hashes": hashes[:8],
+        "registry": registry,
+    }
 
 
 def sha256(s: str) -> str:
