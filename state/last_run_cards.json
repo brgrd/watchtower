@@ -1,124 +1,124 @@
 {
-  "ts": "2026-03-12T04:55:54.976077+00:00",
+  "ts": "2026-03-12T10:54:35.213593+00:00",
   "cards": [
     {
-      "title": "CVE-2026-3963",
-      "risk_score": 70,
+      "title": "CVE-2026-4010",
+      "risk_score": 85,
       "summary": "1 related updates.",
       "cves": [
-        "CVE-2026-3963"
+        "CVE-2026-4010"
       ]
     },
     {
-      "title": "CVE-2026-3962",
+      "title": "CVE-2026-3980",
       "risk_score": 70,
       "summary": "1 related updates.",
       "cves": [
-        "CVE-2026-3962"
+        "CVE-2026-3980"
       ]
     },
     {
-      "title": "CVE-2026-3964",
+      "title": "CVE-2026-3981",
       "risk_score": 70,
       "summary": "1 related updates.",
       "cves": [
-        "CVE-2026-3964"
+        "CVE-2026-3981"
       ]
     },
     {
-      "title": "CVE-2026-3966",
+      "title": "CVE-2026-3990",
       "risk_score": 70,
       "summary": "1 related updates.",
       "cves": [
-        "CVE-2026-3966"
+        "CVE-2026-3990"
       ]
     },
     {
-      "title": "CVE-2026-3965",
+      "title": "CVE-2026-3984",
       "risk_score": 70,
       "summary": "1 related updates.",
       "cves": [
-        "CVE-2026-3965"
+        "CVE-2026-3984"
       ]
     },
     {
-      "title": "CVE-2026-3967",
+      "title": "CVE-2026-3982",
       "risk_score": 70,
       "summary": "1 related updates.",
       "cves": [
-        "CVE-2026-3967"
+        "CVE-2026-3982"
       ]
     },
     {
-      "title": "CVE-2026-3968",
+      "title": "CVE-2026-3992",
       "risk_score": 70,
       "summary": "1 related updates.",
       "cves": [
-        "CVE-2026-3968"
+        "CVE-2026-3992"
       ]
     },
     {
-      "title": "CVE-2026-3970",
+      "title": "CVE-2026-3994",
       "risk_score": 70,
       "summary": "1 related updates.",
       "cves": [
-        "CVE-2026-3970"
+        "CVE-2026-3994"
       ]
     },
     {
-      "title": "CVE-2026-3969",
+      "title": "CVE-2026-3993",
       "risk_score": 70,
       "summary": "1 related updates.",
       "cves": [
-        "CVE-2026-3969"
+        "CVE-2026-3993"
       ]
     },
     {
-      "title": "CVE-2026-3971",
+      "title": "CVE-2026-4009",
       "risk_score": 70,
       "summary": "1 related updates.",
       "cves": [
-        "CVE-2026-3971"
+        "CVE-2026-4009"
       ]
     },
     {
-      "title": "CVE-2025-59388",
+      "title": "CVE-2026-4008",
       "risk_score": 70,
       "summary": "1 related updates.",
       "cves": [
-        "CVE-2025-59388"
+        "CVE-2026-4008"
       ]
     },
     {
-      "title": "CVE-2026-3972",
+      "title": "CVE-2026-4015",
       "risk_score": 70,
       "summary": "1 related updates.",
       "cves": [
-        "CVE-2026-3972"
+        "CVE-2026-4015"
       ]
     },
     {
-      "title": "CVE-2026-1878",
+      "title": "CVE-2026-4007",
       "risk_score": 70,
       "summary": "1 related updates.",
       "cves": [
-        "CVE-2026-1878"
+        "CVE-2026-4007"
       ]
     },
     {
-      "title": "CVE-2026-3973",
+      "title": "CVE-2026-4012",
       "risk_score": 70,
       "summary": "1 related updates.",
       "cves": [
-        "CVE-2026-3973"
+        "CVE-2026-4012"
       ]
     },
     {
-      "title": "CVE-2026-3975",
+      "title": "CVE-2026-4014",
       "risk_score": 70,
       "summary": "1 related updates.",
       "cves": [
-        "CVE-2026-3975"
+        "CVE-2026-4014"
       ]
     }
   ]

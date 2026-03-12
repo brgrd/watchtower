@@ -60,3 +60,4 @@
 {"ts": "2026-03-11T10:55:30.169220+00:00", "counts": {"feeds": 24, "polled": 34, "enriched": 30, "clusters": 10}, "hot_domains": ["container", "web_framework"], "placeholder_mode": false}
 {"ts": "2026-03-11T22:37:17.498507+00:00", "counts": {"feeds": 24, "polled": 236, "enriched": 30, "clusters": 3}, "hot_domains": ["container", "os_kernel", "web_framework", "crypto_lib", "supply_chain"], "placeholder_mode": false}
 {"ts": "2026-03-12T04:55:54.755801+00:00", "counts": {"feeds": 24, "polled": 28, "enriched": 28, "clusters": 15}, "hot_domains": ["pkg_npm", "pkg_maven", "os_kernel", "web_framework", "crypto_lib", "identity"], "placeholder_mode": false}
+{"ts": "2026-03-12T10:54:35.138342+00:00", "counts": {"feeds": 24, "polled": 20, "enriched": 20, "clusters": 15}, "hot_domains": ["os_kernel", "web_framework"], "placeholder_mode": false}
