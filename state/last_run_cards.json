@@ -1,22 +1,16 @@
 {
-  "ts": "2026-03-12T19:23:35.765009+00:00",
+  "ts": "2026-03-12T20:03:51.455418+00:00",
   "cards": [
     {
-      "title": "GL-iNet GL-AR300M16 Vuln",
+      "title": "AI-Generated Malware",
       "risk_score": 70,
-      "summary": "[P1] GL-iNet GL-AR300M16 v4.3.11 contains a command injection vulnerability, and no patch is available. This vulnerability can be exploited to gain unauthorized access to the device. Why now: No patch available (confidence: 0.80)",
+      "summary": "[P1] AI-generated Slopoly malware is used in Interlock ransomware attacks, with no patch currently available. This threat is highly urgent due to its potential impact on internet-facing systems. Why now: Highly urgent due to potential impact on internet-facing systems. (confidence: 0.80)",
       "cves": []
     },
     {
-      "title": "LibreDWG Heap Buffer Overflow",
-      "risk_score": 70,
-      "summary": "[P1] LibreDWG versions v0.13.3.7571 up to v0.13 contain a heap buffer overflow vulnerability, and no patch is available. This vulnerability can be exploited to execute arbitrary code. Why now: No patch available (confidence: 0.70)",
-      "cves": []
-    },
-    {
-      "title": "ZeptoClaw Vulnerability",
-      "risk_score": 60,
-      "summary": "[P2] ZeptoClaw is a personal AI assistant that contains a vulnerability, and no patch is available. This vulnerability can be exploited to gain unauthorized access to the device. Why now: No patch available (confidence: 0.60)",
+      "title": "Repository Custom Properties",
+      "risk_score": 40,
+      "summary": "[P2] Actions OIDC tokens now support repository custom properties, which may introduce new security risks if not properly configured. This threat is moderately urgent due to its potential impact on repository security. Why now: Moderately urgent due to potential impact on repository security. (confi",
       "cves": []
     }
   ]
