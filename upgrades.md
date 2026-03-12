@@ -159,7 +159,7 @@ These items address the two user patterns currently in tension: the **active ana
   - User-defined list of CVE IDs, vendor names, product keywords, and MITRE techniques (configured in `config.yaml` or a local `watchlist.yaml`). Matched findings are pinned at the top of Top Findings and persist until dismissed via `state/dismissed.json`.
   - Scope: filter pass in `_run()` after card build; `wt.dismissed` key in localStorage for UI-layer dismiss.
 
-- [ ] **Cross-run IOC extraction (Forensics tab)**
+- [x] **Cross-run IOC extraction (Forensics tab)**
   - Extract IPs, domains, file hashes, and registry keys from source article text. Deduplicate and cross-reference across findings. Populate the currently-placeholder Forensics tab in the Domain Activity rail.
   - Scope: new `_extract_iocs()` helper in `scoring.py`; `state/ioc_ledger.json` for persistence; Forensics tab HTML wired in `_write_index_html`.
 
@@ -226,7 +226,7 @@ With Phase 2 surface-area features shipped, Phase 3 targets three goals: **closi
   - User-defined CVE IDs, vendor names, product keywords, MITRE techniques in `config.yaml` or `watchlist.yaml`. Matched findings pinned to top of Top Findings; persist until dismissed via `state/dismissed.json`.
   - Scope: filter pass in `_run()`; `wt.dismissed` `localStorage` key for UI-layer dismiss.
 
-- [ ] **Cross-run IOC extraction (Forensics tab)**
+- [x] **Cross-run IOC extraction (Forensics tab)**
   - Extract IPs, domains, file hashes, registry keys from source article text; deduplicate and cross-reference across findings; populate the currently-placeholder Forensics tab.
   - Scope: `_extract_iocs()` in `scoring.py`; `state/ioc_ledger.json`; Forensics tab HTML wired in `_write_index_html`.
 
@@ -323,3 +323,5 @@ Phase 3 closed the most visible passive-monitor and intelligence-depth gaps. Pha
 - 2026-03-12: Completed Phase 3 high-priority items — `_normalize_tactic()` with alias map + prefix fallback (analysis.py), 14-pip kill-chain coverage bar (Python-rendered, runner.py), `_update_shelf()` with scoring boost + orange shelf badge (runner.py). 151 tests pass, 31% coverage.
 - 2026-03-12: Opened Phase 4 backlog: runner.py HTML split, CVE-anchored dedup, Groq retry/fallback, shelf decay, tactic normalization tests, coverage push for analysis.py and ingest.py.
 - 2026-03-12: Completed Phase 4 items 1 & 2 — extracted all `_build_*`/`_write_index_html`/`_TM_NODES`/`_TM_EDGES` into `agent/html_builder.py` (runner.py shrunk from ~3 200 to ~1 760 lines, html_builder.py at 55% coverage immediately); added `_merge_by_cve()` union-find grouping in `agent/ingest.py` + wired after `deduplicate()` in `_run()`. All tests pass, 40% coverage.
+- 2026-03-12: Implemented full Forensics tab — `_extract_iocs()` in scoring.py (public IPv4, MD5/SHA1/SHA256 hashes, Windows registry keys; RFC-1918 filter); `_update_ioc_ledger()` in state.py (cross-run persistence, 30-day TTL); `_build_forensics_html()` generates four panels: CVE Reference Index (click-to-filter findings), Kill-Chain Breakdown accordion (per-tactic finding list + technique names), Affected Products matrix (sorted by max risk), IOC Intelligence (cross-run frequency badge on persistent IOCs). 290 tests, 40% coverage.
+- 2026-03-12: Implemented full Forensics tab — `_extract_iocs()` in scoring.py (public IPv4, MD5/SHA1/SHA256 hashes, Windows registry keys; RFC-1918 filter); `_update_ioc_ledger()` in state.py (cross-run persistence, 30-day TTL); wired into runner.py `_run()`; `_build_forensics_html()` in html_builder.py generates four panels: CVE Reference Index (click-to-filter), Kill-Chain Breakdown accordion, Affected Products matrix, IOC Intelligence with cross-run frequency badges. scoring.py 89%, 290 tests pass, 40% coverage.
