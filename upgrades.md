@@ -128,25 +128,23 @@ These items address the two user patterns currently in tension: the **active ana
 
 ### 🟡 Medium Priority
 
-- [ ] **Threat velocity / acceleration signal**
+- [x] **Threat velocity / acceleration signal**
   - Compute findings-per-domain-per-day over a 7-day rolling window. Flag domains where the rate is accelerating (e.g., 1 → 5 findings/day in 3 days). Directly addresses AI-assisted campaigns that hit multiple domains simultaneously and fast.
-  - Surface as a velocity arrow (`↑↑`) on the domain rank bar and a KPI chip.
-  - Scope: computed from `ledger.jsonl` history in `state.py`; new `velocity` dict passed to renderer.
+  - `_compute_velocity()` in `runner.py` compares avg(last 2 days) vs avg(prior 2 days) per domain; `velocity` dict flows to `_build_domain_rank_html` (`↑↑`/`↑`/`↓` chips) and `_build_threat_map_svg` (orange aura glow for accelerating nodes).
 
-- [ ] **MITRE ATT&CK mapping**
-  - Extend Groq prompt to return `tactic` (TA####) and `technique` (T####) fields per finding.
-  - Enables filtering by kill-chain phase, lets the passive monitor quickly distinguish pre- vs post-breach threats, and feeds a kill-chain coverage bar (how many of the 14 tactics are being hit this window).
-  - Scope: prompt update in `analysis.py`; new `tactic`/`technique` fields on cards; kill-chain filter strip above Top Findings in HTML.
+- [x] **MITRE ATT&CK mapping**
+  - Groq prompt upgraded to v2: `tactic_name` (one of 14 ATT&CK tactics) and `technique_name` per finding. Richer risk-score rubric (+30 actively exploited, +15 PoC, +15 critical infra). Exec-summary now requires named CVEs/products.
+  - `tactic_name`/`technique_name` pass-through in `_findings_to_cards`; tactic chip on cluster cards; 14-button filter strip above Top Findings with JS filter by `data-tactic`.
+  - Kill-chain coverage bar (count of distinct tactics hit per window) deferred to Phase 3.
 
-- [ ] **AI Threat explicit domain tag**
-  - Add `ai_threat` to the domain taxonomy to capture AI-assisted malware/automation, LLM/model exploitation (prompt injection, data poisoning), and AI infrastructure targets (GPU clusters, training pipelines, model API gateways).
-  - Surface as a node in the constellation map and as a KPI in the weekly scope.
-  - Scope: new entry in `_TAXONOMY` in `scoring.py`; new edges in `_TM_EDGES`; Groq prompt updated to classify into this domain.
+- [x] **AI Threat explicit domain tag**
+  - `ai_threat` added to `config.yaml` taxonomy with 30 signals (llm, prompt injection, model poisoning, deepfake, jailbreak, RAG poisoning, adversarial ML, etc.).
+  - Constellation node at (680, 68) with edges to `cloud_iam`, `supply_chain`, `identity`.
+  - `_DOMAIN_PRIORITY_FIRST` classifier list ensures `ai_threat` is evaluated before broad `os_kernel` signals.
 
-- [ ] **Threat heatmap calendar**
-  - GitHub-style contribution calendar below the 7-day history section — one cell per day, color intensity driven by peak risk score or finding count for that day.
-  - Makes the passive-monitor check-in instant: glance at the calendar to see which days were hot without expanding the accordion.
-  - Scope: computed from `history_days` in `_write_index_html`; pure HTML/CSS/SVG, no new data needed.
+- [x] **Threat heatmap calendar**
+  - 14-day contribution grid injected between the constellation map and the weekly scope section. Per-cell tiers: grey (no data), green (risk < 30), blue (30–59), amber (60–79), red (80+). Each cell has a tooltip with date, count, and P1s.
+  - `_build_calendar_html(history_days)` in `runner.py`; pure HTML/CSS, no new data sources.
 
 - [ ] **Domain sparklines in the Overview rail**
   - Replace static domain bars with 7-day sparklines (one data point per day) per domain. Rising trend over three days is a different signal than a one-day spike.
@@ -176,6 +174,78 @@ These items address the two user patterns currently in tension: the **active ana
 
 ---
 
+## Phase 3 — Intelligence Depth & Passive-Monitor Parity
+
+With Phase 2 surface-area features shipped, Phase 3 targets three goals: **closing remaining passive-monitor gaps** (alerts, catch-up, persistence), **hardening the intelligence pipeline** (contract validation, EPSS enrichment), and **deepening interactivity** (sparklines, IOC tab, blast-radius animation).
+
+### Recommended Sequencing
+
+| Order | Item | Why first |
+|-------|------|-----------|
+| 1 | Tactic contract enforcement | Prevents silent filter breakage today; 1-day effort |
+| 2 | Kill-chain coverage bar | Completes the MITRE story with no new data; 0.5-day effort |
+| 3 | Finding shelf life | Unlocks persistence-aware scoring for all future features |
+| 4 | Domain sparklines | High UX value, all data already available |
+| 5 | EPSS enrichment | Strongest signal upgrade per unit of effort |
+| 6 | Catch-up view | Closes passive-monitor gap at pure JS cost |
+| 7 | Push alerts | Requires new module; highest passive-monitor payoff |
+
+### 🔴 High Priority
+
+- [ ] **MITRE tactic contract enforcement**
+  - The Groq prompt requests `tactic_name` from a 14-item list but the response is not validated. Groq occasionally returns abbreviated or hallucinated names that silently break the tactic filter strip (e.g., `"Priv Esc"` instead of `"Privilege Escalation"`).
+  - Add a normalization pass in `_findings_to_cards`: fuzzy-match the returned string against canonical 14 tactics; coerce partial matches; null-out unrecognized values; log coercions for monitoring.
+  - Scope: `agent/analysis.py` — ~15-line normalization dict + guard; add parameterized test cases for each bad-string variant.
+
+- [ ] **Kill-chain coverage bar**
+  - The 14-tactic filter buttons exist but there is no _coverage_ signal: how many of the 14 ATT&CK tactics appear in this window's findings? A window covering 11 tactics is categorically more alarming than one covering 3.
+  - Render a row of 14 pips above the tactic strip (filled = tactic present in findings, hollow = absent). Show count label: "7 / 14 tactics covered".
+  - Scope: JS-only; single pass over `CARDS` at page load; `.tactic-pip` CSS; no backend change.
+
+- [ ] **Finding shelf life — `first_seen`, `run_count`, `last_seen`**
+  - A finding persisting across 6 consecutive runs is categorically more important than a one-run blip, yet both currently render identically.
+  - Track finding IDs (CVE + title hash) in `state/finding_shelf.json`. Surface a "Days Active" micro-badge on cards. Feed into scoring: +5 per additional consecutive run seen (capped at +20).
+  - Scope: `state/finding_shelf.json`; update in `_run()` after card build; `.shelf-badge` CSS in renderer; `_update_shelf()` helper in `state.py`.
+
+### 🟡 Medium Priority
+
+- [ ] **Domain sparklines in the Overview rail**
+  - Replace static domain score bars with 7-day inline SVG sparklines (one point per day). A 3-day rising trend is a different signal than a one-day spike at the same current score.
+  - Scope: computed from `history_days` in `_build_domain_rank_html`; inline `<svg>` polyline per row (~30 px tall); no new data sources needed.
+
+- [ ] **EPSS-based exploitation probability badge**
+  - Fetch EPSS scores from `https://api.first.org/data/v1/epss?cve=CVE-XXXX` for each CVE found this window. Badge high-EPSS findings (> 0.4) with a distinct color even when CVSS is similar. EPSS is a consistently stronger real-world exploitation predictor than CVSS alone.
+  - Scope: `_enrich_epss(cards)` in `ingest.py`; `state/epss_cache.json` (TTL 24 h) to avoid re-fetching; `.epss-badge` CSS variant.
+
+- [ ] **"Since your last visit" catch-up view**
+  - Store the last page-open timestamp in `localStorage`. On return after > 4 hours, render a collapsible "Catch-up since [date]" strip at the top — only findings new since that timestamp, ordered by priority.
+  - Zero backend cost; entirely closes the passive-monitor check-in friction problem.
+  - Scope: JS-only; reads `CARDS` timestamps vs. `wt.last_visit` in `localStorage`; collapsible `<details>` strip.
+
+- [ ] **Push digest / webhook alerts**
+  - Notify when: P1 count exceeds threshold, a keyword watchlist term matches a new finding, or a finding persists N consecutive runs without action.
+  - Scope: new `agent/notify.py` (email via `smtplib` + Slack/Teams webhook); `notifications:` block in `config.yaml`; wired into `_run()` post-card-build; test with mocked HTTP.
+
+### 🟢 Lower Priority
+
+- [ ] **Watchlist / follow mode**
+  - User-defined CVE IDs, vendor names, product keywords, MITRE techniques in `config.yaml` or `watchlist.yaml`. Matched findings pinned to top of Top Findings; persist until dismissed via `state/dismissed.json`.
+  - Scope: filter pass in `_run()`; `wt.dismissed` `localStorage` key for UI-layer dismiss.
+
+- [ ] **Cross-run IOC extraction (Forensics tab)**
+  - Extract IPs, domains, file hashes, registry keys from source article text; deduplicate and cross-reference across findings; populate the currently-placeholder Forensics tab.
+  - Scope: `_extract_iocs()` in `scoring.py`; `state/ioc_ledger.json`; Forensics tab HTML wired in `_write_index_html`.
+
+- [ ] **Interactive constellation — blast-radius path highlighting**
+  - On node click, animate directed paths to all reachable downstream domains via `_TM_EDGES`. Makes blast-radius reasoning visual rather than implicit.
+  - Scope: JS-only change to `selectDomain()` + SVG edge rendering in `_build_threat_map_svg`.
+
+- [ ] **Unread count in browser tab title**
+  - Update `document.title` with P1 count (`[2 P1] Watchtower — InfraSec Briefing`) for passive signal to users who keep the tab open.
+  - Scope: 3-line JS addition; zero risk.
+
+---
+
 ## Change Log
 
 - 2026-03-12: Tracker created from project review recommendations.
@@ -189,3 +259,5 @@ These items address the two user patterns currently in tension: the **active ana
 - 2026-03-12: Added planner dispatch unit tests and recovered coverage gate (23.35%).
 - 2026-03-12: Implemented structured run metrics, schema validation, and feed health tracking; added CVE badges, search/filter bar, All Domains reset chip, run metrics panel in Feeds tab.
 - 2026-03-12: Added Phase 2 functional and UI enhancement backlog from threat-landscape review.
+- 2026-03-12: Completed all Phase 2 medium-priority items — 14-day threat heatmap calendar, velocity/acceleration signal with constellation glow, `ai_threat` domain (30 signals, priority-first classifier), MITRE ATT&CK tactic chips + 14-button filter strip + Groq prompt v2. Fixed JS regex `SyntaxWarning`. 151 tests pass, 31% coverage.
+- 2026-03-12: Opened Phase 3 backlog: tactic contract enforcement, kill-chain coverage bar, finding shelf life, domain sparklines, EPSS enrichment, catch-up view, push alerts, watchlist, IOC extraction, blast-radius highlighting, tab title unread count.

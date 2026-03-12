@@ -330,6 +330,77 @@ def _match_high_profile(text: str) -> list:
     return [_HIGH_PROFILE_TARGETS[i] for i, lw in enumerate(_HP_LOWER) if lw in tl]
 
 
+_CANONICAL_TACTICS: list = [
+    "Reconnaissance",
+    "Resource Development",
+    "Initial Access",
+    "Execution",
+    "Persistence",
+    "Privilege Escalation",
+    "Defense Evasion",
+    "Credential Access",
+    "Discovery",
+    "Lateral Movement",
+    "Collection",
+    "Command & Control",
+    "Exfiltration",
+    "Impact",
+]
+_TACTIC_ALIASES: dict = {
+    # abbreviations / common LLM shorthand
+    "recon": "Reconnaissance",
+    "resource dev": "Resource Development",
+    "resource-dev": "Resource Development",
+    "initial access": "Initial Access",
+    "exec": "Execution",
+    "execute": "Execution",
+    "persist": "Persistence",
+    "priv esc": "Privilege Escalation",
+    "privesc": "Privilege Escalation",
+    "privilege-escalation": "Privilege Escalation",
+    "def evasion": "Defense Evasion",
+    "defense-evasion": "Defense Evasion",
+    "evasion": "Defense Evasion",
+    "cred access": "Credential Access",
+    "credential-access": "Credential Access",
+    "credentials": "Credential Access",
+    "discovery": "Discovery",
+    "lateral movement": "Lateral Movement",
+    "lateral-movement": "Lateral Movement",
+    "collect": "Collection",
+    "c2": "Command & Control",
+    "c&c": "Command & Control",
+    "command and control": "Command & Control",
+    "command-and-control": "Command & Control",
+    "exfil": "Exfiltration",
+    "data exfiltration": "Exfiltration",
+    "impact": "Impact",
+}
+_CANONICAL_TACTICS_LOWER: dict = {t.lower(): t for t in _CANONICAL_TACTICS}
+
+
+def _normalize_tactic(raw: str) -> str:
+    """Coerce a Groq-returned tactic string to a canonical ATT&CK tactic name.
+
+    Returns the canonical name, or empty string if unrecognized.
+    """
+    if not raw:
+        return ""
+    key = raw.strip().lower()
+    # Exact canonical match (case-insensitive)
+    if key in _CANONICAL_TACTICS_LOWER:
+        return _CANONICAL_TACTICS_LOWER[key]
+    # Known alias
+    if key in _TACTIC_ALIASES:
+        return _TACTIC_ALIASES[key]
+    # Partial prefix match (e.g. "Privilege Esc" -> "Privilege Escalation")
+    for canon_lower, canon in _CANONICAL_TACTICS_LOWER.items():
+        if canon_lower.startswith(key) or key.startswith(canon_lower[:6]):
+            return canon
+    # Unrecognized — return empty so the chip is hidden rather than showing garbage
+    return ""
+
+
 def _findings_to_cards(findings: list, all_items: list = None) -> list:
     url_to_country: dict = {}
     domain_to_country: dict = {}
@@ -440,8 +511,8 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                 "summary": summary,
                 "patch_status": patch_status,
                 "matched_targets": matched_targets,
-                "tactic_name": (
-                    str(f.get("tactic_name", ""))[:60] if f.get("tactic_name") else ""
+                "tactic_name": _normalize_tactic(
+                    str(f.get("tactic_name", "")) if f.get("tactic_name") else ""
                 ),
                 "technique_name": (
                     str(f.get("technique_name", ""))[:80]

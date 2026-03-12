@@ -69,6 +69,7 @@ SEEN_FILE = os.path.join(STATE_DIR, "seen_hashes.json")
 LAST_RUN_CARDS_FILE = os.path.join(STATE_DIR, "last_run_cards.json")
 WEEKLY_AGGREGATE_FILE = os.path.join(STATE_DIR, "weekly_aggregate.json")
 FEED_HEALTH_FILE = os.path.join(STATE_DIR, "feed_health.json")
+FINDING_SHELF_FILE = os.path.join(STATE_DIR, "finding_shelf.json")
 CONFIG = yaml.safe_load(
     open(os.path.join(ROOT, "agent", "config.yaml"), "r", encoding="utf-8")
 )
@@ -1552,6 +1553,55 @@ def _build_calendar_html(history_days: list) -> str:
     )
 
 
+def _update_shelf(cards: list) -> None:
+    """Update finding_shelf.json with persistence tracking and apply score boosts.
+
+    Each finding is keyed by a 16-char hash of its title. For every card present
+    in this run: first_seen is set if new, run_count incremented, last_seen updated.
+    A score boost of +5 per run_count beyond 1 is applied, capped at +20, so a
+    finding seen across 5 consecutive runs has its risk_score raised by 20 points.
+    """
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    shelf: dict = load_json(FINDING_SHELF_FILE, {})
+    current_ids: set = set()
+    for card in cards:
+        if not isinstance(card, dict):
+            continue
+        fid = card.get("id", sha256(card.get("title", ""))[:16])
+        current_ids.add(fid)
+        entry = shelf.get(fid)
+        if entry is None:
+            shelf[fid] = {
+                "first_seen": today,
+                "last_seen": today,
+                "run_count": 1,
+                "title": card.get("title", "")[:120],
+            }
+        else:
+            # Only increment run_count once per calendar day
+            if entry.get("last_seen") != today:
+                entry["run_count"] = entry.get("run_count", 1) + 1
+            entry["last_seen"] = today
+            shelf[fid] = entry
+        # Compute shelf_days and apply score boost in-place
+        try:
+            first_dt = datetime.strptime(shelf[fid]["first_seen"], "%Y-%m-%d").replace(
+                tzinfo=timezone.utc
+            )
+            shelf_days = max(0, (datetime.now(timezone.utc) - first_dt).days)
+        except (ValueError, KeyError):
+            shelf_days = 0
+        run_count = shelf[fid].get("run_count", 1)
+        boost = min(20, max(0, (run_count - 1) * 5))
+        card["risk_score"] = min(100, int(card.get("risk_score", 0)) + boost)
+        card["shelf_days"] = shelf_days
+        card["run_count"] = run_count
+    # Prune entries not seen in the last 30 days
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=30)).strftime("%Y-%m-%d")
+    shelf = {k: v for k, v in shelf.items() if v.get("last_seen", today) >= cutoff}
+    save_json(FINDING_SHELF_FILE, shelf)
+
+
 def _prune_old_briefings(reports_dir: str, keep_days: int = 10) -> None:
     """Delete briefing_*.jsonl and briefing_*.md files older than keep_days."""
     cutoff = datetime.now(timezone.utc) - timedelta(days=keep_days)
@@ -2088,6 +2138,14 @@ def _write_index_html(
             if _tactic
             else ""
         )
+        _shelf_days = int(c.get("shelf_days", 0))
+        _run_count = int(c.get("run_count", 1))
+        shelf_badge_html = (
+            f'<span class="shelf-badge" title="First seen {_shelf_days}d ago &middot; seen {_run_count} runs">'
+            f"{_shelf_days}d</span>"
+            if _shelf_days >= 1
+            else ""
+        )
         rows += f"""
                 <details class="cluster" data-domains="{html.escape(domains_attr)}" data-tactic="{html.escape(_tactic)}">
                     <summary>
@@ -2097,6 +2155,7 @@ def _write_index_html(
                         {hp_badge_html}
                         {cve_badge_html}
                         {tactic_chip_html}
+                        {shelf_badge_html}
                         {html.escape(c['title'])}
                         <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline">{tags}</div>
                     </summary>
@@ -2207,6 +2266,24 @@ def _write_index_html(
         "Impact",
     ]
     active_tactics = {c.get("tactic_name", "") for c in cards if c.get("tactic_name")}
+    covered_count = len(active_tactics)
+    total_tactics = len(_MITRE_TACTICS)
+    coverage_pct = round(covered_count / total_tactics * 100) if total_tactics else 0
+    # Coverage bar: 14 pips, filled = tactic present in this window's findings
+    pip_html = "".join(
+        f'<span class="tactic-pip tactic-pip--{"filled" if t in active_tactics else "hollow"}" '
+        f'title="{html.escape(t)}"></span>'
+        for t in _MITRE_TACTICS
+    )
+    coverage_bar_html = (
+        f'<div class="tactic-coverage" id="tactic-coverage">'
+        f'<span class="tactic-coverage-label">{covered_count} / {total_tactics} tactics covered</span>'
+        f'<span class="tactic-coverage-bar">{pip_html}</span>'
+        f'<span class="tactic-coverage-pct">{coverage_pct}%</span>'
+        f"</div>"
+        if active_tactics
+        else ""
+    )
     tactic_buttons = "".join(
         f'<button class="tactic-btn{" tactic-btn--active" if t in active_tactics else ""}" '
         f'data-tactic="{html.escape(t)}" type="button">{html.escape(t)}</button>'
@@ -2214,6 +2291,7 @@ def _write_index_html(
     )
     tactic_strip_html = (
         (
+            f"{coverage_bar_html}"
             f'<div class="tactic-strip" id="tactic-strip">'
             f'<button class="tactic-btn tactic-btn--all tactic-btn--active" data-tactic="all" type="button">All Tactics</button>'
             f"{tactic_buttons}"
@@ -2333,12 +2411,21 @@ p{{color:#c9d1d9}}
 .cal-cell{{aspect-ratio:1;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:default;transition:transform .1s,filter .1s}}
 .cal-cell:hover{{transform:scale(1.12);filter:brightness(1.25)}}
 .cal-day{{font-size:.6rem;color:rgba(255,255,255,.55);font-weight:600;pointer-events:none}}
-.tactic-strip{{display:flex;flex-wrap:wrap;gap:5px;margin:.3rem 0 .55rem;padding:.45rem 0;border-top:1px solid #252525;border-bottom:1px solid #252525}}
+.tactic-strip{{display:flex;flex-wrap:wrap;gap:5px;margin:.3rem 0 .55rem;padding:.45rem 0;border-bottom:1px solid #252525}}
+.tactic-coverage{{display:flex;align-items:center;gap:.55rem;padding:.35rem 0 .3rem;border-top:1px solid #252525;border-bottom:1px solid #1e1e1e;margin-bottom:.3rem;flex-wrap:wrap}}
+.tactic-coverage-label{{font-size:.67rem;color:#5a7090;white-space:nowrap}}
+.tactic-coverage-bar{{display:flex;gap:3px;align-items:center}}
+.tactic-coverage-pct{{font-size:.67rem;color:#5a7090;font-weight:700}}
+.tactic-pip{{display:inline-block;width:10px;height:10px;border-radius:2px;transition:transform .1s}}
+.tactic-pip--filled{{background:rgba(58,130,246,.55);border:1px solid rgba(58,130,246,.7)}}
+.tactic-pip--filled:hover{{transform:scale(1.3)}}
+.tactic-pip--hollow{{background:#1a1a1a;border:1px solid #2e2e2e}}
 .tactic-btn{{background:#181818;border:1px solid #2a2a2a;color:#5a6a7a;font-size:.67rem;padding:2px 9px;border-radius:999px;cursor:pointer;transition:background .12s,color .12s}}
 .tactic-btn:hover{{background:#252525;color:#aaa}}
 .tactic-btn--active{{background:rgba(30,80,160,.18);border-color:rgba(58,130,246,.35);color:#79b8ff}}
 .tactic-btn--all.tactic-btn--active{{background:rgba(50,50,50,.25);border-color:#555;color:#c9d1d9}}
 .tactic-chip{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(88,130,240,.12);color:#6ea8fe;border:1px solid rgba(88,130,240,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0}}
+.shelf-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(210,90,20,.1);color:#e8864a;border:1px solid rgba(210,90,20,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}}
 .hp-badge{{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.04em;border-radius:3px;padding:1px 7px;margin-left:.45rem;vertical-align:middle;text-transform:uppercase;background:rgba(139,92,246,.15);color:#a78bfa;border:1px solid rgba(139,92,246,.3)}}
 .hp-panel{{background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:6px;padding:.65rem 1rem .7rem;margin:.2rem 0 1rem}}
 .hp-panel-title{{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#a78bfa;margin-bottom:.5rem}}
@@ -3060,6 +3147,7 @@ def _run():
         },
     )
 
+    _update_shelf(cards)
     history = _read_ledger_history()
     _prune_old_briefings(REPORTS_DIR)
     history_days = _load_history_days(REPORTS_DIR)
