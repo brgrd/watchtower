@@ -1883,6 +1883,59 @@ def _build_weekly_section(aggregate: dict) -> str:
     )
 
 
+def _build_enrichment_html(enrichment: dict) -> str:
+    """Build a collapsed 'Extracted context' block from zero-token source enrichment data."""
+    if not enrichment or enrichment.get("source_count", 0) == 0:
+        return ""
+    parts: list = []
+    lede = enrichment.get("lede", "")
+    if lede:
+        parts.append(
+            f'<p class="enrich-lede">{html.escape(lede)}</p>'
+        )
+    all_cves = enrichment.get("cves", [])
+    extra_cves = enrichment.get("extra_cves", [])
+    if all_cves:
+        chips = "".join(
+            f'<span class="enrich-cve{" enrich-cve--extra" if c in extra_cves else ""}">{html.escape(c)}</span>'
+            for c in all_cves[:10]
+        )
+        parts.append(f'<div class="enrich-row"><span class="enrich-label">CVEs</span>{chips}</div>')
+    products = enrichment.get("products", [])
+    if products:
+        chips = "".join(
+            f'<span class="enrich-product">{html.escape(p)}</span>'
+            for p in products[:8]
+        )
+        parts.append(f'<div class="enrich-row"><span class="enrich-label">Affected</span>{chips}</div>')
+    versions = enrichment.get("versions", [])
+    if versions:
+        chips = "".join(
+            f'<span class="enrich-version">{html.escape(v)}</span>'
+            for v in versions[:6]
+        )
+        parts.append(f'<div class="enrich-row"><span class="enrich-label">Versions</span>{chips}</div>')
+    dates = enrichment.get("dates", [])
+    if dates:
+        chips = "".join(
+            f'<span class="enrich-date">{html.escape(d)}</span>'
+            for d in dates[:4]
+        )
+        parts.append(f'<div class="enrich-row"><span class="enrich-label">Dates</span>{chips}</div>')
+    if not parts:
+        return ""
+    src_count = enrichment.get("source_count", 0)
+    inner = "".join(parts)
+    return (
+        f'<details class="enrich-block">'
+        f'<summary class="enrich-summary">&#128269; Extracted context '
+        f'<span class="enrich-src-count">{src_count} source{"s" if src_count != 1 else ""}</span>'
+        f'</summary>'
+        f'<div class="enrich-body">{inner}</div>'
+        f'</details>'
+    )
+
+
 def _write_index_html(
     path: str,
     cards: list,
@@ -2164,6 +2217,7 @@ def _write_index_html(
                         {f'<p class="why-now"><strong>Why now:</strong> {why_now}</p>' if why_now else ''}
                         {conf_txt}
                         {f'<div class="actions"><div><strong>Next 24h</strong><ul>{act24_html}</ul></div><div><strong>Next 7d</strong><ul>{act7_html}</ul></div></div>' if (act24_html or act7_html) else ''}
+                        {_build_enrichment_html(c.get('enrichment'))}
                         <ul>{links}</ul>
                     </div>
                 </details>"""
@@ -2426,6 +2480,20 @@ p{{color:#c9d1d9}}
 .tactic-btn--all.tactic-btn--active{{background:rgba(50,50,50,.25);border-color:#555;color:#c9d1d9}}
 .tactic-chip{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(88,130,240,.12);color:#6ea8fe;border:1px solid rgba(88,130,240,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0}}
 .shelf-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(210,90,20,.1);color:#e8864a;border:1px solid rgba(210,90,20,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}}
+.enrich-block{{margin:.6rem 0 .2rem;border:1px solid #222;border-radius:5px;overflow:hidden}}
+.enrich-summary{{font-size:.72rem;color:#5a7090;cursor:pointer;padding:.35rem .6rem;list-style:none;display:flex;align-items:center;gap:.4rem;user-select:none}}
+.enrich-summary::-webkit-details-marker{{display:none}}
+.enrich-summary:hover{{color:#88a0b8}}
+.enrich-src-count{{font-size:.65rem;color:#3a5070;background:#141e2a;border-radius:999px;padding:0 6px}}
+.enrich-body{{padding:.4rem .65rem .5rem;border-top:1px solid #1e1e1e;display:flex;flex-direction:column;gap:.3rem}}
+.enrich-lede{{font-size:.75rem;color:#8899aa;margin:0 0 .2rem;line-height:1.45;font-style:italic}}
+.enrich-row{{display:flex;align-items:center;flex-wrap:wrap;gap:.25rem;font-size:.68rem}}
+.enrich-label{{color:#3a5070;font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;min-width:4rem;flex-shrink:0}}
+.enrich-cve{{background:rgba(220,50,50,.1);color:#e05555;border:1px solid rgba(220,50,50,.2);border-radius:3px;padding:1px 5px;font-size:.65rem;font-weight:700}}
+.enrich-cve--extra{{background:rgba(220,50,50,.05);color:#a04040;border-style:dashed}}
+.enrich-product{{background:rgba(50,130,200,.1);color:#5599cc;border:1px solid rgba(50,130,200,.2);border-radius:3px;padding:1px 6px;font-size:.65rem}}
+.enrich-version{{background:rgba(80,160,80,.08);color:#66aa66;border:1px solid rgba(80,160,80,.2);border-radius:3px;padding:1px 5px;font-size:.65rem;font-family:monospace}}
+.enrich-date{{background:rgba(160,130,50,.08);color:#aa9955;border:1px solid rgba(160,130,50,.18);border-radius:3px;padding:1px 6px;font-size:.65rem}}
 .hp-badge{{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.04em;border-radius:3px;padding:1px 7px;margin-left:.45rem;vertical-align:middle;text-transform:uppercase;background:rgba(139,92,246,.15);color:#a78bfa;border:1px solid rgba(139,92,246,.3)}}
 .hp-panel{{background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:6px;padding:.65rem 1rem .7rem;margin:.2rem 0 1rem}}
 .hp-panel-title{{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#a78bfa;margin-bottom:.5rem}}

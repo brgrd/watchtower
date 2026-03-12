@@ -121,10 +121,9 @@ These items address the two user patterns currently in tension: the **active ana
   - Solves the passive-monitor problem at the UI layer with no backend changes needed.
   - Scope: JS-only; reads `CARDS` data-attribute timestamps, compares against stored `wt.last_visit`.
 
-- [ ] **Finding shelf life — `first_seen`, `run_count`, `last_seen`**
+- [x] **Finding shelf life — `first_seen`, `run_count`, `last_seen`**
   - Track how long each finding ID (or CVE) has been active across runs. A finding present across 6 consecutive runs is categorically more important than a one-run blip.
-  - Surface as a "Days Active" micro-badge on cards and feed into delta scoring.
-  - Scope: `state/finding_shelf.json`; update during card merge in `_run()`; new badge class in HTML renderer.
+  - Implemented in Phase 3 — see below.
 
 ### 🟡 Medium Priority
 
@@ -180,32 +179,27 @@ With Phase 2 surface-area features shipped, Phase 3 targets three goals: **closi
 
 ### Recommended Sequencing
 
-| Order | Item | Why first |
-|-------|------|-----------|
-| 1 | Tactic contract enforcement | Prevents silent filter breakage today; 1-day effort |
-| 2 | Kill-chain coverage bar | Completes the MITRE story with no new data; 0.5-day effort |
-| 3 | Finding shelf life | Unlocks persistence-aware scoring for all future features |
-| 4 | Domain sparklines | High UX value, all data already available |
-| 5 | EPSS enrichment | Strongest signal upgrade per unit of effort |
-| 6 | Catch-up view | Closes passive-monitor gap at pure JS cost |
-| 7 | Push alerts | Requires new module; highest passive-monitor payoff |
+| Order | Item | Status |
+|-------|------|--------|
+| 1 | Tactic contract enforcement | ✅ Done |
+| 2 | Kill-chain coverage bar | ✅ Done |
+| 3 | Finding shelf life | ✅ Done |
+| 4 | Domain sparklines | Next — all data available, no backend change |
+| 5 | EPSS enrichment | Strongest signal upgrade per unit effort |
+| 6 | Catch-up view | Pure JS, closes passive-monitor gap |
+| 7 | Push alerts | Highest passive-monitor payoff; new module required |
 
 ### 🔴 High Priority
 
-- [ ] **MITRE tactic contract enforcement**
-  - The Groq prompt requests `tactic_name` from a 14-item list but the response is not validated. Groq occasionally returns abbreviated or hallucinated names that silently break the tactic filter strip (e.g., `"Priv Esc"` instead of `"Privilege Escalation"`).
-  - Add a normalization pass in `_findings_to_cards`: fuzzy-match the returned string against canonical 14 tactics; coerce partial matches; null-out unrecognized values; log coercions for monitoring.
-  - Scope: `agent/analysis.py` — ~15-line normalization dict + guard; add parameterized test cases for each bad-string variant.
+- [x] **MITRE tactic contract enforcement**
+  - `_normalize_tactic(raw)` in `analysis.py`: 14-entry canonical dict, alias map (c2, privesc, evasion, etc.), 6-char prefix fallback, empty string on unrecognized values. Groq can no longer silently break the tactic filter strip.
+  - Parameterized test coverage recommended as follow-up.
 
-- [ ] **Kill-chain coverage bar**
-  - The 14-tactic filter buttons exist but there is no _coverage_ signal: how many of the 14 ATT&CK tactics appear in this window's findings? A window covering 11 tactics is categorically more alarming than one covering 3.
-  - Render a row of 14 pips above the tactic strip (filled = tactic present in findings, hollow = absent). Show count label: "7 / 14 tactics covered".
-  - Scope: JS-only; single pass over `CARDS` at page load; `.tactic-pip` CSS; no backend change.
+- [x] **Kill-chain coverage bar**
+  - Row of 14 square pips above the tactic filter strip; filled (blue) = tactic present in current window, hollow = absent. Label: "N / 14 tactics covered". Python-rendered at build time; no JS dependency.
 
-- [ ] **Finding shelf life — `first_seen`, `run_count`, `last_seen`**
-  - A finding persisting across 6 consecutive runs is categorically more important than a one-run blip, yet both currently render identically.
-  - Track finding IDs (CVE + title hash) in `state/finding_shelf.json`. Surface a "Days Active" micro-badge on cards. Feed into scoring: +5 per additional consecutive run seen (capped at +20).
-  - Scope: `state/finding_shelf.json`; update in `_run()` after card build; `.shelf-badge` CSS in renderer; `_update_shelf()` helper in `state.py`.
+- [x] **Finding shelf life — `first_seen`, `run_count`, `last_seen`**
+  - `FINDING_SHELF_FILE = state/finding_shelf.json` per finding ID (sha256 title prefix). `_update_shelf(cards)` increments `run_count` once per calendar day, applies +5 risk_score boost per run beyond 1 (capped +20). Entries pruned after 30d inactivity. Orange `Nd` shelf badge on cluster cards for findings ≥ 1 day old.
 
 ### 🟡 Medium Priority
 
@@ -246,6 +240,71 @@ With Phase 2 surface-area features shipped, Phase 3 targets three goals: **closi
 
 ---
 
+## Phase 4 — Pipeline Quality & Structural Health
+
+Phase 3 closed the most visible passive-monitor and intelligence-depth gaps. Phase 4 addresses the underlying **pipeline quality risks** that will compound as data volume and feature count grow — primarily deduplication fidelity, model resilience, test coverage depth, and `runner.py` size.
+
+### Recommended Sequencing
+
+| Order | Item | Why |
+|-------|------|-----|
+| 1 | Split `runner.py` HTML rendering | Most impactful maintainability move; 3 200-line file is a growing liability |
+| 2 | CVE-anchored dedup before Groq | Eliminates the most common finding-quality defect |
+| 3 | Groq retry + model fallback | Prevents silent empty-result runs under rate pressure |
+| 4 | Shelf life decay / resolution | Prevents stale "always-boosted" findings from dominating forever |
+| 5 | Tactic normalization tests | Parameterized regression guard for the new normalization path |
+| 6 | Coverage push (analysis + ingest) | `analysis.py` at 10%, `ingest.py` at 9% — highest regression risk in codebase |
+
+### 🔴 High Priority
+
+- [ ] **Split `runner.py` HTML rendering into `agent/html_builder.py`**
+  - `runner.py` is now ~3 200 lines. The HTML template string, CSS block, JS block, SVG constellation builder, domain rank builder, calendar builder, and tactic strip are all inlined. This makes diffs nearly unreadable and tests impossible to write without executing the entire orchestrator.
+  - Extract all `_build_*` and `_write_index_html` functions into `agent/html_builder.py`. `runner.py` calls `html_builder.write_index(path, cards, ...)`. Each builder becomes independently testable.
+  - Scope: new `agent/html_builder.py`; `runner.py` imports and delegates; existing tests unaffected; new unit tests for builders become practical.
+
+- [ ] **CVE-anchored deduplication before Groq analysis**
+  - Currently deduplication is hash-based on item titles. Two feed articles about the same CVE with slightly different headlines both reach Groq, producing duplicate or near-duplicate findings that inflate counts and consume tokens.
+  - After ingest, group items by extracted CVE IDs; merge groups into a single enriched item (combined text, all sources). Non-CVE items remain as-is.
+  - Scope: `_merge_by_cve(items)` helper in `runner.py` or `ingest.py`; called after `deduplicate()` and before `groq_analyze_briefing()`.
+
+- [ ] **Groq retry with backoff + smaller-model fallback**
+  - A single Groq API call with no retry beyond basic error handling. Rate-limit hits (HTTP 429) silently produce empty results — the run succeeds but the briefing is blank.
+  - Add exponential backoff retry (3 attempts, 2/4/8 s delays) for 429/5xx. On persistent failure, fall back to a smaller model (e.g., `llama3-8b-8192` if `llama3-70b` is configured) with a warning in `groq_status`.
+  - Scope: `agent/analysis.py` — wrap Groq call in `_call_with_retry()`; `groq_status` extended to include `"fallback"` state; surfaced in run metrics panel.
+
+### 🟡 Medium Priority
+
+- [ ] **Shelf life decay and resolved-finding suppression**
+  - The current shelf implementation boosts scores indefinitely up to +20 and never downgrades. A CVE that was patched 3 runs ago should not continue receiving a persistence boost.
+  - Add a `resolved` flag to shelf entries, settable when `patch_status == "patched"`. Resolved findings: boost is zeroed, badge changes to grey `Nd (resolved)`. Shelf entry retained for 7 days post-resolution then pruned.
+  - Scope: `_update_shelf()` in `runner.py` — check `patch_status`; add `.shelf-badge--resolved` CSS variant.
+
+- [ ] **Parameterized tactic normalization tests**
+  - `_normalize_tactic()` covers ~15 alias paths but has zero test coverage. A single Groq prompt change could silently break all tactic chips and the coverage bar.
+  - Add `tests/test_tactic_normalization.py` with parameterized cases for: exact match, alias match (c2, privesc), prefix match, garbage input, empty string, `None`.
+  - Scope: `tests/test_tactic_normalization.py` — ~30 lines; `analysis.py` exports `_normalize_tactic` for direct import.
+
+- [ ] **Coverage push: `analysis.py` and `ingest.py`**
+  - `analysis.py` is at 10% coverage, `ingest.py` at 9%. Both sit on the critical data path: Groq response parsing, card building, feed fetching, CVE extraction. Any regression here produces silent bad output rather than a test failure.
+  - Target: `analysis.py` → 40%, `ingest.py` → 35%. Focus on `_findings_to_cards` (edge cases), `_normalize_tactic` (see above), `groq_analyze_briefing` (mock Groq), `_fetch_feed` (mock HTTP), and `_enrich_kev`.
+  - Scope: `tests/test_analysis.py`, `tests/test_ingest.py` — new files or additions; mock `httpx` / `groq` client.
+
+### 🟢 Lower Priority
+
+- [ ] **Shelf life cross-run CVE identity**
+  - Currently shelf keys are `sha256(title)[:16]`. Two headlines about the same CVE with different wording get different shelf entries. Change the shelf key to the primary CVE ID when one is extractable, falling back to title hash.
+  - Scope: `_update_shelf()` — `_extract_cves()` on title; use first CVE as key if present.
+
+- [ ] **Groq token budget monitoring**
+  - Log estimated prompt token count before each Groq call (approx. 4 chars/token). If the payload exceeds 80% of the model's context window, truncate `news_articles` block first, then `recent_cves`, and warn in run metrics.
+  - Scope: `agent/analysis.py` — `_estimate_tokens()` helper; truncation pass before JSON serialisation.
+
+- [ ] **Feed source geographic tagging**
+  - Feeds already carry `country` metadata but it is not aggregated at the run level. A KPI showing the geographic distribution of source articles (US 40%, EU 30%, APAC 20%) helps assess coverage blindspots.
+  - Scope: aggregate in `run_metrics` dict; render as a small bar in the Feeds tab.
+
+---
+
 ## Change Log
 
 - 2026-03-12: Tracker created from project review recommendations.
@@ -261,3 +320,5 @@ With Phase 2 surface-area features shipped, Phase 3 targets three goals: **closi
 - 2026-03-12: Added Phase 2 functional and UI enhancement backlog from threat-landscape review.
 - 2026-03-12: Completed all Phase 2 medium-priority items — 14-day threat heatmap calendar, velocity/acceleration signal with constellation glow, `ai_threat` domain (30 signals, priority-first classifier), MITRE ATT&CK tactic chips + 14-button filter strip + Groq prompt v2. Fixed JS regex `SyntaxWarning`. 151 tests pass, 31% coverage.
 - 2026-03-12: Opened Phase 3 backlog: tactic contract enforcement, kill-chain coverage bar, finding shelf life, domain sparklines, EPSS enrichment, catch-up view, push alerts, watchlist, IOC extraction, blast-radius highlighting, tab title unread count.
+- 2026-03-12: Completed Phase 3 high-priority items — `_normalize_tactic()` with alias map + prefix fallback (analysis.py), 14-pip kill-chain coverage bar (Python-rendered, runner.py), `_update_shelf()` with scoring boost + orange shelf badge (runner.py). 151 tests pass, 31% coverage.
+- 2026-03-12: Opened Phase 4 backlog: runner.py HTML split, CVE-anchored dedup, Groq retry/fallback, shelf decay, tactic normalization tests, coverage push for analysis.py and ingest.py.

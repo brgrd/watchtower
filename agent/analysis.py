@@ -401,6 +401,147 @@ def _normalize_tactic(raw: str) -> str:
     return ""
 
 
+# Vendor / product name list for zero-token regex extraction from article text.
+# Ordered longest-match-first to avoid 'Cisco' matching before 'Cisco IOS XE'.
+_KNOWN_PRODUCTS: list = [
+    "Palo Alto PAN-OS", "Palo Alto Networks",
+    "Fortinet FortiOS", "Fortinet FortiGate", "Fortinet",
+    "Cisco IOS XE", "Cisco ASA", "Cisco Meraki", "Cisco NX-OS", "Cisco",
+    "Ivanti Connect Secure", "Ivanti Pulse Secure", "Ivanti",
+    "Microsoft Exchange", "Microsoft SharePoint", "Microsoft Teams",
+    "Microsoft Windows", "Microsoft Azure", "Microsoft 365", "Microsoft",
+    "VMware ESXi", "VMware vCenter", "VMware",
+    "Apache Log4j", "Apache Struts", "Apache Tomcat", "Apache HTTP Server", "Apache",
+    "Atlassian Confluence", "Atlassian Jira", "Atlassian",
+    "GitLab", "GitHub Actions",
+    "Jenkins", "TeamCity",
+    "OpenSSH", "OpenSSL",
+    "MOVEit Transfer", "MOVEit",
+    "Progress Software",
+    "Citrix ADC", "Citrix Gateway", "Citrix",
+    "F5 BIG-IP", "F5 Networks",
+    "SolarWinds Orion", "SolarWinds",
+    "Juniper Junos", "Juniper Networks",
+    "Check Point",
+    "Barracuda ESG", "Barracuda",
+    "Zimbra",
+    "Pulse Connect Secure",
+    "SAP NetWeaver", "SAP",
+    "Oracle WebLogic", "Oracle",
+    "JetBrains TeamCity", "JetBrains",
+    "Kubernetes", "Docker", "containerd",
+    "Nginx", "HAProxy",
+    "Redis", "Elasticsearch", "MongoDB",
+    "PHP", "Python", "Node.js", "Java",
+    "Chrome", "Firefox", "Safari", "Edge",
+    "Android", "iOS", "macOS",
+    "Linux kernel", "Linux",
+    "Windows Server", "Windows 11", "Windows 10",
+    "GPT-4", "ChatGPT", "Claude", "Gemini",
+    "AWS", "Azure", "GCP", "Google Cloud",
+]
+_VERSION_RE = re.compile(
+    r"\b(v?\d{1,3}\.\d{1,4}(?:\.\d{1,4}){0,2}(?:[.-][a-zA-Z0-9]+)?)\b"
+)
+_DATE_RE = re.compile(
+    r"\b(20(?:2[3-9]|3[0-9])-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01]))\b"
+)
+
+
+def _enrich_cards_from_sources(cards: list, all_items: list) -> None:
+    """Zero-token enrichment pass: correlate cards back to source article text.
+
+    For each card, locates the original fetched articles whose URLs match the
+    card's cited references, then runs lightweight regex extraction to surface:
+    - CVE IDs found in article text (beyond what Groq cited)
+    - Software product / vendor mentions from a curated list
+    - Version strings (v1.2.3 patterns)
+    - Article publication dates
+    - First meaningful sentence from the article (the 'lede')
+
+    All extracted data is appended to card['enrichment'] as structured fields.
+    No network calls, no model calls — purely in-memory over already-fetched text.
+    """
+    if not all_items:
+        return
+
+    # Build fast lookup: url -> item (for text retrieval)
+    url_to_item: dict = {it.get("url", ""): it for it in all_items if it.get("url")}
+
+    for card in cards:
+        if not isinstance(card, dict):
+            continue
+        refs = card.get("sources", {}).get("primary", [])
+        ref_urls = [r.get("url", "") for r in refs if isinstance(r, dict) and r.get("url")]
+
+        # Collect all article text available for this card
+        corpus_parts: list = []
+        article_dates: list = []
+        for url in ref_urls:
+            item = url_to_item.get(url)
+            if not item:
+                continue
+            text = (item.get("extracted_text", "") or item.get("summary", "") or "")[:1500]
+            title = item.get("title", "")
+            pub = item.get("published_at", "") or item.get("pub_date", "")
+            if text:
+                corpus_parts.append(f"{title}. {text}")
+            if pub:
+                article_dates.append(str(pub)[:10])
+
+        if not corpus_parts:
+            # No source text available — still mark enrichment attempted
+            card["enrichment"] = {"source_count": 0}
+            continue
+
+        corpus = " ".join(corpus_parts)
+
+        # CVEs from article text (supplement Groq-cited ones)
+        corpus_cves = sorted(set(_extract_cves(corpus)))
+        card_cves = sorted(set(_extract_cves(card.get("title", "") + " " + card.get("summary", ""))))
+        extra_cves = [c for c in corpus_cves if c not in card_cves]
+
+        # Product/vendor mentions (longest match first, deduplicated)
+        found_products: list = []
+        seen_lower: set = set()
+        corpus_lower = corpus.lower()
+        for prod in _KNOWN_PRODUCTS:
+            if prod.lower() in corpus_lower and prod.lower() not in seen_lower:
+                found_products.append(prod)
+                # Mark any shorter sub-string as already covered
+                for part in prod.split():
+                    seen_lower.add(part.lower())
+                seen_lower.add(prod.lower())
+
+        # Version strings
+        versions = list(dict.fromkeys(_VERSION_RE.findall(corpus)))[:6]
+
+        # Dates in article text
+        text_dates = list(dict.fromkeys(_DATE_RE.findall(corpus)))[:4]
+        all_dates = sorted(set(article_dates + text_dates), reverse=True)[:4]
+
+        # Lede: first sentence ≥ 40 chars from the article body
+        lede = ""
+        for part in corpus_parts:
+            for sent in re.split(r"(?<=[.!?])\s+", part):
+                sent = sent.strip()
+                if len(sent) >= 40:
+                    lede = sent[:280]
+                    break
+            if lede:
+                break
+
+        card["enrichment"] = {
+            "source_count": len(corpus_parts),
+            "cves": card_cves + extra_cves,
+            "extra_cves": extra_cves,
+            "products": found_products[:8],
+            "versions": versions,
+            "dates": all_dates,
+            "lede": lede,
+        }
+
+
 def _findings_to_cards(findings: list, all_items: list = None) -> list:
     url_to_country: dict = {}
     domain_to_country: dict = {}
@@ -532,7 +673,9 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                 },
             }
         )
-    return sorted(cards, key=lambda c: c["risk_score"], reverse=True)
+    result = sorted(cards, key=lambda c: c["risk_score"], reverse=True)
+    _enrich_cards_from_sources(result, all_items)
+    return result
 
 
 def _compute_delta(current_cards: list, last_cards: list) -> dict:
