@@ -11,7 +11,7 @@ budgets:
   seen_ttl_days: 14
 
 runtime:
-  placeholder_mode_default: false  # use real feeds; set WATCHTOWER_PLACEHOLDER_MODE=true for local dev
+  placeholder_mode_default: true  # local default; CI sets WATCHTOWER_PLACEHOLDER_MODE=false for real runs
 
 feeds:
   - id: nvd

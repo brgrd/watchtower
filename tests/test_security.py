@@ -19,9 +19,9 @@ pytestmark = pytest.mark.unit
 
 
 class TestIsPrivateHostEdgeCases:
-    def test_172_prefix_blocked(self):
-        # 172.x.x.x is in PRIVATE_PREFIXES
-        assert is_private_host("https://172.99.0.1/api") is True
+    def test_public_172_outside_rfc1918_not_blocked(self):
+        # Only 172.16.0.0/12 is private. 172.99.0.1 is public and should pass.
+        assert is_private_host("https://172.99.0.1/api") is False
 
     def test_subdomain_of_local_blocked(self):
         assert is_private_host("https://dev.myapp.local/secret") is True
@@ -33,9 +33,8 @@ class TestIsPrivateHostEdgeCases:
         # IPv6 URIs require bracket notation: https://[::1]/path
         assert is_private_host("https://[::1]/ipv6") is True
 
-    def test_localhost_hostname_not_explicitly_blocked(self):
-        # "localhost" is not in PRIVATE_PREFIXES and doesn't end in .local/.lan
-        # but 127.0.0.1 IS blocked; document this behaviour
+    def test_localhost_hostname_blocked(self):
+        assert is_private_host("https://localhost/api") is True
         assert is_private_host("https://127.0.0.1/api") is True
 
     def test_public_ip_allowed(self):

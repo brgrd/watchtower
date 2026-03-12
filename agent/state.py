@@ -5,6 +5,7 @@ import json
 import os
 import re
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 
 import yaml
 
@@ -49,20 +50,72 @@ def _extract_cves(s: str) -> list:
 
 def load_seen(seen_file: str) -> set:
     d = load_json(seen_file, {"hashes": []})
-    return set(d.get("hashes", []))
+    seen_map = d.get("seen")
+    if isinstance(seen_map, dict):
+        return {str(k): str(v) for k, v in seen_map.items() if k}
+
+    # Backward compatibility with legacy {"hashes": [...]} schema.
+    hashes = [str(h) for h in d.get("hashes", []) if h]
+    ts = now_utc_iso()
+    return {h: ts for h in hashes}
 
 
 def _purge_seen_ttl(seen: set, ttl_days: int = 7) -> set:
     ttl_cap = CONFIG.get("budgets", {}).get("seen_ttl_days", ttl_days)
     max_size = ttl_cap * 2000
+    if isinstance(seen, dict):
+        cutoff = datetime.now(timezone.utc) - timedelta(days=ttl_cap)
+
+        def _parse_ts(ts: str):
+            try:
+                return datetime.fromisoformat(str(ts))
+            except Exception:
+                return None
+
+        rows = []
+        for h, ts in seen.items():
+            dt = _parse_ts(ts)
+            if dt is not None and dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            if dt is not None and dt < cutoff:
+                continue
+            # Invalid timestamps are kept but rank as oldest deterministically.
+            order_ts = dt or datetime.min.replace(tzinfo=timezone.utc)
+            rows.append((str(h), str(ts), order_ts))
+
+        # Deterministic ordering: oldest -> newest, then hash.
+        rows.sort(key=lambda x: (x[2], x[0]))
+        if len(rows) > max_size:
+            rows = rows[-max_size:]
+        return {h: ts for h, ts, _ in rows}
+
     if len(seen) > max_size:
-        return set(list(seen)[-max_size:])
+        # Deterministic fallback for legacy set callers.
+        return set(sorted(seen)[-max_size:])
     return seen
 
 
 def save_seen(seen_file: str, seen: set):
     seen = _purge_seen_ttl(seen)
-    save_json(seen_file, {"hashes": list(seen)[-50_000:]})
+    if isinstance(seen, dict):
+        keys_sorted = sorted(seen.keys())
+        if len(keys_sorted) > 50_000:
+            keys_sorted = keys_sorted[-50_000:]
+        seen_trimmed = {k: seen[k] for k in keys_sorted}
+        save_json(
+            seen_file,
+            {
+                "version": 2,
+                "seen": seen_trimmed,
+                "hashes": keys_sorted,
+            },
+        )
+        return
+
+    keys_sorted = sorted(seen)
+    if len(keys_sorted) > 50_000:
+        keys_sorted = keys_sorted[-50_000:]
+    save_json(seen_file, {"version": 1, "hashes": keys_sorted})
 
 
 def item_hash(item: dict) -> str:
@@ -71,6 +124,18 @@ def item_hash(item: dict) -> str:
 
 def deduplicate(items: list, seen: set):
     fresh = []
+    if isinstance(seen, dict):
+        ts = now_utc_iso()
+        for it in items:
+            h = item_hash(it)
+            if h in seen:
+                # Refresh recency for deterministic pruning.
+                seen[h] = ts
+                continue
+            seen[h] = ts
+            fresh.append(it)
+        return fresh, seen
+
     for it in items:
         h = item_hash(it)
         if h in seen:
@@ -115,7 +180,11 @@ def _prune_old_briefings(reports_dir: str, keep_days: int = 10) -> None:
 
 
 def _load_history_days(reports_dir: str, n: int = 7) -> list:
-    ET_OFFSET = timedelta(hours=5)
+    try:
+        et_tz = ZoneInfo("America/New_York")
+    except Exception:
+        # Fallback for environments lacking system tzdata (e.g., minimal Windows Python installs).
+        et_tz = timezone(timedelta(hours=-5))
     runs: list = []
     if not os.path.isdir(reports_dir):
         return []
@@ -130,7 +199,7 @@ def _load_history_days(reports_dir: str, n: int = 7) -> list:
             pass
     days_map: dict = {}
     for dt, fp in runs:
-        et_date = (dt - ET_OFFSET).strftime("%Y-%m-%d")
+        et_date = dt.astimezone(et_tz).strftime("%Y-%m-%d")
         existing = days_map.get(et_date)
         if existing is None or dt > existing[0]:
             days_map[et_date] = (dt, fp)

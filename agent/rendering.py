@@ -3,6 +3,7 @@
 import html
 import json
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 
 from agent.ingest import placeholder_mode
 from agent.scoring import (
@@ -131,7 +132,11 @@ def _write_index_html(
         for c in cards
     ]
 
-    _today_et = (datetime.now(timezone.utc) - timedelta(hours=5)).strftime("%Y-%m-%d")
+    try:
+        et_tz = ZoneInfo("America/New_York")
+    except Exception:
+        et_tz = timezone(timedelta(hours=-5))
+    _today_et = datetime.now(timezone.utc).astimezone(et_tz).strftime("%Y-%m-%d")
     history_section = _build_history_accordion(history_days or [], today_str=_today_et)
 
     page_html = f"""<!doctype html>

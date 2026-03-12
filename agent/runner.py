@@ -15,6 +15,7 @@ import sys
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
+from ipaddress import ip_address
 
 import feedparser
 import requests
@@ -130,9 +131,24 @@ BLOCKED_CT_PREFIXES = (
 
 def is_private_host(url: str) -> bool:
     host = requests.utils.urlparse(url).hostname or ""
+    host_l = host.lower()
+    if host_l == "localhost" or host_l.endswith(".localhost"):
+        return True
     if host.endswith(".local") or host.endswith(".lan"):
         return True
-    return host.startswith(PRIVATE_PREFIXES) or host == "::1"
+    try:
+        ip = ip_address(host)
+    except ValueError:
+        return False
+
+    return (
+        ip.is_private
+        or ip.is_loopback
+        or ip.is_link_local
+        or ip.is_multicast
+        or ip.is_unspecified
+        or ip.is_reserved
+    )
 
 
 def fetch_url(url: str, timeout=10, max_redirects=5) -> str:
@@ -2422,8 +2438,6 @@ _write_index_html = rendering_mod._write_index_html
 # Main
 # -----------------------------
 def _run():
-    from agent.planning import dispatch_plan
-
     os.makedirs(REPORTS_DIR, exist_ok=True)
     os.makedirs(STATE_DIR, exist_ok=True)
 
@@ -2467,16 +2481,8 @@ def _run():
     for it in polled:
         it.setdefault("first_seen_at", first_seen)
 
-    polled = dispatch_plan(
-        {"steps": [{"tool": "CLUSTER", "args": {"window_hours": since_hours}}]},
-        polled,
-        ignore,
-        budgets,
-        since_hours,
-        run_deadline,
-        feeds_cfg,
-        poll_feed,
-    )
+    # Planner indirection removed: keep runtime path direct until model-driven
+    # planning is introduced with explicit tests and contracts.
 
     enriched = []
     candidates = [it for it in polled if not is_ignored(ignore, it["url"])][

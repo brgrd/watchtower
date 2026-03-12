@@ -180,6 +180,20 @@ class TestDeduplication:
         small = {"a", "b", "c"}
         assert _purge_seen_ttl(small, ttl_days=7) == small
 
+    def test_deduplicate_supports_timestamped_seen_map(self, sample_item):
+        seen_map = {}
+        fresh, seen_map = deduplicate([sample_item], seen_map)
+        assert len(fresh) == 1
+        h = item_hash(sample_item)
+        assert h in seen_map
+        assert "T" in seen_map[h]
+
+    def test_seen_map_duplicate_refreshes_timestamp(self, sample_item):
+        seen_map = {item_hash(sample_item): "2020-01-01T00:00:00+00:00"}
+        fresh, updated = deduplicate([sample_item], seen_map)
+        assert fresh == []
+        assert updated[item_hash(sample_item)] != "2020-01-01T00:00:00+00:00"
+
 
 # ── text helpers ──────────────────────────────────────────────────────────────
 

@@ -3,6 +3,7 @@
 import os
 import time
 from datetime import datetime, timedelta, timezone
+from ipaddress import ip_address
 
 import feedparser
 import requests
@@ -35,9 +36,24 @@ def placeholder_mode() -> bool:
 
 def is_private_host(url: str) -> bool:
     host = requests.utils.urlparse(url).hostname or ""
+    host_l = host.lower()
+    if host_l == "localhost" or host_l.endswith(".localhost"):
+        return True
     if host.endswith(".local") or host.endswith(".lan"):
         return True
-    return host.startswith(PRIVATE_PREFIXES) or host == "::1"
+    try:
+        ip = ip_address(host)
+    except ValueError:
+        return False
+
+    return (
+        ip.is_private
+        or ip.is_loopback
+        or ip.is_link_local
+        or ip.is_multicast
+        or ip.is_unspecified
+        or ip.is_reserved
+    )
 
 
 def fetch_url(url: str, timeout=10, max_redirects=5) -> str:
