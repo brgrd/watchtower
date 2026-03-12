@@ -717,10 +717,34 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
 _TAXONOMY = CONFIG.get("domain_taxonomy", {})
 
 
+# Buckets checked first before the broad os_kernel catch-all fires on generic signals
+_DOMAIN_PRIORITY_FIRST = [
+    "ai_threat",
+    "ca_trust",
+    "browser_ext",
+    "pkg_npm",
+    "pkg_pypi",
+    "pkg_maven",
+    "pkg_nuget",
+    "pkg_gem",
+    "container",
+    "cloud_iam",
+    "supply_chain",
+    "identity",
+    "crypto_lib",
+    "web_framework",
+]
+
+
 def classify_domains(item: dict) -> list:
     txt = (item.get("title", "") + " " + item.get("summary", "")).lower()
     matched = []
-    for bucket, cfg in _TAXONOMY.items():
+    # Check priority-ordered buckets first, then remaining taxonomy keys
+    ordered = _DOMAIN_PRIORITY_FIRST + [
+        k for k in _TAXONOMY if k not in _DOMAIN_PRIORITY_FIRST
+    ]
+    for bucket in ordered:
+        cfg = _TAXONOMY.get(bucket, {})
         if any(sig.lower() in txt for sig in cfg.get("signals", [])):
             matched.append(bucket)
     return matched or ["uncategorised"]
@@ -1111,6 +1135,7 @@ def _sparkline_svg(
 
 _TM_NODES: dict = {
     # key: (cx, cy, display_label)   — radial mesh, no dominant axis
+    "ai_threat": (680, 68, "AI / ML Threats"),
     "identity": (534, 132, "Identity / Auth"),
     "ca_trust": (345, 184, "CA / PKI"),
     "cloud_iam": (737, 197, "Cloud / IAM"),
@@ -1129,6 +1154,9 @@ _TM_NODES: dict = {
 }
 
 _TM_EDGES: list = [
+    ("ai_threat", "cloud_iam"),
+    ("ai_threat", "supply_chain"),
+    ("ai_threat", "identity"),
     ("supply_chain", "pkg_npm"),
     ("supply_chain", "pkg_pypi"),
     ("supply_chain", "pkg_maven"),
@@ -1189,7 +1217,7 @@ def _derive_priority(card: dict) -> str:
     return "P3"
 
 
-def _build_threat_map_svg(cards: list, heatmap: dict) -> str:
+def _build_threat_map_svg(cards: list, heatmap: dict, velocity: dict = None) -> str:
     """Return an inline SVG constellation threat map, heat-coloured by domain activity."""
     # Raw per-domain heat score
     raw: dict[str, int] = {}
@@ -1290,16 +1318,26 @@ def _build_threat_map_svg(cards: list, heatmap: dict) -> str:
 
     # Nodes
     node_id = 0
+    _vel = velocity or {}
     for key, (cx, cy, lbl) in _TM_NODES.items():
         s = scores[key]
         outer, ring_color = _heat(s)
         R = 24
         lf = "#e6e6e6" if s >= 20 else "#888"
+        _accel_glow = (
+            f'<circle cx="{cx}" cy="{cy}" r="{R+20}" '
+            f'fill="rgba(220,120,30,0.09)" filter="url(#f-outer)"/>'
+            if _vel.get(key) == "\u2191\u21911"
+            else ""
+        )
 
         p.append(
             f'<g class="tm-node" data-domain="{key}" '
             f'onclick="selectDomain(\'{key}\')" style="cursor:pointer">'
         )
+        # Velocity acceleration glow (orange halo for accelerating domains)
+        if _accel_glow:
+            p.append(_accel_glow)
         # Layer 1: Outer aura — large fill, heavy blur, sits BEHIND disc
         p.append(
             f'<circle cx="{cx}" cy="{cy}" r="{R+14}" fill="{outer}" filter="url(#f-outer)"/>'
@@ -1333,8 +1371,41 @@ def _build_threat_map_svg(cards: list, heatmap: dict) -> str:
     return "\n".join(p)
 
 
-def _build_domain_rank_html(cards: list, heatmap: dict) -> str:
+def _compute_velocity(history_days: list) -> dict:
+    """Return {domain_key: accel_label} for domains with notable acceleration.
+    accel_label is one of '\u2191\u21911', '\u21911', '\u21931' (rising fast, rising, falling).
+    Requires at least 4 days of history; returns {} otherwise.
+    """
+    if not history_days or len(history_days) < 4:
+        return {}
+    # history_days is sorted newest-first; take up to 7
+    days = list(reversed(history_days[:7]))  # oldest-first for computation
+    domain_series: dict = {k: [] for k in _TM_NODES}
+    for day in days:
+        day_cards = day.get("cards", [])
+        for key in domain_series:
+            domain_series[key].append(
+                sum(1 for c in day_cards if key in c.get("domains", []))
+            )
+    result = {}
+    for key, series in domain_series.items():
+        if len(series) < 4:
+            continue
+        recent = sum(series[-2:]) / 2
+        prior = sum(series[-4:-2]) / 2
+        delta = recent - prior
+        if delta >= 3:
+            result[key] = "\u2191\u21911"  # ↑↑
+        elif delta >= 1.5:
+            result[key] = "\u21911"  # ↑
+        elif delta <= -1.5:
+            result[key] = "\u21931"  # ↓
+    return result
+
+
+def _build_domain_rank_html(cards: list, heatmap: dict, velocity: dict = None) -> str:
     """Ranked domain bar list for the threat map side panel."""
+    velocity = velocity or {}
     rows: list[str] = []
     domain_scores: list[tuple] = []
     for key, (_, _, lbl) in _TM_NODES.items():
@@ -1365,11 +1436,25 @@ def _build_domain_rank_html(cards: list, heatmap: dict) -> str:
         bcol = bar_colors[bidx]
         lc = "#8a3030" if sc >= 85 else "#6a8898"
         vc = "#5a2020" if sc >= 85 else "#3a5568"
+        vel = velocity.get(key, "")
+        vel_html = (
+            f'<span class="vel-chip vel-up2" title="Accelerating">{vel}</span>'
+            if vel == "\u2191\u21911"
+            else (
+                f'<span class="vel-chip vel-up1" title="Rising">{vel}</span>'
+                if vel == "\u21911"
+                else (
+                    f'<span class="vel-chip vel-dn" title="Falling">{vel}</span>'
+                    if vel == "\u21931"
+                    else ""
+                )
+            )
+        )
         rows.append(
             f'<div class="rank-row" onclick="selectDomain(\'{key}\')">'
             f'<span class="rank-label" style="color:{lc}" title="{lbl}">{lbl}</span>'
             f'<div class="rank-bar-wrap"><div class="rank-bar" style="width:{pct}%;background:{bcol}"></div></div>'
-            f'<span class="rank-val" style="color:{vc}">{sc}</span>'
+            f'{vel_html}<span class="rank-val" style="color:{vc}">{sc}</span>'
             f"</div>"
         )
     if not rows:
@@ -1388,6 +1473,85 @@ def _build_domain_rank_html(cards: list, heatmap: dict) -> str:
 # -----------------------------
 # P3: 7-day history helpers
 # -----------------------------
+def _build_calendar_html(history_days: list) -> str:
+    """Build a 14-cell threat heatmap calendar from history_days (newest-first)."""
+    if not history_days:
+        return ""
+    # Build a lookup: date_str -> {max_risk, count, p1}
+    day_map: dict = {}
+    for day in history_days:
+        ds = day.get("date_str", "")
+        cards = day.get("cards", [])
+        if not ds:
+            continue
+        day_map[ds] = {
+            "max_risk": max((c.get("risk_score", 0) for c in cards), default=0),
+            "count": len(cards),
+            "p1": sum(1 for c in cards if _derive_priority(c) == "P1"),
+        }
+    # Produce cells for the last 14 days (today back), oldest→newest
+    today = (datetime.now(timezone.utc) - timedelta(hours=5)).date()
+    cells = []
+    for i in range(13, -1, -1):
+        d = today - timedelta(days=i)
+        ds = d.strftime("%Y-%m-%d")
+        info = day_map.get(ds)
+        if not info:
+            color = "#1a1a1a"
+            border = "#252525"
+            tip = f"{ds} — no data"
+        else:
+            risk = info["max_risk"]
+            count = info["count"]
+            p1 = info["p1"]
+            tip = f"{ds} · {count} finding{'s' if count != 1 else ''}"
+            if p1:
+                tip += f" · {p1} P1"
+            tip += f" · peak risk {risk}"
+            if risk >= 80:
+                color, border = "rgba(170,28,28,.55)", "rgba(220,50,50,.4)"
+            elif risk >= 60:
+                color, border = "rgba(158,106,3,.50)", "rgba(210,153,34,.4)"
+            elif risk >= 30:
+                color, border = "rgba(30,80,160,.50)", "rgba(58,130,246,.4)"
+            else:
+                color, border = "rgba(35,90,35,.45)", "rgba(56,160,56,.35)"
+        label = d.strftime("%d")
+        cells.append(
+            f'<div class="cal-cell" style="background:{color};border:1px solid {border}" '
+            f'title="{tip}" aria-label="{tip}">'
+            f'<span class="cal-day">{label}</span>'
+            f"</div>"
+        )
+    month_labels = ""
+    prev_month = ""
+    for i in range(13, -1, -1):
+        d = today - timedelta(days=i)
+        m = d.strftime("%b")
+        if m != prev_month:
+            month_labels += (
+                f'<span class="cal-month-label" style="grid-column:span 1">{m}</span>'
+            )
+            prev_month = m
+        else:
+            month_labels += '<span class="cal-month-label"></span>'
+    return (
+        '<section class="cal-section">'
+        '<div class="cal-header">'
+        '<span class="cal-title">14-Day Threat Heatmap</span>'
+        '<span class="cal-legend">'
+        '<span class="cal-legend-item" style="background:rgba(170,28,28,.55)">80+</span>'
+        '<span class="cal-legend-item" style="background:rgba(158,106,3,.5)">60+</span>'
+        '<span class="cal-legend-item" style="background:rgba(30,80,160,.5)">30+</span>'
+        '<span class="cal-legend-item" style="background:rgba(35,90,35,.45)">&lt;30</span>'
+        '<span class="cal-legend-item" style="background:#1a1a1a">—</span>'
+        "</span>"
+        "</div>"
+        f'<div class="cal-grid">{"" .join(cells)}</div>'
+        "</section>"
+    )
+
+
 def _prune_old_briefings(reports_dir: str, keep_days: int = 10) -> None:
     """Delete briefing_*.jsonl and briefing_*.md files older than keep_days."""
     cutoff = datetime.now(timezone.utc) - timedelta(days=keep_days)
@@ -1684,6 +1848,7 @@ def _write_index_html(
     feed_health: dict = None,
     run_metrics: dict = None,
     feed_run_metrics: dict = None,
+    velocity: dict = None,
 ):
     # KPI stats
     total_findings = len(cards)
@@ -1785,11 +1950,12 @@ def _write_index_html(
             f"</tr>"
         )
 
-    threat_svg = _build_threat_map_svg(cards, heatmap)
-    domain_rank_html = _build_domain_rank_html(cards, heatmap)
+    threat_svg = _build_threat_map_svg(cards, heatmap, velocity=velocity)
+    domain_rank_html = _build_domain_rank_html(cards, heatmap, velocity=velocity)
 
     _today_et = (datetime.now(timezone.utc) - timedelta(hours=5)).strftime("%Y-%m-%d")
     history_section = _build_history_accordion(history_days or [], today_str=_today_et)
+    calendar_html = _build_calendar_html(history_days or [])
 
     # --- Delta strip ---
     delta_strip_html = ""
@@ -1916,14 +2082,21 @@ def _write_index_html(
             if _cve_list
             else ""
         )
+        _tactic = c.get("tactic_name", "")
+        tactic_chip_html = (
+            f'<span class="tactic-chip">{html.escape(_tactic)}</span>'
+            if _tactic
+            else ""
+        )
         rows += f"""
-                <details class="cluster" data-domains="{html.escape(domains_attr)}">
+                <details class="cluster" data-domains="{html.escape(domains_attr)}" data-tactic="{html.escape(_tactic)}">
                     <summary>
                         <span class="badge" style="background:{badge_bg};color:{badge_fg}">{c['risk_score']}</span>
                         <span class="priority {pri_cls}">{pri}</span>
                         {patch_badge_html}
                         {hp_badge_html}
                         {cve_badge_html}
+                        {tactic_chip_html}
                         {html.escape(c['title'])}
                         <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline">{tags}</div>
                     </summary>
@@ -2015,6 +2188,40 @@ def _write_index_html(
             </table>
         </section>
     """
+
+    # --- MITRE tactic filter strip ---
+    _MITRE_TACTICS = [
+        "Reconnaissance",
+        "Resource Development",
+        "Initial Access",
+        "Execution",
+        "Persistence",
+        "Privilege Escalation",
+        "Defense Evasion",
+        "Credential Access",
+        "Discovery",
+        "Lateral Movement",
+        "Collection",
+        "Command & Control",
+        "Exfiltration",
+        "Impact",
+    ]
+    active_tactics = {c.get("tactic_name", "") for c in cards if c.get("tactic_name")}
+    tactic_buttons = "".join(
+        f'<button class="tactic-btn{" tactic-btn--active" if t in active_tactics else ""}" '
+        f'data-tactic="{html.escape(t)}" type="button">{html.escape(t)}</button>'
+        for t in _MITRE_TACTICS
+    )
+    tactic_strip_html = (
+        (
+            f'<div class="tactic-strip" id="tactic-strip">'
+            f'<button class="tactic-btn tactic-btn--all tactic-btn--active" data-tactic="all" type="button">All Tactics</button>'
+            f"{tactic_buttons}"
+            f"</div>"
+        )
+        if active_tactics
+        else ""
+    )
 
     card_data = []
     for c in cards:
@@ -2113,6 +2320,25 @@ p{{color:#c9d1d9}}
 .rm-chip{{font-size:.68rem;padding:2px 7px;border-radius:999px;border:1px solid #333;background:#181818;color:#aaa}}
 .rm-ok{{color:#3fb950;border-color:rgba(35,134,54,.35);background:rgba(35,134,54,.08)}}
 .rm-fail{{color:#f85149;border-color:rgba(170,28,28,.35);background:rgba(170,28,28,.08)}}
+.vel-chip{{font-size:.62rem;font-weight:800;padding:0 3px;flex-shrink:0}}
+.vel-up2{{color:#f0883e}}
+.vel-up1{{color:#d29922}}
+.vel-dn{{color:#3fb950}}
+.cal-section{{margin:0 0 1rem}}
+.cal-header{{display:flex;align-items:center;justify-content:space-between;margin-bottom:.35rem;flex-wrap:wrap;gap:.3rem}}
+.cal-title{{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#8b949e}}
+.cal-legend{{display:flex;align-items:center;gap:.3rem;flex-wrap:wrap}}
+.cal-legend-item{{display:inline-block;width:14px;height:14px;border-radius:3px;font-size:.58rem;line-height:14px;text-align:center;color:rgba(255,255,255,.65)}}
+.cal-grid{{display:grid;grid-template-columns:repeat(14,1fr);gap:4px}}
+.cal-cell{{aspect-ratio:1;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:default;transition:transform .1s,filter .1s}}
+.cal-cell:hover{{transform:scale(1.12);filter:brightness(1.25)}}
+.cal-day{{font-size:.6rem;color:rgba(255,255,255,.55);font-weight:600;pointer-events:none}}
+.tactic-strip{{display:flex;flex-wrap:wrap;gap:5px;margin:.3rem 0 .55rem;padding:.45rem 0;border-top:1px solid #252525;border-bottom:1px solid #252525}}
+.tactic-btn{{background:#181818;border:1px solid #2a2a2a;color:#5a6a7a;font-size:.67rem;padding:2px 9px;border-radius:999px;cursor:pointer;transition:background .12s,color .12s}}
+.tactic-btn:hover{{background:#252525;color:#aaa}}
+.tactic-btn--active{{background:rgba(30,80,160,.18);border-color:rgba(58,130,246,.35);color:#79b8ff}}
+.tactic-btn--all.tactic-btn--active{{background:rgba(50,50,50,.25);border-color:#555;color:#c9d1d9}}
+.tactic-chip{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(88,130,240,.12);color:#6ea8fe;border:1px solid rgba(88,130,240,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0}}
 .hp-badge{{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.04em;border-radius:3px;padding:1px 7px;margin-left:.45rem;vertical-align:middle;text-transform:uppercase;background:rgba(139,92,246,.15);color:#a78bfa;border:1px solid rgba(139,92,246,.3)}}
 .hp-panel{{background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:6px;padding:.65rem 1rem .7rem;margin:.2rem 0 1rem}}
 .hp-panel-title{{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#a78bfa;margin-bottom:.5rem}}
@@ -2266,7 +2492,9 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
   </div>
 </section>
 {history_section}
+{calendar_html}
 {weekly_html}
+{tactic_strip_html}
 <h2>Top Findings</h2>
 <div class="findings-filter">
   <input type="search" id="findings-search" class="findings-search" placeholder="Search findings\u2026" aria-label="Search findings" />
@@ -2497,19 +2725,28 @@ function selectDomain(domain){{
 }})();
 function initFindingsFilter(){{
   var inp=document.getElementById('findings-search');
-  if(!inp)return;
   var allClusters=Array.from(document.querySelectorAll('.cluster'));
-  inp.addEventListener('input',function(){{
-    var q=inp.value.trim().toLowerCase();
+  var currentTactic='all';
+  function applyFilters(){{
+    var q=inp?inp.value.trim().toLowerCase():'';
     var visible=0;
     allClusters.forEach(function(el){{
       var inDomain=CURRENT_DOMAIN==='all'||(el.getAttribute('data-domains')||'').split(/\\s+/).indexOf(CURRENT_DOMAIN)>=0;
+      var inTactic=currentTactic==='all'||(el.getAttribute('data-tactic')||'')=== currentTactic;
       var inSearch=!q||el.textContent.toLowerCase().includes(q);
-      el.style.display=(inDomain&&inSearch)?'':'none';
-      if(inDomain&&inSearch)visible++;
+      el.style.display=(inDomain&&inTactic&&inSearch)?'':'none';
+      if(inDomain&&inTactic&&inSearch)visible++;
     }});
     var cnt=document.getElementById('findings-count');
-    if(cnt)cnt.textContent=q?visible+' of '+allClusters.length+' shown':'';
+    if(cnt)cnt.textContent=(q||currentTactic!=='all')?visible+' of '+allClusters.length+' shown':'';
+  }}
+  if(inp)inp.addEventListener('input',applyFilters);
+  document.querySelectorAll('.tactic-btn').forEach(function(btn){{
+    btn.addEventListener('click',function(){{
+      currentTactic=btn.getAttribute('data-tactic');
+      document.querySelectorAll('.tactic-btn').forEach(function(b){{b.classList.toggle('tactic-btn--active',b===btn);}});
+      applyFilters();
+    }});
   }});
 }}
 initRightRail();
@@ -2826,6 +3063,7 @@ def _run():
     history = _read_ledger_history()
     _prune_old_briefings(REPORTS_DIR)
     history_days = _load_history_days(REPORTS_DIR)
+    velocity = _compute_velocity(history_days)
     aggregate = _rebuild_weekly_aggregate(REPORTS_DIR, days=history_days)
     weekly_summary = groq_weekly_review(aggregate)
     _today_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -2852,6 +3090,7 @@ def _run():
         feed_health=feed_health,
         run_metrics=run_metrics,
         feed_run_metrics=feed_run_metrics,
+        velocity=velocity,
     )
 
     save_json(

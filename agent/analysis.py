@@ -235,9 +235,14 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
         for it in news_items[:12]
     ]
     domain_keys = ", ".join(_TAXONOMY.keys())
+    mitre_tactics = (
+        "Reconnaissance, Resource Development, Initial Access, Execution, Persistence, "
+        "Privilege Escalation, Defense Evasion, Credential Access, Discovery, "
+        "Lateral Movement, Collection, Command & Control, Exfiltration, Impact"
+    )
     prompt = {
         "task": "infrasec_briefing",
-        "schema_version": "watchtower.groq.package.v1",
+        "schema_version": "watchtower.groq.package.v2",
         "reporting_window": reporting_window,
         "exploited_vulnerabilities": kev_block,
         "recent_cves": nvd_block,
@@ -248,16 +253,35 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
             "Review all inputs: exploited vulnerabilities (CISA KEV), recent CVEs (NVD), "
             "and news articles. Produce: "
             "(1) executive_summary: exactly 3 sentences grounded in the data provided. "
-            "Sentence 1 — name the 2-3 specific CVE IDs, software products, or vendor platforms "
-            "that represent the highest-risk items this period. "
-            "Sentence 2 — identify specific infrastructure resources most exposed. "
-            "Sentence 3 — state the most time-sensitive action with patch status. "
-            "(2) findings: JSON array of up to 12 distinct findings. "
-            "For each finding include title, summary, risk_score (0-100), domains from: "
+            "Sentence 1 \u2014 name the 2-3 specific CVE IDs, software products, or vendor platforms "
+            "that represent the highest-risk items this period (e.g. 'CVE-2026-XXXX in Palo Alto PAN-OS' "
+            "or 'Apache Tomcat RCE'). "
+            "Sentence 2 \u2014 identify which specific infrastructure resources or system types are most "
+            "exposed right now and why (e.g. internet-facing firewalls, container orchestration nodes, "
+            "VPN appliances), referencing patch or exploitation status from the data. "
+            "Sentence 3 \u2014 state the single most time-sensitive action: be specific about what to patch, "
+            "isolate, or monitor, name the affected product/version, and state whether a patch is "
+            "currently available or not. "
+            "Do NOT use vague language like 'various systems' or 'multiple vendors' \u2014 always name names. "
+            "Keep the summary anchored to the reporting window and only reference items present in the input data. "
+            "(2) findings: JSON array of up to 12 distinct threat or vulnerability findings. "
+            "For each finding: title (under 100 chars), summary (1-2 sentence analyst note "
+            "on what is affected, exploit/patch status, urgency), risk_score (integer 0-100: "
+            "base 40 for known CVE, +30 if actively exploited in the wild, +15 if PoC exists, "
+            "+15 if critical infrastructure), domains (array of matching keys from: "
             + domain_keys
-            + ", references, priority, why_now, recommended_actions_24h, "
-            "recommended_actions_7d, confidence. "
-            'Output ONLY strict JSON: {"executive_summary":"...","findings":[...]} '
+            + "), references (array of {title, url} \u2014 cite urls from any of the three input "
+            "blocks; 1-3 most relevant per finding), priority (P1|P2|P3), "
+            "why_now (short sentence), recommended_actions_24h (array up to 4), "
+            "recommended_actions_7d (array up to 3), confidence (0..1), "
+            f"tactic_name (ONE MITRE ATT&CK tactic that best describes how this threat operates, "
+            f"choose from: {mitre_tactics}), "
+            "technique_name (short technique label, e.g. 'Exploit Public-Facing Application'). "
+            'Output ONLY strict JSON, no markdown fences: {"executive_summary":"...",'
+            '"findings":[{"title":"...","summary":"...","risk_score":0,"domains":[],'
+            '"references":[{"title":"...","url":"..."}],"priority":"P2",'
+            '"why_now":"...","recommended_actions_24h":[],"recommended_actions_7d":[],'
+            '"confidence":0.6,"tactic_name":"Initial Access","technique_name":"..."}]}'
         ),
     }
 
@@ -416,6 +440,14 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                 "summary": summary,
                 "patch_status": patch_status,
                 "matched_targets": matched_targets,
+                "tactic_name": (
+                    str(f.get("tactic_name", ""))[:60] if f.get("tactic_name") else ""
+                ),
+                "technique_name": (
+                    str(f.get("technique_name", ""))[:80]
+                    if f.get("technique_name")
+                    else ""
+                ),
                 "sources": {
                     "primary": [
                         {

@@ -438,6 +438,10 @@ domain_taxonomy:
     label: "Supply Chain"
     icon: "sc"
     signals: ["supply chain", "typosquat", "malicious package", "dependency confusion", "repo hijack", "malicious", "backdoor", "trojan", "compromised", "poisoned", "solarwinds", "software bill", "sbom", "open source"]
+  ai_threat:
+    label: "AI / ML Threats"
+    icon: "ai"
+    signals: ["llm", "large language model", "generative ai", "prompt injection", "ai-assisted", "ai-generated", "ai generated", "model poisoning", "training data poison", "deepfake", "ai agent", "agentic attack", "openai", "anthropic", "chatgpt", "gpt-4", "gpt-3", "copilot exploit", "ai malware", "ai-powered attack", "ai-driven attack", "machine learning attack", "adversarial ml", "model inversion", "data exfiltration via llm", "jailbreak", "rag poisoning"]
   identity:
     label: "Identity / Auth"
     icon: "id"
