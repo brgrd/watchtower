@@ -1,15 +1,22 @@
 """Plan dispatcher for Watchtower."""
+
 import sys
 import time
 
 from agent.toolbelt import tool_add_feed
 
 
-def dispatch_plan(plan: dict, polled: list, ignore: dict, budgets: dict, since_hours: int, run_deadline: float) -> list:
-    from agent import runner
-
+def dispatch_plan(
+    plan: dict,
+    polled: list,
+    ignore: dict,
+    budgets: dict,
+    since_hours: int,
+    run_deadline: float,
+    feeds_cfg: list,
+    poll_feed_fn,
+) -> list:
     steps = plan.get("steps", [])
-    feeds_cfg = runner.CONFIG["feeds"]
     step_budget = budgets.get("max_agent_steps", 20)
 
     for i, step in enumerate(steps[:step_budget]):
@@ -25,7 +32,7 @@ def dispatch_plan(plan: dict, polled: list, ignore: dict, budgets: dict, since_h
             sh = int(args.get("since_hours", since_hours))
             for fcfg in feeds_cfg:
                 if fcfg.get("id") == feed_id and fcfg.get("enabled"):
-                    extra = runner.poll_feed(fcfg, sh, ignore)
+                    extra = poll_feed_fn(fcfg, sh, ignore)
                     polled.extend(extra)
                     print(f"[POLL_FEED] {feed_id}: +{len(extra)} items")
                     break
@@ -39,13 +46,16 @@ def dispatch_plan(plan: dict, polled: list, ignore: dict, budgets: dict, since_h
             )
             print(f"[ADD_FEED] {'OK' if ok else 'SKIP'}: {reason}")
             if ok:
-                extra = runner.poll_feed(feeds_cfg[-1], since_hours, ignore)
+                extra = poll_feed_fn(feeds_cfg[-1], since_hours, ignore)
                 polled.extend(extra)
 
         elif tool in ("CLUSTER", "SELECT_SOURCES"):
             pass
 
         else:
-            print(f"[WARN] Unknown plan tool '{tool}' at step {i} — skipped", file=sys.stderr)
+            print(
+                f"[WARN] Unknown plan tool '{tool}' at step {i} — skipped",
+                file=sys.stderr,
+            )
 
     return polled

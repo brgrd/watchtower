@@ -22,6 +22,11 @@ import tldextract
 import yaml
 from bs4 import BeautifulSoup
 
+from agent import analysis as analysis_mod
+from agent import rendering as rendering_mod
+from agent import scoring as scoring_mod
+from agent import state as state_mod
+
 ROOT = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -1766,6 +1771,7 @@ def _write_index_html(
     if hp_count:
         # Collect all matched targets across cards, count occurrences, sort by count desc
         from collections import Counter
+
         target_counter: Counter = Counter()
         for c in cards:
             for t in c.get("matched_targets", []):
@@ -1779,7 +1785,7 @@ def _write_index_html(
             f'<section class="hp-panel">'
             f'<div class="hp-panel-title">High-Profile Targets in This Window</div>'
             f'<div class="hp-chip-list">{chips_html}</div>'
-            f'</section>'
+            f"</section>"
         )
 
     rows = ""
@@ -1835,7 +1841,8 @@ def _write_index_html(
         _hp_targets = c.get("matched_targets", [])
         hp_badge_html = (
             f'<span class="hp-badge" title="{html.escape(", ".join(_hp_targets[:5]))}">High-Profile</span>'
-            if _hp_targets else ""
+            if _hp_targets
+            else ""
         )
         rows += f"""
                 <details class="cluster" data-domains="{html.escape(domains_attr)}">
@@ -2368,6 +2375,50 @@ selectDomain('all');
 
 
 # -----------------------------
+# Split-module bindings (prod path)
+# -----------------------------
+now_utc_iso = state_mod.now_utc_iso
+sha256 = state_mod.sha256
+load_json = state_mod.load_json
+save_json = state_mod.save_json
+append_jsonl = state_mod.append_jsonl
+load_seen = lambda: state_mod.load_seen(SEEN_FILE)
+save_seen = lambda seen: state_mod.save_seen(SEEN_FILE, seen)
+item_hash = state_mod.item_hash
+deduplicate = state_mod.deduplicate
+_purge_seen_ttl = state_mod._purge_seen_ttl
+_read_ledger_history = lambda n=20: state_mod._read_ledger_history(LEDGER_FILE, n)
+_prune_old_briefings = state_mod._prune_old_briefings
+_load_history_days = state_mod._load_history_days
+_rebuild_weekly_aggregate = (
+    lambda reports_dir, days=None: state_mod._rebuild_weekly_aggregate(
+        reports_dir, WEEKLY_AGGREGATE_FILE, days=days
+    )
+)
+
+_extract_cves = scoring_mod._extract_cves
+_compact_text = scoring_mod._compact_text
+_contains_any = scoring_mod._contains_any
+classify_domains = scoring_mod.classify_domains
+build_domain_heatmap = scoring_mod.build_domain_heatmap
+cluster_items = scoring_mod.cluster_items
+score_cluster = scoring_mod.score_cluster
+to_cluster_card = scoring_mod.to_cluster_card
+_heatmap_cell_color = scoring_mod._heatmap_cell_color
+_is_exploitish = scoring_mod._is_exploitish
+_derive_priority = scoring_mod._derive_priority
+
+groq_chat = analysis_mod.groq_chat
+groq_analyze_briefing = analysis_mod.groq_analyze_briefing
+_findings_to_cards = analysis_mod._findings_to_cards
+_compute_delta = analysis_mod._compute_delta
+groq_weekly_review = analysis_mod.groq_weekly_review
+
+_build_weekly_section = rendering_mod._build_weekly_section
+_write_index_html = rendering_mod._write_index_html
+
+
+# -----------------------------
 # Main
 # -----------------------------
 def _run():
@@ -2423,6 +2474,8 @@ def _run():
         budgets,
         since_hours,
         run_deadline,
+        feeds_cfg,
+        poll_feed,
     )
 
     enriched = []
