@@ -289,13 +289,12 @@ def _update_ioc_ledger(cards: list, ledger_file: str = None) -> dict:
     for card in cards:
         if not isinstance(card, dict):
             continue
-        iocs: dict = card.get("enrichment", {}).get("iocs", {})
+        iocs = card.get("enrichment", {}).get("iocs", [])
         card_title: str = card.get("title", "")[:80]
 
-        def _touch(key: str, ioc_type: str, value: str) -> None:
+        def _touch(key: str, ioc_type: str) -> None:
             entry = ledger.get(key) or {
                 "type": ioc_type,
-                "value": value,
                 "first_seen": today,
                 "run_count": 0,
                 "cards": [],
@@ -306,12 +305,19 @@ def _update_ioc_ledger(cards: list, ledger_file: str = None) -> dict:
                 entry["cards"] = (entry.get("cards", []) + [card_title])[-10:]
             ledger[key] = entry
 
-        for ip in iocs.get("ips", []):
-            _touch(f"ip:{ip}", "ip", ip)
-        for h in iocs.get("hashes", []):
-            _touch(f"hash:{h['value']}", h["type"], h["value"])
-        for reg in iocs.get("registry", []):
-            _touch(f"registry:{reg}", "registry", reg)
+        # New list format: [{_key, ioc_type, context_snippet, source_url, ...}]
+        if isinstance(iocs, list):
+            for ioc in iocs:
+                if isinstance(ioc, dict) and ioc.get("_key"):
+                    _touch(ioc["_key"], ioc.get("ioc_type", "ioc"))
+        # Legacy dict format: {ips: [], hashes: [], registry: []} — backward compat
+        elif isinstance(iocs, dict):
+            for ip in iocs.get("ips", []):
+                _touch(f"ip:{ip}", "ip")
+            for h in iocs.get("hashes", []):
+                _touch(f"hash:{h.get('value', '')}", h.get("type", "hash"))
+            for reg in iocs.get("registry", []):
+                _touch(f"registry:{reg}", "registry")
 
     # Prune entries last seen before the 30-day cutoff
     ledger = {k: v for k, v in ledger.items() if v.get("last_seen", today) >= cutoff}

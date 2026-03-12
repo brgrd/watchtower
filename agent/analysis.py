@@ -263,6 +263,13 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
             "isolate, or monitor, name the affected product/version, and state whether a patch is "
             "currently available or not. "
             "Do NOT use vague language like 'various systems' or 'multiple vendors' \u2014 always name names. "
+            "CRITICAL: Finding titles and summaries must describe the technical nature of the vulnerability "
+            "or attack technique, never alleged attacker nationality or threat-actor attribution. "
+            "Do not use phrases like 'Iranian threat actor', 'Chinese APT', 'Russian hackers', "
+            "'North Korean group', or any nation-state name as the subject of a finding title. "
+            "Instead describe what the attack does: 'Spearphishing campaign targeting energy sector VPNs' "
+            "NOT 'Iranian Cyber Activity'. If attribution appears in source articles, you may note it "
+            "in the why_now field only, prefixed with 'Reported attribution (unverified): '. "
             "Keep the summary anchored to the reporting window and only reference items present in the input data. "
             "(2) findings: JSON array of up to 12 distinct threat or vulnerability findings. "
             "For each finding: title (under 100 chars), summary (1-2 sentence analyst note "
@@ -404,41 +411,98 @@ def _normalize_tactic(raw: str) -> str:
 # Vendor / product name list for zero-token regex extraction from article text.
 # Ordered longest-match-first to avoid 'Cisco' matching before 'Cisco IOS XE'.
 _KNOWN_PRODUCTS: list = [
-    "Palo Alto PAN-OS", "Palo Alto Networks",
-    "Fortinet FortiOS", "Fortinet FortiGate", "Fortinet",
-    "Cisco IOS XE", "Cisco ASA", "Cisco Meraki", "Cisco NX-OS", "Cisco",
-    "Ivanti Connect Secure", "Ivanti Pulse Secure", "Ivanti",
-    "Microsoft Exchange", "Microsoft SharePoint", "Microsoft Teams",
-    "Microsoft Windows", "Microsoft Azure", "Microsoft 365", "Microsoft",
-    "VMware ESXi", "VMware vCenter", "VMware",
-    "Apache Log4j", "Apache Struts", "Apache Tomcat", "Apache HTTP Server", "Apache",
-    "Atlassian Confluence", "Atlassian Jira", "Atlassian",
-    "GitLab", "GitHub Actions",
-    "Jenkins", "TeamCity",
-    "OpenSSH", "OpenSSL",
-    "MOVEit Transfer", "MOVEit",
+    "Palo Alto PAN-OS",
+    "Palo Alto Networks",
+    "Fortinet FortiOS",
+    "Fortinet FortiGate",
+    "Fortinet",
+    "Cisco IOS XE",
+    "Cisco ASA",
+    "Cisco Meraki",
+    "Cisco NX-OS",
+    "Cisco",
+    "Ivanti Connect Secure",
+    "Ivanti Pulse Secure",
+    "Ivanti",
+    "Microsoft Exchange",
+    "Microsoft SharePoint",
+    "Microsoft Teams",
+    "Microsoft Windows",
+    "Microsoft Azure",
+    "Microsoft 365",
+    "Microsoft",
+    "VMware ESXi",
+    "VMware vCenter",
+    "VMware",
+    "Apache Log4j",
+    "Apache Struts",
+    "Apache Tomcat",
+    "Apache HTTP Server",
+    "Apache",
+    "Atlassian Confluence",
+    "Atlassian Jira",
+    "Atlassian",
+    "GitLab",
+    "GitHub Actions",
+    "Jenkins",
+    "TeamCity",
+    "OpenSSH",
+    "OpenSSL",
+    "MOVEit Transfer",
+    "MOVEit",
     "Progress Software",
-    "Citrix ADC", "Citrix Gateway", "Citrix",
-    "F5 BIG-IP", "F5 Networks",
-    "SolarWinds Orion", "SolarWinds",
-    "Juniper Junos", "Juniper Networks",
+    "Citrix ADC",
+    "Citrix Gateway",
+    "Citrix",
+    "F5 BIG-IP",
+    "F5 Networks",
+    "SolarWinds Orion",
+    "SolarWinds",
+    "Juniper Junos",
+    "Juniper Networks",
     "Check Point",
-    "Barracuda ESG", "Barracuda",
+    "Barracuda ESG",
+    "Barracuda",
     "Zimbra",
     "Pulse Connect Secure",
-    "SAP NetWeaver", "SAP",
-    "Oracle WebLogic", "Oracle",
-    "JetBrains TeamCity", "JetBrains",
-    "Kubernetes", "Docker", "containerd",
-    "Nginx", "HAProxy",
-    "Redis", "Elasticsearch", "MongoDB",
-    "PHP", "Python", "Node.js", "Java",
-    "Chrome", "Firefox", "Safari", "Edge",
-    "Android", "iOS", "macOS",
-    "Linux kernel", "Linux",
-    "Windows Server", "Windows 11", "Windows 10",
-    "GPT-4", "ChatGPT", "Claude", "Gemini",
-    "AWS", "Azure", "GCP", "Google Cloud",
+    "SAP NetWeaver",
+    "SAP",
+    "Oracle WebLogic",
+    "Oracle",
+    "JetBrains TeamCity",
+    "JetBrains",
+    "Kubernetes",
+    "Docker",
+    "containerd",
+    "Nginx",
+    "HAProxy",
+    "Redis",
+    "Elasticsearch",
+    "MongoDB",
+    "PHP",
+    "Python",
+    "Node.js",
+    "Java",
+    "Chrome",
+    "Firefox",
+    "Safari",
+    "Edge",
+    "Android",
+    "iOS",
+    "macOS",
+    "Linux kernel",
+    "Linux",
+    "Windows Server",
+    "Windows 11",
+    "Windows 10",
+    "GPT-4",
+    "ChatGPT",
+    "Claude",
+    "Gemini",
+    "AWS",
+    "Azure",
+    "GCP",
+    "Google Cloud",
 ]
 _VERSION_RE = re.compile(
     r"\b(v?\d{1,3}\.\d{1,4}(?:\.\d{1,4}){0,2}(?:[.-][a-zA-Z0-9]+)?)\b"
@@ -472,20 +536,26 @@ def _enrich_cards_from_sources(cards: list, all_items: list) -> None:
         if not isinstance(card, dict):
             continue
         refs = card.get("sources", {}).get("primary", [])
-        ref_urls = [r.get("url", "") for r in refs if isinstance(r, dict) and r.get("url")]
+        ref_urls = [
+            r.get("url", "") for r in refs if isinstance(r, dict) and r.get("url")
+        ]
 
         # Collect all article text available for this card
         corpus_parts: list = []
+        corpus_items_for_ioc: list = []
         article_dates: list = []
         for url in ref_urls:
             item = url_to_item.get(url)
             if not item:
                 continue
-            text = (item.get("extracted_text", "") or item.get("summary", "") or "")[:1500]
+            text = (item.get("extracted_text", "") or item.get("summary", "") or "")[
+                :1500
+            ]
             title = item.get("title", "")
             pub = item.get("published_at", "") or item.get("pub_date", "")
             if text:
                 corpus_parts.append(f"{title}. {text}")
+                corpus_items_for_ioc.append({"text": text, "url": url, "title": title})
             if pub:
                 article_dates.append(str(pub)[:10])
 
@@ -498,7 +568,9 @@ def _enrich_cards_from_sources(cards: list, all_items: list) -> None:
 
         # CVEs from article text (supplement Groq-cited ones)
         corpus_cves = sorted(set(_extract_cves(corpus)))
-        card_cves = sorted(set(_extract_cves(card.get("title", "") + " " + card.get("summary", ""))))
+        card_cves = sorted(
+            set(_extract_cves(card.get("title", "") + " " + card.get("summary", "")))
+        )
         extra_cves = [c for c in corpus_cves if c not in card_cves]
 
         # Product/vendor mentions (longest match first, deduplicated)
@@ -532,12 +604,8 @@ def _enrich_cards_from_sources(cards: list, all_items: list) -> None:
                 break
 
         # IOCs: public IPs, file hashes, Windows registry keys
-        source_domains: set = set()
-        for url in ref_urls:
-            dom = tldextract.extract(url).registered_domain
-            if dom:
-                source_domains.add(dom.lower())
-        iocs = _extract_iocs(corpus, source_domains)
+        # Raw values never rendered in HTML — only stored in ioc_ledger.json
+        iocs = _extract_iocs(corpus_items_for_ioc)
 
         card["enrichment"] = {
             "source_count": len(corpus_parts),
@@ -549,6 +617,18 @@ def _enrich_cards_from_sources(cards: list, all_items: list) -> None:
             "lede": lede,
             "iocs": iocs,
         }
+
+
+# Nation-state / threat-actor attribution patterns — used to flag finding titles
+# that inherit attribution language from source articles.  Attribution is unverified
+# when derived from news articles and should be surfaced as such, not presented as fact.
+_ATTRIBUTION_RE = re.compile(
+    r"\b(iranian|chinese|russian|north[\s-]?korean|dprk|prc|apt[\s-]?\d+"
+    r"|lazarus|cozy[\s-]?bear|fancy[\s-]?bear|sandworm|volt[\s-]?typhoon"
+    r"|salt[\s-]?typhoon|silk[\s-]?typhoon|scattered[\s-]?spider"
+    r"|killnet|darkside|lockbit(?![\s-]?vuln|[\s-]?ransomware[\s-]?patch))",
+    re.I,
+)
 
 
 def _findings_to_cards(findings: list, all_items: list = None) -> list:
@@ -641,6 +721,9 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
         matched_targets = _match_high_profile(
             f.get("title", "") + " " + f.get("summary", "")
         )
+        attribution_flag = bool(
+            _ATTRIBUTION_RE.search(f.get("title", "") + " " + f.get("summary", ""))
+        )
 
         cards.append(
             {
@@ -661,6 +744,7 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                 "summary": summary,
                 "patch_status": patch_status,
                 "matched_targets": matched_targets,
+                "attribution_flag": attribution_flag,
                 "tactic_name": _normalize_tactic(
                     str(f.get("tactic_name", "")) if f.get("tactic_name") else ""
                 ),

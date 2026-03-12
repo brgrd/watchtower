@@ -634,10 +634,10 @@ def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
 
     _PATCH_RANK = {"patched": 3, "workaround": 2, "no_fix": 1, "unknown": 0}
     _PATCH_LABELS = {
-        "patched":    ("\u2713 Patched",    "#2ea043"),
-        "workaround": ("~ Workaround",     "#f9c74f"),
-        "no_fix":     ("\u2717 No Fix",     "#d62828"),
-        "unknown":    ("? Unknown",         "#8b949e"),
+        "patched": ("\u2713 Patched", "#2ea043"),
+        "workaround": ("~ Workaround", "#f9c74f"),
+        "no_fix": ("\u2717 No Fix", "#d62828"),
+        "unknown": ("? Unknown", "#8b949e"),
     }
 
     # ── Panel A: CVE Reference Index ───────────────────────────────────────────────────
@@ -660,16 +660,30 @@ def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
         )[:30]:
             lbl, col = _PATCH_LABELS.get(data["patch_status"], ("? Unknown", "#8b949e"))
             esc = html.escape(cve)
+            nvd_url = f"https://nvd.nist.gov/vuln/detail/{esc}"
             cve_rows.append(
-                '<tr class="forensics-cve-row" onclick="forensicsCveClick(\''
-                + esc + '\')" style="cursor:pointer"><td>'
-                + '<code style="color:#79c0ff">' + esc + "</code></td>"
-                + '<td style="text-align:center">' + str(data["count"]) + "</td>"
-                + '<td><span style="color:' + col + ';font-size:.75rem">' + lbl + "</span></td></tr>"
+                "<tr><td>"
+                + '<a href="' + nvd_url + '" target="_blank" rel="noopener noreferrer"'
+                + ' style="color:#79c0ff;font-family:monospace" onclick="event.stopPropagation()">'
+                + esc + "</a>"
+                + '<button onclick="forensicsCveClick(\'' + esc + '\')"'
+                + ' title="Filter findings by this CVE"'
+                + ' style="background:none;border:none;color:#58a6ff;cursor:pointer;'
+                + 'font-size:.75rem;padding:0 0 0 .4rem;vertical-align:middle;opacity:.7">'
+                + "\u2295</button></td>"
+                + '<td style="text-align:center">'
+                + str(data["count"])
+                + "</td>"
+                + '<td><span style="color:'
+                + col
+                + ';font-size:.75rem">'
+                + lbl
+                + "</span></td></tr>"
             )
         cve_html = (
             '<h4 class="forensics-section-title">CVE Reference Index</h4>'
-            '<p class="forensics-hint">Click a row to filter findings.</p>'
+            '<p class="forensics-hint">Click the CVE ID to open the NVD advisory. '
+            'Click \u2295 to filter findings in the Overview tab.</p>'
             '<table class="forensics-table"><thead><tr>'
             "<th>CVE</th><th>Findings</th><th>Patch</th>"
             "</tr></thead><tbody>" + "".join(cve_rows) + "</tbody></table>"
@@ -688,10 +702,20 @@ def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
             tactic_map.setdefault(tactic, []).append(card)
 
     _TACTIC_ORDER = [
-        "Reconnaissance", "Resource Development", "Initial Access", "Execution",
-        "Persistence", "Privilege Escalation", "Defense Evasion", "Credential Access",
-        "Discovery", "Lateral Movement", "Collection", "Command & Control",
-        "Exfiltration", "Impact",
+        "Reconnaissance",
+        "Resource Development",
+        "Initial Access",
+        "Execution",
+        "Persistence",
+        "Privilege Escalation",
+        "Defense Evasion",
+        "Credential Access",
+        "Discovery",
+        "Lateral Movement",
+        "Collection",
+        "Command & Control",
+        "Exfiltration",
+        "Impact",
     ]
     if tactic_map:
         tactic_rows = []
@@ -703,11 +727,15 @@ def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
             )
             inner = "".join(
                 '<div style="padding:.2rem 0;border-bottom:1px solid #1e1e1e;font-size:.75rem">'
-                + '<span style="color:#e6edf3">' + html.escape(c.get("title", "")[:72]) + "</span>"
+                + '<span style="color:#e6edf3">'
+                + html.escape(c.get("title", "")[:72])
+                + "</span>"
                 + (
                     ' <code style="color:#8b949e;font-size:.67rem">'
-                    + html.escape(c.get("technique_name", "")[:42]) + "</code>"
-                    if c.get("technique_name") else ""
+                    + html.escape(c.get("technique_name", "")[:42])
+                    + "</code>"
+                    if c.get("technique_name")
+                    else ""
                 )
                 + "</div>"
                 for c in tac_cards[:8]
@@ -716,11 +744,17 @@ def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
             tactic_rows.append(
                 '<details class="forensics-acc"><summary>'
                 + '<span class="tactic-chip" style="font-size:.7rem">'
-                + html.escape(tactic) + "</span>"
+                + html.escape(tactic)
+                + "</span>"
                 + '<span style="margin-left:.4rem;color:#8b949e;font-size:.72rem">'
-                + str(count) + " finding" + ("s" if count != 1 else "") + "</span>"
+                + str(count)
+                + " finding"
+                + ("s" if count != 1 else "")
+                + "</span>"
                 + "</summary>"
-                + '<div style="padding:.25rem .5rem">' + inner + "</div></details>"
+                + '<div style="padding:.25rem .5rem">'
+                + inner
+                + "</div></details>"
             )
         killchain_html = (
             '<h4 class="forensics-section-title">Kill-Chain Breakdown</h4>'
@@ -751,13 +785,23 @@ def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
             reverse=True,
         )[:20]:
             sc = data["max_score"]
-            sc_col = "#d62828" if sc >= 80 else "#f77f00" if sc >= 60 else "#f9c74f" if sc >= 30 else "#8b949e"
+            sc_col = (
+                "#d62828"
+                if sc >= 80
+                else "#f77f00" if sc >= 60 else "#f9c74f" if sc >= 30 else "#8b949e"
+            )
             prod_rows.append(
                 '<tr><td style="color:#e6edf3;font-size:.78rem">'
-                + html.escape(prod) + "</td>"
-                + '<td style="text-align:center">' + str(data["count"]) + "</td>"
-                + '<td><span style="color:' + sc_col + ';font-weight:700">'
-                + str(sc) + "</span></td></tr>"
+                + html.escape(prod)
+                + "</td>"
+                + '<td style="text-align:center">'
+                + str(data["count"])
+                + "</td>"
+                + '<td><span style="color:'
+                + sc_col
+                + ';font-weight:700">'
+                + str(sc)
+                + "</span></td></tr>"
             )
         product_html = (
             '<h4 class="forensics-section-title">Affected Products</h4>'
@@ -772,86 +816,81 @@ def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
         )
 
     # ── Panel D: IOC Intelligence ─────────────────────────────────────────────────────
-    run_ips: dict = {}
-    run_hashes: dict = {}
-    run_registry: dict = {}
+    # Collect all IOC observations from this window's cards.
+    # Raw indicator values (IPs, hashes, registry keys) are keyed in ioc_ledger.json
+    # only and are never rendered in the HTML page.  We show: IOC type, a context
+    # snippet from the source article, a source article link, and a cross-run badge.
+    all_iocs: list = []
+    seen_ioc_keys: set = set()
     for card in cards:
-        iocs = card.get("enrichment", {}).get("iocs", {})
-        title = card.get("title", "")[:60]
-        for ip in iocs.get("ips", []):
-            run_ips.setdefault(ip, []).append(title)
-        for h in iocs.get("hashes", []):
-            run_hashes.setdefault(h["value"], {"type": h["type"], "cards": []})["cards"].append(title)
-        for reg in iocs.get("registry", []):
-            run_registry.setdefault(reg, []).append(title)
+        ioc_list = card.get("enrichment", {}).get("iocs", [])
+        if not isinstance(ioc_list, list):
+            continue
+        for ioc in ioc_list:
+            if not isinstance(ioc, dict) or not ioc.get("_key"):
+                continue
+            key = ioc["_key"]
+            if key in seen_ioc_keys:
+                continue
+            seen_ioc_keys.add(key)
+            rc = ioc_ledger.get(key, {}).get("run_count", 1)
+            all_iocs.append({**ioc, "_run_count": rc})
 
-    def _run_badge(key: str) -> str:
-        rc = ioc_ledger.get(key, {}).get("run_count", 1)
-        if rc <= 1:
-            return ""
-        return (
-            '<span style="background:#f77f00;color:#000;font-size:.63rem;'
-            'padding:.05rem .28rem;border-radius:8px;margin-left:.25rem">'
-            + str(rc) + "\u00d7</span>"
-        )
+    # Persistent IOCs (seen in multiple runs) appear first
+    all_iocs.sort(key=lambda x: x.get("_run_count", 1), reverse=True)
 
-    ioc_sections: list = []
-    if run_ips:
-        ip_rows = "".join(
-            "<tr><td>"
-            + '<code style="color:#79c0ff;font-size:.75rem">' + html.escape(ip) + "</code>"
-            + _run_badge("ip:" + ip)
-            + "</td>"
-            + '<td style="font-size:.72rem;color:#8b949e">' + html.escape(titles[0]) + "</td></tr>"
-            for ip, titles in sorted(run_ips.items())[:15]
+    if all_iocs:
+        ioc_rows: list = []
+        for ioc in all_iocs[:20]:
+            rc = ioc.get("_run_count", 1)
+            persist_badge = (
+                '<span style="background:#f77f00;color:#000;font-size:.63rem;'
+                'padding:.05rem .3rem;border-radius:8px;margin-left:.3rem">'
+                + str(rc) + "\u00d7</span>"
+                if rc > 1 else ""
+            )
+            type_label = html.escape(ioc.get("ioc_type", "IOC"))
+            snippet = ioc.get("context_snippet", "")
+            snippet_html = (
+                "\u201c" + html.escape(snippet[:140]) + "\u2026\u201d"
+                if len(snippet) > 140
+                else ("\u201c" + html.escape(snippet) + "\u201d" if snippet else "")
+            )
+            src_url = ioc.get("source_url", "")
+            src_title = ioc.get("source_title", "Source article")[:60]
+            src_cell = (
+                '<a href="' + html.escape(src_url)
+                + '" target="_blank" rel="noopener noreferrer"'
+                + ' style="color:#58a6ff;font-size:.72rem">'
+                + html.escape(src_title) + " \u2197</a>"
+                if src_url
+                else '<span style="color:#8b949e;font-size:.72rem">'
+                + html.escape(src_title) + "</span>"
+            )
+            ioc_rows.append(
+                "<tr>"
+                + '<td style="white-space:nowrap;vertical-align:top;padding-top:.35rem">'
+                + '<span style="color:#8b949e;font-size:.68rem;text-transform:uppercase;'
+                + 'letter-spacing:.04em">' + type_label + "</span>"
+                + persist_badge + "</td>"
+                + '<td style="font-size:.74rem;color:#c9d1d9;font-style:italic;padding:0 .4rem">'
+                + snippet_html + "</td>"
+                + '<td style="vertical-align:top;padding-top:.3rem">' + src_cell + "</td>"
+                + "</tr>"
+            )
+        ioc_html = (
+            '<h4 class="forensics-section-title">IOC Intelligence</h4>'
+            '<p class="forensics-hint">Indicators observed in source articles. '
+            'Raw values are stored internally only \u2014 click the source link to read the original advisory.</p>'
+            '<table class="forensics-table"><thead><tr>'
+            '<th>Type</th><th>Context</th><th>Source</th>'
+            '</tr></thead><tbody>' + "".join(ioc_rows) + '</tbody></table>'
         )
-        ioc_sections.append(
-            '<h5 class="forensics-ioc-type">IP Addresses</h5>'
-            '<table class="forensics-table"><thead><tr><th>IP</th><th>Finding</th></tr></thead>'
-            "<tbody>" + ip_rows + "</tbody></table>"
+    else:
+        ioc_html = (
+            '<h4 class="forensics-section-title">IOC Intelligence</h4>'
+            '<div class="forensics-empty">No network IOCs extracted from this window\u2019s articles.</div>'
         )
-
-    if run_hashes:
-        hash_rows = "".join(
-            "<tr><td>"
-            + '<code style="color:#f9c74f;word-break:break-all;font-size:.67rem">'
-            + html.escape(hval[:28]) + "\u2026</code>"
-            + '<span style="color:#8b949e;font-size:.63rem;margin-left:.2rem">(' + hdata.get("type", "hash") + ")</span>"
-            + _run_badge("hash:" + hval)
-            + "</td>"
-            + '<td style="font-size:.72rem;color:#8b949e">'
-            + html.escape((hdata.get("cards") or [""])[0][:50]) + "</td></tr>"
-            for hval, hdata in list(run_hashes.items())[:10]
-        )
-        ioc_sections.append(
-            '<h5 class="forensics-ioc-type">File Hashes</h5>'
-            '<table class="forensics-table"><thead><tr><th>Hash</th><th>Finding</th></tr></thead>'
-            "<tbody>" + hash_rows + "</tbody></table>"
-        )
-
-    if run_registry:
-        reg_rows = "".join(
-            "<tr><td>"
-            + '<code style="color:#d4a4eb;word-break:break-all;font-size:.72rem">'
-            + html.escape(reg[:60]) + "</code></td>"
-            + '<td style="font-size:.72rem;color:#8b949e">'
-            + html.escape(titles[0][:50]) + "</td></tr>"
-            for reg, titles in list(run_registry.items())[:10]
-        )
-        ioc_sections.append(
-            '<h5 class="forensics-ioc-type">Registry Keys</h5>'
-            '<table class="forensics-table"><thead><tr><th>Key</th><th>Finding</th></tr></thead>'
-            "<tbody>" + reg_rows + "</tbody></table>"
-        )
-
-    ioc_html = (
-        '<h4 class="forensics-section-title">IOC Intelligence</h4>'
-        + (
-            "".join(ioc_sections)
-            if ioc_sections
-            else '<div class="forensics-empty">No network IOCs extracted from this window\u2019s articles.</div>'
-        )
-    )
 
     return cve_html + killchain_html + product_html + ioc_html
 
@@ -1120,6 +1159,12 @@ def _write_index_html(
             if _shelf_days >= 1
             else ""
         )
+        attr_badge_html = (
+            '<span class="attr-badge" title="This finding contains nation-state attribution '
+            'sourced from a news article. Attribution is unverified and should be '
+            'treated with appropriate scrutiny.">\u26a0 Attribution Unverified</span>'
+            if c.get("attribution_flag") else ""
+        )
         rows += f"""
                 <details class="cluster" data-domains="{html.escape(domains_attr)}" data-tactic="{html.escape(_tactic)}">
                     <summary>
@@ -1130,6 +1175,7 @@ def _write_index_html(
                         {cve_badge_html}
                         {tactic_chip_html}
                         {shelf_badge_html}
+                        {attr_badge_html}
                         {html.escape(c['title'])}
                         <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline">{tags}</div>
                     </summary>
@@ -1403,6 +1449,7 @@ p{{color:#c9d1d9}}
 .tactic-btn--all.tactic-btn--active{{background:rgba(50,50,50,.25);border-color:#555;color:#c9d1d9}}
 .tactic-chip{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(88,130,240,.12);color:#6ea8fe;border:1px solid rgba(88,130,240,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0}}
 .shelf-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(210,90,20,.1);color:#e8864a;border:1px solid rgba(210,90,20,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}}
+.attr-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(180,140,10,.12);color:#d4a017;border:1px solid rgba(180,140,10,.3);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}}
 .enrich-block{{margin:.6rem 0 .2rem;border:1px solid #222;border-radius:5px;overflow:hidden}}
 .enrich-summary{{font-size:.72rem;color:#5a7090;cursor:pointer;padding:.35rem .6rem;list-style:none;display:flex;align-items:center;gap:.4rem;user-select:none}}
 .enrich-summary::-webkit-details-marker{{display:none}}

@@ -44,43 +44,83 @@ def _is_public_ip(ip_str: str) -> bool:
         return False
 
 
-def _extract_iocs(corpus: str, source_domains: set = None) -> dict:
-    """Extract network / host IOCs from article text.
+def _extract_iocs(corpus_items: list, source_domains: set = None) -> list:
+    """Extract network/host IOCs from article texts with context and provenance.
 
-    Returns a dict with three keys:
-      ``ips``       — list of public IPv4 address strings (up to 12)
-      ``hashes``    — list of ``{value, type}`` dicts (sha256=64 hex chars,
-                       sha1=40, md5=32)  (up to 8)
-      ``registry``  — list of Windows registry key path strings (up to 6)
+    Args:
+        corpus_items: list of ``{text, url, title}`` dicts — one per source article.
+        source_domains: unused, kept for call-site compatibility only.
+
+    Returns a list of IOC observation dicts, each containing:
+        ``_key``            — ledger key e.g. ``ip:1.2.3.4`` (never rendered in HTML)
+        ``ioc_type``        — human label e.g. ``Network IOC``, ``File Hash (SHA256)``
+        ``context_snippet`` — sentence fragment around the match (±200 chars)
+        ``source_url``      — URL of the article the indicator was found in
+        ``source_title``    — title of that article
+
+    Raw indicator values are stored only in ``ioc_ledger.json``; they are never
+    included in any rendered HTML page.
     """
-    source_domains = source_domains or set()
+    results: list = []
+    seen_keys: set = set()
 
-    ips: list = []
-    seen_ips: set = set()
-    for m in _IPV4_RE.finditer(corpus):
-        ip_str = m.group(0)
-        if ip_str not in seen_ips and _is_public_ip(ip_str):
-            seen_ips.add(ip_str)
-            ips.append(ip_str)
+    def _snippet(text: str, start: int, end: int, window: int = 200) -> str:
+        """Extract a readable context window around a regex match."""
+        left = max(0, start - window)
+        right = min(len(text), end + window)
+        frag = text[left:right].strip()
+        # Trim to word boundaries so we don’t break mid-word
+        if left > 0 and " " in frag:
+            frag = frag[frag.index(" ") + 1:]
+        if right < len(text) and " " in frag:
+            frag = frag[: frag.rindex(" ")]
+        return frag[:280]
 
-    hashes: list = []
-    seen_hashes: set = set()
-    for m in _HASH_RE.finditer(corpus):
-        h = m.group(0).lower()
-        if h not in seen_hashes:
-            seen_hashes.add(h)
-            htype = "sha256" if len(h) == 64 else "sha1" if len(h) == 40 else "md5"
-            hashes.append({"value": h, "type": htype})
+    for item in (corpus_items or []):
+        text = item.get("text", "")
+        source_url = item.get("url", "")
+        source_title = item.get("title", "")
 
-    registry = list(
-        dict.fromkeys(m.group(0) for m in _REGISTRY_RE.finditer(corpus))
-    )[:6]
+        for m in _IPV4_RE.finditer(text):
+            ip_str = m.group(0)
+            key = f"ip:{ip_str}"
+            if key not in seen_keys and _is_public_ip(ip_str):
+                seen_keys.add(key)
+                results.append({
+                    "_key": key,
+                    "ioc_type": "Network IOC",
+                    "context_snippet": _snippet(text, m.start(), m.end()),
+                    "source_url": source_url,
+                    "source_title": source_title,
+                })
 
-    return {
-        "ips": ips[:12],
-        "hashes": hashes[:8],
-        "registry": registry,
-    }
+        for m in _HASH_RE.finditer(text):
+            h = m.group(0).lower()
+            key = f"hash:{h}"
+            if key not in seen_keys:
+                seen_keys.add(key)
+                htype = "sha256" if len(h) == 64 else "sha1" if len(h) == 40 else "md5"
+                results.append({
+                    "_key": key,
+                    "ioc_type": f"File Hash ({htype.upper()})",
+                    "context_snippet": _snippet(text, m.start(), m.end()),
+                    "source_url": source_url,
+                    "source_title": source_title,
+                })
+
+        for m in _REGISTRY_RE.finditer(text):
+            key = f"registry:{m.group(0)}"
+            if key not in seen_keys:
+                seen_keys.add(key)
+                results.append({
+                    "_key": key,
+                    "ioc_type": "Registry Key",
+                    "context_snippet": _snippet(text, m.start(), m.end()),
+                    "source_url": source_url,
+                    "source_title": source_title,
+                })
+
+    return results[:20]
 
 
 def sha256(s: str) -> str:
