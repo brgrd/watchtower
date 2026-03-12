@@ -257,12 +257,12 @@ Phase 3 closed the most visible passive-monitor and intelligence-depth gaps. Pha
 
 ### 🔴 High Priority
 
-- [ ] **Split `runner.py` HTML rendering into `agent/html_builder.py`**
+- [x] **Split `runner.py` HTML rendering into `agent/html_builder.py`**
   - `runner.py` is now ~3 200 lines. The HTML template string, CSS block, JS block, SVG constellation builder, domain rank builder, calendar builder, and tactic strip are all inlined. This makes diffs nearly unreadable and tests impossible to write without executing the entire orchestrator.
   - Extract all `_build_*` and `_write_index_html` functions into `agent/html_builder.py`. `runner.py` calls `html_builder.write_index(path, cards, ...)`. Each builder becomes independently testable.
   - Scope: new `agent/html_builder.py`; `runner.py` imports and delegates; existing tests unaffected; new unit tests for builders become practical.
 
-- [ ] **CVE-anchored deduplication before Groq analysis**
+- [x] **CVE-anchored deduplication before Groq analysis**
   - Currently deduplication is hash-based on item titles. Two feed articles about the same CVE with slightly different headlines both reach Groq, producing duplicate or near-duplicate findings that inflate counts and consume tokens.
   - After ingest, group items by extracted CVE IDs; merge groups into a single enriched item (combined text, all sources). Non-CVE items remain as-is.
   - Scope: `_merge_by_cve(items)` helper in `runner.py` or `ingest.py`; called after `deduplicate()` and before `groq_analyze_briefing()`.
@@ -322,3 +322,4 @@ Phase 3 closed the most visible passive-monitor and intelligence-depth gaps. Pha
 - 2026-03-12: Opened Phase 3 backlog: tactic contract enforcement, kill-chain coverage bar, finding shelf life, domain sparklines, EPSS enrichment, catch-up view, push alerts, watchlist, IOC extraction, blast-radius highlighting, tab title unread count.
 - 2026-03-12: Completed Phase 3 high-priority items — `_normalize_tactic()` with alias map + prefix fallback (analysis.py), 14-pip kill-chain coverage bar (Python-rendered, runner.py), `_update_shelf()` with scoring boost + orange shelf badge (runner.py). 151 tests pass, 31% coverage.
 - 2026-03-12: Opened Phase 4 backlog: runner.py HTML split, CVE-anchored dedup, Groq retry/fallback, shelf decay, tactic normalization tests, coverage push for analysis.py and ingest.py.
+- 2026-03-12: Completed Phase 4 items 1 & 2 — extracted all `_build_*`/`_write_index_html`/`_TM_NODES`/`_TM_EDGES` into `agent/html_builder.py` (runner.py shrunk from ~3 200 to ~1 760 lines, html_builder.py at 55% coverage immediately); added `_merge_by_cve()` union-find grouping in `agent/ingest.py` + wired after `deduplicate()` in `_run()`. All tests pass, 40% coverage.
