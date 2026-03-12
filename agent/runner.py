@@ -255,9 +255,7 @@ def _poll_rss(url: str, since_hours: int, ignore: dict) -> list:
                 break
         if published and published < cutoff:
             continue
-        published_iso = (
-            published.isoformat() if published else ""
-        )
+        published_iso = published.isoformat() if published else ""
         items.append(
             {
                 "title": getattr(e, "title", "")[:200],
@@ -2648,10 +2646,18 @@ def _run():
             "cards": [
                 {
                     "title": c.get("title", "") if isinstance(c, dict) else str(c)[:50],
-                    "risk_score": int(c.get("risk_score", 0)) if isinstance(c, dict) else 0,
-                    "summary": c.get("summary", "")[:300] if isinstance(c, dict) else "",
+                    "risk_score": (
+                        int(c.get("risk_score", 0)) if isinstance(c, dict) else 0
+                    ),
+                    "summary": (
+                        c.get("summary", "")[:300] if isinstance(c, dict) else ""
+                    ),
                     "cves": list(
-                        _extract_cves((c.get("title", "") if isinstance(c, dict) else "") + " " + (c.get("summary", "") if isinstance(c, dict) else ""))
+                        _extract_cves(
+                            (c.get("title", "") if isinstance(c, dict) else "")
+                            + " "
+                            + (c.get("summary", "") if isinstance(c, dict) else "")
+                        )
                     ),
                 }
                 for c in cards

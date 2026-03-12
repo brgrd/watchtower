@@ -155,9 +155,7 @@ def _poll_rss(url: str, since_hours: int, ignore: dict) -> list:
                 break
         if published and published < cutoff:
             continue
-        published_iso = (
-            published.isoformat() if published else ""
-        )
+        published_iso = published.isoformat() if published else ""
         items.append(
             {
                 "title": getattr(e, "title", "")[:200],

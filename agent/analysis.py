@@ -334,6 +334,9 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
 
     cards = []
     for f in findings:
+        if not isinstance(f, dict):
+            print(f"[WARN] Finding is not a dict, skipping: {type(f).__name__}")
+            continue
         try:
             score = max(0, min(100, int(f.get("risk_score", 40))))
         except (ValueError, TypeError):
@@ -345,6 +348,8 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
             domains = ["uncategorised"]
 
         refs = f.get("references", [])
+        if not isinstance(refs, list):
+            refs = []
         why_now = f.get("why_now", "")
         pri = f.get("priority", "")
         confidence = f.get("confidence", None)
@@ -358,12 +363,12 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
 
         countries = list(
             {
-                url_to_country.get(r["url"])
+                url_to_country.get(r.get("url"))
                 or domain_to_country.get(
                     tldextract.extract(r.get("url", "")).registered_domain
                 )
                 for r in refs
-                if r.get("url")
+                if isinstance(r, dict) and r.get("url")
             }
             - {None}
         )
@@ -418,7 +423,7 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                             "url": r.get("url", ""),
                         }
                         for r in refs
-                        if r.get("url")
+                        if isinstance(r, dict) and r.get("url")
                     ],
                     "secondary": [],
                 },
