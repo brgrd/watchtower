@@ -1,16 +1,34 @@
 {
-  "ts": "2026-03-12T20:03:51.455418+00:00",
+  "ts": "2026-03-12T21:06:29.845548+00:00",
   "cards": [
     {
-      "title": "AI-Generated Malware",
-      "risk_score": 70,
-      "summary": "[P1] AI-generated Slopoly malware is used in Interlock ransomware attacks, with no patch currently available. This threat is highly urgent due to its potential impact on internet-facing systems. Why now: Highly urgent due to potential impact on internet-facing systems. (confidence: 0.80)",
-      "cves": []
+      "title": "Tolgee Vulnerability",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2026-32251 affects Tolgee, an open-source localization platform, and has no available patch. This vulnerability could be exploited to compromise localization data. Why now: Lack of available patch (confidence: 0.60)",
+      "cves": [
+        "CVE-2026-32251"
+      ]
     },
     {
-      "title": "Repository Custom Properties",
+      "title": "Undici Vulnerability",
       "risk_score": 40,
-      "summary": "[P2] Actions OIDC tokens now support repository custom properties, which may introduce new security risks if not properly configured. This threat is moderately urgent due to its potential impact on repository security. Why now: Moderately urgent due to potential impact on repository security. (confi",
+      "summary": "[P2] CVE-2026-1525 affects Undici, a library for parsing HTTP headers, and has no available patch. This vulnerability could be exploited to compromise HTTP traffic. Why now: Lack of available patch (confidence: 0.60)",
+      "cves": [
+        "CVE-2026-1525"
+      ]
+    },
+    {
+      "title": "Parse Server Vulnerability",
+      "risk_score": 40,
+      "summary": "[P2] CVE-2026-32248 affects Parse Server, an open-source backend platform, and has no available patch. This vulnerability could be exploited to compromise backend infrastructure. Why now: Lack of available patch (confidence: 0.60)",
+      "cves": [
+        "CVE-2026-32248"
+      ]
+    },
+    {
+      "title": "England Hockey Ransomware",
+      "risk_score": 40,
+      "summary": "[P3] England Hockey is investigating a ransomware data breach, highlighting the need for robust security measures. This incident could be related to vulnerabilities in open-source software. Why now: Recent ransomware incident (confidence: 0.40)",
       "cves": []
     }
   ]

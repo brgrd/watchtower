@@ -10,5 +10,29 @@
     "last_seen": "2026-03-12",
     "run_count": 1,
     "title": "Repository Custom Properties"
+  },
+  "1ce16d05cbcb": {
+    "first_seen": "2026-03-12",
+    "last_seen": "2026-03-12",
+    "run_count": 1,
+    "title": "Tolgee Vulnerability"
+  },
+  "cf8e76ee388f": {
+    "first_seen": "2026-03-12",
+    "last_seen": "2026-03-12",
+    "run_count": 1,
+    "title": "Undici Vulnerability"
+  },
+  "ee11134ba987": {
+    "first_seen": "2026-03-12",
+    "last_seen": "2026-03-12",
+    "run_count": 1,
+    "title": "Parse Server Vulnerability"
+  },
+  "b9b5623c8feb": {
+    "first_seen": "2026-03-12",
+    "last_seen": "2026-03-12",
+    "run_count": 1,
+    "title": "England Hockey Ransomware"
   }
 }
