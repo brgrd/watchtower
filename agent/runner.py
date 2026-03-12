@@ -2428,8 +2428,6 @@ _findings_to_cards = analysis_mod._findings_to_cards
 _compute_delta = analysis_mod._compute_delta
 groq_weekly_review = analysis_mod.groq_weekly_review
 
-_build_weekly_section = rendering_mod._build_weekly_section
-_write_index_html = rendering_mod._write_index_html
 
 
 # -----------------------------
