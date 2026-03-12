@@ -270,6 +270,88 @@ def _rebuild_weekly_aggregate(
 _IOC_LEDGER_FILE = os.path.join(ROOT, "state", "ioc_ledger.json")
 
 
+def bootstrap_seen_from_reports(
+    reports_dir: str, seen_file: str, ttl_days: int = None
+) -> int:
+    """Reconstruct ``seen_hashes.json`` from committed briefing JSONL files.
+
+    Called at startup when ``seen_hashes.json`` is absent or empty (e.g. after
+    a fresh ``git clone`` or manual reset).  Reads every ``briefing_*.jsonl``
+    whose timestamp falls within the dedup TTL window, extracts the
+    ``sources.primary`` article references, and hashes each one exactly as
+    ``item_hash()`` would at ingest time (``sha256(url + title)``).
+
+    Returns the number of hashes written.  Is a no-op when ``seen_hashes.json``
+    already contains entries.
+    """
+    # Only run when the file is genuinely absent or empty.
+    existing = load_json(seen_file, {"hashes": []})
+    if isinstance(existing, dict):
+        existing_count = len(existing.get("seen", existing.get("hashes", [])))
+    else:
+        existing_count = len(existing) if isinstance(existing, (list, set)) else 0
+    if existing_count > 0:
+        return 0
+
+    if ttl_days is None:
+        ttl_days = CONFIG.get("budgets", {}).get("seen_ttl_days", 7)
+
+    cutoff = datetime.now(timezone.utc) - timedelta(days=ttl_days)
+    reconstructed: dict = {}  # hash -> iso timestamp
+
+    if not os.path.isdir(reports_dir):
+        return 0
+
+    for fname in sorted(os.listdir(reports_dir)):
+        if not (fname.startswith("briefing_") and fname.endswith(".jsonl")):
+            continue
+        stem = fname[len("briefing_") : -len(".jsonl")]
+        try:
+            dt = datetime.strptime(stem, "%Y-%m-%d_%H-%M").replace(tzinfo=timezone.utc)
+        except Exception:
+            continue
+        if dt < cutoff:
+            continue
+        ts = dt.isoformat()
+        fp = os.path.join(reports_dir, fname)
+        try:
+            with open(fp, "r", encoding="utf-8") as fh:
+                for line in fh:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        card = json.loads(line)
+                    except Exception:
+                        continue
+                    for src in card.get("sources", {}).get("primary", []):
+                        if not isinstance(src, dict):
+                            continue
+                        url = src.get("url", "")
+                        title = src.get("title", "")
+                        if url:
+                            h = sha256(url + title)
+                            reconstructed[h] = ts
+        except Exception:
+            continue
+
+    if not reconstructed:
+        return 0
+
+    os.makedirs(os.path.dirname(seen_file), exist_ok=True)
+    save_json(
+        seen_file,
+        {
+            "version": 2,
+            "bootstrapped": True,
+            "bootstrapped_at": datetime.now(timezone.utc).isoformat(),
+            "seen": reconstructed,
+            "hashes": sorted(reconstructed.keys()),
+        },
+    )
+    return len(reconstructed)
+
+
 def _update_ioc_ledger(cards: list, ledger_file: str = None) -> dict:
     """Persist IOC observations across runs in ``state/ioc_ledger.json``.
 

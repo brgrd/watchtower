@@ -1357,6 +1357,7 @@ save_json = state_mod.save_json
 append_jsonl = state_mod.append_jsonl
 load_seen = lambda: state_mod.load_seen(SEEN_FILE)
 save_seen = lambda seen: state_mod.save_seen(SEEN_FILE, seen)
+bootstrap_seen = lambda: state_mod.bootstrap_seen_from_reports(REPORTS_DIR, SEEN_FILE)
 item_hash = state_mod.item_hash
 deduplicate = state_mod.deduplicate
 _purge_seen_ttl = state_mod._purge_seen_ttl
@@ -1466,6 +1467,11 @@ def _run():
     ignore = load_json(
         IGNORE_FILE, {"ignore_url": {}, "ignore_domain": {}, "ignore_url_prefix": {}}
     )
+    n_bootstrapped = bootstrap_seen()
+    if n_bootstrapped:
+        print(
+            f"[bootstrap] Reconstructed {n_bootstrapped} seen hashes from briefing history"
+        )
     seen = load_seen()
 
     budgets = CONFIG["budgets"]

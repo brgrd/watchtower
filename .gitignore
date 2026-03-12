@@ -25,4 +25,9 @@ htmlcov/
 # Ephemeral run artifacts — timestamped briefings generated each agent run.
 # reports/index.html and reports/latest.md ARE committed (published to Pages).
 reports/briefing_*.md
+
+# Ephemeral state — reconstructible on clean clone via bootstrap_seen_from_reports().
+# Durable state (finding_shelf, ioc_ledger, feed_health, ledger.jsonl) stays committed.
+state/seen_hashes.json
+state/last_run_cards.json
 reports/briefing_*.jsonl
