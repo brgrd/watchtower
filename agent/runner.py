@@ -68,6 +68,7 @@ LEDGER_FILE = os.path.join(STATE_DIR, "ledger.jsonl")
 SEEN_FILE = os.path.join(STATE_DIR, "seen_hashes.json")
 LAST_RUN_CARDS_FILE = os.path.join(STATE_DIR, "last_run_cards.json")
 WEEKLY_AGGREGATE_FILE = os.path.join(STATE_DIR, "weekly_aggregate.json")
+FEED_HEALTH_FILE = os.path.join(STATE_DIR, "feed_health.json")
 CONFIG = yaml.safe_load(
     open(os.path.join(ROOT, "agent", "config.yaml"), "r", encoding="utf-8")
 )
@@ -1373,7 +1374,15 @@ def _build_domain_rank_html(cards: list, heatmap: dict) -> str:
         )
     if not rows:
         return '<div class="muted" style="font-size:.78rem;padding:.4rem 0">No active findings in this window.</div>'
-    return "".join(rows)
+    total = len(cards)
+    all_row = (
+        f'<div class="rank-row rank-row-all" onclick="selectDomain(\'all\')" style="border-bottom:1px solid #252525;margin-bottom:.35rem;padding-bottom:.35rem">'
+        f'<span class="rank-label" style="color:#c9d1d9;font-weight:700">All Domains</span>'
+        f'<div class="rank-bar-wrap"></div>'
+        f'<span class="rank-val" style="color:#c9d1d9;font-weight:700">{total}</span>'
+        f'</div>'
+    )
+    return all_row + "".join(rows)
 
 
 # -----------------------------
@@ -1672,6 +1681,9 @@ def _write_index_html(
     delta: dict = None,
     history_days: list = None,
     weekly_html: str = "",
+    feed_health: dict = None,
+    run_metrics: dict = None,
+    feed_run_metrics: dict = None,
 ):
     # KPI stats
     total_findings = len(cards)
@@ -1732,6 +1744,42 @@ def _write_index_html(
         f"<tr><td>{html.escape(dom)}</td><td>{vals['count']}</td><td>{vals['max_score']}</td></tr>"
         for dom, vals in top_feeds
     )
+
+    # --- Run metrics bar and per-feed health table ---
+    _fh = feed_health or {}
+    _rm = run_metrics or {}
+    _frm = feed_run_metrics or {}
+    _rm_elapsed = _rm.get("elapsed_s", "—")
+    _rm_ok = _rm.get("feeds_ok", "—")
+    _rm_total = _rm.get("feeds_total", "—")
+    _rm_fail = _rm.get("feeds_fail", "—")
+    _rm_groq = _rm.get("groq_status", "—")
+    _rm_items = _rm.get("items_polled", "—")
+    run_metrics_html = (
+        f'<div class="run-metrics-bar">'
+        f'<span class="rm-chip">⏱ {_rm_elapsed}s</span>'
+        f'<span class="rm-chip rm-ok">✓ {_rm_ok}/{_rm_total} feeds</span>'
+        f'<span class="rm-chip rm-fail">✗ {_rm_fail} failed</span>'
+        f'<span class="rm-chip">📡 {_rm_items} items</span>'
+        f'<span class="rm-chip">AI: {_rm_groq}</span>'
+        f'</div>'
+    ) if _rm else ""
+    health_rows = ""
+    for fid, fmeta in sorted(_frm.items()):
+        hist = _fh.get(fid, {})
+        total_calls = max(hist.get("total_calls", 1), 1)
+        total_ok = hist.get("total_ok", 0)
+        reliability = round(total_ok / total_calls * 100)
+        consec_fail = hist.get("consecutive_fail", 0)
+        status_dot = "🔴" if consec_fail >= 3 else "🟡" if consec_fail >= 1 else "🟢"
+        health_rows += (
+            f"<tr>"
+            f"<td>{status_dot} {html.escape(fid)}</td>"
+            f"<td>{fmeta.get('count', 0)}</td>"
+            f"<td>{reliability}%</td>"
+            f"<td>{fmeta.get('elapsed_ms', 0)}ms</td>"
+            f"</tr>"
+        )
 
     threat_svg = _build_threat_map_svg(cards, heatmap)
     domain_rank_html = _build_domain_rank_html(cards, heatmap)
@@ -1858,6 +1906,12 @@ def _write_index_html(
             if _hp_targets
             else ""
         )
+        _cve_list = _extract_cves(c.get("title", "") + " " + c.get("summary", ""))
+        cve_badge_html = (
+            f'<span class="cve-badge">{len(_cve_list)} CVE{"s" if len(_cve_list) != 1 else ""}</span>'
+            if _cve_list
+            else ""
+        )
         rows += f"""
                 <details class="cluster" data-domains="{html.escape(domains_attr)}">
                     <summary>
@@ -1865,6 +1919,7 @@ def _write_index_html(
                         <span class="priority {pri_cls}">{pri}</span>
                         {patch_badge_html}
                         {hp_badge_html}
+                        {cve_badge_html}
                         {html.escape(c['title'])}
                         <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline">{tags}</div>
                     </summary>
@@ -2045,6 +2100,15 @@ p{{color:#c9d1d9}}
 .patch-badge--workaround{{background:rgba(158,106,3,.18);color:#d29922;border:1px solid rgba(158,106,3,.35)}}
 .patch-badge--no-fix{{background:rgba(170,28,28,.18);color:#f85149;border:1px solid rgba(170,28,28,.35)}}
 .patch-badge--unknown{{background:rgba(60,60,60,.5);color:#8b949e;border:1px solid #333}}
+.cve-badge{{display:inline-block;font-size:.62rem;font-weight:700;background:rgba(30,100,200,.12);color:#6ea8fe;border:1px solid rgba(30,100,200,.28);border-radius:3px;padding:1px 6px;margin-left:.35rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0}}
+.findings-filter{{display:flex;align-items:center;gap:.6rem;margin:.25rem 0 .6rem}}
+.findings-search{{background:#151515;border:1px solid #333;border-radius:4px;color:#c9d1d9;font-size:.82rem;padding:.3rem .55rem;width:min(340px,100%);outline:none}}
+.findings-search:focus{{border-color:#555;background:#1a1a1a}}
+.findings-count{{font-size:.75rem;color:#8b949e}}
+.run-metrics-bar{{display:flex;gap:.35rem;flex-wrap:wrap;margin:.2rem 0 .45rem;padding:.3rem 0;border-bottom:1px solid #252525}}
+.rm-chip{{font-size:.68rem;padding:2px 7px;border-radius:999px;border:1px solid #333;background:#181818;color:#aaa}}
+.rm-ok{{color:#3fb950;border-color:rgba(35,134,54,.35);background:rgba(35,134,54,.08)}}
+.rm-fail{{color:#f85149;border-color:rgba(170,28,28,.35);background:rgba(170,28,28,.08)}}
 .hp-badge{{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.04em;border-radius:3px;padding:1px 7px;margin-left:.45rem;vertical-align:middle;text-transform:uppercase;background:rgba(139,92,246,.15);color:#a78bfa;border:1px solid rgba(139,92,246,.3)}}
 .hp-panel{{background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:6px;padding:.65rem 1rem .7rem;margin:.2rem 0 1rem}}
 .hp-panel-title{{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#a78bfa;margin-bottom:.5rem}}
@@ -2160,6 +2224,10 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
 {history_section}
 {weekly_html}
 <h2>Top Findings</h2>
+<div class="findings-filter">
+  <input type="search" id="findings-search" class="findings-search" placeholder="Search findings\u2026" aria-label="Search findings" />
+  <span id="findings-count" class="findings-count"></span>
+</div>
 {rows}
 {resolved_drawer_html}
 <footer>Watchtower · scheduled 00:05 / 06:05 / 12:05 / 18:05 ET · placeholder mode: {str(placeholder_mode()).lower()}</footer>
@@ -2188,8 +2256,12 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
                             <div id="tm-detail" class="muted" style="font-size:.8rem">Click a node to inspect findings.</div>
                         </section>
                         <section class="rail-panel" id="panel-feeds" role="tabpanel" aria-labelledby="tab-feeds">
-                            <h3 style="margin:.2rem 0 .35rem">Feed Contribution</h3>
-                            <table class="feed-table"><thead><tr><th>Feed domain</th><th>Refs</th><th>Max risk</th></tr></thead><tbody>{feed_rows}</tbody></table>
+                            <h3 style="margin:.2rem 0 .35rem">Run Metrics</h3>
+                            {run_metrics_html}
+                            <h3 style="margin:.6rem 0 .35rem">Feed Health</h3>
+                            <table class="feed-table"><thead><tr><th>Feed</th><th>Items</th><th>Reliability</th><th>Time</th></tr></thead><tbody>{health_rows}</tbody></table>
+                            <h3 style="margin:.6rem 0 .35rem">Source References</h3>
+                            <table class="feed-table"><thead><tr><th>Domain</th><th>Refs</th><th>Max risk</th></tr></thead><tbody>{feed_rows}</tbody></table>
                         </section>
                         <section class="rail-panel" id="panel-alerts" role="tabpanel" aria-labelledby="tab-alerts" data-lazy="true">
                             <h3 style="margin:.2rem 0 .35rem">Alerts</h3>
@@ -2379,8 +2451,26 @@ function selectDomain(domain){{
   }}
   tick();setInterval(tick,1000);
 }})();
+function initFindingsFilter(){{
+  var inp=document.getElementById('findings-search');
+  if(!inp)return;
+  var allClusters=Array.from(document.querySelectorAll('.cluster'));
+  inp.addEventListener('input',function(){{
+    var q=inp.value.trim().toLowerCase();
+    var visible=0;
+    allClusters.forEach(function(el){{
+      var inDomain=CURRENT_DOMAIN==='all'||(el.getAttribute('data-domains')||'').split(/\\s+/).indexOf(CURRENT_DOMAIN)>=0;
+      var inSearch=!q||el.textContent.toLowerCase().includes(q);
+      el.style.display=(inDomain&&inSearch)?'':'none';
+      if(inDomain&&inSearch)visible++;
+    }});
+    var cnt=document.getElementById('findings-count');
+    if(cnt)cnt.textContent=q?visible+' of '+allClusters.length+' shown':'';
+  }});
+}}
 initRightRail();
 selectDomain('all');
+initFindingsFilter();
 </script>
 </body></html>"""
 
@@ -2431,9 +2521,52 @@ groq_weekly_review = analysis_mod.groq_weekly_review
 
 
 # -----------------------------
+# Run helpers
+# -----------------------------
+_CARD_REQUIRED_KEYS = {"id", "title", "risk_score", "domains", "sources"}
+
+
+def _validate_cards(cards: list) -> int:
+    """Warn for cards missing required schema fields. Returns failure count."""
+    failures = 0
+    for i, c in enumerate(cards):
+        if not isinstance(c, dict):
+            print(f"[WARN] Schema: card {i} is {type(c).__name__}, not dict")
+            failures += 1
+            continue
+        missing = _CARD_REQUIRED_KEYS - set(c.keys())
+        if missing:
+            print(f"[WARN] Schema: card {i} ({str(c.get('title','?'))[:40]!r}) missing {missing}")
+            failures += 1
+    if failures:
+        print(f"[WARN] Schema validation: {failures}/{len(cards)} cards had issues")
+    return failures
+
+
+def _update_feed_health(health: dict, feed_id: str, ok: bool) -> None:
+    """Update cumulative feed health counters in-place."""
+    e = health.setdefault(feed_id, {
+        "consecutive_ok": 0, "consecutive_fail": 0,
+        "total_ok": 0, "total_calls": 0,
+        "last_ok": None, "last_fail": None,
+    })
+    e["total_calls"] = e.get("total_calls", 0) + 1
+    if ok:
+        e["consecutive_ok"] = e.get("consecutive_ok", 0) + 1
+        e["consecutive_fail"] = 0
+        e["total_ok"] = e.get("total_ok", 0) + 1
+        e["last_ok"] = now_utc_iso()
+    else:
+        e["consecutive_fail"] = e.get("consecutive_fail", 0) + 1
+        e["consecutive_ok"] = 0
+        e["last_fail"] = now_utc_iso()
+
+
+# -----------------------------
 # Main
 # -----------------------------
 def _run():
+    run_start = time.monotonic()
     os.makedirs(REPORTS_DIR, exist_ok=True)
     os.makedirs(STATE_DIR, exist_ok=True)
 
@@ -2450,14 +2583,20 @@ def _run():
     feeds_cfg = [f for f in CONFIG["feeds"] if f.get("enabled", True)]
     run_deadline = time.monotonic() + budgets["max_runtime_seconds"]
 
+    feed_health = load_json(FEED_HEALTH_FILE, {})
+    feed_run_metrics: dict = {}
+
     polled = []
     feed_workers = budgets.get("max_fetch_workers", 6)
     feeds_to_poll = feeds_cfg[: budgets["max_feeds_polled"]]
 
     def _poll_one(fcfg):
+        fid = fcfg.get("id", fcfg.get("url", "?"))
         if time.monotonic() > run_deadline:
-            return []
-        return poll_feed(fcfg, since_hours, ignore)
+            return [], fid, 0
+        t0 = time.monotonic()
+        items = poll_feed(fcfg, since_hours, ignore)
+        return items, fid, int((time.monotonic() - t0) * 1000)
 
     with ThreadPoolExecutor(max_workers=feed_workers) as pool:
         futs = [pool.submit(_poll_one, fcfg) for fcfg in feeds_to_poll]
@@ -2466,9 +2605,14 @@ def _run():
                 print("[WARN] Runtime budget reached during feed polling")
                 break
             try:
-                polled.extend(fut.result())
+                items, feed_id, elapsed_ms = fut.result()
+                polled.extend(items)
+                ok = len(items) > 0 or placeholder_mode()
+                feed_run_metrics[feed_id] = {"ok": ok, "count": len(items), "elapsed_ms": elapsed_ms}
+                _update_feed_health(feed_health, feed_id, ok)
             except Exception as exc:
                 print(f"[WARN] Feed poll task failed: {exc}")
+    save_json(FEED_HEALTH_FILE, feed_health)
 
     polled, seen = deduplicate(polled, seen)
     save_seen(seen)
@@ -2587,9 +2731,23 @@ def _run():
         f.write(md)
     with open(latest_md, "w", encoding="utf-8") as f:
         f.write(md)
+    _validate_cards(cards)
     with open(out_jsonl, "w", encoding="utf-8") as f:
         for c in cards:
             f.write(json.dumps(c, ensure_ascii=False) + "\n")
+
+    run_metrics = {
+        "elapsed_s": round(time.monotonic() - run_start, 1),
+        "feeds_total": len(feeds_to_poll),
+        "feeds_ok": sum(1 for m in feed_run_metrics.values() if m.get("ok")),
+        "feeds_fail": sum(1 for m in feed_run_metrics.values() if not m.get("ok")),
+        "items_polled": len(polled),
+        "items_enriched": len(enriched),
+        "groq_status": groq_status,
+        "findings_count": len(findings),
+        "cards_out": len(cards),
+    }
+    print(f"[INFO] Run metrics: {run_metrics}")
 
     heatmap = build_domain_heatmap(cards)
 
@@ -2606,6 +2764,7 @@ def _run():
             },
             "hot_domains": hot_domains,
             "placeholder_mode": placeholder_mode(),
+            "run_metrics": run_metrics,
         },
     )
 
@@ -2635,6 +2794,9 @@ def _run():
         delta=delta,
         history_days=history_days,
         weekly_html=weekly_html,
+        feed_health=feed_health,
+        run_metrics=run_metrics,
+        feed_run_metrics=feed_run_metrics,
     )
 
     save_json(
