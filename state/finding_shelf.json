@@ -34,5 +34,47 @@
     "last_seen": "2026-03-12",
     "run_count": 1,
     "title": "England Hockey Ransomware"
+  },
+  "db5d937346a0": {
+    "first_seen": "2026-03-12",
+    "last_seen": "2026-03-12",
+    "run_count": 1,
+    "title": "Iranian Cyber Activity"
+  },
+  "7d4f71c4744e": {
+    "first_seen": "2026-03-12",
+    "last_seen": "2026-03-12",
+    "run_count": 1,
+    "title": "Undici WebSocket Client Vulnerability"
+  },
+  "c98aed9c86ec": {
+    "first_seen": "2026-03-12",
+    "last_seen": "2026-03-12",
+    "run_count": 1,
+    "title": "Suspected China-Based Espionage"
+  },
+  "3eafa17750fb": {
+    "first_seen": "2026-03-12",
+    "last_seen": "2026-03-12",
+    "run_count": 1,
+    "title": "Honeywell IQ4x Vulnerability"
+  },
+  "fb566cebb5dd": {
+    "first_seen": "2026-03-12",
+    "last_seen": "2026-03-12",
+    "run_count": 1,
+    "title": "Loblaw Data Breach"
+  },
+  "2fafea133d4f": {
+    "first_seen": "2026-03-12",
+    "last_seen": "2026-03-12",
+    "run_count": 1,
+    "title": "Commercial Spyware"
+  },
+  "688ec37466a9": {
+    "first_seen": "2026-03-12",
+    "last_seen": "2026-03-12",
+    "run_count": 1,
+    "title": "SocksEscort Network Disruption"
   }
 }

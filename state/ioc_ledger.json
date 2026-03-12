@@ -1,0 +1,12 @@
+{
+  "ip:172.182.226.196": {
+    "type": "ip",
+    "value": "172.182.226.196",
+    "first_seen": "2026-03-12",
+    "run_count": 1,
+    "cards": [
+      "Commercial Spyware"
+    ],
+    "last_seen": "2026-03-12"
+  }
+}
