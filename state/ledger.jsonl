@@ -64,3 +64,4 @@
 {"ts": "2026-03-12T16:00:44.085723+00:00", "counts": {"feeds": 24, "polled": 21, "enriched": 21, "clusters": 10}, "hot_domains": [], "placeholder_mode": false}
 {"ts": "2026-03-12T16:10:26.384143+00:00", "counts": {"feeds": 24, "polled": 0, "enriched": 0, "clusters": 0}, "hot_domains": [], "placeholder_mode": false}
 {"ts": "2026-03-12T17:22:15.569723+00:00", "error": "'str' object has no attribute 'get'"}
+{"ts": "2026-03-12T17:35:44.248610+00:00", "error": "'str' object has no attribute 'get'"}
