@@ -76,5 +76,23 @@
     "last_seen": "2026-03-12",
     "run_count": 1,
     "title": "SocksEscort Network Disruption"
+  },
+  "47612f92c24b": {
+    "first_seen": "2026-03-12",
+    "last_seen": "2026-03-12",
+    "run_count": 1,
+    "title": "Alfresco Activiti Vuln"
+  },
+  "348817f80138": {
+    "first_seen": "2026-03-12",
+    "last_seen": "2026-03-12",
+    "run_count": 1,
+    "title": "whyour qinglong Vuln"
+  },
+  "e74065b3cb62": {
+    "first_seen": "2026-03-12",
+    "last_seen": "2026-03-12",
+    "run_count": 1,
+    "title": "HashiCorp Consul Vuln"
   }
 }
