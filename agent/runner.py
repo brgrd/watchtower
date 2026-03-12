@@ -1380,7 +1380,7 @@ def _build_domain_rank_html(cards: list, heatmap: dict) -> str:
         f'<span class="rank-label" style="color:#c9d1d9;font-weight:700">All Domains</span>'
         f'<div class="rank-bar-wrap"></div>'
         f'<span class="rank-val" style="color:#c9d1d9;font-weight:700">{total}</span>'
-        f'</div>'
+        f"</div>"
     )
     return all_row + "".join(rows)
 
@@ -1756,14 +1756,18 @@ def _write_index_html(
     _rm_groq = _rm.get("groq_status", "—")
     _rm_items = _rm.get("items_polled", "—")
     run_metrics_html = (
-        f'<div class="run-metrics-bar">'
-        f'<span class="rm-chip">⏱ {_rm_elapsed}s</span>'
-        f'<span class="rm-chip rm-ok">✓ {_rm_ok}/{_rm_total} feeds</span>'
-        f'<span class="rm-chip rm-fail">✗ {_rm_fail} failed</span>'
-        f'<span class="rm-chip">📡 {_rm_items} items</span>'
-        f'<span class="rm-chip">AI: {_rm_groq}</span>'
-        f'</div>'
-    ) if _rm else ""
+        (
+            f'<div class="run-metrics-bar">'
+            f'<span class="rm-chip">⏱ {_rm_elapsed}s</span>'
+            f'<span class="rm-chip rm-ok">✓ {_rm_ok}/{_rm_total} feeds</span>'
+            f'<span class="rm-chip rm-fail">✗ {_rm_fail} failed</span>'
+            f'<span class="rm-chip">📡 {_rm_items} items</span>'
+            f'<span class="rm-chip">AI: {_rm_groq}</span>'
+            f"</div>"
+        )
+        if _rm
+        else ""
+    )
     health_rows = ""
     for fid, fmeta in sorted(_frm.items()):
         hist = _fh.get(fid, {})
@@ -2182,14 +2186,54 @@ body.rail-open .rail-backdrop{{display:block}}
 .next-run.now{{border-color:#2a3a2a;background:#151f15;color:#3fb950;animation:pulse-now 1s ease-in-out infinite}}
 @keyframes pulse-now{{0%,100%{{opacity:1}}50%{{opacity:.55}}}}
 footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-top:1px solid #333}}
-@media (max-width:1279px){{}}
-@media (max-width:900px){{.header-bar{{padding:.6rem 12px}}
-  .kpi-grid{{grid-template-columns:repeat(3,minmax(110px,1fr));}}
-  .app-main{{padding-right:0}}
-  body.rail-collapsed .app-main{{padding-right:0}}
+@media (max-width:900px){{
+  :root{{--page-gutter:12px}}
+  .header-bar{{padding:.45rem 12px}}
+  .header-content{{padding-right:0!important}}
+  body.rail-collapsed .header-content{{padding-right:0!important}}
+  .header-bar h1{{font-size:1.02rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+  .header-bar p{{font-size:.72rem;display:flex;align-items:center;gap:.2rem;flex-wrap:nowrap;overflow:hidden}}
+  .next-run{{font-size:.64rem;padding:2px 6px;margin-left:.3rem;flex-shrink:0}}
+  .app-shell{{padding-top:68px}}
+  .app-main{{padding:0 var(--page-gutter) 1rem;padding-right:var(--page-gutter)}}
+  body.rail-collapsed .app-main{{padding-right:var(--page-gutter)}}
+  .kpi-grid{{grid-template-columns:repeat(3,1fr);gap:6px;margin:.65rem 0 .85rem}}
+  .kpi:last-child{{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;padding:.38rem .75rem}}
+  .kpi{{padding:.4rem .5rem}}
+  .kpi .v{{font-size:1.05rem}}
+  .kpi .v-sm{{font-size:.88rem}}
+  .cluster summary{{flex-wrap:wrap;row-gap:.2rem;padding:.55rem .7rem}}
+  .domain-tags{{margin:.15rem 0 0!important}}
+  .matrix-panel{{display:none}}
+  .executive{{padding:.6rem .85rem;margin:.5rem 0 1rem}}
+  .hp-panel{{padding:.5rem .8rem .55rem}}
+  .findings-filter{{gap:.4rem}}
+  .findings-search{{width:100%}}
+  .ha-title{{max-width:min(55vw,260px)}}
+  h2{{font-size:1rem;margin:.75rem 0 .25rem}}
+  .threat-toolbar{{flex-wrap:wrap;gap:.25rem}}
+  .delta-strip{{margin:.1rem 0 .6rem}}
+  .weekly-kpi-row{{gap:7px}}
   .right-rail{{right:0;top:0;bottom:0;width:min(92vw,420px);max-width:92vw;transform:translateX(100%);border-radius:0;box-shadow:-4px 0 12px rgba(0,0,0,.25)}}
   body.rail-open .right-rail{{transform:translateX(0)}}
   .rail-mobile-toggle{{display:inline-flex;align-items:center;gap:6px}}
+}}
+@media (max-width:480px){{
+  .header-bar h1{{font-size:.92rem}}
+  .next-run{{display:none}}
+  .kpi-grid{{gap:5px;margin:.5rem 0 .7rem}}
+  .kpi .k{{font-size:.6rem;letter-spacing:0}}
+  .kpi .v{{font-size:.9rem}}
+  .kpi:last-child .kpi .k{{font-size:.62rem}}
+  .cluster summary{{font-size:.84rem;padding:.48rem .6rem;gap:.18rem}}
+  .badge{{font-size:.67rem;padding:1px 6px}}
+  .priority{{font-size:.62rem;padding:1px 5px}}
+  .patch-badge,.cve-badge,.hp-badge{{font-size:.6rem;padding:1px 5px}}
+  .ha-pri,.ha-ps{{display:none}}
+  .wkpi{{min-width:76px;padding:.35rem .5rem}}
+  .wv{{font-size:.95rem}}
+  .cluster-body{{padding:.15rem .7rem .7rem}}
+  footer{{font-size:.72rem}}
 }}
         </style>
         </head>
@@ -2519,7 +2563,6 @@ _compute_delta = analysis_mod._compute_delta
 groq_weekly_review = analysis_mod.groq_weekly_review
 
 
-
 # -----------------------------
 # Run helpers
 # -----------------------------
@@ -2536,7 +2579,9 @@ def _validate_cards(cards: list) -> int:
             continue
         missing = _CARD_REQUIRED_KEYS - set(c.keys())
         if missing:
-            print(f"[WARN] Schema: card {i} ({str(c.get('title','?'))[:40]!r}) missing {missing}")
+            print(
+                f"[WARN] Schema: card {i} ({str(c.get('title','?'))[:40]!r}) missing {missing}"
+            )
             failures += 1
     if failures:
         print(f"[WARN] Schema validation: {failures}/{len(cards)} cards had issues")
@@ -2545,11 +2590,17 @@ def _validate_cards(cards: list) -> int:
 
 def _update_feed_health(health: dict, feed_id: str, ok: bool) -> None:
     """Update cumulative feed health counters in-place."""
-    e = health.setdefault(feed_id, {
-        "consecutive_ok": 0, "consecutive_fail": 0,
-        "total_ok": 0, "total_calls": 0,
-        "last_ok": None, "last_fail": None,
-    })
+    e = health.setdefault(
+        feed_id,
+        {
+            "consecutive_ok": 0,
+            "consecutive_fail": 0,
+            "total_ok": 0,
+            "total_calls": 0,
+            "last_ok": None,
+            "last_fail": None,
+        },
+    )
     e["total_calls"] = e.get("total_calls", 0) + 1
     if ok:
         e["consecutive_ok"] = e.get("consecutive_ok", 0) + 1
@@ -2608,7 +2659,11 @@ def _run():
                 items, feed_id, elapsed_ms = fut.result()
                 polled.extend(items)
                 ok = len(items) > 0 or placeholder_mode()
-                feed_run_metrics[feed_id] = {"ok": ok, "count": len(items), "elapsed_ms": elapsed_ms}
+                feed_run_metrics[feed_id] = {
+                    "ok": ok,
+                    "count": len(items),
+                    "elapsed_ms": elapsed_ms,
+                }
                 _update_feed_health(feed_health, feed_id, ok)
             except Exception as exc:
                 print(f"[WARN] Feed poll task failed: {exc}")
