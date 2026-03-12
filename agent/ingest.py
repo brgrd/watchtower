@@ -1,6 +1,7 @@
 """Feed ingestion and URL safety helpers for Watchtower."""
 
 import os
+import re
 import time
 from datetime import datetime, timedelta, timezone
 from ipaddress import ip_address
@@ -309,3 +310,111 @@ def poll_feed(feed_cfg: dict, since_hours: int, ignore: dict) -> list:
         if country:
             it["country"] = country
     return items
+
+
+# -----------------------------
+# CVE-anchored deduplication
+# -----------------------------
+_CVE_DEDUP_RE = re.compile(r"\bCVE-\d{4}-\d{4,7}\b", re.I)
+
+
+def _merge_by_cve(items: list) -> list:
+    """Merge feed items that share at least one CVE ID into a single enriched item.
+
+    Items with no extractable CVE ID pass through unchanged.  Merged items carry
+    the union of all CVE IDs, the longest available text, and a ``_merged_urls``
+    list of secondary source URLs.  This prevents duplicate Groq findings when
+    multiple feeds cover the same vulnerability.
+    """
+    if not items:
+        return items
+
+    def _item_cves(item: dict) -> frozenset:
+        text = (
+            item.get("title", "")
+            + " "
+            + item.get("summary", "")
+            + " "
+            + item.get("extracted_text", "")
+        )
+        return frozenset(m.group(0).upper() for m in _CVE_DEDUP_RE.finditer(text))
+
+    # Separate items with CVEs from those without
+    cve_items: list = []   # (item, frozenset_of_cves)
+    no_cve: list = []
+    for item in items:
+        cves = _item_cves(item)
+        if cves:
+            cve_items.append((item, cves))
+        else:
+            no_cve.append(item)
+
+    if not cve_items:
+        return items
+
+    # Union-find grouping — items sharing any CVE end up in the same group
+    n = len(cve_items)
+    parent = list(range(n))
+
+    def _find(x: int) -> int:
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    cve_to_idx: dict = {}  # first item index that introduced this CVE
+    for idx, (_, cves) in enumerate(cve_items):
+        for cve in cves:
+            if cve in cve_to_idx:
+                rx, ri = _find(cve_to_idx[cve]), _find(idx)
+                if rx != ri:
+                    parent[rx] = ri
+            else:
+                cve_to_idx[cve] = idx
+
+    # Collect groups by root
+    from collections import defaultdict
+    groups: dict = defaultdict(list)
+    for idx in range(n):
+        groups[_find(idx)].append(idx)
+
+    merged: list = []
+    for indices in groups.values():
+        group_items = [cve_items[i][0] for i in indices]
+        if len(group_items) == 1:
+            merged.append(group_items[0])
+            continue
+
+        # Use the item with the most text as primary
+        primary = max(
+            group_items,
+            key=lambda x: len(x.get("extracted_text", "") + x.get("summary", "")),
+        )
+        all_cves = sorted({c for i in indices for c in cve_items[i][1]})
+
+        # Combine text from all group members for richer Groq context
+        texts = [
+            g.get("extracted_text", "") or g.get("summary", "")
+            for g in group_items
+        ]
+        combined = " ".join(t for t in texts if t)[:1500]
+
+        result = dict(primary)
+        result["_merged_cves"] = all_cves
+        result["_merge_count"] = len(group_items)
+        result["_merged_urls"] = [
+            g["url"]
+            for g in group_items
+            if g.get("url") and g["url"] != primary.get("url")
+        ]
+        if len(combined) > len(result.get("extracted_text", "")):
+            result["extracted_text"] = combined
+        merged.append(result)
+
+        titles = [g.get("title", "")[:50] for g in group_items]
+        print(
+            f"[INFO] CVE dedup: merged {len(group_items)} items "
+            f"for {all_cves[:3]} — {titles[0]!r}"
+        )
+
+    return merged + no_cve
