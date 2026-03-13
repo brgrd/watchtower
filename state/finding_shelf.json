@@ -172,5 +172,17 @@
     "last_seen": "2026-03-13",
     "run_count": 1,
     "title": "HTML Injection in Postal"
+  },
+  "41d10116adee": {
+    "first_seen": "2026-03-13",
+    "last_seen": "2026-03-13",
+    "run_count": 1,
+    "title": "Chrome V8 Vulnerability"
+  },
+  "c5ce3e44f138": {
+    "first_seen": "2026-03-13",
+    "last_seen": "2026-03-13",
+    "run_count": 1,
+    "title": "Veeam Backup & Replication Flaws"
   }
 }
