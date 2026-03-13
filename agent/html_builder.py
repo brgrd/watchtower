@@ -1341,13 +1341,21 @@ def _write_index_html(
 
     card_data = []
     for c in cards:
+        prim = c.get("sources", {}).get("primary", [])
+        sources_brief = [
+            {"title": s.get("title", "")[:80], "url": s.get("url", "")}
+            for s in prim[:3]
+            if isinstance(s, dict) and s.get("url")
+        ]
         card_data.append(
             {
+                "id": c.get("id", ""),
                 "title": c.get("title", ""),
                 "risk_score": int(c.get("risk_score", 0)),
                 "priority": _derive_priority(c),
                 "domains": c.get("domains", []),
                 "summary": c.get("summary", ""),
+                "sources": sources_brief,
             }
         )
 
@@ -1839,13 +1847,34 @@ function selectDomain(domain){{
     var p1=subset.filter(function(c){{return c.priority==='P1';}}).length;
     var maxRisk=subset.reduce(function(m,c){{return Math.max(m,c.risk_score||0);}},0);
     var lbl=DOMAIN_LABELS[domain]||domain||'All domains';
-    var lines=subset.slice().sort(function(a,b){{return(b.risk_score||0)-(a.risk_score||0);}}).slice(0,5)
-        .map(function(c){{return '<li style="margin:.2rem 0">'+c.title+' <span style="color:#5a7090">('+c.risk_score+')</span></li>';}}).join('');
+    var lines=subset.slice().sort(function(a,b){{return(b.risk_score||0)-(a.risk_score||0);}}).slice(0,8)
+        .map(function(c){{
+            var scoreChip='<span style="display:inline-block;min-width:1.8rem;text-align:center;'
+                +'background:#1c2a1c;color:#4caf50;font-size:.65rem;font-weight:700;'
+                +'border-radius:3px;padding:1px 4px;margin-right:.35rem">'+c.risk_score+'</span>';
+            var priChip=c.priority==='P1'
+                ?'<span style="color:#ff6b6b;font-size:.63rem;font-weight:700;margin-right:.25rem">P1</span>'
+                :'';
+            var snip=c.summary?'<div style="color:#6a7f98;font-size:.71rem;margin:.15rem 0 .3rem;'
+                +'line-height:1.35;max-height:2.7em;overflow:hidden">'+c.summary.slice(0,110)+(c.summary.length>110?'\u2026':'')+'</div>':'';
+            var srcLinks=(c.sources||[]).map(function(s){{
+                return '<a href="'+s.url+'" target="_blank" rel="noopener noreferrer" '
+                    +'style="display:block;color:#58a6ff;font-size:.68rem;white-space:nowrap;'
+                    +'overflow:hidden;text-overflow:ellipsis;max-width:100%;margin:.08rem 0" '
+                    +'title="'+s.title+'">\u2197\u00a0'+s.title+'</a>';
+            }}).join('');
+            return '<li style="margin:.45rem 0 .6rem;list-style:none;border-left:2px solid #2a2a2a;padding-left:.5rem">'
+                +priChip+scoreChip
+                +'<span style="color:#c9d1d9;font-size:.78rem;font-weight:500">'+c.title+'</span>'
+                +snip
+                +(srcLinks?'<div style="margin-top:.15rem">'+srcLinks+'</div>':'')
+                +'</li>';
+        }}).join('');
     var t=document.getElementById('tm-detail');
     if(t){{
         t.innerHTML='<strong style="color:#c9d1d9">'+lbl+'</strong>'
             +'<div style="color:#6a7f98;font-size:.75rem;margin:.2rem 0 .35rem">Findings: '+subset.length+' &middot; P1: '+p1+' &middot; Max risk: '+maxRisk+'</div>'
-            +(lines?'<ul style="margin:.3rem 0 0 1rem;padding:0;font-size:.78rem">'+lines+'</ul>':'<div style="color:#5a7090;font-size:.78rem">No findings in this window.</div>');
+            +(lines?'<ul style="margin:.3rem 0 0 0;padding:0">'+lines+'</ul>':'<div style="color:#5a7090;font-size:.78rem">No findings in this window.</div>');
     }}
     trackUi('domain_selected',{{domain:CURRENT_DOMAIN,count:subset.length,maxRisk:maxRisk}});
 }}
