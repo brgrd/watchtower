@@ -136,5 +136,23 @@
     "last_seen": "2026-03-13",
     "run_count": 1,
     "title": "WordPress Plugin Vulnerabilities"
+  },
+  "efb51b29e36e": {
+    "first_seen": "2026-03-13",
+    "last_seen": "2026-03-13",
+    "run_count": 1,
+    "title": "Keycloak Auth Bypass"
+  },
+  "4d0c431ec58f": {
+    "first_seen": "2026-03-13",
+    "last_seen": "2026-03-13",
+    "run_count": 1,
+    "title": "mod_proxy_cluster Carriage Return Vulnerability"
+  },
+  "8a872d4b5558": {
+    "first_seen": "2026-03-13",
+    "last_seen": "2026-03-13",
+    "run_count": 1,
+    "title": "SGLang Unauthenticated Remote Code Execution"
   }
 }
