@@ -94,5 +94,23 @@
     "last_seen": "2026-03-12",
     "run_count": 1,
     "title": "HashiCorp Consul Vuln"
+  },
+  "b4c63c7dd61f": {
+    "first_seen": "2026-03-13",
+    "last_seen": "2026-03-13",
+    "run_count": 1,
+    "title": "Tenda i3 RCE"
+  },
+  "8be7e618f236": {
+    "first_seen": "2026-03-13",
+    "last_seen": "2026-03-13",
+    "run_count": 1,
+    "title": "Tenda W3 Vuln"
+  },
+  "c0dcfba90ea8": {
+    "first_seen": "2026-03-13",
+    "last_seen": "2026-03-13",
+    "run_count": 1,
+    "title": "AutohomeCorp frostmourne Vuln"
   }
 }

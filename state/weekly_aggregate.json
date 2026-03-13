@@ -1,86 +1,25 @@
 {
-  "rebuilt_at": "2026-03-12T04:55:54.757900+00:00",
+  "rebuilt_at": "2026-03-13T00:43:19.639655+00:00",
   "window_days": 4,
-  "total_cards": 29,
-  "unique_cves": 26,
+  "total_cards": 17,
+  "unique_cves": 11,
   "active_domains": [
     "container",
     "crypto_lib",
     "identity",
     "os_kernel",
-    "pkg_maven",
     "pkg_npm",
     "supply_chain",
     "web_framework"
   ],
-  "most_active_day": "2026-03-11",
+  "most_active_day": "2026-03-05",
   "day_counts": {
-    "2026-03-11": 15,
+    "2026-03-12": 3,
     "2026-03-05": 6,
     "2026-03-04": 5,
     "2026-03-03": 3
   },
   "top_cves": [
-    {
-      "cve": "CVE-2026-3963",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-3962",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-3964",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-3966",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-3965",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-3967",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-3968",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-3970",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-3969",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-3971",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2025-59388",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-3972",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-1878",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-3973",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-3975",
-      "count": 1
-    },
     {
       "cve": "CVE-2026-27750",
       "count": 1
@@ -100,8 +39,32 @@
     {
       "cve": "CVE-2026-3598",
       "count": 1
+    },
+    {
+      "cve": "CVE-2025-41257",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-29086",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-29045",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-26002",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-2297",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-12345",
+      "count": 1
     }
   ],
-  "weekly_summary": "Over the past four days, our security landscape has been characterized by 17 total findings across 14 unique CVEs, with CVE-2025-20005, CVE-2025-20027, and CVE-2025-20028 being the most frequently observed, each occurring three times. The most active day was March 5, 2026, with various security domains being impacted, including Containers, Crypto Libraries, Identity and Authentication, OS and Kernel, npm and Node, Supply Chain, and Web Servers, highlighting the broad scope of potential vulnerabilities that require attention and mitigation to ensure the security and integrity of our infrastructure.",
-  "weekly_summary_ts": "2026-03-12"
+  "weekly_summary": "Over the past four days, our security landscape has been characterized by 17 total findings, spanning 11 unique CVEs, with no single vulnerability dominating the landscape, as each of the identified CVEs, including CVE-2026-27750, CVE-2026-27749, and others, was observed only once. The affected security domains are diverse, encompassing Containers, Crypto Libraries, Identity and Authentication, OS and Kernel, npm and Node, Supply Chain, and Web Servers. The most active day was March 5, 2026, indicating a recent surge in security incidents, highlighting the need for continued vigilance across these domains.",
+  "weekly_summary_ts": "2026-03-13"
 }

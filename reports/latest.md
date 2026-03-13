@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-03-12T23:55:55.168977+00:00
+generated_at: 2026-03-13T00:43:19.637388+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-3967 in Alfresco Activiti, CVE-2026-3965 in whyour qinglong, and CVE-2026-3966 in 648540858 wvp-GB28181-pro. Internet-facing systems, such as those using Alfresco Activiti and whyour qinglong, are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using HashiCorp Consul and Consul Enterprise, as a vulnerability has been detected in versions 1.18.20 up to 1.21.10 and 1.22.4, and no patch is currently available.
+CVE-2026-3968 in AutohomeCorp frostmourne, CVE-2026-3971 in Tenda i3, and CVE-2026-3970 in Tenda i3 represent the highest-risk items this period due to their potential impact on network devices. Internet-facing firewalls, container orchestration nodes, and VPN appliances are most exposed right now due to the lack of available patches for these vulnerabilities. The single most time-sensitive action is to monitor and isolate Tenda i3 and W3 devices, as patches are not currently available for CVE-2026-3971, CVE-2026-3970, and CVE-2026-3973.
 
-## Alfresco Activiti Vuln (risk: 40)
-[P2] A flaw has been found in Alfresco Activiti up to 7.19/8.8.0, with no patch available. This vulnerability could be exploited to gain unauthorized access to sensitive data. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.60)
+## Tenda i3 RCE (risk: 70)
+[P1] A vulnerability in Tenda i3 1.0.0.6(2204) allows for remote code execution, with no patch available. This affects the function formwr, and exploitation in the wild has not been reported. Why now: Lack of available patch (confidence: 0.80)
 
-- [CVE-2026-3967](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvdetail/CVE-2026-3967)
+- [CVE-2026-3971](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3971)
 
-## whyour qinglong Vuln (risk: 40)
-[P2] A security vulnerability has been detected in whyour qinglong up to 2.20.1, with no patch available. This vulnerability could be exploited to gain unauthorized access to sensitive data. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.60)
+## Tenda W3 Vuln (risk: 70)
+[P1] A vulnerability in Tenda W3 1.0.0.3(2204) affects the function, with no patch available. This vulnerability has not been exploited in the wild. Why now: Lack of available patch (confidence: 0.80)
 
-- [CVE-2026-3965](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvdetail/CVE-2026-3965)
+- [CVE-2026-3973](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3973)
 
-## HashiCorp Consul Vuln (risk: 40)
-[P2] HashiCorp Consul and Consul Enterprise 1.18.20 up to 1.21.10 and 1.22.4 are vulnerable, with no patch available. This vulnerability could be exploited to gain unauthorized access to sensitive data. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.60)
+## AutohomeCorp frostmourne Vuln (risk: 40)
+[P2] A vulnerability in AutohomeCorp frostmourne up to 1.0 affects an unknown function, with no patch or workaround available. This vulnerability has not been exploited in the wild. Why now: Newly disclosed vulnerability (confidence: 0.60)
 
-- [CVE-2026-2808](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvdetail/CVE-2026-2808)
+- [CVE-2026-3968](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3968)
