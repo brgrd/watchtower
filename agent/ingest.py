@@ -1,5 +1,6 @@
 """Feed ingestion and URL safety helpers for Watchtower."""
 
+import json
 import os
 import re
 import time
@@ -418,3 +419,107 @@ def _merge_by_cve(items: list) -> list:
         )
 
     return merged + no_cve
+
+
+# ──────────────────────────────────────────────
+# EPSS enrichment (FIRST.org, free, no API key)
+# ──────────────────────────────────────────────
+
+_EPSS_API = "https://api.first.org/data/v1/epss"
+_EPSS_TTL_HOURS = 24
+
+
+def _enrich_epss(cards: list, cache_file: str) -> None:
+    """Fetch EPSS exploitation probability scores and set card['epss_score'].
+
+    For each card, epss_score is the highest EPSS value (0–1) across all CVEs
+    extracted from its title/summary/enrichment.  Scores are cached in
+    cache_file for 24 hours to avoid redundant API calls.  Skipped entirely
+    in placeholder mode or if the API call fails.
+    """
+    if placeholder_mode():
+        return
+
+    from agent.scoring import _extract_cves  # local import avoids circular dep
+
+    # Load existing cache
+    cache: dict = {}
+    if os.path.exists(cache_file):
+        try:
+            with open(cache_file, "r", encoding="utf-8") as fh:
+                cache = json.load(fh)
+        except (json.JSONDecodeError, OSError):
+            cache = {}
+
+    now_utc = datetime.now(timezone.utc)
+    cutoff = now_utc - timedelta(hours=_EPSS_TTL_HOURS)
+
+    def _cached_at(entry: dict) -> datetime:
+        try:
+            return datetime.fromisoformat(
+                entry.get("cached_at", "2000-01-01T00:00:00+00:00")
+            )
+        except ValueError:
+            return datetime.min.replace(tzinfo=timezone.utc)
+
+    # Collect CVEs per card
+    card_cves: list[list] = []
+    for card in cards:
+        cves = (card.get("enrichment") or {}).get("cves") or _extract_cves(
+            card.get("title", "") + " " + card.get("summary", "")
+        )
+        card_cves.append(cves)
+
+    all_cves = {c for cves in card_cves for c in cves}
+
+    # Determine which CVEs need a fresh fetch
+    to_fetch = [
+        cve
+        for cve in all_cves
+        if cve not in cache or _cached_at(cache[cve]) < cutoff
+    ]
+
+    # Batch-fetch in groups of 100 (API supports multi-CVE queries)
+    now_iso = now_utc.isoformat()
+    if to_fetch:
+        for i in range(0, len(to_fetch), 100):
+            batch = to_fetch[i : i + 100]
+            try:
+                resp = requests.get(
+                    _EPSS_API,
+                    params={"cve": ",".join(batch)},
+                    timeout=15,
+                    headers={"User-Agent": "Watchtower/1.0"},
+                )
+                resp.raise_for_status()
+                for entry in resp.json().get("data", []):
+                    cve_id = entry.get("cve", "")
+                    if cve_id:
+                        cache[cve_id] = {
+                            "epss": float(entry.get("epss", 0.0)),
+                            "percentile": float(entry.get("percentile", 0.0)),
+                            "cached_at": now_iso,
+                        }
+                # Mark CVEs absent from the API response so they are not refetched
+                for cve in batch:
+                    if cve not in cache:
+                        cache[cve] = {"epss": None, "percentile": None, "cached_at": now_iso}
+            except Exception as exc:
+                print(f"[WARN] EPSS batch fetch failed: {exc}")
+
+        # Persist updated cache
+        try:
+            os.makedirs(os.path.dirname(os.path.abspath(cache_file)), exist_ok=True)
+            with open(cache_file, "w", encoding="utf-8") as fh:
+                json.dump(cache, fh, ensure_ascii=False)
+        except OSError as exc:
+            print(f"[WARN] EPSS cache write failed: {exc}")
+
+    # Apply scores to cards
+    for card, cves in zip(cards, card_cves):
+        scores = [
+            cache[c]["epss"]
+            for c in cves
+            if c in cache and cache[c].get("epss") is not None
+        ]
+        card["epss_score"] = max(scores) if scores else None

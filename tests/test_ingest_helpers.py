@@ -5,12 +5,18 @@ Coverage targets:
   - fetch_url: placeholder mode, non-HTTPS rejection, private host rejection
   - add_ignore / is_ignored: URL, domain, and prefix bucket operations
   - _poll_rss: cutoff filtering, ignore integration
+  - _enrich_epss: placeholder skip, cache hit, cache miss with API call
 """
 
+import json
+import os
+import tempfile
 import pytest
+from datetime import datetime, timezone
 from unittest.mock import MagicMock, patch
 
 from agent.ingest import (
+    _enrich_epss,
     _poll_rss,
     add_ignore,
     fetch_url,
@@ -186,3 +192,87 @@ class TestPollRss:
         add_ignore(ig, "domain", "feed.example.com", 30)
         result = _poll_rss("https://feeds.example.com/rss", since_hours=24 * 365, ignore=ig)
         assert result == []
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# _enrich_epss
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+class TestEnrichEpss:
+    """_enrich_epss sets card['epss_score'] from FIRST.org data with caching."""
+
+    def test_placeholder_mode_skips_enrichment(self):
+        cards = [{"title": "CVE-2026-1234 bug", "summary": ""}]
+        with tempfile.NamedTemporaryFile(suffix=".json", delete=False) as f:
+            cache_path = f.name
+        try:
+            # placeholder_mode() returns True by default in CI (conftest sets env var)
+            _enrich_epss(cards, cache_path)
+            assert "epss_score" not in cards[0]
+        finally:
+            os.unlink(cache_path)
+
+    def test_cache_hit_sets_epss_score(self):
+        cards = [{"title": "CVE-2026-9999 RCE", "summary": ""}]
+        now_iso = datetime.now(timezone.utc).isoformat()
+        cache_data = {"CVE-2026-9999": {"epss": 0.75, "percentile": 0.95, "cached_at": now_iso}}
+        with tempfile.NamedTemporaryFile(
+            suffix=".json", delete=False, mode="w", encoding="utf-8"
+        ) as f:
+            json.dump(cache_data, f)
+            cache_path = f.name
+        try:
+            with patch("agent.ingest.placeholder_mode", return_value=False):
+                _enrich_epss(cards, cache_path)
+            assert cards[0]["epss_score"] == pytest.approx(0.75)
+        finally:
+            os.unlink(cache_path)
+
+    def test_no_cves_sets_epss_none(self):
+        cards = [{"title": "generic advisory no cve", "summary": ""}]
+        with tempfile.NamedTemporaryFile(suffix=".json", delete=False) as f:
+            cache_path = f.name
+        try:
+            with patch("agent.ingest.placeholder_mode", return_value=False):
+                _enrich_epss(cards, cache_path)
+            assert cards[0]["epss_score"] is None
+        finally:
+            os.unlink(cache_path)
+
+    def test_api_fetch_populates_score(self):
+        cards = [{"title": "CVE-2026-7777 exploit", "summary": ""}]
+        with tempfile.NamedTemporaryFile(suffix=".json", delete=False) as f:
+            cache_path = f.name
+        mock_resp = MagicMock()
+        mock_resp.json.return_value = {
+            "data": [{"cve": "CVE-2026-7777", "epss": "0.55", "percentile": "0.90"}]
+        }
+        try:
+            with patch("agent.ingest.placeholder_mode", return_value=False), \
+                 patch("agent.ingest.requests.get", return_value=mock_resp):
+                _enrich_epss(cards, cache_path)
+            assert cards[0]["epss_score"] == pytest.approx(0.55)
+        finally:
+            os.unlink(cache_path)
+
+    def test_stale_cache_triggers_refetch(self):
+        cards = [{"title": "CVE-2026-5555 vuln", "summary": ""}]
+        stale_iso = "2000-01-01T00:00:00+00:00"
+        cache_data = {"CVE-2026-5555": {"epss": 0.1, "percentile": 0.2, "cached_at": stale_iso}}
+        with tempfile.NamedTemporaryFile(
+            suffix=".json", delete=False, mode="w", encoding="utf-8"
+        ) as f:
+            json.dump(cache_data, f)
+            cache_path = f.name
+        mock_resp = MagicMock()
+        mock_resp.json.return_value = {
+            "data": [{"cve": "CVE-2026-5555", "epss": "0.88", "percentile": "0.99"}]
+        }
+        try:
+            with patch("agent.ingest.placeholder_mode", return_value=False), \
+                 patch("agent.ingest.requests.get", return_value=mock_resp):
+                _enrich_epss(cards, cache_path)
+            assert cards[0]["epss_score"] == pytest.approx(0.88)
+        finally:
+            os.unlink(cache_path)

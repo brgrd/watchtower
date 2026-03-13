@@ -110,9 +110,11 @@ def _build_threat_map_svg(cards: list, heatmap: dict, velocity: dict = None) -> 
     """Return an inline SVG constellation threat map, heat-coloured by domain activity."""
     # Raw per-domain heat score
     raw: dict[str, int] = {}
+    cnts: dict[str, int] = {}
     for key in _TM_NODES:
         sub = [c for c in cards if key in c.get("domains", [])]
         cnt = len(sub)
+        cnts[key] = cnt
         mx = max((c.get("risk_score", 0) for c in sub), default=0)
         p1 = sum(1 for c in sub if str(c.get("priority", "")).upper() == "P1")
         ex = sum(1 for c in sub if _is_exploitish(c))
@@ -241,6 +243,15 @@ def _build_threat_map_svg(cards: list, heatmap: dict, velocity: dict = None) -> 
             f'<circle cx="{cx}" cy="{cy}" r="{R}" '
             f'fill="none" stroke="{ring_color}" stroke-width="3.5" filter="url(#f-mid)"/>'
         )
+        # Count label inside disc — only when findings exist for this domain
+        _cnt = cnts.get(key, 0)
+        if _cnt > 0:
+            _cnt_txt = "9+" if _cnt > 9 else str(_cnt)
+            p.append(
+                f'<text x="{cx}" y="{cy + 4}" text-anchor="middle" dominant-baseline="middle" '
+                f'font-family="system-ui,sans-serif" font-size="11" font-weight="700" '
+                f'fill="{lf}" opacity="0.9">{_cnt_txt}</text>'
+            )
         # Selection ring — simple white ring, hidden at rest
         p.append(
             f'<circle class="sel-indicator" cx="{cx}" cy="{cy}" r="{R+5}" '
@@ -1088,15 +1099,29 @@ def _write_index_html(
             if c.get("is_kev")
             else ""
         )
+        _corr = int(c.get("corroboration_count", 1))
+        corr_badge_html = (
+            f'<span class="corr-badge" title="{_corr} independent sources cover this finding">{_corr} sources</span>'
+            if _corr >= 2
+            else ""
+        )
+        _epss = c.get("epss_score")
+        epss_badge_html = (
+            f'<span class="epss-badge" title="EPSS exploitation probability: {_epss:.1%} — high likelihood of active exploitation">EPSS {_epss:.0%}</span>'
+            if isinstance(_epss, float) and _epss >= 0.4
+            else ""
+        )
         rows += f"""
                 <details class="cluster" data-domains="{html.escape(domains_attr)}" data-tactic="{html.escape(_tactic)}">
                     <summary>
                         <span class="badge" style="background:{badge_bg};color:{badge_fg}">{c['risk_score']}</span>
                         <span class="priority {pri_cls}">{pri}</span>
                         {kev_badge_html}
+                        {epss_badge_html}
                         {patch_badge_html}
                         {hp_badge_html}
                         {cve_badge_html}
+                        {corr_badge_html}
                         {tactic_chip_html}
                         {shelf_badge_html}
                         {attr_badge_html}
@@ -1373,6 +1398,8 @@ p{{color:#c9d1d9}}
 .tactic-chip{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(88,130,240,.12);color:#6ea8fe;border:1px solid rgba(88,130,240,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0}}
 .shelf-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(210,90,20,.1);color:#e8864a;border:1px solid rgba(210,90,20,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}}
 .kev-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(180,20,20,.18);color:#ff6b6b;border:1px solid rgba(180,20,20,.4);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.04em;vertical-align:middle;flex-shrink:0;cursor:default}}
+.corr-badge{{display:inline-block;font-size:.6rem;font-weight:600;background:rgba(40,80,160,.1);color:#6ea8fe;border:1px solid rgba(40,80,160,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}}
+.epss-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(230,100,20,.15);color:#f4a054;border:1px solid rgba(230,100,20,.35);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.03em;vertical-align:middle;flex-shrink:0;cursor:default}}
 .attr-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(180,140,10,.12);color:#d4a017;border:1px solid rgba(180,140,10,.3);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}}
 .enrich-block{{margin:.6rem 0 .2rem;border:1px solid #222;border-radius:5px;overflow:hidden}}
 .enrich-summary{{font-size:.72rem;color:#5a7090;cursor:pointer;padding:.35rem .6rem;list-style:none;display:flex;align-items:center;gap:.4rem;user-select:none}}

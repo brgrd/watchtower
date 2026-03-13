@@ -636,6 +636,7 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
     domain_to_country: dict = {}
     cve_to_status: dict = {}
     kev_cves: set = set()
+    cve_to_source_count: dict = {}
     if all_items:
         for it in all_items:
             cc = it.get("country", "")
@@ -663,6 +664,7 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                 }
                 if is_kev_source:
                     kev_cves.add(cve_id)
+                cve_to_source_count[cve_id] = cve_to_source_count.get(cve_id, 0) + 1
 
     cards = []
     for f in findings:
@@ -706,6 +708,11 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
         )
 
         finding_cves = _extract_cves(f.get("title", "") + " " + f.get("summary", ""))
+        corroboration_count = (
+            max(cve_to_source_count.get(c, 1) for c in finding_cves)
+            if finding_cves
+            else 1
+        )
         patch_available = False
         workaround_available = False
         exploited_in_wild = False
@@ -754,6 +761,7 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                 "matched_targets": matched_targets,
                 "attribution_flag": attribution_flag,
                 "is_kev": is_kev,
+                "corroboration_count": corroboration_count,
                 "tactic_name": _normalize_tactic(
                     str(f.get("tactic_name", "")) if f.get("tactic_name") else ""
                 ),

@@ -51,7 +51,7 @@ Keep each item open until code, tests, and docs are complete.
 
 ### Medium Priority
 
-- [ ] **EPSS exploitation probability badge**
+- [x] **EPSS exploitation probability badge**
   - Patch status is "unknown" for the vast majority of findings. EPSS from `api.first.org/data/v1/epss?cve=CVE-XXXX` (free, no key) gives real probability-of-exploitation per CVE, refreshed daily. Stronger real-world predictor than CVSS alone.
   - High-EPSS findings (> 0.4) get a distinct badge even at moderate CVSS. Cache in `state/epss_cache.json` (TTL 24h).
   - Scope: `_enrich_epss(cards)` in [agent/ingest.py](agent/ingest.py); `.epss-badge` CSS variant; called after enrichment pass in `_run()`.
@@ -71,7 +71,7 @@ Keep each item open until code, tests, and docs are complete.
   - Add `resolved` flag when `patch_status == "patched"`: zero the boost, change badge to grey `Nd (resolved)`. Prune shelf entry 7 days post-resolution.
   - Scope: `_update_shelf()` in [agent/runner.py](agent/runner.py); `.shelf-badge--resolved` CSS variant in [agent/html_builder.py](agent/html_builder.py).
 
-- [ ] **Corroboration count badge**
+- [x] **Corroboration count badge**
   - `corroboration_count` is computed per cluster and passed to Groq but never shown. A finding cited by 5 independent sources is more credible than a single-source finding at the same score.
   - Show `N sources` chip on cards where `corroboration_count ≥ 2`. Single-source: no badge.
   - Scope: pass `corroboration_count` through `_findings_to_cards()` → card dict → [agent/html_builder.py](agent/html_builder.py) render.
@@ -86,7 +86,7 @@ Keep each item open until code, tests, and docs are complete.
   - Track `last_item_ts` per feed. Flag feeds where `last_item_ts` is > 72h ago with a "Stale" badge in the Feeds tab. Separate from "failed" coloring.
   - Scope: `_update_feed_health()` in [agent/runner.py](agent/runner.py); stale badge CSS in [agent/html_builder.py](agent/html_builder.py).
 
-- [ ] **Constellation node count labels**
+- [x] **Constellation node count labels**
   - Nodes are heat-colored but show no count. Users must click to discover how many findings map to each domain.
   - Add a small count text inside each node disc (0.65rem, bottom-aligned). Zero-count nodes: no label. Count > 9: "9+".
   - Scope: `_build_threat_map_svg()` in [agent/html_builder.py](agent/html_builder.py); `<text>` element per node using `heatmap` counts.
@@ -185,6 +185,9 @@ Keep each item open until code, tests, and docs are complete.
 | Patch status badge | "Status Unknown" suppressed; badge only for patched/workaround/no_fix |
 | Extend CARDS JS object | Added `tactic`, `shelf_days`, `run_count`, `first_seen_ts`, `actions_24h` to every card in `CARDS`; `first_seen_ts` set in `_update_shelf()` |
 | CISA KEV explicit card badge | `is_kev: bool` derived via CVE-set intersection in `_findings_to_cards()`; red `CISA KEV` chip rendered before priority pill; 4 targeted tests |
+| EPSS exploitation probability badge | `_enrich_epss()` in `ingest.py`; batched FIRST.org API; 24h cache in `state/epss_cache.json`; orange `EPSS XX%` chip for ≥ 0.4; wired into `_run()`; 5 targeted tests |
+| Corroboration count badge | `cve_to_source_count` map in `_findings_to_cards()`; `N sources` blue chip for ≥ 2; 4 targeted tests |
+| Constellation node count labels | `cnts` dict in `_build_threat_map_svg()`; `<text>` count label inside each node disc; "9+" for counts > 9 |
 
 ---
 
@@ -205,3 +208,4 @@ Keep each item open until code, tests, and docs are complete.
 - 2026-03-13: **CISA KEV badge** — `is_kev: bool` derived in `_findings_to_cards()` via CVE-set intersection against KEV source items; red `CISA KEV` chip rendered in card header before priority pill; `.kev-badge` CSS added; 4 parameterized tests. 294 tests pass.
 - 2026-03-13: **CARDS JS object extended** — added `tactic`, `shelf_days`, `run_count`, `first_seen_ts`, `actions_24h` to every entry. `first_seen_ts` (date string) now set on card in `_update_shelf()`; `card_data` builder updated in `html_builder.py`. 290 tests pass.
 - 2026-03-13: Full codebase review. Restructured tracker: dropped phase numbering, reorganized all pending items by impact × simplicity. Added 15 new items (CARDS JS enrichment, Alerts tab, CISA KEV badge, Priority Actions panel, staleness warning, corroboration badge, dead feed detection, node count labels, GHSA enrichment, geo distribution, token budget, print view, watchlist).
+- 2026-03-13: **EPSS badge + Corroboration badge + Constellation node counts** — `_enrich_epss()` in `ingest.py` with batched FIRST.org API and 24h cache; `cve_to_source_count` map in `_findings_to_cards()` for corroboration; `cnts` dict + `<text>` label in constellation SVG; all three wired and rendered; 9 new targeted tests (303 total).

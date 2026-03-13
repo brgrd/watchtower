@@ -28,7 +28,7 @@ from agent import rendering as rendering_mod
 from agent import html_builder as html_builder_mod
 from agent import scoring as scoring_mod
 from agent import state as state_mod
-from agent.ingest import _merge_by_cve
+from agent.ingest import _merge_by_cve, _enrich_epss
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
 
@@ -72,6 +72,7 @@ LAST_RUN_CARDS_FILE = os.path.join(STATE_DIR, "last_run_cards.json")
 WEEKLY_AGGREGATE_FILE = os.path.join(STATE_DIR, "weekly_aggregate.json")
 FEED_HEALTH_FILE = os.path.join(STATE_DIR, "feed_health.json")
 FINDING_SHELF_FILE = os.path.join(STATE_DIR, "finding_shelf.json")
+EPSS_CACHE_FILE = os.path.join(STATE_DIR, "epss_cache.json")
 IOC_LEDGER_FILE = os.path.join(STATE_DIR, "ioc_ledger.json")
 CONFIG = yaml.safe_load(
     open(os.path.join(ROOT, "agent", "config.yaml"), "r", encoding="utf-8")
@@ -1670,6 +1671,7 @@ def _run():
         },
     )
 
+    _enrich_epss(cards, EPSS_CACHE_FILE)
     _update_shelf(cards)
     ioc_ledger = _update_ioc_ledger(cards, IOC_LEDGER_FILE)
     history = _read_ledger_history()

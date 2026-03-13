@@ -470,6 +470,41 @@ class TestFindingsToCards:
         cards = _findings_to_cards([f], all_items=[kev_item])
         assert cards[0]["is_kev"] is True
 
+    # ── corroboration_count ───────────────────────────────────────────────────
+
+    def test_corroboration_count_defaults_to_one(self):
+        f = {"title": "no CVE mentioned", "risk_score": 50, "domains": ["network"]}
+        cards = _findings_to_cards([f])
+        assert cards[0]["corroboration_count"] == 1
+
+    def test_corroboration_count_single_source(self):
+        f = {"title": "CVE-2026-7777 bug", "risk_score": 50, "domains": ["network"]}
+        item = {"title": "CVE-2026-7777 patch", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7777", "summary": ""}
+        cards = _findings_to_cards([f], all_items=[item])
+        assert cards[0]["corroboration_count"] == 1
+
+    def test_corroboration_count_multiple_sources(self):
+        f = {"title": "CVE-2026-8888 RCE", "risk_score": 70, "domains": ["network"]}
+        items = [
+            {"title": "CVE-2026-8888 advisory", "url": "https://example.com/1", "summary": ""},
+            {"title": "CVE-2026-8888 patch", "url": "https://example.com/2", "summary": ""},
+            {"title": "CVE-2026-8888 cisa", "url": "https://example.com/3", "source_id": "cisa_kev", "summary": ""},
+        ]
+        cards = _findings_to_cards([f], all_items=items)
+        assert cards[0]["corroboration_count"] == 3
+
+    def test_corroboration_count_max_across_cves(self):
+        # Finding has two CVEs; one appears in 3 sources, other in 1 — should pick max
+        f = {"title": "CVE-2026-1001 and CVE-2026-1002 combined", "risk_score": 60, "domains": ["network"]}
+        items = [
+            {"title": "CVE-2026-1001 source A", "url": "https://example.com/a1", "summary": ""},
+            {"title": "CVE-2026-1001 source B", "url": "https://example.com/a2", "summary": ""},
+            {"title": "CVE-2026-1001 source C", "url": "https://example.com/a3", "summary": ""},
+            {"title": "CVE-2026-1002 source X", "url": "https://example.com/b1", "summary": ""},
+        ]
+        cards = _findings_to_cards([f], all_items=items)
+        assert cards[0]["corroboration_count"] == 3
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # _match_high_profile
