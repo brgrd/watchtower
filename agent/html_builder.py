@@ -363,82 +363,8 @@ def _build_domain_rank_html(cards: list, heatmap: dict, velocity: dict = None) -
 # P3: 7-day history helpers
 # -----------------------------
 def _build_calendar_html(history_days: list) -> str:
-    """Build a 14-cell threat heatmap calendar from history_days (newest-first)."""
-    if not history_days:
-        return ""
-    # Build a lookup: date_str -> {max_risk, count, p1}
-    day_map: dict = {}
-    for day in history_days:
-        ds = day.get("date_str", "")
-        cards = day.get("cards", [])
-        if not ds:
-            continue
-        day_map[ds] = {
-            "max_risk": max((c.get("risk_score", 0) for c in cards), default=0),
-            "count": len(cards),
-            "p1": sum(1 for c in cards if _derive_priority(c) == "P1"),
-        }
-    # Produce cells for the last 14 days (today back), oldest→newest
-    today = (datetime.now(timezone.utc) - timedelta(hours=5)).date()
-    cells = []
-    for i in range(13, -1, -1):
-        d = today - timedelta(days=i)
-        ds = d.strftime("%Y-%m-%d")
-        info = day_map.get(ds)
-        if not info:
-            color = "#1a1a1a"
-            border = "#252525"
-            tip = f"{ds} — no data"
-        else:
-            risk = info["max_risk"]
-            count = info["count"]
-            p1 = info["p1"]
-            tip = f"{ds} · {count} finding{'s' if count != 1 else ''}"
-            if p1:
-                tip += f" · {p1} P1"
-            tip += f" · peak risk {risk}"
-            if risk >= 80:
-                color, border = "rgba(170,28,28,.55)", "rgba(220,50,50,.4)"
-            elif risk >= 60:
-                color, border = "rgba(158,106,3,.50)", "rgba(210,153,34,.4)"
-            elif risk >= 30:
-                color, border = "rgba(30,80,160,.50)", "rgba(58,130,246,.4)"
-            else:
-                color, border = "rgba(35,90,35,.45)", "rgba(56,160,56,.35)"
-        label = d.strftime("%d")
-        cells.append(
-            f'<div class="cal-cell" style="background:{color};border:1px solid {border}" '
-            f'title="{tip}" aria-label="{tip}">'
-            f'<span class="cal-day">{label}</span>'
-            f"</div>"
-        )
-    month_labels = ""
-    prev_month = ""
-    for i in range(13, -1, -1):
-        d = today - timedelta(days=i)
-        m = d.strftime("%b")
-        if m != prev_month:
-            month_labels += (
-                f'<span class="cal-month-label" style="grid-column:span 1">{m}</span>'
-            )
-            prev_month = m
-        else:
-            month_labels += '<span class="cal-month-label"></span>'
-    return (
-        '<section class="cal-section">'
-        '<div class="cal-header">'
-        '<span class="cal-title">14-Day Threat Heatmap</span>'
-        '<span class="cal-legend">'
-        '<span class="cal-legend-item" style="background:rgba(170,28,28,.55)">80+</span>'
-        '<span class="cal-legend-item" style="background:rgba(158,106,3,.5)">60+</span>'
-        '<span class="cal-legend-item" style="background:rgba(30,80,160,.5)">30+</span>'
-        '<span class="cal-legend-item" style="background:rgba(35,90,35,.45)">&lt;30</span>'
-        '<span class="cal-legend-item" style="background:#1a1a1a">—</span>'
-        "</span>"
-        "</div>"
-        f'<div class="cal-grid">{"" .join(cells)}</div>'
-        "</section>"
-    )
+    """Removed — 14-day heatmap no longer displayed."""
+    return ""
 
 
 def _build_history_accordion(days: list, today_str: str = "") -> str:
@@ -466,26 +392,11 @@ def _build_history_accordion(days: list, today_str: str = "") -> str:
         for c in sorted(cards, key=lambda x: int(x.get("risk_score", 0)), reverse=True):
             pri = _derive_priority(c)
             pri_cls = "p1" if pri == "P1" else "p2" if pri == "P2" else "p3"
-            ps = c.get("patch_status", "unknown")
-            ps_cls = (
-                "patch-badge--fixed"
-                if ps == "patched"
-                else (
-                    "patch-badge--workaround"
-                    if ps == "workaround"
-                    else (
-                        "patch-badge--no-fix"
-                        if ps == "no_fix"
-                        else "patch-badge--unknown"
-                    )
-                )
-            )
             trows_list.append(
                 "<tr>"
                 f'<td class="ha-title">{html.escape(c.get("title", "")[:80])}</td>'
                 f'<td class="ha-risk">{int(c.get("risk_score", 0))}</td>'
                 f'<td class="ha-pri"><span class="priority {pri_cls}">{pri}</span></td>'
-                f'<td class="ha-ps"><span class="patch-badge {ps_cls}" style="font-size:.58rem">{ps.replace("_"," ")}</span></td>'
                 "</tr>"
             )
         trows = "".join(trows_list)
@@ -498,7 +409,7 @@ def _build_history_accordion(days: list, today_str: str = "") -> str:
             f'<span class="ha-ts">{html.escape(ts_str)}</span>'
             f"</summary>"
             f'<div class="ha-body">'
-            f'<table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th><th>Patch</th></tr></thead>'
+            f'<table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead>'
             f"<tbody>{trows}</tbody></table>"
             f"</div>"
             f"</details>"
@@ -1126,28 +1037,18 @@ def _write_index_html(
         domains_attr = " ".join(c.get("domains", []))
         why_now = html.escape(c.get("why_now", ""))
         _ps = c.get("patch_status", "unknown")
-        _patch_badge_cls = (
-            "patch-badge--fixed"
+        patch_badge_html = (
+            f'<span class="patch-badge patch-badge--fixed">Patch Available</span>'
             if _ps == "patched"
             else (
-                "patch-badge--workaround"
+                f'<span class="patch-badge patch-badge--workaround">Workaround</span>'
                 if _ps == "workaround"
                 else (
-                    "patch-badge--no-fix" if _ps == "no_fix" else "patch-badge--unknown"
+                    f'<span class="patch-badge patch-badge--no-fix">No Fix · Exploited</span>'
+                    if _ps == "no_fix"
+                    else ""
                 )
             )
-        )
-        _patch_badge_lbl = (
-            "Patch Available"
-            if _ps == "patched"
-            else (
-                "Workaround"
-                if _ps == "workaround"
-                else "No Fix · Exploited" if _ps == "no_fix" else "Status Unknown"
-            )
-        )
-        patch_badge_html = (
-            f'<span class="patch-badge {_patch_badge_cls}">{_patch_badge_lbl}</span>'
         )
         _hp_targets = c.get("matched_targets", [])
         hp_badge_html = (
@@ -1432,11 +1333,6 @@ p{{color:#c9d1d9}}
 .actions{{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:.4rem 0 .7rem}}
 .actions ul{{margin:.3rem 0 .2rem 1rem;padding:0}}
 .confidence{{display:inline-block;font-size:.72rem;color:#8b949e;border:1px solid #333;border-radius:999px;padding:2px 8px;margin-bottom:.3rem}}
-.patch-badge{{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.04em;border-radius:3px;padding:1px 7px;margin-left:.45rem;vertical-align:middle;text-transform:uppercase}}
-.patch-badge--fixed{{background:rgba(35,134,54,.18);color:#3fb950;border:1px solid rgba(35,134,54,.35)}}
-.patch-badge--workaround{{background:rgba(158,106,3,.18);color:#d29922;border:1px solid rgba(158,106,3,.35)}}
-.patch-badge--no-fix{{background:rgba(170,28,28,.18);color:#f85149;border:1px solid rgba(170,28,28,.35)}}
-.patch-badge--unknown{{background:rgba(60,60,60,.5);color:#8b949e;border:1px solid #333}}
 .cve-badge{{display:inline-block;font-size:.62rem;font-weight:700;background:rgba(30,100,200,.12);color:#6ea8fe;border:1px solid rgba(30,100,200,.28);border-radius:3px;padding:1px 6px;margin-left:.35rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0}}
 .findings-filter{{display:flex;align-items:center;gap:.6rem;margin:.25rem 0 .6rem}}
 .findings-search{{background:#151515;border:1px solid #333;border-radius:4px;color:#c9d1d9;font-size:.82rem;padding:.3rem .55rem;width:min(340px,100%);outline:none}}
@@ -1450,15 +1346,6 @@ p{{color:#c9d1d9}}
 .vel-up2{{color:#f0883e}}
 .vel-up1{{color:#d29922}}
 .vel-dn{{color:#3fb950}}
-.cal-section{{margin:0 0 1rem}}
-.cal-header{{display:flex;align-items:center;justify-content:space-between;margin-bottom:.35rem;flex-wrap:wrap;gap:.3rem}}
-.cal-title{{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#8b949e}}
-.cal-legend{{display:flex;align-items:center;gap:.3rem;flex-wrap:wrap}}
-.cal-legend-item{{display:inline-block;width:14px;height:14px;border-radius:3px;font-size:.58rem;line-height:14px;text-align:center;color:rgba(255,255,255,.65)}}
-.cal-grid{{display:grid;grid-template-columns:repeat(14,1fr);gap:4px}}
-.cal-cell{{aspect-ratio:1;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:default;transition:transform .1s,filter .1s}}
-.cal-cell:hover{{transform:scale(1.12);filter:brightness(1.25)}}
-.cal-day{{font-size:.6rem;color:rgba(255,255,255,.55);font-weight:600;pointer-events:none}}
 .tactic-strip{{display:flex;flex-wrap:wrap;gap:5px;margin:.3rem 0 .55rem;padding:.45rem 0;border-bottom:1px solid #252525}}
 .tactic-coverage{{display:flex;align-items:center;gap:.55rem;padding:.35rem 0 .3rem;border-top:1px solid #252525;border-bottom:1px solid #1e1e1e;margin-bottom:.3rem;flex-wrap:wrap}}
 .tactic-coverage-label{{font-size:.67rem;color:#5a7090;white-space:nowrap}}
@@ -1511,7 +1398,7 @@ p{{color:#c9d1d9}}
 .ha-summary{{display:flex;align-items:center;gap:.7rem;padding:.42rem .3rem;cursor:pointer;list-style:none;font-size:.82rem}}.ha-summary::-webkit-details-marker{{display:none}}
 .ha-date{{font-weight:700;color:#e6edf3;flex:0 0 92px}}.ha-meta{{color:#c9d1d9;flex:1;font-size:.78rem}}.ha-ts{{color:#8b949e;font-size:.68rem;margin-left:auto;flex-shrink:0}}
 .ha-body{{padding:.25rem .2rem .5rem .5rem}}.ha-table{{width:100%;border-collapse:collapse;font-size:.76rem}}.ha-table th{{font-size:.67rem;color:#777;font-weight:700;border-bottom:1px solid #252525;padding:.2rem .35rem}}
-.ha-table td{{padding:.22rem .35rem;border-bottom:1px solid #1a1a1a;vertical-align:top}}.ha-title{{max-width:520px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}.ha-risk{{text-align:right;font-weight:700;color:#e6edf3;min-width:30px}}.ha-pri,.ha-ps{{text-align:center;min-width:40px;white-space:nowrap}}
+.ha-table td{{padding:.22rem .35rem;border-bottom:1px solid #1a1a1a;vertical-align:top}}.ha-title{{max-width:520px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}.ha-risk{{text-align:right;font-weight:700;color:#e6edf3;min-width:30px}}.ha-pri{{text-align:center;min-width:40px;white-space:nowrap}}
 .weekly-scope{{margin:0 0 1rem}}.weekly-kpi-row{{display:flex;gap:10px;flex-wrap:wrap;margin:.4rem 0 .75rem}}
 .wkpi{{background:#0f0f0f;border:1px solid #252525;border-radius:5px;padding:.4rem .65rem;display:flex;flex-direction:column;gap:.15rem;min-width:110px}}
 .wk{{font-size:.65rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700}}.wv{{font-size:1.1rem;color:#e6edf3;font-weight:800}}.wv-sm{{font-size:.85rem}}
