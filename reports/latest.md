@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-03-13T00:43:19.637388+00:00
+generated_at: 2026-03-13T04:53:23.320615+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,24 @@ project: Watchtower
 
 ## Analyst Summary
 
-CVE-2026-3968 in AutohomeCorp frostmourne, CVE-2026-3971 in Tenda i3, and CVE-2026-3970 in Tenda i3 represent the highest-risk items this period due to their potential impact on network devices. Internet-facing firewalls, container orchestration nodes, and VPN appliances are most exposed right now due to the lack of available patches for these vulnerabilities. The single most time-sensitive action is to monitor and isolate Tenda i3 and W3 devices, as patches are not currently available for CVE-2026-3971, CVE-2026-3970, and CVE-2026-3973.
+The highest-risk items this period are CVE-2026-3980 in itsourcecode Online Doctor Appointment System, CVE-2026-3982 in itsourcecode University Management System, and CVE-2026-3981 in itsourcecode Online Doctor Appointment System. Internet-facing systems, particularly those using WordPress plugins such as Timetics and Reading progressbar, are most exposed due to the lack of available patches for recently disclosed vulnerabilities. The most time-sensitive action is to monitor and isolate systems using the affected WordPress plugins, as no patches are currently available for these vulnerabilities.
 
-## Tenda i3 RCE (risk: 70)
-[P1] A vulnerability in Tenda i3 1.0.0.6(2204) allows for remote code execution, with no patch available. This affects the function formwr, and exploitation in the wild has not been reported. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-3980 (risk: 40)
+[P2] A vulnerability was found in itsourcecode Online Doctor Appointment System, with no available patch or workaround. This vulnerability has not been exploited in the wild yet, but its presence poses a significant risk to the system's security. Why now: Newly disclosed vulnerability with no available patch or workaround. (confidence: 0.60)
 
-- [CVE-2026-3971](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3971)
+- [CVE-2026-3980](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3980)
 
-## Tenda W3 Vuln (risk: 70)
-[P1] A vulnerability in Tenda W3 1.0.0.3(2204) affects the function, with no patch available. This vulnerability has not been exploited in the wild. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-3982 (risk: 40)
+[P2] A vulnerability was determined in itsourcecode University Management System, with no available patch or workaround. This vulnerability has not been exploited in the wild yet, but its presence poses a significant risk to the system's security. Why now: Newly disclosed vulnerability with no available patch or workaround. (confidence: 0.60)
 
-- [CVE-2026-3973](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3973)
+- [CVE-2026-3982](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3982)
 
-## AutohomeCorp frostmourne Vuln (risk: 40)
-[P2] A vulnerability in AutohomeCorp frostmourne up to 1.0 affects an unknown function, with no patch or workaround available. This vulnerability has not been exploited in the wild. Why now: Newly disclosed vulnerability (confidence: 0.60)
+## CVE-2026-3981 (risk: 40)
+[P2] A vulnerability was found in itsourcecode Online Doctor Appointment System, with no available patch or workaround. This vulnerability has not been exploited in the wild yet, but its presence poses a significant risk to the system's security. Why now: Newly disclosed vulnerability with no available patch or workaround. (confidence: 0.60)
 
-- [CVE-2026-3968](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3968)
+- [CVE-2026-3981](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3981)
+
+## WordPress Plugin Vulnerabilities (risk: 40)
+[P2] The Timetics and Reading progressbar WordPress plugins have vulnerabilities with no available patches. These plugins are widely used, and their exploitation could lead to significant security breaches. Why now: Newly disclosed vulnerabilities in widely used WordPress plugins. (confidence: 0.60)
+
+- [The Timetics WordPress plugin before 1.0.52 does not have authorization in a RE](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-15473)

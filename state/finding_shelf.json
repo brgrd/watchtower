@@ -112,5 +112,29 @@
     "last_seen": "2026-03-13",
     "run_count": 1,
     "title": "AutohomeCorp frostmourne Vuln"
+  },
+  "6c51039e8b4c": {
+    "first_seen": "2026-03-13",
+    "last_seen": "2026-03-13",
+    "run_count": 1,
+    "title": "CVE-2026-3980"
+  },
+  "968c01049056": {
+    "first_seen": "2026-03-13",
+    "last_seen": "2026-03-13",
+    "run_count": 1,
+    "title": "CVE-2026-3982"
+  },
+  "cd4884add0ca": {
+    "first_seen": "2026-03-13",
+    "last_seen": "2026-03-13",
+    "run_count": 1,
+    "title": "CVE-2026-3981"
+  },
+  "ce2b6e0389d0": {
+    "first_seen": "2026-03-13",
+    "last_seen": "2026-03-13",
+    "run_count": 1,
+    "title": "WordPress Plugin Vulnerabilities"
   }
 }
