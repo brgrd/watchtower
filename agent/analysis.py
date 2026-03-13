@@ -635,6 +635,7 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
     url_to_country: dict = {}
     domain_to_country: dict = {}
     cve_to_status: dict = {}
+    kev_cves: set = set()
     if all_items:
         for it in all_items:
             cc = it.get("country", "")
@@ -644,6 +645,10 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                 dom = tldextract.extract(url).registered_domain
                 if dom and dom not in domain_to_country:
                     domain_to_country[dom] = cc
+            is_kev_source = (
+                it.get("source_id") == "cisa_kev"
+                or "known_exploited" in it.get("source", "")
+            )
             for cve_id in _extract_cves(
                 it.get("title", "") + " " + it.get("summary", "")
             ):
@@ -656,6 +661,8 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                     "exploited_in_wild": existing.get("exploited_in_wild")
                     or it.get("exploited_in_wild", False),
                 }
+                if is_kev_source:
+                    kev_cves.add(cve_id)
 
     cards = []
     for f in findings:
@@ -724,6 +731,7 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
         attribution_flag = bool(
             _ATTRIBUTION_RE.search(f.get("title", "") + " " + f.get("summary", ""))
         )
+        is_kev = bool(set(finding_cves) & kev_cves)
 
         cards.append(
             {
@@ -745,6 +753,7 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                 "patch_status": patch_status,
                 "matched_targets": matched_targets,
                 "attribution_flag": attribution_flag,
+                "is_kev": is_kev,
                 "tactic_name": _normalize_tactic(
                     str(f.get("tactic_name", "")) if f.get("tactic_name") else ""
                 ),

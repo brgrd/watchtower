@@ -1083,11 +1083,17 @@ def _write_index_html(
             if c.get("attribution_flag")
             else ""
         )
+        kev_badge_html = (
+            '<span class="kev-badge" title="CVE confirmed in CISA Known Exploited Vulnerabilities catalog — active in-the-wild exploitation">CISA KEV</span>'
+            if c.get("is_kev")
+            else ""
+        )
         rows += f"""
                 <details class="cluster" data-domains="{html.escape(domains_attr)}" data-tactic="{html.escape(_tactic)}">
                     <summary>
                         <span class="badge" style="background:{badge_bg};color:{badge_fg}">{c['risk_score']}</span>
                         <span class="priority {pri_cls}">{pri}</span>
+                        {kev_badge_html}
                         {patch_badge_html}
                         {hp_badge_html}
                         {cve_badge_html}
@@ -1257,6 +1263,11 @@ def _write_index_html(
                 "domains": c.get("domains", []),
                 "summary": c.get("summary", ""),
                 "sources": sources_brief,
+                "tactic": c.get("tactic_name", ""),
+                "shelf_days": int(c.get("shelf_days", 0)),
+                "run_count": int(c.get("run_count", 1)),
+                "first_seen_ts": c.get("first_seen_ts", ""),
+                "actions_24h": c.get("recommended_actions_24h", [])[:4],
             }
         )
 
@@ -1361,6 +1372,7 @@ p{{color:#c9d1d9}}
 .tactic-btn--all.tactic-btn--active{{background:rgba(50,50,50,.25);border-color:#555;color:#c9d1d9}}
 .tactic-chip{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(88,130,240,.12);color:#6ea8fe;border:1px solid rgba(88,130,240,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0}}
 .shelf-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(210,90,20,.1);color:#e8864a;border:1px solid rgba(210,90,20,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}}
+.kev-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(180,20,20,.18);color:#ff6b6b;border:1px solid rgba(180,20,20,.4);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.04em;vertical-align:middle;flex-shrink:0;cursor:default}}
 .attr-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(180,140,10,.12);color:#d4a017;border:1px solid rgba(180,140,10,.3);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}}
 .enrich-block{{margin:.6rem 0 .2rem;border:1px solid #222;border-radius:5px;overflow:hidden}}
 .enrich-summary{{font-size:.72rem;color:#5a7090;cursor:pointer;padding:.35rem .6rem;list-style:none;display:flex;align-items:center;gap:.4rem;user-select:none}}

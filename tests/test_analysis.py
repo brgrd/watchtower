@@ -429,6 +429,47 @@ class TestFindingsToCards:
         cards = _findings_to_cards([f])
         assert len(cards[0]["title"]) == 140
 
+    def test_is_kev_false_when_no_all_items(self):
+        f = {"title": "CVE-2026-1234 vuln", "risk_score": 60, "domains": ["os_kernel"]}
+        cards = _findings_to_cards([f])
+        assert cards[0]["is_kev"] is False
+
+    def test_is_kev_true_when_cve_in_kev_source(self):
+        f = {"title": "CVE-2026-9999 RCE", "risk_score": 75, "domains": ["os_kernel"]}
+        kev_item = {
+            "title": "CVE-2026-9999 — Remote Code Execution",
+            "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9999",
+            "source": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+            "source_id": "cisa_kev",
+            "summary": "",
+        }
+        cards = _findings_to_cards([f], all_items=[kev_item])
+        assert cards[0]["is_kev"] is True
+
+    def test_is_kev_false_when_cve_not_in_kev(self):
+        f = {"title": "CVE-2026-1111 vuln", "risk_score": 60, "domains": ["os_kernel"]}
+        kev_item = {
+            "title": "CVE-2026-9999 — Different CVE",
+            "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9999",
+            "source": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+            "source_id": "cisa_kev",
+            "summary": "",
+        }
+        cards = _findings_to_cards([f], all_items=[kev_item])
+        assert cards[0]["is_kev"] is False
+
+    def test_is_kev_true_via_source_string_fallback(self):
+        # source_id absent but source URL contains "known_exploited"
+        f = {"title": "CVE-2026-5555 bug", "risk_score": 50, "domains": ["os_kernel"]}
+        kev_item = {
+            "title": "CVE-2026-5555 — Exploit",
+            "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5555",
+            "source": "https://www.cisa.gov/feeds/known_exploited_vulnerabilities.json",
+            "summary": "",
+        }
+        cards = _findings_to_cards([f], all_items=[kev_item])
+        assert cards[0]["is_kev"] is True
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # _match_high_profile

@@ -1184,6 +1184,7 @@ def _update_shelf(cards: list) -> None:
         card["risk_score"] = min(100, int(card.get("risk_score", 0)) + boost)
         card["shelf_days"] = shelf_days
         card["run_count"] = run_count
+        card["first_seen_ts"] = shelf[fid]["first_seen"]
     # Prune entries not seen in the last 30 days
     cutoff = (datetime.now(timezone.utc) - timedelta(days=30)).strftime("%Y-%m-%d")
     shelf = {k: v for k, v in shelf.items() if v.get("last_seen", today) >= cutoff}
