@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-03-14T16:45:27.823240+00:00
+generated_at: 2026-03-14T22:38:16.753987+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-3910 in Google Chromium V8, CVE-2026-3909 in Google Skia, and CVE-2025-12455 in OpenText Vertica. Internet-facing systems and web applications are most exposed due to the lack of patches for these vulnerabilities, which are being actively exploited in the wild. The most time-sensitive action is to patch or isolate systems running Google Chromium V8 and Google Skia, although patches are not currently available, and to monitor for suspicious activity related to these vulnerabilities.
+The highest-risk items this period are CVE-2026-3909 in Google Skia and CVE-2026-3910 in Google Chromium V8, which are being actively exploited in the wild. Internet-facing systems and applications that utilize these vulnerable components are most exposed, particularly those that have not applied workarounds or patches, which are currently unavailable. The most time-sensitive action is to monitor and isolate systems using Google Skia and Google Chromium V8, as patches are not currently available for these vulnerabilities.
 
-## Google Chromium V8 RCE (risk: 100)
-[P1] CVE-2026-3910 is a memory buffer vulnerability in Google Chromium V8 that can be exploited for remote code execution, and it is being actively exploited in the wild. No patch is currently available. Why now: Active exploitation in the wild (confidence: 0.90)
-
-- [CVE-2026-3910](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3910)
-
-## Google Skia OOB Write (risk: 100)
-[P1] CVE-2026-3909 is an out-of-bounds write vulnerability in Google Skia that can be exploited for remote code execution, and it is being actively exploited in the wild. No patch is currently available. Why now: Active exploitation in the wild (confidence: 0.90)
+## Google Skia OOB Write (risk: 70)
+[P1] CVE-2026-3909 is an out-of-bounds write vulnerability in Google Skia that could allow a remote attacker to perform out of bounds memory access, and is being actively exploited in the wild. No patch or workaround is currently available. Why now: Reported exploitation in the wild (confidence: 0.80)
 
 - [CVE-2026-3909](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3909)
 
-## OpenText Vertica Auth Bypass (risk: 70)
-[P2] CVE-2025-12455 is an authentication bypass vulnerability in OpenText Vertica that can be exploited for unauthorized access. No patch is currently available. Why now: Lack of patch (confidence: 0.60)
+## Google Chromium V8 Memory Buffer Vulnerability (risk: 70)
+[P1] CVE-2026-3910 is an improper restriction of operations within the bounds of a memory buffer vulnerability in Google Chromium V8, which could allow a remote attacker to execute arbitrary code, and is being actively exploited in the wild. No patch or workaround is currently available. Why now: Reported exploitation in the wild (confidence: 0.80)
 
-- [CVE-2025-12455](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-12455)
+- [CVE-2026-3910](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3910)
+
+## GlassWorm Supply-Chain Attack (risk: 60)
+[P2] The GlassWorm supply-chain attack is abusing 72 Open VSX extensions to target developers, and could enable prompt injection and data exfiltration. The attack is ongoing and has been reported to be actively exploiting vulnerabilities in the wild. Why now: Reported attribution (unverified): unknown (confidence: 0.60)
+
+- [GlassWorm Supply-Chain Attack Abuses 72 Open VSX Extensions to Target Developers](https://thehackernews.com/2026/03/glassworm-supply-chain-attack-abuses-72.html)

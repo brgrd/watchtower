@@ -214,5 +214,17 @@
     "last_seen": "2026-03-14",
     "run_count": 1,
     "title": "OpenText Vertica Auth Bypass"
+  },
+  "4be2bf49cbd3": {
+    "first_seen": "2026-03-14",
+    "last_seen": "2026-03-14",
+    "run_count": 1,
+    "title": "Google Chromium V8 Memory Buffer Vulnerability"
+  },
+  "c254e2befea7": {
+    "first_seen": "2026-03-14",
+    "last_seen": "2026-03-14",
+    "run_count": 1,
+    "title": "GlassWorm Supply-Chain Attack"
   }
 }
