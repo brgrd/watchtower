@@ -208,5 +208,11 @@
     "last_seen": "2026-03-14",
     "run_count": 1,
     "title": "Google Skia OOB Write"
+  },
+  "0ee39da034eb": {
+    "first_seen": "2026-03-14",
+    "last_seen": "2026-03-14",
+    "run_count": 1,
+    "title": "OpenText Vertica Auth Bypass"
   }
 }
