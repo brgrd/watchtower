@@ -175,8 +175,8 @@
   },
   "41d10116adee": {
     "first_seen": "2026-03-13",
-    "last_seen": "2026-03-13",
-    "run_count": 1,
+    "last_seen": "2026-03-14",
+    "run_count": 2,
     "title": "Chrome V8 Vulnerability"
   },
   "c5ce3e44f138": {
@@ -184,5 +184,17 @@
     "last_seen": "2026-03-13",
     "run_count": 1,
     "title": "Veeam Backup & Replication Flaws"
+  },
+  "8a331e21e6f3": {
+    "first_seen": "2026-03-14",
+    "last_seen": "2026-03-14",
+    "run_count": 1,
+    "title": "OpenText Vertica Vulnerability"
+  },
+  "f20fe8ddf388": {
+    "first_seen": "2026-03-14",
+    "last_seen": "2026-03-14",
+    "run_count": 1,
+    "title": "IBM Sterling Partner Engagement Manager Vulnerability"
   }
 }
