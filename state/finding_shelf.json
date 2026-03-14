@@ -196,5 +196,17 @@
     "last_seen": "2026-03-14",
     "run_count": 1,
     "title": "IBM Sterling Partner Engagement Manager Vulnerability"
+  },
+  "7bc79467d22d": {
+    "first_seen": "2026-03-14",
+    "last_seen": "2026-03-14",
+    "run_count": 1,
+    "title": "Google Chromium V8 RCE"
+  },
+  "665243ec186a": {
+    "first_seen": "2026-03-14",
+    "last_seen": "2026-03-14",
+    "run_count": 1,
+    "title": "Google Skia OOB Write"
   }
 }
