@@ -238,5 +238,23 @@
     "last_seen": "2026-03-15",
     "run_count": 1,
     "title": "OpenClaw AI Agent Flaws"
+  },
+  "a558b4c624c6": {
+    "first_seen": "2026-03-15",
+    "last_seen": "2026-03-15",
+    "run_count": 1,
+    "title": "Windows 11 OOB Hotpatch"
+  },
+  "645e6ef3ac59": {
+    "first_seen": "2026-03-15",
+    "last_seen": "2026-03-15",
+    "run_count": 1,
+    "title": "AWS IAM Identity Center"
+  },
+  "95be016a93c5": {
+    "first_seen": "2026-03-15",
+    "last_seen": "2026-03-15",
+    "run_count": 1,
+    "title": "Betterleaks Secrets Scanner"
   }
 }
