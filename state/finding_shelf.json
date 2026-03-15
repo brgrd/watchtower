@@ -223,8 +223,20 @@
   },
   "c254e2befea7": {
     "first_seen": "2026-03-14",
-    "last_seen": "2026-03-14",
-    "run_count": 1,
+    "last_seen": "2026-03-15",
+    "run_count": 2,
     "title": "GlassWorm Supply-Chain Attack"
+  },
+  "548834557c4e": {
+    "first_seen": "2026-03-15",
+    "last_seen": "2026-03-15",
+    "run_count": 1,
+    "title": "Microsoft Windows 11 OOB Hotpatch"
+  },
+  "c0006390606a": {
+    "first_seen": "2026-03-15",
+    "last_seen": "2026-03-15",
+    "run_count": 1,
+    "title": "OpenClaw AI Agent Flaws"
   }
 }
