@@ -262,5 +262,23 @@
     "last_seen": "2026-03-15",
     "run_count": 1,
     "title": "Betterleaks Scanner"
+  },
+  "f0637b0d4588": {
+    "first_seen": "2026-03-16",
+    "last_seen": "2026-03-16",
+    "run_count": 1,
+    "title": "Wing FTP Server Vuln"
+  },
+  "8374f9e03782": {
+    "first_seen": "2026-03-16",
+    "last_seen": "2026-03-16",
+    "run_count": 1,
+    "title": "Next Click Ventures RealtyScript Vuln"
+  },
+  "0acf8aa2a3c8": {
+    "first_seen": "2026-03-16",
+    "last_seen": "2026-03-16",
+    "run_count": 1,
+    "title": "Qool CMS Vuln"
   }
 }

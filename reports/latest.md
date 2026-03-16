@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-03-15T22:40:16.744783+00:00
+generated_at: 2026-03-16T22:47:00.081449+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,9 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-No specific CVE IDs, software products, or vendor platforms represent the highest-risk items this period, as the input data does not contain any exploited vulnerabilities or recent CVEs. Internet-facing systems are most exposed right now due to the lack of information on potential vulnerabilities, and their exploitation status is unknown. The most time-sensitive action is to monitor systems for potential security issues, specifically focusing on secrets scanner tools like Betterleaks, which can help identify and prevent sensitive information leaks, and a patch is not currently available for this specific issue.
+The highest-risk items this period are CVE-2025-47813 in Wing FTP Server, CVE-2015-20113 in Next Click Ventures RealtyScript 4.0.2, and CVE-2013-20005 in Qool CMS 2.0 RC2. Internet-facing FTP servers and web applications are most exposed due to the lack of patches and workarounds for these vulnerabilities. The most time-sensitive action is to patch or isolate Wing FTP Server to prevent exploitation of CVE-2025-47813, although a patch is not currently available.
 
-## Betterleaks Scanner (risk: 40)
-[P2] Betterleaks is a new open-source secrets scanner that can replace Gitleaks, and its emergence may indicate a need to monitor systems for sensitive information leaks. No specific vulnerabilities or exploits are associated with Betterleaks. Why now: The emergence of Betterleaks may indicate a shift in the way sensitive information is handled and protected. (confidence: 0.60)
+## Wing FTP Server Vuln (risk: 100)
+[P1] Wing FTP Server contains a generation of error message containing sensitive information vulnerability, which is being exploited in the wild. No patch or workaround is available. Why now: This vulnerability is being actively exploited in the wild. (confidence: 0.90)
 
-- [Betterleaks, a new open-source secrets scanner to replace Gitleaks](https://www.bleepingcomputer.com/news/security/betterleaks-a-new-open-source-secrets-scanner-to-replace-gitleaks/)
+- [CVE-2025-47813](https://www.cve.org/CVERecord?id=CVE-2025-47813)
+
+## Next Click Ventures RealtyScript Vuln (risk: 70)
+[P2] Next Click Ventures RealtyScript 4.0.2 contains multiple vulnerabilities, including cross-site request forgery and cross-site scripting. No patch or workaround is available. Why now: These vulnerabilities can be exploited to gain unauthorized access to sensitive data. (confidence: 0.70)
+
+- [CVE-2015-20113](https://www.cve.org/CVERecord?id=CVE-2015-20113)
+
+## Qool CMS Vuln (risk: 60)
+[P3] Qool CMS 2.0 RC2 contains a cross-site request forgery vulnerability, which can be exploited to gain unauthorized access to sensitive data. No patch or workaround is available. Why now: This vulnerability can be exploited to gain unauthorized access to sensitive data. (confidence: 0.50)
+
+- [CVE-2013-20005](https://www.cve.org/CVERecord?id=CVE-2013-20005)
