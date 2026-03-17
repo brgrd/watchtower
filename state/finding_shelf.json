@@ -316,5 +316,23 @@
     "last_seen": "2026-03-17",
     "run_count": 1,
     "title": "Apache Airflow Vulnerability"
+  },
+  "ccaf7c34dacf": {
+    "first_seen": "2026-03-17",
+    "last_seen": "2026-03-17",
+    "run_count": 1,
+    "title": "Linux Kernel Vuln"
+  },
+  "f9614a74e2e2": {
+    "first_seen": "2026-03-17",
+    "last_seen": "2026-03-17",
+    "run_count": 1,
+    "title": "Apache Airflow Vuln"
+  },
+  "d02114c33acb": {
+    "first_seen": "2026-03-17",
+    "last_seen": "2026-03-17",
+    "run_count": 1,
+    "title": "Libsoup Vuln"
   }
 }

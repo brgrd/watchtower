@@ -30,6 +30,9 @@ p{color:#c9d1d9}
 .kpi .k{font-size:.68rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
 .kpi .v{font-size:1.2rem;color:#e6edf3;font-weight:800}
 .kpi .v-sm{font-size:.95rem}
+.kpi-delta{font-size:.62rem;font-weight:700;letter-spacing:.02em;margin-top:.1rem}
+.kpi-delta--up{color:#f85149}
+.kpi-delta--down{color:#3fb950}
 .hm-cell{border-radius:6px;padding:.7rem .55rem;text-align:center;border:1px solid rgba(255,255,255,.08);cursor:pointer;font-family:inherit}
 .hm-cell.active{outline:2px solid #666;outline-offset:1px}
 .hm-label{display:block;font-size:.72rem;font-weight:700;margin:.15rem 0} 
@@ -97,10 +100,12 @@ p{color:#c9d1d9}
 .tactic-btn--all.tactic-btn--active{background:rgba(50,50,50,.25);border-color:#555;color:#c9d1d9}
 .tactic-chip{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(88,130,240,.12);color:#6ea8fe;border:1px solid rgba(88,130,240,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0}
 .shelf-badge{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(210,90,20,.1);color:#e8864a;border:1px solid rgba(210,90,20,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}
+.shelf-badge--resolved{background:rgba(100,100,100,.1);color:#8b949e;border-color:rgba(100,100,100,.25)}
 .kev-badge{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(180,20,20,.18);color:#ff6b6b;border:1px solid rgba(180,20,20,.4);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.04em;vertical-align:middle;flex-shrink:0;cursor:default}
 .corr-badge{display:inline-block;font-size:.6rem;font-weight:600;background:rgba(40,80,160,.1);color:#6ea8fe;border:1px solid rgba(40,80,160,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}
 .epss-badge{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(230,100,20,.15);color:#f4a054;border:1px solid rgba(230,100,20,.35);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.03em;vertical-align:middle;flex-shrink:0;cursor:default}
 .attr-badge{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(180,140,10,.12);color:#d4a017;border:1px solid rgba(180,140,10,.3);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}
+.src-chip{display:inline-block;font-size:.6rem;font-weight:600;background:rgba(80,80,80,.15);color:#8b949e;border:1px solid rgba(80,80,80,.3);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}
 .enrich-block{margin:.6rem 0 .2rem;border:1px solid #222;border-radius:5px;overflow:hidden}
 .enrich-summary{font-size:.72rem;color:#5a7090;cursor:pointer;padding:.35rem .6rem;list-style:none;display:flex;align-items:center;gap:.4rem;user-select:none}
 .enrich-summary::-webkit-details-marker{display:none}
@@ -119,6 +124,28 @@ p{color:#c9d1d9}
 .hp-panel{background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:6px;padding:.65rem 1rem .7rem;margin:.2rem 0 1rem}
 .hp-panel-title{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#a78bfa;margin-bottom:.5rem}
 .hp-chip-list{display:flex;flex-wrap:wrap;gap:.35rem}
+.pa-panel{background:#0f1117;border:1px solid #252525;border-radius:6px;padding:.6rem .85rem .65rem;margin:0 0 1rem}
+.pa-title{font-size:.68rem;font-weight:700;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;margin:0 0 .45rem}
+.pa-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.28rem}
+.pa-item{display:flex;align-items:baseline;gap:.4rem;font-size:.82rem;line-height:1.4}
+.pa-num{flex-shrink:0;font-size:.63rem;font-weight:700;color:#444;width:1.1em;text-align:right}
+.pa-text{flex:1;color:#c9d1d9}
+.pa-count{flex-shrink:0;font-size:.61rem;font-weight:700;background:rgba(88,130,240,.1);color:#6ea8fe;border:1px solid rgba(88,130,240,.2);border-radius:3px;padding:1px 5px}
+.catchup-strip{background:#0c1420;border:1px solid rgba(88,130,240,.25);border-radius:6px;margin:0 0 1rem;overflow:hidden}
+.catchup-summary{display:flex;align-items:center;gap:.5rem;padding:.45rem .75rem;cursor:pointer;list-style:none;font-size:.81rem;color:#79b8ff;user-select:none}
+.catchup-summary::-webkit-details-marker{display:none}
+.catchup-summary:hover{background:rgba(88,130,240,.07)}
+.catchup-label{flex:1}
+.catchup-close{flex-shrink:0;font-size:.85rem;opacity:.5}
+.catchup-body{padding:.1rem .5rem .45rem}
+.cu-row{display:flex;align-items:center;gap:.32rem;padding:.22rem .25rem;border-radius:4px;cursor:pointer;font-size:.78rem}
+.cu-row:hover{background:#1e2a3a}
+.cu-score{flex-shrink:0;font-size:.61rem;font-weight:700;background:#1a2535;color:#6ea8fe;border:1px solid rgba(88,130,240,.2);border-radius:3px;padding:1px 5px;min-width:2em;text-align:center}
+.cu-pri{flex-shrink:0;font-size:.61rem;font-weight:700;border-radius:3px;padding:1px 5px}
+.cu-p1{background:rgba(180,20,20,.12);color:#ff6b6b;border:1px solid rgba(180,20,20,.3)}
+.cu-p2{background:rgba(180,100,20,.1);color:#f0a050;border:1px solid rgba(180,100,20,.25)}
+.cu-title{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#c9d1d9}
+.cu-more{font-size:.72rem;color:#4a5568;padding:.1rem .25rem .25rem}
 .hp-chip{display:inline-flex;align-items:center;gap:.3rem;background:rgba(139,92,246,.1);color:#c4b5fd;border:1px solid rgba(139,92,246,.25);border-radius:999px;font-size:.71rem;padding:2px 10px;font-weight:600}
 .hp-chip-count{background:rgba(139,92,246,.3);color:#ede9fe;border-radius:999px;font-size:.65rem;font-weight:700;padding:0 5px;min-width:1.2em;text-align:center}
 .delta-strip{display:flex;align-items:center;gap:.5rem;margin:.2rem 0 1rem;flex-wrap:wrap;min-height:1.6rem}
@@ -265,6 +292,7 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 .forensics-acc summary::before{content:"›";font-size:.85rem;transition:transform .15s;flex-shrink:0;color:#8b949e;width:.7rem;text-align:center}
 .forensics-acc[open] summary::before{transform:rotate(90deg)}
 .forensics-ioc-type{color:#8b949e;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;margin:.55rem 0 .2rem;padding:0}
+.stale-banner{background:#7d6608;color:#f0e68c;text-align:center;padding:.45rem 1rem;font-size:.82rem;position:sticky;top:0;z-index:200;letter-spacing:.02em}
         </style>
         </head>
         <body>
@@ -273,26 +301,27 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
         <header class="header-bar">
           <div class="header-content">
             <h1>Watchtower — Infrastructure Security Briefing</h1>
-            <p>Generated <strong>2026-03-17 20-49</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 00:05, 06:05, 12:05, 18:05 ET">Next run —</span></p>
+            <p>Generated <strong>2026-03-17 21-57</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled: 2× daily">Next run —</span></p>
           </div>
         </header>
         <div class="page-wrap">
         <div class="app-shell">
         <main class="app-main">
-        <div class="executive"><h2>Analyst Summary</h2><p>The highest-risk items this period are CVE-2026-32586 in Pluggabl Booster for WooCommerce, CVE-2026-1323 in an unspecified extension, and CVE-2026-3634 in libsoup. Internet-facing systems, particularly those using WooCommerce and libsoup, are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using Pluggabl Booster for WooCommerce, as no patch is currently available for CVE-2026-32586.</p></div>
+        <div class="executive"><h2>Analyst Summary</h2><p>CVE-2026-23241 in the Linux kernel, CVE-2026-26929 in Apache Airflow, and CVE-2026-3632 in libsoup represent the highest-risk items this period due to their potential impact on system security. Internet-facing systems, such as web servers and network appliances, are most exposed right now because they may be vulnerable to exploitation through these CVEs, and no patches are currently available. The single most time-sensitive action is to monitor systems for potential exploitation of CVE-2026-23241, as it affects the Linux kernel and no patch is currently available.</p></div>
 
         <section class="kpi-grid">
             <div class="kpi"><span class="k">Findings</span><span class="v">3</span></div>
-            <div class="kpi"><span class="k">P1</span><span class="v">2</span></div>
-            <div class="kpi"><span class="k">Exploited</span><span class="v">3</span></div>
-            <div class="kpi"><span class="k">High-Profile</span><span class="v">0</span></div>
+            <div class="kpi"><span class="k">P1</span><span class="v">3</span><span class="kpi-delta kpi-delta--up">+3 ↑</span></div>
+            <div class="kpi"><span class="k">Exploited</span><span class="v">0</span></div>
+            <div class="kpi"><span class="k">High-Profile</span><span class="v">1</span></div>
             <div class="kpi"><span class="k">Control Plane</span><span class="v">0</span></div>
-            <div class="kpi"><span class="k">Top Domain</span><span class="v v-sm">Web / Servers</span></div>
+            <div class="kpi"><span class="k">Top Domain</span><span class="v v-sm">OS / Kernel</span></div>
             <div class="kpi"><span class="k">Trend 24h</span><span class="v">+0</span></div>
         </section>
         
 <div class="delta-strip"><span class="delta-chip delta-chip--new">+3&nbsp;New</span></div>
-
+<section class="hp-panel"><div class="hp-panel-title">High-Profile Targets in This Window</div><div class="hp-chip-list"><span class="hp-chip">Linux kernel<span class="hp-chip-count">1</span></span></div></section>
+<section class="pa-panel"><div class="pa-title">Priority Actions — Next 24h</div><ol class="pa-list"><li class="pa-item"><span class="pa-num">1</span><span class="pa-text">Monitor systems for potential exploitation</span><span class="pa-count">3×</span></li></ol></section>
 <section class="threat-section">
   <div class="panel threat-main">
     <div class="threat-toolbar">
@@ -300,7 +329,7 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
         <div class="threat-title">Surface Threat Map</div>
         <div class="threat-sub">Domain constellation — node intensity shows activity heat, edges show blast-radius pathways. Click any node to filter findings.</div>
       </div>
-      <span class="chip">Window 12h</span>
+      <span class="chip" title="Data polled from the last 12 hours">Since Mar 17, 09:57 UTC</span>
     </div>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0a0a0a;border-radius:8px;border:1px solid #333">
 <defs>
@@ -490,70 +519,70 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <circle cx="912" cy="652" r="1" fill="#666"/>
 <circle cx="912" cy="714" r="1" fill="#666"/>
 </g>
-<line x1="680" y1="68" x2="737" y2="197" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="680" y1="68" x2="737" y2="197" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
 <line x1="680" y1="68" x2="119" y2="471" stroke="rgba(150,150,150,0.100)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="680" y1="68" x2="534" y2="132" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="221" y1="583" x2="478" y2="342" stroke="rgba(150,150,150,0.484)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(150,150,150,0.484)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="534" y1="623" x2="478" y2="342" stroke="rgba(150,150,150,0.484)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="690" y1="570" x2="478" y2="342" stroke="rgba(150,150,150,0.484)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="806" y1="473" x2="478" y2="342" stroke="rgba(150,150,150,0.484)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(150,150,150,0.484)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(150,150,150,0.484)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="478" y1="342" x2="737" y2="197" stroke="rgba(150,150,150,0.484)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="478" y1="342" x2="534" y2="132" stroke="rgba(150,150,150,0.484)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(150,150,150,0.484)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(150,150,150,0.484)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="737" y1="197" x2="534" y2="132" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="737" y1="197" x2="345" y2="184" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="534" y1="132" x2="345" y2="184" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="534" y1="132" x2="847" y2="307" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(150,150,150,0.484)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="847" y1="307" x2="737" y2="197" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="680" y1="68" x2="737" y2="197" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="680" y1="68" x2="534" y2="132" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="221" y1="583" x2="478" y2="342" stroke="rgba(150,150,150,0.380)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(150,150,150,0.380)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(150,150,150,0.380)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="534" y1="623" x2="478" y2="342" stroke="rgba(150,150,150,0.380)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="690" y1="570" x2="478" y2="342" stroke="rgba(150,150,150,0.380)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="806" y1="473" x2="478" y2="342" stroke="rgba(150,150,150,0.380)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(150,150,150,0.380)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(150,150,150,0.380)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="737" y2="197" stroke="rgba(150,150,150,0.380)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="534" y2="132" stroke="rgba(150,150,150,0.380)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(150,150,150,0.380)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(150,150,150,0.380)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(150,150,150,0.380)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="737" y1="197" x2="534" y2="132" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="737" y1="197" x2="345" y2="184" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="534" y1="132" x2="345" y2="184" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="534" y1="132" x2="847" y2="307" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(150,150,150,0.380)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="847" y1="307" x2="737" y2="197" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="680" y1="68" x2="737" y2="197" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
 <line x1="680" y1="68" x2="119" y2="471" stroke="rgba(180,180,180,0.180)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="680" y1="68" x2="534" y2="132" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="221" y1="583" x2="478" y2="342" stroke="rgba(180,180,180,0.612)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(180,180,180,0.612)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="534" y1="623" x2="478" y2="342" stroke="rgba(180,180,180,0.612)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="690" y1="570" x2="478" y2="342" stroke="rgba(180,180,180,0.612)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="806" y1="473" x2="478" y2="342" stroke="rgba(180,180,180,0.612)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(180,180,180,0.612)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(180,180,180,0.612)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="478" y1="342" x2="737" y2="197" stroke="rgba(180,180,180,0.612)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="478" y1="342" x2="534" y2="132" stroke="rgba(180,180,180,0.612)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(180,180,180,0.612)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(180,180,180,0.612)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="737" y1="197" x2="534" y2="132" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="737" y1="197" x2="345" y2="184" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="534" y1="132" x2="345" y2="184" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="534" y1="132" x2="847" y2="307" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(180,180,180,0.612)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="847" y1="307" x2="737" y2="197" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="680" y1="68" x2="534" y2="132" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="221" y1="583" x2="478" y2="342" stroke="rgba(180,180,180,0.495)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(180,180,180,0.495)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(180,180,180,0.495)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="534" y1="623" x2="478" y2="342" stroke="rgba(180,180,180,0.495)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="690" y1="570" x2="478" y2="342" stroke="rgba(180,180,180,0.495)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="806" y1="473" x2="478" y2="342" stroke="rgba(180,180,180,0.495)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(180,180,180,0.495)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(180,180,180,0.495)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="737" y2="197" stroke="rgba(180,180,180,0.495)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="534" y2="132" stroke="rgba(180,180,180,0.495)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(180,180,180,0.495)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(180,180,180,0.495)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(180,180,180,0.495)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="737" y1="197" x2="534" y2="132" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="737" y1="197" x2="345" y2="184" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="534" y1="132" x2="345" y2="184" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="534" y1="132" x2="847" y2="307" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(180,180,180,0.495)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="847" y1="307" x2="737" y2="197" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
 <g class="tm-node" data-domain="ai_threat" onclick="selectDomain('ai_threat')" style="cursor:pointer">
 <circle cx="680" cy="68" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="680" cy="68" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
@@ -562,46 +591,46 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <text x="680" y="105" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">AI / ML Threats</text>
 </g>
 <g class="tm-node" data-domain="identity" onclick="selectDomain('identity')" style="cursor:pointer">
-<circle cx="534" cy="132" r="38" fill="rgba(200,200,200,0.218)" filter="url(#f-outer)"/>
+<circle cx="534" cy="132" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="534" cy="132" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="534" cy="132" r="24" fill="none" stroke="rgba(220,220,220,0.385)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="534" cy="132" r="24" fill="none" stroke="rgba(220,220,220,0.38)" stroke-width="3.5" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="534" cy="132" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="534" y="169" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Identity / Auth</text>
 </g>
 <g class="tm-node" data-domain="ca_trust" onclick="selectDomain('ca_trust')" style="cursor:pointer">
-<circle cx="345" cy="184" r="38" fill="rgba(200,200,200,0.218)" filter="url(#f-outer)"/>
+<circle cx="345" cy="184" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="345" cy="184" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="345" cy="184" r="24" fill="none" stroke="rgba(220,220,220,0.385)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="345" cy="184" r="24" fill="none" stroke="rgba(220,220,220,0.38)" stroke-width="3.5" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="345" cy="184" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="345" y="221" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">CA / PKI</text>
 </g>
 <g class="tm-node" data-domain="cloud_iam" onclick="selectDomain('cloud_iam')" style="cursor:pointer">
-<circle cx="737" cy="197" r="38" fill="rgba(200,200,200,0.218)" filter="url(#f-outer)"/>
+<circle cx="737" cy="197" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="737" cy="197" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="737" cy="197" r="24" fill="none" stroke="rgba(220,220,220,0.385)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="737" cy="197" r="24" fill="none" stroke="rgba(220,220,220,0.38)" stroke-width="3.5" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="737" cy="197" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="737" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Cloud / IAM</text>
 </g>
 <g class="tm-node" data-domain="crypto_lib" onclick="selectDomain('crypto_lib')" style="cursor:pointer">
-<circle cx="180" cy="329" r="38" fill="rgba(255,40,40,0.708)" filter="url(#f-outer)"/>
+<circle cx="180" cy="329" r="38" fill="rgba(200,200,200,0.565)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="180" cy="329" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="180" cy="329" r="24" fill="none" stroke="rgba(255,80,80,0.83)" stroke-width="3.5" filter="url(#f-mid)"/>
-<text x="180" y="333" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">3</text>
+<circle cx="180" cy="329" r="24" fill="none" stroke="rgba(220,220,220,0.7)" stroke-width="3.5" filter="url(#f-mid)"/>
+<text x="180" y="333" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">1</text>
 <circle class="sel-indicator" cx="180" cy="329" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="180" y="366" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#e6e6e6" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Crypto Libs</text>
 </g>
 <g class="tm-node" data-domain="web_framework" onclick="selectDomain('web_framework')" style="cursor:pointer">
-<circle cx="478" cy="342" r="38" fill="rgba(255,40,40,0.708)" filter="url(#f-outer)"/>
+<circle cx="478" cy="342" r="38" fill="rgba(200,200,200,0.565)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="478" cy="342" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="478" cy="342" r="24" fill="none" stroke="rgba(255,80,80,0.83)" stroke-width="3.5" filter="url(#f-mid)"/>
-<text x="478" y="346" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">3</text>
+<circle cx="478" cy="342" r="24" fill="none" stroke="rgba(220,220,220,0.7)" stroke-width="3.5" filter="url(#f-mid)"/>
+<text x="478" y="346" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">1</text>
 <circle class="sel-indicator" cx="478" cy="342" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="478" y="379" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#e6e6e6" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Web / Servers</text>
 </g>
 <g class="tm-node" data-domain="container" onclick="selectDomain('container')" style="cursor:pointer">
-<circle cx="659" cy="360" r="38" fill="rgba(200,200,200,0.218)" filter="url(#f-outer)"/>
+<circle cx="659" cy="360" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="659" cy="360" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="659" cy="360" r="24" fill="none" stroke="rgba(220,220,220,0.385)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="659" cy="360" r="24" fill="none" stroke="rgba(220,220,220,0.38)" stroke-width="3.5" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="659" cy="360" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="659" y="397" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Containers</text>
 </g>
@@ -613,11 +642,12 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <text x="847" y="344" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Browser Ext</text>
 </g>
 <g class="tm-node" data-domain="os_kernel" onclick="selectDomain('os_kernel')" style="cursor:pointer">
-<circle cx="337" cy="460" r="38" fill="rgba(200,200,200,0.218)" filter="url(#f-outer)"/>
+<circle cx="337" cy="460" r="38" fill="rgba(200,200,200,0.565)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="337" cy="460" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="337" cy="460" r="24" fill="none" stroke="rgba(220,220,220,0.385)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="337" cy="460" r="24" fill="none" stroke="rgba(220,220,220,0.7)" stroke-width="3.5" filter="url(#f-mid)"/>
+<text x="337" y="464" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">1</text>
 <circle class="sel-indicator" cx="337" cy="460" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
-<text x="337" y="497" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">OS / Kernel</text>
+<text x="337" y="497" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#e6e6e6" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">OS / Kernel</text>
 </g>
 <g class="tm-node" data-domain="supply_chain" onclick="selectDomain('supply_chain')" style="cursor:pointer">
 <circle cx="119" cy="471" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
@@ -627,37 +657,37 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <text x="119" y="508" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Supply Chain</text>
 </g>
 <g class="tm-node" data-domain="pkg_npm" onclick="selectDomain('pkg_npm')" style="cursor:pointer">
-<circle cx="221" cy="583" r="38" fill="rgba(200,200,200,0.218)" filter="url(#f-outer)"/>
+<circle cx="221" cy="583" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="221" cy="583" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="221" cy="583" r="24" fill="none" stroke="rgba(220,220,220,0.385)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="221" cy="583" r="24" fill="none" stroke="rgba(220,220,220,0.38)" stroke-width="3.5" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="221" cy="583" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="221" y="620" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">npm / Node</text>
 </g>
 <g class="tm-node" data-domain="pkg_pypi" onclick="selectDomain('pkg_pypi')" style="cursor:pointer">
-<circle cx="381" cy="609" r="38" fill="rgba(200,200,200,0.218)" filter="url(#f-outer)"/>
+<circle cx="381" cy="609" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="381" cy="609" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="381" cy="609" r="24" fill="none" stroke="rgba(220,220,220,0.385)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="381" cy="609" r="24" fill="none" stroke="rgba(220,220,220,0.38)" stroke-width="3.5" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="381" cy="609" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="381" y="646" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">PyPI / Python</text>
 </g>
 <g class="tm-node" data-domain="pkg_maven" onclick="selectDomain('pkg_maven')" style="cursor:pointer">
-<circle cx="534" cy="623" r="38" fill="rgba(200,200,200,0.218)" filter="url(#f-outer)"/>
+<circle cx="534" cy="623" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="534" cy="623" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="534" cy="623" r="24" fill="none" stroke="rgba(220,220,220,0.385)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="534" cy="623" r="24" fill="none" stroke="rgba(220,220,220,0.38)" stroke-width="3.5" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="534" cy="623" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="534" y="660" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Maven / Java</text>
 </g>
 <g class="tm-node" data-domain="pkg_nuget" onclick="selectDomain('pkg_nuget')" style="cursor:pointer">
-<circle cx="690" cy="570" r="38" fill="rgba(200,200,200,0.218)" filter="url(#f-outer)"/>
+<circle cx="690" cy="570" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="690" cy="570" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="690" cy="570" r="24" fill="none" stroke="rgba(220,220,220,0.385)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="690" cy="570" r="24" fill="none" stroke="rgba(220,220,220,0.38)" stroke-width="3.5" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="690" cy="570" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="690" y="607" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">.NET / NuGet</text>
 </g>
 <g class="tm-node" data-domain="pkg_gem" onclick="selectDomain('pkg_gem')" style="cursor:pointer">
-<circle cx="806" cy="473" r="38" fill="rgba(200,200,200,0.218)" filter="url(#f-outer)"/>
+<circle cx="806" cy="473" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="806" cy="473" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="806" cy="473" r="24" fill="none" stroke="rgba(220,220,220,0.385)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="806" cy="473" r="24" fill="none" stroke="rgba(220,220,220,0.38)" stroke-width="3.5" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="806" cy="473" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="806" y="510" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">RubyGems</text>
 </g>
@@ -671,16 +701,42 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 </svg>
   </div>
 </section>
-<section class="panel ha-section"><h3 style="margin:.2rem 0 .5rem">7-Day Briefing History</h3><details class="ha-day" open><summary class="ha-summary"><span class="ha-date">2026-03-17</span><span class="ha-meta">3 findings · P1: 2 · exploited: 3</span><span class="ha-ts">2026-03-17 20:49 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">WooCommerce Vulnerability</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">libsoup Vulnerability</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">Apache Airflow Vulnerability</td><td class="ha-risk">60</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr></tbody></table></div></details></section>
-<section class="panel weekly-scope"><h3 style="margin:.2rem 0 .6rem">1-Day Weekly Scope</h3><div class="weekly-kpi-row"><div class="wkpi"><span class="wk">Total Findings</span><span class="wv">3</span></div><div class="wkpi"><span class="wk">Unique CVEs</span><span class="wv">3</span></div><div class="wkpi"><span class="wk">Active Domains</span><span class="wv">2</span></div><div class="wkpi"><span class="wk">Most Active Day</span><span class="wv wv-sm">2026-03-17</span></div></div><div class="weekly-review-label">Week-in-Review</div><p class="weekly-review-text">Over the past 24 hours, the security landscape has been relatively quiet, with a total of 3 findings reported. Notably, no unique CVEs were tracked, indicating that existing vulnerabilities are not being newly exploited. The most active security domains include Containers and Kubernetes, Crypto Libraries, and Web Servers, suggesting a focus on these areas for potential threats. Yesterday, March 17, 2026, was the most active day, with all findings emerging on this single day, highlighting the need for continued vigilance in these key domains to ensure the security posture of our infrastructure remains robust.</p><details class="wcve-details"><summary>Top CVEs this week (3 tracked)</summary><table class="wcve-table"><thead><tr><th>CVE</th><th>Frequency</th><th>#</th></tr></thead><tbody><tr><td class="wcve-id">CVE-2026-32586</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-3634</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-28563</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr></tbody></table></details></section>
-<div class="tactic-coverage" id="tactic-coverage"><span class="tactic-coverage-label">1 / 14 tactics covered</span><span class="tactic-coverage-bar"><span class="tactic-pip tactic-pip--hollow" title="Reconnaissance"></span><span class="tactic-pip tactic-pip--hollow" title="Resource Development"></span><span class="tactic-pip tactic-pip--filled" title="Initial Access"></span><span class="tactic-pip tactic-pip--hollow" title="Execution"></span><span class="tactic-pip tactic-pip--hollow" title="Persistence"></span><span class="tactic-pip tactic-pip--hollow" title="Privilege Escalation"></span><span class="tactic-pip tactic-pip--hollow" title="Defense Evasion"></span><span class="tactic-pip tactic-pip--hollow" title="Credential Access"></span><span class="tactic-pip tactic-pip--hollow" title="Discovery"></span><span class="tactic-pip tactic-pip--hollow" title="Lateral Movement"></span><span class="tactic-pip tactic-pip--hollow" title="Collection"></span><span class="tactic-pip tactic-pip--hollow" title="Command &amp; Control"></span><span class="tactic-pip tactic-pip--hollow" title="Exfiltration"></span><span class="tactic-pip tactic-pip--hollow" title="Impact"></span></span><span class="tactic-coverage-pct">7%</span></div><div class="tactic-strip" id="tactic-strip"><button class="tactic-btn tactic-btn--all tactic-btn--active" data-tactic="all" type="button">All Tactics</button><button class="tactic-btn" data-tactic="Reconnaissance" type="button">Reconnaissance</button><button class="tactic-btn" data-tactic="Resource Development" type="button">Resource Development</button><button class="tactic-btn tactic-btn--active" data-tactic="Initial Access" type="button">Initial Access</button><button class="tactic-btn" data-tactic="Execution" type="button">Execution</button><button class="tactic-btn" data-tactic="Persistence" type="button">Persistence</button><button class="tactic-btn" data-tactic="Privilege Escalation" type="button">Privilege Escalation</button><button class="tactic-btn" data-tactic="Defense Evasion" type="button">Defense Evasion</button><button class="tactic-btn" data-tactic="Credential Access" type="button">Credential Access</button><button class="tactic-btn" data-tactic="Discovery" type="button">Discovery</button><button class="tactic-btn" data-tactic="Lateral Movement" type="button">Lateral Movement</button><button class="tactic-btn" data-tactic="Collection" type="button">Collection</button><button class="tactic-btn" data-tactic="Command &amp; Control" type="button">Command &amp; Control</button><button class="tactic-btn" data-tactic="Exfiltration" type="button">Exfiltration</button><button class="tactic-btn" data-tactic="Impact" type="button">Impact</button></div>
+<section class="panel ha-section"><h3 style="margin:.2rem 0 .5rem">7-Day Briefing History</h3><details class="ha-day" open><summary class="ha-summary"><span class="ha-date">2026-03-17</span><span class="ha-meta">3 findings · P1: 3</span><span class="ha-ts">2026-03-17 21:57 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">Linux Kernel Vuln</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">Apache Airflow Vuln</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">Libsoup Vuln</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr></tbody></table></div></details></section>
+<section class="panel weekly-scope"><h3 style="margin:.2rem 0 .6rem">1-Day Weekly Scope</h3><div class="weekly-kpi-row"><div class="wkpi"><span class="wk">Total Findings</span><span class="wv">3</span></div><div class="wkpi"><span class="wk">Unique CVEs</span><span class="wv">3</span></div><div class="wkpi"><span class="wk">Active Domains</span><span class="wv">3</span></div><div class="wkpi"><span class="wk">Most Active Day</span><span class="wv wv-sm">2026-03-17</span></div></div><div class="weekly-review-label">Week-in-Review</div><p class="weekly-review-text">Over the past 24 hours, the security landscape has been relatively quiet, with a total of 3 findings reported. Notably, no unique CVEs were tracked, indicating that existing vulnerabilities are not being newly exploited. The most active security domains include Containers and Kubernetes, Crypto Libraries, and Web Servers, suggesting a focus on these areas for potential threats. Yesterday, March 17, 2026, was the most active day, with all findings emerging on this single day, highlighting the need for continued vigilance in these key domains to ensure the security posture of our infrastructure remains robust.</p><details class="wcve-details"><summary>Top CVEs this week (3 tracked)</summary><table class="wcve-table"><thead><tr><th>CVE</th><th>Frequency</th><th>#</th></tr></thead><tbody><tr><td class="wcve-id">CVE-2026-23241</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-26929</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-3632</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr></tbody></table></details></section>
+<div class="tactic-coverage" id="tactic-coverage"><span class="tactic-coverage-label">3 / 14 tactics covered</span><span class="tactic-coverage-bar"><span class="tactic-pip tactic-pip--hollow" title="Reconnaissance"></span><span class="tactic-pip tactic-pip--hollow" title="Resource Development"></span><span class="tactic-pip tactic-pip--filled" title="Initial Access"></span><span class="tactic-pip tactic-pip--filled" title="Execution"></span><span class="tactic-pip tactic-pip--hollow" title="Persistence"></span><span class="tactic-pip tactic-pip--filled" title="Privilege Escalation"></span><span class="tactic-pip tactic-pip--hollow" title="Defense Evasion"></span><span class="tactic-pip tactic-pip--hollow" title="Credential Access"></span><span class="tactic-pip tactic-pip--hollow" title="Discovery"></span><span class="tactic-pip tactic-pip--hollow" title="Lateral Movement"></span><span class="tactic-pip tactic-pip--hollow" title="Collection"></span><span class="tactic-pip tactic-pip--hollow" title="Command &amp; Control"></span><span class="tactic-pip tactic-pip--hollow" title="Exfiltration"></span><span class="tactic-pip tactic-pip--hollow" title="Impact"></span></span><span class="tactic-coverage-pct">21%</span></div><div class="tactic-strip" id="tactic-strip"><button class="tactic-btn tactic-btn--all tactic-btn--active" data-tactic="all" type="button">All Tactics</button><button class="tactic-btn" data-tactic="Reconnaissance" type="button">Reconnaissance</button><button class="tactic-btn" data-tactic="Resource Development" type="button">Resource Development</button><button class="tactic-btn tactic-btn--active" data-tactic="Initial Access" type="button">Initial Access</button><button class="tactic-btn tactic-btn--active" data-tactic="Execution" type="button">Execution</button><button class="tactic-btn" data-tactic="Persistence" type="button">Persistence</button><button class="tactic-btn tactic-btn--active" data-tactic="Privilege Escalation" type="button">Privilege Escalation</button><button class="tactic-btn" data-tactic="Defense Evasion" type="button">Defense Evasion</button><button class="tactic-btn" data-tactic="Credential Access" type="button">Credential Access</button><button class="tactic-btn" data-tactic="Discovery" type="button">Discovery</button><button class="tactic-btn" data-tactic="Lateral Movement" type="button">Lateral Movement</button><button class="tactic-btn" data-tactic="Collection" type="button">Collection</button><button class="tactic-btn" data-tactic="Command &amp; Control" type="button">Command &amp; Control</button><button class="tactic-btn" data-tactic="Exfiltration" type="button">Exfiltration</button><button class="tactic-btn" data-tactic="Impact" type="button">Impact</button></div>
 <h2>Top Findings</h2>
 <div class="findings-filter">
   <input type="search" id="findings-search" class="findings-search" placeholder="Search findings…" aria-label="Search findings" />
   <span id="findings-count" class="findings-count"></span>
 </div>
 
-                <details class="cluster" id="card-f90ffa530b0f" data-domains="web_framework crypto_lib" data-tactic="Initial Access">
+                <details class="cluster" id="card-ccaf7c34dacf" data-domains="os_kernel" data-tactic="Privilege Escalation">
+                    <summary>
+                        <span class="badge" style="background:#f77f00;color:#fff">70</span>
+                        <span class="priority p1">P1</span>
+                        
+                        
+                        
+                        <span class="hp-badge" title="Linux kernel">High-Profile</span>
+                        <span class="cve-badge">1 CVE</span>
+                        
+                        
+                        <span class="tactic-chip">Privilege Escalation</span>
+                        
+                        
+                        Linux Kernel Vuln
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">OS / Kernel</span></div>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>[P1] CVE-2026-23241 affects the Linux kernel, potentially allowing for privilege escalation, and no patch is currently available. This vulnerability is particularly concerning due to its potential impact on system security. Why now: This vulnerability is particularly concerning due to its potential impact on system security. (confidence: 0.80)</p>
+                        <p class="why-now"><strong>Why now:</strong> This vulnerability is particularly concerning due to its potential impact on system security.</p>
+                        <span class="confidence">confidence 0.80</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Monitor systems for potential exploitation</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch when available</li><li>Implement additional security measures</li></ul></div></div>
+                        
+                        <ul><li><a href="https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve_id=CVE-2026-23241" target="_blank" rel="noopener noreferrer">CVE-2026-23241</a></li></ul>
+                    </div>
+                </details>
+                <details class="cluster" id="card-f9614a74e2e2" data-domains="web_framework" data-tactic="Initial Access">
                     <summary>
                         <span class="badge" style="background:#f77f00;color:#fff">70</span>
                         <span class="priority p1">P1</span>
@@ -690,22 +746,23 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
                         
                         <span class="cve-badge">1 CVE</span>
                         
+                        
                         <span class="tactic-chip">Initial Access</span>
                         
                         
-                        WooCommerce Vulnerability
-                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span> <span class="domain-tag">Crypto Libraries</span></div>
+                        Apache Airflow Vuln
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span></div>
                     </summary>
                     <div class="cluster-body">
-                        <p>[P1] CVE-2026-32586 is a Missing Authorization vulnerability in Pluggabl Booster for WooCommerce, with no available patch. This vulnerability could allow attackers to gain unauthorized access to sensitive data. Why now: This vulnerability is particularly concerning due to the popularity of WooCommerce and the potential for widespread exploitation. (confidence: 0.80)</p>
-                        <p class="why-now"><strong>Why now:</strong> This vulnerability is particularly concerning due to the popularity of WooCommerce and the potential for widespread exploitation.</p>
+                        <p>[P1] CVE-2026-26929 affects Apache Airflow, potentially allowing for unauthorized access, and no patch is currently available. This vulnerability is particularly concerning due to its potential impact on system security. Why now: This vulnerability is particularly concerning due to its potential impact on system security. (confidence: 0.80)</p>
+                        <p class="why-now"><strong>Why now:</strong> This vulnerability is particularly concerning due to its potential impact on system security.</p>
                         <span class="confidence">confidence 0.80</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Monitor for suspicious activity</li><li>Isolate affected systems</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch when available</li><li>Implement additional security measures</li></ul></div></div>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Monitor systems for potential exploitation</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch when available</li><li>Implement additional security measures</li></ul></div></div>
                         
-                        <ul><li><a href="https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-32586" target="_blank" rel="noopener noreferrer">CVE-2026-32586</a></li></ul>
+                        <ul><li><a href="https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve_id=CVE-2026-26929" target="_blank" rel="noopener noreferrer">CVE-2026-26929</a></li></ul>
                     </div>
                 </details>
-                <details class="cluster" id="card-955defa7199d" data-domains="crypto_lib web_framework" data-tactic="Initial Access">
+                <details class="cluster" id="card-d02114c33acb" data-domains="crypto_lib" data-tactic="Execution">
                     <summary>
                         <span class="badge" style="background:#f77f00;color:#fff">70</span>
                         <span class="priority p1">P1</span>
@@ -715,48 +772,24 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
                         
                         <span class="cve-badge">1 CVE</span>
                         
-                        <span class="tactic-chip">Initial Access</span>
+                        
+                        <span class="tactic-chip">Execution</span>
                         
                         
-                        libsoup Vulnerability
-                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Crypto Libraries</span> <span class="domain-tag">Web / Servers</span></div>
+                        Libsoup Vuln
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Crypto Libraries</span></div>
                     </summary>
                     <div class="cluster-body">
-                        <p>[P1] CVE-2026-3634 is a flaw in libsoup that could allow attackers to control the value used to set the Cookie header. This vulnerability has no available patch and could be exploited to gain unauthorized access to sensitive data. Why now: This vulnerability is concerning due to the potential for widespread exploitation and the lack of available patches. (confidence: 0.80)</p>
-                        <p class="why-now"><strong>Why now:</strong> This vulnerability is concerning due to the potential for widespread exploitation and the lack of available patches.</p>
+                        <p>[P1] CVE-2026-3632 affects libsoup, potentially allowing for remote code execution, and no patch is currently available. This vulnerability is particularly concerning due to its potential impact on system security. Why now: This vulnerability is particularly concerning due to its potential impact on system security. (confidence: 0.80)</p>
+                        <p class="why-now"><strong>Why now:</strong> This vulnerability is particularly concerning due to its potential impact on system security.</p>
                         <span class="confidence">confidence 0.80</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Monitor for suspicious activity</li><li>Isolate affected systems</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch when available</li><li>Implement additional security measures</li></ul></div></div>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Monitor systems for potential exploitation</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch when available</li><li>Implement additional security measures</li></ul></div></div>
                         
-                        <ul><li><a href="https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-3634" target="_blank" rel="noopener noreferrer">CVE-2026-3634</a></li></ul>
-                    </div>
-                </details>
-                <details class="cluster" id="card-39ad4d3c733a" data-domains="web_framework crypto_lib" data-tactic="Initial Access">
-                    <summary>
-                        <span class="badge" style="background:#f77f00;color:#fff">60</span>
-                        <span class="priority p2">P2</span>
-                        
-                        
-                        
-                        
-                        <span class="cve-badge">1 CVE</span>
-                        
-                        <span class="tactic-chip">Initial Access</span>
-                        
-                        
-                        Apache Airflow Vulnerability
-                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span> <span class="domain-tag">Crypto Libraries</span></div>
-                    </summary>
-                    <div class="cluster-body">
-                        <p>[P2] CVE-2026-28563 is a vulnerability in Apache Airflow that could allow attackers to access sensitive data. This vulnerability has no available patch and could be exploited to gain unauthorized access to sensitive data. Why now: This vulnerability is concerning due to the potential for exploitation and the lack of available patches. (confidence: 0.60)</p>
-                        <p class="why-now"><strong>Why now:</strong> This vulnerability is concerning due to the potential for exploitation and the lack of available patches.</p>
-                        <span class="confidence">confidence 0.60</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Monitor for suspicious activity</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch when available</li><li>Implement additional security measures</li></ul></div></div>
-                        
-                        <ul><li><a href="https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-28563" target="_blank" rel="noopener noreferrer">CVE-2026-28563</a></li></ul>
+                        <ul><li><a href="https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve_id=CVE-2026-3632" target="_blank" rel="noopener noreferrer">CVE-2026-3632</a></li></ul>
                     </div>
                 </details>
 
-<footer>Watchtower · scheduled 00:05 / 06:05 / 12:05 / 18:05 ET · placeholder mode: false</footer>
+<footer>Watchtower · scheduled 2× daily · <span id="utc-clock"></span> · placeholder mode: false</footer>
                 </main>
                 <aside id="domain-rail" class="panel right-rail" role="complementary" aria-label="Domain Activity">
                     <div class="rail-handle" id="rail-handle" role="separator" aria-orientation="vertical" aria-label="Resize Domain Activity panel"></div>
@@ -777,32 +810,32 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
                         </div>
                         <section class="rail-panel active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
                             <h3 style="margin:.2rem 0 .45rem">Domain Activity</h3>
-                            <div class="rank-row rank-row-all" onclick="selectDomain('all')" style="border-bottom:1px solid #252525;margin-bottom:.35rem;padding-bottom:.35rem"><span class="rank-label" style="color:#c9d1d9;font-weight:700">All Domains</span><div class="rank-bar-wrap"></div><span class="rank-val" style="color:#c9d1d9;font-weight:700">3</span></div><div class="rank-row" onclick="selectDomain('web_framework')"><span class="rank-label" style="color:#8a3030" title="Web / Servers">Web / Servers</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:96%;background:#5a1a1a"></div></div><span class="rank-val" style="color:#5a2020">96</span></div><div class="rank-row" onclick="selectDomain('crypto_lib')"><span class="rank-label" style="color:#8a3030" title="Crypto Libs">Crypto Libs</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:96%;background:#5a1a1a"></div></div><span class="rank-val" style="color:#5a2020">96</span></div>
+                            <div class="rank-row rank-row-all" onclick="selectDomain('all')" style="border-bottom:1px solid #252525;margin-bottom:.35rem;padding-bottom:.35rem"><span class="rank-label" style="color:#c9d1d9;font-weight:700">All Domains</span><div class="rank-bar-wrap"></div><span class="rank-val" style="color:#c9d1d9;font-weight:700">3</span></div><div class="rank-row" onclick="selectDomain('web_framework')"><span class="rank-label" style="color:#6a8898" title="Web / Servers">Web / Servers</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:70%;background:#2e4a6e"></div></div><span class="rank-val" style="color:#3a5568">70</span></div><div class="rank-row" onclick="selectDomain('os_kernel')"><span class="rank-label" style="color:#6a8898" title="OS / Kernel">OS / Kernel</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:70%;background:#2e4a6e"></div></div><span class="rank-val" style="color:#3a5568">70</span></div><div class="rank-row" onclick="selectDomain('crypto_lib')"><span class="rank-label" style="color:#6a8898" title="Crypto Libs">Crypto Libs</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:70%;background:#2e4a6e"></div></div><span class="rank-val" style="color:#3a5568">70</span></div>
                             <h3 style="margin:.7rem 0 .35rem">Selected Domain</h3>
                             <div id="tm-detail" class="muted" style="font-size:.8rem">Click a node to inspect findings.</div>
                         </section>
                         <section class="rail-panel" id="panel-feeds" role="tabpanel" aria-labelledby="tab-feeds">
                             <h3 style="margin:.2rem 0 .35rem">Run Metrics</h3>
-                            <div class="run-metrics-bar"><span class="rm-chip">⏱ 20.0s</span><span class="rm-chip rm-ok">✓ 13/24 feeds</span><span class="rm-chip rm-fail">✗ 11 failed</span><span class="rm-chip">📡 243 items</span><span class="rm-chip">🕐 12h window</span><span class="rm-chip">AI: ok</span></div>
+                            <div class="run-metrics-bar"><span class="rm-chip">⏱ 19.2s</span><span class="rm-chip rm-ok">✓ 13/24 feeds</span><span class="rm-chip rm-fail">✗ 11 failed</span><span class="rm-chip">📡 238 items</span><span class="rm-chip">🕐 12h window</span><span class="rm-chip">AI: ok</span></div>
                             <h3 style="margin:.6rem 0 .35rem">Feed Health</h3>
-                            <table class="feed-table"><thead><tr><th>Feed</th><th>Items</th><th>Reliability</th><th>Time</th></tr></thead><tbody><tr><td>🔴 acsc_australia</td><td>0</td><td>0%</td><td>15159ms</td></tr><tr><td>🟢 aws_security_blog</td><td>1</td><td>71%</td><td>492ms</td></tr><tr><td>🟢 bleepingcomputer</td><td>8</td><td>100%</td><td>252ms</td></tr><tr><td>🟢 bsi_germany</td><td>125</td><td>79%</td><td>1172ms</td></tr><tr><td>🔴 cisa_alerts</td><td>0</td><td>0%</td><td>172ms</td></tr><tr><td>🟡 cisa_kev</td><td>0</td><td>67%</td><td>287ms</td></tr><tr><td>🟢 cloudflare_blog</td><td>1</td><td>71%</td><td>556ms</td></tr><tr><td>🟢 cyberscoop</td><td>3</td><td>67%</td><td>256ms</td></tr><tr><td>🟢 darkreading</td><td>2</td><td>83%</td><td>1182ms</td></tr><tr><td>🔴 gcp_security</td><td>0</td><td>0%</td><td>389ms</td></tr><tr><td>🔴 gh_security_blog</td><td>0</td><td>0%</td><td>510ms</td></tr><tr><td>🟢 github_changelog</td><td>7</td><td>83%</td><td>84ms</td></tr><tr><td>🔴 krebs</td><td>0</td><td>0%</td><td>225ms</td></tr><tr><td>🟢 malwarebytes_blog</td><td>4</td><td>79%</td><td>768ms</td></tr><tr><td>🟡 ms_security_blog</td><td>0</td><td>62%</td><td>496ms</td></tr><tr><td>🔴 ncsc_uk</td><td>0</td><td>0%</td><td>198ms</td></tr><tr><td>🟢 nvd</td><td>75</td><td>83%</td><td>633ms</td></tr><tr><td>🔴 portswigger_daily</td><td>0</td><td>0%</td><td>1073ms</td></tr><tr><td>🟢 securityweek</td><td>9</td><td>100%</td><td>343ms</td></tr><tr><td>🔴 snyk_blog</td><td>0</td><td>0%</td><td>379ms</td></tr><tr><td>🔴 talos_blog</td><td>0</td><td>0%</td><td>294ms</td></tr><tr><td>🟢 thehackernews</td><td>4</td><td>92%</td><td>404ms</td></tr><tr><td>🟢 therecord</td><td>3</td><td>83%</td><td>480ms</td></tr><tr><td>🟢 unit42</td><td>1</td><td>46%</td><td>260ms</td></tr></tbody></table>
+                            <table class="feed-table"><thead><tr><th>Feed</th><th>Items</th><th>Reliability</th><th>Time</th></tr></thead><tbody><tr><td>🔴 acsc_australia</td><td>0</td><td>0%</td><td>15113ms</td></tr><tr><td>🟢 aws_security_blog</td><td>1</td><td>72%</td><td>306ms</td></tr><tr><td>🟢 bleepingcomputer</td><td>9</td><td>100%</td><td>98ms</td></tr><tr><td>🟢 bsi_germany</td><td>121</td><td>80%</td><td>664ms</td></tr><tr><td>🔴 cisa_alerts</td><td>0</td><td>0%</td><td>88ms</td></tr><tr><td>🟡 cisa_kev</td><td>0</td><td>64%</td><td>132ms</td></tr><tr><td>🟢 cloudflare_blog</td><td>1</td><td>72%</td><td>450ms</td></tr><tr><td>🟢 cyberscoop</td><td>4</td><td>68%</td><td>166ms</td></tr><tr><td>🟢 darkreading</td><td>2</td><td>84%</td><td>404ms</td></tr><tr><td>🔴 gcp_security</td><td>0</td><td>0%</td><td>637ms</td></tr><tr><td>🔴 gh_security_blog</td><td>0</td><td>0%</td><td>335ms</td></tr><tr><td>🟢 github_changelog</td><td>8</td><td>84%</td><td>46ms</td></tr><tr><td>🔴 krebs</td><td>0</td><td>0%</td><td>210ms</td></tr><tr><td>🟢 malwarebytes_blog</td><td>4</td><td>80%</td><td>529ms</td></tr><tr><td>🟡 ms_security_blog</td><td>0</td><td>60%</td><td>320ms</td></tr><tr><td>🔴 ncsc_uk</td><td>0</td><td>0%</td><td>356ms</td></tr><tr><td>🟢 nvd</td><td>72</td><td>84%</td><td>218ms</td></tr><tr><td>🔴 portswigger_daily</td><td>0</td><td>0%</td><td>915ms</td></tr><tr><td>🟢 securityweek</td><td>9</td><td>100%</td><td>260ms</td></tr><tr><td>🔴 snyk_blog</td><td>0</td><td>0%</td><td>563ms</td></tr><tr><td>🔴 talos_blog</td><td>0</td><td>0%</td><td>203ms</td></tr><tr><td>🟢 thehackernews</td><td>3</td><td>92%</td><td>320ms</td></tr><tr><td>🟢 therecord</td><td>3</td><td>84%</td><td>145ms</td></tr><tr><td>🟢 unit42</td><td>1</td><td>48%</td><td>167ms</td></tr></tbody></table>
                             <h3 style="margin:.6rem 0 .35rem">Source References</h3>
                             <table class="feed-table"><thead><tr><th>Domain</th><th>Refs</th><th>Max risk</th></tr></thead><tbody><tr><td>nist.gov</td><td>3</td><td>70</td></tr></tbody></table>
                         </section>
                         <section class="rail-panel" id="panel-alerts" role="tabpanel" aria-labelledby="tab-alerts">
                             <h3 style="margin:.2rem 0 .35rem">Alerts</h3>
-                            <div class="alerts-subhdr">Persistent<span class="alerts-cnt">0</span></div><div class="alert-empty">None this run</div><div class="alerts-subhdr">Elevated<span class="alerts-cnt">0</span></div><div class="alert-empty">None this run</div><div class="alerts-subhdr">P1 / Attribution<span class="alerts-cnt">2</span></div><div class="alert-row" data-card-id="f90ffa530b0f" role="button" tabindex="0"><span class="alert-score" style="background:#f77f00;color:#fff">70</span><span class="alert-title">WooCommerce Vulnerability</span><span class="alert-annot alert-annot--p1">P1</span></div><div class="alert-row" data-card-id="955defa7199d" role="button" tabindex="0"><span class="alert-score" style="background:#f77f00;color:#fff">70</span><span class="alert-title">libsoup Vulnerability</span><span class="alert-annot alert-annot--p1">P1</span></div>
+                            <div class="alerts-subhdr">Persistent<span class="alerts-cnt">0</span></div><div class="alert-empty">None this run</div><div class="alerts-subhdr">Elevated<span class="alerts-cnt">0</span></div><div class="alert-empty">None this run</div><div class="alerts-subhdr">P1 / Attribution<span class="alerts-cnt">3</span></div><div class="alert-row" data-card-id="ccaf7c34dacf" role="button" tabindex="0"><span class="alert-score" style="background:#f77f00;color:#fff">70</span><span class="alert-title">Linux Kernel Vuln</span><span class="alert-annot alert-annot--p1">P1</span></div><div class="alert-row" data-card-id="f9614a74e2e2" role="button" tabindex="0"><span class="alert-score" style="background:#f77f00;color:#fff">70</span><span class="alert-title">Apache Airflow Vuln</span><span class="alert-annot alert-annot--p1">P1</span></div><div class="alert-row" data-card-id="d02114c33acb" role="button" tabindex="0"><span class="alert-score" style="background:#f77f00;color:#fff">70</span><span class="alert-title">Libsoup Vuln</span><span class="alert-annot alert-annot--p1">P1</span></div>
                         </section>
                         <section class="rail-panel" id="panel-forensics" role="tabpanel" aria-labelledby="tab-forensics">
                             <h3 style="margin:.2rem 0 .35rem">Forensics</h3>
-                            <h4 class="forensics-section-title">CVE Reference Index</h4><p class="forensics-hint">Click the CVE ID to open the NVD advisory. Click ⊕ to filter findings in the Overview tab.</p><table class="forensics-table"><thead><tr><th>CVE</th><th>Findings</th><th>Patch</th></tr></thead><tbody><tr><td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-32586" target="_blank" rel="noopener noreferrer" style="color:#79c0ff;font-family:monospace" onclick="event.stopPropagation()">CVE-2026-32586</a><button onclick="forensicsCveClick('CVE-2026-32586')" title="Filter findings by this CVE" style="background:none;border:none;color:#58a6ff;cursor:pointer;font-size:.75rem;padding:0 0 0 .4rem;vertical-align:middle;opacity:.7">⊕</button></td><td style="text-align:center">1</td><td><span style="color:#8b949e;font-size:.75rem">? Unknown</span></td></tr><tr><td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-3634" target="_blank" rel="noopener noreferrer" style="color:#79c0ff;font-family:monospace" onclick="event.stopPropagation()">CVE-2026-3634</a><button onclick="forensicsCveClick('CVE-2026-3634')" title="Filter findings by this CVE" style="background:none;border:none;color:#58a6ff;cursor:pointer;font-size:.75rem;padding:0 0 0 .4rem;vertical-align:middle;opacity:.7">⊕</button></td><td style="text-align:center">1</td><td><span style="color:#8b949e;font-size:.75rem">? Unknown</span></td></tr><tr><td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-28563" target="_blank" rel="noopener noreferrer" style="color:#79c0ff;font-family:monospace" onclick="event.stopPropagation()">CVE-2026-28563</a><button onclick="forensicsCveClick('CVE-2026-28563')" title="Filter findings by this CVE" style="background:none;border:none;color:#58a6ff;cursor:pointer;font-size:.75rem;padding:0 0 0 .4rem;vertical-align:middle;opacity:.7">⊕</button></td><td style="text-align:center">1</td><td><span style="color:#8b949e;font-size:.75rem">? Unknown</span></td></tr></tbody></table><h4 class="forensics-section-title">Kill-Chain Breakdown</h4><details class="forensics-acc"><summary><span class="tactic-chip" style="font-size:.7rem">Initial Access</span><span style="margin-left:.4rem;color:#8b949e;font-size:.72rem">3 findings</span></summary><div style="padding:.25rem .5rem"><div style="padding:.2rem 0;border-bottom:1px solid #1e1e1e;font-size:.75rem"><span style="color:#e6edf3">WooCommerce Vulnerability</span> <code style="color:#8b949e;font-size:.67rem">Exploit Public-Facing Application</code></div><div style="padding:.2rem 0;border-bottom:1px solid #1e1e1e;font-size:.75rem"><span style="color:#e6edf3">libsoup Vulnerability</span> <code style="color:#8b949e;font-size:.67rem">Exploit Public-Facing Application</code></div><div style="padding:.2rem 0;border-bottom:1px solid #1e1e1e;font-size:.75rem"><span style="color:#e6edf3">Apache Airflow Vulnerability</span> <code style="color:#8b949e;font-size:.67rem">Exploit Public-Facing Application</code></div></div></details><h4 class="forensics-section-title">Affected Products</h4><div class="forensics-empty">No product mentions found in this window.</div><h4 class="forensics-section-title">IOC Intelligence</h4><div class="forensics-empty">No network IOCs extracted from this window’s articles.</div>
+                            <h4 class="forensics-section-title">CVE Reference Index</h4><p class="forensics-hint">Click the CVE ID to open the NVD advisory. Click ⊕ to filter findings in the Overview tab.</p><table class="forensics-table"><thead><tr><th>CVE</th><th>Findings</th><th>Patch</th></tr></thead><tbody><tr><td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-23241" target="_blank" rel="noopener noreferrer" style="color:#79c0ff;font-family:monospace" onclick="event.stopPropagation()">CVE-2026-23241</a><button onclick="forensicsCveClick('CVE-2026-23241')" title="Filter findings by this CVE" style="background:none;border:none;color:#58a6ff;cursor:pointer;font-size:.75rem;padding:0 0 0 .4rem;vertical-align:middle;opacity:.7">⊕</button></td><td style="text-align:center">1</td><td><span style="color:#8b949e;font-size:.75rem">? Unknown</span></td></tr><tr><td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-26929" target="_blank" rel="noopener noreferrer" style="color:#79c0ff;font-family:monospace" onclick="event.stopPropagation()">CVE-2026-26929</a><button onclick="forensicsCveClick('CVE-2026-26929')" title="Filter findings by this CVE" style="background:none;border:none;color:#58a6ff;cursor:pointer;font-size:.75rem;padding:0 0 0 .4rem;vertical-align:middle;opacity:.7">⊕</button></td><td style="text-align:center">1</td><td><span style="color:#8b949e;font-size:.75rem">? Unknown</span></td></tr><tr><td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-3632" target="_blank" rel="noopener noreferrer" style="color:#79c0ff;font-family:monospace" onclick="event.stopPropagation()">CVE-2026-3632</a><button onclick="forensicsCveClick('CVE-2026-3632')" title="Filter findings by this CVE" style="background:none;border:none;color:#58a6ff;cursor:pointer;font-size:.75rem;padding:0 0 0 .4rem;vertical-align:middle;opacity:.7">⊕</button></td><td style="text-align:center">1</td><td><span style="color:#8b949e;font-size:.75rem">? Unknown</span></td></tr></tbody></table><h4 class="forensics-section-title">Kill-Chain Breakdown</h4><details class="forensics-acc"><summary><span class="tactic-chip" style="font-size:.7rem">Initial Access</span><span style="margin-left:.4rem;color:#8b949e;font-size:.72rem">1 finding</span></summary><div style="padding:.25rem .5rem"><div style="padding:.2rem 0;border-bottom:1px solid #1e1e1e;font-size:.75rem"><span style="color:#e6edf3">Apache Airflow Vuln</span> <code style="color:#8b949e;font-size:.67rem">Exploit Public-Facing Application</code></div></div></details><details class="forensics-acc"><summary><span class="tactic-chip" style="font-size:.7rem">Execution</span><span style="margin-left:.4rem;color:#8b949e;font-size:.72rem">1 finding</span></summary><div style="padding:.25rem .5rem"><div style="padding:.2rem 0;border-bottom:1px solid #1e1e1e;font-size:.75rem"><span style="color:#e6edf3">Libsoup Vuln</span> <code style="color:#8b949e;font-size:.67rem">Exploit Remote Code Execution</code></div></div></details><details class="forensics-acc"><summary><span class="tactic-chip" style="font-size:.7rem">Privilege Escalation</span><span style="margin-left:.4rem;color:#8b949e;font-size:.72rem">1 finding</span></summary><div style="padding:.25rem .5rem"><div style="padding:.2rem 0;border-bottom:1px solid #1e1e1e;font-size:.75rem"><span style="color:#e6edf3">Linux Kernel Vuln</span> <code style="color:#8b949e;font-size:.67rem">Exploit Kernel Vulnerability</code></div></div></details><h4 class="forensics-section-title">Affected Products</h4><div class="forensics-empty">No product mentions found in this window.</div><h4 class="forensics-section-title">IOC Intelligence</h4><div class="forensics-empty">No network IOCs extracted from this window’s articles.</div>
                         </section>
                     </div>
                 </aside>
                 </div>
                 </div>
 <script>
-var CARDS=[{"id": "f90ffa530b0f", "title": "WooCommerce Vulnerability", "risk_score": 70, "priority": "P1", "domains": ["web_framework", "crypto_lib"], "summary": "[P1] CVE-2026-32586 is a Missing Authorization vulnerability in Pluggabl Booster for WooCommerce, with no available patch. This vulnerability could allow attackers to gain unauthorized access to sensitive data. Why now: This vulnerability is particularly concerning due to the popularity of WooCommerce and the potential for widespread exploitation. (confidence: 0.80)", "sources": [{"title": "CVE-2026-32586", "url": "https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-32586"}], "tactic": "Initial Access", "shelf_days": 0, "run_count": 1, "first_seen_ts": "2026-03-17", "actions_24h": ["Monitor for suspicious activity", "Isolate affected systems"]}, {"id": "955defa7199d", "title": "libsoup Vulnerability", "risk_score": 70, "priority": "P1", "domains": ["crypto_lib", "web_framework"], "summary": "[P1] CVE-2026-3634 is a flaw in libsoup that could allow attackers to control the value used to set the Cookie header. This vulnerability has no available patch and could be exploited to gain unauthorized access to sensitive data. Why now: This vulnerability is concerning due to the potential for widespread exploitation and the lack of available patches. (confidence: 0.80)", "sources": [{"title": "CVE-2026-3634", "url": "https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-3634"}], "tactic": "Initial Access", "shelf_days": 0, "run_count": 1, "first_seen_ts": "2026-03-17", "actions_24h": ["Monitor for suspicious activity", "Isolate affected systems"]}, {"id": "39ad4d3c733a", "title": "Apache Airflow Vulnerability", "risk_score": 60, "priority": "P2", "domains": ["web_framework", "crypto_lib"], "summary": "[P2] CVE-2026-28563 is a vulnerability in Apache Airflow that could allow attackers to access sensitive data. This vulnerability has no available patch and could be exploited to gain unauthorized access to sensitive data. Why now: This vulnerability is concerning due to the potential for exploitation and the lack of available patches. (confidence: 0.60)", "sources": [{"title": "CVE-2026-28563", "url": "https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-28563"}], "tactic": "Initial Access", "shelf_days": 0, "run_count": 1, "first_seen_ts": "2026-03-17", "actions_24h": ["Monitor for suspicious activity"]}];
+var CARDS=[{"id": "ccaf7c34dacf", "title": "Linux Kernel Vuln", "risk_score": 70, "priority": "P1", "domains": ["os_kernel"], "summary": "[P1] CVE-2026-23241 affects the Linux kernel, potentially allowing for privilege escalation, and no patch is currently available. This vulnerability is particularly concerning due to its potential impact on system security. Why now: This vulnerability is particularly concerning due to its potential impact on system security. (confidence: 0.80)", "sources": [{"title": "CVE-2026-23241", "url": "https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve_id=CVE-2026-23241"}], "tactic": "Privilege Escalation", "shelf_days": 0, "run_count": 1, "first_seen_ts": "2026-03-17", "actions_24h": ["Monitor systems for potential exploitation"]}, {"id": "f9614a74e2e2", "title": "Apache Airflow Vuln", "risk_score": 70, "priority": "P1", "domains": ["web_framework"], "summary": "[P1] CVE-2026-26929 affects Apache Airflow, potentially allowing for unauthorized access, and no patch is currently available. This vulnerability is particularly concerning due to its potential impact on system security. Why now: This vulnerability is particularly concerning due to its potential impact on system security. (confidence: 0.80)", "sources": [{"title": "CVE-2026-26929", "url": "https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve_id=CVE-2026-26929"}], "tactic": "Initial Access", "shelf_days": 0, "run_count": 1, "first_seen_ts": "2026-03-17", "actions_24h": ["Monitor systems for potential exploitation"]}, {"id": "d02114c33acb", "title": "Libsoup Vuln", "risk_score": 70, "priority": "P1", "domains": ["crypto_lib"], "summary": "[P1] CVE-2026-3632 affects libsoup, potentially allowing for remote code execution, and no patch is currently available. This vulnerability is particularly concerning due to its potential impact on system security. Why now: This vulnerability is particularly concerning due to its potential impact on system security. (confidence: 0.80)", "sources": [{"title": "CVE-2026-3632", "url": "https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve_id=CVE-2026-3632"}], "tactic": "Execution", "shelf_days": 0, "run_count": 1, "first_seen_ts": "2026-03-17", "actions_24h": ["Monitor systems for potential exploitation"]}];
 var CURRENT_DOMAIN='all';
 var DOMAIN_LABELS={"pkg_npm": "npm / Node", "pkg_pypi": "PyPI / Python", "pkg_maven": "Maven / Java", "pkg_nuget": ".NET / NuGet", "pkg_gem": "RubyGems", "browser_ext": "Browser Extensions", "ca_trust": "CA / PKI Trust", "cloud_iam": "Cloud / IAM", "container": "Containers / K8s", "os_kernel": "OS / Kernel", "web_framework": "Web / Servers", "crypto_lib": "Crypto Libraries", "supply_chain": "Supply Chain", "ai_threat": "AI / ML Threats", "identity": "Identity / Auth", "uncategorised": "Other"};
 var WT_TELEMETRY=[];
@@ -969,7 +1002,7 @@ function selectDomain(domain){
     trackUi('domain_selected',{domain:CURRENT_DOMAIN,count:subset.length,maxRisk:maxRisk});
 }
 (function(){
-  var SLOTS=[0,6,12,18],MIN=5;
+  var SLOTS=[6,18],MIN=5;
   var el=document.getElementById('next-run-cd');
   if(!el)return;
   var fmt=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
@@ -993,10 +1026,34 @@ function selectDomain(domain){
     var diff=Math.max(0,Math.floor((next-now)/1000));
     var h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
     el.textContent='Next run '+pad(h)+':'+pad(m)+':'+pad(s);
-    el.title='Next run: '+next.toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'2-digit',minute:'2-digit'})+' ET';
+    el.title='Next run: '+pad(next.getUTCHours())+':'+pad(next.getUTCMinutes())+' UTC';
     el.className='next-run'+(diff<600?' soon':'')+(diff<60?' now':'');
   }
   tick();setInterval(tick,1000);
+})();
+(function(){
+  var el=document.getElementById('utc-clock');
+  function p(n){return String(n).padStart(2,'0');}
+  function u(){if(el){var n=new Date();el.textContent=p(n.getUTCHours())+':'+p(n.getUTCMinutes())+':'+p(n.getUTCSeconds())+' UTC';}}
+  u();setInterval(u,1000);
+})();
+(function(){
+  var p1=Object.values(CARDS).filter(function(c){return c.priority==='P1';}).length;
+  document.title=(p1?'['+p1+' P1] ':'')+'Watchtower — InfraSec Briefing';
+})();
+(function(){
+  var el=document.querySelector('.header-content p strong');
+  if(!el)return;
+  var ts=el.textContent.trim().replace(' ','T')+'Z';
+  var gen=new Date(ts);
+  if(isNaN(gen))return;
+  var ageH=(Date.now()-gen)/3600000;
+  if(ageH>28){
+    var b=document.createElement('div');
+    b.className='stale-banner';
+    b.textContent='⚠ Briefing may be stale — generated '+Math.floor(ageH)+' hours ago';
+    document.body.insertBefore(b,document.body.firstChild);
+  }
 })();
 function initFindingsFilter(){
   var inp=document.getElementById('findings-search');
@@ -1042,6 +1099,47 @@ document.querySelectorAll('.alert-row[data-card-id]').forEach(function(row){
     }
   });
 });
+(function(){
+  var lastVisit=0;
+  try{lastVisit=parseInt(localStorage.getItem('wt.last_visit')||'0',10)||0;}catch(e){}
+  var now=Date.now();
+  try{localStorage.setItem('wt.last_visit',String(now));}catch(e){}
+  if(!lastVisit)return;
+  var gapH=(now-lastVisit)/3600000;
+  if(gapH<4)return;
+  var lvDate=new Date(lastVisit).toISOString().slice(0,10);
+  var lvLabel=new Date(lastVisit).toLocaleString(undefined,{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+  var fresh=(CARDS||[]).filter(function(c){return c.first_seen_ts&&c.first_seen_ts>=lvDate;});
+  if(!fresh.length)return;
+  var rows=fresh.slice(0,10).map(function(c){
+    var pri=c.priority||'';
+    var priHtml=pri&&(pri==='P1'||pri==='P2')?'<span class="cu-pri cu-'+(pri==='P1'?'p1':'p2')+'">'+pri+'</span>':'';
+    var t=(c.title||'').slice(0,80).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+    return '<div class="cu-row" data-card-id="'+(c.id||'')+'" role="button" tabindex="0">'
+      +'<span class="cu-score">'+(c.risk_score||0)+'</span>'
+      +priHtml
+      +'<span class="cu-title">'+t+'</span>'
+      +'</div>';
+  }).join('');
+  var more=fresh.length>10?'<div class="cu-more">+'+(fresh.length-10)+' more below</div>':'';
+  var strip=document.createElement('details');
+  strip.className='catchup-strip';
+  strip.open=true;
+  strip.innerHTML='<summary class="catchup-summary">'
+    +'<span>⏱</span>'
+    +'<span class="catchup-label"><strong>'+fresh.length+' new finding'+(fresh.length!==1?'s':'')+'</strong> since your last visit &mdash; '+lvLabel+'</span>'
+    +'<span class="catchup-close">×</span>'
+    +'</summary>'
+    +'<div class="catchup-body">'+rows+more+'</div>';
+  strip.querySelectorAll('.cu-row[data-card-id]').forEach(function(row){
+    row.addEventListener('click',function(){
+      var card=document.getElementById('card-'+row.getAttribute('data-card-id'));
+      if(card){card.open=true;card.scrollIntoView({behavior:'smooth',block:'center'});card.classList.add('alert-highlight');setTimeout(function(){card.classList.remove('alert-highlight');},1800);}
+    });
+  });
+  var main=document.querySelector('.app-main');
+  if(main)main.insertBefore(strip,main.firstChild);
+})();
 initRightRail();
 selectDomain('all');
 initFindingsFilter();
