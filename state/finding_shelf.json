@@ -334,5 +334,23 @@
     "last_seen": "2026-03-17",
     "run_count": 1,
     "title": "Libsoup Vuln"
+  },
+  "d2db10c586eb": {
+    "first_seen": "2026-03-17",
+    "last_seen": "2026-03-17",
+    "run_count": 1,
+    "title": "Apache Airflow RCE"
+  },
+  "69481df85c87": {
+    "first_seen": "2026-03-17",
+    "last_seen": "2026-03-17",
+    "run_count": 1,
+    "title": "libsoup HTTP Request Vulnerability"
+  },
+  "d989b09a7d89": {
+    "first_seen": "2026-03-17",
+    "last_seen": "2026-03-17",
+    "run_count": 1,
+    "title": "Apache Airflow FastAPI DagVersion Listing API Vulnerability"
   }
 }
