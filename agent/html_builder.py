@@ -1727,6 +1727,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
 .forensics-acc summary::before{{content:"›";font-size:.85rem;transition:transform .15s;flex-shrink:0;color:#8b949e;width:.7rem;text-align:center}}
 .forensics-acc[open] summary::before{{transform:rotate(90deg)}}
 .forensics-ioc-type{{color:#8b949e;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;margin:.55rem 0 .2rem;padding:0}}
+.stale-banner{{background:#7d6608;color:#f0e68c;text-align:center;padding:.45rem 1rem;font-size:.82rem;position:sticky;top:0;z-index:200;letter-spacing:.02em}}
         </style>
         </head>
         <body>
@@ -1735,7 +1736,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
         <header class="header-bar">
           <div class="header-content">
             <h1>Watchtower — Infrastructure Security Briefing</h1>
-            <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 06:05, 18:05 ET">Next run —</span></p>
+            <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled: 2× daily">Next run —</span></p>
           </div>
         </header>
         <div class="page-wrap">
@@ -1768,7 +1769,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
 </div>
 {rows}
 {resolved_drawer_html}
-<footer>Watchtower · scheduled 06:05 / 18:05 ET · placeholder mode: {str(placeholder_mode()).lower()}</footer>
+<footer>Watchtower · scheduled 2× daily · <span id="utc-clock"></span> · placeholder mode: {str(placeholder_mode()).lower()}</footer>
                 </main>
                 <aside id="domain-rail" class="panel right-rail" role="complementary" aria-label="Domain Activity">
                     <div class="rail-handle" id="rail-handle" role="separator" aria-orientation="vertical" aria-label="Resize Domain Activity panel"></div>
@@ -2005,10 +2006,34 @@ function selectDomain(domain){{
     var diff=Math.max(0,Math.floor((next-now)/1000));
     var h=Math.floor(diff/3600),m=Math.floor((diff%3600)/60),s=diff%60;
     el.textContent='Next run '+pad(h)+':'+pad(m)+':'+pad(s);
-    el.title='Next run: '+next.toLocaleTimeString('en-US',{{timeZone:'America/New_York',hour:'2-digit',minute:'2-digit'}})+' ET';
+    el.title='Next run: '+pad(next.getUTCHours())+':'+pad(next.getUTCMinutes())+' UTC';
     el.className='next-run'+(diff<600?' soon':'')+(diff<60?' now':'');
   }}
   tick();setInterval(tick,1000);
+}})();
+(function(){{
+  var el=document.getElementById('utc-clock');
+  function p(n){{return String(n).padStart(2,'0');}}
+  function u(){{if(el){{var n=new Date();el.textContent=p(n.getUTCHours())+':'+p(n.getUTCMinutes())+':'+p(n.getUTCSeconds())+' UTC';}}}}
+  u();setInterval(u,1000);
+}})();
+(function(){{
+  var p1=Object.values(CARDS).filter(function(c){{return c.priority==='P1';}}).length;
+  document.title=(p1?'['+p1+' P1] ':'')+'Watchtower \u2014 InfraSec Briefing';
+}})();
+(function(){{
+  var el=document.querySelector('.header-content p strong');
+  if(!el)return;
+  var ts=el.textContent.trim().replace(' ','T')+'Z';
+  var gen=new Date(ts);
+  if(isNaN(gen))return;
+  var ageH=(Date.now()-gen)/3600000;
+  if(ageH>28){{
+    var b=document.createElement('div');
+    b.className='stale-banner';
+    b.textContent='\u26a0 Briefing may be stale \u2014 generated '+Math.floor(ageH)+' hours ago';
+    document.body.insertBefore(b,document.body.firstChild);
+  }}
 }})();
 function initFindingsFilter(){{
   var inp=document.getElementById('findings-search');

@@ -44,14 +44,6 @@ Keep each item open until code, tests, and docs are complete.
   - Track `last_item_ts` per feed. Flag feeds where `last_item_ts` is > 72h ago with a "Stale" badge in the Feeds tab. Separate from "failed" coloring.
   - Scope: `_update_feed_health()` in [agent/runner.py](agent/runner.py); stale badge CSS in [agent/html_builder.py](agent/html_builder.py).
 
-- [ ] **Briefing staleness warning**
-  - If the page is opened and the generated timestamp is > 28h old (e.g., Actions failure), users may act on stale data.
-  - On DOMContentLoaded, parse the existing header timestamp. If > 28h, inject a yellow "⚠ Briefing may be stale — generated N hours ago" banner.
-  - Scope: 8-line JS in [agent/html_builder.py](agent/html_builder.py); uses the timestamp already in the DOM.
-
-- [ ] **Unread count in browser tab title**
-  - `document.title = "[2 P1] Watchtower — InfraSec Briefing"` gives a passive signal to users with the tab open in the background.
-  - Scope: 3-line JS addition; zero risk.
 
 - [ ] **Coverage push: `ingest.py` (19%) and `state.py` (31%)**
   - Both sit on the critical data path (feed fetch, CVE merge, all persistence). Regressions produce silent bad output.
@@ -125,6 +117,9 @@ Keep each item open until code, tests, and docs are complete.
 | Adaptive data window + 2x/day cadence | `last_run_ts.json` tracks last poll; `since_hours` expands to cover any gap; pre-Groq cap 120 items newest-first; gate changed to 06:00/18:00 ET; `since_hours: 12`; `window_h` chip in Run Metrics bar |
 | Priority Actions aggregation panel | `_build_priority_actions_html(cards)` — deduplicates `recommended_actions_24h` across P1/P2 cards via Counter; top 7 shown with `N×` chip; rendered between hp-panel and threat map; 6 targeted tests |
 | Catch-up view | JS-only; reads `wt.last_visit` from localStorage; injects collapsible strip after >4h gap showing new findings by `first_seen_ts`; click-to-scroll reuses `alert-highlight`; saves baseline before gap check; 6 targeted tests |
+| UTC-only display + live clock | Stripped all ET/New York references from header, footer, countdown; footer now shows live UTC clock (HH:MM:SS); countdown tooltip shows next run in UTC |
+| Briefing staleness warning | JS banner injected when briefing age >28h; yellow `.stale-banner` sticky at top; parses timestamp from existing DOM `<strong>` |
+| Unread count in browser tab title | `[N P1] Watchtower — InfraSec Briefing` tab title set from `CARDS` P1 count on page load |
 
 ---
 
@@ -151,3 +146,4 @@ Keep each item open until code, tests, and docs are complete.
 - 2026-03-17: **Adaptive data window** — `last_run_ts.json` checkpoint; `since_hours = max(config, gap+2)` auto-expands for missed runs and weekend gaps; pre-Groq 120-item cap (newest-first); schedule changed to 2x/day (06:00/18:00 ET); `since_hours: 12`; `window_h` chip in Run Metrics bar. 307 tests pass.
 - 2026-03-17: **Priority Actions panel** — `_build_priority_actions_html(cards)` deduplicates `recommended_actions_24h` across P1/P2 cards; Counter grouping on first 40 chars; top 7 with `N×` occurrence chip; rendered between hp-panel and threat map. 313 tests pass.
 - 2026-03-17: **Catch-up view** — JS reads `wt.last_visit` localStorage; after >4h gap injects collapsible `<details>` strip showing N new findings filtered by `first_seen_ts`; click rows scroll to card with highlight; baseline saved before gap check so it advances even on empty runs. Groq model fallback removed from tracker (may replace with different API). 319 tests pass.
+- 2026-03-17: **UTC display cleanup + live clock + staleness warning + tab title** — stripped all ET/New York refs from header tooltip, footer, and countdown JS; footer `<span id="utc-clock">` ticks HH:MM:SS UTC; countdown tooltip shows next run in UTC; `.stale-banner` JS injected when briefing age >28h; tab title prefixed with `[N P1]` from CARDS count. 319 tests pass.
