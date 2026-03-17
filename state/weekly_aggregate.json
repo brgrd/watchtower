@@ -1,19 +1,18 @@
 {
-  "rebuilt_at": "2026-03-16T22:47:00.083974+00:00",
+  "rebuilt_at": "2026-03-17T10:05:40.998857+00:00",
   "window_days": 1,
   "total_cards": 3,
   "unique_cves": 0,
   "active_domains": [
     "container",
     "crypto_lib",
-    "os_kernel",
     "web_framework"
   ],
-  "most_active_day": "2026-03-16",
+  "most_active_day": "2026-03-17",
   "day_counts": {
-    "2026-03-16": 3
+    "2026-03-17": 3
   },
   "top_cves": [],
-  "weekly_summary": "Over the past 24 hours, the security landscape has been relatively quiet, with a total of 3 findings reported. Notably, no unique CVEs were tracked, and there were no frequently seen CVEs. The active security domains included Containers and Kubernetes, Crypto Libraries, OS and Kernel, as well as Web and Servers. The most active day for security events was March 16, 2026, indicating a recent surge in activity, although the overall volume of findings remains low, suggesting a stable security posture at this time.",
-  "weekly_summary_ts": "2026-03-16"
+  "weekly_summary": "Over the past 24 hours, the security landscape has been relatively quiet, with a total of 3 findings reported. Notably, no unique CVEs were tracked, indicating that existing vulnerabilities are not being newly exploited. The most active security domains include Containers and Kubernetes, Crypto Libraries, and Web Servers, suggesting a focus on these areas for potential threats. Yesterday, March 17, 2026, was the most active day, with all findings emerging on this single day, highlighting the need for continued vigilance in these key domains to ensure the security posture of our infrastructure remains robust.",
+  "weekly_summary_ts": "2026-03-17"
 }

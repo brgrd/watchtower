@@ -280,5 +280,23 @@
     "last_seen": "2026-03-16",
     "run_count": 1,
     "title": "Qool CMS Vuln"
+  },
+  "5e36e57d4bb2": {
+    "first_seen": "2026-03-17",
+    "last_seen": "2026-03-17",
+    "run_count": 1,
+    "title": "RealtyScript CSRF"
+  },
+  "ebec7b1ed40e": {
+    "first_seen": "2026-03-17",
+    "last_seen": "2026-03-17",
+    "run_count": 1,
+    "title": "Qool CMS XSS"
+  },
+  "fe58c77cffb4": {
+    "first_seen": "2026-03-17",
+    "last_seen": "2026-03-17",
+    "run_count": 1,
+    "title": "RealtyScript SQLi"
   }
 }
