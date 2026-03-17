@@ -281,3 +281,37 @@ class TestPriorityActionsPanel:
         # sample cards include a P1 card with recommended_actions_24h
         assert "pa-panel" in html
         assert "Priority Actions" in html
+
+
+class TestCatchupView:
+    def test_catchup_js_present(self, tmp_path):
+        html = _render_html(tmp_path)
+        assert "wt.last_visit" in html
+        assert "catchup-strip" in html
+
+    def test_catchup_gap_threshold(self, tmp_path):
+        html = _render_html(tmp_path)
+        assert "gapH<4" in html
+
+    def test_catchup_filters_by_first_seen_ts(self, tmp_path):
+        html = _render_html(tmp_path)
+        assert "first_seen_ts" in html
+        assert "lvDate" in html
+
+    def test_catchup_rows_have_data_card_id(self, tmp_path):
+        html = _render_html(tmp_path)
+        assert "cu-row" in html
+        assert "data-card-id" in html
+
+    def test_catchup_last_visit_saved_before_check(self, tmp_path):
+        html = _render_html(tmp_path)
+        save_pos = html.index("localStorage.setItem('wt.last_visit'")
+        gap_pos = html.index("gapH<4")
+        assert save_pos < gap_pos
+
+    def test_catchup_css_classes_present(self, tmp_path):
+        html = _render_html(tmp_path)
+        assert "catchup-summary" in html
+        assert "cu-score" in html
+        assert "cu-title" in html
+        assert "cu-p1" in html

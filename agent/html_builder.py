@@ -1547,6 +1547,21 @@ p{{color:#c9d1d9}}
 .pa-num{{flex-shrink:0;font-size:.63rem;font-weight:700;color:#444;width:1.1em;text-align:right}}
 .pa-text{{flex:1;color:#c9d1d9}}
 .pa-count{{flex-shrink:0;font-size:.61rem;font-weight:700;background:rgba(88,130,240,.1);color:#6ea8fe;border:1px solid rgba(88,130,240,.2);border-radius:3px;padding:1px 5px}}
+.catchup-strip{{background:#0c1420;border:1px solid rgba(88,130,240,.25);border-radius:6px;margin:0 0 1rem;overflow:hidden}}
+.catchup-summary{{display:flex;align-items:center;gap:.5rem;padding:.45rem .75rem;cursor:pointer;list-style:none;font-size:.81rem;color:#79b8ff;user-select:none}}
+.catchup-summary::-webkit-details-marker{{display:none}}
+.catchup-summary:hover{{background:rgba(88,130,240,.07)}}
+.catchup-label{{flex:1}}
+.catchup-close{{flex-shrink:0;font-size:.85rem;opacity:.5}}
+.catchup-body{{padding:.1rem .5rem .45rem}}
+.cu-row{{display:flex;align-items:center;gap:.32rem;padding:.22rem .25rem;border-radius:4px;cursor:pointer;font-size:.78rem}}
+.cu-row:hover{{background:#1e2a3a}}
+.cu-score{{flex-shrink:0;font-size:.61rem;font-weight:700;background:#1a2535;color:#6ea8fe;border:1px solid rgba(88,130,240,.2);border-radius:3px;padding:1px 5px;min-width:2em;text-align:center}}
+.cu-pri{{flex-shrink:0;font-size:.61rem;font-weight:700;border-radius:3px;padding:1px 5px}}
+.cu-p1{{background:rgba(180,20,20,.12);color:#ff6b6b;border:1px solid rgba(180,20,20,.3)}}
+.cu-p2{{background:rgba(180,100,20,.1);color:#f0a050;border:1px solid rgba(180,100,20,.25)}}
+.cu-title{{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#c9d1d9}}
+.cu-more{{font-size:.72rem;color:#4a5568;padding:.1rem .25rem .25rem}}
 .hp-chip{{display:inline-flex;align-items:center;gap:.3rem;background:rgba(139,92,246,.1);color:#c4b5fd;border:1px solid rgba(139,92,246,.25);border-radius:999px;font-size:.71rem;padding:2px 10px;font-weight:600}}
 .hp-chip-count{{background:rgba(139,92,246,.3);color:#ede9fe;border-radius:999px;font-size:.65rem;font-weight:700;padding:0 5px;min-width:1.2em;text-align:center}}
 .delta-strip{{display:flex;align-items:center;gap:.5rem;margin:.2rem 0 1rem;flex-wrap:wrap;min-height:1.6rem}}
@@ -2020,6 +2035,47 @@ document.querySelectorAll('.alert-row[data-card-id]').forEach(function(row){{
     }}
   }});
 }});
+(function(){{
+  var lastVisit=0;
+  try{{lastVisit=parseInt(localStorage.getItem('wt.last_visit')||'0',10)||0;}}catch(e){{}}
+  var now=Date.now();
+  try{{localStorage.setItem('wt.last_visit',String(now));}}catch(e){{}}
+  if(!lastVisit)return;
+  var gapH=(now-lastVisit)/3600000;
+  if(gapH<4)return;
+  var lvDate=new Date(lastVisit).toISOString().slice(0,10);
+  var lvLabel=new Date(lastVisit).toLocaleString(undefined,{{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}});
+  var fresh=(CARDS||[]).filter(function(c){{return c.first_seen_ts&&c.first_seen_ts>=lvDate;}});
+  if(!fresh.length)return;
+  var rows=fresh.slice(0,10).map(function(c){{
+    var pri=c.priority||'';
+    var priHtml=pri&&(pri==='P1'||pri==='P2')?'<span class="cu-pri cu-'+(pri==='P1'?'p1':'p2')+'">'+pri+'</span>':'';
+    var t=(c.title||'').slice(0,80).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+    return '<div class="cu-row" data-card-id="'+(c.id||'')+'" role="button" tabindex="0">'
+      +'<span class="cu-score">'+(c.risk_score||0)+'</span>'
+      +priHtml
+      +'<span class="cu-title">'+t+'</span>'
+      +'</div>';
+  }}).join('');
+  var more=fresh.length>10?'<div class="cu-more">+'+(fresh.length-10)+' more below</div>':'';
+  var strip=document.createElement('details');
+  strip.className='catchup-strip';
+  strip.open=true;
+  strip.innerHTML='<summary class="catchup-summary">'
+    +'<span>\u23f1</span>'
+    +'<span class="catchup-label"><strong>'+fresh.length+' new finding'+(fresh.length!==1?'s':'')+'</strong> since your last visit &mdash; '+lvLabel+'</span>'
+    +'<span class="catchup-close">\u00d7</span>'
+    +'</summary>'
+    +'<div class="catchup-body">'+rows+more+'</div>';
+  strip.querySelectorAll('.cu-row[data-card-id]').forEach(function(row){{
+    row.addEventListener('click',function(){{
+      var card=document.getElementById('card-'+row.getAttribute('data-card-id'));
+      if(card){{card.open=true;card.scrollIntoView({{behavior:'smooth',block:'center'}});card.classList.add('alert-highlight');setTimeout(function(){{card.classList.remove('alert-highlight');}},1800);}}
+    }});
+  }});
+  var main=document.querySelector('.app-main');
+  if(main)main.insertBefore(strip,main.firstChild);
+}})();
 initRightRail();
 selectDomain('all');
 initFindingsFilter();

@@ -10,11 +10,6 @@ Keep each item open until code, tests, and docs are complete.
 
 ### High Priority
 
-- [ ] **Groq model fallback list**
-  - 5-attempt retry handles rate limits but has no fallback model. If `llama-3.3-70b-versatile` is deprecated or over quota the run silently produces a blank briefing.
-  - Add `model_fallback` list to [agent/config.yaml](agent/config.yaml). After exhausting retries on primary, try each fallback in order. Set `groq_status = "fallback:<model>"` in run metrics.
-  - Scope: [agent/analysis.py](agent/analysis.py) + [agent/config.yaml](agent/config.yaml); ~30 lines.
-
 - [ ] **Finding quality gate (post-Groq filter)**
   - Groq occasionally produces low-signal findings: vague title, single-sentence summary, no CVE, no technique. These inflate count without adding value.
   - `_quality_score(card)`: score on title length > 20 chars, CVE or product name present, summary > 60 chars, `why_now` present. Cards below threshold (default: 2/4 met) logged as `[QUALITY DROP]` and excluded.
@@ -28,11 +23,6 @@ Keep each item open until code, tests, and docs are complete.
 ---
 
 ### Medium Priority
-
-- [ ] **"Since your last visit" catch-up view**
-  - After > 4 hours away, render a collapsible `<details>` strip at top: "Catch-up since [timestamp] — N new findings". Closes the passive-monitor check-in friction problem at zero backend cost.
-  - Requires `first_seen_ts` in CARDS (already present).
-  - Scope: JS-only in [agent/html_builder.py](agent/html_builder.py); sets `wt.last_visit` on DOMContentLoaded.
 
 - [ ] **Shelf life CVE key**
   - Shelf keys are `sha256(title)[:16]`. Two articles about the same CVE get separate shelf entries, diluting persistence signals.
@@ -117,7 +107,7 @@ Keep each item open until code, tests, and docs are complete.
 | Finding shelf life | `finding_shelf.json`; +5/run boost (capped +20); orange `Nd` badge |
 | Split runner.py HTML rendering | `html_builder.py` extracted; runner shrunk from ~3 200 to ~1 760 lines |
 | CVE-anchored deduplication | `_merge_by_cve()` union-find grouping before Groq |
-| Groq retry with backoff | 5-attempt loop with `Retry-After` header reads *(model fallback still pending)* |
+| Groq retry with backoff | 5-attempt loop with `Retry-After` header reads |
 | Forensics tab | CVE Reference Index, Kill-Chain Breakdown, Affected Products, IOC Intelligence |
 | IOC extraction redesign | Context snippets only in HTML; raw values in `ioc_ledger.json` |
 | Attribution language guard | `_ATTRIBUTION_RE`; `attribution_flag` on cards; `⚠ Attribution Unverified` badge |
@@ -134,6 +124,7 @@ Keep each item open until code, tests, and docs are complete.
 | Alerts tab | Three panels: Persistent (run_count ≥ 3), Elevated (delta ≥ 10), P1/Attribution; click-to-scroll to finding card; 10 targeted tests |
 | Adaptive data window + 2x/day cadence | `last_run_ts.json` tracks last poll; `since_hours` expands to cover any gap; pre-Groq cap 120 items newest-first; gate changed to 06:00/18:00 ET; `since_hours: 12`; `window_h` chip in Run Metrics bar |
 | Priority Actions aggregation panel | `_build_priority_actions_html(cards)` — deduplicates `recommended_actions_24h` across P1/P2 cards via Counter; top 7 shown with `N×` chip; rendered between hp-panel and threat map; 6 targeted tests |
+| Catch-up view | JS-only; reads `wt.last_visit` from localStorage; injects collapsible strip after >4h gap showing new findings by `first_seen_ts`; click-to-scroll reuses `alert-highlight`; saves baseline before gap check; 6 targeted tests |
 
 ---
 
@@ -159,3 +150,4 @@ Keep each item open until code, tests, and docs are complete.
 - 2026-03-17: **Alerts tab** — `_build_alerts_html(cards, delta)` in `html_builder.py`; three panels (Persistent, Elevated, P1/Attribution); click-to-scroll JS with highlight; 10 targeted tests (307 total). Dead code removed: `rendering.py`, `planning.py`, `test_planning.py`, `_build_calendar_html`, `_build_corroboration_map`, dead `rendering_mod` import.
 - 2026-03-17: **Adaptive data window** — `last_run_ts.json` checkpoint; `since_hours = max(config, gap+2)` auto-expands for missed runs and weekend gaps; pre-Groq 120-item cap (newest-first); schedule changed to 2x/day (06:00/18:00 ET); `since_hours: 12`; `window_h` chip in Run Metrics bar. 307 tests pass.
 - 2026-03-17: **Priority Actions panel** — `_build_priority_actions_html(cards)` deduplicates `recommended_actions_24h` across P1/P2 cards; Counter grouping on first 40 chars; top 7 with `N×` occurrence chip; rendered between hp-panel and threat map. 313 tests pass.
+- 2026-03-17: **Catch-up view** — JS reads `wt.last_visit` localStorage; after >4h gap injects collapsible `<details>` strip showing N new findings filtered by `first_seen_ts`; click rows scroll to card with highlight; baseline saved before gap check so it advances even on empty runs. Groq model fallback removed from tracker (may replace with different API). 319 tests pass.
