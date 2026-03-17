@@ -31,3 +31,6 @@ reports/briefing_*.md
 state/seen_hashes.json
 state/last_run_cards.json
 reports/briefing_*.jsonl
+
+# Internal development roadmap — not for public distribution.
+upgrades.md

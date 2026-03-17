@@ -17,6 +17,7 @@ from agent.analysis import (
     _findings_to_cards,
     _match_high_profile,
     _normalize_tactic,
+    _quality_score,
     groq_analyze_briefing,
 )
 
@@ -277,6 +278,19 @@ class TestEnrichCardsFromSources:
 
 
 class TestFindingsToCards:
+    """Base finding passes the quality gate: title > 20, summary > 60, why_now set."""
+
+    def _f(self, **overrides) -> dict:
+        base = {
+            "title": "Remote code execution vulnerability in kernel",
+            "risk_score": 60,
+            "domains": ["os_kernel"],
+            "summary": "A critical security vulnerability allows unauthenticated remote code execution via crafted packets.",
+            "why_now": "Actively exploited in the wild this week.",
+        }
+        base.update(overrides)
+        return base
+
     def test_empty_findings_returns_empty_list(self):
         assert _findings_to_cards([]) == []
 
@@ -285,81 +299,52 @@ class TestFindingsToCards:
         assert _findings_to_cards(findings) == []
 
     def test_risk_score_clamped_to_100(self):
-        f = {"title": "Test", "risk_score": 150, "domains": ["os_kernel"]}
-        cards = _findings_to_cards([f])
+        cards = _findings_to_cards([self._f(risk_score=150)])
         assert cards[0]["risk_score"] == 100
 
     def test_risk_score_clamped_to_zero(self):
-        f = {"title": "Test", "risk_score": -50, "domains": ["os_kernel"]}
-        cards = _findings_to_cards([f])
+        cards = _findings_to_cards([self._f(risk_score=-50)])
         assert cards[0]["risk_score"] == 0
 
     def test_invalid_risk_score_defaults_to_40(self):
-        f = {"title": "Test", "risk_score": "bad", "domains": ["os_kernel"]}
-        cards = _findings_to_cards([f])
+        cards = _findings_to_cards([self._f(risk_score="bad")])
         assert cards[0]["risk_score"] == 40
 
     def test_unknown_domain_falls_to_uncategorised(self):
-        f = {"title": "Test", "risk_score": 50, "domains": ["nonexistent_domain"]}
-        cards = _findings_to_cards([f])
+        cards = _findings_to_cards([self._f(domains=["nonexistent_domain"])])
         assert cards[0]["domains"] == ["uncategorised"]
 
     def test_empty_domains_falls_to_uncategorised(self):
-        f = {"title": "Test", "risk_score": 50, "domains": []}
-        cards = _findings_to_cards([f])
+        cards = _findings_to_cards([self._f(domains=[])])
         assert cards[0]["domains"] == ["uncategorised"]
 
     def test_valid_domain_preserved(self):
-        f = {"title": "Test", "risk_score": 50, "domains": ["container"]}
-        cards = _findings_to_cards([f])
+        cards = _findings_to_cards([self._f(domains=["container"])])
         assert "container" in cards[0]["domains"]
 
     def test_refs_not_list_normalised(self):
-        f = {"title": "Test", "risk_score": 50, "domains": ["os_kernel"], "references": "not-a-list"}
-        cards = _findings_to_cards([f])
+        cards = _findings_to_cards([self._f(references="not-a-list")])
         assert cards[0]["sources"]["primary"] == []
 
     def test_summary_includes_why_now(self):
-        f = {
-            "title": "Test",
-            "risk_score": 50,
-            "domains": ["os_kernel"],
-            "summary": "Base summary.",
-            "why_now": "Active exploitation.",
-        }
-        cards = _findings_to_cards([f])
+        cards = _findings_to_cards([self._f(summary="Base summary text here.", why_now="Active exploitation.")])
         assert "Active exploitation." in cards[0]["summary"]
 
     def test_summary_includes_priority_prefix(self):
-        f = {
-            "title": "Test",
-            "risk_score": 50,
-            "domains": ["os_kernel"],
-            "summary": "Base.",
-            "priority": "P1",
-        }
-        cards = _findings_to_cards([f])
+        cards = _findings_to_cards([self._f(priority="P1")])
         assert cards[0]["summary"].startswith("[P1]")
 
     def test_confidence_formatted_in_summary(self):
-        f = {
-            "title": "Test",
-            "risk_score": 50,
-            "domains": ["os_kernel"],
-            "summary": "Base.",
-            "confidence": 0.85,
-        }
-        cards = _findings_to_cards([f])
+        cards = _findings_to_cards([self._f(confidence=0.85)])
         assert "0.85" in cards[0]["summary"]
 
     def test_patch_status_patched_when_patch_available(self):
         url = "https://nvd.nist.gov/vuln/detail/CVE-2026-1111"
-        finding = {
-            "title": "CVE-2026-1111 flaw",
-            "risk_score": 70,
-            "domains": ["os_kernel"],
-            "references": [{"title": "NVD", "url": url}],
-        }
+        finding = self._f(
+            title="CVE-2026-1111 kernel privilege escalation",
+            risk_score=70,
+            references=[{"title": "NVD", "url": url}],
+        )
         all_items = [
             {
                 "title": "CVE-2026-1111 patch released",
@@ -375,12 +360,11 @@ class TestFindingsToCards:
 
     def test_patch_status_no_fix_when_exploited_no_patch(self):
         url = "https://nvd.nist.gov/vuln/detail/CVE-2026-2222"
-        finding = {
-            "title": "CVE-2026-2222 flaw",
-            "risk_score": 80,
-            "domains": ["os_kernel"],
-            "references": [{"title": "NVD", "url": url}],
-        }
+        finding = self._f(
+            title="CVE-2026-2222 remote code execution exploit",
+            risk_score=80,
+            references=[{"title": "NVD", "url": url}],
+        )
         all_items = [
             {
                 "title": "CVE-2026-2222 exploited",
@@ -396,46 +380,32 @@ class TestFindingsToCards:
 
     def test_cards_sorted_by_risk_score_desc(self):
         findings = [
-            {"title": "Low", "risk_score": 30, "domains": ["os_kernel"]},
-            {"title": "High", "risk_score": 90, "domains": ["os_kernel"]},
-            {"title": "Mid", "risk_score": 60, "domains": ["os_kernel"]},
+            self._f(title="Low severity kernel information disclosure", risk_score=30),
+            self._f(title="High severity kernel remote code execution", risk_score=90),
+            self._f(title="Medium severity kernel privilege escalation", risk_score=60),
         ]
         cards = _findings_to_cards(findings)
         scores = [c["risk_score"] for c in cards]
         assert scores == sorted(scores, reverse=True)
 
     def test_tactic_name_normalized(self):
-        f = {
-            "title": "Test",
-            "risk_score": 50,
-            "domains": ["os_kernel"],
-            "tactic_name": "privesc",
-        }
-        cards = _findings_to_cards([f])
+        cards = _findings_to_cards([self._f(tactic_name="privesc")])
         assert cards[0]["tactic_name"] == "Privilege Escalation"
 
     def test_unrecognized_tactic_name_cleared(self):
-        f = {
-            "title": "Test",
-            "risk_score": 50,
-            "domains": ["os_kernel"],
-            "tactic_name": "totally_made_up_garbage",
-        }
-        cards = _findings_to_cards([f])
+        cards = _findings_to_cards([self._f(tactic_name="totally_made_up_garbage")])
         assert cards[0]["tactic_name"] == ""
 
     def test_title_truncated_to_140_chars(self):
-        f = {"title": "A" * 200, "risk_score": 50, "domains": ["os_kernel"]}
-        cards = _findings_to_cards([f])
+        cards = _findings_to_cards([self._f(title="A" * 200)])
         assert len(cards[0]["title"]) == 140
 
     def test_is_kev_false_when_no_all_items(self):
-        f = {"title": "CVE-2026-1234 vuln", "risk_score": 60, "domains": ["os_kernel"]}
-        cards = _findings_to_cards([f])
+        cards = _findings_to_cards([self._f(title="CVE-2026-1234 remote code execution in kernel")])
         assert cards[0]["is_kev"] is False
 
     def test_is_kev_true_when_cve_in_kev_source(self):
-        f = {"title": "CVE-2026-9999 RCE", "risk_score": 75, "domains": ["os_kernel"]}
+        f = self._f(title="CVE-2026-9999 remote code execution in runtime", risk_score=75)
         kev_item = {
             "title": "CVE-2026-9999 — Remote Code Execution",
             "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9999",
@@ -447,7 +417,7 @@ class TestFindingsToCards:
         assert cards[0]["is_kev"] is True
 
     def test_is_kev_false_when_cve_not_in_kev(self):
-        f = {"title": "CVE-2026-1111 vuln", "risk_score": 60, "domains": ["os_kernel"]}
+        f = self._f(title="CVE-2026-1111 kernel vulnerability exploitation", risk_score=60)
         kev_item = {
             "title": "CVE-2026-9999 — Different CVE",
             "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9999",
@@ -460,7 +430,7 @@ class TestFindingsToCards:
 
     def test_is_kev_true_via_source_string_fallback(self):
         # source_id absent but source URL contains "known_exploited"
-        f = {"title": "CVE-2026-5555 bug", "risk_score": 50, "domains": ["os_kernel"]}
+        f = self._f(title="CVE-2026-5555 privilege escalation in kernel", risk_score=50)
         kev_item = {
             "title": "CVE-2026-5555 — Exploit",
             "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5555",
@@ -473,18 +443,17 @@ class TestFindingsToCards:
     # ── corroboration_count ───────────────────────────────────────────────────
 
     def test_corroboration_count_defaults_to_one(self):
-        f = {"title": "no CVE mentioned", "risk_score": 50, "domains": ["network"]}
-        cards = _findings_to_cards([f])
+        cards = _findings_to_cards([self._f(title="No CVE mentioned — general threat advisory")])
         assert cards[0]["corroboration_count"] == 1
 
     def test_corroboration_count_single_source(self):
-        f = {"title": "CVE-2026-7777 bug", "risk_score": 50, "domains": ["network"]}
+        f = self._f(title="CVE-2026-7777 kernel network stack overflow", risk_score=50, domains=["network"])
         item = {"title": "CVE-2026-7777 patch", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7777", "summary": ""}
         cards = _findings_to_cards([f], all_items=[item])
         assert cards[0]["corroboration_count"] == 1
 
     def test_corroboration_count_multiple_sources(self):
-        f = {"title": "CVE-2026-8888 RCE", "risk_score": 70, "domains": ["network"]}
+        f = self._f(title="CVE-2026-8888 remote code execution advisory", risk_score=70, domains=["network"])
         items = [
             {"title": "CVE-2026-8888 advisory", "url": "https://example.com/1", "summary": ""},
             {"title": "CVE-2026-8888 patch", "url": "https://example.com/2", "summary": ""},
@@ -495,7 +464,7 @@ class TestFindingsToCards:
 
     def test_corroboration_count_max_across_cves(self):
         # Finding has two CVEs; one appears in 3 sources, other in 1 — should pick max
-        f = {"title": "CVE-2026-1001 and CVE-2026-1002 combined", "risk_score": 60, "domains": ["network"]}
+        f = self._f(title="CVE-2026-1001 and CVE-2026-1002 combined kernel flaw", risk_score=60, domains=["network"])
         items = [
             {"title": "CVE-2026-1001 source A", "url": "https://example.com/a1", "summary": ""},
             {"title": "CVE-2026-1001 source B", "url": "https://example.com/a2", "summary": ""},
@@ -504,6 +473,140 @@ class TestFindingsToCards:
         ]
         cards = _findings_to_cards([f], all_items=items)
         assert cards[0]["corroboration_count"] == 3
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# _quality_score
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+class TestQualityScore:
+    """_quality_score awards 0–4 points; cards must score ≥ 2 to pass the gate."""
+
+    def _card(self, title="", summary="", why_now="", enrichment=None):
+        return {
+            "title": title,
+            "summary": summary,
+            "why_now": why_now,
+            "enrichment": enrichment or {},
+        }
+
+    def test_all_four_criteria_met_scores_4(self):
+        card = self._card(
+            title="Remote code execution in container runtime",
+            summary="A critical vulnerability allows unauthenticated RCE via crafted requests to the runtime API.",
+            why_now="Actively exploited in the wild since yesterday.",
+            enrichment={"cves": ["CVE-2026-1234"], "products": ["containerd"]},
+        )
+        assert _quality_score(card) == 4
+
+    def test_short_title_costs_one_point(self):
+        card = self._card(
+            title="Bug",  # ≤ 20 chars → no point
+            summary="A critical vulnerability allows unauthenticated RCE via crafted requests.",
+            why_now="Exploited in the wild.",
+            enrichment={"cves": ["CVE-2026-1234"]},
+        )
+        assert _quality_score(card) == 3
+
+    def test_no_cve_or_product_costs_one_point(self):
+        card = self._card(
+            title="Remote code execution in container runtime",
+            summary="A critical vulnerability allows unauthenticated RCE via crafted requests.",
+            why_now="Exploited in the wild.",
+            enrichment={},  # no cves, no products
+        )
+        assert _quality_score(card) == 3
+
+    def test_short_summary_costs_one_point(self):
+        card = self._card(
+            title="Remote code execution in container runtime",
+            summary="Short.",  # ≤ 60 chars
+            why_now="Exploited in the wild.",
+            enrichment={"cves": ["CVE-2026-1234"]},
+        )
+        assert _quality_score(card) == 3
+
+    def test_missing_why_now_costs_one_point(self):
+        card = self._card(
+            title="Remote code execution in container runtime",
+            summary="A critical vulnerability allows unauthenticated RCE via crafted requests.",
+            why_now="",
+            enrichment={"cves": ["CVE-2026-1234"]},
+        )
+        assert _quality_score(card) == 3
+
+    def test_zero_score_for_empty_card(self):
+        assert _quality_score({}) == 0
+
+    def test_score_1_for_title_only(self):
+        card = self._card(title="Remote code execution in runtime")
+        assert _quality_score(card) == 1
+
+    def test_products_alone_satisfies_cve_criterion(self):
+        card = self._card(
+            title="Remote code execution in container runtime",
+            summary="A critical vulnerability allows unauthenticated RCE via crafted requests.",
+            why_now="Exploited.",
+            enrichment={"products": ["nginx"]},  # no CVE but has product
+        )
+        assert _quality_score(card) == 4
+
+    @pytest.mark.parametrize(
+        "title,summary,why_now,enrichment,expected_pass",
+        [
+            # Score 4 — passes
+            ("Remote code execution in runtime", "A " * 35, "Exploited now.", {"cves": ["CVE-2026-1"]}, True),
+            # Score 2 — passes (title + summary)
+            ("Remote code execution in runtime", "A " * 35, "", {}, True),
+            # Score 1 — filtered (title only)
+            ("Remote code execution in runtime", "Short.", "", {}, False),
+            # Score 0 — filtered
+            ("Bad", "Short.", "", {}, False),
+        ],
+    )
+    def test_gate_threshold_parametrized(self, title, summary, why_now, enrichment, expected_pass):
+        card = self._card(title=title, summary=summary, why_now=why_now, enrichment=enrichment)
+        assert (_quality_score(card) >= 2) == expected_pass
+
+
+class TestFindingsToCardsQualityGate:
+    """_findings_to_cards must drop low-quality cards via _quality_score < 2."""
+
+    def _good_finding(self, title="Remote code execution in container runtime"):
+        return {
+            "title": title,
+            "risk_score": 70,
+            "priority": "P2",
+            "summary": "A critical vulnerability allows unauthenticated RCE via crafted API requests to the runtime.",
+            "why_now": "Actively exploited in the wild since this week.",
+            "domains": ["container"],
+            "references": [{"url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1234", "title": "NVD CVE-2026-1234"}],
+        }
+
+    def _noise_finding(self):
+        return {
+            "title": "Up",  # short title — 0 pts
+            "risk_score": 30,
+            "priority": "P3",
+            "summary": "Some activity.",  # short — 0 pts
+            "why_now": "",  # no why_now — 0 pts
+            "domains": [],
+            "references": [],
+        }
+
+    def test_good_finding_survives_gate(self):
+        cards = _findings_to_cards([self._good_finding()])
+        assert len(cards) == 1
+
+    def test_noise_finding_filtered_by_gate(self):
+        cards = _findings_to_cards([self._noise_finding()])
+        assert len(cards) == 0
+
+    def test_mixed_findings_only_good_survives(self):
+        cards = _findings_to_cards([self._good_finding(), self._noise_finding()])
+        assert len(cards) == 1
+        assert "Remote code execution" in cards[0]["title"]
 
 
 # ─────────────────────────────────────────────────────────────────────────────

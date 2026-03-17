@@ -1149,6 +1149,10 @@ def _update_shelf(cards: list) -> None:
     in this run: first_seen is set if new, run_count incremented, last_seen updated.
     A score boost of +5 per run_count beyond 1 is applied, capped at +20, so a
     finding seen across 5 consecutive runs has its risk_score raised by 20 points.
+
+    Resolved findings (patch_status == "patched") receive zero boost and are tagged
+    shelf_resolved=True. Their shelf entry is pruned 7 days after resolution instead
+    of the normal 30-day TTL.
     """
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     shelf: dict = load_json(FINDING_SHELF_FILE, {})
@@ -1172,6 +1176,17 @@ def _update_shelf(cards: list) -> None:
                 entry["run_count"] = entry.get("run_count", 1) + 1
             entry["last_seen"] = today
             shelf[fid] = entry
+        # Track resolved status — patched findings stop accumulating boost
+        entry = shelf[fid]
+        is_patched = card.get("patch_status") == "patched"
+        if is_patched and not entry.get("resolved"):
+            entry["resolved"] = True
+            entry["resolved_date"] = today
+        elif not is_patched and entry.get("resolved"):
+            # Patch was rolled back or finding reappeared without fix — reset
+            entry["resolved"] = False
+            entry.pop("resolved_date", None)
+        shelf[fid] = entry
         # Compute shelf_days and apply score boost in-place
         try:
             first_dt = datetime.strptime(shelf[fid]["first_seen"], "%Y-%m-%d").replace(
@@ -1181,14 +1196,21 @@ def _update_shelf(cards: list) -> None:
         except (ValueError, KeyError):
             shelf_days = 0
         run_count = shelf[fid].get("run_count", 1)
-        boost = min(20, max(0, (run_count - 1) * 5))
+        # Resolved findings carry no persistence boost — patch is the signal
+        boost = 0 if shelf[fid].get("resolved") else min(20, max(0, (run_count - 1) * 5))
         card["risk_score"] = min(100, int(card.get("risk_score", 0)) + boost)
         card["shelf_days"] = shelf_days
         card["run_count"] = run_count
         card["first_seen_ts"] = shelf[fid]["first_seen"]
-    # Prune entries not seen in the last 30 days
-    cutoff = (datetime.now(timezone.utc) - timedelta(days=30)).strftime("%Y-%m-%d")
-    shelf = {k: v for k, v in shelf.items() if v.get("last_seen", today) >= cutoff}
+        card["shelf_resolved"] = bool(shelf[fid].get("resolved"))
+    # Prune: resolved entries 7 days post-resolution, others after 30 days
+    thirty_day_cutoff = (datetime.now(timezone.utc) - timedelta(days=30)).strftime("%Y-%m-%d")
+    seven_day_cutoff = (datetime.now(timezone.utc) - timedelta(days=7)).strftime("%Y-%m-%d")
+    shelf = {
+        k: v for k, v in shelf.items()
+        if v.get("last_seen", today) >= thirty_day_cutoff
+        and not (v.get("resolved") and v.get("resolved_date", today) < seven_day_cutoff)
+    }
     save_json(FINDING_SHELF_FILE, shelf)
 
 

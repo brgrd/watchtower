@@ -293,3 +293,99 @@ class TestSeenRoundTrip:
         save_seen(path, {})
         result = load_seen(path)
         assert result == {}
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# _update_shelf — resolved suppression
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+class TestUpdateShelfResolved:
+    @pytest.fixture(autouse=True)
+    def patch_shelf_file(self, tmp_path, monkeypatch):
+        self.shelf_path = str(tmp_path / "finding_shelf.json")
+        monkeypatch.setattr(runner_mod, "FINDING_SHELF_FILE", self.shelf_path)
+
+    @freeze_time("2026-03-10")
+    def test_patched_card_sets_shelf_resolved_true(self):
+        card = _card(cid="c1", score=60)
+        card["patch_status"] = "patched"
+        _update_shelf([card])
+        assert card["shelf_resolved"] is True
+
+    @freeze_time("2026-03-10")
+    def test_unpatched_card_sets_shelf_resolved_false(self):
+        card = _card(cid="c2", score=60)
+        card["patch_status"] = "unknown"
+        _update_shelf([card])
+        assert card["shelf_resolved"] is False
+
+    @freeze_time("2026-03-10")
+    def test_patched_card_receives_zero_boost(self):
+        # First run — no boost yet, but confirm resolved is set
+        with freeze_time("2026-03-09"):
+            card_day1 = _card(cid="c3", score=60)
+            _update_shelf([card_day1])
+        # Second run with patch — run_count=2 would normally give +5, but resolved → 0
+        card_day2 = _card(cid="c3", score=60)
+        card_day2["patch_status"] = "patched"
+        _update_shelf([card_day2])
+        assert card_day2["risk_score"] == 60  # no boost applied
+
+    @freeze_time("2026-03-10")
+    def test_unresolved_card_still_receives_boost(self):
+        with freeze_time("2026-03-09"):
+            card_day1 = _card(cid="c4", score=60)
+            _update_shelf([card_day1])
+        card_day2 = _card(cid="c4", score=60)
+        # patch_status not patched — boost should apply
+        _update_shelf([card_day2])
+        assert card_day2["risk_score"] == 65  # +5 for run_count 2
+
+    @freeze_time("2026-03-10")
+    def test_resolved_date_recorded_on_shelf(self):
+        card = _card(cid="c5", score=50)
+        card["patch_status"] = "patched"
+        _update_shelf([card])
+        shelf = json.loads(open(self.shelf_path).read())
+        assert shelf["c5"]["resolved"] is True
+        assert shelf["c5"]["resolved_date"] == "2026-03-10"
+
+    def test_resolved_entry_pruned_after_7_days(self):
+        with freeze_time("2026-03-01"):
+            card = _card(cid="c6", score=50)
+            card["patch_status"] = "patched"
+            _update_shelf([card])
+        # Run 8 days later with a different card — prune should remove c6
+        with freeze_time("2026-03-09"):
+            other = _card(cid="c_other", score=40)
+            _update_shelf([other])
+        shelf = json.loads(open(self.shelf_path).read())
+        assert "c6" not in shelf
+
+    def test_resolved_entry_kept_within_7_days(self):
+        with freeze_time("2026-03-01"):
+            card = _card(cid="c7", score=50)
+            card["patch_status"] = "patched"
+            _update_shelf([card])
+        # Run 5 days later — resolved entry should still be present
+        with freeze_time("2026-03-06"):
+            other = _card(cid="c_other2", score=40)
+            _update_shelf([other])
+        shelf = json.loads(open(self.shelf_path).read())
+        assert "c7" in shelf
+
+    @freeze_time("2026-03-10")
+    def test_resolved_flag_cleared_if_patch_disappears(self):
+        # First mark as resolved
+        card_v1 = _card(cid="c8", score=50)
+        card_v1["patch_status"] = "patched"
+        _update_shelf([card_v1])
+        # Next run: same finding reappears without patch (e.g. reverted or different CVE)
+        with freeze_time("2026-03-10"):
+            card_v2 = _card(cid="c8", score=50)
+            card_v2["patch_status"] = "unknown"
+            _update_shelf([card_v2])
+        assert card_v2["shelf_resolved"] is False
+        shelf = json.loads(open(self.shelf_path).read())
+        assert shelf["c8"].get("resolved") is False

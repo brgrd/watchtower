@@ -623,6 +623,29 @@ _ATTRIBUTION_RE = re.compile(
 )
 
 
+def _quality_score(card: dict) -> int:
+    """Score Groq-generated card signal quality 0–4 (1 point each).
+
+    1. Title longer than 20 characters
+    2. CVE ID or product name present in enrichment
+    3. Summary longer than 60 characters
+    4. why_now field is non-empty
+
+    Cards scoring below 2 are excluded by _findings_to_cards as low-signal noise.
+    """
+    score = 0
+    if len(card.get("title", "")) > 20:
+        score += 1
+    enrichment = card.get("enrichment", {}) or {}
+    if enrichment.get("cves") or enrichment.get("products"):
+        score += 1
+    if len(card.get("summary", "")) > 60:
+        score += 1
+    if card.get("why_now", "").strip():
+        score += 1
+    return score
+
+
 def _findings_to_cards(findings: list, all_items: list = None) -> list:
     url_to_country: dict = {}
     domain_to_country: dict = {}
@@ -777,6 +800,13 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
         )
     result = sorted(cards, key=lambda c: c["risk_score"], reverse=True)
     _enrich_cards_from_sources(result, all_items)
+    _before = len(result)
+    result = [c for c in result if _quality_score(c) >= 2]
+    if len(result) < _before:
+        print(
+            f"[QUALITY DROP] {_before - len(result)} low-signal card(s) filtered "
+            f"(quality gate: title length, CVE/product, summary, why_now)"
+        )
     return result
 
 

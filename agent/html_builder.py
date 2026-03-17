@@ -998,11 +998,29 @@ def _write_index_html(
         _trend_delta = b - a
         trend_txt = f"{_trend_delta:+d}"
 
+    p1_delta_html = ""
+    exp_delta_html = ""
+    if delta:
+        _p1_new = sum(1 for c in delta.get("new", []) if _derive_priority(c) == "P1")
+        _p1_res = sum(1 for c in delta.get("resolved", []) if _derive_priority(c) == "P1")
+        _p1_net = _p1_new - _p1_res
+        if _p1_net > 0:
+            p1_delta_html = f'<span class="kpi-delta kpi-delta--up">+{_p1_net} ↑</span>'
+        elif _p1_net < 0:
+            p1_delta_html = f'<span class="kpi-delta kpi-delta--down">{_p1_net} ↓</span>'
+        _exp_new = sum(1 for c in delta.get("new", []) if _is_exploitish(c))
+        _exp_res = sum(1 for c in delta.get("resolved", []) if _is_exploitish(c))
+        _exp_net = _exp_new - _exp_res
+        if _exp_net > 0:
+            exp_delta_html = f'<span class="kpi-delta kpi-delta--up">+{_exp_net} ↑</span>'
+        elif _exp_net < 0:
+            exp_delta_html = f'<span class="kpi-delta kpi-delta--down">{_exp_net} ↓</span>'
+
     kpi_html = f"""
         <section class="kpi-grid">
             <div class="kpi"><span class="k">Findings</span><span class="v">{total_findings}</span></div>
-            <div class="kpi"><span class="k">P1</span><span class="v">{p1_count}</span></div>
-            <div class="kpi"><span class="k">Exploited</span><span class="v">{exploited_count}</span></div>
+            <div class="kpi"><span class="k">P1</span><span class="v">{p1_count}</span>{p1_delta_html}</div>
+            <div class="kpi"><span class="k">Exploited</span><span class="v">{exploited_count}</span>{exp_delta_html}</div>
             <div class="kpi"><span class="k">High-Profile</span><span class="v">{hp_count}</span></div>
             <div class="kpi"><span class="k">Control Plane</span><span class="v">{control_plane_count}</span></div>
             <div class="kpi"><span class="k">Top Domain</span><span class="v v-sm">{html.escape(top_domain_label)}</span></div>
@@ -1200,12 +1218,19 @@ def _write_index_html(
         )
         _shelf_days = int(c.get("shelf_days", 0))
         _run_count = int(c.get("run_count", 1))
-        shelf_badge_html = (
-            f'<span class="shelf-badge" title="First seen {_shelf_days}d ago &middot; seen {_run_count} runs">'
-            f"{_shelf_days}d</span>"
-            if _shelf_days >= 1
-            else ""
-        )
+        _shelf_resolved = c.get("shelf_resolved", False)
+        if _shelf_days >= 1 and _shelf_resolved:
+            shelf_badge_html = (
+                f'<span class="shelf-badge shelf-badge--resolved" title="Patch available — first seen {_shelf_days}d ago &middot; seen {_run_count} runs">'
+                f"{_shelf_days}d (resolved)</span>"
+            )
+        elif _shelf_days >= 1:
+            shelf_badge_html = (
+                f'<span class="shelf-badge" title="First seen {_shelf_days}d ago &middot; seen {_run_count} runs">'
+                f"{_shelf_days}d</span>"
+            )
+        else:
+            shelf_badge_html = ""
         attr_badge_html = (
             '<span class="attr-badge" title="This finding contains nation-state attribution '
             "sourced from a news article. Attribution is unverified and should be "
@@ -1469,6 +1494,9 @@ p{{color:#c9d1d9}}
 .kpi .k{{font-size:.68rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700}}
 .kpi .v{{font-size:1.2rem;color:#e6edf3;font-weight:800}}
 .kpi .v-sm{{font-size:.95rem}}
+.kpi-delta{{font-size:.62rem;font-weight:700;letter-spacing:.02em;margin-top:.1rem}}
+.kpi-delta--up{{color:#f85149}}
+.kpi-delta--down{{color:#3fb950}}
 .hm-cell{{border-radius:6px;padding:.7rem .55rem;text-align:center;border:1px solid rgba(255,255,255,.08);cursor:pointer;font-family:inherit}}
 .hm-cell.active{{outline:2px solid #666;outline-offset:1px}}
 .hm-label{{display:block;font-size:.72rem;font-weight:700;margin:.15rem 0}} 
@@ -1536,6 +1564,7 @@ p{{color:#c9d1d9}}
 .tactic-btn--all.tactic-btn--active{{background:rgba(50,50,50,.25);border-color:#555;color:#c9d1d9}}
 .tactic-chip{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(88,130,240,.12);color:#6ea8fe;border:1px solid rgba(88,130,240,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0}}
 .shelf-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(210,90,20,.1);color:#e8864a;border:1px solid rgba(210,90,20,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}}
+.shelf-badge--resolved{{background:rgba(100,100,100,.1);color:#8b949e;border-color:rgba(100,100,100,.25)}}
 .kev-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(180,20,20,.18);color:#ff6b6b;border:1px solid rgba(180,20,20,.4);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.04em;vertical-align:middle;flex-shrink:0;cursor:default}}
 .corr-badge{{display:inline-block;font-size:.6rem;font-weight:600;background:rgba(40,80,160,.1);color:#6ea8fe;border:1px solid rgba(40,80,160,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}}
 .epss-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(230,100,20,.15);color:#f4a054;border:1px solid rgba(230,100,20,.35);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.03em;vertical-align:middle;flex-shrink:0;cursor:default}}

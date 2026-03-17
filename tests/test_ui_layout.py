@@ -315,3 +315,91 @@ class TestCatchupView:
         assert "cu-score" in html
         assert "cu-title" in html
         assert "cu-p1" in html
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# KPI P1 and Exploited delta sub-labels
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+def _p1_card():
+    return {
+        "id": "delta-p1",
+        "title": "CVE-2026-9999 critical kernel exploit",
+        "summary": "Critical kernel privilege escalation, actively exploited in the wild.",
+        "risk_score": 90,
+        "priority": "P1",
+        "domains": ["os_kernel"],
+        "sources": {"primary": [{"title": "NVD", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9999"}], "secondary": []},
+        "patch_status": "unknown",
+    }
+
+
+def _render_with_delta(tmp_path, delta: dict) -> str:
+    cards = _sample_cards()
+    heatmap = build_domain_heatmap(cards)
+    out = tmp_path / "index_delta.html"
+    _write_index_html(
+        path=str(out),
+        cards=cards,
+        heatmap=heatmap,
+        ts="2026-03-09_07-40",
+        executive="",
+        history=[],
+        since_hours=24,
+        groq_status="ok",
+        delta=delta,
+        history_days=[],
+        weekly_html="",
+    )
+    return out.read_text(encoding="utf-8")
+
+
+class TestKpiDelta:
+    def test_new_p1_shows_up_arrow(self, tmp_path):
+        delta = {"new": [_p1_card()], "elevated": [], "resolved": []}
+        html = _render_with_delta(tmp_path, delta)
+        assert "kpi-delta--up" in html
+        assert "+1 ↑" in html
+
+    def test_resolved_p1_shows_down_arrow(self, tmp_path):
+        delta = {"new": [], "elevated": [], "resolved": [_p1_card()]}
+        html = _render_with_delta(tmp_path, delta)
+        assert "kpi-delta--down" in html
+        assert "-1 ↓" in html
+
+    def test_no_p1_change_shows_no_delta(self, tmp_path):
+        delta = {"new": [], "elevated": [], "resolved": []}
+        html = _render_with_delta(tmp_path, delta)
+        # No delta span elements should be emitted (CSS class may still be in stylesheet)
+        assert 'class="kpi-delta' not in html
+
+    def test_exploited_new_shows_up_arrow(self, tmp_path):
+        # _p1_card has "actively exploited in the wild" in summary → _is_exploitish = True
+        delta = {"new": [_p1_card()], "elevated": [], "resolved": []}
+        html = _render_with_delta(tmp_path, delta)
+        assert "kpi-delta--up" in html
+
+    def test_null_delta_renders_no_delta_labels(self, tmp_path):
+        cards = _sample_cards()
+        heatmap = build_domain_heatmap(cards)
+        out = tmp_path / "index_nodelta.html"
+        _write_index_html(
+            path=str(out),
+            cards=cards,
+            heatmap=heatmap,
+            ts="2026-03-09_07-40",
+            executive="",
+            history=[],
+            since_hours=24,
+            groq_status="ok",
+            delta=None,
+            history_days=[],
+            weekly_html="",
+        )
+        html = out.read_text(encoding="utf-8")
+        assert 'class="kpi-delta' not in html
+
+    def test_kpi_delta_css_present(self, tmp_path):
+        html = _render_html(tmp_path)
+        assert ".kpi-delta{" in html
