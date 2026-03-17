@@ -1230,6 +1230,16 @@ def _write_index_html(
             if isinstance(_epss, float) and _epss >= 0.4
             else ""
         )
+        _has_authoritative = bool(c.get("is_kev")) or bool(cve_badge_html)
+        _prim_sources = c.get("sources", {}).get("primary", [])
+        if not _has_authoritative and _prim_sources:
+            _src_domain = tldextract.extract(_prim_sources[0].get("url", "")).registered_domain
+            src_chip_html = (
+                f'<span class="src-chip" title="News source — not CVE/KEV backed">via {html.escape(_src_domain)}</span>'
+                if _src_domain else ""
+            )
+        else:
+            src_chip_html = ""
         rows += f"""
                 <details class="cluster" id="card-{html.escape(c.get('id', ''))}" data-domains="{html.escape(domains_attr)}" data-tactic="{html.escape(_tactic)}">
                     <summary>
@@ -1241,6 +1251,7 @@ def _write_index_html(
                         {hp_badge_html}
                         {cve_badge_html}
                         {corr_badge_html}
+                        {src_chip_html}
                         {tactic_chip_html}
                         {shelf_badge_html}
                         {attr_badge_html}
@@ -1419,6 +1430,13 @@ def _write_index_html(
     alerts_html = _build_alerts_html(cards, delta)
     priority_actions_html = _build_priority_actions_html(cards)
 
+    try:
+        _ts_dt = datetime.strptime(ts, "%Y-%m-%d_%H-%M").replace(tzinfo=timezone.utc)
+        _cutoff_dt = _ts_dt - timedelta(hours=since_hours)
+        _window_chip = f"Since {_cutoff_dt.strftime('%b %d, %H:%M')} UTC"
+    except Exception:
+        _window_chip = f"Last {since_hours}h"
+
     page_html = f"""<!doctype html>
 <html lang=\"en\">
 <head>
@@ -1522,6 +1540,7 @@ p{{color:#c9d1d9}}
 .corr-badge{{display:inline-block;font-size:.6rem;font-weight:600;background:rgba(40,80,160,.1);color:#6ea8fe;border:1px solid rgba(40,80,160,.25);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}}
 .epss-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(230,100,20,.15);color:#f4a054;border:1px solid rgba(230,100,20,.35);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.03em;vertical-align:middle;flex-shrink:0;cursor:default}}
 .attr-badge{{display:inline-block;font-size:.6rem;font-weight:700;background:rgba(180,140,10,.12);color:#d4a017;border:1px solid rgba(180,140,10,.3);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}}
+.src-chip{{display:inline-block;font-size:.6rem;font-weight:600;background:rgba(80,80,80,.15);color:#8b949e;border:1px solid rgba(80,80,80,.3);border-radius:3px;padding:1px 5px;margin-left:.25rem;letter-spacing:.02em;vertical-align:middle;flex-shrink:0;cursor:default}}
 .enrich-block{{margin:.6rem 0 .2rem;border:1px solid #222;border-radius:5px;overflow:hidden}}
 .enrich-summary{{font-size:.72rem;color:#5a7090;cursor:pointer;padding:.35rem .6rem;list-style:none;display:flex;align-items:center;gap:.4rem;user-select:none}}
 .enrich-summary::-webkit-details-marker{{display:none}}
@@ -1716,7 +1735,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
         <header class="header-bar">
           <div class="header-content">
             <h1>Watchtower — Infrastructure Security Briefing</h1>
-            <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 00:05, 06:05, 12:05, 18:05 ET">Next run —</span></p>
+            <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled runs: 06:05, 18:05 ET">Next run —</span></p>
           </div>
         </header>
         <div class="page-wrap">
@@ -1734,7 +1753,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
         <div class="threat-title">Surface Threat Map</div>
         <div class="threat-sub">Domain constellation — node intensity shows activity heat, edges show blast-radius pathways. Click any node to filter findings.</div>
       </div>
-      <span class="chip">Window {since_hours}h</span>
+      <span class="chip" title="Data polled from the last {since_hours} hours">{_window_chip}</span>
     </div>
     {threat_svg}
   </div>
@@ -1749,7 +1768,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
 </div>
 {rows}
 {resolved_drawer_html}
-<footer>Watchtower · scheduled 00:05 / 06:05 / 12:05 / 18:05 ET · placeholder mode: {str(placeholder_mode()).lower()}</footer>
+<footer>Watchtower · scheduled 06:05 / 18:05 ET · placeholder mode: {str(placeholder_mode()).lower()}</footer>
                 </main>
                 <aside id="domain-rail" class="panel right-rail" role="complementary" aria-label="Domain Activity">
                     <div class="rail-handle" id="rail-handle" role="separator" aria-orientation="vertical" aria-label="Resize Domain Activity panel"></div>
@@ -1962,7 +1981,7 @@ function selectDomain(domain){{
     trackUi('domain_selected',{{domain:CURRENT_DOMAIN,count:subset.length,maxRisk:maxRisk}});
 }}
 (function(){{
-  var SLOTS=[0,6,12,18],MIN=5;
+  var SLOTS=[6,18],MIN=5;
   var el=document.getElementById('next-run-cd');
   if(!el)return;
   var fmt=new Intl.DateTimeFormat('en-US',{{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}});
