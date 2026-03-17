@@ -10,11 +10,6 @@ Keep each item open until code, tests, and docs are complete.
 
 ### High Priority
 
-- [ ] **Priority Actions aggregation panel**
-  - Every card has `recommended_actions_24h` (up to 4 items). Across 15 findings many are structurally identical. Analysts who only scan the top miss them.
-  - Deduplicate and count `recommended_actions_24h` across all P1 and P2 cards. Show the top 5–7 as a numbered list in a "Priority Actions" panel between the KPI grid and threat map. Group by first 40 chars; show occurrence count as a chip.
-  - Scope: `_build_priority_actions_html(cards)` in [agent/html_builder.py](agent/html_builder.py); pure Python Counter.
-
 - [ ] **Groq model fallback list**
   - 5-attempt retry handles rate limits but has no fallback model. If `llama-3.3-70b-versatile` is deprecated or over quota the run silently produces a blank briefing.
   - Add `model_fallback` list to [agent/config.yaml](agent/config.yaml). After exhausting retries on primary, try each fallback in order. Set `groq_status = "fallback:<model>"` in run metrics.
@@ -137,6 +132,8 @@ Keep each item open until code, tests, and docs are complete.
 | Corroboration count badge | `cve_to_source_count` map in `_findings_to_cards()`; `N sources` blue chip for ≥ 2; 4 targeted tests |
 | Constellation node count labels | `cnts` dict in `_build_threat_map_svg()`; `<text>` count label inside each node disc; "9+" for counts > 9 |
 | Alerts tab | Three panels: Persistent (run_count ≥ 3), Elevated (delta ≥ 10), P1/Attribution; click-to-scroll to finding card; 10 targeted tests |
+| Adaptive data window + 2x/day cadence | `last_run_ts.json` tracks last poll; `since_hours` expands to cover any gap; pre-Groq cap 120 items newest-first; gate changed to 06:00/18:00 ET; `since_hours: 12`; `window_h` chip in Run Metrics bar |
+| Priority Actions aggregation panel | `_build_priority_actions_html(cards)` — deduplicates `recommended_actions_24h` across P1/P2 cards via Counter; top 7 shown with `N×` chip; rendered between hp-panel and threat map; 6 targeted tests |
 
 ---
 
@@ -160,3 +157,5 @@ Keep each item open until code, tests, and docs are complete.
 - 2026-03-13: **EPSS badge + Corroboration badge + Constellation node counts** — `_enrich_epss()` in `ingest.py` with batched FIRST.org API and 24h cache; `cve_to_source_count` map in `_findings_to_cards()` for corroboration; `cnts` dict + `<text>` label in constellation SVG; all three wired and rendered; 9 new targeted tests (303 total).
 - 2026-03-17: Cleaned up tracker: removed completed items from Pending; cut push alerts, watchlist/follow, GHSA enrichment, feed geo distribution, and Groq token budget display; replaced client-side watchlist + follow mode with unified Stack keyword filter (no login required, localStorage + URL param).
 - 2026-03-17: **Alerts tab** — `_build_alerts_html(cards, delta)` in `html_builder.py`; three panels (Persistent, Elevated, P1/Attribution); click-to-scroll JS with highlight; 10 targeted tests (307 total). Dead code removed: `rendering.py`, `planning.py`, `test_planning.py`, `_build_calendar_html`, `_build_corroboration_map`, dead `rendering_mod` import.
+- 2026-03-17: **Adaptive data window** — `last_run_ts.json` checkpoint; `since_hours = max(config, gap+2)` auto-expands for missed runs and weekend gaps; pre-Groq 120-item cap (newest-first); schedule changed to 2x/day (06:00/18:00 ET); `since_hours: 12`; `window_h` chip in Run Metrics bar. 307 tests pass.
+- 2026-03-17: **Priority Actions panel** — `_build_priority_actions_html(cards)` deduplicates `recommended_actions_24h` across P1/P2 cards; Counter grouping on first 40 chars; top 7 with `N×` occurrence chip; rendered between hp-panel and threat map. 313 tests pass.

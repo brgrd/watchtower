@@ -3,7 +3,7 @@
 import pytest
 
 from agent.runner import _write_index_html, build_domain_heatmap
-from agent.html_builder import _build_alerts_html
+from agent.html_builder import _build_alerts_html, _build_priority_actions_html
 
 pytestmark = pytest.mark.unit
 
@@ -217,3 +217,67 @@ class TestAlertsTab:
         assert "alert-row" in html
         assert "data-card-id" in html
         assert "alert-highlight" in html
+
+
+class TestPriorityActionsPanel:
+    def _p1_card(self, actions):
+        return {
+            "id": "pa-card",
+            "title": "Critical finding",
+            "risk_score": 88,
+            "priority": "P1",
+            "domains": ["os_kernel"],
+            "recommended_actions_24h": actions,
+            "sources": {"primary": [], "secondary": []},
+        }
+
+    def test_returns_empty_for_no_p1_p2_cards(self):
+        cards = [
+            {
+                "id": "p3",
+                "title": "Low signal",
+                "risk_score": 20,
+                "priority": "P3",
+                "domains": [],
+                "recommended_actions_24h": ["Do something"],
+                "sources": {"primary": [], "secondary": []},
+            }
+        ]
+        assert _build_priority_actions_html(cards) == ""
+
+    def test_renders_actions_from_p1_card(self):
+        cards = [self._p1_card(["Patch OpenSSL immediately", "Block outbound 443"])]
+        out = _build_priority_actions_html(cards)
+        assert "Patch OpenSSL immediately" in out
+        assert "Block outbound 443" in out
+        assert "pa-panel" in out
+
+    def test_deduplicates_identical_actions_across_cards(self):
+        action = "Isolate affected hosts from network"
+        cards = [
+            self._p1_card([action]),
+            {**self._p1_card([action]), "id": "pa-card-2"},
+            {**self._p1_card([action]), "id": "pa-card-3"},
+        ]
+        out = _build_priority_actions_html(cards)
+        assert "3×" in out
+        assert out.count("Isolate affected hosts") == 1
+
+    def test_count_chip_only_for_multiple_occurrences(self):
+        cards = [
+            self._p1_card(["Unique action only on one card"]),
+        ]
+        out = _build_priority_actions_html(cards)
+        assert "×" not in out
+
+    def test_capped_at_seven_items(self):
+        actions = [f"Action number {i}" for i in range(10)]
+        cards = [self._p1_card(actions[:4]), {**self._p1_card(actions[4:8]), "id": "pa-2"}]
+        out = _build_priority_actions_html(cards)
+        assert out.count("pa-item") <= 7
+
+    def test_panel_present_in_full_render(self, tmp_path):
+        html = _render_html(tmp_path)
+        # sample cards include a P1 card with recommended_actions_24h
+        assert "pa-panel" in html
+        assert "Priority Actions" in html

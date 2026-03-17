@@ -828,6 +828,50 @@ def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
     return cve_html + killchain_html + product_html + ioc_html
 
 
+def _build_priority_actions_html(cards: list) -> str:
+    """Deduplicate recommended_actions_24h across P1/P2 cards; render top actions panel."""
+    from collections import Counter
+
+    action_counter: Counter = Counter()
+    action_display: dict = {}  # normalised key -> best display text
+
+    for c in cards:
+        if _derive_priority(c) not in ("P1", "P2"):
+            continue
+        for action in c.get("recommended_actions_24h", [])[:4]:
+            text = str(action).strip()
+            if not text:
+                continue
+            key = text[:40].lower()
+            action_counter[key] += 1
+            if key not in action_display:
+                action_display[key] = text
+
+    if not action_counter:
+        return ""
+
+    items_html = ""
+    for i, (key, count) in enumerate(action_counter.most_common(7), 1):
+        text = html.escape(action_display[key])
+        count_chip = (
+            f'<span class="pa-count">{count}\u00d7</span>' if count >= 2 else ""
+        )
+        items_html += (
+            f'<li class="pa-item">'
+            f'<span class="pa-num">{i}</span>'
+            f'<span class="pa-text">{text}</span>'
+            f"{count_chip}"
+            f"</li>"
+        )
+
+    return (
+        f'<section class="pa-panel">'
+        f'<div class="pa-title">Priority Actions \u2014 Next 24h</div>'
+        f'<ol class="pa-list">{items_html}</ol>'
+        f"</section>"
+    )
+
+
 def _build_alerts_html(cards: list, delta: dict | None) -> str:
     """Build the three-panel Alerts rail section from render-time card data."""
     delta = delta or {}
@@ -1373,6 +1417,7 @@ def _write_index_html(
 
     forensics_html = _build_forensics_html(cards, ioc_ledger or {})
     alerts_html = _build_alerts_html(cards, delta)
+    priority_actions_html = _build_priority_actions_html(cards)
 
     page_html = f"""<!doctype html>
 <html lang=\"en\">
@@ -1495,6 +1540,13 @@ p{{color:#c9d1d9}}
 .hp-panel{{background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:6px;padding:.65rem 1rem .7rem;margin:.2rem 0 1rem}}
 .hp-panel-title{{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#a78bfa;margin-bottom:.5rem}}
 .hp-chip-list{{display:flex;flex-wrap:wrap;gap:.35rem}}
+.pa-panel{{background:#0f1117;border:1px solid #252525;border-radius:6px;padding:.6rem .85rem .65rem;margin:0 0 1rem}}
+.pa-title{{font-size:.68rem;font-weight:700;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;margin:0 0 .45rem}}
+.pa-list{{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.28rem}}
+.pa-item{{display:flex;align-items:baseline;gap:.4rem;font-size:.82rem;line-height:1.4}}
+.pa-num{{flex-shrink:0;font-size:.63rem;font-weight:700;color:#444;width:1.1em;text-align:right}}
+.pa-text{{flex:1;color:#c9d1d9}}
+.pa-count{{flex-shrink:0;font-size:.61rem;font-weight:700;background:rgba(88,130,240,.1);color:#6ea8fe;border:1px solid rgba(88,130,240,.2);border-radius:3px;padding:1px 5px}}
 .hp-chip{{display:inline-flex;align-items:center;gap:.3rem;background:rgba(139,92,246,.1);color:#c4b5fd;border:1px solid rgba(139,92,246,.25);border-radius:999px;font-size:.71rem;padding:2px 10px;font-weight:600}}
 .hp-chip-count{{background:rgba(139,92,246,.3);color:#ede9fe;border-radius:999px;font-size:.65rem;font-weight:700;padding:0 5px;min-width:1.2em;text-align:center}}
 .delta-strip{{display:flex;align-items:center;gap:.5rem;margin:.2rem 0 1rem;flex-wrap:wrap;min-height:1.6rem}}
@@ -1659,6 +1711,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
 {kpi_html}
 {delta_strip_html}
 {hp_panel_html}
+{priority_actions_html}
 <section class="threat-section">
   <div class="panel threat-main">
     <div class="threat-toolbar">
