@@ -298,5 +298,23 @@
     "last_seen": "2026-03-17",
     "run_count": 1,
     "title": "RealtyScript SQLi"
+  },
+  "f90ffa530b0f": {
+    "first_seen": "2026-03-17",
+    "last_seen": "2026-03-17",
+    "run_count": 1,
+    "title": "WooCommerce Vulnerability"
+  },
+  "955defa7199d": {
+    "first_seen": "2026-03-17",
+    "last_seen": "2026-03-17",
+    "run_count": 1,
+    "title": "libsoup Vulnerability"
+  },
+  "39ad4d3c733a": {
+    "first_seen": "2026-03-17",
+    "last_seen": "2026-03-17",
+    "run_count": 1,
+    "title": "Apache Airflow Vulnerability"
   }
 }
