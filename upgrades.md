@@ -10,23 +10,6 @@ Keep each item open until code, tests, and docs are complete.
 
 ### High Priority
 
-- [x] **Extend CARDS JS object**
-  - `CARDS` holds only `{id, title, risk_score, priority, domains, summary, sources}`. Fields already on every card but missing: `shelf_days`, `run_count`, `tactic_name`, `recommended_actions_24h`, `first_seen_ts`.
-  - Blocks the catch-up view, Alerts tab content, and action aggregation. Trivial to fix.
-  - Scope: 6-line change to `card_data` builder in [agent/html_builder.py](agent/html_builder.py).
-
-- [ ] **Alerts tab — real content from render-time data**
-  - Currently a placeholder ("Reserved module slot"). All prerequisite data exists at render time; no new backend needed. Replace with three panels:
-    1. **Persistent** — `run_count ≥ 3`, sorted descending, labeled "Seen N runs".
-    2. **Elevated** — `risk_score` increased ≥10 from last run (from `delta["elevated"]`), labeled with delta.
-    3. **P1 / Attribution** — all P1 cards + `attribution_flag: true` cards.
-  - Scope: `_build_alerts_html(cards, delta)` in [agent/html_builder.py](agent/html_builder.py); wired into `_write_index_html`.
-
-- [x] **CISA KEV explicit card badge**
-  - CISA KEV data is polled and fed to Groq but never surfaces as a card-level badge. Confirmed KEV-listed CVEs are categorically more urgent than news-sourced findings — CISA confirmation means active in-the-wild exploitation.
-  - Derive `is_kev: bool` at card build time: true when `source_category == "vulns"` and `source_id == "cisa_kev"`. Render red `CISA KEV` chip before the priority pill.
-  - Scope: `_findings_to_cards()` in [agent/runner.py](agent/runner.py); `.kev-badge` CSS + render in [agent/html_builder.py](agent/html_builder.py).
-
 - [ ] **Priority Actions aggregation panel**
   - Every card has `recommended_actions_24h` (up to 4 items). Across 15 findings many are structurally identical. Analysts who only scan the top miss them.
   - Deduplicate and count `recommended_actions_24h` across all P1 and P2 cards. Show the top 5–7 as a numbered list in a "Priority Actions" panel between the KPI grid and threat map. Group by first 40 chars; show occurrence count as a chip.
@@ -51,14 +34,9 @@ Keep each item open until code, tests, and docs are complete.
 
 ### Medium Priority
 
-- [x] **EPSS exploitation probability badge**
-  - Patch status is "unknown" for the vast majority of findings. EPSS from `api.first.org/data/v1/epss?cve=CVE-XXXX` (free, no key) gives real probability-of-exploitation per CVE, refreshed daily. Stronger real-world predictor than CVSS alone.
-  - High-EPSS findings (> 0.4) get a distinct badge even at moderate CVSS. Cache in `state/epss_cache.json` (TTL 24h).
-  - Scope: `_enrich_epss(cards)` in [agent/ingest.py](agent/ingest.py); `.epss-badge` CSS variant; called after enrichment pass in `_run()`.
-
 - [ ] **"Since your last visit" catch-up view**
   - After > 4 hours away, render a collapsible `<details>` strip at top: "Catch-up since [timestamp] — N new findings". Closes the passive-monitor check-in friction problem at zero backend cost.
-  - Requires `first_seen_ts` in CARDS (see item above).
+  - Requires `first_seen_ts` in CARDS (already present).
   - Scope: JS-only in [agent/html_builder.py](agent/html_builder.py); sets `wt.last_visit` on DOMContentLoaded.
 
 - [ ] **Shelf life CVE key**
@@ -71,11 +49,6 @@ Keep each item open until code, tests, and docs are complete.
   - Add `resolved` flag when `patch_status == "patched"`: zero the boost, change badge to grey `Nd (resolved)`. Prune shelf entry 7 days post-resolution.
   - Scope: `_update_shelf()` in [agent/runner.py](agent/runner.py); `.shelf-badge--resolved` CSS variant in [agent/html_builder.py](agent/html_builder.py).
 
-- [x] **Corroboration count badge**
-  - `corroboration_count` is computed per cluster and passed to Groq but never shown. A finding cited by 5 independent sources is more credible than a single-source finding at the same score.
-  - Show `N sources` chip on cards where `corroboration_count ≥ 2`. Single-source: no badge.
-  - Scope: pass `corroboration_count` through `_findings_to_cards()` → card dict → [agent/html_builder.py](agent/html_builder.py) render.
-
 - [ ] **KPI P1 delta and exploited delta**
   - "Trend 24h" shows overall ±N count change — too coarse. A flat overall count with 3 new P1s is a different situation.
   - Add `+N ↑` / `−N ↓` sub-labels under the P1 and Exploited KPI tiles, computed from `delta["new"]` / `delta["elevated"]` filtered by priority/exploited flag.
@@ -85,11 +58,6 @@ Keep each item open until code, tests, and docs are complete.
   - `feed_health.json` tracks HTTP success/failure but a feed returning HTTP 200 with 0 new items is indistinguishable from healthy. Stale feeds silently narrow coverage.
   - Track `last_item_ts` per feed. Flag feeds where `last_item_ts` is > 72h ago with a "Stale" badge in the Feeds tab. Separate from "failed" coloring.
   - Scope: `_update_feed_health()` in [agent/runner.py](agent/runner.py); stale badge CSS in [agent/html_builder.py](agent/html_builder.py).
-
-- [x] **Constellation node count labels**
-  - Nodes are heat-colored but show no count. Users must click to discover how many findings map to each domain.
-  - Add a small count text inside each node disc (0.65rem, bottom-aligned). Zero-count nodes: no label. Count > 9: "9+".
-  - Scope: `_build_threat_map_svg()` in [agent/html_builder.py](agent/html_builder.py); `<text>` element per node using `heatmap` counts.
 
 - [ ] **Briefing staleness warning**
   - If the page is opened and the generated timestamp is > 28h old (e.g., Actions failure), users may act on stale data.
@@ -117,30 +85,10 @@ Keep each item open until code, tests, and docs are complete.
   - On node click, highlight directed paths to all reachable downstream domains via `_TM_EDGES`. Makes blast-radius reasoning visual rather than implicit.
   - Scope: JS-only change to `selectDomain()` and SVG edge rendering in [agent/html_builder.py](agent/html_builder.py).
 
-- [ ] **Client-side keyword watchlist in Alerts tab**
-  - Keyword input (CVE IDs, vendor names, product keywords) in the Alerts tab. JS scans `CARDS` and adds `.watchlist-match` ring on matches; scrolls into view. Terms stored in `localStorage.wt.watchlist`.
+- [ ] **Stack keyword filter**
+  - Any visitor can type stack terms (product names, CVE IDs, tech keywords) into a filter input; matching cards are highlighted and pulled to the top of Top Findings. Terms persist in `localStorage` between visits — no account or login needed.
+  - URL param `?filter=kubernetes,nginx` pre-applies on load for shareable/bookmarkable filtered views.
   - Scope: JS + CSS in [agent/html_builder.py](agent/html_builder.py); zero backend.
-
-- [ ] **Push digest / webhook alerts**
-  - Notify when: P1 count exceeds threshold, a watchlist keyword matches a new finding, or a finding persists N consecutive runs.
-  - Scope: new `agent/notify.py` (email via `smtplib` + Slack/Teams webhook); `notifications:` block in [agent/config.yaml](agent/config.yaml); wired into `_run()` post-card-build.
-
-- [ ] **Watchlist / follow mode (persistent)**
-  - CVE IDs, vendor names, product keywords, MITRE techniques in `config.yaml` or `watchlist.yaml`. Matched findings pinned to top of Top Findings; dismissed via `state/dismissed.json`.
-  - Scope: filter pass in `_run()` after card build; `wt.dismissed` `localStorage` key for UI dismiss.
-
-- [ ] **GitHub Advisory Database enrichment**
-  - Free public GraphQL, 60 req/hr unauthenticated. For CVE-linked package findings, provides affected ecosystem + package name + vulnerable version ranges.
-  - Adds `affected_packages: [{ecosystem, package, vulnerable_ranges}]` to enrichment. Renders in "Extracted context" block. Useful for supply-chain domain findings.
-  - Scope: `_enrich_ghsa(cards)` in [agent/ingest.py](agent/ingest.py); `state/ghsa_cache.json` (TTL 24h).
-
-- [ ] **Feed geographic distribution**
-  - Feeds carry `country` metadata but it's never aggregated. A `US 45% | EU 30% | APAC 15%` bar in the Feeds/Metrics panel identifies coverage blind spots.
-  - Scope: aggregate by `source_country` in `run_metrics` dict in [agent/runner.py](agent/runner.py); small bar HTML in `run_metrics_html`.
-
-- [ ] **Groq token budget display**
-  - Estimate prompt token count before each Groq call (~4 chars/token). Show in Feeds/Metrics bar. Flag `⚠ Near limit` when > 80% of model context window.
-  - Scope: `_estimate_tokens(payload)` in [agent/analysis.py](agent/analysis.py); `groq_token_est` in `run_metrics`; chip in `run_metrics_html`.
 
 - [ ] **Print-friendly briefing view**
   - `@media print` CSS: hide rail, search bar, navigation; expand all `<details>`; single-column layout. Zero runtime cost; enables PDF sharing.
@@ -188,6 +136,7 @@ Keep each item open until code, tests, and docs are complete.
 | EPSS exploitation probability badge | `_enrich_epss()` in `ingest.py`; batched FIRST.org API; 24h cache in `state/epss_cache.json`; orange `EPSS XX%` chip for ≥ 0.4; wired into `_run()`; 5 targeted tests |
 | Corroboration count badge | `cve_to_source_count` map in `_findings_to_cards()`; `N sources` blue chip for ≥ 2; 4 targeted tests |
 | Constellation node count labels | `cnts` dict in `_build_threat_map_svg()`; `<text>` count label inside each node disc; "9+" for counts > 9 |
+| Alerts tab | Three panels: Persistent (run_count ≥ 3), Elevated (delta ≥ 10), P1/Attribution; click-to-scroll to finding card; 10 targeted tests |
 
 ---
 
@@ -209,3 +158,5 @@ Keep each item open until code, tests, and docs are complete.
 - 2026-03-13: **CARDS JS object extended** — added `tactic`, `shelf_days`, `run_count`, `first_seen_ts`, `actions_24h` to every entry. `first_seen_ts` (date string) now set on card in `_update_shelf()`; `card_data` builder updated in `html_builder.py`. 290 tests pass.
 - 2026-03-13: Full codebase review. Restructured tracker: dropped phase numbering, reorganized all pending items by impact × simplicity. Added 15 new items (CARDS JS enrichment, Alerts tab, CISA KEV badge, Priority Actions panel, staleness warning, corroboration badge, dead feed detection, node count labels, GHSA enrichment, geo distribution, token budget, print view, watchlist).
 - 2026-03-13: **EPSS badge + Corroboration badge + Constellation node counts** — `_enrich_epss()` in `ingest.py` with batched FIRST.org API and 24h cache; `cve_to_source_count` map in `_findings_to_cards()` for corroboration; `cnts` dict + `<text>` label in constellation SVG; all three wired and rendered; 9 new targeted tests (303 total).
+- 2026-03-17: Cleaned up tracker: removed completed items from Pending; cut push alerts, watchlist/follow, GHSA enrichment, feed geo distribution, and Groq token budget display; replaced client-side watchlist + follow mode with unified Stack keyword filter (no login required, localStorage + URL param).
+- 2026-03-17: **Alerts tab** — `_build_alerts_html(cards, delta)` in `html_builder.py`; three panels (Persistent, Elevated, P1/Attribution); click-to-scroll JS with highlight; 10 targeted tests (307 total). Dead code removed: `rendering.py`, `planning.py`, `test_planning.py`, `_build_calendar_html`, `_build_corroboration_map`, dead `rendering_mod` import.

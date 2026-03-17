@@ -37,13 +37,6 @@ def _contains_any(txt: str, terms: tuple) -> bool:
     return any(t in low for t in terms)
 
 
-def _build_corroboration_map(items: list) -> dict:
-    counts: dict = {}
-    for it in items:
-        key = sha256(_compact_text(it.get("title", "")).lower())[:16]
-        counts[key] = counts.get(key, 0) + 1
-    return counts
-
 
 def _infer_vendor_product(item: dict) -> tuple:
     title = _compact_text(item.get("title", ""))
@@ -202,7 +195,6 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
     reporting_window = f"{_months[2]} – {_months[0]}"
 
     all_items = (kev_items or []) + (nvd_items or []) + (news_items or [])
-    _build_corroboration_map(all_items)
 
     kev_block = [
         {

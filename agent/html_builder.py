@@ -373,11 +373,6 @@ def _build_domain_rank_html(cards: list, heatmap: dict, velocity: dict = None) -
 # -----------------------------
 # P3: 7-day history helpers
 # -----------------------------
-def _build_calendar_html(history_days: list) -> str:
-    """Removed — 14-day heatmap no longer displayed."""
-    return ""
-
-
 def _build_history_accordion(days: list, today_str: str = "") -> str:
     """Build a 7-day briefing history accordion `<section>` element."""
     if not days:
@@ -833,6 +828,85 @@ def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
     return cve_html + killchain_html + product_html + ioc_html
 
 
+def _build_alerts_html(cards: list, delta: dict | None) -> str:
+    """Build the three-panel Alerts rail section from render-time card data."""
+    delta = delta or {}
+    elevated_cards = delta.get("elevated", [])
+
+    if not cards and not elevated_cards:
+        return '<div class="alert-empty">No findings available.</div>'
+
+    # Panel 1: cards seen in 3+ consecutive runs
+    persistent = sorted(
+        [c for c in cards if int(c.get("run_count", 1)) >= 3],
+        key=lambda c: int(c.get("run_count", 1)),
+        reverse=True,
+    )
+
+    # Panel 2: cards whose risk score rose ≥10 since last run
+    elevated = sorted(
+        elevated_cards,
+        key=lambda c: int(c.get("_score_delta", 0)),
+        reverse=True,
+    )
+
+    # Panel 3: P1 priority or attribution-flagged cards, deduped by id
+    p1_attr: list = []
+    seen_ids: set = set()
+    for c in sorted(cards, key=lambda x: int(x.get("risk_score", 0)), reverse=True):
+        if _derive_priority(c) == "P1" or c.get("attribution_flag"):
+            cid = c.get("id", "")
+            if cid not in seen_ids:
+                seen_ids.add(cid)
+                p1_attr.append(c)
+
+    def _row(c: dict, annot_html: str) -> str:
+        cid = html.escape(c.get("id", ""))
+        bg, fg = _heatmap_cell_color(int(c.get("risk_score", 0)), 1)
+        score = int(c.get("risk_score", 0))
+        title = html.escape(c.get("title", "")[:72])
+        return (
+            f'<div class="alert-row" data-card-id="{cid}" role="button" tabindex="0">'
+            f'<span class="alert-score" style="background:{bg};color:{fg}">{score}</span>'
+            f'<span class="alert-title">{title}</span>'
+            f"{annot_html}"
+            f"</div>"
+        )
+
+    def _section(label: str, rows_html: str, count: int) -> str:
+        cnt_badge = f'<span class="alerts-cnt">{count}</span>'
+        body = rows_html if rows_html else '<div class="alert-empty">None this run</div>'
+        return f'<div class="alerts-subhdr">{label}{cnt_badge}</div>{body}'
+
+    persist_rows = "".join(
+        _row(c, f'<span class="alert-annot alert-annot--persist">Seen {int(c.get("run_count", 1))} runs</span>')
+        for c in persistent
+    )
+
+    elevated_rows = "".join(
+        _row(c, f'<span class="alert-annot alert-annot--elevated">+{int(c.get("_score_delta", 0))} ↑</span>')
+        for c in elevated
+    )
+
+    def _p1_annot(c: dict) -> str:
+        is_p1 = _derive_priority(c) == "P1"
+        is_attr = bool(c.get("attribution_flag"))
+        parts = []
+        if is_p1:
+            parts.append('<span class="alert-annot alert-annot--p1">P1</span>')
+        if is_attr:
+            parts.append('<span class="alert-annot alert-annot--attr">⚠ Attr</span>')
+        return "".join(parts)
+
+    p1_rows = "".join(_row(c, _p1_annot(c)) for c in p1_attr)
+
+    return (
+        _section("Persistent", persist_rows, len(persistent))
+        + _section("Elevated", elevated_rows, len(elevated))
+        + _section("P1 / Attribution", p1_rows, len(p1_attr))
+    )
+
+
 def _write_index_html(
     path: str,
     cards: list,
@@ -956,7 +1030,6 @@ def _write_index_html(
 
     _today_et = (datetime.now(timezone.utc) - timedelta(hours=5)).strftime("%Y-%m-%d")
     history_section = _build_history_accordion(history_days or [], today_str=_today_et)
-    calendar_html = _build_calendar_html(history_days or [])
 
     # --- Delta strip ---
     delta_strip_html = ""
@@ -1112,7 +1185,7 @@ def _write_index_html(
             else ""
         )
         rows += f"""
-                <details class="cluster" data-domains="{html.escape(domains_attr)}" data-tactic="{html.escape(_tactic)}">
+                <details class="cluster" id="card-{html.escape(c.get('id', ''))}" data-domains="{html.escape(domains_attr)}" data-tactic="{html.escape(_tactic)}">
                     <summary>
                         <span class="badge" style="background:{badge_bg};color:{badge_fg}">{c['risk_score']}</span>
                         <span class="priority {pri_cls}">{pri}</span>
@@ -1297,6 +1370,7 @@ def _write_index_html(
         )
 
     forensics_html = _build_forensics_html(cards, ioc_ledger or {})
+    alerts_html = _build_alerts_html(cards, delta)
 
     page_html = f"""<!doctype html>
 <html lang=\"en\">
@@ -1469,6 +1543,20 @@ body.rail-collapsed .rail-collapsed-pill{{display:block}}
 .rail-panel{{display:none}}
 .rail-panel.active{{display:block}}
 .rail-placeholder{{font-size:.78rem;color:#8b949e;line-height:1.5;padding:.3rem 0}}
+.alerts-subhdr{{font-size:.68rem;font-weight:700;color:#8b949e;letter-spacing:.04em;text-transform:uppercase;margin:.65rem 0 .2rem;padding-bottom:.15rem;border-bottom:1px solid #2a2a2a}}
+.alerts-subhdr:first-child{{margin-top:.1rem}}
+.alerts-cnt{{font-size:.62rem;font-weight:600;background:#252525;color:#6a7a8a;border-radius:999px;padding:1px 6px;margin-left:.3rem;text-transform:none;letter-spacing:0}}
+.alert-row{{display:flex;align-items:center;gap:.3rem;padding:.26rem .2rem;border-radius:4px;cursor:pointer;font-size:.75rem;line-height:1.3}}
+.alert-row:hover{{background:#1e2a3a}}
+.alert-score{{flex-shrink:0;font-size:.61rem;font-weight:700;border-radius:3px;padding:1px 5px;min-width:2em;text-align:center}}
+.alert-title{{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#c9d1d9}}
+.alert-annot{{flex-shrink:0;font-size:.61rem;font-weight:600;border-radius:3px;padding:1px 5px}}
+.alert-annot--persist{{background:rgba(210,90,20,.1);color:#e8864a;border:1px solid rgba(210,90,20,.25)}}
+.alert-annot--elevated{{background:rgba(40,160,80,.1);color:#56d364;border:1px solid rgba(40,160,80,.25)}}
+.alert-annot--p1{{background:rgba(180,20,20,.12);color:#ff6b6b;border:1px solid rgba(180,20,20,.3)}}
+.alert-annot--attr{{background:rgba(180,140,10,.1);color:#d4a017;border:1px solid rgba(180,140,10,.25)}}
+.alert-empty{{font-size:.74rem;color:#4a5568;padding:.15rem 0 .35rem}}
+.alert-highlight{{outline:2px solid rgba(88,130,240,.45);outline-offset:2px}}
 .rail-mobile-toggle{{display:none;position:fixed;right:14px;bottom:14px;z-index:16;background:#252525;border:1px solid #444;color:#ccc;border-radius:999px;padding:.42rem .8rem;font-size:.74rem;cursor:pointer}}
 .rail-backdrop{{display:none;position:fixed;inset:0;background:rgba(0,0,0,.58);backdrop-filter:blur(1px);z-index:14}}
 body.rail-open .rail-backdrop{{display:block}}
@@ -1582,7 +1670,6 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
   </div>
 </section>
 {history_section}
-{calendar_html}
 {weekly_html}
 {tactic_strip_html}
 <h2>Top Findings</h2>
@@ -1625,9 +1712,9 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
                             <h3 style="margin:.6rem 0 .35rem">Source References</h3>
                             <table class="feed-table"><thead><tr><th>Domain</th><th>Refs</th><th>Max risk</th></tr></thead><tbody>{feed_rows}</tbody></table>
                         </section>
-                        <section class="rail-panel" id="panel-alerts" role="tabpanel" aria-labelledby="tab-alerts" data-lazy="true">
+                        <section class="rail-panel" id="panel-alerts" role="tabpanel" aria-labelledby="tab-alerts">
                             <h3 style="margin:.2rem 0 .35rem">Alerts</h3>
-                            <div class="rail-placeholder">Reserved module slot. Use this area for triage queues, ownership routing, and SLA timers.</div>
+                            {alerts_html}
                         </section>
                         <section class="rail-panel" id="panel-forensics" role="tabpanel" aria-labelledby="tab-forensics">
                             <h3 style="margin:.2rem 0 .35rem">Forensics</h3>
@@ -1866,6 +1953,18 @@ function forensicsCveClick(cve){{
     var overBtn=document.querySelector('[data-tab="overview"]');
     if(overBtn)overBtn.click();
 }}
+document.querySelectorAll('.alert-row[data-card-id]').forEach(function(row){{
+  row.addEventListener('click',function(){{
+    var id=row.getAttribute('data-card-id');
+    var card=document.getElementById('card-'+id);
+    if(card){{
+      card.open=true;
+      card.scrollIntoView({{behavior:'smooth',block:'center'}});
+      card.classList.add('alert-highlight');
+      setTimeout(function(){{card.classList.remove('alert-highlight');}},1800);
+    }}
+  }});
+}});
 initRightRail();
 selectDomain('all');
 initFindingsFilter();

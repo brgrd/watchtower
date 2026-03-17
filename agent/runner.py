@@ -24,7 +24,6 @@ import yaml
 from bs4 import BeautifulSoup
 
 from agent import analysis as analysis_mod
-from agent import rendering as rendering_mod
 from agent import html_builder as html_builder_mod
 from agent import scoring as scoring_mod
 from agent import state as state_mod
@@ -1398,7 +1397,6 @@ _TM_EDGES = html_builder_mod._TM_EDGES
 _build_threat_map_svg = html_builder_mod._build_threat_map_svg
 _compute_velocity = html_builder_mod._compute_velocity
 _build_domain_rank_html = html_builder_mod._build_domain_rank_html
-_build_calendar_html = html_builder_mod._build_calendar_html
 _build_history_accordion = html_builder_mod._build_history_accordion
 _build_weekly_section = html_builder_mod._build_weekly_section
 _build_enrichment_html = html_builder_mod._build_enrichment_html
