@@ -995,6 +995,7 @@ def _write_index_html(
     _rm_fail = _rm.get("feeds_fail", "—")
     _rm_groq = _rm.get("groq_status", "—")
     _rm_items = _rm.get("items_polled", "—")
+    _rm_window = _rm.get("window_h", "—")
     run_metrics_html = (
         (
             f'<div class="run-metrics-bar">'
@@ -1002,6 +1003,7 @@ def _write_index_html(
             f'<span class="rm-chip rm-ok">✓ {_rm_ok}/{_rm_total} feeds</span>'
             f'<span class="rm-chip rm-fail">✗ {_rm_fail} failed</span>'
             f'<span class="rm-chip">📡 {_rm_items} items</span>'
+            f'<span class="rm-chip">🕐 {_rm_window}h window</span>'
             f'<span class="rm-chip">AI: {_rm_groq}</span>'
             f"</div>"
         )

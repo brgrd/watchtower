@@ -7,8 +7,9 @@ budgets:
   max_clusters_output: 15
   max_links_per_cluster: 5
   max_runtime_seconds: 480
-  since_hours: 24
+  since_hours: 12
   seen_ttl_days: 14
+  max_groq_items: 120
 
 runtime:
   placeholder_mode_default: true  # local default; CI sets WATCHTOWER_PLACEHOLDER_MODE=false for real runs

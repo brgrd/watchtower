@@ -72,6 +72,7 @@ WEEKLY_AGGREGATE_FILE = os.path.join(STATE_DIR, "weekly_aggregate.json")
 FEED_HEALTH_FILE = os.path.join(STATE_DIR, "feed_health.json")
 FINDING_SHELF_FILE = os.path.join(STATE_DIR, "finding_shelf.json")
 EPSS_CACHE_FILE = os.path.join(STATE_DIR, "epss_cache.json")
+LAST_RUN_TS_FILE = os.path.join(STATE_DIR, "last_run_ts.json")
 IOC_LEDGER_FILE = os.path.join(STATE_DIR, "ioc_ledger.json")
 CONFIG = yaml.safe_load(
     open(os.path.join(ROOT, "agent", "config.yaml"), "r", encoding="utf-8")
@@ -1475,7 +1476,20 @@ def _run():
     seen = load_seen()
 
     budgets = CONFIG["budgets"]
-    since_hours = budgets.get("since_hours", 6)
+    _config_since_hours = budgets.get("since_hours", 12)
+    _last_run_ts_data = load_json(LAST_RUN_TS_FILE, {})
+    _last_run_iso = _last_run_ts_data.get("ts", "")
+    if _last_run_iso:
+        try:
+            _last_run_dt = datetime.fromisoformat(_last_run_iso.replace("Z", "+00:00"))
+            _gap_hours = (datetime.now(timezone.utc) - _last_run_dt).total_seconds() / 3600
+            since_hours = max(_config_since_hours, int(_gap_hours) + 2)
+            if since_hours > _config_since_hours:
+                print(f"[INFO] Adaptive window: {since_hours}h (gap={_gap_hours:.1f}h since last run)")
+        except Exception:
+            since_hours = _config_since_hours
+    else:
+        since_hours = _config_since_hours
     feeds_cfg = [f for f in CONFIG["feeds"] if f.get("enabled", True)]
     run_deadline = time.monotonic() + budgets["max_runtime_seconds"]
 
@@ -1517,6 +1531,7 @@ def _run():
     polled, seen = deduplicate(polled, seen)
     polled = _merge_by_cve(polled)  # collapse same-CVE articles before Groq
     save_seen(seen)
+    save_json(LAST_RUN_TS_FILE, {"ts": now_utc_iso()})
 
     first_seen = now_utc_iso()
     for it in polled:
@@ -1568,6 +1583,10 @@ def _run():
 
     # Groq: analyze KEV entries, NVD CVEs, and news articles as distinct inputs
     all_items = enriched or polled
+    _max_groq = budgets.get("max_groq_items", 120)
+    if len(all_items) > _max_groq:
+        all_items = sorted(all_items, key=lambda it: it.get("published_ts", ""), reverse=True)[:_max_groq]
+        print(f"[INFO] Catch-up cap: kept {_max_groq} newest items of {len(enriched or polled)} total")
     kev_items = [it for it in all_items if "known_exploited" in it.get("source", "")]
     nvd_items = [
         it for it in all_items if "services.nvd.nist.gov" in it.get("source", "")
@@ -1647,6 +1666,7 @@ def _run():
         "groq_status": groq_status,
         "findings_count": len(findings),
         "cards_out": len(cards),
+        "window_h": since_hours,
     }
     print(f"[INFO] Run metrics: {run_metrics}")
 

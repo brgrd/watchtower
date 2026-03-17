@@ -44,13 +44,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Gate by America/New_York hours (0,6,12,18)
+      - name: Gate by America/New_York hours (6,18)
         id: gate
         run: |
           python - <<'PY'
           import os, datetime, zoneinfo
           ny_hour = datetime.datetime.now(zoneinfo.ZoneInfo("America/New_York")).hour
-          within = str(ny_hour in (0,6,12,18)).lower()
+          within = str(ny_hour in (6,18)).lower()
           with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
             fh.write(f"within={within}\n")
           print(f"NY_HOUR={ny_hour} within={within}")
