@@ -389,3 +389,68 @@ class TestUpdateShelfResolved:
         assert card_v2["shelf_resolved"] is False
         shelf = json.loads(open(self.shelf_path).read())
         assert shelf["c8"].get("resolved") is False
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# _shelf_key
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+class TestShelfKey:
+    def test_cve_in_title_produces_cve_key(self):
+        from agent.runner import _shelf_key
+        card = {"id": "abc123", "title": "CVE-2026-1234 RCE in OpenSSL", "summary": ""}
+        assert _shelf_key(card) == "cve:CVE-2026-1234"
+
+    def test_cve_in_enrichment_preferred_over_title(self):
+        from agent.runner import _shelf_key
+        card = {
+            "id": "abc123",
+            "title": "OpenSSL vulnerability",
+            "summary": "",
+            "enrichment": {"cves": ["CVE-2026-5555", "CVE-2026-1111"]},
+        }
+        # min() of the two — CVE-2026-1111 < CVE-2026-5555
+        assert _shelf_key(card) == "cve:CVE-2026-1111"
+
+    def test_no_cve_falls_back_to_card_id(self):
+        from agent.runner import _shelf_key
+        card = {"id": "fallback_id", "title": "Generic advisory with no CVE", "summary": ""}
+        assert _shelf_key(card) == "fallback_id"
+
+    def test_two_cards_same_cve_map_to_same_key(self):
+        from agent.runner import _shelf_key
+        card_a = {"id": "id_a", "title": "CVE-2026-9999 in Apache", "summary": ""}
+        card_b = {"id": "id_b", "title": "CVE-2026-9999 patch released", "summary": ""}
+        assert _shelf_key(card_a) == _shelf_key(card_b) == "cve:CVE-2026-9999"
+
+    def test_cve_key_consolidates_run_count(self):
+        """Two cards with the same CVE but different titles share one shelf entry."""
+        import json
+        import tempfile
+        from freezegun import freeze_time
+
+        with tempfile.NamedTemporaryFile(suffix=".json", delete=False, mode="w") as f:
+            f.write("{}")
+            shelf_path = f.name
+
+        import agent.runner as runner_mod
+        runner_mod.FINDING_SHELF_FILE = shelf_path
+
+        with freeze_time("2026-03-01"):
+            card_a = {"id": "id_a", "title": "CVE-2026-7777 initial disclosure", "summary": "", "risk_score": 60}
+            _update_shelf([card_a])
+
+        with freeze_time("2026-03-02"):
+            card_b = {"id": "id_b", "title": "CVE-2026-7777 patch released", "summary": "", "risk_score": 60}
+            _update_shelf([card_b])
+
+        shelf = json.loads(open(shelf_path).read())
+        import os; os.unlink(shelf_path)
+
+        # Both cards should have updated the same shelf entry
+        assert "cve:CVE-2026-7777" in shelf
+        assert shelf["cve:CVE-2026-7777"]["run_count"] == 2
+        # card_b should have received the run_count=2 boost
+        assert card_b["run_count"] == 2
+        assert card_b["risk_score"] == 65  # +5 boost for run_count=2

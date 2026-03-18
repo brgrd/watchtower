@@ -1058,17 +1058,38 @@ def _derive_priority(card: dict) -> str:
     return "P3"
 
 
+def _shelf_key(card: dict) -> str:
+    """Return the shelf lookup key for a card.
+
+    Prefers a stable CVE-anchored key (``"cve:CVE-YYYY-NNNNN"``) derived from
+    the card's enrichment CVE list or title text.  When multiple CVEs are
+    present the lexicographically first ID is used so that the key is
+    deterministic across runs regardless of article ordering.  Falls back to
+    the card's existing ``id`` (title hash) when no CVE can be extracted.
+
+    Using a CVE key means two different articles about the same vulnerability
+    — ingested on different days with different titles — map to the same shelf
+    entry, preventing run_count dilution and false "New" tier classifications.
+    """
+    cves = (card.get("enrichment") or {}).get("cves") or []
+    if not cves:
+        cves = _extract_cves(card.get("title", "") + " " + card.get("summary", ""))
+    if cves:
+        return f"cve:{min(cves)}"
+    return card.get("id", sha256(card.get("title", ""))[:16])
+
+
 def _update_shelf(cards: list) -> None:
     """Update finding_shelf.json with persistence tracking and apply score boosts.
 
-    Each finding is keyed by a 16-char hash of its title. For every card present
-    in this run: first_seen is set if new, run_count incremented, last_seen updated.
-    A score boost of +5 per run_count beyond 1 is applied, capped at +20, so a
-    finding seen across 5 consecutive runs has its risk_score raised by 20 points.
+    Each finding is keyed by _shelf_key(): a CVE-anchored key when the card
+    contains extractable CVE IDs, otherwise the card's title-hash id.  Using a
+    CVE key ensures two articles about the same vulnerability share one shelf
+    entry, keeping run_count accurate for the tiered threat grouping.
 
-    Resolved findings (patch_status == "patched") receive zero boost and are tagged
-    shelf_resolved=True. Their shelf entry is pruned 7 days after resolution instead
-    of the normal 30-day TTL.
+    A score boost of +5 per run_count beyond 1 is applied, capped at +20.
+    Resolved findings (patch_status == "patched") receive zero boost and are
+    pruned 7 days after resolution instead of the normal 30-day TTL.
     """
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     shelf: dict = load_json(FINDING_SHELF_FILE, {})
@@ -1076,7 +1097,7 @@ def _update_shelf(cards: list) -> None:
     for card in cards:
         if not isinstance(card, dict):
             continue
-        fid = card.get("id", sha256(card.get("title", ""))[:16])
+        fid = _shelf_key(card)
         current_ids.add(fid)
         entry = shelf.get(fid)
         if entry is None:

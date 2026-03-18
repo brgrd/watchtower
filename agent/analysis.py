@@ -298,6 +298,8 @@ def _normalize_tactic(raw: str) -> str:
     if not raw:
         return ""
     key = raw.strip().lower()
+    if not key:
+        return ""
     # Exact canonical match (case-insensitive)
     if key in _CANONICAL_TACTICS_LOWER:
         return _CANONICAL_TACTICS_LOWER[key]

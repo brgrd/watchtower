@@ -466,9 +466,14 @@ def _build_weekly_section(aggregate: dict) -> str:
         if top_cves
         else ""
     )
+    window_note = (
+        f'<span class="weekly-window-note">Building history \u2014 full 7-day view available after day 3</span>'
+        if window < 3
+        else f'<span class="weekly-window-note">Past {window} day{"s" if window != 1 else ""}</span>'
+    )
     return (
         '<section class="panel weekly-scope">'
-        f'<h3 style="margin:.2rem 0 .6rem">{window}-Day Weekly Scope</h3>'
+        f'<h3 style="margin:.2rem 0 .6rem">Weekly Overview {window_note}</h3>'
         '<div class="weekly-kpi-row">'
         f'<div class="wkpi"><span class="wk">Total Findings</span><span class="wv">{total}</span></div>'
         f'<div class="wkpi"><span class="wk">Unique CVEs</span><span class="wv">{unique_cves}</span></div>'
@@ -919,8 +924,7 @@ def _build_alerts_html(cards: list, delta: dict | None) -> str:
 
     def _section(label: str, rows_html: str, count: int) -> str:
         cnt_badge = f'<span class="alerts-cnt">{count}</span>'
-        body = rows_html if rows_html else '<div class="alert-empty">None this run</div>'
-        return f'<div class="alerts-subhdr">{label}{cnt_badge}</div>{body}'
+        return f'<div class="alerts-subhdr">{label}{cnt_badge}</div>{rows_html}'
 
     persist_rows = "".join(
         _row(c, f'<span class="alert-annot alert-annot--persist">Seen {int(c.get("run_count", 1))} runs</span>')
@@ -944,11 +948,16 @@ def _build_alerts_html(cards: list, delta: dict | None) -> str:
 
     p1_rows = "".join(_row(c, _p1_annot(c)) for c in p1_attr)
 
-    return (
-        _section("Persistent", persist_rows, len(persistent))
-        + _section("Elevated", elevated_rows, len(elevated))
-        + _section("P1 / Attribution", p1_rows, len(p1_attr))
-    )
+    # Collapse Persistent + Elevated into a single quiet line when both are empty
+    if persist_rows or elevated_rows:
+        watch_section = (
+            (_section("Persistent", persist_rows, len(persistent)) if persist_rows else "")
+            + (_section("Elevated", elevated_rows, len(elevated)) if elevated_rows else "")
+        )
+    else:
+        watch_section = '<div class="alert-empty">No persistent or elevated alerts this run</div>'
+
+    return watch_section + _section("P1 / Attribution", p1_rows, len(p1_attr))
 
 
 def _write_index_html(
@@ -1024,7 +1033,6 @@ def _write_index_html(
             <div class="kpi"><span class="k">High-Profile</span><span class="v">{hp_count}</span></div>
             <div class="kpi"><span class="k">Control Plane</span><span class="v">{control_plane_count}</span></div>
             <div class="kpi"><span class="k">Top Domain</span><span class="v v-sm">{html.escape(top_domain_label)}</span></div>
-            <div class="kpi"><span class="k">Trend 24h</span><span class="v">{trend_txt}</span></div>
         </section>
         """
 
@@ -1157,6 +1165,33 @@ def _write_index_html(
             f'<div class="hp-chip-list">{chips_html}</div>'
             f"</section>"
         )
+
+    def _card_tier(c: dict) -> str:
+        """Classify a card into a persistence tier for display grouping."""
+        if c.get("shelf_resolved"):
+            return "resolved"
+        run_count = c.get("run_count", 1)
+        shelf_days = c.get("shelf_days", 0)
+        if run_count > 5 or (shelf_days > 7 and not c.get("shelf_resolved")):
+            return "persistent"
+        if run_count >= 2:
+            return "evolving"
+        return "new"
+
+    _TIER_META = {
+        "persistent": ("Persistent / Unpatched", "tier-persistent",
+                       "Active for more than 5 runs or 7+ days without a fix."),
+        "new":        ("New This Run",           "tier-new",
+                       "Findings appearing for the first time."),
+        "evolving":   ("Evolving",               "tier-evolving",
+                       "Seen across multiple runs — monitor for patch or escalation."),
+        "resolved":   ("Resolved",               "tier-resolved",
+                       "Patch confirmed this run."),
+    }
+    _TIER_ORDER = ["persistent", "new", "evolving", "resolved"]
+
+    # Accumulate rendered card HTML per tier (preserves risk-score sort from cards list)
+    _tier_html: dict = {t: "" for t in _TIER_ORDER}
 
     rows = ""
     for c in cards:
@@ -1292,6 +1327,24 @@ def _write_index_html(
                         <ul>{links}</ul>
                     </div>
                 </details>"""
+        _tier_html[_card_tier(c)] += rows
+        rows = ""
+
+    # Assemble tiers with headers; empty tiers are skipped
+    for _tier_key in _TIER_ORDER:
+        _content = _tier_html[_tier_key]
+        if not _content:
+            continue
+        _label, _cls, _hint = _TIER_META[_tier_key]
+        _count = _content.count('class="cluster ')
+        rows += (
+            f'<div class="tier-header {_cls}">'
+            f'<span class="tier-label">{_label}</span>'
+            f'<span class="tier-count">{_count}</span>'
+            f'<span class="tier-hint">{_hint}</span>'
+            f"</div>"
+            + _content
+        )
 
     # Holistic stress matrix (adjacency feel): domain x indicator intensity
     indicator_defs = [
@@ -1515,6 +1568,14 @@ p{{color:#c9d1d9}}
 .mx-cell:hover{{filter:brightness(1.1);transform:translateY(-1px)}}
 .mx-dot{{position:absolute;left:50%;top:50%;width:20px;height:20px;border-radius:999px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(180,180,180,.75) 0%, rgba(180,180,180,.05) 70%)}}
 .mx-count{{position:relative;display:block;font-size:.82rem;font-weight:800;color:#e6edf3;line-height:1}}
+.tier-header{{display:flex;align-items:center;gap:.55rem;margin:1.1rem 0 .35rem;padding:.3rem 0 .3rem;border-bottom:1px solid #2a2a2a}}
+.tier-label{{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em}}
+.tier-count{{font-size:.7rem;font-weight:700;padding:1px 7px;border-radius:999px;border:1px solid currentColor;opacity:.85}}
+.tier-hint{{font-size:.68rem;color:#6a7f98;font-style:italic;margin-left:.2rem}}
+.tier-persistent .tier-label{{color:#f85149}}.tier-persistent .tier-count{{color:#f85149}}
+.tier-new .tier-label{{color:#e6edf3}}.tier-new .tier-count{{color:#e6edf3}}
+.tier-evolving .tier-label{{color:#d29922}}.tier-evolving .tier-count{{color:#d29922}}
+.tier-resolved .tier-label{{color:#3fb950}}.tier-resolved .tier-count{{color:#3fb950}}
 .cluster{{background:rgba(255,255,255,0.01);border:1px solid #2a2a2a;border-radius:6px;padding:0;margin:.55rem 0;overflow:hidden}}
 .cluster summary{{list-style:none;padding:.62rem .85rem;cursor:pointer;display:flex;align-items:center;gap:.35rem;user-select:none;color:#c9d1d9;font-size:.92rem}}
 .cluster summary::-webkit-details-marker{{display:none}}
@@ -1629,7 +1690,7 @@ p{{color:#c9d1d9}}
 .ha-date{{font-weight:700;color:#e6edf3;flex:0 0 92px}}.ha-meta{{color:#c9d1d9;flex:1;font-size:.78rem}}.ha-ts{{color:#8b949e;font-size:.68rem;margin-left:auto;flex-shrink:0}}
 .ha-body{{padding:.25rem .2rem .5rem .5rem}}.ha-table{{width:100%;border-collapse:collapse;font-size:.76rem}}.ha-table th{{font-size:.67rem;color:#777;font-weight:700;border-bottom:1px solid #252525;padding:.2rem .35rem}}
 .ha-table td{{padding:.22rem .35rem;border-bottom:1px solid #1a1a1a;vertical-align:top}}.ha-title{{max-width:520px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}.ha-risk{{text-align:right;font-weight:700;color:#e6edf3;min-width:30px}}.ha-pri{{text-align:center;min-width:40px;white-space:nowrap}}
-.weekly-scope{{margin:0 0 1rem}}.weekly-kpi-row{{display:flex;gap:10px;flex-wrap:wrap;margin:.4rem 0 .75rem}}
+.weekly-scope{{margin:0 0 1rem}}.weekly-window-note{{font-size:.7rem;color:#8b949e;font-weight:400;margin-left:.4rem;vertical-align:middle}}.weekly-kpi-row{{display:flex;gap:10px;flex-wrap:wrap;margin:.4rem 0 .75rem}}
 .wkpi{{background:#0f0f0f;border:1px solid #252525;border-radius:5px;padding:.4rem .65rem;display:flex;flex-direction:column;gap:.15rem;min-width:110px}}
 .wk{{font-size:.65rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700}}.wv{{font-size:1.1rem;color:#e6edf3;font-weight:800}}.wv-sm{{font-size:.85rem}}
 .weekly-review-label{{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:#999;margin:.3rem 0 .2rem}}
@@ -1818,7 +1879,6 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
                             <button class="rail-tab" type="button" id="tab-forensics" role="tab" aria-controls="panel-forensics" aria-selected="false" data-tab="forensics">Forensics</button>
                         </div>
                         <section class="rail-panel active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
-                            <h3 style="margin:.2rem 0 .45rem">Domain Activity</h3>
                             {domain_rank_html}
                             <h3 style="margin:.7rem 0 .35rem">Selected Domain</h3>
                             <div id="tm-detail" class="muted" style="font-size:.8rem">Click a node to inspect findings.</div>

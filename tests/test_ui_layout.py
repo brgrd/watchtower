@@ -122,10 +122,38 @@ class TestAlertsTab:
         assert "Reserved module slot" not in html
 
     def test_three_section_headers_present(self, tmp_path):
+        # With no persistent/elevated cards the placeholder text is shown instead
         html = _render_html(tmp_path)
-        assert "Persistent" in html
-        assert "Elevated" in html
         assert "P1 / Attribution" in html
+        # Persistent and Elevated headers are omitted when empty; a combined
+        # quiet message is shown instead
+        assert "No persistent or elevated alerts this run" in html
+
+    def test_persistent_header_shown_when_populated(self):
+        from agent.html_builder import _build_alerts_html
+        cards = [
+            {
+                "id": "p1a", "title": "Persistent finding", "risk_score": 80,
+                "priority": "P1", "domains": ["os_kernel"],
+                "sources": {"primary": [], "secondary": []},
+                "run_count": 5,
+            }
+        ]
+        out = _build_alerts_html(cards, {})
+        assert "Persistent" in out
+        assert "No persistent or elevated alerts" not in out
+
+    def test_elevated_header_shown_when_populated(self):
+        from agent.html_builder import _build_alerts_html
+        elevated_card = {
+            "id": "elev1", "title": "Elevated finding", "risk_score": 70,
+            "priority": "P2", "domains": ["os_kernel"],
+            "sources": {"primary": [], "secondary": []},
+            "run_count": 1, "_score_delta": 15,
+        }
+        out = _build_alerts_html([], {"elevated": [elevated_card]})
+        assert "Elevated" in out
+        assert "No persistent or elevated alerts" not in out
 
     def test_p1_card_appears_in_p1_section(self):
         cards = [
