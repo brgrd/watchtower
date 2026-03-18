@@ -370,5 +370,23 @@
     "last_seen": "2026-03-18",
     "run_count": 1,
     "title": "IBM Planning Analytics Local Vulnerability"
+  },
+  "cve:CVE-2026-20963": {
+    "first_seen": "2026-03-18",
+    "last_seen": "2026-03-18",
+    "run_count": 1,
+    "title": "Microsoft SharePoint RCE"
+  },
+  "cve:CVE-2025-66376": {
+    "first_seen": "2026-03-18",
+    "last_seen": "2026-03-18",
+    "run_count": 1,
+    "title": "Synacor Zimbra Collaboration Suite XSS"
+  },
+  "cve:CVE-2026-32746": {
+    "first_seen": "2026-03-18",
+    "last_seen": "2026-03-18",
+    "run_count": 1,
+    "title": "Telnetd Unauthenticated RCE"
   }
 }
