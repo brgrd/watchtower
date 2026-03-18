@@ -30,7 +30,7 @@ reports/briefing_*.md
 # Durable state (finding_shelf, ioc_ledger, feed_health, ledger.jsonl) stays committed.
 state/seen_hashes.json
 state/last_run_cards.json
-reports/briefing_*.jsonl
+# briefing_*.jsonl are committed so 7-day history, weekly metrics, and CVE timeline work.
 
 # Internal development roadmap — not for public distribution.
 upgrades.md
