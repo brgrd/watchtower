@@ -32,7 +32,9 @@ The pipeline runs at **06:00 and 18:00 ET** via a scheduled cron job that gates 
 
 **Threat constellation** — SVG node map showing which security domains are active, with finding counts and velocity indicators per node.
 
-**Forensics tab** — CVE reference index with NVD links, kill-chain coverage bar, affected products, and IOC ledger.
+**Forensics tab** — CVE reference index with NVD links and CVE timeline (days tracked, patch progression, day-by-day finding references from 7-day history), kill-chain coverage bar, affected products, and IOC ledger.
+
+**Remediation tracker** — Per-finding disposition pill on every card (Unacknowledged → In Progress → Accepted Risk → Mitigated). State persists in browser localStorage. Mitigated findings are hidden from the Alerts Persistent panel.
 
 **7-day history** — Per-day accordion showing historical findings with risk scores and priorities.
 
