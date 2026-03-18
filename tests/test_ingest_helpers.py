@@ -17,6 +17,7 @@ from unittest.mock import MagicMock, patch
 
 from agent.ingest import (
     _enrich_epss,
+    _enrich_item_flags,
     _poll_rss,
     add_ignore,
     fetch_url,
@@ -276,3 +277,193 @@ class TestEnrichEpss:
             assert cards[0]["epss_score"] == pytest.approx(0.88)
         finally:
             os.unlink(cache_path)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# _enrich_item_flags
+
+
+class TestEnrichItemFlags:
+    def _item(self, title="", summary="", **kwargs):
+        return {"title": title, "summary": summary, **kwargs}
+
+    # --- patch_available ---
+
+    def test_patch_phrase_sets_patch_available(self):
+        item = self._item(summary="patch available for affected systems")
+        _enrich_item_flags(item)
+        assert item["patch_available"] is True
+
+    def test_fixed_in_sets_patch_available(self):
+        item = self._item(title="CVE-2026-1234 fixed in version 3.2.1")
+        _enrich_item_flags(item)
+        assert item["patch_available"] is True
+
+    def test_security_update_sets_patch_available(self):
+        item = self._item(summary="A security update is now available for all users.")
+        _enrich_item_flags(item)
+        assert item["patch_available"] is True
+
+    def test_nvd_patch_refs_sets_patch_available(self):
+        item = self._item(nvd_patch_refs=1)
+        _enrich_item_flags(item)
+        assert item["patch_available"] is True
+
+    def test_kev_patch_hint_sets_patch_available(self):
+        item = self._item(kev_patch_hint=True)
+        _enrich_item_flags(item)
+        assert item["patch_available"] is True
+
+    # --- workaround_available ---
+
+    def test_workaround_phrase_sets_workaround(self):
+        item = self._item(summary="A workaround available for this issue.")
+        _enrich_item_flags(item)
+        assert item["workaround_available"] is True
+
+    def test_mitigation_available_sets_workaround(self):
+        item = self._item(summary="mitigation available; apply to affected hosts")
+        _enrich_item_flags(item)
+        assert item["workaround_available"] is True
+
+    def test_nvd_mitigation_refs_sets_workaround(self):
+        item = self._item(nvd_mitigation_refs=2)
+        _enrich_item_flags(item)
+        assert item["workaround_available"] is True
+
+    # --- exploited_in_wild ---
+
+    def test_kev_source_id_sets_exploited(self):
+        item = self._item(source_id="cisa_kev")
+        _enrich_item_flags(item)
+        assert item["exploited_in_wild"] is True
+
+    def test_known_exploited_source_sets_exploited(self):
+        item = self._item(source="https://cisa.gov/known_exploited")
+        _enrich_item_flags(item)
+        assert item["exploited_in_wild"] is True
+
+    def test_zero_day_phrase_sets_exploited(self):
+        item = self._item(title="Zero-day in Apache Tomcat under active attack")
+        _enrich_item_flags(item)
+        assert item["exploited_in_wild"] is True
+
+    def test_nvd_exploit_refs_sets_exploited(self):
+        item = self._item(nvd_exploit_refs=1)
+        _enrich_item_flags(item)
+        assert item["exploited_in_wild"] is True
+
+    # --- no_fix_explicit ---
+
+    def test_no_patch_available_sets_no_fix(self):
+        item = self._item(summary="no patch available at this time")
+        _enrich_item_flags(item)
+        assert item["no_fix_explicit"] is True
+
+    def test_no_fix_available_sets_no_fix(self):
+        item = self._item(summary="no fix available; vendor has been notified")
+        _enrich_item_flags(item)
+        assert item["no_fix_explicit"] is True
+
+    def test_unpatched_sets_no_fix(self):
+        item = self._item(title="Unpatched critical RCE in Ivanti Connect Secure")
+        _enrich_item_flags(item)
+        assert item["no_fix_explicit"] is True
+
+    def test_vendor_not_released_sets_no_fix(self):
+        item = self._item(summary="vendor has not released a fix for this vulnerability")
+        _enrich_item_flags(item)
+        assert item["no_fix_explicit"] is True
+
+    # --- neutral items ---
+
+    def test_generic_advisory_all_false(self):
+        item = self._item(title="New vulnerability disclosed", summary="Affects Linux kernel.")
+        _enrich_item_flags(item)
+        assert item["patch_available"] is False
+        assert item["workaround_available"] is False
+        assert item["exploited_in_wild"] is False
+        assert item["no_fix_explicit"] is False
+
+    # --- patch_status integration via _findings_to_cards ---
+
+    def test_patch_available_item_yields_patched_card(self):
+        from agent.analysis import _findings_to_cards
+        item = self._item(
+            title="CVE-2026-9999 issue",
+            summary="security update is now available",
+            source_id="nvd",
+            source="https://services.nvd.nist.gov",
+        )
+        _enrich_item_flags(item)
+        finding = {
+            "title": "CVE-2026-9999 Vulnerability",
+            "summary": "Critical RCE in product X",
+            "risk_score": 80,
+            "priority": "P1",
+            "domains": ["os_kernel"],
+            "references": [],
+            "why_now": "actively targeted",
+            "recommended_actions_24h": [],
+            "recommended_actions_7d": [],
+            "confidence": 0.9,
+            "tactic_name": "Initial Access",
+            "technique_name": "",
+        }
+        cards = _findings_to_cards([finding], all_items=[item])
+        assert cards[0]["patch_status"] == "patched"
+
+    def test_no_fix_item_yields_no_fix_card(self):
+        from agent.analysis import _findings_to_cards
+        item = self._item(
+            title="CVE-2026-8888 zero-day",
+            summary="no patch available; vendor has not released a fix",
+            source_id="bleepingcomputer",
+        )
+        _enrich_item_flags(item)
+        finding = {
+            "title": "CVE-2026-8888 Vulnerability",
+            "summary": "Exploited in wild, no fix yet",
+            "risk_score": 90,
+            "priority": "P1",
+            "domains": ["os_kernel"],
+            "references": [],
+            "why_now": "no fix",
+            "recommended_actions_24h": [],
+            "recommended_actions_7d": [],
+            "confidence": 0.9,
+            "tactic_name": "Initial Access",
+            "technique_name": "",
+        }
+        cards = _findings_to_cards([finding], all_items=[item])
+        assert cards[0]["patch_status"] == "no_fix"
+
+    def test_patch_takes_priority_over_no_fix(self):
+        from agent.analysis import _findings_to_cards
+        # Two items for the same CVE: one says no patch, later one says patched
+        item_nf = self._item(
+            title="CVE-2026-7777 no patch available",
+            summary="no patch available",
+        )
+        item_p = self._item(
+            title="CVE-2026-7777 fixed in 2.1",
+            summary="fixed in version 2.1 security update",
+        )
+        _enrich_item_flags(item_nf)
+        _enrich_item_flags(item_p)
+        finding = {
+            "title": "CVE-2026-7777 Vulnerability",
+            "summary": "Critical issue",
+            "risk_score": 75,
+            "priority": "P1",
+            "domains": ["os_kernel"],
+            "references": [],
+            "why_now": "urgent",
+            "recommended_actions_24h": [],
+            "recommended_actions_7d": [],
+            "confidence": 0.8,
+            "tactic_name": "Initial Access",
+            "technique_name": "",
+        }
+        cards = _findings_to_cards([finding], all_items=[item_nf, item_p])
+        assert cards[0]["patch_status"] == "patched"

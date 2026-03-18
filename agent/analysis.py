@@ -55,94 +55,6 @@ def _infer_control_plane_impact(domains: list) -> str:
     return "none"
 
 
-def _build_groq_item_package(idx: int, item: dict, corroboration: dict) -> dict:
-    title = _compact_text(item.get("title", ""))
-    summary = _compact_text(item.get("summary", ""))
-    blob = f"{title} {summary}"
-    cves = _extract_cves(blob)
-    domains = classify_domains(item)
-    vendor, product = _infer_vendor_product(item)
-    key = sha256(title.lower())[:16]
-
-    exploited = "known_exploited" in (item.get("source", "") or "") or _contains_any(
-        blob,
-        (
-            "exploited in the wild",
-            "actively exploited",
-            "in-the-wild",
-            "zero-day",
-        ),
-    )
-    patch_available = _contains_any(
-        blob,
-        ("patch available", "security update", "fixed in", "upgrade to", "hotfix"),
-    )
-    workaround_available = _contains_any(
-        blob,
-        (
-            "mitigation",
-            "workaround",
-            "temporary fix",
-            "block",
-            "disable",
-        ),
-    )
-    internet_exposed = (
-        "high"
-        if _contains_any(
-            blob,
-            (
-                "vpn",
-                "gateway",
-                "edge",
-                "internet-facing",
-                "appliance",
-                "publicly exposed",
-            ),
-        )
-        else (
-            "medium"
-            if _contains_any(blob, ("remote", "http", "https", "web", "api"))
-            else "low"
-        )
-    )
-
-    confidence = 0.7
-    if item.get("source_type") == "json_api":
-        confidence = 0.9
-    elif item.get("source_category") in {"advisories", "vulns"}:
-        confidence = 0.8
-
-    return {
-        "item_id": f"wt-{idx:03d}-{sha256(item.get('url', '') + title)[:10]}",
-        "source_id": item.get("source_id", ""),
-        "source_type": item.get("source_type", "rss"),
-        "source_category": item.get("source_category", ""),
-        "source_country": item.get("source_country", item.get("country", "")),
-        "published_at": item.get("published_at", ""),
-        "first_seen_at": item.get("first_seen_at", ""),
-        "url": item.get("url", ""),
-        "title": title[:200],
-        "summary": summary[:600],
-        "vendor": vendor,
-        "product": product,
-        "technology_domain": domains,
-        "cves": cves,
-        "cvss_base": None,
-        "cwe": [],
-        "kev_listed": "known_exploited" in (item.get("source", "") or ""),
-        "epss_score": None,
-        "exploited_in_wild": exploited,
-        "patch_available": patch_available,
-        "workaround_available": workaround_available,
-        "internet_exposed_likelihood": internet_exposed,
-        "control_plane_impact": _infer_control_plane_impact(domains),
-        "confidence": confidence,
-        "dedupe_hash": sha256(item.get("url", "") + title),
-        "corroboration_count": corroboration.get(key, 1),
-    }
-
-
 def groq_chat(messages, model, temperature=0.2, max_tokens=1200):
     if not GROQ_API_KEY:
         raise RuntimeError("GROQ_API_KEY environment variable is not set")
@@ -676,6 +588,8 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                     or it.get("workaround_available", False),
                     "exploited_in_wild": existing.get("exploited_in_wild")
                     or it.get("exploited_in_wild", False),
+                    "no_fix_explicit": existing.get("no_fix_explicit")
+                    or it.get("no_fix_explicit", False),
                 }
                 if is_kev_source:
                     kev_cves.add(cve_id)
@@ -731,6 +645,7 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
         patch_available = False
         workaround_available = False
         exploited_in_wild = False
+        no_fix_explicit = False
         for cve_id in finding_cves:
             st = cve_to_status.get(cve_id, {})
             patch_available = patch_available or st.get("patch_available", False)
@@ -738,11 +653,12 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                 "workaround_available", False
             )
             exploited_in_wild = exploited_in_wild or st.get("exploited_in_wild", False)
+            no_fix_explicit = no_fix_explicit or st.get("no_fix_explicit", False)
         if patch_available:
             patch_status = "patched"
         elif workaround_available:
             patch_status = "workaround"
-        elif exploited_in_wild:
+        elif exploited_in_wild or no_fix_explicit:
             patch_status = "no_fix"
         else:
             patch_status = "unknown"

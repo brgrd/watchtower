@@ -17,6 +17,70 @@ CONFIG = yaml.safe_load(
     open(os.path.join(ROOT, "agent", "config.yaml"), "r", encoding="utf-8")
 )
 
+# ---------------------------------------------------------------------------
+# Keyword lists used by _enrich_item_flags() to set patch/exploit status
+# on every polled item before it reaches Groq or _findings_to_cards().
+# ---------------------------------------------------------------------------
+
+# Phrases that confirm a patch/fix is available
+_PATCH_PHRASES = (
+    "patch available",
+    "security update",
+    "fixed in",
+    "upgrade to",
+    "hotfix",
+    "has been patched",
+    "update available",
+    "released a fix",
+    "released a patch",
+    "apply the update",
+    "version addresses",
+    "addresses the vulnerability",
+    "update your",
+    "users should update",
+    "users are urged to update",
+)
+
+# Phrases that confirm a workaround/mitigation exists (but not a full patch)
+_WORKAROUND_PHRASES = (
+    "workaround available",
+    "mitigation available",
+    "can be mitigated",
+    "temporary fix",
+    "apply mitigation",
+    "disable the feature",
+    "recommended workaround",
+)
+
+# Phrases that explicitly state no fix exists — distinct from "unknown"
+_NO_FIX_PHRASES = (
+    "no patch available",
+    "no fix available",
+    "no available patch",
+    "no available fix",
+    "unpatched",
+    "no patch has been",
+    "vendor has not released",
+    "no mitigation available",
+    "currently no fix",
+    "fix is not yet available",
+    "no official fix",
+    "awaiting a patch",
+)
+
+# Phrases that indicate active exploitation (beyond CISA KEV source check)
+_EXPLOIT_PHRASES = (
+    "exploited in the wild",
+    "actively exploited",
+    "in-the-wild",
+    "zero-day",
+    "0-day",
+    "observed exploitation",
+    "under active attack",
+    "being exploited",
+    "exploitation detected",
+)
+
 PRIVATE_PREFIXES = ("10.", "192.168.", "172.", "127.", "169.254.")
 BLOCKED_CT_PREFIXES = (
     "application/x-msdownload",
@@ -211,6 +275,7 @@ def _poll_nvd_api(url: str, since_hours: int, ignore: dict) -> list:
                 ),
                 "",
             )
+            refs = cve.get("references", [])
             items.append(
                 {
                     "title": cve_id,
@@ -218,6 +283,16 @@ def _poll_nvd_api(url: str, since_hours: int, ignore: dict) -> list:
                     "summary": desc[:500],
                     "source": url,
                     "published_at": cve.get("published", ""),
+                    "nvd_vuln_status": cve.get("vulnStatus", ""),
+                    "nvd_patch_refs": sum(
+                        1 for r in refs if "Patch" in (r.get("tags") or [])
+                    ),
+                    "nvd_exploit_refs": sum(
+                        1 for r in refs if "Exploit" in (r.get("tags") or [])
+                    ),
+                    "nvd_mitigation_refs": sum(
+                        1 for r in refs if "Mitigation" in (r.get("tags") or [])
+                    ),
                 }
             )
 
@@ -246,6 +321,13 @@ def _poll_cisa_kev(url: str, ignore: dict, since_hours: int = 24) -> list:
         detail_url = f"https://nvd.nist.gov/vuln/detail/{cve_id}"
         if is_ignored(ignore, detail_url):
             continue
+        notes = v.get("notes", "") or ""
+        required_action = v.get("requiredAction", "") or ""
+        # KEV required_action field often states "Apply updates" or describes
+        # mitigations — use it as a richer patch signal alongside notes.
+        patch_hint = (notes + " " + required_action).lower()
+        kev_patch = any(p in patch_hint for p in _PATCH_PHRASES)
+        kev_workaround = any(p in patch_hint for p in _WORKAROUND_PHRASES)
         items.append(
             {
                 "title": f"{cve_id} — {v.get('vulnerabilityName', '')[:120]}",
@@ -253,9 +335,76 @@ def _poll_cisa_kev(url: str, ignore: dict, since_hours: int = 24) -> list:
                 "summary": v.get("shortDescription", "")[:500],
                 "source": url,
                 "published_at": date_added,
+                "kev_due_date": v.get("dueDate", ""),
+                "kev_patch_hint": kev_patch,
+                "kev_workaround_hint": kev_workaround,
             }
         )
     return items
+
+
+_NEGATION_PREFIXES = ("no ", "not ", "without ", "currently no ", "no available ")
+
+
+def _contains_positive(blob: str, phrases: tuple) -> bool:
+    """Return True if a phrase appears in blob and is NOT immediately preceded
+    by a negation word (no, not, without, currently no).  Prevents 'no patch
+    available' from triggering the 'patch available' positive phrase."""
+    low = blob.lower()
+    for phrase in phrases:
+        start = 0
+        while True:
+            idx = low.find(phrase, start)
+            if idx == -1:
+                break
+            prefix = low[max(0, idx - 16) : idx]
+            if not any(prefix.endswith(neg) or prefix.endswith(neg.rstrip()) for neg in _NEGATION_PREFIXES):
+                return True
+            start = idx + 1
+    return False
+
+
+def _enrich_item_flags(item: dict) -> None:
+    """Set patch/exploit status flags on a polled item in-place.
+
+    Combines three signal sources in priority order:
+    1. NVD-provided vulnStatus and reference tags (highest confidence).
+    2. CISA KEV source indicator (always exploited).
+    3. Keyword scanning of title + summary text (lowest confidence, broadest coverage).
+
+    Sets four boolean fields: ``patch_available``, ``workaround_available``,
+    ``exploited_in_wild``, ``no_fix_explicit``.  ``no_fix_explicit`` is a
+    distinct signal from ``exploited_in_wild`` — it means a source
+    explicitly stated no fix exists, which lets _findings_to_cards() emit
+    ``"no_fix"`` even for CVEs not yet in CISA KEV.
+    """
+    blob = (
+        (item.get("title", "") or "") + " " + (item.get("summary", "") or "")
+    ).lower()
+
+    # --- Signal 1: NVD reference tags (set by _poll_nvd_api) ---
+    nvd_patch = item.get("nvd_patch_refs", 0) > 0
+    nvd_exploit = item.get("nvd_exploit_refs", 0) > 0
+    nvd_mitigation = item.get("nvd_mitigation_refs", 0) > 0
+
+    # --- Signal 2: CISA KEV source and action hints ---
+    kev_source = (
+        item.get("source_id") == "cisa_kev"
+        or "known_exploited" in (item.get("source", "") or "")
+    )
+    kev_patch = item.get("kev_patch_hint", False)
+    kev_workaround = item.get("kev_workaround_hint", False)
+
+    # --- Signal 3: keyword scanning ---
+    kw_patch = _contains_positive(blob, _PATCH_PHRASES)
+    kw_workaround = _contains_positive(blob, _WORKAROUND_PHRASES)
+    kw_no_fix = any(p in blob for p in _NO_FIX_PHRASES)
+    kw_exploit = any(p in blob for p in _EXPLOIT_PHRASES)
+
+    item["patch_available"] = nvd_patch or kev_patch or kw_patch
+    item["workaround_available"] = nvd_mitigation or kev_workaround or kw_workaround
+    item["exploited_in_wild"] = kev_source or nvd_exploit or kw_exploit
+    item["no_fix_explicit"] = kw_no_fix
 
 
 def poll_feed(feed_cfg: dict, since_hours: int, ignore: dict) -> list:
@@ -310,6 +459,7 @@ def poll_feed(feed_cfg: dict, since_hours: int, ignore: dict) -> list:
         it["source_country"] = country
         if country:
             it["country"] = country
+        _enrich_item_flags(it)
     return items
 
 
