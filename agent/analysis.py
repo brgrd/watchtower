@@ -20,6 +20,9 @@ CONFIG = yaml.safe_load(
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 GROQ_BASE = "https://api.groq.com/openai/v1"
 
+# Last Groq call metadata — populated by groq_analyze_briefing(); read by eval.
+_last_groq_meta: dict = {}
+
 
 def placeholder_mode() -> bool:
     val = os.getenv("WATCHTOWER_PLACEHOLDER_MODE")
@@ -84,6 +87,7 @@ def groq_chat(messages, model, temperature=0.2, max_tokens=1200):
         return data["choices"][0]["message"]["content"], {
             "rpd_rem": res.headers.get("x-ratelimit-remaining-requests"),
             "tpm_rem": res.headers.get("x-ratelimit-remaining-tokens"),
+            "retries": attempt,
         }
 
     raise RuntimeError("Groq rate limited repeatedly")
@@ -204,7 +208,7 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
                 f"[WARN] Groq prompt too large ({len(user_content)} chars), skipping to avoid 413"
             )
             return "", [], "payload_too_large"
-        content, _ = groq_chat(
+        content, _meta = groq_chat(
             [
                 {
                     "role": "system",
@@ -216,6 +220,10 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
             temperature=0.2,
             max_tokens=2000,
         )
+        _last_groq_meta.update(_meta)
+        _last_groq_meta["model"] = CONFIG["model"]["name"]
+        _last_groq_meta["payload_chars"] = len(user_content)
+        _last_groq_meta["parse_ok"] = True
         content = content.strip()
         if content.startswith("```"):
             content = re.sub(r"^```[a-z]*\n?", "", content)
@@ -227,6 +235,8 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
             findings = []
         return data.get("executive_summary", ""), findings, "ok"
     except Exception as exc:
+        _last_groq_meta["parse_ok"] = False
+        _last_groq_meta["error"] = str(exc)
         print(f"[WARN] Groq analysis failed: {exc}")
         return "", [], f"error: {exc}"
 

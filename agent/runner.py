@@ -27,6 +27,7 @@ from agent import analysis as analysis_mod
 from agent import html_builder as html_builder_mod
 from agent import scoring as scoring_mod
 from agent import state as state_mod
+from agent.eval import EvalCollector
 from agent.ingest import _merge_by_cve, _enrich_epss
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
@@ -1418,6 +1419,7 @@ def _update_feed_health(health: dict, feed_id: str, ok: bool) -> None:
 # -----------------------------
 def _run():
     run_start = time.monotonic()
+    _eval = EvalCollector()
     os.makedirs(REPORTS_DIR, exist_ok=True)
     os.makedirs(STATE_DIR, exist_ok=True)
 
@@ -1487,8 +1489,10 @@ def _run():
                 print(f"[WARN] Feed poll task failed: {exc}")
     save_json(FEED_HEALTH_FILE, feed_health)
 
+    _eval.record_stage("polled_raw", len(polled))
     polled, seen = deduplicate(polled, seen)
     polled = _merge_by_cve(polled)  # collapse same-CVE articles before Groq
+    _eval.record_stage("after_dedup_cve_merge", len(polled))
     save_seen(seen)
     save_json(LAST_RUN_TS_FILE, {"ts": now_utc_iso()})
 
@@ -1546,6 +1550,7 @@ def _run():
     if len(all_items) > _max_groq:
         all_items = sorted(all_items, key=lambda it: it.get("published_ts", ""), reverse=True)[:_max_groq]
         print(f"[INFO] Catch-up cap: kept {_max_groq} newest items of {len(enriched or polled)} total")
+    _eval.record_stage("groq_input", len(all_items))
     kev_items = [it for it in all_items if "known_exploited" in it.get("source", "")]
     nvd_items = [
         it for it in all_items if "services.nvd.nist.gov" in it.get("source", "")
@@ -1559,6 +1564,8 @@ def _run():
     executive, findings, groq_status = groq_analyze_briefing(
         kev_items, nvd_items, news_items
     )
+    _eval.record_groq(analysis_mod._last_groq_meta)
+    _eval.record_stage("groq_findings", len(findings))
     print(
         f"[INFO] Groq status: {groq_status} | executive={'yes' if executive else 'no'} | findings={len(findings)}"
     )
@@ -1567,6 +1574,7 @@ def _run():
         cards = _findings_to_cards(findings, all_items=all_items)[
             : budgets["max_clusters_output"]
         ]
+        _eval.record_stage("post_quality_gate", len(cards))
     else:
         # Fallback: use cluster cards with basic summaries (placeholder mode or Groq failure)
         for c in cards:
@@ -1650,6 +1658,16 @@ def _run():
 
     _enrich_epss(cards, EPSS_CACHE_FILE)
     _update_shelf(cards)
+    _eval.record_stage("final_cards", len(cards))
+    _eval.record_enrichment(
+        epss_hits=sum(1 for c in cards if c.get("epss_score") is not None),
+        nvd_hits=sum(1 for c in cards if (c.get("enrichment") or {}).get("cves")),
+        kev_hits=sum(1 for c in cards if c.get("is_kev")),
+        total=len(cards),
+    )
+    _eval.record_feed_yields(feed_run_metrics)
+    _eval.set_cards(cards)
+    _eval.write_report(STATE_DIR)
     ioc_ledger = _update_ioc_ledger(cards, IOC_LEDGER_FILE)
     history = _read_ledger_history()
     _prune_old_briefings(REPORTS_DIR)
