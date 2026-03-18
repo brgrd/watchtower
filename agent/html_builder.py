@@ -666,12 +666,14 @@ def _build_enrichment_html(enrichment: dict) -> str:
     )
 
 
-def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
+def _build_forensics_html(cards: list, ioc_ledger: dict = None, history_days: list = None) -> str:
     """Build the Forensics rail-tab content: CVE index, kill-chain breakdown,
-    affected product matrix, and IOC intelligence panel.
+    affected product matrix, IOC intelligence panel, and CVE timeline.
 
-    All four panels are generated from the current-window ``cards`` list and
-    the cross-run ``ioc_ledger`` dict.  No network or model calls are made.
+    All panels are generated from the current-window ``cards`` list,
+    the cross-run ``ioc_ledger`` dict, and optionally ``history_days``
+    (list of annotated day dicts, newest-first) for the CVE timeline.
+    No network or model calls are made.
     """
     ioc_ledger = ioc_ledger or {}
 
@@ -951,7 +953,124 @@ def _build_forensics_html(cards: list, ioc_ledger: dict = None) -> str:
             '<div class="forensics-empty">No network IOCs extracted from this window\u2019s articles.</div>'
         )
 
-    return cve_html + killchain_html + product_html + ioc_html
+    # ── Panel E: CVE Timeline ──────────────────────────────────────────────────────────────
+    cve_timeline_html = ""
+    if history_days:
+        # Build per-CVE history: oldest → newest (history_days is newest-first, so reverse)
+        _cve_hist: dict = {}  # cve -> {first_seen, days: {date_str: {patch_status, titles[]}}}
+        for day in reversed(history_days):
+            date_str = day.get("date_str", "")
+            for card in day.get("cards", []):
+                cves = (card.get("enrichment") or {}).get("cves") or []
+                ps = card.get("patch_status", "unknown")
+                title = card.get("title", "")
+                for cve in cves:
+                    if cve not in _cve_hist:
+                        _cve_hist[cve] = {"first_seen": date_str, "days": {}}
+                    day_entry = _cve_hist[cve]["days"].setdefault(
+                        date_str, {"patch_status": "unknown", "titles": []}
+                    )
+                    # Keep highest-ranked patch status for this day
+                    if _PATCH_RANK.get(ps, 0) > _PATCH_RANK.get(day_entry["patch_status"], 0):
+                        day_entry["patch_status"] = ps
+                    if title and title not in day_entry["titles"]:
+                        day_entry["titles"].append(title)
+
+        # Only render CVEs with 2+ history days or present in current window
+        current_cves = set(cve_map.keys())
+        tl_rows = []
+        for cve, data in sorted(
+            _cve_hist.items(),
+            key=lambda x: (len(x[1]["days"]), x[0]),
+            reverse=True,
+        )[:25]:
+            n_days = len(data["days"])
+            if n_days < 2 and cve not in current_cves:
+                continue
+            # Determine current patch status
+            cur_status = (
+                cve_map[cve]["patch_status"]
+                if cve in cve_map
+                else data["days"][max(data["days"].keys())]["patch_status"]
+            )
+            lbl, col = _PATCH_LABELS.get(cur_status, ("? Unknown", "#8b949e"))
+            esc = html.escape(cve)
+            nvd_url = f"https://nvd.nist.gov/vuln/detail/{esc}"
+
+            # Compact patch progression: only emit entries where status changes
+            prog_parts = []
+            prev_ps = None
+            for d_str, d_data in sorted(data["days"].items()):
+                ps2 = d_data["patch_status"]
+                if ps2 != prev_ps:
+                    lbl2, col2 = _PATCH_LABELS.get(ps2, ("? Unknown", "#8b949e"))
+                    d_short = d_str[5:]  # MM-DD
+                    prog_parts.append(
+                        f'<span style="color:{col2};font-size:.67rem">{d_short}: {lbl2}</span>'
+                    )
+                    prev_ps = ps2
+            prog_html = (
+                '<div class="cve-tl-prog">'
+                + ' <span style="color:#555">→</span> '.join(prog_parts)
+                + "</div>"
+                if len(prog_parts) > 1
+                else ""
+            )
+
+            # Per-day finding references
+            day_refs_html = ""
+            for d_str, d_data in sorted(data["days"].items()):
+                titles = d_data["titles"]
+                if not titles:
+                    continue
+                shown = titles[:3]
+                extra = len(titles) - 3
+                day_refs_html += (
+                    '<div style="margin:.18rem 0;font-size:.69rem">'
+                    + f'<span style="color:#6a7f98;font-family:monospace">{d_str}</span> '
+                    + " · ".join(html.escape(t[:65]) for t in shown)
+                    + (
+                        f' <span style="color:#555">+{extra} more</span>'
+                        if extra > 0
+                        else ""
+                    )
+                    + "</div>"
+                )
+
+            tl_rows.append(
+                '<details class="forensics-acc">'
+                + "<summary>"
+                + '<a href="'
+                + nvd_url
+                + '" target="_blank" rel="noopener noreferrer"'
+                + ' style="color:#79c0ff;font-family:monospace;font-size:.78rem"'
+                + ' onclick="event.stopPropagation()">'
+                + esc
+                + "</a>"
+                + f'<span style="color:#8b949e;font-size:.68rem;margin-left:.4rem">'
+                + f"{n_days}d tracked</span>"
+                + f'<span style="color:{col};font-size:.7rem;margin-left:.4rem">{lbl}</span>'
+                + "</summary>"
+                + '<div style="padding:.2rem .5rem .3rem">'
+                + prog_html
+                + day_refs_html
+                + "</div></details>"
+            )
+
+        if tl_rows:
+            cve_timeline_html = (
+                '<h4 class="forensics-section-title">CVE Timeline</h4>'
+                '<p class="forensics-hint">Patch status progression and finding references'
+                " from the past 7 days. Expand a row for day-by-day detail.</p>"
+                + "".join(tl_rows)
+            )
+        else:
+            cve_timeline_html = (
+                '<h4 class="forensics-section-title">CVE Timeline</h4>'
+                '<div class="forensics-empty">No cross-run CVE history available yet.</div>'
+            )
+
+    return cve_html + killchain_html + product_html + ioc_html + cve_timeline_html
 
 
 def _build_priority_actions_html(cards: list) -> str:
@@ -1438,6 +1557,7 @@ def _write_index_html(
                         {attr_badge_html}
                         {html.escape(c['title'])}
                         <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline">{tags}</div>
+                        <button class="rem-pill" data-card-id="{html.escape(c.get('id', ''))}" title="Remediation: Unacknowledged" onclick="event.stopPropagation();remCycle(this)">\u2299</button>
                     </summary>
                     <div class="cluster-body">
                         <p>{html.escape(c['summary'])}</p>
@@ -1628,7 +1748,7 @@ def _write_index_html(
             }
         )
 
-    forensics_html = _build_forensics_html(cards, ioc_ledger or {})
+    forensics_html = _build_forensics_html(cards, ioc_ledger or {}, history_days)
     alerts_html = _build_alerts_html(cards, delta)
     priority_actions_html = _build_priority_actions_html(cards)
 
@@ -1956,6 +2076,13 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
 .forensics-acc[open] summary::before{{transform:rotate(90deg)}}
 .forensics-ioc-type{{color:#8b949e;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;margin:.55rem 0 .2rem;padding:0}}
 .stale-banner{{background:#7d6608;color:#f0e68c;text-align:center;padding:.45rem 1rem;font-size:.82rem;position:sticky;top:0;z-index:200;letter-spacing:.02em}}
+.rem-pill{{background:none;border:1px solid #333;border-radius:3px;color:#555;cursor:pointer;font-size:.62rem;padding:1px 5px;margin-left:.3rem;flex-shrink:0;vertical-align:middle;line-height:1.4;transition:border-color .12s,color .12s}}
+.rem-pill:hover{{border-color:#666;color:#8b949e}}
+.cluster[data-rem-state="inprog"] .rem-pill{{border-color:#f9c74f;color:#f9c74f}}
+.cluster[data-rem-state="accepted"] .rem-pill{{border-color:#8b949e;color:#8b949e}}
+.cluster[data-rem-state="mitigated"] .rem-pill{{border-color:#3fb950;color:#3fb950}}
+.cluster[data-rem-state="mitigated"]{{opacity:.38;filter:grayscale(.6)}}
+.cve-tl-prog{{display:flex;flex-wrap:wrap;gap:.25rem .3rem;margin-bottom:.2rem;align-items:center}}
         </style>
         </head>
         <body>
@@ -2397,6 +2524,44 @@ document.querySelectorAll('.alert-row[data-card-id]').forEach(function(row){{
   var main=document.querySelector('.app-main');
   if(main)main.insertBefore(strip,main.firstChild);
 }})();
+function remCycle(btn){{
+  var card=btn.closest('.cluster');
+  if(!card)return;
+  var id=card.id.replace(/^card-/,'');
+  var states=['unack','inprog','accepted','mitigated'];
+  var cur=card.getAttribute('data-rem-state')||'unack';
+  var next=states[(states.indexOf(cur)+1)%states.length];
+  try{{
+    var r=JSON.parse(localStorage.getItem('wt.remediation')||'{{}}');
+    if(next==='unack')delete r[id];else r[id]=next;
+    localStorage.setItem('wt.remediation',JSON.stringify(r));
+  }}catch(e){{}}
+  _remApply(card,next,btn);
+  _remUpdateAlerts(id,next);
+}}
+function _remApply(card,state,btn){{
+  card.setAttribute('data-rem-state',state);
+  var icons={{unack:'\u2299',inprog:'\u27f3',accepted:'\u2713',mitigated:'\u2298'}};
+  var titles={{unack:'Remediation: Unacknowledged',inprog:'Remediation: In Progress',accepted:'Remediation: Accepted Risk',mitigated:'Remediation: Mitigated'}};
+  if(btn){{btn.textContent=icons[state]||'\u2299';btn.title=titles[state]||state;}}
+}}
+function _remUpdateAlerts(id,state){{
+  document.querySelectorAll('.alert-row[data-card-id="'+id+'"]').forEach(function(row){{
+    row.style.display=state==='mitigated'?'none':'';
+  }});
+}}
+function initRemediationTracker(){{
+  var r={{}};
+  try{{r=JSON.parse(localStorage.getItem('wt.remediation')||'{{}}');}}catch(e){{}}
+  Object.keys(r).forEach(function(id){{
+    var card=document.getElementById('card-'+id);
+    if(!card)return;
+    var btn=card.querySelector('.rem-pill');
+    _remApply(card,r[id],btn);
+    _remUpdateAlerts(id,r[id]);
+  }});
+}}
+initRemediationTracker();
 initRightRail();
 selectDomain('all');
 initFindingsFilter();
