@@ -388,5 +388,11 @@
     "last_seen": "2026-03-18",
     "run_count": 1,
     "title": "Telnetd Unauthenticated RCE"
+  },
+  "cve:CVE-2025-71265": {
+    "first_seen": "2026-03-18",
+    "last_seen": "2026-03-18",
+    "run_count": 1,
+    "title": "Linux Kernel Vulnerabilities"
   }
 }
