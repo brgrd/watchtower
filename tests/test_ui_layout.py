@@ -344,6 +344,60 @@ class TestCatchupView:
         assert "cu-title" in html
         assert "cu-p1" in html
 
+    def test_catchup_away_label_present(self, tmp_path):
+        html = _render_html(tmp_path)
+        assert "You were away" in html
+        assert "here" in html  # "here's what changed"
+
+    def test_catchup_p1_chip_present(self, tmp_path):
+        html = _render_html(tmp_path)
+        assert "cu-chip--p1" in html
+
+    def test_catchup_still_active_chip_present(self, tmp_path):
+        html = _render_html(tmp_path)
+        assert "cu-chip--active" in html
+        assert "still active" in html
+
+    def test_catchup_patch_chip_present(self, tmp_path):
+        html = _render_html(tmp_path)
+        assert "cu-chip--patch" in html
+        assert "status changed" in html
+
+    def test_catchup_cve_status_snapshot_saved(self, tmp_path):
+        html = _render_html(tmp_path)
+        assert "wt.cve_status" in html
+        assert "cveSnap" in html
+
+    def test_catchup_cve_status_snapshot_saved_before_gap_check(self, tmp_path):
+        html = _render_html(tmp_path)
+        snap_pos = html.index("wt.cve_status")
+        gap_pos = html.index("gapH<4")
+        assert snap_pos < gap_pos
+
+    def test_catchup_patch_change_rows_rendered(self, tmp_path):
+        html = _render_html(tmp_path)
+        assert "cu-patch-row" in html
+        assert "cu-patch-cve" in html
+        assert "Patch status changes" in html
+
+    def test_catchup_patch_status_classes_present(self, tmp_path):
+        html = _render_html(tmp_path)
+        assert "cu-ps--good" in html
+        assert "cu-ps--bad" in html
+        assert "cu-ps--warn" in html
+
+    def test_catchup_cards_have_patch_status_and_cves(self, tmp_path):
+        html = _render_html(tmp_path)
+        # CARDS JS object must expose patch_status, shelf_resolved, cves
+        assert '"patch_status"' in html
+        assert '"shelf_resolved"' in html
+        assert '"cves"' in html
+
+    def test_catchup_section_label_present(self, tmp_path):
+        html = _render_html(tmp_path)
+        assert "cu-section-label" in html
+        assert "New findings" in html
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # KPI P1 and Exploited delta sub-labels

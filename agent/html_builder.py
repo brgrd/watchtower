@@ -1622,6 +1622,9 @@ def _write_index_html(
                 "run_count": int(c.get("run_count", 1)),
                 "first_seen_ts": c.get("first_seen_ts", ""),
                 "actions_24h": c.get("recommended_actions_24h", [])[:4],
+                "patch_status": c.get("patch_status", "unknown"),
+                "shelf_resolved": bool(c.get("shelf_resolved", False)),
+                "cves": list((c.get("enrichment") or {}).get("cves") or []),
             }
         )
 
@@ -1781,11 +1784,24 @@ p{{color:#c9d1d9}}
 .catchup-summary{{display:flex;align-items:center;gap:.5rem;padding:.45rem .75rem;cursor:pointer;list-style:none;font-size:.81rem;color:#79b8ff;user-select:none}}
 .catchup-summary::-webkit-details-marker{{display:none}}
 .catchup-summary:hover{{background:rgba(88,130,240,.07)}}
-.catchup-label{{flex:1}}
+.catchup-label{{flex:1;display:flex;flex-direction:column;gap:.2rem}}
 .catchup-close{{flex-shrink:0;font-size:.85rem;opacity:.5}}
 .catchup-body{{padding:.1rem .5rem .45rem}}
+.cu-chips{{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.2rem}}
+.cu-chip{{font-size:.65rem;padding:.1rem .4rem;border-radius:3px;background:#1e2a3a;color:#79b8ff;font-weight:600}}
+.cu-chip--p1{{background:#3a1a1a;color:#f85149}}
+.cu-chip--active{{background:#1a2a1a;color:#3fb950}}
+.cu-chip--patch{{background:#2a2a1a;color:#e3b341}}
+.cu-section-label{{font-size:.65rem;text-transform:uppercase;letter-spacing:.06em;color:#666;font-weight:700;padding:.3rem .25rem .1rem}}
 .cu-row{{display:flex;align-items:center;gap:.32rem;padding:.22rem .25rem;border-radius:4px;cursor:pointer;font-size:.78rem}}
 .cu-row:hover{{background:#1e2a3a}}
+.cu-patch-row{{display:flex;align-items:center;gap:.4rem;padding:.22rem .25rem;border-radius:4px;cursor:pointer;font-size:.75rem}}
+.cu-patch-row:hover{{background:#1e2a3a}}
+.cu-patch-cve{{font-family:monospace;font-size:.72rem;color:#8b949e;min-width:120px}}
+.cu-ps{{font-size:.68rem;padding:.1rem .3rem;border-radius:3px;font-weight:600}}
+.cu-ps--good{{background:#1a3a1a;color:#3fb950}}.cu-ps--warn{{background:#2a2a1a;color:#e3b341}}.cu-ps--bad{{background:#3a1a1a;color:#f85149}}.cu-ps--neutral{{background:#252525;color:#8b949e}}
+.cu-patch-arrow{{color:#555;font-size:.8rem}}
+.cu-patch-title{{color:#8b949e;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px}}
 .cu-score{{flex-shrink:0;font-size:.61rem;font-weight:700;background:#1a2535;color:#6ea8fe;border:1px solid rgba(88,130,240,.2);border-radius:3px;padding:1px 5px;min-width:2em;text-align:center}}
 .cu-pri{{flex-shrink:0;font-size:.61rem;font-weight:700;border-radius:3px;padding:1px 5px}}
 .cu-p1{{background:rgba(180,20,20,.12);color:#ff6b6b;border:1px solid rgba(180,20,20,.3)}}
@@ -2294,15 +2310,45 @@ document.querySelectorAll('.alert-row[data-card-id]').forEach(function(row){{
   var lastVisit=0;
   try{{lastVisit=parseInt(localStorage.getItem('wt.last_visit')||'0',10)||0;}}catch(e){{}}
   var now=Date.now();
+  /* Save CVE\u2192patch_status snapshot for next visit\u2019s change detection */
+  var cveSnap={{}};
+  (CARDS||[]).forEach(function(c){{
+    (c.cves||[]).forEach(function(cve){{cveSnap[cve]=c.patch_status||'unknown';}});
+  }});
   try{{localStorage.setItem('wt.last_visit',String(now));}}catch(e){{}}
+  try{{localStorage.setItem('wt.cve_status',JSON.stringify(cveSnap));}}catch(e){{}}
   if(!lastVisit)return;
   var gapH=(now-lastVisit)/3600000;
   if(gapH<4)return;
+  var gapDays=Math.floor(gapH/24);
+  var awayLabel=gapDays>=1?(gapDays===1?'1 day':gapDays+' days'):Math.round(gapH)+'h';
   var lvDate=new Date(lastVisit).toISOString().slice(0,10);
-  var lvLabel=new Date(lastVisit).toLocaleString(undefined,{{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}});
+  /* 1. New findings since last visit */
   var fresh=(CARDS||[]).filter(function(c){{return c.first_seen_ts&&c.first_seen_ts>=lvDate;}});
-  if(!fresh.length)return;
-  var rows=fresh.slice(0,10).map(function(c){{
+  /* 2. New P1s among those new findings */
+  var newP1=fresh.filter(function(c){{return c.priority==='P1';}}).length;
+  /* 3. Still-active persistent findings (existed before visit, still unresolved) */
+  var stillActive=(CARDS||[]).filter(function(c){{return(c.run_count||1)>1&&!c.shelf_resolved;}}).length;
+  /* 4. CVEs whose patch_status changed vs. last visit\u2019s snapshot */
+  var prevSnap={{}};
+  try{{prevSnap=JSON.parse(localStorage.getItem('wt.cve_status')||'{{}}');}}catch(e){{}}
+  var patchChanged=[];
+  (CARDS||[]).forEach(function(c){{
+    (c.cves||[]).forEach(function(cve){{
+      var prev=prevSnap[cve];
+      var cur=c.patch_status||'unknown';
+      if(prev&&prev!==cur)patchChanged.push({{cve:cve,from:prev,to:cur,title:c.title||'',id:c.id||''}});
+    }});
+  }});
+  if(!fresh.length&&!patchChanged.length)return;
+  /* Build headline chips */
+  var chips='';
+  if(fresh.length)chips+='<span class="cu-chip">'+fresh.length+' new</span>';
+  if(newP1>0)chips+='<span class="cu-chip cu-chip--p1">P1: '+newP1+'</span>';
+  if(stillActive>0)chips+='<span class="cu-chip cu-chip--active">'+stillActive+' still active</span>';
+  if(patchChanged.length>0)chips+='<span class="cu-chip cu-chip--patch">'+patchChanged.length+' status changed</span>';
+  /* Build new-findings rows */
+  var findingRows=fresh.slice(0,10).map(function(c){{
     var pri=c.priority||'';
     var priHtml=pri&&(pri==='P1'||pri==='P2')?'<span class="cu-pri cu-'+(pri==='P1'?'p1':'p2')+'">'+pri+'</span>':'';
     var t=(c.title||'').slice(0,80).replace(/&/g,'&amp;').replace(/</g,'&lt;');
@@ -2313,16 +2359,36 @@ document.querySelectorAll('.alert-row[data-card-id]').forEach(function(row){{
       +'</div>';
   }}).join('');
   var more=fresh.length>10?'<div class="cu-more">+'+(fresh.length-10)+' more below</div>':'';
+  /* Build patch-change rows */
+  var patchRows='';
+  if(patchChanged.length){{
+    patchRows='<div class="cu-section-label">Patch status changes</div>'
+      +patchChanged.slice(0,5).map(function(p){{
+        var fCls=p.from==='no_fix'?'cu-ps--bad':'cu-ps--neutral';
+        var tCls=p.to==='patched'?'cu-ps--good':p.to==='workaround'?'cu-ps--warn':'cu-ps--bad';
+        var cve=(p.cve||'').replace(/&/g,'&amp;');
+        var ttl=(p.title||'').slice(0,55).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+        return '<div class="cu-patch-row" data-card-id="'+p.id+'" role="button" tabindex="0">'
+          +'<span class="cu-patch-cve">'+cve+'</span>'
+          +'<span class="cu-ps '+fCls+'">'+p.from+'</span>'
+          +'<span class="cu-patch-arrow">\u2192</span>'
+          +'<span class="cu-ps '+tCls+'">'+p.to+'</span>'
+          +'<span class="cu-patch-title">'+ttl+'</span>'
+          +'</div>';
+      }}).join('');
+  }}
+  var bodyHtml=(findingRows?'<div class="cu-section-label">New findings</div>'+findingRows+more:'')+patchRows;
   var strip=document.createElement('details');
   strip.className='catchup-strip';
   strip.open=true;
   strip.innerHTML='<summary class="catchup-summary">'
     +'<span>\u23f1</span>'
-    +'<span class="catchup-label"><strong>'+fresh.length+' new finding'+(fresh.length!==1?'s':'')+'</strong> since your last visit &mdash; '+lvLabel+'</span>'
+    +'<span class="catchup-label"><strong>You were away '+awayLabel+' \u2014 here\u2019s what changed</strong>'
+    +'<span class="cu-chips">'+chips+'</span></span>'
     +'<span class="catchup-close">\u00d7</span>'
     +'</summary>'
-    +'<div class="catchup-body">'+rows+more+'</div>';
-  strip.querySelectorAll('.cu-row[data-card-id]').forEach(function(row){{
+    +'<div class="catchup-body">'+bodyHtml+'</div>';
+  strip.querySelectorAll('[data-card-id]').forEach(function(row){{
     row.addEventListener('click',function(){{
       var card=document.getElementById('card-'+row.getAttribute('data-card-id'));
       if(card){{card.open=true;card.scrollIntoView({{behavior:'smooth',block:'center'}});card.classList.add('alert-highlight');setTimeout(function(){{card.classList.remove('alert-highlight');}},1800);}}
