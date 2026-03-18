@@ -1172,6 +1172,80 @@ def _prune_old_briefings(reports_dir: str, keep_days: int = 10) -> None:
             pass
 
 
+def _compute_weekly_cross_run(history_days: list) -> dict:
+    """Cross-reference JSONL history to produce still-active and patch-improved counts.
+
+    Returns a dict with:
+      still_active    — cards from oldest available day still unresolved in today's run
+      history_total   — total cards in oldest day used as baseline
+      history_date    — date string of that baseline day
+      patch_improved  — CVEs whose earliest recorded patch_status was "no_fix" and whose
+                        most-recent recorded status is "patched" or "workaround"
+    """
+    if len(history_days) < 2:
+        return {}
+
+    today_keys: set[str] = set()
+    for c in history_days[0]["cards"]:
+        if not c.get("shelf_resolved"):
+            today_keys.add(_shelf_key(c))
+
+    oldest = history_days[-1]
+    still_active = sum(
+        1 for c in oldest["cards"]
+        if not c.get("shelf_resolved") and _shelf_key(c) in today_keys
+    )
+
+    # Patch Coverage Change — build (first, last) status per CVE across history chronologically
+    cve_status: dict[str, tuple[str, str]] = {}
+    for day in reversed(history_days):          # oldest → newest
+        for card in day["cards"]:
+            cves = (card.get("enrichment") or {}).get("cves") or []
+            ps = card.get("patch_status", "unknown")
+            for cve in cves:
+                first, _ = cve_status.get(cve, (ps, ps))
+                cve_status[cve] = (first, ps)
+
+    patch_improved = sum(
+        1 for first_s, last_s in cve_status.values()
+        if first_s == "no_fix" and last_s in ("patched", "workaround")
+    )
+
+    return {
+        "still_active": still_active,
+        "history_total": len(oldest["cards"]),
+        "history_date": oldest["date_str"],
+        "patch_improved": patch_improved,
+    }
+
+
+def _annotate_history_lifecycle(history_days: list, current_card_map: dict) -> list:
+    """Annotate each history day with still_active, resolved, and escalated counts.
+
+    current_card_map: {shelf_key: card} built from the current run's final cards.
+    """
+    result = []
+    for day in history_days:
+        still_active = resolved = escalated = 0
+        for c in day["cards"]:
+            current = current_card_map.get(_shelf_key(c))
+            if current is None:
+                continue
+            if current.get("shelf_resolved"):
+                resolved += 1
+            else:
+                still_active += 1
+                if int(current.get("risk_score", 0)) > int(c.get("risk_score", 0)):
+                    escalated += 1
+        result.append({
+            **day,
+            "still_active": still_active,
+            "resolved": resolved,
+            "escalated": escalated,
+        })
+    return result
+
+
 def _load_history_days(reports_dir: str, n: int = 7) -> list:
     """Scan briefing_*.jsonl files, group by ET date (UTC-5), return up to n days
     sorted newest-first.  Each entry: {date_str, ts_str, cards: [...]}.
@@ -1658,6 +1732,7 @@ def _run():
 
     _enrich_epss(cards, EPSS_CACHE_FILE)
     _update_shelf(cards)
+    current_card_map = {_shelf_key(c): c for c in cards}
     _eval.record_stage("final_cards", len(cards))
     _eval.record_enrichment(
         epss_hits=sum(1 for c in cards if c.get("epss_score") is not None),
@@ -1672,6 +1747,7 @@ def _run():
     history = _read_ledger_history()
     _prune_old_briefings(REPORTS_DIR)
     history_days = _load_history_days(REPORTS_DIR)
+    history_days = _annotate_history_lifecycle(history_days, current_card_map)
     velocity = _compute_velocity(history_days)
     aggregate = _rebuild_weekly_aggregate(REPORTS_DIR, days=history_days)
     weekly_summary = groq_weekly_review(aggregate)
@@ -1683,7 +1759,8 @@ def _run():
         aggregate["weekly_summary"] = weekly_summary
         aggregate["weekly_summary_ts"] = _today_utc
         save_json(WEEKLY_AGGREGATE_FILE, aggregate)
-    weekly_html = _build_weekly_section(aggregate)
+    _wcr = _compute_weekly_cross_run(history_days)
+    weekly_html = _build_weekly_section(aggregate, cross_run=_wcr)
     _write_index_html(
         index_html,
         cards,

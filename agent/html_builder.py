@@ -374,7 +374,12 @@ def _build_domain_rank_html(cards: list, heatmap: dict, velocity: dict = None) -
 # P3: 7-day history helpers
 # -----------------------------
 def _build_history_accordion(days: list, today_str: str = "") -> str:
-    """Build a 7-day briefing history accordion `<section>` element."""
+    """Build a 7-day briefing history accordion `<section>` element.
+
+    Each day dict may carry pre-computed lifecycle counts (added by
+    _annotate_history_lifecycle in runner.py):
+      still_active, resolved, escalated
+    """
     if not days:
         return (
             '<div class="history-panel muted" style="font-size:.78rem;padding:.4rem 0">'
@@ -394,6 +399,36 @@ def _build_history_accordion(days: list, today_str: str = "") -> str:
         if exploited:
             meta_parts.append(f"exploited: {exploited}")
         meta_txt = " \u00b7 ".join(meta_parts)
+
+        # Lifecycle badges (present when _annotate_history_lifecycle has run)
+        lifecycle_html = ""
+        still_active = day.get("still_active")
+        resolved = day.get("resolved")
+        escalated = day.get("escalated")
+        if still_active is not None:
+            lc_parts: list[str] = []
+            if still_active > 0:
+                lc_parts.append(
+                    f'<span class="ha-lc ha-lc--active" title="Still active today">'
+                    f'\u25cf\u00a0{still_active} active</span>'
+                )
+            if resolved > 0:
+                lc_parts.append(
+                    f'<span class="ha-lc ha-lc--resolved" title="Resolved since this run">'
+                    f'\u2713\u00a0{resolved} resolved</span>'
+                )
+            if escalated > 0:
+                lc_parts.append(
+                    f'<span class="ha-lc ha-lc--escalated" title="Risk score increased since this run">'
+                    f'\u2191\u00a0{escalated} escalated</span>'
+                )
+            if lc_parts:
+                lifecycle_html = (
+                    f'<span class="ha-lifecycle">'
+                    + " ".join(lc_parts)
+                    + "</span>"
+                )
+
         trows_list: list[str] = []
         for c in sorted(cards, key=lambda x: int(x.get("risk_score", 0)), reverse=True):
             pri = _derive_priority(c)
@@ -412,7 +447,8 @@ def _build_history_accordion(days: list, today_str: str = "") -> str:
             f'<summary class="ha-summary">'
             f'<span class="ha-date">{html.escape(date_str)}</span>'
             f'<span class="ha-meta">{html.escape(meta_txt)}</span>'
-            f'<span class="ha-ts">{html.escape(ts_str)}</span>'
+            + lifecycle_html
+            + f'<span class="ha-ts">{html.escape(ts_str)}</span>'
             f"</summary>"
             f'<div class="ha-body">'
             f'<table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead>'
@@ -428,17 +464,46 @@ def _build_history_accordion(days: list, today_str: str = "") -> str:
     )
 
 
-def _build_weekly_section(aggregate: dict) -> str:
+def _build_velocity_sparkline(day_counts: dict) -> str:
+    """7-slot polyline SVG from a {date: count} map. Always renders 7 slots."""
+    if not day_counts:
+        return ""
+    sorted_days = sorted(day_counts.keys())[-7:]
+    counts = [day_counts.get(d, 0) for d in sorted_days]
+    while len(counts) < 7:
+        counts.insert(0, 0)
+    W, H, PAD = 56, 20, 2
+    slot_w = W / 7
+    max_c = max(counts) or 1
+
+    def _y(c):
+        return round(H - PAD - (c / max_c) * (H - PAD * 2), 1)
+
+    pts = " ".join(f"{slot_w * i + slot_w / 2:.1f},{_y(c)}" for i, c in enumerate(counts))
+    dots = "".join(
+        f'<circle cx="{slot_w*i+slot_w/2:.1f}" cy="{_y(c)}" r="2.2" '
+        f'fill="{"var(--vel-dot,#60a5fa)" if c > 0 else "transparent"}"/>'
+        for i, c in enumerate(counts)
+    )
+    return (
+        f'<svg class="vel-spark" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
+        f'xmlns="http://www.w3.org/2000/svg" aria-label="Threat velocity \u2014 7 days">'
+        f'<polyline points="{pts}" fill="none" stroke="var(--vel-line,#60a5fa)" '
+        f'stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>'
+        f"{dots}</svg>"
+    )
+
+
+def _build_weekly_section(aggregate: dict, cross_run: dict = None) -> str:
     """Build the weekly scope <section> HTML block."""
     if not aggregate or aggregate.get("total_cards", 0) == 0:
         return ""
-    total = aggregate.get("total_cards", 0)
     unique_cves = aggregate.get("unique_cves", 0)
-    n_domains = len(aggregate.get("active_domains", []))
     most_active = aggregate.get("most_active_day", "\u2014")
     window = aggregate.get("window_days", 7)
     summary_txt = aggregate.get("weekly_summary", "")
     top_cves = aggregate.get("top_cves", [])
+    day_counts = aggregate.get("day_counts", {})
     max_count = top_cves[0]["count"] if top_cves else 1
     cve_rows = "".join(
         "<tr>"
@@ -467,19 +532,75 @@ def _build_weekly_section(aggregate: dict) -> str:
         else ""
     )
     window_note = (
-        f'<span class="weekly-window-note">Building history \u2014 full 7-day view available after day 3</span>'
+        '<span class="weekly-window-note">Building history \u2014 full 7-day view available after day 3</span>'
         if window < 3
         else f'<span class="weekly-window-note">Past {window} day{"s" if window != 1 else ""}</span>'
     )
+
+    # ── KPI tiles ─────────────────────────────────────────────────────────────
+    wcr = cross_run or {}
+
+    # Tile 1: Still-Active Rate (cross-run) or total findings fallback
+    if wcr.get("history_total"):
+        still_n = wcr["still_active"]
+        hist_n = wcr["history_total"]
+        hist_date = wcr.get("history_date", "")
+        tile1 = (
+            f'<div class="wkpi" title="Findings from {html.escape(hist_date)} still unresolved today">'
+            f'<span class="wk">Still Active</span>'
+            f'<span class="wv wv-cross">{still_n}<small>/{hist_n}</small></span>'
+            f'<span class="wk-sub">vs {html.escape(hist_date)}</span></div>'
+        )
+    else:
+        total = aggregate.get("total_cards", 0)
+        tile1 = (
+            f'<div class="wkpi"><span class="wk">Total Findings</span>'
+            f'<span class="wv">{total}</span></div>'
+        )
+
+    # Tile 2: Patch Coverage Change
+    patch_n = wcr.get("patch_improved", 0)
+    tile2 = (
+        f'<div class="wkpi wkpi--good" title="CVEs that moved from No Fix to Patched/Workaround this week">'
+        f'<span class="wk">Patched This Week</span>'
+        f'<span class="wv wv-good">+{patch_n}</span>'
+        f'<span class="wk-sub">CVEs resolved</span></div>'
+    ) if patch_n > 0 else (
+        f'<div class="wkpi" title="CVEs that moved from No Fix to Patched/Workaround this week">'
+        f'<span class="wk">Patched This Week</span>'
+        f'<span class="wv wv-muted">\u2014</span>'
+        f'<span class="wk-sub">no change</span></div>'
+    )
+
+    # Tile 3: Unique CVEs
+    tile3 = (
+        f'<div class="wkpi"><span class="wk">Unique CVEs</span>'
+        f'<span class="wv">{unique_cves}</span></div>'
+    )
+
+    # Tile 4: Threat Velocity sparkline
+    sparkline = _build_velocity_sparkline(day_counts)
+    tile4 = (
+        f'<div class="wkpi wkpi--spark" title="Daily finding count over the past 7 days">'
+        f'<span class="wk">Threat Velocity</span>'
+        f'<span class="wv-spark">{sparkline}</span></div>'
+    ) if sparkline else (
+        f'<div class="wkpi"><span class="wk">Most Active Day</span>'
+        f'<span class="wv wv-sm">{html.escape(most_active)}</span></div>'
+    )
+
+    # Tile 5: Most Active Day
+    tile5 = (
+        f'<div class="wkpi"><span class="wk">Most Active Day</span>'
+        f'<span class="wv wv-sm">{html.escape(most_active)}</span></div>'
+    )
+
     return (
         '<section class="panel weekly-scope">'
         f'<h3 style="margin:.2rem 0 .6rem">Weekly Overview {window_note}</h3>'
         '<div class="weekly-kpi-row">'
-        f'<div class="wkpi"><span class="wk">Total Findings</span><span class="wv">{total}</span></div>'
-        f'<div class="wkpi"><span class="wk">Unique CVEs</span><span class="wv">{unique_cves}</span></div>'
-        f'<div class="wkpi"><span class="wk">Active Domains</span><span class="wv">{n_domains}</span></div>'
-        f'<div class="wkpi"><span class="wk">Most Active Day</span><span class="wv wv-sm">{html.escape(most_active)}</span></div>'
-        "</div>"
+        + tile1 + tile2 + tile3 + tile4 + tile5
+        + '</div>'
         '<div class="weekly-review-label">Week-in-Review</div>'
         + summary_html
         + cve_block
@@ -1688,11 +1809,12 @@ p{{color:#c9d1d9}}
 .ha-section{{margin:0 0 1rem}}.ha-day{{border-bottom:1px solid #252525}}.ha-day:last-child{{border-bottom:none}}
 .ha-summary{{display:flex;align-items:center;gap:.7rem;padding:.42rem .3rem;cursor:pointer;list-style:none;font-size:.82rem}}.ha-summary::-webkit-details-marker{{display:none}}
 .ha-date{{font-weight:700;color:#e6edf3;flex:0 0 92px}}.ha-meta{{color:#c9d1d9;flex:1;font-size:.78rem}}.ha-ts{{color:#8b949e;font-size:.68rem;margin-left:auto;flex-shrink:0}}
+.ha-lifecycle{{display:flex;gap:.35rem;flex-shrink:0}}.ha-lc{{font-size:.65rem;padding:.1rem .35rem;border-radius:3px;font-weight:600;letter-spacing:.02em}}.ha-lc--active{{background:#1a2a3a;color:#58a6ff}}.ha-lc--resolved{{background:#1a3a1a;color:#3fb950}}.ha-lc--escalated{{background:#3a1a1a;color:#f85149}}
 .ha-body{{padding:.25rem .2rem .5rem .5rem}}.ha-table{{width:100%;border-collapse:collapse;font-size:.76rem}}.ha-table th{{font-size:.67rem;color:#777;font-weight:700;border-bottom:1px solid #252525;padding:.2rem .35rem}}
 .ha-table td{{padding:.22rem .35rem;border-bottom:1px solid #1a1a1a;vertical-align:top}}.ha-title{{max-width:520px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}.ha-risk{{text-align:right;font-weight:700;color:#e6edf3;min-width:30px}}.ha-pri{{text-align:center;min-width:40px;white-space:nowrap}}
 .weekly-scope{{margin:0 0 1rem}}.weekly-window-note{{font-size:.7rem;color:#8b949e;font-weight:400;margin-left:.4rem;vertical-align:middle}}.weekly-kpi-row{{display:flex;gap:10px;flex-wrap:wrap;margin:.4rem 0 .75rem}}
 .wkpi{{background:#0f0f0f;border:1px solid #252525;border-radius:5px;padding:.4rem .65rem;display:flex;flex-direction:column;gap:.15rem;min-width:110px}}
-.wk{{font-size:.65rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700}}.wv{{font-size:1.1rem;color:#e6edf3;font-weight:800}}.wv-sm{{font-size:.85rem}}
+.wk{{font-size:.65rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700}}.wv{{font-size:1.1rem;color:#e6edf3;font-weight:800}}.wv-sm{{font-size:.85rem}}.wv-cross{{font-size:1.1rem;color:#e6edf3;font-weight:800}}.wv-cross small{{font-size:.7rem;color:#8b949e;font-weight:400}}.wk-sub{{font-size:.62rem;color:#666}}.wv-good{{font-size:1.1rem;color:#3fb950;font-weight:800}}.wv-muted{{font-size:1.1rem;color:#444;font-weight:800}}.wkpi--good{{border-color:#1a3a1a}}.wkpi--spark{{min-width:80px}}.wv-spark{{display:flex;align-items:center;padding:.15rem 0}}.vel-spark{{display:block;color:#60a5fa}}
 .weekly-review-label{{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:#999;margin:.3rem 0 .2rem}}
 .weekly-review-text{{margin:0 0 .7rem;line-height:1.75;font-size:.9rem;color:#c9d1d9}}
 .wcve-details{{margin:.3rem 0 0}}.wcve-details summary{{font-size:.78rem;color:#8b949e;cursor:pointer;padding:.25rem 0;list-style:none}}.wcve-details summary::-webkit-details-marker{{display:none}}
