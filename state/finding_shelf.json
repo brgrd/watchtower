@@ -352,5 +352,23 @@
     "last_seen": "2026-03-17",
     "run_count": 1,
     "title": "Apache Airflow FastAPI DagVersion Listing API Vulnerability"
+  },
+  "bf043dfe5f41": {
+    "first_seen": "2026-03-18",
+    "last_seen": "2026-03-18",
+    "run_count": 1,
+    "title": "IBM i 7.6 Vulnerability"
+  },
+  "a93d878a49c7": {
+    "first_seen": "2026-03-18",
+    "last_seen": "2026-03-18",
+    "run_count": 1,
+    "title": "Edimax GS-5008PL Firmware Vulnerability"
+  },
+  "5e332e921bd4": {
+    "first_seen": "2026-03-18",
+    "last_seen": "2026-03-18",
+    "run_count": 1,
+    "title": "IBM Planning Analytics Local Vulnerability"
   }
 }
