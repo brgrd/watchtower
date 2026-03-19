@@ -394,5 +394,23 @@
     "last_seen": "2026-03-18",
     "run_count": 1,
     "title": "Linux Kernel Vulnerabilities"
+  },
+  "cve:CVE-2026-31972": {
+    "first_seen": "2026-03-19",
+    "last_seen": "2026-03-19",
+    "run_count": 1,
+    "title": "SAMtools RCE"
+  },
+  "cve:CVE-2026-25873": {
+    "first_seen": "2026-03-19",
+    "last_seen": "2026-03-19",
+    "run_count": 1,
+    "title": "OmniGen2-RL RCE"
+  },
+  "cve:CVE-2026-32321": {
+    "first_seen": "2026-03-19",
+    "last_seen": "2026-03-19",
+    "run_count": 1,
+    "title": "ClipBucket v5 RCE"
   }
 }
