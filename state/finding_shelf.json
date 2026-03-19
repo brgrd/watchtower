@@ -412,5 +412,23 @@
     "last_seen": "2026-03-19",
     "run_count": 1,
     "title": "ClipBucket v5 RCE"
+  },
+  "cve:CVE-2026-20131": {
+    "first_seen": "2026-03-19",
+    "last_seen": "2026-03-19",
+    "run_count": 1,
+    "title": "Cisco FMC RCE"
+  },
+  "cve:CVE-2025-14716": {
+    "first_seen": "2026-03-19",
+    "last_seen": "2026-03-19",
+    "run_count": 1,
+    "title": "Secomea GateManager Auth Bypass"
+  },
+  "cve:CVE-2026-3511": {
+    "first_seen": "2026-03-19",
+    "last_seen": "2026-03-19",
+    "run_count": 1,
+    "title": "XMLUtils XXE"
   }
 }
