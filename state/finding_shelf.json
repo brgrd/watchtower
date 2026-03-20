@@ -415,8 +415,8 @@
   },
   "cve:CVE-2026-20131": {
     "first_seen": "2026-03-19",
-    "last_seen": "2026-03-19",
-    "run_count": 1,
+    "last_seen": "2026-03-20",
+    "run_count": 2,
     "title": "Cisco FMC RCE"
   },
   "cve:CVE-2025-14716": {
@@ -430,5 +430,11 @@
     "last_seen": "2026-03-19",
     "run_count": 1,
     "title": "XMLUtils XXE"
+  },
+  "cve:CVE-2026-23658": {
+    "first_seen": "2026-03-20",
+    "last_seen": "2026-03-20",
+    "run_count": 1,
+    "title": "Azure DevOps Credential Exposure"
   }
 }
