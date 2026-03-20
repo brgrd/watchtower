@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-03-20T10:52:35.899210+00:00
+generated_at: 2026-03-20T22:40:27.827115+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,14 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-20131 in Cisco Secure Firewall Management Center, CVE-2026-23658 in Azure DevOps, and CVE-2026-24299 in unspecified software, which represent significant threats due to their potential for exploitation. Internet-facing firewalls, container orchestration nodes, and VPN appliances are most exposed right now due to the lack of available patches for these vulnerabilities. The single most time-sensitive action is to patch or isolate systems affected by CVE-2026-20131, although no patch is currently available, and to monitor for potential exploitation of Azure DevOps and other affected software.
+The highest-risk items this period are CVE-2025-54068 in Laravel Livewire, CVE-2025-43520 in Apple watchOS, and CVE-2025-32432 in Craft CMS, which are being actively exploited in the wild. Internet-facing web applications and servers are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems running Laravel Livewire, Apple watchOS, or Craft CMS, although no patches are currently available for these vulnerabilities.
 
-## Cisco FMC RCE (risk: 100)
-[P1] CVE-2026-20131 is a remote code execution vulnerability in Cisco Secure Firewall Management Center, which is being exploited in the wild. No patch is currently available, making it a high-risk vulnerability. Why now: This vulnerability is being actively exploited in the wild, making it a high-priority threat. (confidence: 0.90)
+## Laravel Livewire RCE (risk: 100)
+[P1] CVE-2025-54068 is a code injection vulnerability in Laravel Livewire that allows unauthenticated attackers to achieve remote code execution. This vulnerability is being actively exploited in the wild. Why now: Reported exploitation in the wild. (confidence: 0.90)
 
-- [CVE-2026-20131](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-20131)
+- [CVE-2025-54068](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-54068)
 
-## Azure DevOps Credential Exposure (risk: 70)
-[P2] CVE-2026-23658 is a vulnerability in Azure DevOps that allows unauthorized access to sensitive information. No patch is currently available, and no workaround has been provided. Why now: This vulnerability has the potential to expose sensitive information, making it a significant threat. (confidence: 0.70)
+## Apple watchOS Buffer Overflow (risk: 100)
+[P1] CVE-2025-43520 is a buffer overflow vulnerability in Apple watchOS that could allow malicious attackers to execute arbitrary code. This vulnerability is being actively exploited in the wild. Why now: Reported exploitation in the wild. (confidence: 0.90)
 
-- [CVE-2026-23658](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-23658)
+- [CVE-2025-43520](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-43520)
+
+## Craft CMS Code Injection (risk: 100)
+[P1] CVE-2025-32432 is a code injection vulnerability in Craft CMS that allows remote attackers to execute arbitrary code. This vulnerability is being actively exploited in the wild. Why now: Reported exploitation in the wild. (confidence: 0.90)
+
+- [CVE-2025-32432](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32432)
