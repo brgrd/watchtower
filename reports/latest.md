@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-03-20T22:40:27.827115+00:00
+generated_at: 2026-03-21T10:39:32.194683+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2025-54068 in Laravel Livewire, CVE-2025-43520 in Apple watchOS, and CVE-2025-32432 in Craft CMS, which are being actively exploited in the wild. Internet-facing web applications and servers are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems running Laravel Livewire, Apple watchOS, or Craft CMS, although no patches are currently available for these vulnerabilities.
+CVE-2025-54068 in Laravel Livewire, CVE-2025-32432 in Craft CMS, and CVE-2025-43520 in Apple watchOS represent the highest-risk items this period. Internet-facing systems, particularly those using affected Apple and Craft CMS products, are most exposed due to the lack of available patches and active exploitation in the wild. The most time-sensitive action is to patch or isolate systems using Apple watchOS, iOS, iPadOS, macOS, visionOS, tvOS, and iPadOS, although no patches are currently available for these vulnerabilities.
 
 ## Laravel Livewire RCE (risk: 100)
-[P1] CVE-2025-54068 is a code injection vulnerability in Laravel Livewire that allows unauthenticated attackers to achieve remote code execution. This vulnerability is being actively exploited in the wild. Why now: Reported exploitation in the wild. (confidence: 0.90)
+[P1] Laravel Livewire contains a code injection vulnerability that could allow unauthenticated attackers to achieve remote code execution, with active exploitation in the wild and no available patch. Why now: Reported attribution (unverified): none, but active exploitation in the wild increases the urgency. (confidence: 0.90)
 
-- [CVE-2025-54068](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-54068)
+- [CISA Flags Apple, Craft CMS, Laravel Bugs in KEV, Orders Patching by April 3, 2026](https://thehackernews.com/2026/03/cisa-flags-apple-craft-cms-laravel-bugs.html)
+
+## Craft CMS RCE (risk: 100)
+[P1] Craft CMS contains a code injection vulnerability that allows a remote attacker to execute arbitrary code, with active exploitation in the wild and no available patch. Why now: Active exploitation in the wild increases the urgency. (confidence: 0.90)
+
+- [CISA Flags Apple, Craft CMS, Laravel Bugs in KEV, Orders Patching by April 3, 2026](https://thehackernews.com/2026/03/cisa-flags-apple-craft-cms-laravel-bugs.html)
 
 ## Apple watchOS Buffer Overflow (risk: 100)
-[P1] CVE-2025-43520 is a buffer overflow vulnerability in Apple watchOS that could allow malicious attackers to execute arbitrary code. This vulnerability is being actively exploited in the wild. Why now: Reported exploitation in the wild. (confidence: 0.90)
+[P1] Apple watchOS, iOS, iPadOS, macOS, visionOS, tvOS, and iPadOS contain a classic buffer overflow vulnerability that could allow a malicious attacker to execute arbitrary code, with active exploitation in the wild and no available patch. Why now: Active exploitation in the wild increases the urgency. (confidence: 0.90)
 
-- [CVE-2025-43520](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-43520)
-
-## Craft CMS Code Injection (risk: 100)
-[P1] CVE-2025-32432 is a code injection vulnerability in Craft CMS that allows remote attackers to execute arbitrary code. This vulnerability is being actively exploited in the wild. Why now: Reported exploitation in the wild. (confidence: 0.90)
-
-- [CVE-2025-32432](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32432)
+- [CISA Flags Apple, Craft CMS, Laravel Bugs in KEV, Orders Patching by April 3, 2026](https://thehackernews.com/2026/03/cisa-flags-apple-craft-cms-laravel-bugs.html)

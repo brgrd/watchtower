@@ -1,22 +1,22 @@
-# Watchtower Pipeline Eval — 2026-03-20T22:40:09Z
+# Watchtower Pipeline Eval — 2026-03-21T10:39:12Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 173 |
-| After dedup + CVE merge | 173 |
+| Items polled (raw) | 189 |
+| After dedup + CVE merge | 188 |
 | Sent to Groq | 30 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/173 (1.7%)** |
+| **Pipeline yield** | **3/189 (1.6%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 8,360 chars
+- **Payload**: 7,210 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 9806
+- **Rate limit remaining** — requests: 999, tokens: 10095
 
 ## Card Quality
 
@@ -26,12 +26,12 @@
 |--------|-------|
 | Risk score mean / p90 | 100 / 100 |
 | Tactic coverage | 100% |
-| CVE coverage | 0% |
+| CVE coverage | 100% |
 | Patch status | unknown: 3 |
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 34 chars (0% ≥ 60 chars, considered substantive)
+- **`why_now` avg length**: 69 chars (33% ≥ 60 chars, considered substantive)
 - **Recommended actions**: 6 total — 50% specific, 50% generic
 
 ### Persistence
@@ -44,21 +44,21 @@
 | Source | Hits | Rate |
 |--------|-----:|-----:|
 | EPSS | 3 | 100% |
-| NVD (CVE) | 0 | 0% |
-| CISA KEV | 3 | 100% |
+| NVD (CVE) | 3 | 100% |
+| CISA KEV | 0 | 0% |
 
 ## Feed Yield
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 111 |
-| `bsi_germany` | 21 |
-| `securityweek` | 7 |
-| `bleepingcomputer` | 5 |
+| `nvd` | 181 |
 | `cisa_kev` | 5 |
+| `thehackernews` | 2 |
+| `unit42` | 1 |
+| `bleepingcomputer` | 0 |
 | _(+19 more)_ | … |
 
-**12 feeds returned 0 items this run.**
+**19 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
@@ -70,3 +70,4 @@
 | 2026-03-19 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-03-19 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-03-20 | 2 | 1 | 100% | 0% | 1 | 0 |
+| 2026-03-20 | 3 | 3 | 100% | 0% | 3 | 0 |
