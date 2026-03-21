@@ -460,5 +460,23 @@
     "last_seen": "2026-03-21",
     "run_count": 1,
     "title": "Laravel Livewire RCE"
+  },
+  "f22e28687d61": {
+    "first_seen": "2026-03-21",
+    "last_seen": "2026-03-21",
+    "run_count": 1,
+    "title": "vanna-ai RCE"
+  },
+  "6ee33e821190": {
+    "first_seen": "2026-03-21",
+    "last_seen": "2026-03-21",
+    "run_count": 1,
+    "title": "Terminal Services Manager Buffer Overflow"
+  },
+  "5954ec1c5793": {
+    "first_seen": "2026-03-21",
+    "last_seen": "2026-03-21",
+    "run_count": 1,
+    "title": "Foundation Agents MetaGPT Vulnerability"
   }
 }
