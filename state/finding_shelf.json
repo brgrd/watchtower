@@ -496,5 +496,23 @@
     "last_seen": "2026-03-22",
     "run_count": 1,
     "title": "D-Link DHP-1320 Vuln"
+  },
+  "5be3a9432b2a": {
+    "first_seen": "2026-03-22",
+    "last_seen": "2026-03-22",
+    "run_count": 1,
+    "title": "Wavlink WL-WN578W2 Vuln"
+  },
+  "7b7a7494ada7": {
+    "first_seen": "2026-03-22",
+    "last_seen": "2026-03-22",
+    "run_count": 1,
+    "title": "Flos Freeware Notepad2 Vuln"
+  },
+  "9d51b32b21c2": {
+    "first_seen": "2026-03-22",
+    "last_seen": "2026-03-22",
+    "run_count": 1,
+    "title": "DNSS Domain Name Search Software Vuln"
   }
 }
