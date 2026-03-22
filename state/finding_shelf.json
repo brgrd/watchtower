@@ -478,5 +478,23 @@
     "last_seen": "2026-03-21",
     "run_count": 1,
     "title": "Foundation Agents MetaGPT Vulnerability"
+  },
+  "762613c56b8f": {
+    "first_seen": "2026-03-22",
+    "last_seen": "2026-03-22",
+    "run_count": 1,
+    "title": "apconw Aix-DB Vuln"
+  },
+  "1d4494bc986c": {
+    "first_seen": "2026-03-22",
+    "last_seen": "2026-03-22",
+    "run_count": 1,
+    "title": "trueleaf ApiFlow Vuln"
+  },
+  "557bd3fdb0ed": {
+    "first_seen": "2026-03-22",
+    "last_seen": "2026-03-22",
+    "run_count": 1,
+    "title": "D-Link DHP-1320 Vuln"
   }
 }
