@@ -1,7 +1,7 @@
 {
-  "rebuilt_at": "2026-03-22T10:39:55.833220+00:00",
-  "window_days": 5,
-  "total_cards": 15,
+  "rebuilt_at": "2026-03-23T22:46:46.801256+00:00",
+  "window_days": 6,
+  "total_cards": 18,
   "unique_cves": 11,
   "active_domains": [
     "ai_threat",
@@ -13,8 +13,9 @@
     "supply_chain",
     "web_framework"
   ],
-  "most_active_day": "2026-03-22",
+  "most_active_day": "2026-03-23",
   "day_counts": {
+    "2026-03-23": 3,
     "2026-03-22": 3,
     "2026-03-21": 3,
     "2026-03-20": 3,
@@ -67,6 +68,6 @@
       "count": 1
     }
   ],
-  "weekly_summary": "Over the past 5 days, our security landscape has been characterized by a diverse range of threats, with 15 total findings and 11 unique CVEs tracked. The most frequently seen vulnerabilities, each occurring once, include CVE-2025-54068, CVE-2025-43520, and others, affecting various domains such as AI/ML threats, containers, and crypto libraries. Notably, 2026-03-22 was the most active day, with multiple security domains impacted, including OS/kernel, npm/Node, and web/servers, highlighting the need for continued vigilance across these areas to mitigate potential risks.",
-  "weekly_summary_ts": "2026-03-22"
+  "weekly_summary": "Over the past six days, our security landscape has been characterized by a diverse range of threats, with 18 total findings and 11 unique CVEs tracked. The most frequently seen vulnerabilities, each occurring once, include CVE-2025-54068, CVE-2025-43520, and others, affecting various domains such as AI/ML threats, containers, and web servers. Active security domains span multiple areas, including OS/kernel, crypto libraries, and supply chain. Notably, the most active day was March 23, 2026, indicating a recent surge in security incidents that warrant continued monitoring and attention to mitigate potential risks.",
+  "weekly_summary_ts": "2026-03-23"
 }

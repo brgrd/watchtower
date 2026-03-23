@@ -514,5 +514,23 @@
     "last_seen": "2026-03-22",
     "run_count": 1,
     "title": "DNSS Domain Name Search Software Vuln"
+  },
+  "bdd254c45cc0": {
+    "first_seen": "2026-03-23",
+    "last_seen": "2026-03-23",
+    "run_count": 1,
+    "title": "MacCMS RCE"
+  },
+  "21a69cd54bfc": {
+    "first_seen": "2026-03-23",
+    "last_seen": "2026-03-23",
+    "run_count": 1,
+    "title": "yangzongzhuan RuoYi RCE"
+  },
+  "61dab0a34924": {
+    "first_seen": "2026-03-23",
+    "last_seen": "2026-03-23",
+    "run_count": 1,
+    "title": "Tenda AC21 Vulnerability"
   }
 }
