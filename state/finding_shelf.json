@@ -538,5 +538,23 @@
     "last_seen": "2026-03-24",
     "run_count": 1,
     "title": "Blinko RCE"
+  },
+  "6cad1c4322cc": {
+    "first_seen": "2026-03-24",
+    "last_seen": "2026-03-24",
+    "run_count": 1,
+    "title": "PhreeBooks ERP Vuln"
+  },
+  "a25982014c9f": {
+    "first_seen": "2026-03-24",
+    "last_seen": "2026-03-24",
+    "run_count": 1,
+    "title": "AIDA64 Extreme Vuln"
+  },
+  "5c1088cbf37b": {
+    "first_seen": "2026-03-24",
+    "last_seen": "2026-03-24",
+    "run_count": 1,
+    "title": "Apache Artemis Vuln"
   }
 }
