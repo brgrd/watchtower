@@ -574,5 +574,23 @@
     "last_seen": "2026-03-25",
     "run_count": 1,
     "title": "HCL Traveler Vuln"
+  },
+  "cve:CVE-2026-33017": {
+    "first_seen": "2026-03-25",
+    "last_seen": "2026-03-25",
+    "run_count": 1,
+    "title": "Langflow Code Injection"
+  },
+  "cve:CVE-2026-23282": {
+    "first_seen": "2026-03-25",
+    "last_seen": "2026-03-25",
+    "run_count": 1,
+    "title": "Linux Kernel Vulnerability"
+  },
+  "cve:CVE-2026-3608": {
+    "first_seen": "2026-03-25",
+    "last_seen": "2026-03-25",
+    "run_count": 1,
+    "title": "kea-ctrl-agent Vulnerability"
   }
 }
