@@ -1,22 +1,22 @@
-# Watchtower Pipeline Eval — 2026-03-25T22:50:21Z
+# Watchtower Pipeline Eval — 2026-03-26T22:44:39Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 715 |
-| After dedup + CVE merge | 715 |
+| Items polled (raw) | 521 |
+| After dedup + CVE merge | 520 |
 | Sent to Groq | 30 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/715 (0.4%)** |
+| **Pipeline yield** | **3/521 (0.6%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 6,017 chars
+- **Payload**: 6,450 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 10442
+- **Rate limit remaining** — requests: 999, tokens: 10301
 
 ## Card Quality
 
@@ -31,8 +31,8 @@
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 91.3 chars (100% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 6 total — 50% specific, 0% generic
+- **`why_now` avg length**: 26.3 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 3 total — 33% specific, 0% generic
 
 ### Persistence
 
@@ -43,31 +43,31 @@
 
 | Source | Hits | Rate |
 |--------|-----:|-----:|
-| EPSS | 3 | 100% |
+| EPSS | 0 | 0% |
 | NVD (CVE) | 0 | 0% |
-| CISA KEV | 1 | 33% |
+| CISA KEV | 0 | 0% |
 
 ## Feed Yield
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 500 |
-| `bsi_germany` | 172 |
-| `securityweek` | 8 |
-| `darkreading` | 8 |
-| `bleepingcomputer` | 7 |
+| `nvd` | 304 |
+| `bsi_germany` | 162 |
+| `bleepingcomputer` | 10 |
+| `thehackernews` | 7 |
+| `github_changelog` | 7 |
 | _(+19 more)_ | … |
 
-**12 feeds returned 0 items this run.**
+**9 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-03-21 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-03-22 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-03-22 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-03-23 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-03-24 | 1 | 1 | 100% | 0% | 1 | 0 |
 | 2026-03-24 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-03-25 | 3 | 3 | 100% | 0% | 3 | 0 |
+| 2026-03-25 | 3 | 1 | 100% | 0% | 3 | 0 |
