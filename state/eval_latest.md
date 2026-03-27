@@ -1,22 +1,22 @@
-# Watchtower Pipeline Eval — 2026-03-26T22:44:39Z
+# Watchtower Pipeline Eval — 2026-03-27T10:03:30Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 521 |
-| After dedup + CVE merge | 520 |
-| Sent to Groq | 30 |
+| Items polled (raw) | 267 |
+| After dedup + CVE merge | 267 |
+| Sent to Groq | 29 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/521 (0.6%)** |
+| **Pipeline yield** | **3/267 (1.1%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 6,450 chars
+- **Payload**: 5,994 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 10301
+- **Rate limit remaining** — requests: 999, tokens: 10447
 
 ## Card Quality
 
@@ -31,8 +31,8 @@
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 26.3 chars (0% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 3 total — 33% specific, 0% generic
+- **`why_now` avg length**: 123.7 chars (100% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 4 total — 25% specific, 75% generic
 
 ### Persistence
 
@@ -51,23 +51,23 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 304 |
-| `bsi_germany` | 162 |
-| `bleepingcomputer` | 10 |
-| `thehackernews` | 7 |
-| `github_changelog` | 7 |
+| `bsi_germany` | 133 |
+| `nvd` | 125 |
+| `bleepingcomputer` | 2 |
+| `unit42` | 2 |
+| `cisa_kev` | 1 |
 | _(+19 more)_ | … |
 
-**9 feeds returned 0 items this run.**
+**15 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-03-22 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-03-22 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-03-23 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-03-24 | 1 | 1 | 100% | 0% | 1 | 0 |
 | 2026-03-24 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-03-25 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-03-25 | 3 | 1 | 100% | 0% | 3 | 0 |
+| 2026-03-26 | 3 | 1 | 100% | 0% | 3 | 0 |
