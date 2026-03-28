@@ -652,5 +652,23 @@
     "last_seen": "2026-03-28",
     "run_count": 1,
     "title": "Citrix NetScaler Vuln"
+  },
+  "cve:CVE-2026-2442": {
+    "first_seen": "2026-03-28",
+    "last_seen": "2026-03-28",
+    "run_count": 1,
+    "title": "WordPress Plugin Vulnerability"
+  },
+  "cve:CVE-2026-4993": {
+    "first_seen": "2026-03-28",
+    "last_seen": "2026-03-28",
+    "run_count": 1,
+    "title": "wandb OpenUI Vulnerability"
+  },
+  "cve:CVE-2016-20037": {
+    "first_seen": "2026-03-28",
+    "last_seen": "2026-03-28",
+    "run_count": 1,
+    "title": "xwpe Buffer Overflow"
   }
 }
