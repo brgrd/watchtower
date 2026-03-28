@@ -631,8 +631,8 @@
   },
   "cve:CVE-2025-53521": {
     "first_seen": "2026-03-27",
-    "last_seen": "2026-03-27",
-    "run_count": 1,
+    "last_seen": "2026-03-28",
+    "run_count": 2,
     "title": "F5 BIG-IP APM RCE"
   },
   "cve:CVE-2026-24031": {
@@ -646,5 +646,11 @@
     "last_seen": "2026-03-27",
     "run_count": 1,
     "title": "Dovecot Mail Message Processing"
+  },
+  "cve:CVE-2026-3055": {
+    "first_seen": "2026-03-28",
+    "last_seen": "2026-03-28",
+    "run_count": 1,
+    "title": "Citrix NetScaler Vuln"
   }
 }
