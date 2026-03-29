@@ -670,5 +670,23 @@
     "last_seen": "2026-03-28",
     "run_count": 1,
     "title": "xwpe Buffer Overflow"
+  },
+  "cve:CVE-2026-4851": {
+    "first_seen": "2026-03-29",
+    "last_seen": "2026-03-29",
+    "run_count": 1,
+    "title": "Unpatched Code Execution"
+  },
+  "cve:CVE-2026-5020": {
+    "first_seen": "2026-03-29",
+    "last_seen": "2026-03-29",
+    "run_count": 1,
+    "title": "Totolink A3600R Vulnerability"
+  },
+  "cve:CVE-2026-5018": {
+    "first_seen": "2026-03-29",
+    "last_seen": "2026-03-29",
+    "run_count": 1,
+    "title": "Code-Projects Simple Food Order System Vulnerability"
   }
 }
