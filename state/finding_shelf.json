@@ -649,8 +649,8 @@
   },
   "cve:CVE-2026-3055": {
     "first_seen": "2026-03-28",
-    "last_seen": "2026-03-30",
-    "run_count": 2,
+    "last_seen": "2026-03-31",
+    "run_count": 3,
     "title": "Citrix NetScaler Vuln"
   },
   "cve:CVE-2026-2442": {
@@ -712,5 +712,11 @@
     "last_seen": "2026-03-30",
     "run_count": 1,
     "title": "GitLab CE/EE RCE"
+  },
+  "cve:CVE-2026-33977": {
+    "first_seen": "2026-03-31",
+    "last_seen": "2026-03-31",
+    "run_count": 1,
+    "title": "FreeRDP RCE"
   }
 }
