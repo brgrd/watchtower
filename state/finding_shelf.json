@@ -718,5 +718,23 @@
     "last_seen": "2026-03-31",
     "run_count": 1,
     "title": "FreeRDP RCE"
+  },
+  "cve:CVE-2026-1579": {
+    "first_seen": "2026-04-01",
+    "last_seen": "2026-04-01",
+    "run_count": 1,
+    "title": "MAVLink Auth Bypass"
+  },
+  "cve:CVE-2026-34372": {
+    "first_seen": "2026-04-01",
+    "last_seen": "2026-04-01",
+    "run_count": 1,
+    "title": "Sulu RCE"
+  },
+  "cve:CVE-2026-34367": {
+    "first_seen": "2026-04-01",
+    "last_seen": "2026-04-01",
+    "run_count": 1,
+    "title": "InvoiceShelf RCE"
   }
 }
