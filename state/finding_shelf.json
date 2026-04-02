@@ -736,5 +736,23 @@
     "last_seen": "2026-04-01",
     "run_count": 1,
     "title": "InvoiceShelf RCE"
+  },
+  "cve:CVE-2026-5281": {
+    "first_seen": "2026-04-02",
+    "last_seen": "2026-04-02",
+    "run_count": 1,
+    "title": "Google Dawn UAF"
+  },
+  "cve:CVE-2026-3502": {
+    "first_seen": "2026-04-02",
+    "last_seen": "2026-04-02",
+    "run_count": 1,
+    "title": "TrueConf Client Code Execution"
+  },
+  "cve:CVE-2026-34559": {
+    "first_seen": "2026-04-02",
+    "last_seen": "2026-04-02",
+    "run_count": 1,
+    "title": "CI4MS Vulnerabilities"
   }
 }
