@@ -754,5 +754,23 @@
     "last_seen": "2026-04-02",
     "run_count": 1,
     "title": "CI4MS Vulnerabilities"
+  },
+  "cve:CVE-2026-30252": {
+    "first_seen": "2026-04-03",
+    "last_seen": "2026-04-03",
+    "run_count": 1,
+    "title": "XSS in login.php"
+  },
+  "cve:CVE-2026-35467": {
+    "first_seen": "2026-04-03",
+    "last_seen": "2026-04-03",
+    "run_count": 1,
+    "title": "API Key Exposure"
+  },
+  "cve:CVE-2026-30251": {
+    "first_seen": "2026-04-03",
+    "last_seen": "2026-04-03",
+    "run_count": 1,
+    "title": "XSS in login_newpwd.php"
   }
 }
