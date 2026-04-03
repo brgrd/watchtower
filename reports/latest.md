@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-04-03T10:57:33.528018+00:00
+generated_at: 2026-04-03T22:47:47.147600+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-30252 in login.php, CVE-2026-35467 in temporary browser client, and CVE-2026-30251 in login_newpwd.php. Internet-facing web applications and API endpoints are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by CVE-2026-30252, although no patch is currently available.
+The highest-risk items this period are CVE-2026-28754, CVE-2026-28703, and CVE-2026-4107 in Zohocorp ManageEngine Exchange Reporter Plus, which are vulnerable to attacks due to the lack of available patches. Internet-facing Exchange servers are most exposed right now because they are vulnerable to exploitation through these CVEs. The single most time-sensitive action is to isolate or patch Zohocorp ManageEngine Exchange Reporter Plus versions before 5802, although no patch is currently available.
 
-## XSS in login.php (risk: 40)
-[P1] CVE-2026-30252 is a reflected cross-site scripting vulnerability in login.php, with no patch available. This vulnerability can be exploited to steal user credentials or perform unauthorized actions. Why now: This vulnerability is particularly concerning due to its potential for credential theft. (confidence: 0.80)
+## Exchange Reporter Plus RCE (risk: 70)
+[P1] Zohocorp ManageEngine Exchange Reporter Plus versions before 5802 are vulnerable to RCE attacks due to CVE-2026-28754, CVE-2026-28703, and CVE-2026-4107, with no available patches. Why now: Lack of available patches for vulnerable versions. (confidence: 0.80)
 
-- [CVE-2026-30252](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=CVE-2026-30252)
+- [CVE-2026-28754](https://nvd.nist.gov/v1/nvdidata.feeds/nvd.json)
 
-## API Key Exposure (risk: 40)
-[P1] CVE-2026-35467 is a vulnerability that exposes stored API keys in temporary browser client, with no patch available. This vulnerability can be exploited to gain unauthorized access to sensitive data. Why now: This vulnerability is particularly concerning due to its potential for data breaches. (confidence: 0.80)
+## Casdoor Vulnerability (risk: 40)
+[P2] A vulnerability was identified in Casdoor 2.356.0, with no available patches or workarounds. Why now: Newly disclosed vulnerability with no available patches. (confidence: 0.60)
 
-- [CVE-2026-35467](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=CVE-2026-35467)
+- [CVE-2026-5467](https://nvd.nist.gov/v1/nvdidata.feeds/nvd.json)
 
-## XSS in login_newpwd.php (risk: 40)
-[P1] CVE-2026-30251 is a reflected cross-site scripting vulnerability in login_newpwd.php, with no patch available. This vulnerability can be exploited to steal user credentials or perform unauthorized actions. Why now: This vulnerability is particularly concerning due to its potential for credential theft. (confidence: 0.80)
+## Linux Kernel Vulnerability (risk: 40)
+[P2] A vulnerability was identified in the Linux kernel, with no available patches or workarounds. Why now: Newly disclosed vulnerability with no available patches. (confidence: 0.60)
 
-- [CVE-2026-30251](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=CVE-2026-30251)
+- [CVE-2026-23418](https://nvd.nist.gov/v1/nvdidata.feeds/nvd.json)
