@@ -790,5 +790,23 @@
     "last_seen": "2026-04-03",
     "run_count": 1,
     "title": "Linux Kernel Vulnerability"
+  },
+  "cve:CVE-2026-27447": {
+    "first_seen": "2026-04-04",
+    "last_seen": "2026-04-04",
+    "run_count": 1,
+    "title": "OpenPrinting CUPS RCE"
+  },
+  "cve:CVE-2026-27481": {
+    "first_seen": "2026-04-04",
+    "last_seen": "2026-04-04",
+    "run_count": 1,
+    "title": "Discourse RCE"
+  },
+  "cve:CVE-2026-27456": {
+    "first_seen": "2026-04-04",
+    "last_seen": "2026-04-04",
+    "run_count": 1,
+    "title": "util-linux Buffer Overflow"
   }
 }
