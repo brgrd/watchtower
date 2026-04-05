@@ -808,5 +808,23 @@
     "last_seen": "2026-04-04",
     "run_count": 1,
     "title": "util-linux Buffer Overflow"
+  },
+  "cve:CVE-2026-5530": {
+    "first_seen": "2026-04-05",
+    "last_seen": "2026-04-05",
+    "run_count": 1,
+    "title": "Ollama Vulnerability"
+  },
+  "cve:CVE-2026-5527": {
+    "first_seen": "2026-04-05",
+    "last_seen": "2026-04-05",
+    "run_count": 1,
+    "title": "Tenda 4G03 Pro Weakness"
+  },
+  "cve:CVE-2026-5531": {
+    "first_seen": "2026-04-05",
+    "last_seen": "2026-04-05",
+    "run_count": 1,
+    "title": "SourceCodester Vulnerability"
   }
 }
