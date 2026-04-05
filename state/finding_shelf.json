@@ -826,5 +826,29 @@
     "last_seen": "2026-04-05",
     "run_count": 1,
     "title": "SourceCodester Vulnerability"
+  },
+  "3a34d432cc42": {
+    "first_seen": "2026-04-05",
+    "last_seen": "2026-04-05",
+    "run_count": 1,
+    "title": "React2Shell Exploitation"
+  },
+  "cve:CVE-2026-5556": {
+    "first_seen": "2026-04-05",
+    "last_seen": "2026-04-05",
+    "run_count": 1,
+    "title": "CVE-2026-5556"
+  },
+  "cve:CVE-2026-5557": {
+    "first_seen": "2026-04-05",
+    "last_seen": "2026-04-05",
+    "run_count": 1,
+    "title": "CVE-2026-5557"
+  },
+  "cve:CVE-2026-5558": {
+    "first_seen": "2026-04-05",
+    "last_seen": "2026-04-05",
+    "run_count": 1,
+    "title": "CVE-2026-5558"
   }
 }
