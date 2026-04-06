@@ -850,5 +850,23 @@
     "last_seen": "2026-04-05",
     "run_count": 1,
     "title": "CVE-2026-5558"
+  },
+  "f483449b67b9": {
+    "first_seen": "2026-04-06",
+    "last_seen": "2026-04-06",
+    "run_count": 1,
+    "title": "SQL Injection in ResourceSpace"
+  },
+  "dce609db22af": {
+    "first_seen": "2026-04-06",
+    "last_seen": "2026-04-06",
+    "run_count": 1,
+    "title": "SQL Injection in SuiteCRM"
+  },
+  "c88601932557": {
+    "first_seen": "2026-04-06",
+    "last_seen": "2026-04-06",
+    "run_count": 1,
+    "title": "Denial of Service in AnyBurn"
   }
 }
