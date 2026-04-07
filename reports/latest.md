@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-04-06T22:50:46.269117+00:00
+generated_at: 2026-04-07T22:53:16.053020+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,22 +7,29 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2019-25662 in ResourceSpace, CVE-2019-25664 in SuiteCRM, and CVE-2019-25663 in SuiteCRM, which are SQL injection vulnerabilities that allow unauthorized access to sensitive data. Internet-facing web applications and databases are most exposed right now due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems running ResourceSpace 8.6 and SuiteCRM 7.10.7, although no patches are currently available for these vulnerabilities.
+The highest-risk items this period are CVE-2026-35208 in lichess.org, CVE-2026-34972 in OpenFGA, and CVE-2026-35396 in WeGIA, which are currently unpatched and have no known workarounds. Internet-facing webmail clients, such as Bulwark Webmail, and container orchestration nodes are most exposed due to the lack of patches for recently disclosed vulnerabilities. The most time-sensitive action is to patch Docker, as CVE-2026-34040 allows attackers to bypass authorization and gain host access, and a patch is currently available.
 
-## SQL Injection in ResourceSpace (risk: 70)
-[P1] ResourceSpace 8.6 contains an SQL injection vulnerability that allows unauthorized access to sensitive data, with no patch available and no known exploitation in the wild. This vulnerability poses a significant risk to internet-facing web applications and databases. Why now: Lack of available patch and potential for exploitation in the wild. (confidence: 0.80)
+## Flowise AI Agent Builder (risk: 100)
+[P1] Flowise AI Agent Builder is under active exploitation with a CVSS score of 10.0, allowing remote code execution. Why now: Actively exploited vulnerability with a high CVSS score. (confidence: 0.90)
 
-- [CVE-2019-25662](https://www.nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml)
-- [ResourceSpace Vulnerability](https://resourcespace.com/vulnerability)
+- [Flowise AI Agent Builder Under Active CVSS 10.0 RCE Exploitation](https://thehackernews.com/2026/04/flowise-ai-agent-builder-under-active.html)
 
-## SQL Injection in SuiteCRM (risk: 70)
-[P1] SuiteCRM 7.10.7 contains SQL injection vulnerabilities that allow authenticated users to access sensitive data, with no patch available and no known exploitation in the wild. This vulnerability poses a significant risk to internet-facing web applications and databases. Why now: Lack of available patch and potential for exploitation in the wild. (confidence: 0.80)
+## CVE-2026-34040 (risk: 70)
+[P1] CVE-2026-34040 is a vulnerability in Docker that allows attackers to bypass authorization and gain host access, with a patch available. Why now: Actively exploited vulnerability with a patch available. (confidence: 0.90)
 
-- [CVE-2019-25664](https://www.nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml)
-- [SuiteCRM Vulnerability](https://www.suitecrm.com/vulnerability)
+- [Docker CVE-2026-34040](https://thehackernews.com/2026/04/docker-cve-2026-34040-lets-attackers.html)
 
-## Denial of Service in AnyBurn (risk: 40)
-[P2] AnyBurn 4.3 x86 contains a denial of service vulnerability that allows local attackers to crash the system, with no patch available and no known exploitation in the wild. This vulnerability poses a moderate risk to systems running AnyBurn. Why now: Lack of available patch and potential for exploitation in the wild. (confidence: 0.60)
+## CVE-2026-35208 (risk: 40)
+[P2] CVE-2026-35208 is a vulnerability in lichess.org, a free online chess server, with no patch or workaround available, and no known exploitation in the wild. Why now: Newly disclosed vulnerability with no patch or workaround. (confidence: 0.60)
 
-- [CVE-2019-25657](https://www.nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml)
-- [AnyBurn Vulnerability](https://www.anyburn.com/vulnerability)
+- [CVE-2026-35208](https://cyberscoop.com/)
+
+## CVE-2026-34972 (risk: 40)
+[P2] CVE-2026-34972 is a vulnerability in OpenFGA, a high-performance authorization engine, with no patch or workaround available, and no known exploitation in the wild. Why now: Newly disclosed vulnerability with no patch or workaround. (confidence: 0.60)
+
+- [CVE-2026-34972](https://cyberscoop.com/)
+
+## CVE-2026-35396 (risk: 40)
+[P2] CVE-2026-35396 is a vulnerability in WeGIA, a web manager for charitable institutions, with no patch or workaround available, and no known exploitation in the wild. Why now: Newly disclosed vulnerability with no patch or workaround. (confidence: 0.60)
+
+- [CVE-2026-35396](https://cyberscoop.com/)

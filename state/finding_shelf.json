@@ -868,5 +868,35 @@
     "last_seen": "2026-04-06",
     "run_count": 1,
     "title": "Denial of Service in AnyBurn"
+  },
+  "cve:CVE-2025-59528": {
+    "first_seen": "2026-04-07",
+    "last_seen": "2026-04-07",
+    "run_count": 1,
+    "title": "Flowise AI Agent Builder"
+  },
+  "cve:CVE-2024-41110": {
+    "first_seen": "2026-04-07",
+    "last_seen": "2026-04-07",
+    "run_count": 1,
+    "title": "CVE-2026-34040"
+  },
+  "cve:CVE-2026-35208": {
+    "first_seen": "2026-04-07",
+    "last_seen": "2026-04-07",
+    "run_count": 1,
+    "title": "CVE-2026-35208"
+  },
+  "cve:CVE-2026-34972": {
+    "first_seen": "2026-04-07",
+    "last_seen": "2026-04-07",
+    "run_count": 1,
+    "title": "CVE-2026-34972"
+  },
+  "cve:CVE-2026-35396": {
+    "first_seen": "2026-04-07",
+    "last_seen": "2026-04-07",
+    "run_count": 1,
+    "title": "CVE-2026-35396"
   }
 }
