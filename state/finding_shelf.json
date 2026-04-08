@@ -898,5 +898,23 @@
     "last_seen": "2026-04-07",
     "run_count": 1,
     "title": "CVE-2026-35396"
+  },
+  "cve:CVE-2026-1340": {
+    "first_seen": "2026-04-08",
+    "last_seen": "2026-04-08",
+    "run_count": 1,
+    "title": "Ivanti Endpoint Manager Mobile RCE"
+  },
+  "cve:CVE-2026-33439": {
+    "first_seen": "2026-04-08",
+    "last_seen": "2026-04-08",
+    "run_count": 1,
+    "title": "Open Access Management Vulnerability"
+  },
+  "cve:CVE-2026-29181": {
+    "first_seen": "2026-04-08",
+    "last_seen": "2026-04-08",
+    "run_count": 1,
+    "title": "OpenTelemetry-Go Vulnerability"
   }
 }
