@@ -901,8 +901,8 @@
   },
   "cve:CVE-2026-1340": {
     "first_seen": "2026-04-08",
-    "last_seen": "2026-04-08",
-    "run_count": 1,
+    "last_seen": "2026-04-09",
+    "run_count": 2,
     "title": "Ivanti Endpoint Manager Mobile RCE"
   },
   "cve:CVE-2026-33439": {
@@ -916,5 +916,17 @@
     "last_seen": "2026-04-08",
     "run_count": 1,
     "title": "OpenTelemetry-Go Vulnerability"
+  },
+  "cve:CVE-2026-40027": {
+    "first_seen": "2026-04-09",
+    "last_seen": "2026-04-09",
+    "run_count": 1,
+    "title": "ALEAPP Path Traversal"
+  },
+  "cve:CVE-2026-40028": {
+    "first_seen": "2026-04-09",
+    "last_seen": "2026-04-09",
+    "run_count": 1,
+    "title": "Hayabusa XSS"
   }
 }

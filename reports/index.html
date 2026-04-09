@@ -330,26 +330,26 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
         <header class="header-bar">
           <div class="header-content">
             <h1>Watchtower — Infrastructure Security Briefing</h1>
-            <p>Generated <strong>2026-04-08 22-55</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled: 2× daily">Next run —</span></p>
+            <p>Generated <strong>2026-04-09 22-55</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled: 2× daily">Next run —</span></p>
           </div>
         </header>
         <div class="page-wrap">
         <div class="app-shell">
         <main class="app-main">
-        <div class="executive"><h2>Analyst Summary</h2><p>The highest-risk items this period are CVE-2026-1340 in Ivanti Endpoint Manager Mobile, CVE-2026-33439 in Open Access Management, and CVE-2026-29181 in OpenTelemetry-Go. Internet-facing firewalls and container orchestration nodes are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to isolate and monitor systems using Ivanti Endpoint Manager Mobile, as a patch is not currently available for CVE-2026-1340.</p></div>
+        <div class="executive"><h2>Analyst Summary</h2><p>The highest-risk items this period are CVE-2026-1340 in Ivanti Endpoint Manager Mobile, CVE-2026-40027 in ALEAPP, and CVE-2026-40028 in Hayabusa, which represent significant threats to mobile and web applications. Internet-facing firewalls, container orchestration nodes, and VPN appliances are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by CVE-2026-1340, as it is being exploited in the wild and no patch is currently available.</p></div>
 
         <section class="kpi-grid">
             <div class="kpi"><span class="k">Findings</span><span class="v">3</span></div>
             <div class="kpi"><span class="k">P1</span><span class="v">1</span><span class="kpi-delta kpi-delta--up">+1 ↑</span></div>
-            <div class="kpi"><span class="k">Exploited</span><span class="v">1</span><span class="kpi-delta kpi-delta--up">+1 ↑</span></div>
-            <div class="kpi"><span class="k">High-Profile</span><span class="v">2</span></div>
+            <div class="kpi"><span class="k">Exploited</span><span class="v">3</span><span class="kpi-delta kpi-delta--up">+3 ↑</span></div>
+            <div class="kpi"><span class="k">High-Profile</span><span class="v">1</span></div>
             <div class="kpi"><span class="k">Control Plane</span><span class="v">0</span></div>
-            <div class="kpi"><span class="k">Top Domain</span><span class="v v-sm">Containers / K8s</span></div>
+            <div class="kpi"><span class="k">Top Domain</span><span class="v v-sm">Web / Servers</span></div>
         </section>
         
 <div class="delta-strip"><span class="delta-chip delta-chip--new">+3&nbsp;New</span></div>
-<section class="hp-panel"><div class="hp-panel-title">High-Profile Targets in This Window</div><div class="hp-chip-list"><span class="hp-chip">Ivanti<span class="hp-chip-count">1</span></span><span class="hp-chip">Go<span class="hp-chip-count">1</span></span></div></section>
-<section class="pa-panel"><div class="pa-title">Priority Actions — Next 24h</div><ol class="pa-list"><li class="pa-item"><span class="pa-num">1</span><span class="pa-text">Monitor for suspicious activity</span><span class="pa-count">3×</span></li><li class="pa-item"><span class="pa-num">2</span><span class="pa-text">Implement temporary workaround</span><span class="pa-count">2×</span></li><li class="pa-item"><span class="pa-num">3</span><span class="pa-text">Isolate affected systems</span></li></ol></section>
+<section class="hp-panel"><div class="hp-panel-title">High-Profile Targets in This Window</div><div class="hp-chip-list"><span class="hp-chip">Ivanti<span class="hp-chip-count">1</span></span></div></section>
+<section class="pa-panel"><div class="pa-title">Priority Actions — Next 24h</div><ol class="pa-list"><li class="pa-item"><span class="pa-num">1</span><span class="pa-text">Monitor for suspicious activity</span><span class="pa-count">3×</span></li><li class="pa-item"><span class="pa-num">2</span><span class="pa-text">Apply workaround if available</span><span class="pa-count">2×</span></li><li class="pa-item"><span class="pa-num">3</span><span class="pa-text">Isolate affected systems</span></li></ol></section>
 <section class="threat-section">
   <div class="panel threat-main">
     <div class="threat-toolbar">
@@ -357,7 +357,7 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
         <div class="threat-title">Surface Threat Map</div>
         <div class="threat-sub">Domain constellation — node intensity shows activity heat, edges show blast-radius pathways. Click any node to filter findings.</div>
       </div>
-      <span class="chip" title="Data polled from the last 26 hours">Since Apr 07, 20:55 UTC</span>
+      <span class="chip" title="Data polled from the last 25 hours">Since Apr 08, 21:55 UTC</span>
     </div>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;background:#0a0a0a;border-radius:8px;border:1px solid #333">
 <defs>
@@ -547,70 +547,70 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <circle cx="912" cy="652" r="1" fill="#666"/>
 <circle cx="912" cy="714" r="1" fill="#666"/>
 </g>
-<line x1="680" y1="68" x2="737" y2="197" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="680" y1="68" x2="119" y2="471" stroke="rgba(150,150,150,0.100)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="680" y1="68" x2="534" y2="132" stroke="rgba(150,150,150,0.112)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(150,150,150,0.112)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(150,150,150,0.112)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(150,150,150,0.112)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(150,150,150,0.112)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="221" y1="583" x2="478" y2="342" stroke="rgba(150,150,150,0.284)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(150,150,150,0.468)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(150,150,150,0.284)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="534" y1="623" x2="478" y2="342" stroke="rgba(150,150,150,0.284)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="690" y1="570" x2="478" y2="342" stroke="rgba(150,150,150,0.284)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="806" y1="473" x2="478" y2="342" stroke="rgba(150,150,150,0.284)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(150,150,150,0.468)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(150,150,150,0.468)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(150,150,150,0.468)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="478" y1="342" x2="737" y2="197" stroke="rgba(150,150,150,0.284)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="478" y1="342" x2="534" y2="132" stroke="rgba(150,150,150,0.284)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(150,150,150,0.468)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(150,150,150,0.468)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(150,150,150,0.468)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(150,150,150,0.468)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="737" y1="197" x2="534" y2="132" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="737" y1="197" x2="345" y2="184" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="534" y1="132" x2="345" y2="184" stroke="rgba(150,150,150,0.112)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="534" y1="132" x2="847" y2="307" stroke="rgba(150,150,150,0.112)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(150,150,150,0.284)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="847" y1="307" x2="737" y2="197" stroke="rgba(150,150,150,0.128)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(150,150,150,0.112)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
-<line x1="680" y1="68" x2="737" y2="197" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="680" y1="68" x2="119" y2="471" stroke="rgba(180,180,180,0.180)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="680" y1="68" x2="534" y2="132" stroke="rgba(180,180,180,0.194)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(180,180,180,0.194)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(180,180,180,0.194)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(180,180,180,0.194)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(180,180,180,0.194)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="221" y1="583" x2="478" y2="342" stroke="rgba(180,180,180,0.387)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(180,180,180,0.594)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(180,180,180,0.387)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="534" y1="623" x2="478" y2="342" stroke="rgba(180,180,180,0.387)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="690" y1="570" x2="478" y2="342" stroke="rgba(180,180,180,0.387)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="806" y1="473" x2="478" y2="342" stroke="rgba(180,180,180,0.387)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(180,180,180,0.594)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(180,180,180,0.594)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(180,180,180,0.594)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="478" y1="342" x2="737" y2="197" stroke="rgba(180,180,180,0.387)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="478" y1="342" x2="534" y2="132" stroke="rgba(180,180,180,0.387)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(180,180,180,0.594)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(180,180,180,0.594)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(180,180,180,0.594)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(180,180,180,0.594)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="737" y1="197" x2="534" y2="132" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="737" y1="197" x2="345" y2="184" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="534" y1="132" x2="345" y2="184" stroke="rgba(180,180,180,0.194)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="534" y1="132" x2="847" y2="307" stroke="rgba(180,180,180,0.194)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(180,180,180,0.387)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="847" y1="307" x2="737" y2="197" stroke="rgba(180,180,180,0.211)" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(180,180,180,0.194)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="680" y1="68" x2="737" y2="197" stroke="rgba(150,150,150,0.132)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="680" y1="68" x2="119" y2="471" stroke="rgba(150,150,150,0.120)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="680" y1="68" x2="534" y2="132" stroke="rgba(150,150,150,0.132)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(150,150,150,0.356)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(150,150,150,0.356)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(150,150,150,0.356)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(150,150,150,0.132)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(150,150,150,0.132)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(150,150,150,0.132)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(150,150,150,0.132)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="221" y1="583" x2="478" y2="342" stroke="rgba(150,150,150,0.500)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(150,150,150,0.500)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(150,150,150,0.500)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="534" y1="623" x2="478" y2="342" stroke="rgba(150,150,150,0.500)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="690" y1="570" x2="478" y2="342" stroke="rgba(150,150,150,0.500)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="806" y1="473" x2="478" y2="342" stroke="rgba(150,150,150,0.500)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(150,150,150,0.500)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(150,150,150,0.500)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(150,150,150,0.500)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="737" y2="197" stroke="rgba(150,150,150,0.500)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="478" y1="342" x2="534" y2="132" stroke="rgba(150,150,150,0.500)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(150,150,150,0.500)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(150,150,150,0.500)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(150,150,150,0.500)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(150,150,150,0.500)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="737" y1="197" x2="534" y2="132" stroke="rgba(150,150,150,0.132)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="737" y1="197" x2="345" y2="184" stroke="rgba(150,150,150,0.132)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="534" y1="132" x2="345" y2="184" stroke="rgba(150,150,150,0.132)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="534" y1="132" x2="847" y2="307" stroke="rgba(150,150,150,0.336)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(150,150,150,0.132)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="847" y1="307" x2="737" y2="197" stroke="rgba(150,150,150,0.336)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(150,150,150,0.336)" stroke-width="4.5" stroke-linecap="round" filter="url(#edge-glow)"/>
+<line x1="680" y1="68" x2="737" y2="197" stroke="rgba(180,180,180,0.216)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="680" y1="68" x2="119" y2="471" stroke="rgba(180,180,180,0.202)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="680" y1="68" x2="534" y2="132" stroke="rgba(180,180,180,0.216)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="221" y2="583" stroke="rgba(180,180,180,0.468)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="381" y2="609" stroke="rgba(180,180,180,0.468)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="534" y2="623" stroke="rgba(180,180,180,0.468)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="690" y2="570" stroke="rgba(180,180,180,0.216)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="806" y2="473" stroke="rgba(180,180,180,0.216)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="737" y2="197" stroke="rgba(180,180,180,0.216)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="119" y1="471" x2="534" y2="132" stroke="rgba(180,180,180,0.216)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="221" y1="583" x2="478" y2="342" stroke="rgba(180,180,180,0.630)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="221" y1="583" x2="337" y2="460" stroke="rgba(180,180,180,0.630)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="381" y1="609" x2="478" y2="342" stroke="rgba(180,180,180,0.630)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="534" y1="623" x2="478" y2="342" stroke="rgba(180,180,180,0.630)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="690" y1="570" x2="478" y2="342" stroke="rgba(180,180,180,0.630)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="806" y1="473" x2="478" y2="342" stroke="rgba(180,180,180,0.630)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="806" y1="473" x2="659" y2="360" stroke="rgba(180,180,180,0.630)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="337" y2="460" stroke="rgba(180,180,180,0.630)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="659" y2="360" stroke="rgba(180,180,180,0.630)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="737" y2="197" stroke="rgba(180,180,180,0.630)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="478" y1="342" x2="534" y2="132" stroke="rgba(180,180,180,0.630)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="337" y1="460" x2="180" y2="329" stroke="rgba(180,180,180,0.630)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="337" y1="460" x2="659" y2="360" stroke="rgba(180,180,180,0.630)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="659" y1="360" x2="737" y2="197" stroke="rgba(180,180,180,0.630)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="659" y1="360" x2="180" y2="329" stroke="rgba(180,180,180,0.630)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="737" y1="197" x2="534" y2="132" stroke="rgba(180,180,180,0.216)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="737" y1="197" x2="345" y2="184" stroke="rgba(180,180,180,0.216)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="534" y1="132" x2="345" y2="184" stroke="rgba(180,180,180,0.216)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="534" y1="132" x2="847" y2="307" stroke="rgba(180,180,180,0.446)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="345" y1="184" x2="180" y2="329" stroke="rgba(180,180,180,0.216)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="847" y1="307" x2="737" y2="197" stroke="rgba(180,180,180,0.446)" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="847" y1="307" x2="345" y2="184" stroke="rgba(180,180,180,0.446)" stroke-width="1.0" stroke-linecap="round"/>
 <g class="tm-node" data-domain="ai_threat" onclick="selectDomain('ai_threat')" style="cursor:pointer">
 <circle cx="680" cy="68" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="680" cy="68" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
@@ -619,9 +619,9 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <text x="680" y="105" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">AI / ML Threats</text>
 </g>
 <g class="tm-node" data-domain="identity" onclick="selectDomain('identity')" style="cursor:pointer">
-<circle cx="534" cy="132" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
+<circle cx="534" cy="132" r="38" fill="rgba(200,200,200,0.224)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="534" cy="132" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="534" cy="132" r="24" fill="none" stroke="rgba(220,220,220,0.38)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="534" cy="132" r="24" fill="none" stroke="rgba(220,220,220,0.39)" stroke-width="3.5" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="534" cy="132" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="534" y="169" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Identity / Auth</text>
 </g>
@@ -633,48 +633,48 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <text x="345" y="221" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">CA / PKI</text>
 </g>
 <g class="tm-node" data-domain="cloud_iam" onclick="selectDomain('cloud_iam')" style="cursor:pointer">
-<circle cx="737" cy="197" r="38" fill="rgba(200,200,200,0.218)" filter="url(#f-outer)"/>
+<circle cx="737" cy="197" r="38" fill="rgba(200,200,200,0.224)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="737" cy="197" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="737" cy="197" r="24" fill="none" stroke="rgba(220,220,220,0.385)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="737" cy="197" r="24" fill="none" stroke="rgba(220,220,220,0.39)" stroke-width="3.5" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="737" cy="197" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="737" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Cloud / IAM</text>
 </g>
 <g class="tm-node" data-domain="crypto_lib" onclick="selectDomain('crypto_lib')" style="cursor:pointer">
-<circle cx="180" cy="329" r="38" fill="rgba(200,200,200,0.433)" filter="url(#f-outer)"/>
+<circle cx="180" cy="329" r="38" fill="rgba(200,200,200,0.224)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="180" cy="329" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="180" cy="329" r="24" fill="none" stroke="rgba(220,220,220,0.58)" stroke-width="3.5" filter="url(#f-mid)"/>
-<text x="180" y="333" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">1</text>
+<circle cx="180" cy="329" r="24" fill="none" stroke="rgba(220,220,220,0.39)" stroke-width="3.5" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="180" cy="329" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
-<text x="180" y="366" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#e6e6e6" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Crypto Libs</text>
+<text x="180" y="366" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Crypto Libs</text>
 </g>
 <g class="tm-node" data-domain="web_framework" onclick="selectDomain('web_framework')" style="cursor:pointer">
-<circle cx="478" cy="342" r="38" fill="rgba(200,200,200,0.433)" filter="url(#f-outer)"/>
+<circle cx="478" cy="342" r="38" fill="rgba(255,40,40,0.73)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="478" cy="342" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="478" cy="342" r="24" fill="none" stroke="rgba(220,220,220,0.58)" stroke-width="3.5" filter="url(#f-mid)"/>
-<text x="478" y="346" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">1</text>
+<circle cx="478" cy="342" r="24" fill="none" stroke="rgba(255,80,80,0.85)" stroke-width="3.5" filter="url(#f-mid)"/>
+<text x="478" y="346" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">2</text>
 <circle class="sel-indicator" cx="478" cy="342" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="478" y="379" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#e6e6e6" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Web / Servers</text>
 </g>
 <g class="tm-node" data-domain="container" onclick="selectDomain('container')" style="cursor:pointer">
-<circle cx="659" cy="360" r="38" fill="rgba(255,40,40,0.686)" filter="url(#f-outer)"/>
+<circle cx="659" cy="360" r="38" fill="rgba(255,40,40,0.73)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="659" cy="360" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="659" cy="360" r="24" fill="none" stroke="rgba(255,80,80,0.81)" stroke-width="3.5" filter="url(#f-mid)"/>
-<text x="659" y="364" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">2</text>
+<circle cx="659" cy="360" r="24" fill="none" stroke="rgba(255,80,80,0.85)" stroke-width="3.5" filter="url(#f-mid)"/>
+<text x="659" y="364" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">1</text>
 <circle class="sel-indicator" cx="659" cy="360" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="659" y="397" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#e6e6e6" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Containers</text>
 </g>
 <g class="tm-node" data-domain="browser_ext" onclick="selectDomain('browser_ext')" style="cursor:pointer">
-<circle cx="847" cy="307" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
+<circle cx="847" cy="307" r="38" fill="rgba(200,200,200,0.504)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="847" cy="307" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="847" cy="307" r="24" fill="none" stroke="rgba(220,220,220,0.38)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="847" cy="307" r="24" fill="none" stroke="rgba(220,220,220,0.645)" stroke-width="3.5" filter="url(#f-mid)"/>
+<text x="847" y="311" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">1</text>
 <circle class="sel-indicator" cx="847" cy="307" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
-<text x="847" y="344" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Browser Ext</text>
+<text x="847" y="344" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#e6e6e6" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Browser Ext</text>
 </g>
 <g class="tm-node" data-domain="os_kernel" onclick="selectDomain('os_kernel')" style="cursor:pointer">
-<circle cx="337" cy="460" r="38" fill="rgba(255,40,40,0.686)" filter="url(#f-outer)"/>
+<circle cx="337" cy="460" r="38" fill="rgba(255,40,40,0.73)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="337" cy="460" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="337" cy="460" r="24" fill="none" stroke="rgba(255,80,80,0.81)" stroke-width="3.5" filter="url(#f-mid)"/>
-<text x="337" y="464" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">2</text>
+<circle cx="337" cy="460" r="24" fill="none" stroke="rgba(255,80,80,0.85)" stroke-width="3.5" filter="url(#f-mid)"/>
+<text x="337" y="464" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">1</text>
 <circle class="sel-indicator" cx="337" cy="460" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="337" y="497" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#e6e6e6" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">OS / Kernel</text>
 </g>
@@ -686,37 +686,40 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 <text x="119" y="508" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Supply Chain</text>
 </g>
 <g class="tm-node" data-domain="pkg_npm" onclick="selectDomain('pkg_npm')" style="cursor:pointer">
-<circle cx="221" cy="583" r="38" fill="rgba(200,200,200,0.218)" filter="url(#f-outer)"/>
+<circle cx="221" cy="583" r="38" fill="rgba(200,200,200,0.532)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="221" cy="583" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="221" cy="583" r="24" fill="none" stroke="rgba(220,220,220,0.385)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="221" cy="583" r="24" fill="none" stroke="rgba(220,220,220,0.67)" stroke-width="3.5" filter="url(#f-mid)"/>
+<text x="221" y="587" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">1</text>
 <circle class="sel-indicator" cx="221" cy="583" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
-<text x="221" y="620" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">npm / Node</text>
+<text x="221" y="620" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#e6e6e6" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">npm / Node</text>
 </g>
 <g class="tm-node" data-domain="pkg_pypi" onclick="selectDomain('pkg_pypi')" style="cursor:pointer">
-<circle cx="381" cy="609" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
+<circle cx="381" cy="609" r="38" fill="rgba(200,200,200,0.532)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="381" cy="609" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="381" cy="609" r="24" fill="none" stroke="rgba(220,220,220,0.38)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="381" cy="609" r="24" fill="none" stroke="rgba(220,220,220,0.67)" stroke-width="3.5" filter="url(#f-mid)"/>
+<text x="381" y="613" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">1</text>
 <circle class="sel-indicator" cx="381" cy="609" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
-<text x="381" y="646" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">PyPI / Python</text>
+<text x="381" y="646" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#e6e6e6" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">PyPI / Python</text>
 </g>
 <g class="tm-node" data-domain="pkg_maven" onclick="selectDomain('pkg_maven')" style="cursor:pointer">
-<circle cx="534" cy="623" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
+<circle cx="534" cy="623" r="38" fill="rgba(200,200,200,0.532)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="534" cy="623" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="534" cy="623" r="24" fill="none" stroke="rgba(220,220,220,0.38)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="534" cy="623" r="24" fill="none" stroke="rgba(220,220,220,0.67)" stroke-width="3.5" filter="url(#f-mid)"/>
+<text x="534" y="627" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#e6e6e6" opacity="0.9">1</text>
 <circle class="sel-indicator" cx="534" cy="623" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
-<text x="534" y="660" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Maven / Java</text>
+<text x="534" y="660" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#e6e6e6" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">Maven / Java</text>
 </g>
 <g class="tm-node" data-domain="pkg_nuget" onclick="selectDomain('pkg_nuget')" style="cursor:pointer">
-<circle cx="690" cy="570" r="38" fill="rgba(200,200,200,0.213)" filter="url(#f-outer)"/>
+<circle cx="690" cy="570" r="38" fill="rgba(200,200,200,0.224)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="690" cy="570" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="690" cy="570" r="24" fill="none" stroke="rgba(220,220,220,0.38)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="690" cy="570" r="24" fill="none" stroke="rgba(220,220,220,0.39)" stroke-width="3.5" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="690" cy="570" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="690" y="607" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">.NET / NuGet</text>
 </g>
 <g class="tm-node" data-domain="pkg_gem" onclick="selectDomain('pkg_gem')" style="cursor:pointer">
-<circle cx="806" cy="473" r="38" fill="rgba(200,200,200,0.218)" filter="url(#f-outer)"/>
+<circle cx="806" cy="473" r="38" fill="rgba(200,200,200,0.224)" filter="url(#f-outer)"/>
 <circle class="node-disc" cx="806" cy="473" r="24" fill="rgba(15,15,15,0.95)" stroke="rgba(100,100,100,0.20)" stroke-width="0.6"/>
-<circle cx="806" cy="473" r="24" fill="none" stroke="rgba(220,220,220,0.385)" stroke-width="3.5" filter="url(#f-mid)"/>
+<circle cx="806" cy="473" r="24" fill="none" stroke="rgba(220,220,220,0.39)" stroke-width="3.5" filter="url(#f-mid)"/>
 <circle class="sel-indicator" cx="806" cy="473" r="29" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
 <text x="806" y="510" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#888" stroke="#0f0f0f" stroke-width="2.5" paint-order="stroke fill">RubyGems</text>
 </g>
@@ -730,8 +733,8 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
 </svg>
   </div>
 </section>
-<section class="panel ha-section"><h3 style="margin:.2rem 0 .5rem">7-Day Briefing History</h3><details class="ha-day" open><summary class="ha-summary"><span class="ha-date">2026-04-08</span><span class="ha-meta">3 findings · P1: 1 · exploited: 1</span><span class="ha-lifecycle"><span class="ha-lc ha-lc--active" title="Still active today">● 3 active</span></span><span class="ha-ts">2026-04-08 22:55 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">Ivanti Endpoint Manager Mobile RCE</td><td class="ha-risk">100</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">Open Access Management Vulnerability</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr><tr><td class="ha-title">OpenTelemetry-Go Vulnerability</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr></tbody></table></div></details><details class="ha-day"><summary class="ha-summary"><span class="ha-date">2026-04-07</span><span class="ha-meta">5 findings · P1: 2 · exploited: 5</span><span class="ha-ts">2026-04-07 22:53 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">Flowise AI Agent Builder</td><td class="ha-risk">100</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">CVE-2026-34040</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">CVE-2026-35208</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr><tr><td class="ha-title">CVE-2026-34972</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr><tr><td class="ha-title">CVE-2026-35396</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr></tbody></table></div></details><details class="ha-day"><summary class="ha-summary"><span class="ha-date">2026-04-06</span><span class="ha-meta">3 findings · P1: 2 · exploited: 3</span><span class="ha-ts">2026-04-06 22:50 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">SQL Injection in ResourceSpace</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">SQL Injection in SuiteCRM</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">Denial of Service in AnyBurn</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr></tbody></table></div></details><details class="ha-day"><summary class="ha-summary"><span class="ha-date">2026-04-05</span><span class="ha-meta">4 findings · P1: 4 · exploited: 1</span><span class="ha-ts">2026-04-05 22:45 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">React2Shell Exploitation</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">CVE-2026-5556</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">CVE-2026-5557</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">CVE-2026-5558</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr></tbody></table></div></details><details class="ha-day"><summary class="ha-summary"><span class="ha-date">2026-04-04</span><span class="ha-meta">1 finding · P1: 1 · exploited: 1</span><span class="ha-ts">2026-04-04 22:42 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">WordPress Plugin Vulnerabilities</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr></tbody></table></div></details><details class="ha-day"><summary class="ha-summary"><span class="ha-date">2026-04-03</span><span class="ha-meta">3 findings · P1: 1</span><span class="ha-ts">2026-04-03 22:47 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">Exchange Reporter Plus RCE</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">Casdoor Vulnerability</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr><tr><td class="ha-title">Linux Kernel Vulnerability</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr></tbody></table></div></details><details class="ha-day"><summary class="ha-summary"><span class="ha-date">2026-04-02</span><span class="ha-meta">3 findings · P1: 2 · exploited: 3</span><span class="ha-ts">2026-04-02 22:45 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">Google Dawn UAF</td><td class="ha-risk">100</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">TrueConf Client Code Execution</td><td class="ha-risk">100</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">CI4MS Vulnerabilities</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr></tbody></table></div></details></section>
-<section class="panel weekly-scope"><h3 style="margin:.2rem 0 .6rem">Weekly Overview <span class="weekly-window-note">Past 7 days</span></h3><div class="weekly-kpi-row"><div class="wkpi" title="Findings from 2026-04-02 still unresolved today"><span class="wk">Still Active</span><span class="wv wv-cross">0<small>/3</small></span><span class="wk-sub">vs 2026-04-02</span></div><div class="wkpi" title="CVEs that moved from No Fix to Patched/Workaround this week"><span class="wk">Patched This Week</span><span class="wv wv-muted">—</span><span class="wk-sub">no change</span></div><div class="wkpi"><span class="wk">Unique CVEs</span><span class="wv">18</span></div><div class="wkpi wkpi--spark" title="Daily finding count over the past 7 days"><span class="wk">Threat Velocity</span><span class="wv-spark"><svg class="vel-spark" width="56" height="20" viewBox="0 0 56 20" xmlns="http://www.w3.org/2000/svg" aria-label="Threat velocity — 7 days"><polyline points="4.0,8.4 12.0,8.4 20.0,14.8 28.0,5.2 36.0,8.4 44.0,2.0 52.0,8.4" fill="none" stroke="var(--vel-line,#60a5fa)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="4.0" cy="8.4" r="2.2" fill="var(--vel-dot,#60a5fa)"/><circle cx="12.0" cy="8.4" r="2.2" fill="var(--vel-dot,#60a5fa)"/><circle cx="20.0" cy="14.8" r="2.2" fill="var(--vel-dot,#60a5fa)"/><circle cx="28.0" cy="5.2" r="2.2" fill="var(--vel-dot,#60a5fa)"/><circle cx="36.0" cy="8.4" r="2.2" fill="var(--vel-dot,#60a5fa)"/><circle cx="44.0" cy="2.0" r="2.2" fill="var(--vel-dot,#60a5fa)"/><circle cx="52.0" cy="8.4" r="2.2" fill="var(--vel-dot,#60a5fa)"/></svg></span></div><div class="wkpi"><span class="wk">Most Active Day</span><span class="wv wv-sm">2026-04-07</span></div></div><div class="weekly-review-label">Week-in-Review</div><p class="weekly-review-text">Over the past 7 days, our security landscape has been characterized by 22 total findings, with 18 unique CVEs tracked, including CVE-2026-1340, CVE-2026-33439, and CVE-2026-29181, among others, each observed only once. The most active day was 2026-04-07, with threats spanning multiple domains, including AI/ML, browser extensions, containers, and crypto libraries, as well as OS/kernel, Maven/Java, npm/Node, and PyPI/Python. This diversity of affected areas underscores the need for continued vigilance across our infrastructure.</p><details class="wcve-details"><summary>Top CVEs this week (18 tracked)</summary><table class="wcve-table"><thead><tr><th>CVE</th><th>Frequency</th><th>#</th></tr></thead><tbody><tr><td class="wcve-id">CVE-2026-1340</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-33439</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-29181</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-34040</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-35208</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-34972</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-35396</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-5556</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-5557</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-5558</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-28703</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-28754</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-4107</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-5281</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-3502</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-34559</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-34560</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-34561</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">1</td></tr></tbody></table></details></section>
+<section class="panel ha-section"><h3 style="margin:.2rem 0 .5rem">7-Day Briefing History</h3><details class="ha-day" open><summary class="ha-summary"><span class="ha-date">2026-04-09</span><span class="ha-meta">3 findings · P1: 1 · exploited: 3</span><span class="ha-lifecycle"><span class="ha-lc ha-lc--active" title="Still active today">● 3 active</span></span><span class="ha-ts">2026-04-09 22:55 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">Ivanti Endpoint Manager Mobile RCE</td><td class="ha-risk">100</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">ALEAPP Path Traversal</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr><tr><td class="ha-title">Hayabusa XSS</td><td class="ha-risk">60</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr></tbody></table></div></details><details class="ha-day"><summary class="ha-summary"><span class="ha-date">2026-04-08</span><span class="ha-meta">3 findings · P1: 1 · exploited: 1</span><span class="ha-lifecycle"><span class="ha-lc ha-lc--active" title="Still active today">● 1 active</span></span><span class="ha-ts">2026-04-08 22:55 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">Ivanti Endpoint Manager Mobile RCE</td><td class="ha-risk">100</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">Open Access Management Vulnerability</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr><tr><td class="ha-title">OpenTelemetry-Go Vulnerability</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr></tbody></table></div></details><details class="ha-day"><summary class="ha-summary"><span class="ha-date">2026-04-07</span><span class="ha-meta">5 findings · P1: 2 · exploited: 5</span><span class="ha-ts">2026-04-07 22:53 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">Flowise AI Agent Builder</td><td class="ha-risk">100</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">CVE-2026-34040</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">CVE-2026-35208</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr><tr><td class="ha-title">CVE-2026-34972</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr><tr><td class="ha-title">CVE-2026-35396</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr></tbody></table></div></details><details class="ha-day"><summary class="ha-summary"><span class="ha-date">2026-04-06</span><span class="ha-meta">3 findings · P1: 2 · exploited: 3</span><span class="ha-ts">2026-04-06 22:50 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">SQL Injection in ResourceSpace</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">SQL Injection in SuiteCRM</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">Denial of Service in AnyBurn</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr></tbody></table></div></details><details class="ha-day"><summary class="ha-summary"><span class="ha-date">2026-04-05</span><span class="ha-meta">4 findings · P1: 4 · exploited: 1</span><span class="ha-ts">2026-04-05 22:45 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">React2Shell Exploitation</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">CVE-2026-5556</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">CVE-2026-5557</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">CVE-2026-5558</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr></tbody></table></div></details><details class="ha-day"><summary class="ha-summary"><span class="ha-date">2026-04-04</span><span class="ha-meta">1 finding · P1: 1 · exploited: 1</span><span class="ha-ts">2026-04-04 22:42 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">WordPress Plugin Vulnerabilities</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr></tbody></table></div></details><details class="ha-day"><summary class="ha-summary"><span class="ha-date">2026-04-03</span><span class="ha-meta">3 findings · P1: 1</span><span class="ha-ts">2026-04-03 22:47 UTC</span></summary><div class="ha-body"><table class="ha-table"><thead><tr><th>Finding</th><th>Risk</th><th>Pri</th></tr></thead><tbody><tr><td class="ha-title">Exchange Reporter Plus RCE</td><td class="ha-risk">70</td><td class="ha-pri"><span class="priority p1">P1</span></td></tr><tr><td class="ha-title">Casdoor Vulnerability</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr><tr><td class="ha-title">Linux Kernel Vulnerability</td><td class="ha-risk">40</td><td class="ha-pri"><span class="priority p2">P2</span></td></tr></tbody></table></div></details></section>
+<section class="panel weekly-scope"><h3 style="margin:.2rem 0 .6rem">Weekly Overview <span class="weekly-window-note">Past 7 days</span></h3><div class="weekly-kpi-row"><div class="wkpi" title="Findings from 2026-04-03 still unresolved today"><span class="wk">Still Active</span><span class="wv wv-cross">0<small>/3</small></span><span class="wk-sub">vs 2026-04-03</span></div><div class="wkpi" title="CVEs that moved from No Fix to Patched/Workaround this week"><span class="wk">Patched This Week</span><span class="wv wv-muted">—</span><span class="wk-sub">no change</span></div><div class="wkpi"><span class="wk">Unique CVEs</span><span class="wv">15</span></div><div class="wkpi wkpi--spark" title="Daily finding count over the past 7 days"><span class="wk">Threat Velocity</span><span class="wv-spark"><svg class="vel-spark" width="56" height="20" viewBox="0 0 56 20" xmlns="http://www.w3.org/2000/svg" aria-label="Threat velocity — 7 days"><polyline points="4.0,8.4 12.0,14.8 20.0,5.2 28.0,8.4 36.0,2.0 44.0,8.4 52.0,8.4" fill="none" stroke="var(--vel-line,#60a5fa)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="4.0" cy="8.4" r="2.2" fill="var(--vel-dot,#60a5fa)"/><circle cx="12.0" cy="14.8" r="2.2" fill="var(--vel-dot,#60a5fa)"/><circle cx="20.0" cy="5.2" r="2.2" fill="var(--vel-dot,#60a5fa)"/><circle cx="28.0" cy="8.4" r="2.2" fill="var(--vel-dot,#60a5fa)"/><circle cx="36.0" cy="2.0" r="2.2" fill="var(--vel-dot,#60a5fa)"/><circle cx="44.0" cy="8.4" r="2.2" fill="var(--vel-dot,#60a5fa)"/><circle cx="52.0" cy="8.4" r="2.2" fill="var(--vel-dot,#60a5fa)"/></svg></span></div><div class="wkpi"><span class="wk">Most Active Day</span><span class="wv wv-sm">2026-04-07</span></div></div><div class="weekly-review-label">Week-in-Review</div><p class="weekly-review-text">Over the past 7 days, our security landscape has been characterized by 22 total findings, with 15 unique CVEs tracked across various domains, including AI/ML threats, browser extensions, and containers/K8s. The most frequently seen CVEs were CVE-2026-1340, which appeared twice, and several others that appeared once, including CVE-2026-40027, CVE-2026-40028, and CVE-2026-33439. The most active day was April 7, 2026, with multiple security domains exhibiting activity, highlighting the need for continued vigilance across our infrastructure, particularly in areas such as OS/kernel, crypto libraries, and popular programming languages like Java, Node, and Python.</p><details class="wcve-details"><summary>Top CVEs this week (15 tracked)</summary><table class="wcve-table"><thead><tr><th>CVE</th><th>Frequency</th><th>#</th></tr></thead><tbody><tr><td class="wcve-id">CVE-2026-1340</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:100%"></div></td><td class="wcve-count">2</td></tr><tr><td class="wcve-id">CVE-2026-40027</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:50%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-40028</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:50%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-33439</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:50%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-29181</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:50%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-34040</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:50%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-35208</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:50%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-34972</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:50%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-35396</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:50%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-5556</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:50%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-5557</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:50%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-5558</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:50%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-28703</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:50%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-28754</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:50%"></div></td><td class="wcve-count">1</td></tr><tr><td class="wcve-id">CVE-2026-4107</td><td class="wcve-bar-cell"><div class="wcve-bar-inner" style="width:50%"></div></td><td class="wcve-count">1</td></tr></tbody></table></details></section>
 <div class="tactic-coverage" id="tactic-coverage"><span class="tactic-coverage-label">1 / 14 tactics covered</span><span class="tactic-coverage-bar"><span class="tactic-pip tactic-pip--hollow" title="Reconnaissance"></span><span class="tactic-pip tactic-pip--hollow" title="Resource Development"></span><span class="tactic-pip tactic-pip--filled" title="Initial Access"></span><span class="tactic-pip tactic-pip--hollow" title="Execution"></span><span class="tactic-pip tactic-pip--hollow" title="Persistence"></span><span class="tactic-pip tactic-pip--hollow" title="Privilege Escalation"></span><span class="tactic-pip tactic-pip--hollow" title="Defense Evasion"></span><span class="tactic-pip tactic-pip--hollow" title="Credential Access"></span><span class="tactic-pip tactic-pip--hollow" title="Discovery"></span><span class="tactic-pip tactic-pip--hollow" title="Lateral Movement"></span><span class="tactic-pip tactic-pip--hollow" title="Collection"></span><span class="tactic-pip tactic-pip--hollow" title="Command &amp; Control"></span><span class="tactic-pip tactic-pip--hollow" title="Exfiltration"></span><span class="tactic-pip tactic-pip--hollow" title="Impact"></span></span><span class="tactic-coverage-pct">7%</span></div><div class="tactic-strip" id="tactic-strip"><button class="tactic-btn tactic-btn--all tactic-btn--active" data-tactic="all" type="button">All Tactics</button><button class="tactic-btn" data-tactic="Reconnaissance" type="button">Reconnaissance</button><button class="tactic-btn" data-tactic="Resource Development" type="button">Resource Development</button><button class="tactic-btn tactic-btn--active" data-tactic="Initial Access" type="button">Initial Access</button><button class="tactic-btn" data-tactic="Execution" type="button">Execution</button><button class="tactic-btn" data-tactic="Persistence" type="button">Persistence</button><button class="tactic-btn" data-tactic="Privilege Escalation" type="button">Privilege Escalation</button><button class="tactic-btn" data-tactic="Defense Evasion" type="button">Defense Evasion</button><button class="tactic-btn" data-tactic="Credential Access" type="button">Credential Access</button><button class="tactic-btn" data-tactic="Discovery" type="button">Discovery</button><button class="tactic-btn" data-tactic="Lateral Movement" type="button">Lateral Movement</button><button class="tactic-btn" data-tactic="Collection" type="button">Collection</button><button class="tactic-btn" data-tactic="Command &amp; Control" type="button">Command &amp; Control</button><button class="tactic-btn" data-tactic="Exfiltration" type="button">Exfiltration</button><button class="tactic-btn" data-tactic="Impact" type="button">Impact</button></div>
 <h2>Top Findings</h2>
 <div class="findings-filter">
@@ -739,7 +742,61 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
   <span id="findings-count" class="findings-count"></span>
 </div>
 <div class="tier-header tier-new"><span class="tier-label">New This Run</span><span class="tier-count">0</span><span class="tier-hint">Findings appearing for the first time.</span></div>
-                <details class="cluster" id="card-585bc44599b2" data-domains="container os_kernel" data-tactic="Initial Access">
+                <details class="cluster" id="card-470c174f0085" data-domains="pkg_npm pkg_pypi pkg_maven" data-tactic="Initial Access">
+                    <summary>
+                        <span class="badge" style="background:#f77f00;color:#fff">70</span>
+                        <span class="priority p2">P2</span>
+                        
+                        
+                        
+                        
+                        <span class="cve-badge">1 CVE</span>
+                        
+                        
+                        <span class="tactic-chip">Initial Access</span>
+                        
+                        
+                        ALEAPP Path Traversal
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">npm / Node</span> <span class="domain-tag">PyPI / Python</span> <span class="domain-tag">Maven / Java</span></div>
+                        <button class="rem-pill" data-card-id="470c174f0085" title="Remediation: Unacknowledged" onclick="event.stopPropagation();remCycle(this)">⊙</button>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>[P2] CVE-2026-40027 is a path traversal vulnerability in ALEAPP that could allow attackers to access sensitive files, and no patch is currently available. This vulnerability has not been exploited in the wild, but it has the potential to be used in future attacks. Why now: This vulnerability has the potential to be used in future attacks, making it a moderate-priority threat. (confidence: 0.60)</p>
+                        <p class="why-now"><strong>Why now:</strong> This vulnerability has the potential to be used in future attacks, making it a moderate-priority threat.</p>
+                        <span class="confidence">confidence 0.60</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Monitor for suspicious activity</li><li>Apply workaround if available</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch when available</li><li>Conduct thorough vulnerability assessment</li></ul></div></div>
+                        
+                        <ul><li><a href="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-40027" target="_blank" rel="noopener noreferrer">CVE-2026-40027</a></li></ul>
+                    </div>
+                </details>
+                <details class="cluster" id="card-510e83c94ea5" data-domains="browser_ext web_framework" data-tactic="Initial Access">
+                    <summary>
+                        <span class="badge" style="background:#f77f00;color:#fff">60</span>
+                        <span class="priority p2">P2</span>
+                        
+                        
+                        
+                        
+                        <span class="cve-badge">1 CVE</span>
+                        
+                        
+                        <span class="tactic-chip">Initial Access</span>
+                        
+                        
+                        Hayabusa XSS
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Browser Extensions</span> <span class="domain-tag">Web / Servers</span></div>
+                        <button class="rem-pill" data-card-id="510e83c94ea5" title="Remediation: Unacknowledged" onclick="event.stopPropagation();remCycle(this)">⊙</button>
+                    </summary>
+                    <div class="cluster-body">
+                        <p>[P2] CVE-2026-40028 is a cross-site scripting vulnerability in Hayabusa that could allow attackers to steal sensitive information, and no patch is currently available. This vulnerability has not been exploited in the wild, but it has the potential to be used in future attacks. Why now: This vulnerability has the potential to be used in future attacks, making it a moderate-priority threat. (confidence: 0.50)</p>
+                        <p class="why-now"><strong>Why now:</strong> This vulnerability has the potential to be used in future attacks, making it a moderate-priority threat.</p>
+                        <span class="confidence">confidence 0.50</span>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Monitor for suspicious activity</li><li>Apply workaround if available</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch when available</li><li>Conduct thorough vulnerability assessment</li></ul></div></div>
+                        
+                        <ul><li><a href="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-40028" target="_blank" rel="noopener noreferrer">CVE-2026-40028</a></li></ul>
+                    </div>
+                </details><div class="tier-header tier-evolving"><span class="tier-label">Evolving</span><span class="tier-count">0</span><span class="tier-hint">Seen across multiple runs — monitor for patch or escalation.</span></div>
+                <details class="cluster" id="card-585bc44599b2" data-domains="container os_kernel web_framework" data-tactic="Initial Access">
                     <summary>
                         <span class="badge" style="background:#d62828;color:#fff">100</span>
                         <span class="priority p1">P1</span>
@@ -751,73 +808,19 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
                         
                         
                         <span class="tactic-chip">Initial Access</span>
-                        
+                        <span class="shelf-badge" title="First seen 1d ago &middot; seen 2 runs">1d</span>
                         
                         Ivanti Endpoint Manager Mobile RCE
-                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Containers / K8s</span> <span class="domain-tag">OS / Kernel</span></div>
+                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Containers / K8s</span> <span class="domain-tag">OS / Kernel</span> <span class="domain-tag">Web / Servers</span></div>
                         <button class="rem-pill" data-card-id="585bc44599b2" title="Remediation: Unacknowledged" onclick="event.stopPropagation();remCycle(this)">⊙</button>
                     </summary>
                     <div class="cluster-body">
-                        <p>[P1] CVE-2026-1340 is a code injection vulnerability in Ivanti Endpoint Manager Mobile that could allow attackers to achieve unauthorized access. This vulnerability is being exploited in the wild. Why now: Exploitation in the wild (confidence: 0.90)</p>
-                        <p class="why-now"><strong>Why now:</strong> Exploitation in the wild</p>
+                        <p>[P1] CVE-2026-1340 is a code injection vulnerability in Ivanti Endpoint Manager Mobile that could allow attackers to achieve unauthorized access, and it is being exploited in the wild. No patch is currently available, making it a high-priority threat. Why now: This vulnerability is being exploited in the wild, making it a high-priority threat. (confidence: 0.90)</p>
+                        <p class="why-now"><strong>Why now:</strong> This vulnerability is being exploited in the wild, making it a high-priority threat.</p>
                         <span class="confidence">confidence 0.90</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Isolate affected systems</li><li>Monitor for suspicious activity</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch when available</li><li>Conduct thorough vulnerability scan</li></ul></div></div>
+                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Isolate affected systems</li><li>Monitor for suspicious activity</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch when available</li><li>Conduct thorough vulnerability assessment</li></ul></div></div>
                         
                         <ul><li><a href="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-1340" target="_blank" rel="noopener noreferrer">CVE-2026-1340</a></li></ul>
-                    </div>
-                </details>
-                <details class="cluster" id="card-053eea961fdb" data-domains="web_framework crypto_lib" data-tactic="Initial Access">
-                    <summary>
-                        <span class="badge" style="background:#f77f00;color:#fff">70</span>
-                        <span class="priority p2">P2</span>
-                        
-                        
-                        
-                        
-                        <span class="cve-badge">1 CVE</span>
-                        
-                        
-                        <span class="tactic-chip">Initial Access</span>
-                        
-                        
-                        Open Access Management Vulnerability
-                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Web / Servers</span> <span class="domain-tag">Crypto Libraries</span></div>
-                        <button class="rem-pill" data-card-id="053eea961fdb" title="Remediation: Unacknowledged" onclick="event.stopPropagation();remCycle(this)">⊙</button>
-                    </summary>
-                    <div class="cluster-body">
-                        <p>[P2] CVE-2026-33439 is a vulnerability in Open Access Management that could allow attackers to gain unauthorized access. A patch is not currently available. Why now: Lack of available patch (confidence: 0.70)</p>
-                        <p class="why-now"><strong>Why now:</strong> Lack of available patch</p>
-                        <span class="confidence">confidence 0.70</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Monitor for suspicious activity</li><li>Implement temporary workaround</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch when available</li></ul></div></div>
-                        
-                        <ul><li><a href="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-33439" target="_blank" rel="noopener noreferrer">CVE-2026-33439</a></li></ul>
-                    </div>
-                </details>
-                <details class="cluster" id="card-2bd04eb09717" data-domains="container os_kernel" data-tactic="Initial Access">
-                    <summary>
-                        <span class="badge" style="background:#f77f00;color:#fff">70</span>
-                        <span class="priority p2">P2</span>
-                        
-                        
-                        
-                        <span class="hp-badge" title="Go">High-Profile</span>
-                        <span class="cve-badge">1 CVE</span>
-                        
-                        
-                        <span class="tactic-chip">Initial Access</span>
-                        
-                        
-                        OpenTelemetry-Go Vulnerability
-                        <div class="domain-tags" style="margin:0 0 0 .5rem;display:inline"><span class="domain-tag">Containers / K8s</span> <span class="domain-tag">OS / Kernel</span></div>
-                        <button class="rem-pill" data-card-id="2bd04eb09717" title="Remediation: Unacknowledged" onclick="event.stopPropagation();remCycle(this)">⊙</button>
-                    </summary>
-                    <div class="cluster-body">
-                        <p>[P2] CVE-2026-29181 is a vulnerability in OpenTelemetry-Go that could allow attackers to gain unauthorized access. A patch is not currently available. Why now: Lack of available patch (confidence: 0.70)</p>
-                        <p class="why-now"><strong>Why now:</strong> Lack of available patch</p>
-                        <span class="confidence">confidence 0.70</span>
-                        <div class="actions"><div><strong>Next 24h</strong><ul><li>Monitor for suspicious activity</li><li>Implement temporary workaround</li></ul></div><div><strong>Next 7d</strong><ul><li>Apply patch when available</li></ul></div></div>
-                        
-                        <ul><li><a href="https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-29181" target="_blank" rel="noopener noreferrer">CVE-2026-29181</a></li></ul>
                     </div>
                 </details>
 
@@ -841,15 +844,15 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
                             <button class="rail-tab" type="button" id="tab-forensics" role="tab" aria-controls="panel-forensics" aria-selected="false" data-tab="forensics">Forensics</button>
                         </div>
                         <section class="rail-panel active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
-                            <div class="rank-row rank-row-all" onclick="selectDomain('all')" style="border-bottom:1px solid #252525;margin-bottom:.35rem;padding-bottom:.35rem"><span class="rank-label" style="color:#c9d1d9;font-weight:700">All Domains</span><div class="rank-bar-wrap"></div><span class="rank-val" style="color:#c9d1d9;font-weight:700">3</span></div><div class="rank-row" onclick="selectDomain('os_kernel')"><span class="rank-label" style="color:#8a3030" title="OS / Kernel">OS / Kernel</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:92%;background:#5a1a1a"></div></div><span class="rank-val" style="color:#5a2020">92</span></div><div class="rank-row" onclick="selectDomain('container')"><span class="rank-label" style="color:#8a3030" title="Containers">Containers</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:92%;background:#5a1a1a"></div></div><span class="rank-val" style="color:#5a2020">92</span></div><div class="rank-row" onclick="selectDomain('web_framework')"><span class="rank-label" style="color:#6a8898" title="Web / Servers">Web / Servers</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:46%;background:#283e5e"></div></div><span class="rank-val" style="color:#3a5568">46</span></div><div class="rank-row" onclick="selectDomain('crypto_lib')"><span class="rank-label" style="color:#6a8898" title="Crypto Libs">Crypto Libs</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:46%;background:#283e5e"></div></div><span class="rank-val" style="color:#3a5568">46</span></div>
+                            <div class="rank-row rank-row-all" onclick="selectDomain('all')" style="border-bottom:1px solid #252525;margin-bottom:.35rem;padding-bottom:.35rem"><span class="rank-label" style="color:#c9d1d9;font-weight:700">All Domains</span><div class="rank-bar-wrap"></div><span class="rank-val" style="color:#c9d1d9;font-weight:700">3</span></div><div class="rank-row" onclick="selectDomain('web_framework')"><span class="rank-label" style="color:#8a3030" title="Web / Servers">Web / Servers</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:100%;background:#5a1a1a"></div></div><span class="rank-val" style="color:#5a2020">100</span></div><div class="rank-row" onclick="selectDomain('os_kernel')"><span class="rank-label" style="color:#8a3030" title="OS / Kernel">OS / Kernel</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:100%;background:#5a1a1a"></div></div><span class="rank-val" style="color:#5a2020">100</span></div><div class="rank-row" onclick="selectDomain('container')"><span class="rank-label" style="color:#8a3030" title="Containers">Containers</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:100%;background:#5a1a1a"></div></div><span class="rank-val" style="color:#5a2020">100</span></div><div class="rank-row" onclick="selectDomain('pkg_pypi')"><span class="rank-label" style="color:#6a8898" title="PyPI / Python">PyPI / Python</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:64%;background:#2e4a6e"></div></div><span class="rank-val" style="color:#3a5568">64</span></div><div class="rank-row" onclick="selectDomain('pkg_npm')"><span class="rank-label" style="color:#6a8898" title="npm / Node">npm / Node</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:64%;background:#2e4a6e"></div></div><span class="rank-val" style="color:#3a5568">64</span></div><div class="rank-row" onclick="selectDomain('pkg_maven')"><span class="rank-label" style="color:#6a8898" title="Maven / Java">Maven / Java</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:64%;background:#2e4a6e"></div></div><span class="rank-val" style="color:#3a5568">64</span></div><div class="rank-row" onclick="selectDomain('browser_ext')"><span class="rank-label" style="color:#6a8898" title="Browser Ext">Browser Ext</span><div class="rank-bar-wrap"><div class="rank-bar" style="width:59%;background:#283e5e"></div></div><span class="rank-val" style="color:#3a5568">59</span></div>
                             <h3 style="margin:.7rem 0 .35rem">Selected Domain</h3>
                             <div id="tm-detail" class="muted" style="font-size:.8rem">Click a node to inspect findings.</div>
                         </section>
                         <section class="rail-panel" id="panel-feeds" role="tabpanel" aria-labelledby="tab-feeds">
                             <h3 style="margin:.2rem 0 .35rem">Run Metrics</h3>
-                            <div class="run-metrics-bar"><span class="rm-chip">⏱ 27.4s</span><span class="rm-chip rm-ok">✓ 14/24 feeds</span><span class="rm-chip rm-fail">✗ 10 failed</span><span class="rm-chip">📡 648 items</span><span class="rm-chip">🕐 26h window</span><span class="rm-chip">AI: ok</span></div>
+                            <div class="run-metrics-bar"><span class="rm-chip">⏱ 24.1s</span><span class="rm-chip rm-ok">✓ 13/24 feeds</span><span class="rm-chip rm-fail">✗ 11 failed</span><span class="rm-chip">📡 497 items</span><span class="rm-chip">🕐 25h window</span><span class="rm-chip">AI: ok</span></div>
                             <h3 style="margin:.6rem 0 .35rem">Feed Health</h3>
-                            <table class="feed-table"><thead><tr><th>Feed</th><th>Items</th><th>Reliability</th><th>Time</th></tr></thead><tbody><tr><td>🔴 acsc_australia</td><td>0</td><td>0%</td><td>15047ms</td></tr><tr><td>🟢 aws_security_blog</td><td>1</td><td>51%</td><td>350ms</td></tr><tr><td>🟢 bleepingcomputer</td><td>8</td><td>90%</td><td>93ms</td></tr><tr><td>🟢 bsi_germany</td><td>96</td><td>68%</td><td>726ms</td></tr><tr><td>🔴 cisa_alerts</td><td>0</td><td>0%</td><td>134ms</td></tr><tr><td>🟢 cisa_kev</td><td>1</td><td>59%</td><td>162ms</td></tr><tr><td>🟢 cloudflare_blog</td><td>2</td><td>56%</td><td>430ms</td></tr><tr><td>🟢 cyberscoop</td><td>2</td><td>68%</td><td>78ms</td></tr><tr><td>🟢 darkreading</td><td>8</td><td>79%</td><td>572ms</td></tr><tr><td>🔴 gcp_security</td><td>0</td><td>0%</td><td>529ms</td></tr><tr><td>🔴 gh_security_blog</td><td>0</td><td>0%</td><td>361ms</td></tr><tr><td>🟢 github_changelog</td><td>5</td><td>67%</td><td>36ms</td></tr><tr><td>🟡 krebs</td><td>0</td><td>6%</td><td>83ms</td></tr><tr><td>🟢 malwarebytes_blog</td><td>3</td><td>68%</td><td>635ms</td></tr><tr><td>🟡 ms_security_blog</td><td>0</td><td>48%</td><td>345ms</td></tr><tr><td>🔴 ncsc_uk</td><td>0</td><td>0%</td><td>182ms</td></tr><tr><td>🟢 nvd</td><td>500</td><td>94%</td><td>24572ms</td></tr><tr><td>🔴 portswigger_daily</td><td>0</td><td>0%</td><td>230ms</td></tr><tr><td>🟢 securityweek</td><td>8</td><td>87%</td><td>213ms</td></tr><tr><td>🟡 snyk_blog</td><td>0</td><td>10%</td><td>242ms</td></tr><tr><td>🔴 talos_blog</td><td>0</td><td>0%</td><td>70ms</td></tr><tr><td>🟢 thehackernews</td><td>7</td><td>87%</td><td>122ms</td></tr><tr><td>🟢 therecord</td><td>5</td><td>68%</td><td>157ms</td></tr><tr><td>🟢 unit42</td><td>2</td><td>44%</td><td>50ms</td></tr></tbody></table>
+                            <table class="feed-table"><thead><tr><th>Feed</th><th>Items</th><th>Reliability</th><th>Time</th></tr></thead><tbody><tr><td>🔴 acsc_australia</td><td>0</td><td>0%</td><td>15134ms</td></tr><tr><td>🟡 aws_security_blog</td><td>0</td><td>50%</td><td>452ms</td></tr><tr><td>🟢 bleepingcomputer</td><td>12</td><td>91%</td><td>256ms</td></tr><tr><td>🟢 bsi_germany</td><td>85</td><td>69%</td><td>584ms</td></tr><tr><td>🔴 cisa_alerts</td><td>0</td><td>0%</td><td>100ms</td></tr><tr><td>🟢 cisa_kev</td><td>1</td><td>59%</td><td>143ms</td></tr><tr><td>🟡 cloudflare_blog</td><td>0</td><td>55%</td><td>547ms</td></tr><tr><td>🟢 cyberscoop</td><td>4</td><td>69%</td><td>197ms</td></tr><tr><td>🟢 darkreading</td><td>5</td><td>80%</td><td>393ms</td></tr><tr><td>🔴 gcp_security</td><td>0</td><td>0%</td><td>579ms</td></tr><tr><td>🔴 gh_security_blog</td><td>0</td><td>0%</td><td>782ms</td></tr><tr><td>🟢 github_changelog</td><td>6</td><td>67%</td><td>187ms</td></tr><tr><td>🟡 krebs</td><td>0</td><td>6%</td><td>286ms</td></tr><tr><td>🟢 malwarebytes_blog</td><td>4</td><td>69%</td><td>688ms</td></tr><tr><td>🟢 ms_security_blog</td><td>3</td><td>48%</td><td>247ms</td></tr><tr><td>🔴 ncsc_uk</td><td>0</td><td>0%</td><td>240ms</td></tr><tr><td>🟢 nvd</td><td>357</td><td>94%</td><td>18479ms</td></tr><tr><td>🔴 portswigger_daily</td><td>0</td><td>0%</td><td>319ms</td></tr><tr><td>🟢 securityweek</td><td>10</td><td>88%</td><td>355ms</td></tr><tr><td>🟡 snyk_blog</td><td>0</td><td>9%</td><td>196ms</td></tr><tr><td>🔴 talos_blog</td><td>0</td><td>0%</td><td>167ms</td></tr><tr><td>🟢 thehackernews</td><td>6</td><td>88%</td><td>208ms</td></tr><tr><td>🟢 therecord</td><td>5</td><td>69%</td><td>121ms</td></tr><tr><td>🟢 unit42</td><td>1</td><td>45%</td><td>68ms</td></tr></tbody></table>
                             <h3 style="margin:.6rem 0 .35rem">Source References</h3>
                             <table class="feed-table"><thead><tr><th>Domain</th><th>Refs</th><th>Max risk</th></tr></thead><tbody><tr><td>mitre.org</td><td>3</td><td>100</td></tr></tbody></table>
                         </section>
@@ -859,14 +862,14 @@ footer{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-to
                         </section>
                         <section class="rail-panel" id="panel-forensics" role="tabpanel" aria-labelledby="tab-forensics">
                             <h3 style="margin:.2rem 0 .35rem">Forensics</h3>
-                            <h4 class="forensics-section-title">CVE Reference Index</h4><p class="forensics-hint">Click the CVE ID to open the NVD advisory. Click ⊕ to filter findings in the Overview tab.</p><table class="forensics-table"><thead><tr><th>CVE</th><th>Findings</th><th>Patch</th></tr></thead><tbody><tr><td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-1340" target="_blank" rel="noopener noreferrer" style="color:#79c0ff;font-family:monospace" onclick="event.stopPropagation()">CVE-2026-1340</a><button onclick="forensicsCveClick('CVE-2026-1340')" title="Filter findings by this CVE" style="background:none;border:none;color:#58a6ff;cursor:pointer;font-size:.75rem;padding:0 0 0 .4rem;vertical-align:middle;opacity:.7">⊕</button></td><td style="text-align:center">1</td><td><span style="color:#8b949e;font-size:.75rem">? Unknown</span></td></tr><tr><td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-33439" target="_blank" rel="noopener noreferrer" style="color:#79c0ff;font-family:monospace" onclick="event.stopPropagation()">CVE-2026-33439</a><button onclick="forensicsCveClick('CVE-2026-33439')" title="Filter findings by this CVE" style="background:none;border:none;color:#58a6ff;cursor:pointer;font-size:.75rem;padding:0 0 0 .4rem;vertical-align:middle;opacity:.7">⊕</button></td><td style="text-align:center">1</td><td><span style="color:#8b949e;font-size:.75rem">? Unknown</span></td></tr><tr><td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-29181" target="_blank" rel="noopener noreferrer" style="color:#79c0ff;font-family:monospace" onclick="event.stopPropagation()">CVE-2026-29181</a><button onclick="forensicsCveClick('CVE-2026-29181')" title="Filter findings by this CVE" style="background:none;border:none;color:#58a6ff;cursor:pointer;font-size:.75rem;padding:0 0 0 .4rem;vertical-align:middle;opacity:.7">⊕</button></td><td style="text-align:center">1</td><td><span style="color:#8b949e;font-size:.75rem">? Unknown</span></td></tr></tbody></table><h4 class="forensics-section-title">Kill-Chain Breakdown</h4><details class="forensics-acc"><summary><span class="tactic-chip" style="font-size:.7rem">Initial Access</span><span style="margin-left:.4rem;color:#8b949e;font-size:.72rem">3 findings</span></summary><div style="padding:.25rem .5rem"><div style="padding:.2rem 0;border-bottom:1px solid #1e1e1e;font-size:.75rem"><span style="color:#e6edf3">Ivanti Endpoint Manager Mobile RCE</span> <code style="color:#8b949e;font-size:.67rem">Exploit Public-Facing Application</code></div><div style="padding:.2rem 0;border-bottom:1px solid #1e1e1e;font-size:.75rem"><span style="color:#e6edf3">Open Access Management Vulnerability</span> <code style="color:#8b949e;font-size:.67rem">Exploit Public-Facing Application</code></div><div style="padding:.2rem 0;border-bottom:1px solid #1e1e1e;font-size:.75rem"><span style="color:#e6edf3">OpenTelemetry-Go Vulnerability</span> <code style="color:#8b949e;font-size:.67rem">Exploit Public-Facing Application</code></div></div></details><h4 class="forensics-section-title">Affected Products</h4><div class="forensics-empty">No product mentions found in this window.</div><h4 class="forensics-section-title">IOC Intelligence</h4><div class="forensics-empty">No network IOCs extracted from this window’s articles.</div><h4 class="forensics-section-title">CVE Timeline</h4><div class="forensics-empty">No cross-run CVE history available yet.</div>
+                            <h4 class="forensics-section-title">CVE Reference Index</h4><p class="forensics-hint">Click the CVE ID to open the NVD advisory. Click ⊕ to filter findings in the Overview tab.</p><table class="forensics-table"><thead><tr><th>CVE</th><th>Findings</th><th>Patch</th></tr></thead><tbody><tr><td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-1340" target="_blank" rel="noopener noreferrer" style="color:#79c0ff;font-family:monospace" onclick="event.stopPropagation()">CVE-2026-1340</a><button onclick="forensicsCveClick('CVE-2026-1340')" title="Filter findings by this CVE" style="background:none;border:none;color:#58a6ff;cursor:pointer;font-size:.75rem;padding:0 0 0 .4rem;vertical-align:middle;opacity:.7">⊕</button></td><td style="text-align:center">1</td><td><span style="color:#8b949e;font-size:.75rem">? Unknown</span></td></tr><tr><td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-40027" target="_blank" rel="noopener noreferrer" style="color:#79c0ff;font-family:monospace" onclick="event.stopPropagation()">CVE-2026-40027</a><button onclick="forensicsCveClick('CVE-2026-40027')" title="Filter findings by this CVE" style="background:none;border:none;color:#58a6ff;cursor:pointer;font-size:.75rem;padding:0 0 0 .4rem;vertical-align:middle;opacity:.7">⊕</button></td><td style="text-align:center">1</td><td><span style="color:#8b949e;font-size:.75rem">? Unknown</span></td></tr><tr><td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-40028" target="_blank" rel="noopener noreferrer" style="color:#79c0ff;font-family:monospace" onclick="event.stopPropagation()">CVE-2026-40028</a><button onclick="forensicsCveClick('CVE-2026-40028')" title="Filter findings by this CVE" style="background:none;border:none;color:#58a6ff;cursor:pointer;font-size:.75rem;padding:0 0 0 .4rem;vertical-align:middle;opacity:.7">⊕</button></td><td style="text-align:center">1</td><td><span style="color:#8b949e;font-size:.75rem">? Unknown</span></td></tr></tbody></table><h4 class="forensics-section-title">Kill-Chain Breakdown</h4><details class="forensics-acc"><summary><span class="tactic-chip" style="font-size:.7rem">Initial Access</span><span style="margin-left:.4rem;color:#8b949e;font-size:.72rem">3 findings</span></summary><div style="padding:.25rem .5rem"><div style="padding:.2rem 0;border-bottom:1px solid #1e1e1e;font-size:.75rem"><span style="color:#e6edf3">Ivanti Endpoint Manager Mobile RCE</span> <code style="color:#8b949e;font-size:.67rem">Exploit Public-Facing Application</code></div><div style="padding:.2rem 0;border-bottom:1px solid #1e1e1e;font-size:.75rem"><span style="color:#e6edf3">ALEAPP Path Traversal</span> <code style="color:#8b949e;font-size:.67rem">Exploit Public-Facing Application</code></div><div style="padding:.2rem 0;border-bottom:1px solid #1e1e1e;font-size:.75rem"><span style="color:#e6edf3">Hayabusa XSS</span> <code style="color:#8b949e;font-size:.67rem">Phishing</code></div></div></details><h4 class="forensics-section-title">Affected Products</h4><div class="forensics-empty">No product mentions found in this window.</div><h4 class="forensics-section-title">IOC Intelligence</h4><div class="forensics-empty">No network IOCs extracted from this window’s articles.</div><h4 class="forensics-section-title">CVE Timeline</h4><div class="forensics-empty">No cross-run CVE history available yet.</div>
                         </section>
                     </div>
                 </aside>
                 </div>
                 </div>
 <script>
-var CARDS=[{"id": "585bc44599b2", "title": "Ivanti Endpoint Manager Mobile RCE", "risk_score": 100, "priority": "P1", "domains": ["container", "os_kernel"], "summary": "[P1] CVE-2026-1340 is a code injection vulnerability in Ivanti Endpoint Manager Mobile that could allow attackers to achieve unauthorized access. This vulnerability is being exploited in the wild. Why now: Exploitation in the wild (confidence: 0.90)", "sources": [{"title": "CVE-2026-1340", "url": "https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-1340"}], "tactic": "Initial Access", "shelf_days": 0, "run_count": 1, "first_seen_ts": "2026-04-08", "actions_24h": ["Isolate affected systems", "Monitor for suspicious activity"], "patch_status": "unknown", "shelf_resolved": false, "cves": []}, {"id": "053eea961fdb", "title": "Open Access Management Vulnerability", "risk_score": 70, "priority": "P2", "domains": ["web_framework", "crypto_lib"], "summary": "[P2] CVE-2026-33439 is a vulnerability in Open Access Management that could allow attackers to gain unauthorized access. A patch is not currently available. Why now: Lack of available patch (confidence: 0.70)", "sources": [{"title": "CVE-2026-33439", "url": "https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-33439"}], "tactic": "Initial Access", "shelf_days": 0, "run_count": 1, "first_seen_ts": "2026-04-08", "actions_24h": ["Monitor for suspicious activity", "Implement temporary workaround"], "patch_status": "unknown", "shelf_resolved": false, "cves": []}, {"id": "2bd04eb09717", "title": "OpenTelemetry-Go Vulnerability", "risk_score": 70, "priority": "P2", "domains": ["container", "os_kernel"], "summary": "[P2] CVE-2026-29181 is a vulnerability in OpenTelemetry-Go that could allow attackers to gain unauthorized access. A patch is not currently available. Why now: Lack of available patch (confidence: 0.70)", "sources": [{"title": "CVE-2026-29181", "url": "https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-29181"}], "tactic": "Initial Access", "shelf_days": 0, "run_count": 1, "first_seen_ts": "2026-04-08", "actions_24h": ["Monitor for suspicious activity", "Implement temporary workaround"], "patch_status": "unknown", "shelf_resolved": false, "cves": []}];
+var CARDS=[{"id": "585bc44599b2", "title": "Ivanti Endpoint Manager Mobile RCE", "risk_score": 100, "priority": "P1", "domains": ["container", "os_kernel", "web_framework"], "summary": "[P1] CVE-2026-1340 is a code injection vulnerability in Ivanti Endpoint Manager Mobile that could allow attackers to achieve unauthorized access, and it is being exploited in the wild. No patch is currently available, making it a high-priority threat. Why now: This vulnerability is being exploited in the wild, making it a high-priority threat. (confidence: 0.90)", "sources": [{"title": "CVE-2026-1340", "url": "https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-1340"}], "tactic": "Initial Access", "shelf_days": 1, "run_count": 2, "first_seen_ts": "2026-04-08", "actions_24h": ["Isolate affected systems", "Monitor for suspicious activity"], "patch_status": "unknown", "shelf_resolved": false, "cves": []}, {"id": "470c174f0085", "title": "ALEAPP Path Traversal", "risk_score": 70, "priority": "P2", "domains": ["pkg_npm", "pkg_pypi", "pkg_maven"], "summary": "[P2] CVE-2026-40027 is a path traversal vulnerability in ALEAPP that could allow attackers to access sensitive files, and no patch is currently available. This vulnerability has not been exploited in the wild, but it has the potential to be used in future attacks. Why now: This vulnerability has the potential to be used in future attacks, making it a moderate-priority threat. (confidence: 0.60)", "sources": [{"title": "CVE-2026-40027", "url": "https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-40027"}], "tactic": "Initial Access", "shelf_days": 0, "run_count": 1, "first_seen_ts": "2026-04-09", "actions_24h": ["Monitor for suspicious activity", "Apply workaround if available"], "patch_status": "unknown", "shelf_resolved": false, "cves": []}, {"id": "510e83c94ea5", "title": "Hayabusa XSS", "risk_score": 60, "priority": "P2", "domains": ["browser_ext", "web_framework"], "summary": "[P2] CVE-2026-40028 is a cross-site scripting vulnerability in Hayabusa that could allow attackers to steal sensitive information, and no patch is currently available. This vulnerability has not been exploited in the wild, but it has the potential to be used in future attacks. Why now: This vulnerability has the potential to be used in future attacks, making it a moderate-priority threat. (confidence: 0.50)", "sources": [{"title": "CVE-2026-40028", "url": "https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-40028"}], "tactic": "Initial Access", "shelf_days": 0, "run_count": 1, "first_seen_ts": "2026-04-09", "actions_24h": ["Monitor for suspicious activity", "Apply workaround if available"], "patch_status": "unknown", "shelf_resolved": false, "cves": []}];
 var CURRENT_DOMAIN='all';
 var DOMAIN_LABELS={"pkg_npm": "npm / Node", "pkg_pypi": "PyPI / Python", "pkg_maven": "Maven / Java", "pkg_nuget": ".NET / NuGet", "pkg_gem": "RubyGems", "browser_ext": "Browser Extensions", "ca_trust": "CA / PKI Trust", "cloud_iam": "Cloud / IAM", "container": "Containers / K8s", "os_kernel": "OS / Kernel", "web_framework": "Web / Servers", "crypto_lib": "Crypto Libraries", "supply_chain": "Supply Chain", "ai_threat": "AI / ML Threats", "identity": "Identity / Auth", "uncategorised": "Other"};
 var WT_TELEMETRY=[];
