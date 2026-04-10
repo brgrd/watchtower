@@ -928,5 +928,23 @@
     "last_seen": "2026-04-09",
     "run_count": 1,
     "title": "Hayabusa XSS"
+  },
+  "cve:CVE-2026-39987": {
+    "first_seen": "2026-04-10",
+    "last_seen": "2026-04-10",
+    "run_count": 1,
+    "title": "Marimo RCE Flaw"
+  },
+  "cve:CVE-2026-21904": {
+    "first_seen": "2026-04-10",
+    "last_seen": "2026-04-10",
+    "run_count": 1,
+    "title": "Junos OS Vulnerability"
+  },
+  "cve:CVE-2025-13914": {
+    "first_seen": "2026-04-10",
+    "last_seen": "2026-04-10",
+    "run_count": 1,
+    "title": "SSH Key Exchange Vulnerability"
   }
 }
