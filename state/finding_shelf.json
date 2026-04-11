@@ -964,5 +964,23 @@
     "last_seen": "2026-04-11",
     "run_count": 1,
     "title": "OpenClaw Canvas Path Traversal"
+  },
+  "2ab96cf8997a": {
+    "first_seen": "2026-04-11",
+    "last_seen": "2026-04-11",
+    "run_count": 1,
+    "title": "Rukovoditel CRM XSS"
+  },
+  "2207b8f874fb": {
+    "first_seen": "2026-04-11",
+    "last_seen": "2026-04-11",
+    "run_count": 1,
+    "title": "Phoc Stored XSS"
+  },
+  "32ce55c9ac29": {
+    "first_seen": "2026-04-11",
+    "last_seen": "2026-04-11",
+    "run_count": 1,
+    "title": "Gleam Compiler Vulnerability"
   }
 }
