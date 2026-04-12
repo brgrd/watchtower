@@ -1,100 +1,4 @@
 {
-  "10f392cb29bd": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "AI-Generated Malware"
-  },
-  "925f79241abc": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "Repository Custom Properties"
-  },
-  "1ce16d05cbcb": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "Tolgee Vulnerability"
-  },
-  "cf8e76ee388f": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "Undici Vulnerability"
-  },
-  "ee11134ba987": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "Parse Server Vulnerability"
-  },
-  "b9b5623c8feb": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "England Hockey Ransomware"
-  },
-  "db5d937346a0": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "Iranian Cyber Activity"
-  },
-  "7d4f71c4744e": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "Undici WebSocket Client Vulnerability"
-  },
-  "c98aed9c86ec": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "Suspected China-Based Espionage"
-  },
-  "3eafa17750fb": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "Honeywell IQ4x Vulnerability"
-  },
-  "fb566cebb5dd": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "Loblaw Data Breach"
-  },
-  "2fafea133d4f": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "Commercial Spyware"
-  },
-  "688ec37466a9": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "SocksEscort Network Disruption"
-  },
-  "47612f92c24b": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "Alfresco Activiti Vuln"
-  },
-  "348817f80138": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "whyour qinglong Vuln"
-  },
-  "e74065b3cb62": {
-    "first_seen": "2026-03-12",
-    "last_seen": "2026-03-12",
-    "run_count": 1,
-    "title": "HashiCorp Consul Vuln"
-  },
   "b4c63c7dd61f": {
     "first_seen": "2026-03-13",
     "last_seen": "2026-03-13",
@@ -982,5 +886,23 @@
     "last_seen": "2026-04-11",
     "run_count": 1,
     "title": "Gleam Compiler Vulnerability"
+  },
+  "b672e2384ed2": {
+    "first_seen": "2026-04-12",
+    "last_seen": "2026-04-12",
+    "run_count": 1,
+    "title": "1Panel-dev MaxKB RCE"
+  },
+  "4fed135c8414": {
+    "first_seen": "2026-04-12",
+    "last_seen": "2026-04-12",
+    "run_count": 1,
+    "title": "perfree go-fastdfs-web Vulnerability"
+  },
+  "1c676338a53a": {
+    "first_seen": "2026-04-12",
+    "last_seen": "2026-04-12",
+    "run_count": 1,
+    "title": "FoundationAgents MetaGPT Vulnerability"
   }
 }

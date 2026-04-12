@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-04-11T22:46:32.578699+00:00
+generated_at: 2026-04-12T10:53:37.809031+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-CVE-2026-31845 in Rukovoditel CRM, CVE-2026-23900 in Phoc, and CVE-2026-32146 in Gleam compiler represent the highest-risk items this period. Internet-facing web applications and git repositories are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using Rukovoditel CRM, as no patch is currently available for CVE-2026-31845.
+The highest-risk items this period are CVE-2026-6107 in 1Panel-dev MaxKB, CVE-2026-6105 in perfree go-fastdfs-web, and CVE-2026-6110 in FoundationAgents MetaGPT. Internet-facing systems, such as web servers and VPN appliances, are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems running 1Panel-dev MaxKB and FoundationAgents MetaGPT, as no patches are currently available for these products.
 
-## Rukovoditel CRM XSS (risk: 40)
-[P1] A reflected cross-site scripting (XSS) vulnerability exists in Rukovoditel CRM, with no available patch. This vulnerability can be exploited by an attacker to inject malicious scripts into the application. Why now: Lack of available patch (confidence: 0.80)
+## 1Panel-dev MaxKB RCE (risk: 70)
+[P1] A remote code execution vulnerability has been found in 1Panel-dev MaxKB up to 2.6.1, with no available patch. This vulnerability can be exploited to gain unauthorized access to the system. Why now: The lack of a patch for this vulnerability makes it a high-risk item. (confidence: 0.80)
 
-- [CVE-2026-31845](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2026-6107](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml#CVE-2026-6107)
 
-## Phoc Stored XSS (risk: 40)
-[P2] Various stored XSS vulnerabilities exist in Phoc, with no available patch. These vulnerabilities can be exploited by an attacker to inject malicious scripts into the application. Why now: Lack of available patch (confidence: 0.70)
+## perfree go-fastdfs-web Vulnerability (risk: 70)
+[P1] A security vulnerability has been detected in perfree go-fastdfs-web up to 1.3.7, with no available patch or workaround. This vulnerability can be exploited to gain unauthorized access to the system. Why now: The lack of a patch or workaround for this vulnerability makes it a high-risk item. (confidence: 0.80)
 
-- [CVE-2026-23900](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2026-6105](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml#CVE-2026-6105)
 
-## Gleam Compiler Vulnerability (risk: 40)
-[P2] An improper path validation vulnerability exists in the Gleam compiler, with no available patch. This vulnerability can be exploited by an attacker to execute arbitrary code. Why now: Lack of available patch (confidence: 0.70)
+## FoundationAgents MetaGPT Vulnerability (risk: 70)
+[P1] A vulnerability was identified in FoundationAgents MetaGPT up to 0.8.1, with no available patch or workaround. This vulnerability can be exploited to gain unauthorized access to the system. Why now: The lack of a patch or workaround for this vulnerability makes it a high-risk item. (confidence: 0.80)
 
-- [CVE-2026-32146](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2026-6110](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml#CVE-2026-6110)
