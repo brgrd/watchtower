@@ -904,5 +904,23 @@
     "last_seen": "2026-04-12",
     "run_count": 1,
     "title": "FoundationAgents MetaGPT Vulnerability"
+  },
+  "cve:CVE-2026-6126": {
+    "first_seen": "2026-04-12",
+    "last_seen": "2026-04-12",
+    "run_count": 1,
+    "title": "CVE-2026-6126"
+  },
+  "cve:CVE-2018-25258": {
+    "first_seen": "2026-04-12",
+    "last_seen": "2026-04-12",
+    "run_count": 1,
+    "title": "CVE-2018-25258"
+  },
+  "cve:CVE-2019-25689": {
+    "first_seen": "2026-04-12",
+    "last_seen": "2026-04-12",
+    "run_count": 1,
+    "title": "CVE-2019-25689"
   }
 }
