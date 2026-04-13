@@ -1,38 +1,38 @@
-# Watchtower Pipeline Eval — 2026-04-12T22:49:05Z
+# Watchtower Pipeline Eval — 2026-04-13T22:57:02Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 32 |
-| After dedup + CVE merge | 32 |
+| Items polled (raw) | 375 |
+| After dedup + CVE merge | 374 |
 | Sent to Groq | 30 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/32 (9.4%)** |
+| **Pipeline yield** | **3/375 (0.8%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 5,748 chars
+- **Payload**: 7,624 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 8496
+- **Rate limit remaining** — requests: 999, tokens: 7981
 
 ## Card Quality
 
-**3 cards** — P1: 1, P2: 2, P3: 0
+**3 cards** — P1: 3, P2: 0, P3: 0
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 40 / 40 |
+| Risk score mean / p90 | 100 / 100 |
 | Tactic coverage | 100% |
-| CVE coverage | 0% |
+| CVE coverage | 33% |
 | Patch status | unknown: 3 |
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 91 chars (100% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 6 total — 17% specific, 50% generic
+- **`why_now` avg length**: 46 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 6 total — 50% specific, 50% generic
 
 ### Persistence
 
@@ -43,31 +43,31 @@
 
 | Source | Hits | Rate |
 |--------|-----:|-----:|
-| EPSS | 1 | 33% |
-| NVD (CVE) | 0 | 0% |
-| CISA KEV | 0 | 0% |
+| EPSS | 3 | 100% |
+| NVD (CVE) | 1 | 33% |
+| CISA KEV | 3 | 100% |
 
 ## Feed Yield
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 30 |
-| `bleepingcomputer` | 1 |
-| `cloudflare_blog` | 1 |
-| `cisa_alerts` | 0 |
-| `cisa_kev` | 0 |
+| `nvd` | 221 |
+| `bsi_germany` | 108 |
+| `bleepingcomputer` | 8 |
+| `cisa_kev` | 7 |
+| `securityweek` | 7 |
 | _(+19 more)_ | … |
 
-**19 feeds returned 0 items this run.**
+**12 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-04-07 | 5 | 2 | 100% | 40% | 5 | 0 |
 | 2026-04-08 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-04-09 | 3 | 1 | 100% | 0% | 2 | 0 |
 | 2026-04-10 | 3 | 3 | 100% | 33% | 3 | 0 |
 | 2026-04-11 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-04-11 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-04-12 | 3 | 3 | 100% | 0% | 3 | 0 |
+| 2026-04-12 | 3 | 1 | 100% | 0% | 3 | 0 |

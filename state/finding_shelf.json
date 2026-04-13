@@ -1,93 +1,15 @@
 {
-  "b4c63c7dd61f": {
-    "first_seen": "2026-03-13",
-    "last_seen": "2026-03-13",
-    "run_count": 1,
-    "title": "Tenda i3 RCE"
-  },
-  "8be7e618f236": {
-    "first_seen": "2026-03-13",
-    "last_seen": "2026-03-13",
-    "run_count": 1,
-    "title": "Tenda W3 Vuln"
-  },
-  "c0dcfba90ea8": {
-    "first_seen": "2026-03-13",
-    "last_seen": "2026-03-13",
-    "run_count": 1,
-    "title": "AutohomeCorp frostmourne Vuln"
-  },
-  "6c51039e8b4c": {
-    "first_seen": "2026-03-13",
-    "last_seen": "2026-03-13",
-    "run_count": 1,
-    "title": "CVE-2026-3980"
-  },
-  "968c01049056": {
-    "first_seen": "2026-03-13",
-    "last_seen": "2026-03-13",
-    "run_count": 1,
-    "title": "CVE-2026-3982"
-  },
-  "cd4884add0ca": {
-    "first_seen": "2026-03-13",
-    "last_seen": "2026-03-13",
-    "run_count": 1,
-    "title": "CVE-2026-3981"
-  },
   "ce2b6e0389d0": {
     "first_seen": "2026-03-13",
     "last_seen": "2026-04-04",
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "efb51b29e36e": {
-    "first_seen": "2026-03-13",
-    "last_seen": "2026-03-13",
-    "run_count": 1,
-    "title": "Keycloak Auth Bypass"
-  },
-  "4d0c431ec58f": {
-    "first_seen": "2026-03-13",
-    "last_seen": "2026-03-13",
-    "run_count": 1,
-    "title": "mod_proxy_cluster Carriage Return Vulnerability"
-  },
-  "8a872d4b5558": {
-    "first_seen": "2026-03-13",
-    "last_seen": "2026-03-13",
-    "run_count": 1,
-    "title": "SGLang Unauthenticated Remote Code Execution"
-  },
-  "53a9fafb9a9b": {
-    "first_seen": "2026-03-13",
-    "last_seen": "2026-03-13",
-    "run_count": 1,
-    "title": "RCE in Backup Viewer"
-  },
-  "6f000337accb": {
-    "first_seen": "2026-03-13",
-    "last_seen": "2026-03-13",
-    "run_count": 1,
-    "title": "Privilege Escalation in TinaCMS"
-  },
-  "b56215756188": {
-    "first_seen": "2026-03-13",
-    "last_seen": "2026-03-13",
-    "run_count": 1,
-    "title": "HTML Injection in Postal"
-  },
   "41d10116adee": {
     "first_seen": "2026-03-13",
     "last_seen": "2026-03-14",
     "run_count": 2,
     "title": "Chrome V8 Vulnerability"
-  },
-  "c5ce3e44f138": {
-    "first_seen": "2026-03-13",
-    "last_seen": "2026-03-13",
-    "run_count": 1,
-    "title": "Veeam Backup & Replication Flaws"
   },
   "8a331e21e6f3": {
     "first_seen": "2026-03-14",
@@ -922,5 +844,23 @@
     "last_seen": "2026-04-12",
     "run_count": 1,
     "title": "CVE-2019-25689"
+  },
+  "cve:CVE-2020-9715": {
+    "first_seen": "2026-04-13",
+    "last_seen": "2026-04-13",
+    "run_count": 1,
+    "title": "Adobe Acrobat RCE"
+  },
+  "cve:CVE-2023-36424": {
+    "first_seen": "2026-04-13",
+    "last_seen": "2026-04-13",
+    "run_count": 1,
+    "title": "Microsoft Windows OOB Read"
+  },
+  "cve:CVE-2026-21643": {
+    "first_seen": "2026-04-13",
+    "last_seen": "2026-04-13",
+    "run_count": 1,
+    "title": "Fortinet FortiClient EMS SQLi"
   }
 }
