@@ -820,5 +820,23 @@
     "last_seen": "2026-04-13",
     "run_count": 1,
     "title": "Fortinet FortiClient EMS SQLi"
+  },
+  "cve:CVE-2026-32201": {
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-14",
+    "run_count": 1,
+    "title": "Microsoft SharePoint RCE"
+  },
+  "cve:CVE-2009-0238": {
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-14",
+    "run_count": 1,
+    "title": "Microsoft Office Excel RCE"
+  },
+  "cve:CVE-2026-31908": {
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-14",
+    "run_count": 1,
+    "title": "Apache APISIX Header Injection"
   }
 }

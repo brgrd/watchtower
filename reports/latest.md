@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-04-14T10:24:00.319177+00:00
+generated_at: 2026-04-14T22:00:46.098908+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-CVE-2023-36424 in Microsoft Windows, CVE-2025-60710 in Microsoft Windows, and CVE-2026-34621 in Adobe Acrobat represent the highest-risk items this period. Internet-facing systems and servers running unpatched Microsoft Windows and Adobe Acrobat are most exposed due to the lack of available patches for these vulnerabilities. The single most time-sensitive action is to isolate systems running Adobe Acrobat until a patch is available, as CVE-2026-34621 is being actively exploited in the wild with no current patch available.
+CVE-2026-32201 in Microsoft SharePoint Server, CVE-2009-0238 in Microsoft Office Excel, and CVE-2026-31908 in Apache APISIX represent the highest-risk items this period. Internet-facing servers and applications are most exposed right now due to the lack of patches for these vulnerabilities. The single most time-sensitive action is to patch or isolate systems affected by CVE-2026-32201, although no patch is currently available.
 
-## Microsoft Windows OOB Read (risk: 70)
-[P1] CVE-2023-36424 is an out-of-bounds read vulnerability in Microsoft Windows that could allow a threat actor to execute arbitrary code. It is being actively exploited in the wild with no patch available. Why now: Reported exploitation in the wild (confidence: 0.80)
+## Microsoft SharePoint RCE (risk: 70)
+[P1] CVE-2026-32201 is an improper input validation vulnerability in Microsoft SharePoint Server that allows unauthorized attackers to execute arbitrary code. It is being exploited in the wild with no patch available. Why now: Reported exploitation in the wild without a patch available. (confidence: 0.80)
 
-- [CISA Adds 6 Known Exploited Flaws in Fortinet, Microsoft, and Adobe Software](https://thehackernews.com/2026/04/cisa-adds-6-known-exploited-flaws-in.html)
+- [CVE-2026-32201](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-32201)
 
-## Adobe Acrobat Prototype Pollution (risk: 70)
-[P1] CVE-2026-34621 is a prototype pollution vulnerability in Adobe Acrobat that allows for arbitrary code execution. It is being actively exploited in the wild with no patch available. Why now: Reported exploitation in the wild (confidence: 0.80)
+## Microsoft Office Excel RCE (risk: 70)
+[P1] CVE-2009-0238 is a remote code execution vulnerability in Microsoft Office Excel that could allow an attacker to take complete control of the system. It is being exploited in the wild with no patch available. Why now: Reported exploitation in the wild without a patch available. (confidence: 0.80)
 
-- [CISA Adds 6 Known Exploited Flaws in Fortinet, Microsoft, and Adobe Software](https://thehackernews.com/2026/04/cisa-adds-6-known-exploited-flaws-in.html)
+- [CVE-2009-0238](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0238)
 
-## Microsoft Windows Link Following (risk: 70)
-[P1] CVE-2025-60710 is a link following vulnerability in Microsoft Windows that allows for privilege escalation. It is being actively exploited in the wild with no patch available. Why now: Reported exploitation in the wild (confidence: 0.80)
+## Apache APISIX Header Injection (risk: 40)
+[P2] CVE-2026-31908 is a header injection vulnerability in Apache APISIX that allows attackers to take advantage of the system. No patch is currently available. Why now: Newly disclosed vulnerability with potential for exploitation. (confidence: 0.60)
 
-- [CISA Adds 6 Known Exploited Flaws in Fortinet, Microsoft, and Adobe Software](https://thehackernews.com/2026/04/cisa-adds-6-known-exploited-flaws-in.html)
+- [CVE-2026-31908](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-31908)
