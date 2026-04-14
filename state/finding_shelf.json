@@ -5,48 +5,6 @@
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "41d10116adee": {
-    "first_seen": "2026-03-13",
-    "last_seen": "2026-03-14",
-    "run_count": 2,
-    "title": "Chrome V8 Vulnerability"
-  },
-  "8a331e21e6f3": {
-    "first_seen": "2026-03-14",
-    "last_seen": "2026-03-14",
-    "run_count": 1,
-    "title": "OpenText Vertica Vulnerability"
-  },
-  "f20fe8ddf388": {
-    "first_seen": "2026-03-14",
-    "last_seen": "2026-03-14",
-    "run_count": 1,
-    "title": "IBM Sterling Partner Engagement Manager Vulnerability"
-  },
-  "7bc79467d22d": {
-    "first_seen": "2026-03-14",
-    "last_seen": "2026-03-14",
-    "run_count": 1,
-    "title": "Google Chromium V8 RCE"
-  },
-  "665243ec186a": {
-    "first_seen": "2026-03-14",
-    "last_seen": "2026-03-14",
-    "run_count": 1,
-    "title": "Google Skia OOB Write"
-  },
-  "0ee39da034eb": {
-    "first_seen": "2026-03-14",
-    "last_seen": "2026-03-14",
-    "run_count": 1,
-    "title": "OpenText Vertica Auth Bypass"
-  },
-  "4be2bf49cbd3": {
-    "first_seen": "2026-03-14",
-    "last_seen": "2026-03-14",
-    "run_count": 1,
-    "title": "Google Chromium V8 Memory Buffer Vulnerability"
-  },
   "c254e2befea7": {
     "first_seen": "2026-03-14",
     "last_seen": "2026-03-15",
@@ -847,8 +805,8 @@
   },
   "cve:CVE-2020-9715": {
     "first_seen": "2026-04-13",
-    "last_seen": "2026-04-13",
-    "run_count": 1,
+    "last_seen": "2026-04-14",
+    "run_count": 2,
     "title": "Adobe Acrobat RCE"
   },
   "cve:CVE-2023-36424": {
