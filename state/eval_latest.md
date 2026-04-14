@@ -1,22 +1,22 @@
-# Watchtower Pipeline Eval — 2026-04-14T22:00:12Z
+# Watchtower Pipeline Eval — 2026-04-14T22:56:58Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 473 |
-| After dedup + CVE merge | 472 |
+| Items polled (raw) | 376 |
+| After dedup + CVE merge | 375 |
 | Sent to Groq | 30 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/473 (0.6%)** |
+| **Pipeline yield** | **3/376 (0.8%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 6,733 chars
+- **Payload**: 6,727 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 8252
+- **Rate limit remaining** — requests: 999, tokens: 8243
 
 ## Card Quality
 
@@ -24,15 +24,15 @@
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 60 / 70 |
+| Risk score mean / p90 | 90 / 100 |
 | Tactic coverage | 100% |
 | CVE coverage | 0% |
 | Patch status | unknown: 3 |
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 60.7 chars (33% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 5 total — 40% specific, 0% generic
+- **`why_now` avg length**: 77.3 chars (100% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 5 total — 40% specific, 60% generic
 
 ### Persistence
 
@@ -51,23 +51,23 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 304 |
-| `bsi_germany` | 124 |
-| `bleepingcomputer` | 9 |
-| `securityweek` | 8 |
+| `nvd` | 316 |
+| `bsi_germany` | 17 |
+| `bleepingcomputer` | 10 |
 | `github_changelog` | 7 |
+| `securityweek` | 5 |
 | _(+19 more)_ | … |
 
-**12 feeds returned 0 items this run.**
+**10 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-04-10 | 3 | 3 | 100% | 33% | 3 | 0 |
 | 2026-04-11 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-04-11 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-04-12 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-04-12 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-04-13 | 3 | 3 | 100% | 33% | 3 | 0 |
 | 2026-04-14 | 3 | 3 | 100% | 100% | 0 | 0 |
+| 2026-04-14 | 3 | 2 | 100% | 0% | 3 | 0 |
