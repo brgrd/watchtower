@@ -1,13 +1,14 @@
 {
-  "rebuilt_at": "2026-04-14T10:24:00.429983+00:00",
+  "rebuilt_at": "2026-04-15T10:24:43.092595+00:00",
   "window_days": 7,
   "total_cards": 21,
-  "unique_cves": 16,
+  "unique_cves": 15,
   "active_domains": [
     "browser_ext",
     "cloud_iam",
     "container",
     "crypto_lib",
+    "identity",
     "os_kernel",
     "pkg_maven",
     "pkg_npm",
@@ -15,35 +16,35 @@
     "supply_chain",
     "web_framework"
   ],
-  "most_active_day": "2026-04-14",
+  "most_active_day": "2026-04-15",
   "day_counts": {
+    "2026-04-15": 3,
     "2026-04-14": 3,
     "2026-04-13": 3,
     "2026-04-12": 3,
     "2026-04-11": 3,
     "2026-04-10": 3,
-    "2026-04-09": 3,
-    "2026-04-08": 3
+    "2026-04-09": 3
   },
   "top_cves": [
     {
-      "cve": "CVE-2023-36424",
+      "cve": "CVE-2009-0238",
       "count": 2
     },
     {
-      "cve": "CVE-2026-1340",
+      "cve": "CVE-2026-32201",
       "count": 2
     },
     {
-      "cve": "CVE-2026-34621",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2025-60710",
+      "cve": "CVE-2025-13822",
       "count": 1
     },
     {
       "cve": "CVE-2020-9715",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2023-36424",
       "count": 1
     },
     {
@@ -75,22 +76,18 @@
       "count": 1
     },
     {
+      "cve": "CVE-2026-1340",
+      "count": 1
+    },
+    {
       "cve": "CVE-2026-40027",
       "count": 1
     },
     {
       "cve": "CVE-2026-40028",
       "count": 1
-    },
-    {
-      "cve": "CVE-2026-33439",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-29181",
-      "count": 1
     }
   ],
-  "weekly_summary": "Over the past 7 days, our security landscape has been characterized by 21 total findings, with 16 unique CVEs tracked across various domains, including Browser Extensions, Cloud/IAM, and OS/Kernel. The most frequently seen vulnerabilities were CVE-2023-36424 and CVE-2026-1340, each occurring twice. Other notable CVEs included CVE-2026-34621, CVE-2025-60710, and older vulnerabilities such as CVE-2020-9715 and CVE-2018-25258. The most active day was April 14, 2026, with multiple security domains exhibiting activity, highlighting the need for continued vigilance across our infrastructure.",
-  "weekly_summary_ts": "2026-04-14"
+  "weekly_summary": "Over the past 7 days, our security landscape has been characterized by 21 total findings, with 15 unique CVEs tracked across various domains, including Browser Extensions, Cloud/IAM, and OS/Kernel. The most frequently seen vulnerabilities were CVE-2009-0238 and CVE-2026-32201, each occurring twice. Other notable CVEs included CVE-2025-13822, CVE-2020-9715, and CVE-2023-36424, among others. The majority of these findings were concentrated on the most active day, 2026-04-15, highlighting a recent surge in security threats that warrant continued monitoring and mitigation efforts.",
+  "weekly_summary_ts": "2026-04-15"
 }

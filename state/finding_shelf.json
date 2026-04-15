@@ -5,48 +5,6 @@
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "c254e2befea7": {
-    "first_seen": "2026-03-14",
-    "last_seen": "2026-03-15",
-    "run_count": 2,
-    "title": "GlassWorm Supply-Chain Attack"
-  },
-  "548834557c4e": {
-    "first_seen": "2026-03-15",
-    "last_seen": "2026-03-15",
-    "run_count": 1,
-    "title": "Microsoft Windows 11 OOB Hotpatch"
-  },
-  "c0006390606a": {
-    "first_seen": "2026-03-15",
-    "last_seen": "2026-03-15",
-    "run_count": 1,
-    "title": "OpenClaw AI Agent Flaws"
-  },
-  "a558b4c624c6": {
-    "first_seen": "2026-03-15",
-    "last_seen": "2026-03-15",
-    "run_count": 1,
-    "title": "Windows 11 OOB Hotpatch"
-  },
-  "645e6ef3ac59": {
-    "first_seen": "2026-03-15",
-    "last_seen": "2026-03-15",
-    "run_count": 1,
-    "title": "AWS IAM Identity Center"
-  },
-  "95be016a93c5": {
-    "first_seen": "2026-03-15",
-    "last_seen": "2026-03-15",
-    "run_count": 1,
-    "title": "Betterleaks Secrets Scanner"
-  },
-  "17f43136bbdf": {
-    "first_seen": "2026-03-15",
-    "last_seen": "2026-03-15",
-    "run_count": 1,
-    "title": "Betterleaks Scanner"
-  },
   "f0637b0d4588": {
     "first_seen": "2026-03-16",
     "last_seen": "2026-03-16",
@@ -823,14 +781,14 @@
   },
   "cve:CVE-2026-32201": {
     "first_seen": "2026-04-14",
-    "last_seen": "2026-04-14",
-    "run_count": 1,
+    "last_seen": "2026-04-15",
+    "run_count": 2,
     "title": "Microsoft SharePoint RCE"
   },
   "cve:CVE-2009-0238": {
     "first_seen": "2026-04-14",
-    "last_seen": "2026-04-14",
-    "run_count": 1,
+    "last_seen": "2026-04-15",
+    "run_count": 2,
     "title": "Microsoft Office Excel RCE"
   },
   "cve:CVE-2026-31908": {
@@ -844,5 +802,11 @@
     "last_seen": "2026-04-14",
     "run_count": 1,
     "title": "MCPHub Authentication Bypass"
+  },
+  "d2b05cfab2fb": {
+    "first_seen": "2026-04-15",
+    "last_seen": "2026-04-15",
+    "run_count": 1,
+    "title": "ColdFusion Vulns"
   }
 }
