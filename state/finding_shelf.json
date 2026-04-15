@@ -808,5 +808,23 @@
     "last_seen": "2026-04-15",
     "run_count": 1,
     "title": "ColdFusion Vulns"
+  },
+  "cve:CVE-2026-33032": {
+    "first_seen": "2026-04-15",
+    "last_seen": "2026-04-15",
+    "run_count": 1,
+    "title": "nginx-ui RCE"
+  },
+  "cve:CVE-2026-3642": {
+    "first_seen": "2026-04-15",
+    "last_seen": "2026-04-15",
+    "run_count": 1,
+    "title": "e-shot form builder plugin vuln"
+  },
+  "cve:CVE-2026-3659": {
+    "first_seen": "2026-04-15",
+    "last_seen": "2026-04-15",
+    "run_count": 1,
+    "title": "WP Circliful plugin vuln"
   }
 }
