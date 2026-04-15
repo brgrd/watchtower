@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-04-15T22:01:38.108174+00:00
+generated_at: 2026-04-15T22:55:48.528108+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,24 @@ project: Watchtower
 
 ## Analyst Summary
 
-CVE-2026-33032 in nginx-ui, CVE-2026-3642 in e-shot form builder plugin, and CVE-2026-3659 in WP Circliful plugin represent the highest-risk items this period. Internet-facing web servers and WordPress installations are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by CVE-2026-33032, as it enables full nginx server takeover, but no patch is currently available.
+The highest-risk items this period are CVE-2026-40740 in Themeum Tutor LMS, CVE-2026-40734 in VillaTheme COM, and CVE-2026-40737 in BlockArt Magazine Blocks. Internet-facing web applications and plugins are most exposed due to missing authorization vulnerabilities and cross-site scripting flaws, with no patches currently available. The most time-sensitive action is to monitor and isolate Mattermost versions 10.11.x <= 10.11.12, as they are vulnerable to exploitation with no patch available yet.
 
-## nginx-ui RCE (risk: 100)
-[P1] CVE-2026-33032 allows full nginx server takeover, with no patch available. Exploitation has been reported in the wild. Why now: Reported exploitation in the wild. (confidence: 0.90)
+## Mattermost RCE (risk: 70)
+[P1] Mattermost versions 10.11.x <= 10.11.12 are vulnerable to remote code execution due to a missing authorization flaw, with no patch available. Exploitation in the wild has not been reported yet. Why now: Newly disclosed vulnerability with potential for widespread exploitation. (confidence: 0.80)
 
-- [Actively Exploited nginx-ui Flaw (CVE-2026-33032) Enables Full Nginx Server Takeover](https://thehackernews.com/2026/04/critical-nginx-ui-vulnerability-cve.html)
+- [CVE-2026-28741](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-28741)
 
-## e-shot form builder plugin vuln (risk: 70)
-[P2] CVE-2026-3642 allows missing authorization, with no patch available. WordPress installations are at risk. Why now: Lack of available patch. (confidence: 0.60)
+## Themeum Tutor LMS Auth Bypass (risk: 70)
+[P1] Themeum Tutor LMS is vulnerable to missing authorization, allowing attackers to exploit the system. No patch is currently available. Why now: Newly disclosed vulnerability with potential for widespread exploitation. (confidence: 0.80)
 
-- [The e-shot form builder plugin for WordPress is vulnerable to Missing Authorization](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3642)
+- [CVE-2026-40740](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-40740)
 
-## WP Circliful plugin vuln (risk: 70)
-[P2] CVE-2026-3659 allows stored cross-site scripting, with no patch available. WordPress installations are at risk. Why now: Lack of available patch. (confidence: 0.60)
+## VillaTheme COM Auth Bypass (risk: 70)
+[P1] VillaTheme COM is vulnerable to authorization bypass, allowing attackers to exploit the system. No patch is currently available. Why now: Newly disclosed vulnerability with potential for widespread exploitation. (confidence: 0.80)
 
-- [The WP Circliful plugin for WordPress is vulnerable to Stored Cross-Site Scripting](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3659)
+- [CVE-2026-40737](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-40737)
+
+## BlockArt Magazine Blocks Auth Bypass (risk: 70)
+[P1] BlockArt Magazine Blocks is vulnerable to missing authorization, allowing attackers to exploit the system. No patch is currently available. Why now: Newly disclosed vulnerability with potential for widespread exploitation. (confidence: 0.80)
+
+- [CVE-2026-40728](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-40728)

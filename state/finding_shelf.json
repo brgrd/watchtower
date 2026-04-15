@@ -826,5 +826,29 @@
     "last_seen": "2026-04-15",
     "run_count": 1,
     "title": "WP Circliful plugin vuln"
+  },
+  "8a68b4e30aab": {
+    "first_seen": "2026-04-15",
+    "last_seen": "2026-04-15",
+    "run_count": 1,
+    "title": "Mattermost RCE"
+  },
+  "8206efb11479": {
+    "first_seen": "2026-04-15",
+    "last_seen": "2026-04-15",
+    "run_count": 1,
+    "title": "Themeum Tutor LMS Auth Bypass"
+  },
+  "6f2641b9ae41": {
+    "first_seen": "2026-04-15",
+    "last_seen": "2026-04-15",
+    "run_count": 1,
+    "title": "VillaTheme COM Auth Bypass"
+  },
+  "196f23e99dba": {
+    "first_seen": "2026-04-15",
+    "last_seen": "2026-04-15",
+    "run_count": 1,
+    "title": "BlockArt Magazine Blocks Auth Bypass"
   }
 }
