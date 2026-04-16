@@ -850,5 +850,23 @@
     "last_seen": "2026-04-16",
     "run_count": 1,
     "title": "Istio Vuln"
+  },
+  "cve:CVE-2026-34197": {
+    "first_seen": "2026-04-16",
+    "last_seen": "2026-04-16",
+    "run_count": 1,
+    "title": "Apache ActiveMQ RCE"
+  },
+  "cve:CVE-2026-23772": {
+    "first_seen": "2026-04-16",
+    "last_seen": "2026-04-16",
+    "run_count": 1,
+    "title": "Dell Storage Manager Vulnerability"
+  },
+  "cve:CVE-2024-10242": {
+    "first_seen": "2026-04-16",
+    "last_seen": "2026-04-16",
+    "run_count": 1,
+    "title": "Unspecified Software Authentication Vulnerability"
   }
 }
