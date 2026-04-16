@@ -5,24 +5,6 @@
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "f0637b0d4588": {
-    "first_seen": "2026-03-16",
-    "last_seen": "2026-03-16",
-    "run_count": 1,
-    "title": "Wing FTP Server Vuln"
-  },
-  "8374f9e03782": {
-    "first_seen": "2026-03-16",
-    "last_seen": "2026-03-16",
-    "run_count": 1,
-    "title": "Next Click Ventures RealtyScript Vuln"
-  },
-  "0acf8aa2a3c8": {
-    "first_seen": "2026-03-16",
-    "last_seen": "2026-03-16",
-    "run_count": 1,
-    "title": "Qool CMS Vuln"
-  },
   "5e36e57d4bb2": {
     "first_seen": "2026-03-17",
     "last_seen": "2026-03-17",
@@ -850,5 +832,23 @@
     "last_seen": "2026-04-15",
     "run_count": 1,
     "title": "BlockArt Magazine Blocks Auth Bypass"
+  },
+  "cve:CVE-2026-6388": {
+    "first_seen": "2026-04-16",
+    "last_seen": "2026-04-16",
+    "run_count": 1,
+    "title": "ArgoCD Image Updater Vuln"
+  },
+  "cve:CVE-2026-40500": {
+    "first_seen": "2026-04-16",
+    "last_seen": "2026-04-16",
+    "run_count": 1,
+    "title": "ProcessWire CMS Vuln"
+  },
+  "cve:CVE-2026-39350": {
+    "first_seen": "2026-04-16",
+    "last_seen": "2026-04-16",
+    "run_count": 1,
+    "title": "Istio Vuln"
   }
 }
