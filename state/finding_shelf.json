@@ -5,78 +5,6 @@
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "5e36e57d4bb2": {
-    "first_seen": "2026-03-17",
-    "last_seen": "2026-03-17",
-    "run_count": 1,
-    "title": "RealtyScript CSRF"
-  },
-  "ebec7b1ed40e": {
-    "first_seen": "2026-03-17",
-    "last_seen": "2026-03-17",
-    "run_count": 1,
-    "title": "Qool CMS XSS"
-  },
-  "fe58c77cffb4": {
-    "first_seen": "2026-03-17",
-    "last_seen": "2026-03-17",
-    "run_count": 1,
-    "title": "RealtyScript SQLi"
-  },
-  "f90ffa530b0f": {
-    "first_seen": "2026-03-17",
-    "last_seen": "2026-03-17",
-    "run_count": 1,
-    "title": "WooCommerce Vulnerability"
-  },
-  "955defa7199d": {
-    "first_seen": "2026-03-17",
-    "last_seen": "2026-03-17",
-    "run_count": 1,
-    "title": "libsoup Vulnerability"
-  },
-  "39ad4d3c733a": {
-    "first_seen": "2026-03-17",
-    "last_seen": "2026-03-17",
-    "run_count": 1,
-    "title": "Apache Airflow Vulnerability"
-  },
-  "ccaf7c34dacf": {
-    "first_seen": "2026-03-17",
-    "last_seen": "2026-03-17",
-    "run_count": 1,
-    "title": "Linux Kernel Vuln"
-  },
-  "f9614a74e2e2": {
-    "first_seen": "2026-03-17",
-    "last_seen": "2026-03-17",
-    "run_count": 1,
-    "title": "Apache Airflow Vuln"
-  },
-  "d02114c33acb": {
-    "first_seen": "2026-03-17",
-    "last_seen": "2026-03-17",
-    "run_count": 1,
-    "title": "Libsoup Vuln"
-  },
-  "d2db10c586eb": {
-    "first_seen": "2026-03-17",
-    "last_seen": "2026-03-17",
-    "run_count": 1,
-    "title": "Apache Airflow RCE"
-  },
-  "69481df85c87": {
-    "first_seen": "2026-03-17",
-    "last_seen": "2026-03-17",
-    "run_count": 1,
-    "title": "libsoup HTTP Request Vulnerability"
-  },
-  "d989b09a7d89": {
-    "first_seen": "2026-03-17",
-    "last_seen": "2026-03-17",
-    "run_count": 1,
-    "title": "Apache Airflow FastAPI DagVersion Listing API Vulnerability"
-  },
   "bf043dfe5f41": {
     "first_seen": "2026-03-18",
     "last_seen": "2026-03-18",
@@ -868,5 +796,23 @@
     "last_seen": "2026-04-16",
     "run_count": 1,
     "title": "Unspecified Software Authentication Vulnerability"
+  },
+  "cve:CVE-2026-34164": {
+    "first_seen": "2026-04-17",
+    "last_seen": "2026-04-17",
+    "run_count": 1,
+    "title": "Valtimo RCE"
+  },
+  "cve:CVE-2026-39313": {
+    "first_seen": "2026-04-17",
+    "last_seen": "2026-04-17",
+    "run_count": 1,
+    "title": "mcp-framework RCE"
+  },
+  "cve:CVE-2026-40170": {
+    "first_seen": "2026-04-17",
+    "last_seen": "2026-04-17",
+    "run_count": 1,
+    "title": "ngtcp2 RCE"
   }
 }
