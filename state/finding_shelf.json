@@ -814,5 +814,23 @@
     "last_seen": "2026-04-17",
     "run_count": 1,
     "title": "ngtcp2 RCE"
+  },
+  "cve:CVE-2026-23775": {
+    "first_seen": "2026-04-17",
+    "last_seen": "2026-04-17",
+    "run_count": 1,
+    "title": "Dell PowerProtect RCE"
+  },
+  "cve:CVE-2026-6494": {
+    "first_seen": "2026-04-17",
+    "last_seen": "2026-04-17",
+    "run_count": 1,
+    "title": "AAP MCP RCE"
+  },
+  "cve:CVE-2026-6439": {
+    "first_seen": "2026-04-17",
+    "last_seen": "2026-04-17",
+    "run_count": 1,
+    "title": "VideoZen XSS"
   }
 }
