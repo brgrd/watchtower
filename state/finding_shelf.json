@@ -5,48 +5,6 @@
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "bf043dfe5f41": {
-    "first_seen": "2026-03-18",
-    "last_seen": "2026-03-18",
-    "run_count": 1,
-    "title": "IBM i 7.6 Vulnerability"
-  },
-  "a93d878a49c7": {
-    "first_seen": "2026-03-18",
-    "last_seen": "2026-03-18",
-    "run_count": 1,
-    "title": "Edimax GS-5008PL Firmware Vulnerability"
-  },
-  "5e332e921bd4": {
-    "first_seen": "2026-03-18",
-    "last_seen": "2026-03-18",
-    "run_count": 1,
-    "title": "IBM Planning Analytics Local Vulnerability"
-  },
-  "cve:CVE-2026-20963": {
-    "first_seen": "2026-03-18",
-    "last_seen": "2026-03-18",
-    "run_count": 1,
-    "title": "Microsoft SharePoint RCE"
-  },
-  "cve:CVE-2025-66376": {
-    "first_seen": "2026-03-18",
-    "last_seen": "2026-03-18",
-    "run_count": 1,
-    "title": "Synacor Zimbra Collaboration Suite XSS"
-  },
-  "cve:CVE-2026-32746": {
-    "first_seen": "2026-03-18",
-    "last_seen": "2026-03-18",
-    "run_count": 1,
-    "title": "Telnetd Unauthenticated RCE"
-  },
-  "cve:CVE-2025-71265": {
-    "first_seen": "2026-03-18",
-    "last_seen": "2026-03-18",
-    "run_count": 1,
-    "title": "Linux Kernel Vulnerabilities"
-  },
   "cve:CVE-2026-31972": {
     "first_seen": "2026-03-19",
     "last_seen": "2026-03-19",
@@ -832,5 +790,23 @@
     "last_seen": "2026-04-17",
     "run_count": 1,
     "title": "VideoZen XSS"
+  },
+  "cve:CVE-2026-40305": {
+    "first_seen": "2026-04-18",
+    "last_seen": "2026-04-18",
+    "run_count": 1,
+    "title": "DNN RCE"
+  },
+  "cve:CVE-2026-29013": {
+    "first_seen": "2026-04-18",
+    "last_seen": "2026-04-18",
+    "run_count": 1,
+    "title": "libcoap OOB Read"
+  },
+  "cve:CVE-2026-40304": {
+    "first_seen": "2026-04-18",
+    "last_seen": "2026-04-18",
+    "run_count": 1,
+    "title": "zrok Vulnerability"
   }
 }

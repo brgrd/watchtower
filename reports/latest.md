@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-04-17T22:55:46.480395+00:00
+generated_at: 2026-04-18T10:54:43.699157+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,20 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-23775 in Dell PowerProtect Data Domain appliances, CVE-2026-6494 in AAP MCP server, and CVE-2026-6439 in VideoZen plugin for WordPress. Internet-facing systems, such as VPN appliances and web servers, are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems running Dell PowerProtect Data Domain appliances with Data Domain Operating System (DD OS), as no patch is currently available for CVE-2026-23775.
+The highest-risk items this period are CVE-2026-40306, CVE-2026-40321, and CVE-2026-40305, all affecting DNN, a web content management platform. Internet-facing web servers and content management systems are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate DNN instances, as no patches are currently available for these vulnerabilities.
 
-## Dell PowerProtect RCE (risk: 70)
-[P1] Dell PowerProtect Data Domain appliances with Data Domain Operating System (DD OS) are vulnerable to remote code execution (RCE) due to CVE-2026-23775. No patch is currently available, making these systems highly exposed. Why now: Lack of available patch for CVE-2026-23775 makes these systems highly vulnerable. (confidence: 0.80)
+## DNN RCE (risk: 70)
+[P1] DNN is vulnerable to remote code execution due to CVE-2026-40306, CVE-2026-40321, and CVE-2026-40305, with no available patches. These vulnerabilities can be exploited to gain unauthorized access to sensitive data. Why now: These vulnerabilities are highly critical and can be exploited to gain unauthorized access to sensitive data. (confidence: 0.80)
 
-- [CVE-2026-23775](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-23775)
+- [CVE-2026-40306](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml)
+- [CVE-2026-40321](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml)
 
-## AAP MCP RCE (risk: 70)
-[P1] AAP MCP server is vulnerable to RCE due to CVE-2026-6494, allowing unauthenticated remote attackers to execute arbitrary code. No patch is currently available, making these systems highly exposed. Why now: Lack of available patch for CVE-2026-6494 makes these systems highly vulnerable. (confidence: 0.80)
+## libcoap OOB Read (risk: 60)
+[P2] libcoap contains out-of-bounds read vulnerabilities in OSCORE Appendix B.2 CBOR, as described in CVE-2026-29013, with no available patches. These vulnerabilities can be exploited to gain unauthorized access to sensitive data. Why now: These vulnerabilities are critical and can be exploited to gain unauthorized access to sensitive data. (confidence: 0.70)
 
-- [CVE-2026-6494](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-6494)
+- [CVE-2026-29013](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml)
 
-## VideoZen XSS (risk: 60)
-[P2] VideoZen plugin for WordPress is vulnerable to stored cross-site scripting (XSS) due to CVE-2026-6439, allowing attackers to inject malicious code. No patch is currently available, making these systems highly exposed. Why now: Lack of available patch for CVE-2026-6439 makes these systems vulnerable. (confidence: 0.60)
+## zrok Vulnerability (risk: 60)
+[P2] zrok is vulnerable to remote code execution due to CVE-2026-40304, with no available patches. This vulnerability can be exploited to gain unauthorized access to sensitive data. Why now: This vulnerability is critical and can be exploited to gain unauthorized access to sensitive data. (confidence: 0.70)
 
-- [CVE-2026-6439](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-6439)
+- [CVE-2026-40304](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml)
