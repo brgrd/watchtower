@@ -808,5 +808,23 @@
     "last_seen": "2026-04-18",
     "run_count": 1,
     "title": "zrok Vulnerability"
+  },
+  "cve:CVE-2026-2986": {
+    "first_seen": "2026-04-18",
+    "last_seen": "2026-04-18",
+    "run_count": 1,
+    "title": "WordPress RCE"
+  },
+  "cve:CVE-2026-41242": {
+    "first_seen": "2026-04-18",
+    "last_seen": "2026-04-18",
+    "run_count": 1,
+    "title": "protobufjs RCE"
+  },
+  "cve:CVE-2026-40948": {
+    "first_seen": "2026-04-18",
+    "last_seen": "2026-04-18",
+    "run_count": 1,
+    "title": "apache-airflow-providers-keycloak RCE"
   }
 }
