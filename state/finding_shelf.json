@@ -814,5 +814,17 @@
     "last_seen": "2026-04-19",
     "run_count": 1,
     "title": "CVE-2026-6564"
+  },
+  "cve:CVE-2026-6570": {
+    "first_seen": "2026-04-19",
+    "last_seen": "2026-04-19",
+    "run_count": 1,
+    "title": "KodExplorer RCE"
+  },
+  "cve:CVE-2026-6576": {
+    "first_seen": "2026-04-19",
+    "last_seen": "2026-04-19",
+    "run_count": 1,
+    "title": "DjangoBlog Vulnerability"
   }
 }
