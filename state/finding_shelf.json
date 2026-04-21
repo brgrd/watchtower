@@ -5,30 +5,6 @@
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "cve:CVE-2025-31277": {
-    "first_seen": "2026-03-21",
-    "last_seen": "2026-03-21",
-    "run_count": 1,
-    "title": "Laravel Livewire RCE"
-  },
-  "f22e28687d61": {
-    "first_seen": "2026-03-21",
-    "last_seen": "2026-03-21",
-    "run_count": 1,
-    "title": "vanna-ai RCE"
-  },
-  "6ee33e821190": {
-    "first_seen": "2026-03-21",
-    "last_seen": "2026-03-21",
-    "run_count": 1,
-    "title": "Terminal Services Manager Buffer Overflow"
-  },
-  "5954ec1c5793": {
-    "first_seen": "2026-03-21",
-    "last_seen": "2026-03-21",
-    "run_count": 1,
-    "title": "Foundation Agents MetaGPT Vulnerability"
-  },
   "762613c56b8f": {
     "first_seen": "2026-03-22",
     "last_seen": "2026-03-22",
@@ -814,5 +790,29 @@
     "last_seen": "2026-04-20",
     "run_count": 1,
     "title": "PaperCut NG/MF Vuln"
+  },
+  "cve:CVE-2026-0930": {
+    "first_seen": "2026-04-21",
+    "last_seen": "2026-04-21",
+    "run_count": 1,
+    "title": "wolfSSHd RCE"
+  },
+  "cve:CVE-2026-5721": {
+    "first_seen": "2026-04-21",
+    "last_seen": "2026-04-21",
+    "run_count": 1,
+    "title": "wpDataTables RCE"
+  },
+  "cve:CVE-2026-34082": {
+    "first_seen": "2026-04-21",
+    "last_seen": "2026-04-21",
+    "run_count": 1,
+    "title": "Dify LLM RCE"
+  },
+  "cve:CVE-2026-35587": {
+    "first_seen": "2026-04-21",
+    "last_seen": "2026-04-21",
+    "run_count": 1,
+    "title": "Glances RCE"
   }
 }
