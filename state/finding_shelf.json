@@ -814,5 +814,23 @@
     "last_seen": "2026-04-21",
     "run_count": 1,
     "title": "Glances RCE"
+  },
+  "cve:CVE-2026-41036": {
+    "first_seen": "2026-04-21",
+    "last_seen": "2026-04-21",
+    "run_count": 1,
+    "title": "Quantum Networks Router Vuln"
+  },
+  "cve:CVE-2026-39467": {
+    "first_seen": "2026-04-21",
+    "last_seen": "2026-04-21",
+    "run_count": 1,
+    "title": "MetaSlider Vulnerability"
+  },
+  "cve:CVE-2026-3317": {
+    "first_seen": "2026-04-21",
+    "last_seen": "2026-04-21",
+    "run_count": 1,
+    "title": "Navigate Content Management Vuln"
   }
 }

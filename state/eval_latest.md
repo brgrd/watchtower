@@ -1,49 +1,49 @@
-# Watchtower Pipeline Eval — 2026-04-21T10:25:39Z
+# Watchtower Pipeline Eval — 2026-04-21T22:52:59Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 136 |
-| After dedup + CVE merge | 134 |
-| Sent to Groq | 30 |
-| Groq findings returned | 4 |
-| Passed quality gate | 4 |
-| Final cards rendered | 4 |
-| **Pipeline yield** | **4/136 (2.9%)** |
+| Items polled (raw) | 357 |
+| After dedup + CVE merge | 355 |
+| Sent to Groq | 29 |
+| Groq findings returned | 3 |
+| Passed quality gate | 3 |
+| Final cards rendered | 3 |
+| **Pipeline yield** | **3/357 (0.8%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 5,757 chars
+- **Payload**: 5,747 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 8490
+- **Rate limit remaining** — requests: 999, tokens: 8538
 
 ## Card Quality
 
-**4 cards** — P1: 4, P2: 0, P3: 0
+**3 cards** — P1: 3, P2: 0, P3: 0
 
 | Metric | Value |
 |--------|-------|
 | Risk score mean / p90 | 70 / 70 |
 | Tactic coverage | 100% |
 | CVE coverage | 0% |
-| Patch status | unknown: 4 |
+| Patch status | unknown: 3 |
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 62 chars (100% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 8 total — 50% specific, 0% generic
+- **`why_now` avg length**: 106.3 chars (100% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 6 total — 50% specific, 0% generic
 
 ### Persistence
 
-- New (run=1): **4** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
+- New (run=1): **3** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
 - Mean run_count: 1 | Mean shelf_days: 0
 
 ## Enrichment Hit Rates
 
 | Source | Hits | Rate |
 |--------|-----:|-----:|
-| EPSS | 0 | 0% |
+| EPSS | 3 | 100% |
 | NVD (CVE) | 0 | 0% |
 | CISA KEV | 0 | 0% |
 
@@ -51,23 +51,23 @@
 
 | Feed | Items |
 |------|------:|
-| `bsi_germany` | 64 |
-| `nvd` | 57 |
-| `cisa_kev` | 8 |
-| `bleepingcomputer` | 4 |
-| `thehackernews` | 1 |
+| `nvd` | 295 |
+| `bsi_germany` | 21 |
+| `bleepingcomputer` | 8 |
+| `thehackernews` | 7 |
+| `securityweek` | 7 |
 | _(+19 more)_ | … |
 
-**17 feeds returned 0 items this run.**
+**11 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-04-17 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-04-17 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-04-18 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-04-18 | 3 | 3 | 100% | 100% | 3 | 0 |
 | 2026-04-19 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-04-19 | 3 | 1 | 100% | 100% | 3 | 0 |
 | 2026-04-20 | 3 | 3 | 100% | 0% | 3 | 0 |
+| 2026-04-21 | 4 | 4 | 100% | 0% | 4 | 0 |
