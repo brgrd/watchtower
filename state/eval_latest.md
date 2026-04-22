@@ -1,38 +1,38 @@
-# Watchtower Pipeline Eval — 2026-04-21T22:52:59Z
+# Watchtower Pipeline Eval — 2026-04-22T10:39:08Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 357 |
-| After dedup + CVE merge | 355 |
-| Sent to Groq | 29 |
+| Items polled (raw) | 291 |
+| After dedup + CVE merge | 291 |
+| Sent to Groq | 30 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/357 (0.8%)** |
+| **Pipeline yield** | **3/291 (1.0%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 5,747 chars
+- **Payload**: 6,693 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 8538
+- **Rate limit remaining** — requests: 999, tokens: 8186
 
 ## Card Quality
 
-**3 cards** — P1: 3, P2: 0, P3: 0
+**3 cards** — P1: 0, P2: 3, P3: 0
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 70 / 70 |
+| Risk score mean / p90 | 40 / 40 |
 | Tactic coverage | 100% |
 | CVE coverage | 0% |
 | Patch status | unknown: 3 |
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 106.3 chars (100% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 6 total — 50% specific, 0% generic
+- **`why_now` avg length**: 46.3 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 6 total — 50% specific, 50% generic
 
 ### Persistence
 
@@ -43,7 +43,7 @@
 
 | Source | Hits | Rate |
 |--------|-----:|-----:|
-| EPSS | 3 | 100% |
+| EPSS | 0 | 0% |
 | NVD (CVE) | 0 | 0% |
 | CISA KEV | 0 | 0% |
 
@@ -51,23 +51,23 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 295 |
-| `bsi_germany` | 21 |
-| `bleepingcomputer` | 8 |
-| `thehackernews` | 7 |
-| `securityweek` | 7 |
+| `nvd` | 140 |
+| `bsi_germany` | 138 |
+| `bleepingcomputer` | 5 |
+| `thehackernews` | 3 |
+| `securityweek` | 2 |
 | _(+19 more)_ | … |
 
-**11 feeds returned 0 items this run.**
+**16 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-04-17 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-04-18 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-04-18 | 3 | 3 | 100% | 100% | 3 | 0 |
 | 2026-04-19 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-04-19 | 3 | 1 | 100% | 100% | 3 | 0 |
 | 2026-04-20 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-04-21 | 4 | 4 | 100% | 0% | 4 | 0 |
+| 2026-04-21 | 3 | 3 | 100% | 0% | 3 | 0 |

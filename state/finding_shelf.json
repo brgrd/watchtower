@@ -5,42 +5,6 @@
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "762613c56b8f": {
-    "first_seen": "2026-03-22",
-    "last_seen": "2026-03-22",
-    "run_count": 1,
-    "title": "apconw Aix-DB Vuln"
-  },
-  "1d4494bc986c": {
-    "first_seen": "2026-03-22",
-    "last_seen": "2026-03-22",
-    "run_count": 1,
-    "title": "trueleaf ApiFlow Vuln"
-  },
-  "557bd3fdb0ed": {
-    "first_seen": "2026-03-22",
-    "last_seen": "2026-03-22",
-    "run_count": 1,
-    "title": "D-Link DHP-1320 Vuln"
-  },
-  "5be3a9432b2a": {
-    "first_seen": "2026-03-22",
-    "last_seen": "2026-03-22",
-    "run_count": 1,
-    "title": "Wavlink WL-WN578W2 Vuln"
-  },
-  "7b7a7494ada7": {
-    "first_seen": "2026-03-22",
-    "last_seen": "2026-03-22",
-    "run_count": 1,
-    "title": "Flos Freeware Notepad2 Vuln"
-  },
-  "9d51b32b21c2": {
-    "first_seen": "2026-03-22",
-    "last_seen": "2026-03-22",
-    "run_count": 1,
-    "title": "DNSS Domain Name Search Software Vuln"
-  },
   "bdd254c45cc0": {
     "first_seen": "2026-03-23",
     "last_seen": "2026-03-23",
@@ -832,5 +796,23 @@
     "last_seen": "2026-04-21",
     "run_count": 1,
     "title": "Navigate Content Management Vuln"
+  },
+  "cve:CVE-2026-1354": {
+    "first_seen": "2026-04-22",
+    "last_seen": "2026-04-22",
+    "run_count": 1,
+    "title": "Zero Motorcycles Firmware Vuln"
+  },
+  "cve:CVE-2026-40706": {
+    "first_seen": "2026-04-22",
+    "last_seen": "2026-04-22",
+    "run_count": 1,
+    "title": "NTFS-3G Heap Buffer Overflow"
+  },
+  "cve:CVE-2026-40939": {
+    "first_seen": "2026-04-22",
+    "last_seen": "2026-04-22",
+    "run_count": 1,
+    "title": "Data Sharing Framework Vuln"
   }
 }
