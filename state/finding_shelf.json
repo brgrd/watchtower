@@ -814,5 +814,23 @@
     "last_seen": "2026-04-22",
     "run_count": 1,
     "title": "Data Sharing Framework Vuln"
+  },
+  "cve:CVE-2026-33825": {
+    "first_seen": "2026-04-22",
+    "last_seen": "2026-04-22",
+    "run_count": 1,
+    "title": "Microsoft Defender Vuln"
+  },
+  "01cca1620387": {
+    "first_seen": "2026-04-22",
+    "last_seen": "2026-04-22",
+    "run_count": 1,
+    "title": "HTTP Headers Plugin Vuln"
+  },
+  "cve:CVE-2026-40372": {
+    "first_seen": "2026-04-22",
+    "last_seen": "2026-04-22",
+    "run_count": 1,
+    "title": "ASP.NET Core Vuln"
   }
 }
