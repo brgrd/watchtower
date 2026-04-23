@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-04-22T22:59:11.301416+00:00
+generated_at: 2026-04-23T10:41:53.247527+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-33825 in Microsoft Defender, CVE-2026-40372 in ASP.NET Core, and the HTTP Headers plugin for WordPress. Internet-facing firewalls and container orchestration nodes are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by CVE-2026-33825, although no patch is currently available.
+The highest-risk items this period are CVE-2026-33825 in Microsoft Defender, CVE-2026-41175 in Statamic, and CVE-2026-41454 in WeKan. Internet-facing content management systems and headless content management systems are most exposed right now due to the lack of available patches for these vulnerabilities. The single most time-sensitive action is to monitor and isolate systems using Microsoft Defender, as CVE-2026-33825 is being exploited in the wild and no patch is currently available.
 
-## Microsoft Defender Vuln (risk: 100)
-[P1] CVE-2026-33825 is an insufficient granularity of access control vulnerability in Microsoft Defender that could allow an authorized attacker to exploit the system. It is being exploited in the wild with no patch available. Why now: This vulnerability is being actively exploited and has no available patch. (confidence: 0.90)
+## Microsoft Defender Vulnerability (risk: 100)
+[P1] CVE-2026-33825 is an insufficient granularity of access control vulnerability in Microsoft Defender that could allow an authorized attacker to exploit the system. This vulnerability is being exploited in the wild and no patch is currently available. Why now: This vulnerability is being exploited in the wild and no patch is currently available. (confidence: 0.90)
 
 - [CVE-2026-33825](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-33825)
 
-## HTTP Headers Plugin Vuln (risk: 90)
-[P1] The HTTP Headers plugin for WordPress is vulnerable to stored cross-site scripting. No patch is available for this vulnerability. Why now: This vulnerability has no available patch and can be exploited by attackers. (confidence: 0.85)
+## Statamic Vulnerability (risk: 70)
+[P2] CVE-2026-41175 is a vulnerability in Statamic that could allow an attacker to exploit the system. No patch is currently available for this vulnerability. Why now: This vulnerability is a high-risk vulnerability with no available patch. (confidence: 0.70)
 
-- [CVE-2026-1379](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-1379)
+- [CVE-2026-41175](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-41175)
 
-## ASP.NET Core Vuln (risk: 70)
-[P2] CVE-2026-40372 is a privilege escalation bug in ASP.NET Core that has been patched by Microsoft. However, the patch may not be widely applied yet. Why now: The patch for this vulnerability has been recently released and may not be widely applied yet. (confidence: 0.80)
+## WeKan Vulnerability (risk: 70)
+[P2] CVE-2026-41454 is a missing authorization vulnerability in WeKan that could allow an attacker to exploit the system. No patch is currently available for this vulnerability. Why now: This vulnerability is a high-risk vulnerability with no available patch. (confidence: 0.70)
 
-- [Microsoft Patches Critical ASP.NET Core CVE-2026-40372 Privilege Escalation Bug](https://thehackernews.com/2026/04/microsoft-patches-critical-aspnet-core.html)
+- [CVE-2026-41454](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-41454)
