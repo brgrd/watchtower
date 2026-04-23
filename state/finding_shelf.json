@@ -403,8 +403,8 @@
   },
   "cve:CVE-2026-39987": {
     "first_seen": "2026-04-10",
-    "last_seen": "2026-04-10",
-    "run_count": 1,
+    "last_seen": "2026-04-23",
+    "run_count": 2,
     "title": "Marimo RCE Flaw"
   },
   "cve:CVE-2026-21904": {
@@ -826,5 +826,17 @@
     "last_seen": "2026-04-23",
     "run_count": 1,
     "title": "WeKan Vulnerability"
+  },
+  "cve:CVE-2026-6885": {
+    "first_seen": "2026-04-23",
+    "last_seen": "2026-04-23",
+    "run_count": 1,
+    "title": "Borg SPM 2007 RCE"
+  },
+  "cve:CVE-2026-3259": {
+    "first_seen": "2026-04-23",
+    "last_seen": "2026-04-23",
+    "run_count": 1,
+    "title": "CVE-2026-3259"
   }
 }
