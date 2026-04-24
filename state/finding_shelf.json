@@ -5,30 +5,6 @@
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "cve:CVE-2026-23481": {
-    "first_seen": "2026-03-24",
-    "last_seen": "2026-03-24",
-    "run_count": 1,
-    "title": "Blinko RCE"
-  },
-  "6cad1c4322cc": {
-    "first_seen": "2026-03-24",
-    "last_seen": "2026-03-24",
-    "run_count": 1,
-    "title": "PhreeBooks ERP Vuln"
-  },
-  "a25982014c9f": {
-    "first_seen": "2026-03-24",
-    "last_seen": "2026-03-24",
-    "run_count": 1,
-    "title": "AIDA64 Extreme Vuln"
-  },
-  "5c1088cbf37b": {
-    "first_seen": "2026-03-24",
-    "last_seen": "2026-03-24",
-    "run_count": 1,
-    "title": "Apache Artemis Vuln"
-  },
   "cve:CVE-2025-33238": {
     "first_seen": "2026-03-25",
     "last_seen": "2026-03-25",
@@ -838,5 +814,35 @@
     "last_seen": "2026-04-23",
     "run_count": 1,
     "title": "CVE-2026-3259"
+  },
+  "d2674bc4933b": {
+    "first_seen": "2026-04-24",
+    "last_seen": "2026-04-24",
+    "run_count": 1,
+    "title": "Samsung MagicINFO 9 RCE"
+  },
+  "5c520c23d0b9": {
+    "first_seen": "2026-04-24",
+    "last_seen": "2026-04-24",
+    "run_count": 1,
+    "title": "Marimo Pre-Auth RCE"
+  },
+  "3d6dffcfa824": {
+    "first_seen": "2026-04-24",
+    "last_seen": "2026-04-24",
+    "run_count": 1,
+    "title": "D-Link DIR-823X Command Injection"
+  },
+  "39bc6031a001": {
+    "first_seen": "2026-04-24",
+    "last_seen": "2026-04-24",
+    "run_count": 1,
+    "title": "SimpleHelp Path Traversal"
+  },
+  "127453722592": {
+    "first_seen": "2026-04-24",
+    "last_seen": "2026-04-24",
+    "run_count": 1,
+    "title": "SimpleHelp Missing Authorization"
   }
 }
