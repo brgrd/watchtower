@@ -814,5 +814,35 @@
     "last_seen": "2026-04-25",
     "run_count": 1,
     "title": "Samsung MagicINFO 9 Server Path Traversal"
+  },
+  "cve:CVE-2026-6980": {
+    "first_seen": "2026-04-25",
+    "last_seen": "2026-04-25",
+    "run_count": 1,
+    "title": "CVE-2026-6980"
+  },
+  "cve:CVE-2026-6981": {
+    "first_seen": "2026-04-25",
+    "last_seen": "2026-04-25",
+    "run_count": 1,
+    "title": "CVE-2026-6981"
+  },
+  "cve:CVE-2026-6982": {
+    "first_seen": "2026-04-25",
+    "last_seen": "2026-04-25",
+    "run_count": 1,
+    "title": "CVE-2026-6982"
+  },
+  "855a5f50e083": {
+    "first_seen": "2026-04-25",
+    "last_seen": "2026-04-25",
+    "run_count": 1,
+    "title": "Cesanta Mongoose Vulnerability"
+  },
+  "8372e8ed3295": {
+    "first_seen": "2026-04-25",
+    "last_seen": "2026-04-25",
+    "run_count": 1,
+    "title": "Tenda HG10 Vulnerability"
   }
 }
