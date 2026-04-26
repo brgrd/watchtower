@@ -844,5 +844,23 @@
     "last_seen": "2026-04-26",
     "run_count": 1,
     "title": "MaxSite CMS Vuln"
+  },
+  "cve:CVE-2026-7014": {
+    "first_seen": "2026-04-26",
+    "last_seen": "2026-04-26",
+    "run_count": 1,
+    "title": "MaxSite CMS RCE"
+  },
+  "cve:CVE-2026-42254": {
+    "first_seen": "2026-04-26",
+    "last_seen": "2026-04-26",
+    "run_count": 1,
+    "title": "Hickory DNS Poisoning"
+  },
+  "cve:CVE-2026-7015": {
+    "first_seen": "2026-04-26",
+    "last_seen": "2026-04-26",
+    "run_count": 1,
+    "title": "MaxSite CMS Vulnerability"
   }
 }
