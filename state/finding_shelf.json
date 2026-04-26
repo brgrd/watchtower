@@ -5,24 +5,6 @@
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "14397aecbe99": {
-    "first_seen": "2026-03-26",
-    "last_seen": "2026-03-26",
-    "run_count": 1,
-    "title": "Aquasecurity Trivy RCE"
-  },
-  "84bad5d94e9a": {
-    "first_seen": "2026-03-26",
-    "last_seen": "2026-03-26",
-    "run_count": 1,
-    "title": "IBM Knowledge Catalog Vulnerability"
-  },
-  "4047f609ed43": {
-    "first_seen": "2026-03-26",
-    "last_seen": "2026-03-26",
-    "run_count": 1,
-    "title": "Enter Software Iperius Backup Vulnerability"
-  },
   "d6c7bda41fb7": {
     "first_seen": "2026-03-27",
     "last_seen": "2026-03-27",
@@ -844,5 +826,23 @@
     "last_seen": "2026-04-25",
     "run_count": 1,
     "title": "Tenda HG10 Vulnerability"
+  },
+  "cve:CVE-2026-7000": {
+    "first_seen": "2026-04-26",
+    "last_seen": "2026-04-26",
+    "run_count": 1,
+    "title": "Datacom DM4100 Vuln"
+  },
+  "cve:CVE-2026-6999": {
+    "first_seen": "2026-04-26",
+    "last_seen": "2026-04-26",
+    "run_count": 1,
+    "title": "BIVOCOM TR321 Vuln"
+  },
+  "cve:CVE-2026-7011": {
+    "first_seen": "2026-04-26",
+    "last_seen": "2026-04-26",
+    "run_count": 1,
+    "title": "MaxSite CMS Vuln"
   }
 }
