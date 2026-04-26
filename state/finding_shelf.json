@@ -862,5 +862,23 @@
     "last_seen": "2026-04-26",
     "run_count": 1,
     "title": "MaxSite CMS Vulnerability"
+  },
+  "cve:CVE-2026-7031": {
+    "first_seen": "2026-04-26",
+    "last_seen": "2026-04-26",
+    "run_count": 1,
+    "title": "Tenda F456 RCE"
+  },
+  "cve:CVE-2026-7034": {
+    "first_seen": "2026-04-26",
+    "last_seen": "2026-04-26",
+    "run_count": 1,
+    "title": "Tenda FH1202 Vulnerability"
+  },
+  "cve:CVE-2026-7037": {
+    "first_seen": "2026-04-26",
+    "last_seen": "2026-04-26",
+    "run_count": 1,
+    "title": "Totolink A8000RU Flaw"
   }
 }
