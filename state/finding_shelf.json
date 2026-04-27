@@ -5,41 +5,11 @@
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "d6c7bda41fb7": {
-    "first_seen": "2026-03-27",
-    "last_seen": "2026-03-27",
-    "run_count": 1,
-    "title": "Trivy Vulnerability"
-  },
-  "cve:CVE-2026-0964": {
-    "first_seen": "2026-03-27",
-    "last_seen": "2026-03-27",
-    "run_count": 1,
-    "title": "libssh Vulnerability"
-  },
-  "8bb0664bc6a4": {
-    "first_seen": "2026-03-27",
-    "last_seen": "2026-03-27",
-    "run_count": 1,
-    "title": "p11-kit Vulnerability"
-  },
   "cve:CVE-2025-53521": {
     "first_seen": "2026-03-27",
     "last_seen": "2026-03-28",
     "run_count": 2,
     "title": "F5 BIG-IP APM RCE"
-  },
-  "cve:CVE-2026-24031": {
-    "first_seen": "2026-03-27",
-    "last_seen": "2026-03-27",
-    "run_count": 1,
-    "title": "Dovecot SQL Auth Bypass"
-  },
-  "cve:CVE-2026-27859": {
-    "first_seen": "2026-03-27",
-    "last_seen": "2026-03-27",
-    "run_count": 1,
-    "title": "Dovecot Mail Message Processing"
   },
   "cve:CVE-2026-3055": {
     "first_seen": "2026-03-28",
@@ -880,5 +850,23 @@
     "last_seen": "2026-04-26",
     "run_count": 1,
     "title": "Totolink A8000RU Flaw"
+  },
+  "a8d31a962944": {
+    "first_seen": "2026-04-27",
+    "last_seen": "2026-04-27",
+    "run_count": 1,
+    "title": "InfraRecorder Vuln"
+  },
+  "a27aa348fc84": {
+    "first_seen": "2026-04-27",
+    "last_seen": "2026-04-27",
+    "run_count": 1,
+    "title": "CrossFont Vuln"
+  },
+  "4247c2086684": {
+    "first_seen": "2026-04-27",
+    "last_seen": "2026-04-27",
+    "run_count": 1,
+    "title": "Faleemi Desktop Software Vuln"
   }
 }
