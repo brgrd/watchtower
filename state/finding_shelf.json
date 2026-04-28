@@ -5,35 +5,11 @@
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "cve:CVE-2025-53521": {
-    "first_seen": "2026-03-27",
-    "last_seen": "2026-03-28",
-    "run_count": 2,
-    "title": "F5 BIG-IP APM RCE"
-  },
   "cve:CVE-2026-3055": {
     "first_seen": "2026-03-28",
     "last_seen": "2026-03-31",
     "run_count": 3,
     "title": "Citrix NetScaler Vuln"
-  },
-  "cve:CVE-2026-2442": {
-    "first_seen": "2026-03-28",
-    "last_seen": "2026-03-28",
-    "run_count": 1,
-    "title": "WordPress Plugin Vulnerability"
-  },
-  "cve:CVE-2026-4993": {
-    "first_seen": "2026-03-28",
-    "last_seen": "2026-03-28",
-    "run_count": 1,
-    "title": "wandb OpenUI Vulnerability"
-  },
-  "cve:CVE-2016-20037": {
-    "first_seen": "2026-03-28",
-    "last_seen": "2026-03-28",
-    "run_count": 1,
-    "title": "xwpe Buffer Overflow"
   },
   "cve:CVE-2026-4851": {
     "first_seen": "2026-03-29",
@@ -868,5 +844,23 @@
     "last_seen": "2026-04-27",
     "run_count": 1,
     "title": "Faleemi Desktop Software Vuln"
+  },
+  "cve:CVE-2024-1708": {
+    "first_seen": "2026-04-28",
+    "last_seen": "2026-04-28",
+    "run_count": 1,
+    "title": "CVE-2024-1708 RCE"
+  },
+  "cve:CVE-2026-5394": {
+    "first_seen": "2026-04-28",
+    "last_seen": "2026-04-28",
+    "run_count": 1,
+    "title": "CVE-2026-5394 Auth Bypass"
+  },
+  "cve:CVE-2026-7151": {
+    "first_seen": "2026-04-28",
+    "last_seen": "2026-04-28",
+    "run_count": 1,
+    "title": "CVE-2026-7151 Tenda HG3 RCE"
   }
 }

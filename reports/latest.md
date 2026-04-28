@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-04-27T22:03:18.937026+00:00
+generated_at: 2026-04-28T22:08:28.615978+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,22 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2018-25274 in InfraRecorder, CVE-2018-25273 in CrossFont, and CVE-2018-25263 in Faleemi Desktop Software. Internet-facing systems are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to monitor systems for potential exploitation of these vulnerabilities, particularly in InfraRecorder and CrossFont, for which no patches are currently available.
+The highest-risk items this period are CVE-2024-1708 in ConnectWise ScreenConnect, CVE-2026-5394 in DataObject class, and CVE-2026-7151 in Tenda HG3 2.0, which could allow attackers to execute remote code or gain unauthorized access. Internet-facing firewalls, container orchestration nodes, and VPN appliances are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by CVE-2024-1708, although no patch is currently available, and monitor for any suspicious activity.
 
-## InfraRecorder Vuln (risk: 40)
-[P2] InfraRecorder 0.53 contains a denial of service vulnerability, with no patch available. This vulnerability can be exploited locally, and its impact is significant due to the lack of a patch. Why now: The vulnerability has been recently disclosed, and its exploitation can have significant consequences. (confidence: 0.60)
+## CVE-2024-1708 RCE (risk: 100)
+[P1] ConnectWise ScreenConnect contains a path traversal vulnerability that could allow an attacker to execute remote code. The vulnerability is being exploited in the wild. Why now: Reported exploitation in the wild (confidence: 0.90)
 
-- [CVE-2018-25274](https://www.securityweek.com/)
-- [InfraRecorder 0.53 Vulnerability](https://www.securityweek.com/firefox-vulnerability-allows-tor-user-fingerprinting/)
+- [CVE-2024-1708](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-1708)
 
-## CrossFont Vuln (risk: 40)
-[P2] CrossFont 7.5 contains a buffer overflow vulnerability, with no patch available. This vulnerability can be exploited locally, and its impact is significant due to the lack of a patch. Why now: The vulnerability has been recently disclosed, and its exploitation can have significant consequences. (confidence: 0.60)
+## CVE-2026-5394 Auth Bypass (risk: 70)
+[P2] An authenticated administrative user can import or save DataObject class definitions, potentially leading to unauthorized access. No patch is currently available. Why now: Newly disclosed vulnerability (confidence: 0.70)
 
-- [CVE-2018-25273](https://www.securityweek.com/)
-- [CrossFont 7.5 Vulnerability](https://www.securityweek.com/firefox-vulnerability-allows-tor-user-fingerprinting/)
+- [CVE-2026-5394](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-5394)
 
-## Faleemi Desktop Software Vuln (risk: 40)
-[P2] Faleemi Desktop Software 1.8.2 contains a local buffer overflow vulnerability, with no patch available. This vulnerability can be exploited locally, and its impact is significant due to the lack of a patch. Why now: The vulnerability has been recently disclosed, and its exploitation can have significant consequences. (confidence: 0.60)
+## CVE-2026-7151 Tenda HG3 RCE (risk: 70)
+[P2] A vulnerability in Tenda HG3 2.0 could allow an attacker to execute remote code. No patch is currently available. Why now: Newly disclosed vulnerability (confidence: 0.70)
 
-- [CVE-2018-25263](https://www.securityweek.com/)
-- [Faleemi Desktop Software 1.8.2 Vulnerability](https://www.securityweek.com/firefox-vulnerability-allows-tor-user-fingerprinting/)
+- [CVE-2026-7151](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7151)
