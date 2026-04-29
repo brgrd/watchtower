@@ -11,36 +11,6 @@
     "run_count": 3,
     "title": "Citrix NetScaler Vuln"
   },
-  "cve:CVE-2026-4851": {
-    "first_seen": "2026-03-29",
-    "last_seen": "2026-03-29",
-    "run_count": 1,
-    "title": "Unpatched Code Execution"
-  },
-  "cve:CVE-2026-5020": {
-    "first_seen": "2026-03-29",
-    "last_seen": "2026-03-29",
-    "run_count": 1,
-    "title": "Totolink A3600R Vulnerability"
-  },
-  "cve:CVE-2026-5018": {
-    "first_seen": "2026-03-29",
-    "last_seen": "2026-03-29",
-    "run_count": 1,
-    "title": "Code-Projects Simple Food Order System Vulnerability"
-  },
-  "cve:CVE-2026-5042": {
-    "first_seen": "2026-03-29",
-    "last_seen": "2026-03-29",
-    "run_count": 1,
-    "title": "Belkin F9K1122 RCE"
-  },
-  "cve:CVE-2026-32915": {
-    "first_seen": "2026-03-29",
-    "last_seen": "2026-03-29",
-    "run_count": 1,
-    "title": "OpenClaw Sandbox Bypass"
-  },
   "cve:CVE-2026-4176": {
     "first_seen": "2026-03-30",
     "last_seen": "2026-03-30",
@@ -847,8 +817,8 @@
   },
   "cve:CVE-2024-1708": {
     "first_seen": "2026-04-28",
-    "last_seen": "2026-04-28",
-    "run_count": 1,
+    "last_seen": "2026-04-29",
+    "run_count": 2,
     "title": "CVE-2024-1708 RCE"
   },
   "cve:CVE-2026-5394": {
@@ -862,5 +832,17 @@
     "last_seen": "2026-04-28",
     "run_count": 1,
     "title": "CVE-2026-7151 Tenda HG3 RCE"
+  },
+  "cve:CVE-2026-33467": {
+    "first_seen": "2026-04-29",
+    "last_seen": "2026-04-29",
+    "run_count": 1,
+    "title": "Elastic Package Vulnerability"
+  },
+  "cve:CVE-2026-41446": {
+    "first_seen": "2026-04-29",
+    "last_seen": "2026-04-29",
+    "run_count": 1,
+    "title": "Snap One WattBox Vulnerability"
   }
 }
