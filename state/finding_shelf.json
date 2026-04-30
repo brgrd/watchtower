@@ -11,18 +11,6 @@
     "run_count": 3,
     "title": "Citrix NetScaler Vuln"
   },
-  "cve:CVE-2026-4176": {
-    "first_seen": "2026-03-30",
-    "last_seen": "2026-03-30",
-    "run_count": 1,
-    "title": "Perl RCE"
-  },
-  "cve:CVE-2026-2370": {
-    "first_seen": "2026-03-30",
-    "last_seen": "2026-03-30",
-    "run_count": 1,
-    "title": "GitLab CE/EE RCE"
-  },
   "cve:CVE-2026-33977": {
     "first_seen": "2026-03-31",
     "last_seen": "2026-03-31",
@@ -844,5 +832,23 @@
     "last_seen": "2026-04-29",
     "run_count": 1,
     "title": "Snap One WattBox Vulnerability"
+  },
+  "cve:CVE-2026-1858": {
+    "first_seen": "2026-04-30",
+    "last_seen": "2026-04-30",
+    "run_count": 1,
+    "title": "wget2 Vuln"
+  },
+  "cve:CVE-2026-41940": {
+    "first_seen": "2026-04-30",
+    "last_seen": "2026-04-30",
+    "run_count": 1,
+    "title": "getsimpletool mcpo-simple-server Vuln"
+  },
+  "cve:CVE-2026-31431": {
+    "first_seen": "2026-04-30",
+    "last_seen": "2026-04-30",
+    "run_count": 1,
+    "title": "geldata gel-mcp Vuln"
   }
 }
