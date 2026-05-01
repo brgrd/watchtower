@@ -5,18 +5,6 @@
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "cve:CVE-2026-3055": {
-    "first_seen": "2026-03-28",
-    "last_seen": "2026-03-31",
-    "run_count": 3,
-    "title": "Citrix NetScaler Vuln"
-  },
-  "cve:CVE-2026-33977": {
-    "first_seen": "2026-03-31",
-    "last_seen": "2026-03-31",
-    "run_count": 1,
-    "title": "FreeRDP RCE"
-  },
   "cve:CVE-2026-1579": {
     "first_seen": "2026-04-01",
     "last_seen": "2026-04-01",
@@ -841,14 +829,14 @@
   },
   "cve:CVE-2026-41940": {
     "first_seen": "2026-04-30",
-    "last_seen": "2026-04-30",
-    "run_count": 1,
+    "last_seen": "2026-05-01",
+    "run_count": 2,
     "title": "getsimpletool mcpo-simple-server Vuln"
   },
   "cve:CVE-2026-31431": {
     "first_seen": "2026-04-30",
-    "last_seen": "2026-04-30",
-    "run_count": 1,
+    "last_seen": "2026-05-01",
+    "run_count": 2,
     "title": "geldata gel-mcp Vuln"
   }
 }
