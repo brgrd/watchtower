@@ -838,5 +838,23 @@
     "last_seen": "2026-05-02",
     "run_count": 1,
     "title": "mtrudel bandit Vulnerability"
+  },
+  "df690726a6d1": {
+    "first_seen": "2026-05-02",
+    "last_seen": "2026-05-02",
+    "run_count": 1,
+    "title": "TRENDnet TEW-821DAP Vulnerability"
+  },
+  "5ca61f4d534a": {
+    "first_seen": "2026-05-02",
+    "last_seen": "2026-05-02",
+    "run_count": 1,
+    "title": "WordPress Plugin RCE"
+  },
+  "63e33b23738f": {
+    "first_seen": "2026-05-02",
+    "last_seen": "2026-05-02",
+    "run_count": 1,
+    "title": "CTMS SQL Injection"
   }
 }
