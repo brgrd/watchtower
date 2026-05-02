@@ -5,24 +5,6 @@
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "cve:CVE-2026-1579": {
-    "first_seen": "2026-04-01",
-    "last_seen": "2026-04-01",
-    "run_count": 1,
-    "title": "MAVLink Auth Bypass"
-  },
-  "cve:CVE-2026-34372": {
-    "first_seen": "2026-04-01",
-    "last_seen": "2026-04-01",
-    "run_count": 1,
-    "title": "Sulu RCE"
-  },
-  "cve:CVE-2026-34367": {
-    "first_seen": "2026-04-01",
-    "last_seen": "2026-04-01",
-    "run_count": 1,
-    "title": "InvoiceShelf RCE"
-  },
   "cve:CVE-2026-5281": {
     "first_seen": "2026-04-02",
     "last_seen": "2026-04-02",
@@ -838,5 +820,23 @@
     "last_seen": "2026-05-01",
     "run_count": 2,
     "title": "geldata gel-mcp Vuln"
+  },
+  "cve:CVE-2026-2052": {
+    "first_seen": "2026-05-02",
+    "last_seen": "2026-05-02",
+    "run_count": 1,
+    "title": "Widget Options Vulnerability"
+  },
+  "cve:CVE-2026-7592": {
+    "first_seen": "2026-05-02",
+    "last_seen": "2026-05-02",
+    "run_count": 1,
+    "title": "itsourcecode Courier Management System Vulnerability"
+  },
+  "cve:CVE-2026-39805": {
+    "first_seen": "2026-05-02",
+    "last_seen": "2026-05-02",
+    "run_count": 1,
+    "title": "mtrudel bandit Vulnerability"
   }
 }
