@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-05-02T22:56:41.062296+00:00
+generated_at: 2026-05-03T10:13:07.305080+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,21 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-4024 in Royal Addons for Elementor, CVE-2026-5324 in Brizy Page Builder, and CVE-2026-7489 in CTMS developed by Sunnet. Internet-facing WordPress plugins and TRENDnet TEW-821DAP devices are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to patch or isolate TRENDnet TEW-821DAP devices, but no patch is currently available, so monitoring for suspicious activity is recommended.
+The highest-risk items this period are CVE-2026-7670 in Jinher OA 1.0, CVE-2026-7671 in CodeWise Tornet Scooter Mobile App 4.75 on iOS, and CVE-2026-7668 in MikroTik RouterOS 6.49.8. Internet-facing devices such as routers and mobile apps are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using MikroTik RouterOS 6.49.8, as no patch is currently available for CVE-2026-7668.
 
-## TRENDnet TEW-821DAP Vulnerability (risk: 80)
-[P1] TRENDnet TEW-821DAP devices are vulnerable to multiple issues, including SQL Injection and arbitrary file upload, with no patches available. These devices are used in various networks, making them a high-risk target. Why now: These vulnerabilities are likely to be exploited soon due to their public disclosure and lack of patches. (confidence: 0.90)
+## Jinher OA 1.0 Vulnerability (risk: 40)
+[P2] A flaw has been found in Jinher OA 1.0, with no patch available. This vulnerability affects unknown functions and has not been exploited in the wild. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.60)
 
-- [CVE-2026-7489](https://www.nvd.nist.gov/v1/nvd.html)
-- [CVE-2026-7608](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2026-7670](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7670)
 
-## WordPress Plugin RCE (risk: 70)
-[P1] Royal Addons for Elementor and Brizy Page Builder plugins are vulnerable to unauthorized access, with no patches available. These plugins are widely used, making them a high-risk target. Why now: These vulnerabilities are likely to be exploited soon due to their public disclosure and lack of patches. (confidence: 0.80)
+## CodeWise Tornet Scooter Mobile App 4.75 Vulnerability (risk: 40)
+[P2] A vulnerability has been found in CodeWise Tornet Scooter Mobile App 4.75 on iOS, with no patch available. This vulnerability has not been exploited in the wild. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.60)
 
-- [CVE-2026-4024](https://www.nvd.nist.gov/v1/nvd.html)
-- [CVE-2026-5324](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2026-7671](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7671)
 
-## CTMS SQL Injection (risk: 60)
-[P2] CTMS developed by Sunnet has a SQL Injection vulnerability, allowing authenticated attackers to access sensitive data. No patch is available, making this a high-risk issue. Why now: This vulnerability is likely to be exploited soon due to its public disclosure and lack of patches. (confidence: 0.70)
+## MikroTik RouterOS 6.49.8 Vulnerability (risk: 40)
+[P1] A vulnerability was identified in MikroTik RouterOS 6.49.8, with no patch available. This vulnerability affects the router's functionality and has not been exploited in the wild. Why now: Critical infrastructure vulnerability with no available patch. (confidence: 0.80)
 
-- [CVE-2026-7489](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2026-7668](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7668)

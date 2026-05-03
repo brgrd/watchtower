@@ -5,24 +5,6 @@
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "cve:CVE-2026-5281": {
-    "first_seen": "2026-04-02",
-    "last_seen": "2026-04-02",
-    "run_count": 1,
-    "title": "Google Dawn UAF"
-  },
-  "cve:CVE-2026-3502": {
-    "first_seen": "2026-04-02",
-    "last_seen": "2026-04-02",
-    "run_count": 1,
-    "title": "TrueConf Client Code Execution"
-  },
-  "cve:CVE-2026-34559": {
-    "first_seen": "2026-04-02",
-    "last_seen": "2026-04-02",
-    "run_count": 1,
-    "title": "CI4MS Vulnerabilities"
-  },
   "cve:CVE-2026-30252": {
     "first_seen": "2026-04-03",
     "last_seen": "2026-04-03",
@@ -856,5 +838,23 @@
     "last_seen": "2026-05-02",
     "run_count": 1,
     "title": "CTMS SQL Injection"
+  },
+  "665afed76e78": {
+    "first_seen": "2026-05-03",
+    "last_seen": "2026-05-03",
+    "run_count": 1,
+    "title": "Jinher OA 1.0 Vulnerability"
+  },
+  "09451aded72d": {
+    "first_seen": "2026-05-03",
+    "last_seen": "2026-05-03",
+    "run_count": 1,
+    "title": "CodeWise Tornet Scooter Mobile App 4.75 Vulnerability"
+  },
+  "ef3e90183c2f": {
+    "first_seen": "2026-05-03",
+    "last_seen": "2026-05-03",
+    "run_count": 1,
+    "title": "MikroTik RouterOS 6.49.8 Vulnerability"
   }
 }
