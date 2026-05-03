@@ -856,5 +856,23 @@
     "last_seen": "2026-05-03",
     "run_count": 1,
     "title": "MikroTik RouterOS 6.49.8 Vulnerability"
+  },
+  "cve:CVE-2026-7687": {
+    "first_seen": "2026-05-03",
+    "last_seen": "2026-05-03",
+    "run_count": 1,
+    "title": "Langflow-ai vuln"
+  },
+  "cve:CVE-2026-7689": {
+    "first_seen": "2026-05-03",
+    "last_seen": "2026-05-03",
+    "run_count": 1,
+    "title": "Dolibarr ERP CRM vuln"
+  },
+  "cve:CVE-2026-7691": {
+    "first_seen": "2026-05-03",
+    "last_seen": "2026-05-03",
+    "run_count": 1,
+    "title": "Wavlink WL-WN570HA1 vuln"
   }
 }

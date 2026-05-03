@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-05-03T10:13:07.305080+00:00
+generated_at: 2026-05-03T22:57:20.462007+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-7670 in Jinher OA 1.0, CVE-2026-7671 in CodeWise Tornet Scooter Mobile App 4.75 on iOS, and CVE-2026-7668 in MikroTik RouterOS 6.49.8. Internet-facing devices such as routers and mobile apps are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using MikroTik RouterOS 6.49.8, as no patch is currently available for CVE-2026-7668.
+The highest-risk items this period are CVE-2026-7687 in langflow-ai langflow, CVE-2026-7689 in Dolibarr ERP CRM, and CVE-2026-7691 in Wavlink WL-WN570HA1 R70HA1. Internet-facing firewalls and VPN appliances are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate Dolibarr ERP CRM version 23.0.2, for which no patch is currently available.
 
-## Jinher OA 1.0 Vulnerability (risk: 40)
-[P2] A flaw has been found in Jinher OA 1.0, with no patch available. This vulnerability affects unknown functions and has not been exploited in the wild. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.60)
+## Langflow-ai vuln (risk: 40)
+[P2] CVE-2026-7687 affects langflow-ai langflow up to 1.8.4, with no patch available. This vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with no patch available. (confidence: 0.60)
 
-- [CVE-2026-7670](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7670)
+- [CVE-2026-7687](https://www.nvd.nist.gov/v1/nvd.xhtml?nvdlist=recent)
 
-## CodeWise Tornet Scooter Mobile App 4.75 Vulnerability (risk: 40)
-[P2] A vulnerability has been found in CodeWise Tornet Scooter Mobile App 4.75 on iOS, with no patch available. This vulnerability has not been exploited in the wild. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.60)
+## Dolibarr ERP CRM vuln (risk: 40)
+[P2] CVE-2026-7689 affects Dolibarr ERP CRM up to 23.0.2, with no patch available. This vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with no patch available. (confidence: 0.60)
 
-- [CVE-2026-7671](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7671)
+- [CVE-2026-7689](https://www.nvd.nist.gov/v1/nvd.xhtml?nvdlist=recent)
 
-## MikroTik RouterOS 6.49.8 Vulnerability (risk: 40)
-[P1] A vulnerability was identified in MikroTik RouterOS 6.49.8, with no patch available. This vulnerability affects the router's functionality and has not been exploited in the wild. Why now: Critical infrastructure vulnerability with no available patch. (confidence: 0.80)
+## Wavlink WL-WN570HA1 vuln (risk: 40)
+[P2] CVE-2026-7691 affects Wavlink WL-WN570HA1 R70HA1, with no patch available. This vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with no patch available. (confidence: 0.60)
 
-- [CVE-2026-7668](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-7668)
+- [CVE-2026-7691](https://www.nvd.nist.gov/v1/nvd.xhtml?nvdlist=recent)
