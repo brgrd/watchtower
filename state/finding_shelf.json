@@ -5,42 +5,6 @@
     "run_count": 2,
     "title": "WordPress Plugin Vulnerabilities"
   },
-  "cve:CVE-2026-30252": {
-    "first_seen": "2026-04-03",
-    "last_seen": "2026-04-03",
-    "run_count": 1,
-    "title": "XSS in login.php"
-  },
-  "cve:CVE-2026-35467": {
-    "first_seen": "2026-04-03",
-    "last_seen": "2026-04-03",
-    "run_count": 1,
-    "title": "API Key Exposure"
-  },
-  "cve:CVE-2026-30251": {
-    "first_seen": "2026-04-03",
-    "last_seen": "2026-04-03",
-    "run_count": 1,
-    "title": "XSS in login_newpwd.php"
-  },
-  "cve:CVE-2026-28703": {
-    "first_seen": "2026-04-03",
-    "last_seen": "2026-04-03",
-    "run_count": 1,
-    "title": "Exchange Reporter Plus RCE"
-  },
-  "fc01cf2ee8b3": {
-    "first_seen": "2026-04-03",
-    "last_seen": "2026-04-03",
-    "run_count": 1,
-    "title": "Casdoor Vulnerability"
-  },
-  "fb2173be7c90": {
-    "first_seen": "2026-04-03",
-    "last_seen": "2026-04-03",
-    "run_count": 1,
-    "title": "Linux Kernel Vulnerability"
-  },
   "cve:CVE-2026-27447": {
     "first_seen": "2026-04-04",
     "last_seen": "2026-04-04",
@@ -874,5 +838,23 @@
     "last_seen": "2026-05-03",
     "run_count": 1,
     "title": "Wavlink WL-WN570HA1 vuln"
+  },
+  "04e6bb16a3c9": {
+    "first_seen": "2026-05-04",
+    "last_seen": "2026-05-04",
+    "run_count": 1,
+    "title": "Open5GS RCE"
+  },
+  "b428308a39ec": {
+    "first_seen": "2026-05-04",
+    "last_seen": "2026-05-04",
+    "run_count": 1,
+    "title": "Calibre-Web Vulnerability"
+  },
+  "04622a81ea9b": {
+    "first_seen": "2026-05-04",
+    "last_seen": "2026-05-04",
+    "run_count": 1,
+    "title": "Velociraptor Resource Exhaustion"
   }
 }

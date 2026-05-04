@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-05-03T22:57:20.462007+00:00
+generated_at: 2026-05-04T22:11:30.815262+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-7687 in langflow-ai langflow, CVE-2026-7689 in Dolibarr ERP CRM, and CVE-2026-7691 in Wavlink WL-WN570HA1 R70HA1. Internet-facing firewalls and VPN appliances are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate Dolibarr ERP CRM version 23.0.2, for which no patch is currently available.
+The highest-risk items this period are CVE-2026-7708 in Open5GS, CVE-2026-7709 in janeczku Calibre-Web, and CVE-2026-6948 in Velociraptor. Internet-facing servers and container orchestration nodes are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems running Open5GS up to version 2.7.7, as no patch is currently available.
 
-## Langflow-ai vuln (risk: 40)
-[P2] CVE-2026-7687 affects langflow-ai langflow up to 1.8.4, with no patch available. This vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with no patch available. (confidence: 0.60)
+## Open5GS RCE (risk: 70)
+[P1] A vulnerability was determined in Open5GS up to 2.7.7, allowing remote code execution. No patch is currently available. Why now: Newly disclosed vulnerability with potential for widespread impact. (confidence: 0.80)
 
-- [CVE-2026-7687](https://www.nvd.nist.gov/v1/nvd.xhtml?nvdlist=recent)
+- [CVE-2026-7708](https://www.nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve.id=CVE-2026-7708)
 
-## Dolibarr ERP CRM vuln (risk: 40)
-[P2] CVE-2026-7689 affects Dolibarr ERP CRM up to 23.0.2, with no patch available. This vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with no patch available. (confidence: 0.60)
+## Calibre-Web Vulnerability (risk: 60)
+[P2] A vulnerability was identified in janeczku Calibre-Web up to 0.6.26, potentially allowing unauthorized access. No patch or workaround is currently available. Why now: Newly disclosed vulnerability with potential for targeted attacks. (confidence: 0.70)
 
-- [CVE-2026-7689](https://www.nvd.nist.gov/v1/nvd.xhtml?nvdlist=recent)
+- [CVE-2026-7709](https://www.nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve.id=CVE-2026-7709)
 
-## Wavlink WL-WN570HA1 vuln (risk: 40)
-[P2] CVE-2026-7691 affects Wavlink WL-WN570HA1 R70HA1, with no patch available. This vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with no patch available. (confidence: 0.60)
+## Velociraptor Resource Exhaustion (risk: 50)
+[P2] Velociraptor versions prior to 0.76.4 contain a resource exhaustion vulnerability, potentially allowing denial-of-service attacks. No patch is currently available. Why now: Newly disclosed vulnerability with potential for disruption of critical services. (confidence: 0.60)
 
-- [CVE-2026-7691](https://www.nvd.nist.gov/v1/nvd.xhtml?nvdlist=recent)
+- [CVE-2026-6948](https://www.nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve.id=CVE-2026-6948)
