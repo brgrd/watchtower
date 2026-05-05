@@ -1,28 +1,4 @@
 {
-  "ce2b6e0389d0": {
-    "first_seen": "2026-03-13",
-    "last_seen": "2026-04-04",
-    "run_count": 2,
-    "title": "WordPress Plugin Vulnerabilities"
-  },
-  "cve:CVE-2026-27447": {
-    "first_seen": "2026-04-04",
-    "last_seen": "2026-04-04",
-    "run_count": 1,
-    "title": "OpenPrinting CUPS RCE"
-  },
-  "cve:CVE-2026-27481": {
-    "first_seen": "2026-04-04",
-    "last_seen": "2026-04-04",
-    "run_count": 1,
-    "title": "Discourse RCE"
-  },
-  "cve:CVE-2026-27456": {
-    "first_seen": "2026-04-04",
-    "last_seen": "2026-04-04",
-    "run_count": 1,
-    "title": "util-linux Buffer Overflow"
-  },
   "cve:CVE-2026-5530": {
     "first_seen": "2026-04-05",
     "last_seen": "2026-04-05",
@@ -856,5 +832,17 @@
     "last_seen": "2026-05-04",
     "run_count": 1,
     "title": "Velociraptor Resource Exhaustion"
+  },
+  "cve:CVE-2026-23918": {
+    "first_seen": "2026-05-05",
+    "last_seen": "2026-05-05",
+    "run_count": 1,
+    "title": "Apache HTTP/2 RCE"
+  },
+  "cve:CVE-2026-22679": {
+    "first_seen": "2026-05-05",
+    "last_seen": "2026-05-05",
+    "run_count": 1,
+    "title": "Weaver E-cology RCE"
   }
 }

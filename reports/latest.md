@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-05-04T22:11:30.815262+00:00
+generated_at: 2026-05-05T22:09:32.105786+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,20 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-7708 in Open5GS, CVE-2026-7709 in janeczku Calibre-Web, and CVE-2026-6948 in Velociraptor. Internet-facing servers and container orchestration nodes are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems running Open5GS up to version 2.7.7, as no patch is currently available.
+The highest-risk items this period are CVE-2026-42220 in Nginx UI, CVE-2026-23918 in Apache HTTP/2, and CVE-2026-22679 in Weaver E-cology, which represent critical remote code execution vulnerabilities. Internet-facing web servers and VPN appliances are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by CVE-2026-23918 in Apache HTTP/2, for which a patch is currently available.
 
-## Open5GS RCE (risk: 70)
-[P1] A vulnerability was determined in Open5GS up to 2.7.7, allowing remote code execution. No patch is currently available. Why now: Newly disclosed vulnerability with potential for widespread impact. (confidence: 0.80)
+## Apache HTTP/2 RCE (risk: 100)
+[P1] CVE-2026-23918 is a critical remote code execution vulnerability in Apache HTTP/2, which can be exploited for denial-of-service and potential remote code execution. A patch is available for this vulnerability. Why now: Public exploit code is available (confidence: 0.90)
 
-- [CVE-2026-7708](https://www.nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve.id=CVE-2026-7708)
+- [Critical Apache HTTP/2 Flaw (CVE-2026-23918)](https://thehackernews.com/2026/05/critical-apache-http2-flaw-cve-2026.html)
 
-## Calibre-Web Vulnerability (risk: 60)
-[P2] A vulnerability was identified in janeczku Calibre-Web up to 0.6.26, potentially allowing unauthorized access. No patch or workaround is currently available. Why now: Newly disclosed vulnerability with potential for targeted attacks. (confidence: 0.70)
+## Weaver E-cology RCE (risk: 100)
+[P1] CVE-2026-22679 is a remote code execution vulnerability in Weaver E-cology, which is being actively exploited in the wild via the Debug API. No patch is currently available for this vulnerability. Why now: Actively exploited in the wild (confidence: 0.90)
 
-- [CVE-2026-7709](https://www.nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve.id=CVE-2026-7709)
+- [Weaver E-cology RCE Flaw CVE-2026-22679](https://thehackernews.com/2026/05/weaver-e-cology-rce-flaw-cve-2026-22679.html)
 
-## Velociraptor Resource Exhaustion (risk: 50)
-[P2] Velociraptor versions prior to 0.76.4 contain a resource exhaustion vulnerability, potentially allowing denial-of-service attacks. No patch is currently available. Why now: Newly disclosed vulnerability with potential for disruption of critical services. (confidence: 0.60)
+## Nginx UI RCE (risk: 70)
+[P1] CVE-2026-42220 is a remote code execution vulnerability in Nginx UI, with no available patch or workaround. This vulnerability is not yet exploited in the wild, but its presence in a web-facing application makes it a high-risk issue. Why now: Reported attribution (unverified): none (confidence: 0.80)
 
-- [CVE-2026-6948](https://www.nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve.id=CVE-2026-6948)
+- [CVE-2026-42220](https://www.securityweek.com/critical-remote-code-execution-vulnerability-patched-in-android-2/)
+- [Nginx UI is a web user interface for the Nginx web server](https://thehackernews.com/2026/05/critical-apache-http2-flaw-cve-2026.html)
