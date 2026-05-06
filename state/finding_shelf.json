@@ -1,46 +1,4 @@
 {
-  "cve:CVE-2026-5530": {
-    "first_seen": "2026-04-05",
-    "last_seen": "2026-04-05",
-    "run_count": 1,
-    "title": "Ollama Vulnerability"
-  },
-  "cve:CVE-2026-5527": {
-    "first_seen": "2026-04-05",
-    "last_seen": "2026-04-05",
-    "run_count": 1,
-    "title": "Tenda 4G03 Pro Weakness"
-  },
-  "cve:CVE-2026-5531": {
-    "first_seen": "2026-04-05",
-    "last_seen": "2026-04-05",
-    "run_count": 1,
-    "title": "SourceCodester Vulnerability"
-  },
-  "3a34d432cc42": {
-    "first_seen": "2026-04-05",
-    "last_seen": "2026-04-05",
-    "run_count": 1,
-    "title": "React2Shell Exploitation"
-  },
-  "cve:CVE-2026-5556": {
-    "first_seen": "2026-04-05",
-    "last_seen": "2026-04-05",
-    "run_count": 1,
-    "title": "CVE-2026-5556"
-  },
-  "cve:CVE-2026-5557": {
-    "first_seen": "2026-04-05",
-    "last_seen": "2026-04-05",
-    "run_count": 1,
-    "title": "CVE-2026-5557"
-  },
-  "cve:CVE-2026-5558": {
-    "first_seen": "2026-04-05",
-    "last_seen": "2026-04-05",
-    "run_count": 1,
-    "title": "CVE-2026-5558"
-  },
   "f483449b67b9": {
     "first_seen": "2026-04-06",
     "last_seen": "2026-04-06",
@@ -844,5 +802,23 @@
     "last_seen": "2026-05-05",
     "run_count": 1,
     "title": "Weaver E-cology RCE"
+  },
+  "cve:CVE-2026-35527": {
+    "first_seen": "2026-05-06",
+    "last_seen": "2026-05-06",
+    "run_count": 1,
+    "title": "Incus Vulnerability"
+  },
+  "cve:CVE-2026-0300": {
+    "first_seen": "2026-05-06",
+    "last_seen": "2026-05-06",
+    "run_count": 1,
+    "title": "User-ID Authentication Portal Vulnerability"
+  },
+  "cve:CVE-2026-39383": {
+    "first_seen": "2026-05-06",
+    "last_seen": "2026-05-06",
+    "run_count": 1,
+    "title": "Gotenberg Vulnerability"
   }
 }
