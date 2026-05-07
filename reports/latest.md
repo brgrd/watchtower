@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-05-06T22:05:22.110265+00:00
+generated_at: 2026-05-07T22:11:55.752990+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-35527 in Incus, CVE-2026-0300 in User-ID Authentication Portal, and CVE-2026-39383 in Gotenberg, which represent significant vulnerabilities in container and virtual machine management, authentication, and document conversion. Internet-facing systems, container orchestration nodes, and VPN appliances are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using Incus, User-ID Authentication Portal, and Gotenberg, as no patches are currently available for these vulnerabilities.
+The highest-risk items this period are CVE-2026-6973 in Ivanti EPMM, CVE-2026-43575 in OpenClaw, and the exploitation of PAN-OS Captive Portal Zero-Day. Internet-facing firewalls and VPN appliances are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to patch Ivanti EPMM to prevent exploitation of CVE-2026-6973, although a patch is not currently available, and to monitor for any suspicious activity related to this vulnerability.
 
-## Incus Vulnerability (risk: 40)
-[P1] CVE-2026-35527 is a vulnerability in Incus, an open-source container and virtual machine manager, with no available patch or workaround. Why now: Lack of available patch or workaround (confidence: 0.80)
+## Ivanti EPMM RCE (risk: 100)
+[P1] Ivanti EPMM is vulnerable to remote code execution due to CVE-2026-6973, which is under active exploitation and grants admin-level access. No patch is currently available. Why now: Reported attribution (unverified): none, but exploitation is actively occurring in the wild. (confidence: 0.90)
 
-- [CVE-2026-35527](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-35527)
+- [Ivanti EPMM CVE-2026-6973 RCE Under Active Exploitation Grants Admin-Level Access](https://thehackernews.com/2026/05/ivanti-epmm-cve-2026-6973-rce-under.html)
 
-## User-ID Authentication Portal Vulnerability (risk: 40)
-[P1] CVE-2026-0300 is a buffer overflow vulnerability in the User-ID Authentication Portal, with no available patch or workaround. Why now: Lack of available patch or workaround (confidence: 0.80)
+## PAN-OS Captive Portal Zero-Day (risk: 100)
+[P1] The PAN-OS Captive Portal is vulnerable to a zero-day exploit, which could allow attackers to gain unauthorized access. No patch is currently available. Why now: The vulnerability is being actively exploited in the wild and has the potential for significant impact. (confidence: 0.90)
 
-- [CVE-2026-0300](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-0300)
+- [Threat Brief: Exploitation of PAN-OS Captive Portal Zero-Day for Unauthenticated Remote Code Execution](https://unit42.paloaltonetworks.com/captive-portal-zero-day/)
 
-## Gotenberg Vulnerability (risk: 40)
-[P1] CVE-2026-39383 is an unauthorized access vulnerability in Gotenberg, a document conversion tool, with no available patch or workaround. Why now: Lack of available patch or workaround (confidence: 0.80)
+## OpenClaw Auth Bypass (risk: 70)
+[P2] OpenClaw contains an authentication bypass vulnerability due to CVE-2026-43575, which could allow attackers to gain unauthorized access. No patch is currently available. Why now: The vulnerability is relatively new and has not been widely exploited yet, but it has the potential for significant impact. (confidence: 0.60)
 
-- [CVE-2026-39383](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-39383)
+- [OpenClaw versions 2026.2.21 before 2026.4.10 contain an authentication bypass vulnerability](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cveId=CVE-2026-43575)

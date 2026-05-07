@@ -1,1 +1,29 @@
-{}
+{
+  "ip:12.6.1.1": {
+    "type": "Network IOC",
+    "first_seen": "2026-05-07",
+    "run_count": 1,
+    "cards": [
+      "Ivanti EPMM RCE"
+    ],
+    "last_seen": "2026-05-07"
+  },
+  "ip:12.7.0.1": {
+    "type": "Network IOC",
+    "first_seen": "2026-05-07",
+    "run_count": 1,
+    "cards": [
+      "Ivanti EPMM RCE"
+    ],
+    "last_seen": "2026-05-07"
+  },
+  "ip:12.8.0.1": {
+    "type": "Network IOC",
+    "first_seen": "2026-05-07",
+    "run_count": 1,
+    "cards": [
+      "Ivanti EPMM RCE"
+    ],
+    "last_seen": "2026-05-07"
+  }
+}
