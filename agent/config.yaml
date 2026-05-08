@@ -88,7 +88,7 @@ feeds:
     country: "US"
     enabled: true
   - id: gcp_security
-    url: "https://docs.cloud.google.com/feeds/gcp-security-bulletins.xml"
+    url: "https://cloud.google.com/feeds/google-cloud-security-bulletins.xml"
     category: "advisories"
     type: rss
     country: "US"
