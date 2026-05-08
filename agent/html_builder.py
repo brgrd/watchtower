@@ -12,6 +12,17 @@ from datetime import datetime, timedelta, timezone
 import tldextract
 
 from agent.ingest import placeholder_mode
+from agent.matrix import (
+    AFFECTS_COLORS,
+    AFFECTS_LABELS,
+    AFFECTS_ORDER,
+    PROBLEM_TYPE_LABELS,
+    PROBLEM_TYPE_ORDER,
+    bubble_radius,
+    build_matrix_data,
+    cell_geometry,
+    cell_origin,
+)
 from agent.scoring import (
     _TAXONOMY,
     _derive_priority,
@@ -301,6 +312,246 @@ def _compute_velocity(history_days: list) -> dict:
         elif delta <= -1.5:
             result[key] = "\u21931"  # ↓
     return result
+
+
+# ──────────────────────────────────────────────
+# Threat matrix — problem_type × affects grid
+# ──────────────────────────────────────────────
+
+
+def _matrix_cell_fill(cell: dict | None) -> tuple:
+    """Return (fill_alpha, glow_alpha, ring_alpha) for a cell heat treatment.
+
+    Empty cells render as faint ghosts; loud cells glow.  Anchored to
+    ``max_risk`` and ``active_count`` so the matrix reads honestly when one
+    finding dominates vs. when a cell is genuinely busy.
+    """
+    if not cell or cell.get("active_count", 0) == 0:
+        return 0.04, 0.0, 0.10
+    risk = cell.get("max_risk", 0) / 100.0
+    density = min(1.0, cell.get("active_count", 0) / 5.0)
+    fill = 0.10 + 0.55 * (0.6 * risk + 0.4 * density)
+    glow = 0.20 + 0.55 * risk if cell.get("any_kev") else 0.10 + 0.30 * risk
+    ring = 0.30 + 0.55 * risk
+    return round(fill, 3), round(glow, 3), round(ring, 3)
+
+
+def _build_threat_matrix_svg(matrix_data: dict) -> str:
+    """Render the matrix grid (cells, axis labels, counts) as inline SVG.
+
+    Bubbles are not rendered server-side — petite-vue (added in Phase 3) draws
+    them client-side from ``WT_DATA.bubbles`` so the same SVG can react to the
+    time-window slider without a Python rebuild.  Phase 2 ships only the cell
+    skeleton with count chips so the grid is usable as-is.
+    """
+    g = cell_geometry()
+    pts = matrix_data.get("problem_types", PROBLEM_TYPE_ORDER)
+    afs = matrix_data.get("affects", AFFECTS_ORDER)
+    pt_labels = matrix_data.get("problem_type_labels", PROBLEM_TYPE_LABELS)
+    af_labels = matrix_data.get("affects_labels", AFFECTS_LABELS)
+    af_colors = matrix_data.get("affects_colors", AFFECTS_COLORS)
+    cells = matrix_data.get("cells", {})
+
+    parts: list[str] = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" id="wt-matrix-svg"'
+        f' viewBox="0 0 {g["view_w"]} {g["view_h"]}"'
+        f' preserveAspectRatio="xMidYMid meet"'
+        f' style="width:100%;height:auto;display:block;background:#0a0a0a;'
+        f'border-radius:8px;border:1px solid #2a2a2a">',
+        "<defs>",
+        '<filter id="wt-cell-glow" x="-50%" y="-50%" width="200%" height="200%">'
+        '<feGaussianBlur stdDeviation="1.6"/></filter>',
+        '<filter id="wt-pulse" x="-50%" y="-50%" width="200%" height="200%">'
+        '<feGaussianBlur stdDeviation="2.2"/></filter>',
+        "</defs>",
+        # Trajectory watermark anchor — populated by Phase 6
+        '<g id="wt-trajectory" opacity="0"></g>',
+    ]
+
+    # Column labels (problem types)
+    for ci, pt in enumerate(pts):
+        x = g["label_left"] + ci * (g["cell_w"] + g["gutter_x"]) + g["cell_w"] / 2
+        y = g["label_top"] - 8
+        label = pt_labels.get(pt, pt)
+        parts.append(
+            f'<text x="{x:.1f}" y="{y:.1f}" text-anchor="middle"'
+            f' font-family="system-ui,sans-serif" font-size="10" font-weight="700"'
+            f' fill="#8b949e" letter-spacing=".04em">{html.escape(label.upper())}</text>'
+        )
+
+    # Row labels + cells
+    for ri, af in enumerate(afs):
+        row_y = g["label_top"] + ri * (g["cell_h"] + g["gutter_y"]) + g["cell_h"] / 2
+        af_label = af_labels.get(af, af)
+        af_color = af_colors.get(af, "#94a3b8")
+        # Row label with color swatch
+        parts.append(
+            f'<g class="wt-row-label" data-affects="{af}" style="cursor:pointer">'
+            f'<rect x="{g["margin"]:.1f}" y="{row_y - 8:.1f}" width="3" height="16"'
+            f' fill="{af_color}" opacity="0.85" rx="1.5"/>'
+            f'<text x="{g["margin"] + 8:.1f}" y="{row_y + 4:.1f}"'
+            f' font-family="system-ui,sans-serif" font-size="11" font-weight="600"'
+            f' fill="#c9d1d9">{html.escape(af_label)}</text>'
+            f'</g>'
+        )
+
+        for ci, pt in enumerate(pts):
+            cx, cy = cell_origin(ci, ri, g)
+            cell_key = f"{pt}|{af}"
+            cell = cells.get(cell_key)
+            fill_a, glow_a, ring_a = _matrix_cell_fill(cell)
+            row_rgb = af_color  # use row hue as cell tint
+            active = cell.get("active_count", 0) if cell else 0
+            p1 = cell.get("p1_count", 0) if cell else 0
+            max_risk = cell.get("max_risk", 0) if cell else 0
+            long_runner = cell.get("long_runner_count", 0) if cell else 0
+            any_kev = bool(cell.get("any_kev")) if cell else False
+            empty = active == 0 and (cell is None or cell.get("long_runner_count", 0) == 0)
+
+            cls = "wt-cell" + (" wt-cell--empty" if empty else "")
+            cls += " wt-cell--kev" if any_kev else ""
+            af_label_disp = af_labels.get(af, af)
+            pt_label_disp = pt_labels.get(pt, pt)
+            aria_label = (
+                f"{pt_label_disp} affecting {af_label_disp}, "
+                f"{active} active findings"
+                + (f", {p1} P1" if p1 else "")
+                + (", contains KEV-listed CVE" if any_kev else "")
+            )
+            parts.append(
+                f'<g class="{cls}" data-cell="{cell_key}" data-pt="{pt}" data-af="{af}"'
+                f' role="button" tabindex="0" aria-label="{html.escape(aria_label)}"'
+                f' style="cursor:pointer">'
+            )
+            # Background fill — colored by row hue, opacity by heat
+            parts.append(
+                f'<rect x="{cx:.1f}" y="{cy:.1f}" width="{g["cell_w"]}" height="{g["cell_h"]}"'
+                f' rx="6" ry="6" fill="{row_rgb}" fill-opacity="{fill_a:.3f}"'
+                f' stroke="{row_rgb}" stroke-opacity="{ring_a:.3f}" stroke-width="1"/>'
+            )
+            # Inner glow for KEV-bearing cells (Phase 4 adds the per-bubble pulse)
+            if any_kev:
+                parts.append(
+                    f'<rect x="{cx + 1:.1f}" y="{cy + 1:.1f}"'
+                    f' width="{g["cell_w"] - 2}" height="{g["cell_h"] - 2}"'
+                    f' rx="6" ry="6" fill="none" stroke="#f87171"'
+                    f' stroke-opacity="{0.30 + 0.4 * (max_risk / 100.0):.3f}"'
+                    f' stroke-width="1.2" filter="url(#wt-cell-glow)"/>'
+                )
+            # Count chip — top-right corner, only when populated
+            if active > 0 or (cell and cell.get("long_runner_count", 0) > 0):
+                chip_x = cx + g["cell_w"] - 6
+                chip_y = cy + 6
+                count_label = str(active) if active < 100 else "99+"
+                parts.append(
+                    f'<text x="{chip_x:.1f}" y="{chip_y + 9:.1f}" text-anchor="end"'
+                    f' font-family="system-ui,sans-serif" font-size="11" font-weight="800"'
+                    f' fill="#e6edf3">{count_label}</text>'
+                )
+                if p1 > 0:
+                    parts.append(
+                        f'<text x="{chip_x:.1f}" y="{chip_y + 22:.1f}" text-anchor="end"'
+                        f' font-family="system-ui,sans-serif" font-size="8" font-weight="700"'
+                        f' fill="#f87171" letter-spacing=".04em">P1·{p1}</text>'
+                    )
+                if long_runner > 0:
+                    parts.append(
+                        f'<text x="{cx + 6:.1f}" y="{cy + g["cell_h"] - 7:.1f}"'
+                        f' font-family="system-ui,sans-serif" font-size="8" font-weight="700"'
+                        f' fill="#94a3b8" letter-spacing=".04em">{long_runner} ongoing</text>'
+                    )
+            # Bubble layer placeholder (Phase 3 hydrates this with petite-vue)
+            parts.append(
+                f'<g class="wt-bubble-layer" data-cell="{cell_key}"'
+                f' transform="translate({cx:.1f},{cy:.1f})"></g>'
+            )
+            # Selection ring — hidden at rest; visible when locked
+            parts.append(
+                f'<rect class="wt-cell-sel" x="{cx - 1:.1f}" y="{cy - 1:.1f}"'
+                f' width="{g["cell_w"] + 2}" height="{g["cell_h"] + 2}"'
+                f' rx="7" ry="7" fill="none" stroke="#e6edf3"'
+                f' stroke-width="1.5" opacity="0"/>'
+            )
+            parts.append("</g>")
+
+    # Bottom time-axis hint — populated meaningfully in Phase 5 (slider)
+    axis_y = g["label_top"] + g["grid_h"] + 14
+    axis_x_left = g["label_left"]
+    axis_x_right = g["label_left"] + g["grid_w"]
+    parts.append(
+        f'<text x="{axis_x_left:.1f}" y="{axis_y:.1f}"'
+        f' font-family="system-ui,sans-serif" font-size="9" fill="#5a6a7a"'
+        f' letter-spacing=".04em">OLDER ◀</text>'
+    )
+    parts.append(
+        f'<text x="{axis_x_right:.1f}" y="{axis_y:.1f}" text-anchor="end"'
+        f' font-family="system-ui,sans-serif" font-size="9" fill="#5a6a7a"'
+        f' letter-spacing=".04em">▶ NOW</text>'
+    )
+
+    parts.append("</svg>")
+    return "\n".join(parts)
+
+
+def _build_matrix_overview_html(matrix_data: dict) -> str:
+    """Right-rail Overview panel: ranked cells by max_risk, click to lock."""
+    cells = matrix_data.get("cells", {})
+    pt_labels = matrix_data.get("problem_type_labels", PROBLEM_TYPE_LABELS)
+    af_labels = matrix_data.get("affects_labels", AFFECTS_LABELS)
+    af_colors = matrix_data.get("affects_colors", AFFECTS_COLORS)
+    if not cells:
+        return (
+            '<div class="muted" style="font-size:.78rem;padding:.4rem 0">'
+            "No findings classified into matrix cells in this window.</div>"
+        )
+    rows: list[str] = []
+    ranked = sorted(
+        cells.items(),
+        key=lambda kv: (
+            kv[1].get("max_risk", 0),
+            kv[1].get("active_count", 0),
+            kv[1].get("p1_count", 0),
+        ),
+        reverse=True,
+    )
+    for cell_key, cell in ranked[:14]:
+        pt, af = cell_key.split("|", 1)
+        af_color = af_colors.get(af, "#94a3b8")
+        max_risk = cell.get("max_risk", 0)
+        active = cell.get("active_count", 0)
+        p1 = cell.get("p1_count", 0)
+        long_runner = cell.get("long_runner_count", 0)
+        if active == 0 and long_runner == 0:
+            continue
+        bar_pct = max(2, min(100, max_risk))
+        rows.append(
+            f'<div class="wt-cell-rank" data-cell="{cell_key}" '
+            f'onclick="wtSelectCell(\'{cell_key}\')">'
+            f'<span class="wt-cell-rank-swatch" style="background:{af_color}"></span>'
+            f'<span class="wt-cell-rank-label">{html.escape(pt_labels.get(pt, pt))}'
+            f' · <span style="color:#8b949e">{html.escape(af_labels.get(af, af))}</span></span>'
+            f'<span class="wt-cell-rank-bar"><span class="wt-cell-rank-fill" '
+            f'style="width:{bar_pct}%;background:{af_color}"></span></span>'
+            f'<span class="wt-cell-rank-meta">{active}'
+            + (f' · <span style="color:#f87171">P1·{p1}</span>' if p1 else "")
+            + (f' · <span style="color:#94a3b8">{long_runner}↻</span>' if long_runner else "")
+            + "</span></div>"
+        )
+    if not rows:
+        return (
+            '<div class="muted" style="font-size:.78rem;padding:.4rem 0">'
+            "All matrix cells are quiet right now.</div>"
+        )
+    return (
+        '<div class="wt-cell-rank wt-cell-rank--all" '
+        'onclick="wtSelectCell(\'all\')">'
+        '<span class="wt-cell-rank-swatch" style="background:#3a3a3a"></span>'
+        '<span class="wt-cell-rank-label" style="color:#c9d1d9;font-weight:700">All Cells</span>'
+        '<span class="wt-cell-rank-bar"></span>'
+        f'<span class="wt-cell-rank-meta" style="color:#c9d1d9;font-weight:700">'
+        f'{sum(c.get("active_count", 0) for c in cells.values())}</span>'
+        "</div>"
+    ) + "".join(rows)
 
 
 def _build_domain_rank_html(cards: list, heatmap: dict, velocity: dict = None) -> str:
@@ -1200,6 +1451,56 @@ def _build_alerts_html(cards: list, delta: dict | None) -> str:
     return watch_section + _section("P1 / Attribution", p1_rows, len(p1_attr))
 
 
+def _build_breach_strip_html(breaches: list) -> str:
+    """Phase 7 — breach strip rendered above the matrix.
+
+    Distinct visual class from CVE bubbles (square chips, different verb)
+    because the user action ("rotate" / "close" / "monitor") differs from
+    "patch" / "isolate".  Empty list renders as nothing.
+    """
+    from agent.breach import format_count
+
+    if not breaches:
+        return ""
+    items: list[str] = []
+    for b in breaches:
+        action = (b.get("action", "monitor") or "monitor").lower()
+        action_labels = {
+            "rotate": "rotate now",
+            "close": "close / freeze account",
+            "monitor": "monitor for misuse",
+        }
+        action_label = action_labels.get(action, "review")
+        action_class = f"wt-breach-action--{action}"
+        count_str = format_count(b.get("affected_count", 0))
+        date_str = b.get("date") or b.get("added") or ""
+        title = b.get("title") or b.get("name") or "Untitled breach"
+        url = b.get("source_url", "")
+        items.append(
+            f'<a class="wt-breach-item" href="{html.escape(url)}"'
+            f' target="_blank" rel="noopener noreferrer"'
+            f' data-breach-id="{html.escape(b.get("id", ""))}">'
+            f'<span class="wt-breach-glyph">▣</span>'
+            f'<span class="wt-breach-body">'
+            f'<span class="wt-breach-title">{html.escape(title)}</span>'
+            f'<span class="wt-breach-meta">'
+            + (f'<span class="wt-breach-date">{html.escape(date_str)}</span>' if date_str else "")
+            + (f'<span class="wt-breach-count">{count_str} affected</span>' if count_str else "")
+            + f'<span class="wt-breach-action {action_class}">{action_label}</span>'
+            + "</span></span></a>"
+        )
+    return (
+        '<section class="wt-breach-strip">'
+        '<div class="wt-breach-strip-header">'
+        '<span class="wt-breach-strip-title">Was your data exposed?</span>'
+        f'<span class="wt-breach-strip-count">{len(breaches)} recent breach{"es" if len(breaches) != 1 else ""}</span>'
+        "</div>"
+        '<div class="wt-breach-strip-body">'
+        + "".join(items)
+        + "</div></section>"
+    )
+
+
 def _write_index_html(
     path: str,
     cards: list,
@@ -1217,6 +1518,7 @@ def _write_index_html(
     feed_run_metrics: dict = None,
     velocity: dict = None,
     ioc_ledger: dict = None,
+    breaches: list = None,
 ):
     # KPI stats
     total_findings = len(cards)
@@ -1337,8 +1639,27 @@ def _write_index_html(
             f"</tr>"
         )
 
-    threat_svg = _build_threat_map_svg(cards, heatmap, velocity=velocity)
-    domain_rank_html = _build_domain_rank_html(cards, heatmap, velocity=velocity)
+    breach_strip_html = _build_breach_strip_html(breaches or [])
+    matrix_data = build_matrix_data(cards)
+    # Trajectory series for the watermark (Phase 6).  Reads briefing JSONL archive
+    # plus the current run's cards; window covers max slider value (180d).
+    try:
+        import os as _os
+        from agent.state import load_json as _load_json
+        from agent.trajectory import build_trajectory as _build_trajectory
+
+        _root = _os.path.dirname(_os.path.dirname(__file__))
+        _reports = _os.path.join(_root, "reports")
+        _shelf = _load_json(_os.path.join(_root, "state", "finding_shelf.json"), {})
+        matrix_data["trajectory"] = _build_trajectory(
+            cards, _reports, _shelf, window_days=180
+        )
+    except Exception as _exc:
+        # Trajectory is decorative; never block the page render
+        print(f"[WARN] trajectory build failed: {_exc}")
+        matrix_data["trajectory"] = {}
+    threat_svg = _build_threat_matrix_svg(matrix_data)
+    domain_rank_html = _build_matrix_overview_html(matrix_data)
 
     _today_et = (datetime.now(timezone.utc) - timedelta(hours=5)).strftime("%Y-%m-%d")
     history_section = _build_history_accordion(history_days or [], today_str=_today_et)
@@ -1728,6 +2049,11 @@ def _write_index_html(
             for s in prim[:3]
             if isinstance(s, dict) and s.get("url")
         ]
+        _epss = c.get("epss_score")
+        try:
+            _epss = float(_epss) if _epss is not None else None
+        except (TypeError, ValueError):
+            _epss = None
         card_data.append(
             {
                 "id": c.get("id", ""),
@@ -1745,6 +2071,13 @@ def _write_index_html(
                 "patch_status": c.get("patch_status", "unknown"),
                 "shelf_resolved": bool(c.get("shelf_resolved", False)),
                 "cves": list((c.get("enrichment") or {}).get("cves") or []),
+                "problem_type": c.get("problem_type", ""),
+                "affects": c.get("affects", ""),
+                "classification_confidence": float(c.get("classification_confidence", 1.0) or 1.0),
+                "classification_reasoning": c.get("classification_reasoning", "") or "",
+                "cross_cutting": list(c.get("cross_cutting") or []),
+                "is_kev": bool(c.get("is_kev")),
+                "epss_score": _epss,
             }
         )
 
@@ -1961,6 +2294,82 @@ p{{color:#c9d1d9}}
 .threat-toolbar{{display:flex;justify-content:space-between;align-items:center;padding:.3rem .3rem .45rem}}
 .threat-title{{font-size:.9rem;font-weight:700;color:#e6edf3}}
 .threat-sub{{font-size:.72rem;color:#8b949e}}
+.wt-cell{{transition:filter .15s ease}}
+.wt-cell:hover{{filter:brightness(1.25)}}
+.wt-cell--empty{{opacity:.55}}
+.wt-cell--locked .wt-cell-sel{{opacity:1}}
+.wt-cell--locked rect:first-of-type{{filter:brightness(1.35)}}
+.wt-row-label:hover text{{fill:#e6edf3}}
+.wt-bubble{{transition:transform .15s ease,filter .15s ease}}
+.wt-bubble:hover{{filter:brightness(1.6) drop-shadow(0 0 4px rgba(255,255,255,.4))}}
+.wt-bubble--low-conf circle{{stroke-dasharray:1.6 1.4}}
+.wt-bubble--long-runner .wt-bubble-ring{{stroke:#94a3b8;stroke-opacity:.85;stroke-width:1.2}}
+.wt-bubble--urgent .wt-bubble-halo{{animation:wt-urgent-pulse 1.6s ease-in-out infinite}}
+.wt-bubble--moved .wt-bubble-moved-badge{{opacity:1}}
+.wt-bubble--locked .wt-bubble-lock-ring{{opacity:1;stroke:#e6edf3;stroke-width:1.4;fill:none}}
+@keyframes wt-urgent-pulse{{0%,100%{{opacity:.35;transform:scale(1)}}50%{{opacity:.85;transform:scale(1.18)}}}}
+.wt-cross-line{{stroke:#e6edf3;stroke-opacity:.55;stroke-dasharray:2.5 2}}
+.wt-slider{{display:flex;align-items:center;gap:.35rem;padding:.4rem .35rem .55rem;flex-wrap:wrap}}
+.wt-slider-label{{font-size:.66rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700;margin-right:.25rem}}
+.wt-slider-btn{{background:#181818;border:1px solid #2a2a2a;color:#8b949e;font-size:.7rem;font-weight:600;padding:.22rem .65rem;border-radius:999px;cursor:pointer;letter-spacing:.02em;transition:background .12s,color .12s,border-color .12s}}
+.wt-slider-btn:hover{{background:#252525;color:#c9d1d9}}
+.wt-slider-btn[aria-pressed="true"]{{background:rgba(58,130,246,.16);border-color:rgba(58,130,246,.4);color:#79b8ff}}
+.wt-slider-hint{{font-size:.66rem;color:#5a6a7a;font-style:italic;margin-left:.4rem;transition:opacity .4s}}
+.wt-slider-hint.wt-fading{{opacity:0}}
+.wt-slider-hint.wt-hidden{{display:none}}
+.wt-cell--collapsed rect:first-of-type{{height:6px!important;opacity:.35}}
+.wt-cell--collapsed text{{display:none}}
+.wt-cell-pin{{font-size:7px;font-weight:700;fill:#94a3b8}}
+.wt-breach-strip{{background:#241612;border:1px solid #4a2419;border-radius:8px;padding:.55rem .85rem .65rem;margin:0 0 .9rem}}
+.wt-breach-strip-header{{display:flex;align-items:center;gap:.5rem;margin-bottom:.45rem}}
+.wt-breach-strip-title{{font-size:.78rem;font-weight:700;color:#f9b29c;text-transform:uppercase;letter-spacing:.06em}}
+.wt-breach-strip-count{{font-size:.66rem;color:#c97a6a;font-weight:600;background:rgba(249,178,156,.1);border:1px solid rgba(249,178,156,.25);border-radius:999px;padding:1px 8px}}
+.wt-breach-strip-body{{display:flex;flex-direction:column;gap:.32rem}}
+.wt-breach-item{{display:flex;align-items:center;gap:.55rem;padding:.4rem .55rem;background:#1a0f0c;border:1px solid #3a1f17;border-radius:5px;text-decoration:none;color:inherit;transition:background .12s,border-color .12s}}
+.wt-breach-item:hover{{background:#251411;border-color:#5a2c20}}
+.wt-breach-glyph{{flex-shrink:0;font-size:1rem;color:#f9b29c;font-weight:700;line-height:1}}
+.wt-breach-body{{display:flex;flex-direction:column;gap:.18rem;flex:1;overflow:hidden}}
+.wt-breach-title{{font-size:.82rem;color:#f5d5cb;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+.wt-breach-meta{{display:flex;flex-wrap:wrap;gap:.35rem;font-size:.66rem;color:#a8867f}}
+.wt-breach-date{{color:#a8867f}}
+.wt-breach-count{{color:#d4a89e;font-weight:600}}
+.wt-breach-action{{font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:3px;padding:1px 6px}}
+.wt-breach-action--rotate{{background:rgba(248,113,113,.12);color:#fca5a5;border:1px solid rgba(248,113,113,.3)}}
+.wt-breach-action--close{{background:rgba(252,165,165,.08);color:#f87171;border:1px solid rgba(252,165,165,.25)}}
+.wt-breach-action--monitor{{background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid rgba(245,158,11,.28)}}
+.wt-cell:focus,.wt-bubble:focus{{outline:2px solid #79b8ff;outline-offset:2px}}
+@media print{{
+  body{{background:#fff;color:#111}}
+  .right-rail,.rail-mobile-toggle,.rail-backdrop,.findings-filter,.tactic-strip,.wt-slider,.run-metrics-bar,.delta-strip,.next-run,#rail-mobile-toggle{{display:none!important}}
+  .header-bar{{position:static;background:#fff;border-bottom:1px solid #aaa}}
+  .app-shell{{padding-top:0}}
+  .app-main{{padding:0!important}}
+  .panel,.executive,.weekly-scope,.threat-section{{break-inside:avoid;page-break-inside:avoid;border-color:#bbb;background:#fff;color:#111}}
+  .threat-title,h1,h2,h3{{color:#111!important}}
+  .wt-cell rect:first-of-type{{fill:#ddd!important;stroke:#999!important}}
+  .wt-bubble circle{{stroke:#333!important}}
+  .wt-breach-strip{{background:#fff;border-color:#bbb}}
+  .wt-breach-strip-title,.wt-breach-title{{color:#111!important}}
+  a{{color:#0366d6!important}}
+}}
+.wt-cell-rank{{display:flex;align-items:center;gap:.45rem;padding:.32rem .3rem;border-radius:4px;cursor:pointer;font-size:.74rem}}
+.wt-cell-rank:hover{{background:rgba(255,255,255,.04)}}
+.wt-cell-rank--all{{border-bottom:1px solid #252525;margin-bottom:.35rem;padding-bottom:.45rem}}
+.wt-cell-rank-swatch{{flex-shrink:0;width:3px;height:14px;border-radius:2px}}
+.wt-cell-rank-label{{flex:1;color:#c9d1d9;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+.wt-cell-rank-bar{{flex:0 0 70px;height:3px;background:#181818;border-radius:2px;overflow:hidden}}
+.wt-cell-rank-fill{{display:block;height:3px;border-radius:2px}}
+.wt-cell-rank-meta{{flex:0 0 auto;font-size:.68rem;color:#8b949e;font-weight:600;letter-spacing:.02em}}
+.wt-tooltip{{position:fixed;z-index:50;background:#0a0a0a;border:1px solid #3a3a3a;border-radius:5px;padding:.45rem .6rem;color:#c9d1d9;font-size:.72rem;line-height:1.4;max-width:320px;pointer-events:none;box-shadow:0 4px 12px rgba(0,0,0,.5)}}
+.wt-tooltip strong{{color:#e6edf3;display:block;margin-bottom:.2rem;font-size:.78rem}}
+.wt-tooltip .wt-tt-meta{{color:#8b949e;font-size:.66rem;margin-bottom:.25rem}}
+.wt-tooltip .wt-tt-reason{{color:#79b8ff;font-size:.66rem;font-style:italic;margin-top:.22rem;border-top:1px solid #1f1f1f;padding-top:.22rem}}
+.wt-detail-finding{{display:block;margin:.45rem 0;padding:.45rem .55rem;border-left:2px solid #2a2a2a;border-radius:0 4px 4px 0;background:rgba(255,255,255,.015);cursor:pointer}}
+.wt-detail-finding:hover{{background:rgba(255,255,255,.04)}}
+.wt-detail-finding .wt-df-title{{display:block;color:#c9d1d9;font-size:.78rem;font-weight:500;margin-bottom:.2rem}}
+.wt-detail-finding .wt-df-meta{{display:block;color:#8b949e;font-size:.66rem;margin-bottom:.2rem}}
+.wt-detail-finding .wt-df-summary{{display:block;color:#7a8b9a;font-size:.7rem;line-height:1.4;max-height:3.5em;overflow:hidden}}
+.wt-detail-finding .wt-df-reason{{display:block;color:#79b8ff;font-size:.65rem;font-style:italic;margin-top:.25rem;border-top:1px solid #1f1f1f;padding-top:.2rem}}
 .right-rail{{position:fixed;right:0;top:0;bottom:0;width:var(--rail-width);padding:.8rem .7rem;display:flex;flex-direction:column;overflow:hidden;z-index:25;transition:width .2s ease,transform .22s ease;background:#1a1a1a;border:none;border-left:1px solid #2a2a2a;border-radius:0;box-shadow:-2px 0 8px rgba(0,0,0,.15)}}
 body.rail-collapsed .right-rail{{width:var(--rail-width-collapsed);padding:.8rem .45rem}}
 .rail-header{{display:flex;align-items:center;justify-content:space-between;gap:.4rem;padding:0 0 .45rem;border-bottom:1px solid #2a2a2a}}
@@ -2102,14 +2511,24 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
 {delta_strip_html}
 {hp_panel_html}
 {priority_actions_html}
-<section class="threat-section">
+{breach_strip_html}
+<section class="threat-section" id="wt-app">
   <div class="panel threat-main">
     <div class="threat-toolbar">
       <div>
-        <div class="threat-title">Surface Threat Map</div>
-        <div class="threat-sub">Domain constellation — node intensity shows activity heat, edges show blast-radius pathways. Click any node to filter findings.</div>
+        <div class="threat-title">Threat Matrix</div>
+        <div class="threat-sub">Findings classified by <strong>problem type × what it affects</strong>. Each cell holds individual findings. Click a cell to lock the side panel; hover any bubble for context.</div>
       </div>
       <span class="chip" title="Data polled from the last {since_hours} hours">{_window_chip}</span>
+    </div>
+    <div class="wt-slider" id="wt-slider" role="radiogroup" aria-label="Time window">
+      <span class="wt-slider-label">Window:</span>
+      <button type="button" class="wt-slider-btn" data-window="7" aria-pressed="false">7d</button>
+      <button type="button" class="wt-slider-btn" data-window="30" aria-pressed="true">30d</button>
+      <button type="button" class="wt-slider-btn" data-window="90" aria-pressed="false">90d</button>
+      <button type="button" class="wt-slider-btn" data-window="180" aria-pressed="false">180d</button>
+      <button type="button" class="wt-slider-btn" data-window="99999" aria-pressed="false">all</button>
+      <span class="wt-slider-hint" id="wt-slider-hint">drag to widen or narrow</span>
     </div>
     {threat_svg}
   </div>
@@ -2144,9 +2563,10 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
                             <button class="rail-tab" type="button" id="tab-forensics" role="tab" aria-controls="panel-forensics" aria-selected="false" data-tab="forensics">Forensics</button>
                         </div>
                         <section class="rail-panel active" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
+                            <h3 style="margin:.2rem 0 .35rem">Top Cells</h3>
                             {domain_rank_html}
-                            <h3 style="margin:.7rem 0 .35rem">Selected Domain</h3>
-                            <div id="tm-detail" class="muted" style="font-size:.8rem">Click a node to inspect findings.</div>
+                            <h3 style="margin:.7rem 0 .35rem" id="wt-detail-heading">Selected Cell</h3>
+                            <div id="tm-detail" class="muted" style="font-size:.8rem">Click any matrix cell to inspect its findings, or click a bubble to lock on a single finding.</div>
                         </section>
                         <section class="rail-panel" id="panel-feeds" role="tabpanel" aria-labelledby="tab-feeds">
                             <h3 style="margin:.2rem 0 .35rem">Run Metrics</h3>
@@ -2172,6 +2592,10 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
 var CARDS={json.dumps(card_data)};
 var CURRENT_DOMAIN='all';
 var DOMAIN_LABELS={json.dumps({k: v.get('label', k) for k, v in heatmap.items()})};
+var WT_DATA={json.dumps(matrix_data)};
+var WT_CARDS_BY_ID=(function(){{var m={{}};(CARDS||[]).forEach(function(c){{if(c&&c.id)m[c.id]=c;}});return m;}})();
+var WT_CURRENT_CELL='all';
+var WT_LOCKED_FINDING=null;
 var WT_TELEMETRY=[];
 
 function trackUi(evt,payload){{
@@ -2335,6 +2759,828 @@ function selectDomain(domain){{
     }}
     trackUi('domain_selected',{{domain:CURRENT_DOMAIN,count:subset.length,maxRisk:maxRisk}});
 }}
+
+// ──────────────────────────────────────────────
+// Threat matrix client-side behavior (Phase 2-4)
+// Renders bubbles, hover tooltips, click-lock side panel.
+// ──────────────────────────────────────────────
+function wtCellGeometry(){{
+  return {{cellW:88,cellH:64,gutterX:6,gutterY:6,labelLeft:110,labelTop:28,margin:8}};
+}}
+function wtCellOrigin(ci,ri){{
+  var g=wtCellGeometry();
+  return {{x:g.labelLeft+ci*(g.cellW+g.gutterX), y:g.labelTop+ri*(g.cellH+g.gutterY)}};
+}}
+function wtBubbleRadius(score){{
+  var s=Math.max(1,score|0);
+  return Math.max(2.0,Math.min(9.0,1.4*Math.log(s+1)+1.6));
+}}
+
+function wtFormatAge(days){{
+  if(!isFinite(days)||days<0) return '';
+  if(days<1){{var h=Math.max(1,Math.round(days*24));return h+'h';}}
+  if(days<60) return Math.round(days)+'d';
+  return Math.round(days/30)+'mo';
+}}
+
+function wtRenderBubbles(){{
+  var data=WT_DATA||{{}};
+  var bubbles=data.bubbles||[];
+  var pts=data.problem_types||[];
+  var afs=data.affects||[];
+  var ptIdx={{}}, afIdx={{}};
+  pts.forEach(function(p,i){{ptIdx[p]=i;}});
+  afs.forEach(function(a,i){{afIdx[a]=i;}});
+
+  // Group bubbles by cell
+  var byCell={{}};
+  bubbles.forEach(function(b){{
+    if(!byCell[b.cell]) byCell[b.cell]=[];
+    byCell[b.cell].push(b);
+  }});
+
+  // Determine the time horizon (max age in current data, capped at 90d for Phase 2).
+  // Phase 5 will replace this with a slider value.
+  var maxAge=0;
+  bubbles.forEach(function(b){{ if((b.age_days||0)>maxAge) maxAge=b.age_days||0; }});
+  if(maxAge<7) maxAge=7;
+  if(maxAge>90) maxAge=90;
+
+  var g=wtCellGeometry();
+  var padX=8, padY=8;
+  var innerW=g.cellW-2*padX, innerH=g.cellH-2*padY;
+
+  Object.keys(byCell).forEach(function(cellKey){{
+    var layer=document.querySelector('.wt-bubble-layer[data-cell="'+cellKey+'"]');
+    if(!layer) return;
+    layer.innerHTML='';
+    var list=byCell[cellKey].slice();
+    // Sort by risk desc so bigger bubbles render last (on top)
+    list.sort(function(a,b){{return(a.risk_score||0)-(b.risk_score||0);}});
+    // Position with simple jitter to avoid stacking
+    list.forEach(function(b,idx){{
+      var ageRatio=Math.max(0,Math.min(1,1-((b.age_days||0)/maxAge)));
+      var riskRatio=Math.max(0,Math.min(1,(b.risk_score||0)/100));
+      var bx=padX + ageRatio*innerW;
+      var by=padY + (1-riskRatio)*innerH;
+      // Tiny jitter — derived from id so it's stable across renders
+      var seed=0;
+      for(var i=0;i<(b.id||'').length;i++) seed=(seed*31+(b.id.charCodeAt(i)))&0xffff;
+      var jx=((seed%7)-3)*0.6, jy=(((seed>>3)%7)-3)*0.6;
+      bx=Math.max(padX-2,Math.min(g.cellW-padX+2,bx+jx));
+      by=Math.max(padY-2,Math.min(g.cellH-padY+2,by+jy));
+      var r=wtBubbleRadius(b.risk_score);
+
+      var classes=['wt-bubble'];
+      if(b.is_kev||(b.epss!==null&&b.epss!==undefined&&b.epss>=0.7)) classes.push('wt-bubble--urgent');
+      if(b.is_low_confidence) classes.push('wt-bubble--low-conf');
+      if(b.is_long_runner) classes.push('wt-bubble--long-runner');
+      if(b.is_resolved) classes.push('wt-bubble--resolved');
+      if(b.recategorized_within_24h) classes.push('wt-bubble--moved');
+
+      var color=b.priority==='P1' ? '#f87171' : b.priority==='P2' ? '#f59e0b' : '#79b8ff';
+      var stroke=b.is_kev?'#fca5a5':color;
+
+      var ns='http://www.w3.org/2000/svg';
+      var grp=document.createElementNS(ns,'g');
+      grp.setAttribute('class',classes.join(' '));
+      grp.setAttribute('data-finding-id',b.id);
+      grp.setAttribute('transform','translate('+bx.toFixed(2)+','+by.toFixed(2)+')');
+      grp.style.cursor='pointer';
+
+      // Halo (urgent pulse target)
+      if(classes.indexOf('wt-bubble--urgent')>=0){{
+        var halo=document.createElementNS(ns,'circle');
+        halo.setAttribute('class','wt-bubble-halo');
+        halo.setAttribute('r',(r+3.5).toFixed(2));
+        halo.setAttribute('fill',stroke);
+        halo.setAttribute('opacity','0.4');
+        grp.appendChild(halo);
+      }}
+      // Long-runner outer ring + Nd label
+      if(classes.indexOf('wt-bubble--long-runner')>=0){{
+        var ring=document.createElementNS(ns,'circle');
+        ring.setAttribute('class','wt-bubble-ring');
+        ring.setAttribute('r',(r+1.8).toFixed(2));
+        ring.setAttribute('fill','none');
+        ring.setAttribute('stroke','#94a3b8');
+        ring.setAttribute('stroke-width','1.0');
+        ring.setAttribute('opacity','0.7');
+        grp.appendChild(ring);
+        if((b.shelf_days||0)>=1){{
+          var lbl=document.createElementNS(ns,'text');
+          lbl.setAttribute('class','wt-bubble-runner-label');
+          lbl.setAttribute('x','0');
+          lbl.setAttribute('y',(r+8.5).toFixed(2));
+          lbl.setAttribute('text-anchor','middle');
+          lbl.setAttribute('font-family','system-ui,sans-serif');
+          lbl.setAttribute('font-size','7');
+          lbl.setAttribute('font-weight','700');
+          lbl.setAttribute('fill','#94a3b8');
+          lbl.setAttribute('opacity','0.85');
+          lbl.textContent=b.shelf_days+'d';
+          grp.appendChild(lbl);
+        }}
+      }}
+      // Lock ring (visible only when locked)
+      var lockRing=document.createElementNS(ns,'circle');
+      lockRing.setAttribute('class','wt-bubble-lock-ring');
+      lockRing.setAttribute('r',(r+3).toFixed(2));
+      lockRing.setAttribute('fill','none');
+      lockRing.setAttribute('stroke','#e6edf3');
+      lockRing.setAttribute('stroke-width','0');
+      lockRing.setAttribute('opacity','0');
+      grp.appendChild(lockRing);
+      // Body
+      var body=document.createElementNS(ns,'circle');
+      body.setAttribute('r',r.toFixed(2));
+      body.setAttribute('fill',color);
+      body.setAttribute('fill-opacity', b.is_resolved?'0.35':'0.85');
+      body.setAttribute('stroke',stroke);
+      body.setAttribute('stroke-opacity', b.is_resolved?'0.45':'0.95');
+      body.setAttribute('stroke-width', b.is_low_confidence?'1.2':'0.8');
+      grp.appendChild(body);
+      // Recategorized badge (Phase 9 sets this; benign no-op now)
+      if(classes.indexOf('wt-bubble--moved')>=0){{
+        var badge=document.createElementNS(ns,'text');
+        badge.setAttribute('class','wt-bubble-moved-badge');
+        badge.setAttribute('x',(r+1.5).toFixed(2));
+        badge.setAttribute('y',(-r).toFixed(2));
+        badge.setAttribute('font-size','7');
+        badge.setAttribute('fill','#79b8ff');
+        badge.setAttribute('font-family','system-ui,sans-serif');
+        badge.setAttribute('opacity','0');
+        badge.textContent='↻';
+        grp.appendChild(badge);
+      }}
+      grp.addEventListener('mouseenter',function(){{
+        wtShowTooltip(b,grp);
+        // Hover-draws cross-cutting lines so the relationship is revealed
+        // on intent rather than baked into the visual. Stays on click-lock.
+        var card=WT_CARDS_BY_ID[b.id];
+        if(card&&Array.isArray(card.cross_cutting)&&card.cross_cutting.length){{
+          wtClearCrossCuttingLines();
+          wtDrawCrossCuttingLines(card,b.id);
+        }}
+      }});
+      grp.addEventListener('mouseleave',function(){{
+        wtHideTooltip();
+        // Only clear hover-drawn lines if no finding is locked — locked
+        // finding keeps its relationship visible.
+        if(!WT_LOCKED_FINDING) wtClearCrossCuttingLines();
+        else if(WT_LOCKED_FINDING!==b.id){{
+          // Restore lock-state lines
+          var lc=WT_CARDS_BY_ID[WT_LOCKED_FINDING];
+          if(lc&&Array.isArray(lc.cross_cutting)){{
+            wtClearCrossCuttingLines();
+            wtDrawCrossCuttingLines(lc,WT_LOCKED_FINDING);
+          }}
+        }}
+      }});
+      grp.addEventListener('mousemove',function(e){{wtMoveTooltip(e);}});
+      grp.addEventListener('click',function(e){{
+        e.stopPropagation();
+        wtSelectFinding(b.id);
+      }});
+      layer.appendChild(grp);
+    }});
+  }});
+}}
+
+var WT_TT_EL=null;
+function wtEnsureTooltip(){{
+  if(WT_TT_EL) return WT_TT_EL;
+  WT_TT_EL=document.createElement('div');
+  WT_TT_EL.className='wt-tooltip';
+  WT_TT_EL.style.opacity='0';
+  WT_TT_EL.style.transition='opacity .12s';
+  document.body.appendChild(WT_TT_EL);
+  return WT_TT_EL;
+}}
+function wtShowTooltip(b){{
+  var el=wtEnsureTooltip();
+  var card=WT_CARDS_BY_ID[b.id]||{{}};
+  var meta=[];
+  if(b.priority) meta.push(b.priority);
+  if(b.risk_score) meta.push('risk '+b.risk_score);
+  if(b.is_kev) meta.push('KEV');
+  if(b.epss!==null&&b.epss!==undefined) meta.push('EPSS '+(Math.round(b.epss*100))+'%');
+  if(b.age_days>=0) meta.push(wtFormatAge(b.age_days)+' old');
+  if(b.is_long_runner) meta.push(b.shelf_days+'d unresolved');
+  if(b.is_resolved) meta.push('resolved');
+  var reason=b.classification_reasoning||card.classification_reasoning||'';
+  var conf=card.classification_confidence;
+  el.innerHTML='<strong>'+(b.title||card.title||'')+'</strong>'
+    +'<div class="wt-tt-meta">'+meta.join(' · ')+'</div>'
+    +(reason?'<div class="wt-tt-reason">Groq: '+reason+(conf!==undefined?' (conf '+(Number(conf).toFixed(2))+')':'')+'</div>':'');
+  el.style.opacity='1';
+}}
+function wtHideTooltip(){{
+  if(WT_TT_EL) WT_TT_EL.style.opacity='0';
+}}
+function wtMoveTooltip(e){{
+  if(!WT_TT_EL) return;
+  var x=e.clientX+14, y=e.clientY+12;
+  var rect=WT_TT_EL.getBoundingClientRect();
+  if(x+rect.width>window.innerWidth-8) x=e.clientX-rect.width-14;
+  if(y+rect.height>window.innerHeight-8) y=e.clientY-rect.height-12;
+  WT_TT_EL.style.left=x+'px';
+  WT_TT_EL.style.top=y+'px';
+}}
+
+function wtRenderCellDetail(cellKey){{
+  var data=WT_DATA||{{}};
+  var cells=data.cells||{{}};
+  var ptLabels=data.problem_type_labels||{{}};
+  var afLabels=data.affects_labels||{{}};
+  var t=document.getElementById('tm-detail');
+  var heading=document.getElementById('wt-detail-heading');
+  if(!t) return;
+  if(!cellKey||cellKey==='all'){{
+    if(heading) heading.textContent='Selected Cell';
+    t.innerHTML='Click any matrix cell to inspect its findings, or click a bubble to lock on a single finding.';
+    return;
+  }}
+  var parts=cellKey.split('|');
+  var pt=parts[0], af=parts[1];
+  var cell=cells[cellKey];
+  if(!cell||(!cell.findings||!cell.findings.length)){{
+    if(heading) heading.textContent=ptLabels[pt]+' × '+afLabels[af];
+    t.innerHTML='<div style="color:#5a7090;font-size:.78rem">No active findings in this cell.</div>';
+    return;
+  }}
+  if(heading) heading.textContent=ptLabels[pt]+' × '+afLabels[af];
+  var rows=cell.findings.map(function(fid){{
+    var c=WT_CARDS_BY_ID[fid];
+    if(!c) return '';
+    var meta=[];
+    if(c.priority) meta.push('<span style="color:'+(c.priority==='P1'?'#f87171':'#aaa')+';font-weight:700">'+c.priority+'</span>');
+    if(c.risk_score) meta.push('risk '+c.risk_score);
+    if(c.is_kev) meta.push('<span style="color:#fca5a5">KEV</span>');
+    if(c.shelf_days&&!c.shelf_resolved&&c.shelf_days>7) meta.push('<span style="color:#94a3b8">'+c.shelf_days+'d open</span>');
+    if(c.shelf_resolved) meta.push('<span style="color:#3fb950">resolved</span>');
+    var reason=c.classification_reasoning||'';
+    var conf=c.classification_confidence;
+    return '<div class="wt-detail-finding" onclick="wtSelectFinding(\\''+c.id+'\\')">'
+      +'<span class="wt-df-title">'+(c.title||'')+'</span>'
+      +'<span class="wt-df-meta">'+meta.join(' · ')+'</span>'
+      +(c.summary?'<span class="wt-df-summary">'+c.summary.slice(0,180)+(c.summary.length>180?'…':'')+'</span>':'')
+      +(reason?'<span class="wt-df-reason">Groq: '+reason+(conf!==undefined?' (conf '+Number(conf).toFixed(2)+')':'')+'</span>':'')
+      +'</div>';
+  }}).join('');
+  t.innerHTML='<div style="color:#8b949e;font-size:.7rem;margin-bottom:.4rem">'
+    +cell.active_count+' active · max risk '+cell.max_risk
+    +(cell.p1_count?' · P1 '+cell.p1_count:'')
+    +(cell.long_runner_count?' · '+cell.long_runner_count+' ongoing':'')
+    +'</div>'+rows;
+}}
+
+function wtRenderFindingDetail(findingId){{
+  var c=WT_CARDS_BY_ID[findingId];
+  var t=document.getElementById('tm-detail');
+  var heading=document.getElementById('wt-detail-heading');
+  if(!t||!c) return;
+  if(heading) heading.textContent='Selected Finding';
+  var meta=[];
+  if(c.priority) meta.push('<span style="color:'+(c.priority==='P1'?'#f87171':'#aaa')+';font-weight:700">'+c.priority+'</span>');
+  if(c.risk_score) meta.push('risk '+c.risk_score);
+  if(c.is_kev) meta.push('<span style="color:#fca5a5">KEV</span>');
+  if(c.epss_score!==null&&c.epss_score!==undefined) meta.push('EPSS '+Math.round(c.epss_score*100)+'%');
+  if(c.shelf_days) meta.push(c.shelf_days+'d on shelf');
+  if(c.shelf_resolved) meta.push('<span style="color:#3fb950">resolved</span>');
+  var srcs=(c.sources||[]).map(function(s){{
+    return '<a href="'+s.url+'" target="_blank" rel="noopener noreferrer" style="display:block;color:#79b8ff;font-size:.7rem;margin:.15rem 0">↗ '+s.title+'</a>';
+  }}).join('');
+  var actions=(c.actions_24h||[]).map(function(a){{return '<li style="margin:.1rem 0;font-size:.72rem;color:#c9d1d9">'+a+'</li>';}}).join('');
+  var reason=c.classification_reasoning||'';
+  t.innerHTML=
+    '<div style="color:#e6edf3;font-size:.85rem;font-weight:600;margin-bottom:.35rem">'+c.title+'</div>'
+    +'<div style="color:#8b949e;font-size:.7rem;margin-bottom:.4rem">'+meta.join(' · ')+'</div>'
+    +(c.summary?'<p style="color:#c9d1d9;font-size:.78rem;line-height:1.45;margin:.2rem 0 .4rem">'+c.summary+'</p>':'')
+    +(reason?'<div style="color:#79b8ff;font-size:.68rem;font-style:italic;margin:.25rem 0;padding:.25rem .4rem;background:rgba(121,184,255,.06);border-radius:3px">Groq classification: '+reason+'</div>':'')
+    +(actions?'<div style="margin:.4rem 0 .25rem"><span style="font-size:.65rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700">Next 24h</span><ul style="margin:.2rem 0 .2rem 1rem;padding:0">'+actions+'</ul></div>':'')
+    +(srcs?'<div style="margin-top:.4rem"><span style="font-size:.65rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700">Sources</span>'+srcs+'</div>':'');
+}}
+
+function wtSelectCell(cellKey){{
+  WT_CURRENT_CELL=cellKey||'all';
+  WT_LOCKED_FINDING=null;
+  // Update visual lock state on cells
+  document.querySelectorAll('.wt-cell').forEach(function(g){{
+    var k=g.getAttribute('data-cell');
+    g.classList.toggle('wt-cell--locked', WT_CURRENT_CELL!=='all' && k===WT_CURRENT_CELL);
+  }});
+  // Clear bubble lock state
+  document.querySelectorAll('.wt-bubble--locked').forEach(function(g){{
+    g.classList.remove('wt-bubble--locked');
+  }});
+  // Update findings cluster filter
+  document.querySelectorAll('.cluster').forEach(function(el){{
+    if(WT_CURRENT_CELL==='all'){{el.style.display='block';return;}}
+    var ids=cellKey.split('|');
+    var pt=ids[0], af=ids[1];
+    var cardId=(el.id||'').replace(/^card-/,'');
+    var c=WT_CARDS_BY_ID[cardId];
+    var match=c&&c.problem_type===pt&&c.affects===af;
+    if(!match&&c&&Array.isArray(c.cross_cutting)){{
+      match=c.cross_cutting.indexOf(cellKey)>=0;
+    }}
+    el.style.display=match?'block':'none';
+  }});
+  wtRenderCellDetail(WT_CURRENT_CELL);
+  trackUi('wt_cell_selected',{{cell:WT_CURRENT_CELL}});
+}}
+
+function wtSelectFinding(findingId){{
+  if(!findingId){{wtSelectCell('all');return;}}
+  WT_LOCKED_FINDING=findingId;
+  var c=WT_CARDS_BY_ID[findingId];
+  if(c&&c.problem_type&&c.affects){{
+    WT_CURRENT_CELL=c.problem_type+'|'+c.affects;
+  }}
+  // Highlight bubbles
+  document.querySelectorAll('.wt-bubble').forEach(function(g){{
+    var locked=g.getAttribute('data-finding-id')===findingId;
+    g.classList.toggle('wt-bubble--locked', locked);
+    var ring=g.querySelector('.wt-bubble-lock-ring');
+    if(ring) ring.setAttribute('stroke-width', locked?'1.4':'0');
+  }});
+  // Highlight current cell
+  document.querySelectorAll('.wt-cell').forEach(function(g){{
+    g.classList.toggle('wt-cell--locked', g.getAttribute('data-cell')===WT_CURRENT_CELL);
+  }});
+  wtRenderFindingDetail(findingId);
+  // Cross-cutting connecting lines (Phase 4)
+  wtClearCrossCuttingLines();
+  if(c&&Array.isArray(c.cross_cutting)) wtDrawCrossCuttingLines(c, findingId);
+  trackUi('wt_finding_locked',{{id:findingId,cell:WT_CURRENT_CELL}});
+}}
+
+function wtClearCrossCuttingLines(){{
+  var svg=document.getElementById('wt-matrix-svg');
+  if(!svg) return;
+  var existing=svg.querySelectorAll('.wt-cross-line');
+  existing.forEach(function(n){{n.parentNode&&n.parentNode.removeChild(n);}});
+}}
+function wtDrawCrossCuttingLines(card, findingId){{
+  var svg=document.getElementById('wt-matrix-svg');
+  if(!svg||!card) return;
+  var ns='http://www.w3.org/2000/svg';
+  var primary=card.problem_type+'|'+card.affects;
+  var srcLayer=svg.querySelector('.wt-bubble-layer[data-cell="'+primary+'"]');
+  if(!srcLayer) return;
+  var srcBubble=srcLayer.querySelector('[data-finding-id="'+findingId+'"]');
+  if(!srcBubble) return;
+  var srcTransform=srcBubble.getAttribute('transform')||'';
+  var srcMatch=/translate\\(([-0-9.]+)[ ,]([-0-9.]+)\\)/.exec(srcTransform);
+  var layerMatch=/translate\\(([-0-9.]+)[ ,]([-0-9.]+)\\)/.exec(srcLayer.getAttribute('transform')||'');
+  if(!srcMatch||!layerMatch) return;
+  var sx=parseFloat(layerMatch[1])+parseFloat(srcMatch[1]);
+  var sy=parseFloat(layerMatch[2])+parseFloat(srcMatch[2]);
+  (card.cross_cutting||[]).forEach(function(cellKey){{
+    var dstLayer=svg.querySelector('.wt-bubble-layer[data-cell="'+cellKey+'"]');
+    if(!dstLayer) return;
+    var dstMatch=/translate\\(([-0-9.]+)[ ,]([-0-9.]+)\\)/.exec(dstLayer.getAttribute('transform')||'');
+    if(!dstMatch) return;
+    var g=wtCellGeometry();
+    var dx=parseFloat(dstMatch[1])+g.cellW/2;
+    var dy=parseFloat(dstMatch[2])+g.cellH/2;
+    var line=document.createElementNS(ns,'line');
+    line.setAttribute('class','wt-cross-line');
+    line.setAttribute('x1',sx);line.setAttribute('y1',sy);
+    line.setAttribute('x2',dx);line.setAttribute('y2',dy);
+    svg.appendChild(line);
+  }});
+}}
+
+var WT_WINDOW_DAYS=30;
+
+function wtCurrentWindow(){{return WT_WINDOW_DAYS;}}
+
+function wtBubbleInWindow(b){{
+  if(WT_WINDOW_DAYS>=99000) return true;
+  return (b.age_days||0)<=WT_WINDOW_DAYS;
+}}
+
+function wtCellHasContent(cellKey){{
+  // A cell stays visible if it has any finding inside the window OR any
+  // unresolved finding regardless of age (long-runners shouldn't disappear
+  // when zoomed in).
+  var bubbles=(WT_DATA&&WT_DATA.bubbles)||[];
+  var hasInWindow=false, hasUnresolved=false;
+  for(var i=0;i<bubbles.length;i++){{
+    var b=bubbles[i];
+    if(b.cell!==cellKey) continue;
+    if(wtBubbleInWindow(b)) hasInWindow=true;
+    if(!b.is_resolved) hasUnresolved=true;
+    if(hasInWindow&&hasUnresolved) break;
+  }}
+  return hasInWindow||hasUnresolved;
+}}
+
+function wtApplyCellCollapse(){{
+  document.querySelectorAll('.wt-cell').forEach(function(g){{
+    var key=g.getAttribute('data-cell');
+    g.classList.toggle('wt-cell--collapsed', !wtCellHasContent(key));
+  }});
+}}
+
+function wtSetWindow(days, persist){{
+  WT_WINDOW_DAYS=days|0;
+  document.querySelectorAll('.wt-slider-btn').forEach(function(b){{
+    var on=parseInt(b.getAttribute('data-window'),10)===WT_WINDOW_DAYS;
+    b.setAttribute('aria-pressed', on?'true':'false');
+  }});
+  if(persist!==false){{
+    try{{localStorage.setItem('wt_window',String(WT_WINDOW_DAYS));}}catch(e){{}}
+  }}
+  wtRenderBubbles();
+  wtApplyCellCollapse();
+  // Trajectory watermark (Phase 6) listens for this same event
+  window.dispatchEvent(new CustomEvent('wt:window-change',{{detail:{{days:WT_WINDOW_DAYS}}}}));
+  trackUi('wt_window_changed',{{days:WT_WINDOW_DAYS}});
+}}
+
+function wtInitSlider(){{
+  var saved=null;
+  try{{saved=parseInt(localStorage.getItem('wt_window')||'',10);}}catch(e){{}}
+  var initial=(saved&&[7,30,90,180,99999].indexOf(saved)>=0)?saved:30;
+  document.querySelectorAll('.wt-slider-btn').forEach(function(b){{
+    b.addEventListener('click',function(){{
+      var d=parseInt(b.getAttribute('data-window'),10)||30;
+      // Hide first-visit hint after any interaction
+      try{{localStorage.setItem('wt_visited','1');}}catch(e){{}}
+      var hint=document.getElementById('wt-slider-hint');
+      if(hint) hint.classList.add('wt-hidden');
+      wtSetWindow(d, true);
+    }});
+  }});
+  wtSetWindow(initial, false);
+  // First-visit hint: show for 8s then fade, hide for good after first click.
+  var visited=null;
+  try{{visited=localStorage.getItem('wt_visited');}}catch(e){{}}
+  var hint=document.getElementById('wt-slider-hint');
+  if(hint){{
+    if(visited){{ hint.classList.add('wt-hidden'); }}
+    else {{
+      setTimeout(function(){{ hint.classList.add('wt-fading'); }},8000);
+    }}
+  }}
+}}
+
+// Update wtRenderBubbles to honor the time window — bubbles outside the window
+// are skipped, except long-runners which pin to the cell's left edge with a
+// "↤ Nd" chip so the user knows there's something below.
+var _wtRenderBubblesOriginal=wtRenderBubbles;
+wtRenderBubbles=function(){{
+  var data=WT_DATA||{{}};
+  var bubbles=data.bubbles||[];
+  var pts=data.problem_types||[];
+  var afs=data.affects||[];
+  var byCell={{}};
+  bubbles.forEach(function(b){{
+    if(!byCell[b.cell]) byCell[b.cell]=[];
+    byCell[b.cell].push(b);
+  }});
+  var maxAge=Math.max(7, WT_WINDOW_DAYS===99999?180:WT_WINDOW_DAYS);
+  var g=wtCellGeometry();
+  var padX=8, padY=8;
+  var innerW=g.cellW-2*padX, innerH=g.cellH-2*padY;
+
+  Object.keys(byCell).forEach(function(cellKey){{
+    var layer=document.querySelector('.wt-bubble-layer[data-cell="'+cellKey+'"]');
+    if(!layer) return;
+    layer.innerHTML='';
+    var list=byCell[cellKey].slice();
+    list.sort(function(a,b){{return(a.risk_score||0)-(b.risk_score||0);}});
+
+    // Pinned long-runners outside window: show one "↤ Nd" chip at left edge
+    var pinned=list.filter(function(b){{return b.is_long_runner&&!wtBubbleInWindow(b);}});
+    if(pinned.length){{
+      var oldest=pinned.reduce(function(m,b){{return(b.shelf_days||0)>(m.shelf_days||0)?b:m;}},pinned[0]);
+      var ns='http://www.w3.org/2000/svg';
+      var pin=document.createElementNS(ns,'g');
+      pin.setAttribute('class','wt-bubble--pinned');
+      pin.setAttribute('transform','translate('+padX+','+(padY+4)+')');
+      pin.style.cursor='pointer';
+      var pinText=document.createElementNS(ns,'text');
+      pinText.setAttribute('class','wt-cell-pin');
+      pinText.setAttribute('font-family','system-ui,sans-serif');
+      pinText.setAttribute('font-size','7');
+      pinText.setAttribute('font-weight','700');
+      pinText.setAttribute('fill','#94a3b8');
+      pinText.textContent='↤'+oldest.shelf_days+'d';
+      pin.appendChild(pinText);
+      pin.addEventListener('click',function(e){{
+        e.stopPropagation();
+        wtSelectFinding(oldest.id);
+      }});
+      pin.addEventListener('mouseenter',function(){{wtShowTooltip(oldest,pin);}});
+      pin.addEventListener('mouseleave',wtHideTooltip);
+      pin.addEventListener('mousemove',function(e){{wtMoveTooltip(e);}});
+      layer.appendChild(pin);
+    }}
+
+    list.forEach(function(b,idx){{
+      if(!wtBubbleInWindow(b)) return; // non-pinned bubbles drop when outside window
+      var ageRatio=Math.max(0,Math.min(1,1-((b.age_days||0)/maxAge)));
+      var riskRatio=Math.max(0,Math.min(1,(b.risk_score||0)/100));
+      var bx=padX + ageRatio*innerW;
+      var by=padY + (1-riskRatio)*innerH;
+      var seed=0;
+      for(var i=0;i<(b.id||'').length;i++) seed=(seed*31+(b.id.charCodeAt(i)))&0xffff;
+      var jx=((seed%7)-3)*0.6, jy=(((seed>>3)%7)-3)*0.6;
+      bx=Math.max(padX-2,Math.min(g.cellW-padX+2,bx+jx));
+      by=Math.max(padY-2,Math.min(g.cellH-padY+2,by+jy));
+      var r=wtBubbleRadius(b.risk_score);
+      var classes=['wt-bubble'];
+      if(b.is_kev||(b.epss!==null&&b.epss!==undefined&&b.epss>=0.7)) classes.push('wt-bubble--urgent');
+      if(b.is_low_confidence) classes.push('wt-bubble--low-conf');
+      if(b.is_long_runner) classes.push('wt-bubble--long-runner');
+      if(b.is_resolved) classes.push('wt-bubble--resolved');
+      if(b.recategorized_within_24h) classes.push('wt-bubble--moved');
+      var color=b.priority==='P1' ? '#f87171' : b.priority==='P2' ? '#f59e0b' : '#79b8ff';
+      var stroke=b.is_kev?'#fca5a5':color;
+      var ns='http://www.w3.org/2000/svg';
+      var grp=document.createElementNS(ns,'g');
+      grp.setAttribute('class',classes.join(' '));
+      grp.setAttribute('data-finding-id',b.id);
+      grp.setAttribute('transform','translate('+bx.toFixed(2)+','+by.toFixed(2)+')');
+      grp.setAttribute('role','button');
+      grp.setAttribute('tabindex','0');
+      var ariaParts=[(b.title||''),(b.priority||''),'risk '+(b.risk_score||0)];
+      if(b.is_kev) ariaParts.push('KEV-listed');
+      if(b.is_long_runner) ariaParts.push(b.shelf_days+' days unresolved');
+      if(b.is_resolved) ariaParts.push('resolved');
+      grp.setAttribute('aria-label', ariaParts.filter(Boolean).join(', '));
+      grp.style.cursor='pointer';
+      if(classes.indexOf('wt-bubble--urgent')>=0){{
+        var halo=document.createElementNS(ns,'circle');
+        halo.setAttribute('class','wt-bubble-halo');
+        halo.setAttribute('r',(r+3.5).toFixed(2));
+        halo.setAttribute('fill',stroke);
+        halo.setAttribute('opacity','0.4');
+        grp.appendChild(halo);
+      }}
+      if(classes.indexOf('wt-bubble--long-runner')>=0){{
+        var ring=document.createElementNS(ns,'circle');
+        ring.setAttribute('class','wt-bubble-ring');
+        ring.setAttribute('r',(r+1.8).toFixed(2));
+        ring.setAttribute('fill','none');
+        ring.setAttribute('stroke','#94a3b8');
+        ring.setAttribute('stroke-width','1.0');
+        ring.setAttribute('opacity','0.7');
+        grp.appendChild(ring);
+        if((b.shelf_days||0)>=1){{
+          var lbl=document.createElementNS(ns,'text');
+          lbl.setAttribute('class','wt-bubble-runner-label');
+          lbl.setAttribute('x','0');
+          lbl.setAttribute('y',(r+8.5).toFixed(2));
+          lbl.setAttribute('text-anchor','middle');
+          lbl.setAttribute('font-family','system-ui,sans-serif');
+          lbl.setAttribute('font-size','7');
+          lbl.setAttribute('font-weight','700');
+          lbl.setAttribute('fill','#94a3b8');
+          lbl.setAttribute('opacity','0.85');
+          lbl.textContent=b.shelf_days+'d';
+          grp.appendChild(lbl);
+        }}
+      }}
+      var lockRing=document.createElementNS(ns,'circle');
+      lockRing.setAttribute('class','wt-bubble-lock-ring');
+      lockRing.setAttribute('r',(r+3).toFixed(2));
+      lockRing.setAttribute('fill','none');
+      lockRing.setAttribute('stroke','#e6edf3');
+      lockRing.setAttribute('stroke-width','0');
+      lockRing.setAttribute('opacity','0');
+      grp.appendChild(lockRing);
+      var body=document.createElementNS(ns,'circle');
+      body.setAttribute('r',r.toFixed(2));
+      body.setAttribute('fill',color);
+      body.setAttribute('fill-opacity', b.is_resolved?'0.35':'0.85');
+      body.setAttribute('stroke',stroke);
+      body.setAttribute('stroke-opacity', b.is_resolved?'0.45':'0.95');
+      body.setAttribute('stroke-width', b.is_low_confidence?'1.2':'0.8');
+      grp.appendChild(body);
+      if(classes.indexOf('wt-bubble--moved')>=0){{
+        var badge=document.createElementNS(ns,'text');
+        badge.setAttribute('class','wt-bubble-moved-badge');
+        badge.setAttribute('x',(r+1.5).toFixed(2));
+        badge.setAttribute('y',(-r).toFixed(2));
+        badge.setAttribute('font-size','7');
+        badge.setAttribute('fill','#79b8ff');
+        badge.setAttribute('font-family','system-ui,sans-serif');
+        badge.setAttribute('opacity','0');
+        badge.textContent='↻';
+        grp.appendChild(badge);
+      }}
+      grp.addEventListener('mouseenter',function(){{
+        wtShowTooltip(b,grp);
+        var card=WT_CARDS_BY_ID[b.id];
+        if(card&&Array.isArray(card.cross_cutting)&&card.cross_cutting.length){{
+          wtClearCrossCuttingLines();
+          wtDrawCrossCuttingLines(card,b.id);
+        }}
+      }});
+      grp.addEventListener('mouseleave',function(){{
+        wtHideTooltip();
+        if(!WT_LOCKED_FINDING) wtClearCrossCuttingLines();
+        else if(WT_LOCKED_FINDING!==b.id){{
+          var lc=WT_CARDS_BY_ID[WT_LOCKED_FINDING];
+          if(lc&&Array.isArray(lc.cross_cutting)){{
+            wtClearCrossCuttingLines();
+            wtDrawCrossCuttingLines(lc,WT_LOCKED_FINDING);
+          }}
+        }}
+      }});
+      grp.addEventListener('mousemove',function(e){{wtMoveTooltip(e);}});
+      grp.addEventListener('click',function(e){{
+        e.stopPropagation();
+        wtSelectFinding(b.id);
+      }});
+      layer.appendChild(grp);
+    }});
+  }});
+}};
+
+function wtRenderTrajectory(){{
+  var data=WT_DATA||{{}};
+  var traj=data.trajectory||{{}};
+  var afs=data.affects||[];
+  var afColors=data.affects_colors||{{}};
+  var anchor=document.getElementById('wt-trajectory');
+  if(!anchor) return;
+  while(anchor.firstChild) anchor.removeChild(anchor.firstChild);
+  if(!afs.length||!Object.keys(traj).length) return;
+
+  var g=wtCellGeometry();
+  var window_=Math.max(7, WT_WINDOW_DAYS===99999?180:WT_WINDOW_DAYS);
+  var x0=g.labelLeft, x1=g.labelLeft+g.cellW*10+g.gutterX*9;
+  var y0=g.labelTop, y1=g.labelTop+g.cellH*8+g.gutterY*7;
+  var width=x1-x0, height=y1-y0;
+
+  // Trim each layer to window_ most-recent days
+  var bandSeries=afs.map(function(af){{
+    var s=traj[af]||[];
+    return {{af:af,points:s.slice(-window_)}};
+  }});
+  var nDays=bandSeries[0].points.length||1;
+
+  // Per-day total to scale the stacked area
+  var dayTotals=new Array(nDays).fill(0);
+  bandSeries.forEach(function(b){{
+    b.points.forEach(function(pt,i){{ dayTotals[i]+=pt.n; }});
+  }});
+  var maxTotal=Math.max(1, dayTotals.reduce(function(m,v){{return Math.max(m,v);}},0));
+
+  var ns='http://www.w3.org/2000/svg';
+  // Build cumulative stacked paths (top of band = sum below + this band)
+  var stackBelow=new Array(nDays).fill(0);
+  bandSeries.forEach(function(band){{
+    var color=afColors[band.af]||'#94a3b8';
+    var topPoints=[], bottomPoints=[];
+    band.points.forEach(function(pt,i){{
+      var px=x0 + (i/(nDays-1||1))*width;
+      var below=stackBelow[i];
+      var top=below+pt.n;
+      var pyTop=y1 - (top/maxTotal)*height*0.85; // 85% of grid height max
+      var pyBot=y1 - (below/maxTotal)*height*0.85;
+      topPoints.push(px.toFixed(1)+','+pyTop.toFixed(1));
+      bottomPoints.push(px.toFixed(1)+','+pyBot.toFixed(1));
+      stackBelow[i]=top;
+    }});
+    var pathD='M '+topPoints.join(' L ')+' L '+bottomPoints.reverse().join(' L ')+' Z';
+    var p=document.createElementNS(ns,'path');
+    p.setAttribute('d',pathD);
+    p.setAttribute('fill',color);
+    p.setAttribute('fill-opacity','0.13');
+    p.setAttribute('stroke','none');
+    p.setAttribute('data-affects',band.af);
+    anchor.appendChild(p);
+  }});
+
+  // Hover-capture rect for tooltip on gutters
+  var hover=document.createElementNS(ns,'rect');
+  hover.setAttribute('x',x0);
+  hover.setAttribute('y',y0);
+  hover.setAttribute('width',width);
+  hover.setAttribute('height',height);
+  hover.setAttribute('fill','transparent');
+  hover.setAttribute('pointer-events','all');
+  hover.style.cursor='crosshair';
+  hover.addEventListener('mousemove',function(e){{
+    var svg=document.getElementById('wt-matrix-svg');
+    if(!svg) return;
+    var pt=svg.createSVGPoint();
+    pt.x=e.clientX; pt.y=e.clientY;
+    var ctm=svg.getScreenCTM();
+    if(!ctm) return;
+    var local=pt.matrixTransform(ctm.inverse());
+    var fx=Math.max(0,Math.min(1,(local.x-x0)/width));
+    var idx=Math.min(nDays-1, Math.max(0, Math.floor(fx*(nDays-1))));
+    var lines=bandSeries.map(function(band){{
+      var n=band.points[idx]?.n||0;
+      var col=afColors[band.af]||'#94a3b8';
+      return '<div style="display:flex;justify-content:space-between;gap:.6rem"><span style="color:'+col+'">'
+        +(data.affects_labels[band.af]||band.af)+'</span><span>'+n+'</span></div>';
+    }}).join('');
+    var d=bandSeries[0].points[idx]?.d||'';
+    var el=wtEnsureTooltip();
+    el.innerHTML='<strong>'+d+'</strong>'+lines;
+    el.style.opacity='1';
+    wtMoveTooltip(e);
+  }});
+  hover.addEventListener('mouseleave',wtHideTooltip);
+  anchor.appendChild(hover);
+  anchor.setAttribute('opacity','1');
+}}
+
+window.addEventListener('wt:window-change',function(){{ wtRenderTrajectory(); }});
+
+function wtInitMatrix(){{
+  if(!WT_DATA||!WT_DATA.cells) return;
+  document.querySelectorAll('.wt-cell').forEach(function(g){{
+    var key=g.getAttribute('data-cell');
+    g.addEventListener('click',function(e){{
+      e.stopPropagation();
+      if(WT_CURRENT_CELL===key&&!WT_LOCKED_FINDING){{
+        wtSelectCell('all');
+      }} else {{
+        wtSelectCell(key);
+      }}
+    }});
+  }});
+  document.querySelectorAll('.wt-row-label').forEach(function(g){{
+    g.addEventListener('click',function(){{
+      var af=g.getAttribute('data-affects');
+      var data=WT_DATA||{{}};
+      var best=null,bestRisk=-1;
+      (data.problem_types||[]).forEach(function(pt){{
+        var ck=pt+'|'+af;
+        var c=(data.cells||{{}})[ck];
+        if(c&&c.max_risk>bestRisk){{bestRisk=c.max_risk;best=ck;}}
+      }});
+      if(best) wtSelectCell(best);
+    }});
+  }});
+  var svg=document.getElementById('wt-matrix-svg');
+  if(svg){{
+    svg.addEventListener('click',function(e){{
+      if(e.target===svg) wtSelectCell('all');
+    }});
+  }}
+  wtInitSlider(); // also calls wtRenderBubbles + wtApplyCellCollapse
+  wtRenderTrajectory();
+  wtInitKeyboardNav();
+}}
+
+function wtInitKeyboardNav(){{
+  // Escape unlocks; arrow keys move between cells; Enter activates focused cell.
+  document.addEventListener('keydown',function(e){{
+    if(e.key==='Escape'){{
+      if(WT_LOCKED_FINDING||WT_CURRENT_CELL!=='all'){{
+        wtSelectCell('all');
+        e.preventDefault();
+      }}
+      return;
+    }}
+    var active=document.activeElement;
+    if(!active) return;
+    if(active.classList&&active.classList.contains('wt-cell')){{
+      var key=active.getAttribute('data-cell');
+      if(!key) return;
+      var parts=key.split('|');
+      var pt=parts[0], af=parts[1];
+      var data=WT_DATA||{{}};
+      var pts=data.problem_types||[];
+      var afs=data.affects||[];
+      var ci=pts.indexOf(pt), ri=afs.indexOf(af);
+      var nci=ci, nri=ri;
+      if(e.key==='ArrowRight') nci=Math.min(pts.length-1, ci+1);
+      else if(e.key==='ArrowLeft') nci=Math.max(0, ci-1);
+      else if(e.key==='ArrowDown') nri=Math.min(afs.length-1, ri+1);
+      else if(e.key==='ArrowUp') nri=Math.max(0, ri-1);
+      else if(e.key==='Enter'||e.key===' '){{
+        wtSelectCell(key);
+        e.preventDefault();
+        return;
+      }} else return;
+      if(nci===ci&&nri===ri) return;
+      var nextKey=pts[nci]+'|'+afs[nri];
+      var nextEl=document.querySelector('.wt-cell[data-cell="'+nextKey+'"]');
+      if(nextEl){{
+        nextEl.focus();
+        e.preventDefault();
+      }}
+    }} else if(active.classList&&active.classList.contains('wt-bubble')){{
+      if(e.key==='Enter'||e.key===' '){{
+        var fid=active.getAttribute('data-finding-id');
+        if(fid){{ wtSelectFinding(fid); e.preventDefault(); }}
+      }}
+    }}
+  }});
+}}
+
 (function(){{
   var SLOTS=[6,18],MIN=5;
   var el=document.getElementById('next-run-cd');
@@ -2564,6 +3810,7 @@ function initRemediationTracker(){{
 initRemediationTracker();
 initRightRail();
 selectDomain('all');
+wtInitMatrix();
 initFindingsFilter();
 </script>
 </body></html>"""

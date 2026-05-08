@@ -148,13 +148,42 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
         "Privilege Escalation, Defense Evasion, Credential Access, Discovery, "
         "Lateral Movement, Collection, Command & Control, Exfiltration, Impact"
     )
+    classification_rubric = (
+        "PROBLEM_TYPE \u2014 pick the most specific match for the vulnerability's nature: "
+        "rce (arbitrary code execution); "
+        "privilege_escalation (authenticated entity gains rights it shouldn't \u2014 distinct from rce); "
+        "auth_bypass (skipping authentication entirely \u2014 distinct from privilege_escalation); "
+        "data_disclosure (reading private data \u2014 distinct from credential_compromise); "
+        "data_tampering (unauthorized write/modify); "
+        "credential_compromise (credentials, tokens, sessions, password hashes leaked or dumped); "
+        "dos (resource exhaustion, infinite loops, crashes that prevent service); "
+        "supply_chain (build pipeline, dependency graph, or release artifact compromised); "
+        "crypto_weakness (broken or weak cryptographic primitives or implementations); "
+        "misconfiguration (default credentials, exposed admin panels, public buckets, missing security headers). "
+        "AFFECTS \u2014 pick the deepest (most-foundational) layer the attacker reaches: "
+        "user_data (end-user accounts, credentials, files, sessions, identity, PII); "
+        "application (specific application/product like Atlassian Confluence, Ivanti Connect Secure, Fortinet FortiGate); "
+        "framework (reusable code library/framework like Next.js, Django, Spring, Rails); "
+        "runtime (language platform/interpreter like Node.js, Python, JVM, .NET); "
+        "service (hosted/cloud service like AWS IAM, Cloudflare, GitHub); "
+        "network (network protocol or transport layer); "
+        "foundation (OS kernel, libc, OpenSSL, OpenSSH, hardware/CPU microcode); "
+        "build_pipeline (CI/CD systems, package registries, container build steps). "
+        "RULES: Both fields required, every finding. "
+        "If multiple problem types apply, pick the worst-case impact. "
+        "If multiple affects layers apply, pick the deepest \u2014 a Linux glibc bug affects foundation even though it surfaces in applications. "
+        "For data breaches and credential dumps, always use credential_compromise + user_data. "
+        "If you are uncertain, set classification_confidence < 0.7 and explain in classification_reasoning. "
+        "classification_reasoning must be one short sentence (<200 chars) explaining your choice."
+    )
     prompt = {
         "task": "infrasec_briefing",
-        "schema_version": "watchtower.groq.package.v2",
+        "schema_version": "watchtower.groq.package.v3",
         "reporting_window": reporting_window,
         "exploited_vulnerabilities": kev_block,
         "recent_cves": nvd_block,
         "news_articles": article_block,
+        "classification_rubric": classification_rubric,
         "instructions": (
             "You are a senior threat intelligence analyst writing a concise daily briefing "
             f"for the 24-hour period ending now ({reporting_window}). "
@@ -191,12 +220,20 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
             "recommended_actions_7d (array up to 3), confidence (0..1), "
             f"tactic_name (ONE MITRE ATT&CK tactic that best describes how this threat operates, "
             f"choose from: {mitre_tactics}), "
-            "technique_name (short technique label, e.g. 'Exploit Public-Facing Application'). "
+            "technique_name (short technique label, e.g. 'Exploit Public-Facing Application'), "
+            "problem_type (apply classification_rubric \u2014 exact lowercase enum string), "
+            "affects (apply classification_rubric \u2014 exact lowercase enum string), "
+            "classification_confidence (0..1 \u2014 drop below 0.7 when uncertain), "
+            "classification_reasoning (one sentence explaining the cell choice), "
+            "cross_cutting (optional array of additional 'problem_type|affects' strings when "
+            "the finding genuinely spans multiple cells; omit or empty array when the primary cell suffices). "
             'Output ONLY strict JSON, no markdown fences: {"executive_summary":"...",'
             '"findings":[{"title":"...","summary":"...","risk_score":0,"domains":[],'
             '"references":[{"title":"...","url":"..."}],"priority":"P2",'
             '"why_now":"...","recommended_actions_24h":[],"recommended_actions_7d":[],'
-            '"confidence":0.6,"tactic_name":"Initial Access","technique_name":"..."}]}'
+            '"confidence":0.6,"tactic_name":"Initial Access","technique_name":"...",'
+            '"problem_type":"rce","affects":"framework","classification_confidence":0.85,'
+            '"classification_reasoning":"...","cross_cutting":[]}]}'
         ),
     }
 
@@ -244,6 +281,77 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
 _VALID_DOMAIN_KEYS = set(_TAXONOMY.keys()) | {"uncategorised"}
 _HIGH_PROFILE_TARGETS: list = CONFIG.get("high_profile_targets", [])
 _HP_LOWER: list = [t.lower() for t in _HIGH_PROFILE_TARGETS]
+
+# Classification taxonomy for the threat-matrix (problem_type × affects).
+# Each finding is bucketed into exactly one cell defined by (problem_type, affects).
+PROBLEM_TYPES: list = [
+    "rce",
+    "privilege_escalation",
+    "auth_bypass",
+    "data_disclosure",
+    "data_tampering",
+    "credential_compromise",
+    "dos",
+    "supply_chain",
+    "crypto_weakness",
+    "misconfiguration",
+]
+AFFECTS: list = [
+    "user_data",
+    "application",
+    "framework",
+    "runtime",
+    "service",
+    "network",
+    "foundation",
+    "build_pipeline",
+]
+_PROBLEM_TYPES_SET = set(PROBLEM_TYPES)
+_AFFECTS_SET = set(AFFECTS)
+
+
+def _normalize_classification(raw: str, valid_set: set, default: str) -> str:
+    """Normalize a Groq-returned classification string to a canonical enum value.
+
+    Handles common LLM variations: case differences, hyphens vs. underscores,
+    and trailing whitespace.  Returns ``default`` when the value cannot be matched.
+    """
+    if not raw:
+        return default
+    key = str(raw).strip().lower().replace("-", "_").replace(" ", "_")
+    if key in valid_set:
+        return key
+    # Some LLMs return "rce_in_framework" or similar compound — split and try first token
+    if "_" in key:
+        head = key.split("_", 1)[0]
+        if head in valid_set:
+            return head
+    return default
+
+
+def _normalize_cross_cutting(raw, primary_cell: str) -> list:
+    """Coerce Groq's ``cross_cutting`` field to a clean list of ``"type|affects"`` strings.
+
+    Strips the primary cell so we never duplicate it, drops invalid pairs.
+    """
+    if not raw or not isinstance(raw, list):
+        return []
+    result: list = []
+    seen: set = {primary_cell}
+    for entry in raw:
+        if not isinstance(entry, str) or "|" not in entry:
+            continue
+        pt, af = entry.split("|", 1)
+        pt = _normalize_classification(pt, _PROBLEM_TYPES_SET, "")
+        af = _normalize_classification(af, _AFFECTS_SET, "")
+        if not pt or not af:
+            continue
+        cell = f"{pt}|{af}"
+        if cell in seen:
+            continue
+        seen.add(cell)
+        result.append(cell)
+    return result[:4]  # cap to keep cross-cutting bounded
 
 
 def _match_high_profile(text: str) -> list:
@@ -683,6 +791,29 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
         )
         is_kev = bool(set(finding_cves) & kev_cves)
 
+        problem_type = _normalize_classification(
+            f.get("problem_type", ""), _PROBLEM_TYPES_SET, ""
+        )
+        affects = _normalize_classification(
+            f.get("affects", ""), _AFFECTS_SET, ""
+        )
+        try:
+            cls_conf = float(f.get("classification_confidence", 0.0))
+            cls_conf = max(0.0, min(1.0, cls_conf))
+        except (ValueError, TypeError):
+            cls_conf = 0.0
+        # If Groq omitted classification entirely, mark low confidence so Pass 2
+        # picks it up downstream.
+        if not problem_type or not affects:
+            problem_type = problem_type or "misconfiguration"
+            affects = affects or "application"
+            cls_conf = min(cls_conf, 0.4)
+        primary_cell = f"{problem_type}|{affects}"
+        cls_reasoning = str(f.get("classification_reasoning", ""))[:200]
+        cross_cutting = _normalize_cross_cutting(
+            f.get("cross_cutting", []), primary_cell
+        )
+
         cards.append(
             {
                 "id": sha256(f.get("title", str(len(cards))))[:12],
@@ -713,6 +844,12 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
                     if f.get("technique_name")
                     else ""
                 ),
+                "problem_type": problem_type,
+                "affects": affects,
+                "classification_confidence": cls_conf,
+                "classification_reasoning": cls_reasoning,
+                "cross_cutting": cross_cutting,
+                "classification_history": [],
                 "sources": {
                     "primary": [
                         {
@@ -782,6 +919,331 @@ def _compute_delta(current_cards: list, last_cards: list) -> dict:
                 resolved_cards.append(card)
 
     return {"new": new_cards, "elevated": elevated_cards, "resolved": resolved_cards}
+
+
+_AUDIT_CONFIDENCE_THRESHOLD = 0.7
+_AUDIT_PEER_LIMIT = 4
+
+
+def _pick_audit_peers(card: dict, all_cards: list, n: int = _AUDIT_PEER_LIMIT) -> list:
+    """Pick up to ``n`` peers that share the same cell as the candidate card.
+
+    Peer selection is by simple title-token Jaccard so we don't need an
+    embedding model — fully free-tier compatible.  Peers must be confidently
+    classified (>= threshold) so we're comparing against trustworthy anchors.
+    """
+    cell = (card.get("problem_type", ""), card.get("affects", ""))
+    if not cell[0] or not cell[1]:
+        return []
+
+    def _tokens(c: dict) -> set:
+        s = (c.get("title", "") + " " + c.get("summary", "")).lower()
+        return {t for t in re.findall(r"[a-z0-9]{4,}", s)}
+
+    candidate_tokens = _tokens(card)
+    candidates: list = []
+    for c in all_cards:
+        if c is card:
+            continue
+        if (c.get("problem_type"), c.get("affects")) != cell:
+            continue
+        if float(c.get("classification_confidence", 0.0) or 0.0) < _AUDIT_CONFIDENCE_THRESHOLD:
+            continue
+        peer_tokens = _tokens(c)
+        union = candidate_tokens | peer_tokens
+        if not union:
+            continue
+        jaccard = len(candidate_tokens & peer_tokens) / len(union)
+        candidates.append((jaccard, c))
+    candidates.sort(key=lambda x: -x[0])
+    return [c for _, c in candidates[:n]]
+
+
+def audit_low_confidence_findings(cards: list) -> int:
+    """Phase 8 — Groq Pass 2.
+
+    For every card with ``classification_confidence < threshold``, call Groq a
+    second time with peer findings already in that cell as context.  If Groq
+    suggests a different (problem_type, affects) cell, move the card and
+    append a ``classification_history`` entry.
+
+    Skipped silently in placeholder mode or when the API key is missing.
+    Returns the number of cards re-classified.
+    """
+    if placeholder_mode() or not GROQ_API_KEY:
+        return 0
+
+    moved = 0
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    candidates = [
+        c for c in cards
+        if isinstance(c, dict)
+        and float(c.get("classification_confidence", 1.0) or 1.0) < _AUDIT_CONFIDENCE_THRESHOLD
+    ]
+    if not candidates:
+        return 0
+
+    print(f"[INFO] Pass 2 audit: {len(candidates)} low-confidence finding(s) to review")
+
+    for card in candidates:
+        peers = _pick_audit_peers(card, cards)
+        if not peers:
+            # Without peers we have no context to improve on; record the attempt
+            # so observability shows the audit ran.
+            card.setdefault("classification_history", []).append(
+                {
+                    "ts": today,
+                    "from": f'{card.get("problem_type")}|{card.get("affects")}',
+                    "to": f'{card.get("problem_type")}|{card.get("affects")}',
+                    "reason": "pass2_audit_no_peers",
+                }
+            )
+            continue
+
+        peer_lines = "\n".join(
+            f"{i+1}. {(p.get('title') or '')[:80]} — {(p.get('summary') or '')[:140]}"
+            for i, p in enumerate(peers)
+        )
+        prompt = (
+            f"You previously classified this finding as "
+            f"{card.get('problem_type')} × {card.get('affects')} "
+            f"(confidence {float(card.get('classification_confidence', 0.0) or 0.0):.2f}).\n"
+            f"Reasoning: \"{card.get('classification_reasoning', '')}\"\n\n"
+            f"Title: {card.get('title', '')}\n"
+            f"Summary: {(card.get('summary') or '')[:240]}\n\n"
+            f"Peers in that cell:\n{peer_lines}\n\n"
+            "Question: does this finding belong with these peers? "
+            "If a different cell fits better, suggest one. "
+            "Use the same enums from the classification rubric "
+            "(problem_type ∈ rce|privilege_escalation|auth_bypass|data_disclosure|"
+            "data_tampering|credential_compromise|dos|supply_chain|crypto_weakness|"
+            "misconfiguration; affects ∈ user_data|application|framework|runtime|"
+            "service|network|foundation|build_pipeline).\n"
+            'Output strict JSON only: {"confirmed": bool, "suggested_problem_type": "..."|null, '
+            '"suggested_affects": "..."|null, "reason": "..."}'
+        )
+        try:
+            content, meta = groq_chat(
+                [
+                    {
+                        "role": "system",
+                        "content": "You are a cybersecurity classifier. Output strict JSON only. No markdown fences.",
+                    },
+                    {"role": "user", "content": prompt},
+                ],
+                model=CONFIG["model"]["name"],
+                temperature=0.1,
+                max_tokens=200,
+            )
+        except Exception as exc:
+            print(f"[WARN] Pass 2 audit call failed for '{card.get('title','')[:60]}': {exc}")
+            continue
+
+        content = content.strip()
+        if content.startswith("```"):
+            content = re.sub(r"^```[a-z]*\n?", "", content)
+            content = re.sub(r"\n?```$", "", content.strip())
+        try:
+            decision = json.loads(content)
+        except json.JSONDecodeError:
+            print(f"[WARN] Pass 2 audit returned invalid JSON for '{card.get('title','')[:60]}'")
+            continue
+
+        old_cell = f'{card.get("problem_type")}|{card.get("affects")}'
+        if decision.get("confirmed") is True:
+            card.setdefault("classification_history", []).append(
+                {"ts": today, "from": old_cell, "to": old_cell, "reason": "pass2_audit_confirmed"}
+            )
+            # Bump confidence to threshold so this card stops triggering Pass 2 later
+            card["classification_confidence"] = max(
+                float(card.get("classification_confidence", 0.0) or 0.0), _AUDIT_CONFIDENCE_THRESHOLD
+            )
+            continue
+
+        new_pt = _normalize_classification(
+            decision.get("suggested_problem_type", ""), _PROBLEM_TYPES_SET, ""
+        )
+        new_af = _normalize_classification(
+            decision.get("suggested_affects", ""), _AFFECTS_SET, ""
+        )
+        if not new_pt or not new_af:
+            continue
+        new_cell = f"{new_pt}|{new_af}"
+        if new_cell == old_cell:
+            continue
+
+        card["problem_type"] = new_pt
+        card["affects"] = new_af
+        card["classification_confidence"] = max(
+            float(card.get("classification_confidence", 0.0) or 0.0), _AUDIT_CONFIDENCE_THRESHOLD
+        )
+        card.setdefault("classification_history", []).append(
+            {
+                "ts": today,
+                "from": old_cell,
+                "to": new_cell,
+                "reason": "pass2_audit_moved",
+                "rationale": str(decision.get("reason", ""))[:240],
+            }
+        )
+        card["recategorized_within_24h"] = True
+        moved += 1
+        print(
+            f"[INFO] Pass 2 moved '{(card.get('title') or '')[:60]}' "
+            f"{old_cell} → {new_cell}"
+        )
+
+    return moved
+
+
+_WEEKLY_AUDIT_INTERVAL_DAYS = 7
+_WEEKLY_AUDIT_MIN_CELL_SIZE = 3
+
+
+def audit_cells_weekly(cards: list, last_audit: dict | None) -> tuple:
+    """Phase 9 — Groq Pass 3.
+
+    Once per ``_WEEKLY_AUDIT_INTERVAL_DAYS`` days, walk every non-empty cell
+    that has at least ``_WEEKLY_AUDIT_MIN_CELL_SIZE`` findings.  For each
+    cell, ask Groq if any members are mis-grouped; move outliers and mark
+    them with ``recategorized_within_24h`` so the bubble vocabulary surfaces
+    a small ``↻`` badge.
+
+    Returns ``(moved_count, last_audit_state)``.  Skipped silently in
+    placeholder mode or when GROQ_API_KEY is missing.
+    """
+    last_audit = last_audit or {}
+
+    if placeholder_mode() or not GROQ_API_KEY:
+        return 0, last_audit
+
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    last_ts = last_audit.get("ts")
+    if last_ts:
+        try:
+            last_dt = datetime.strptime(last_ts, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+            if (datetime.now(timezone.utc) - last_dt) < timedelta(
+                days=_WEEKLY_AUDIT_INTERVAL_DAYS
+            ):
+                return 0, last_audit
+        except ValueError:
+            pass
+
+    cards_by_id: dict = {c.get("id", ""): c for c in cards if isinstance(c, dict)}
+    cells: dict = {}
+    for c in cards_by_id.values():
+        pt = c.get("problem_type", "")
+        af = c.get("affects", "")
+        if not pt or not af:
+            continue
+        cells.setdefault(f"{pt}|{af}", []).append(c)
+
+    auditable = [
+        (k, members) for k, members in cells.items()
+        if len(members) >= _WEEKLY_AUDIT_MIN_CELL_SIZE
+    ]
+    if not auditable:
+        # Nothing dense enough to warrant an audit; advance the timestamp so we
+        # don't keep checking every run for the next week.
+        last_audit = {
+            **last_audit,
+            "ts": today,
+            "cells_checked": 0,
+            "moved": 0,
+        }
+        return 0, last_audit
+
+    print(f"[INFO] Pass 3 weekly audit: {len(auditable)} dense cell(s) to review")
+    moved = 0
+
+    for cell_key, members in auditable:
+        listing = "\n".join(
+            f"{i+1}. id={m.get('id','')} | {(m.get('title') or '')[:80]} — "
+            f"{(m.get('summary') or '')[:140]}"
+            for i, m in enumerate(members)
+        )
+        prompt = (
+            f"Cell: {cell_key.replace('|', ' × ')}\n"
+            "These findings are all classified into the same cell. "
+            "Are any mis-grouped relative to the rest? "
+            "If so, output the index and a better cell. "
+            "Use the same enums from the classification rubric.\n\n"
+            f"Findings:\n{listing}\n\n"
+            'Output strict JSON only: {"moves": ['
+            '{"id": "...", "to_problem_type": "...", "to_affects": "...", "reason": "..."}'
+            "], \"audit_summary\": \"...\"}. "
+            "Empty moves array means all findings fit."
+        )
+        try:
+            content, meta = groq_chat(
+                [
+                    {
+                        "role": "system",
+                        "content": "You are a cybersecurity classifier auditing a peer group. Output strict JSON only. No markdown fences.",
+                    },
+                    {"role": "user", "content": prompt},
+                ],
+                model=CONFIG["model"]["name"],
+                temperature=0.1,
+                max_tokens=400,
+            )
+        except Exception as exc:
+            print(f"[WARN] Pass 3 audit call failed for {cell_key}: {exc}")
+            continue
+
+        content = content.strip()
+        if content.startswith("```"):
+            content = re.sub(r"^```[a-z]*\n?", "", content)
+            content = re.sub(r"\n?```$", "", content.strip())
+        try:
+            decision = json.loads(content)
+        except json.JSONDecodeError:
+            print(f"[WARN] Pass 3 audit returned invalid JSON for {cell_key}")
+            continue
+
+        for move in decision.get("moves", []) or []:
+            if not isinstance(move, dict):
+                continue
+            target = cards_by_id.get(move.get("id", ""))
+            if not target:
+                continue
+            new_pt = _normalize_classification(
+                move.get("to_problem_type", ""), _PROBLEM_TYPES_SET, ""
+            )
+            new_af = _normalize_classification(
+                move.get("to_affects", ""), _AFFECTS_SET, ""
+            )
+            if not new_pt or not new_af:
+                continue
+            old_cell = f'{target.get("problem_type")}|{target.get("affects")}'
+            new_cell = f"{new_pt}|{new_af}"
+            if new_cell == old_cell:
+                continue
+            target["problem_type"] = new_pt
+            target["affects"] = new_af
+            target.setdefault("classification_history", []).append(
+                {
+                    "ts": today,
+                    "from": old_cell,
+                    "to": new_cell,
+                    "reason": "pass3_weekly_audit",
+                    "rationale": str(move.get("reason", ""))[:240],
+                }
+            )
+            target["recategorized_within_24h"] = True
+            moved += 1
+            print(
+                f"[INFO] Pass 3 moved '{(target.get('title') or '')[:60]}' "
+                f"{old_cell} → {new_cell}"
+            )
+
+    last_audit = {
+        "ts": today,
+        "cells_checked": len(auditable),
+        "moved": moved,
+    }
+    return moved, last_audit
 
 
 def groq_weekly_review(aggregate: dict) -> str:

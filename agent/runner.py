@@ -24,6 +24,7 @@ import yaml
 from bs4 import BeautifulSoup
 
 from agent import analysis as analysis_mod
+from agent import breach as breach_mod
 from agent import html_builder as html_builder_mod
 from agent import scoring as scoring_mod
 from agent import state as state_mod
@@ -72,6 +73,7 @@ LAST_RUN_CARDS_FILE = os.path.join(STATE_DIR, "last_run_cards.json")
 WEEKLY_AGGREGATE_FILE = os.path.join(STATE_DIR, "weekly_aggregate.json")
 FEED_HEALTH_FILE = os.path.join(STATE_DIR, "feed_health.json")
 FINDING_SHELF_FILE = os.path.join(STATE_DIR, "finding_shelf.json")
+LAST_AUDIT_FILE = os.path.join(STATE_DIR, "last_audit.json")
 EPSS_CACHE_FILE = os.path.join(STATE_DIR, "epss_cache.json")
 LAST_RUN_TS_FILE = os.path.join(STATE_DIR, "last_run_ts.json")
 IOC_LEDGER_FILE = os.path.join(STATE_DIR, "ioc_ledger.json")
@@ -1080,6 +1082,15 @@ def _shelf_key(card: dict) -> str:
     return card.get("id", sha256(card.get("title", ""))[:16])
 
 
+# Shelf retention windows (Phase 1):
+# Unresolved findings stay on the shelf for 180 days so long-running campaigns
+# remain visible at the 90d / 180d slider zoom levels.  Resolved findings are
+# pruned 30 days after their patch landed — long enough for a returning user to
+# notice "this was fixed" without indefinite clutter.
+SHELF_TTL_UNRESOLVED_DAYS = 180
+SHELF_TTL_RESOLVED_DAYS = 30
+
+
 def _update_shelf(cards: list) -> None:
     """Update finding_shelf.json with persistence tracking and apply score boosts.
 
@@ -1090,7 +1101,12 @@ def _update_shelf(cards: list) -> None:
 
     A score boost of +5 per run_count beyond 1 is applied, capped at +20.
     Resolved findings (patch_status == "patched") receive zero boost and are
-    pruned 7 days after resolution instead of the normal 30-day TTL.
+    pruned ``SHELF_TTL_RESOLVED_DAYS`` days after resolution; unresolved
+    findings persist for ``SHELF_TTL_UNRESOLVED_DAYS`` days from last_seen.
+
+    Also persists the latest ``problem_type`` and ``affects`` classification on
+    each shelf entry so the matrix view can fill cells for findings that have
+    fallen out of the current run's card list but remain unresolved.
     """
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     shelf: dict = load_json(FINDING_SHELF_FILE, {})
@@ -1124,7 +1140,20 @@ def _update_shelf(cards: list) -> None:
             # Patch was rolled back or finding reappeared without fix — reset
             entry["resolved"] = False
             entry.pop("resolved_date", None)
+
+        # Persist latest classification for the matrix view (so findings not in
+        # this run's card list can still be placed in a cell from shelf data).
+        pt = card.get("problem_type")
+        af = card.get("affects")
+        if pt:
+            entry["last_problem_type"] = pt
+        if af:
+            entry["last_affects"] = af
+        cc = card.get("classification_confidence")
+        if isinstance(cc, (int, float)):
+            entry["last_classification_confidence"] = float(cc)
         shelf[fid] = entry
+
         # Compute shelf_days and apply score boost in-place
         try:
             first_dt = datetime.strptime(shelf[fid]["first_seen"], "%Y-%m-%d").replace(
@@ -1141,13 +1170,18 @@ def _update_shelf(cards: list) -> None:
         card["run_count"] = run_count
         card["first_seen_ts"] = shelf[fid]["first_seen"]
         card["shelf_resolved"] = bool(shelf[fid].get("resolved"))
-    # Prune: resolved entries 7 days post-resolution, others after 30 days
-    thirty_day_cutoff = (datetime.now(timezone.utc) - timedelta(days=30)).strftime("%Y-%m-%d")
-    seven_day_cutoff = (datetime.now(timezone.utc) - timedelta(days=7)).strftime("%Y-%m-%d")
+    # Prune: resolved entries SHELF_TTL_RESOLVED_DAYS days post-resolution,
+    # unresolved entries SHELF_TTL_UNRESOLVED_DAYS days post-last_seen.
+    unresolved_cutoff = (
+        datetime.now(timezone.utc) - timedelta(days=SHELF_TTL_UNRESOLVED_DAYS)
+    ).strftime("%Y-%m-%d")
+    resolved_cutoff = (
+        datetime.now(timezone.utc) - timedelta(days=SHELF_TTL_RESOLVED_DAYS)
+    ).strftime("%Y-%m-%d")
     shelf = {
         k: v for k, v in shelf.items()
-        if v.get("last_seen", today) >= thirty_day_cutoff
-        and not (v.get("resolved") and v.get("resolved_date", today) < seven_day_cutoff)
+        if v.get("last_seen", today) >= unresolved_cutoff
+        and not (v.get("resolved") and v.get("resolved_date", today) < resolved_cutoff)
     }
     save_json(FINDING_SHELF_FILE, shelf)
 
@@ -1649,6 +1683,26 @@ def _run():
             : budgets["max_clusters_output"]
         ]
         _eval.record_stage("post_quality_gate", len(cards))
+        # Phase 8 — Pass 2 self-audit on low-confidence findings.  Only fires
+        # when the API key is present and we are not in placeholder mode.
+        try:
+            _moved = analysis_mod.audit_low_confidence_findings(cards)
+            if _moved:
+                _eval.record_stage("pass2_moved", _moved)
+        except Exception as _audit_exc:
+            print(f"[WARN] Pass 2 audit failed: {_audit_exc}")
+
+        # Phase 9 — Pass 3 weekly cell audit.  Internally checks cadence; runs
+        # at most once every 7 days regardless of how often this code path fires.
+        try:
+            _last_audit = load_json(LAST_AUDIT_FILE, {})
+            _moved3, _last_audit = analysis_mod.audit_cells_weekly(cards, _last_audit)
+            if _last_audit:
+                save_json(LAST_AUDIT_FILE, _last_audit)
+            if _moved3:
+                _eval.record_stage("pass3_moved", _moved3)
+        except Exception as _audit_exc:
+            print(f"[WARN] Pass 3 audit failed: {_audit_exc}")
     else:
         # Fallback: use cluster cards with basic summaries (placeholder mode or Groq failure)
         for c in cards:
@@ -1761,6 +1815,19 @@ def _run():
         save_json(WEEKLY_AGGREGATE_FILE, aggregate)
     _wcr = _compute_weekly_cross_run(history_days)
     weekly_html = _build_weekly_section(aggregate, cross_run=_wcr)
+
+    # Breach strip data (Phase 7) — separate from the matrix because the action
+    # is rotate/close, not patch/monitor.  Skipped silently in placeholder mode
+    # to avoid network calls during local development.
+    if placeholder_mode():
+        breaches = []
+    else:
+        try:
+            breaches = breach_mod.recent_breaches(window_days=30, limit=8)
+            print(f"[INFO] Breach strip: {len(breaches)} recent breach(es) loaded")
+        except Exception as _exc:
+            print(f"[WARN] Breach strip fetch failed: {_exc}")
+            breaches = []
     _write_index_html(
         index_html,
         cards,
@@ -1778,6 +1845,7 @@ def _run():
         feed_run_metrics=feed_run_metrics,
         velocity=velocity,
         ioc_ledger=ioc_ledger,
+        breaches=breaches,
     )
 
     save_json(
