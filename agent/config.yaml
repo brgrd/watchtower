@@ -28,7 +28,7 @@ feeds:
     country: "US"
     enabled: true
   - id: gh_security_blog
-    url: "https://github.blog/changelog/security/feed/"
+    url: "https://github.blog/category/security/feed/"
     category: "blog"
     type: rss
     country: "US"
@@ -75,12 +75,6 @@ feeds:
     type: rss
     country: "DE"
     enabled: true
-  - id: acsc_australia
-    url: "https://www.cyber.gov.au/about-us/view-all-content/alerts-and-advisories/rss"
-    category: "advisories"
-    type: rss
-    country: "AU"
-    enabled: true
   - id: github_changelog
     url: "https://github.blog/changelog/feed/"
     category: "blog"
@@ -94,7 +88,7 @@ feeds:
     country: "US"
     enabled: true
   - id: gcp_security
-    url: "https://cloud.google.com/feeds/gcp-security-bulletins.xml"
+    url: "https://docs.cloud.google.com/feeds/gcp-security-bulletins.xml"
     category: "advisories"
     type: rss
     country: "US"
@@ -123,26 +117,14 @@ feeds:
     type: rss
     country: "US"
     enabled: true
-  - id: portswigger_daily
-    url: "https://portswigger.net/daily-swig/rss"
-    category: "news"
-    type: rss
-    country: "GB"
-    enabled: true
   - id: talos_blog
-    url: "https://blog.talosintelligence.com/feeds/posts/default"
+    url: "https://blog.talosintelligence.com/rss/"
     category: "news"
     type: rss
     country: "US"
     enabled: true
   - id: unit42
     url: "https://unit42.paloaltonetworks.com/feed/"
-    category: "news"
-    type: rss
-    country: "US"
-    enabled: true
-  - id: malwarebytes_blog
-    url: "https://blog.malwarebytes.com/feed/"
     category: "news"
     type: rss
     country: "US"
@@ -156,6 +138,37 @@ feeds:
   - id: ms_security_blog
     url: "https://www.microsoft.com/en-us/security/blog/feed/"
     category: "blog"
+    type: rss
+    country: "US"
+    enabled: true
+  # ── High-value additions (audit 2026-05-08) ───────────────────────────────
+  - id: project_zero
+    url: "https://googleprojectzero.blogspot.com/feeds/posts/default"
+    category: "research"
+    type: rss
+    country: "US"
+    enabled: true
+  - id: trail_of_bits
+    url: "https://blog.trailofbits.com/feed/"
+    category: "research"
+    type: rss
+    country: "US"
+    enabled: true
+  - id: projectdiscovery
+    url: "https://projectdiscovery.io/blog/rss/"
+    category: "research"
+    type: rss
+    country: "US"
+    enabled: true
+  - id: msrc_update_guide
+    url: "https://api.msrc.microsoft.com/update-guide/rss"
+    category: "advisories"
+    type: rss
+    country: "US"
+    enabled: true
+  - id: aws_security_bulletins
+    url: "https://aws.amazon.com/security/security-bulletins/feed/"
+    category: "advisories"
     type: rss
     country: "US"
     enabled: true

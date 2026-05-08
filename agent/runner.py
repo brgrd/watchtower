@@ -175,7 +175,7 @@ def fetch_url(url: str, timeout=10, max_redirects=5) -> str:
         url,
         timeout=timeout,
         allow_redirects=True,
-        headers={"User-Agent": "Watchtower/1.0"},
+        headers={"User-Agent": "Mozilla/5.0 (compatible; Watchtower/2.0; +https://github.com/brgrd/watchtower) infosec-briefing"},
     )
 
     ct = (r.headers.get("content-type") or "").split(";")[0].strip().lower()
@@ -242,7 +242,7 @@ def _poll_rss(url: str, since_hours: int, ignore: dict) -> list:
     try:
         resp = requests.get(
             url,
-            headers={"User-Agent": "Watchtower/1.0"},
+            headers={"User-Agent": "Mozilla/5.0 (compatible; Watchtower/2.0; +https://github.com/brgrd/watchtower) infosec-briefing"},
             timeout=15,
         )
         resp.raise_for_status()
@@ -285,7 +285,7 @@ def _poll_nvd_api(url: str, since_hours: int, ignore: dict) -> list:
         "resultsPerPage": 100,
         "startIndex": 0,
     }
-    headers = {"User-Agent": "Watchtower/1.0"}
+    headers = {"User-Agent": "Mozilla/5.0 (compatible; Watchtower/2.0; +https://github.com/brgrd/watchtower) infosec-briefing"}
     if os.getenv("NVD_API_KEY"):
         headers["apiKey"] = os.getenv("NVD_API_KEY")
 
@@ -337,7 +337,7 @@ def _poll_nvd_api(url: str, since_hours: int, ignore: dict) -> list:
 
 
 def _poll_cisa_kev(url: str, ignore: dict, since_hours: int = 24) -> list:
-    r = requests.get(url, headers={"User-Agent": "Watchtower/1.0"}, timeout=30)
+    r = requests.get(url, headers={"User-Agent": "Mozilla/5.0 (compatible; Watchtower/2.0; +https://github.com/brgrd/watchtower) infosec-briefing"}, timeout=30)
     r.raise_for_status()
     data = r.json()
     cutoff = (datetime.now(timezone.utc) - timedelta(hours=since_hours)).date()
@@ -381,7 +381,7 @@ def poll_feed(feed_cfg: dict, since_hours: int, ignore: dict) -> list:
                 items = _poll_cisa_kev(url, ignore, since_hours)
             else:
                 r = requests.get(
-                    url, headers={"User-Agent": "Watchtower/1.0"}, timeout=30
+                    url, headers={"User-Agent": "Mozilla/5.0 (compatible; Watchtower/2.0; +https://github.com/brgrd/watchtower) infosec-briefing"}, timeout=30
                 )
                 r.raise_for_status()
                 raw = r.json()

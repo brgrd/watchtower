@@ -322,17 +322,18 @@ def _compute_velocity(history_days: list) -> dict:
 def _matrix_cell_fill(cell: dict | None) -> tuple:
     """Return (fill_alpha, glow_alpha, ring_alpha) for a cell heat treatment.
 
-    Empty cells render as faint ghosts; loud cells glow.  Anchored to
-    ``max_risk`` and ``active_count`` so the matrix reads honestly when one
-    finding dominates vs. when a cell is genuinely busy.
+    Empty cells render almost invisibly so the populated cells dominate the
+    eye.  Loud cells glow, but the gradient is restrained — saturation in the
+    matrix should signal heat, not shout.
     """
     if not cell or cell.get("active_count", 0) == 0:
-        return 0.04, 0.0, 0.10
+        return 0.03, 0.0, 0.06
     risk = cell.get("max_risk", 0) / 100.0
     density = min(1.0, cell.get("active_count", 0) / 5.0)
-    fill = 0.10 + 0.55 * (0.6 * risk + 0.4 * density)
-    glow = 0.20 + 0.55 * risk if cell.get("any_kev") else 0.10 + 0.30 * risk
-    ring = 0.30 + 0.55 * risk
+    # Cap fill alpha well below 0.5 so even hot cells stay visually quiet.
+    fill = 0.07 + 0.30 * (0.6 * risk + 0.4 * density)
+    glow = 0.15 + 0.40 * risk if cell.get("any_kev") else 0.08 + 0.22 * risk
+    ring = 0.18 + 0.32 * risk
     return round(fill, 3), round(glow, 3), round(ring, 3)
 
 
@@ -356,27 +357,67 @@ def _build_threat_matrix_svg(matrix_data: dict) -> str:
         f'<svg xmlns="http://www.w3.org/2000/svg" id="wt-matrix-svg"'
         f' viewBox="0 0 {g["view_w"]} {g["view_h"]}"'
         f' preserveAspectRatio="xMidYMid meet"'
-        f' style="width:100%;height:auto;display:block;background:#0a0a0a;'
-        f'border-radius:8px;border:1px solid #2a2a2a">',
+        f' style="width:100%;height:auto;display:block;'
+        f'background:radial-gradient(ellipse at 50% 0%, #14181f 0%, #0a0c10 70%);'
+        f'border-radius:10px;border:1px solid #1f242c">',
         "<defs>",
-        '<filter id="wt-cell-glow" x="-50%" y="-50%" width="200%" height="200%">'
-        '<feGaussianBlur stdDeviation="1.6"/></filter>',
-        '<filter id="wt-pulse" x="-50%" y="-50%" width="200%" height="200%">'
-        '<feGaussianBlur stdDeviation="2.2"/></filter>',
+        # Cell gradient: top-bright fading to baseline — gives subtle depth
+        '<linearGradient id="wt-cell-grad" x1="0%" y1="0%" x2="0%" y2="100%">'
+        '<stop offset="0%" stop-color="white" stop-opacity="0.10"/>'
+        '<stop offset="55%" stop-color="white" stop-opacity="0.02"/>'
+        '<stop offset="100%" stop-color="black" stop-opacity="0.18"/>'
+        "</linearGradient>",
+        # Bubble inner gradient: lighter center, slightly darker edge
+        '<radialGradient id="wt-bubble-grad" cx="35%" cy="30%" r="80%">'
+        '<stop offset="0%" stop-color="white" stop-opacity="0.55"/>'
+        '<stop offset="100%" stop-color="white" stop-opacity="0"/>'
+        "</radialGradient>",
+        # Soft outer glow — used on hovered/locked cells & urgent halos
+        '<filter id="wt-soft-glow" x="-50%" y="-50%" width="200%" height="200%">'
+        '<feGaussianBlur in="SourceGraphic" stdDeviation="3"/></filter>',
+        '<filter id="wt-bubble-shadow" x="-80%" y="-80%" width="260%" height="260%">'
+        '<feGaussianBlur in="SourceAlpha" stdDeviation="1.4"/>'
+        '<feOffset dx="0" dy="0.6" result="off"/>'
+        '<feFlood flood-color="black" flood-opacity="0.45"/>'
+        '<feComposite in2="off" operator="in"/>'
+        '<feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>'
+        "</filter>",
+        '<filter id="wt-bubble-halo" x="-100%" y="-100%" width="300%" height="300%">'
+        '<feGaussianBlur stdDeviation="1.8"/></filter>',
+        # Trajectory band fade — top edge softens out so the watermark feels
+        # like a horizon rather than a jagged silhouette.
+        '<linearGradient id="wt-traj-fade" x1="0%" y1="0%" x2="0%" y2="100%">'
+        '<stop offset="0%" stop-color="white" stop-opacity="0"/>'
+        '<stop offset="35%" stop-color="white" stop-opacity="0.55"/>'
+        '<stop offset="100%" stop-color="white" stop-opacity="1"/>'
+        "</linearGradient>",
+        '<mask id="wt-traj-mask">'
+        f'<rect x="0" y="0" width="{g["view_w"]}" height="{g["view_h"]}" fill="url(#wt-traj-fade)"/>'
+        "</mask>",
+        # Background dot grid — ambient texture so empty cells don't read as voids.
+        '<pattern id="wt-dot-grid" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">'
+        '<circle cx="0.6" cy="0.6" r="0.6" fill="#2a3140" fill-opacity="0.30"/>'
+        "</pattern>",
         "</defs>",
-        # Trajectory watermark anchor — populated by Phase 6
+        # Background dot texture (sits behind everything else)
+        f'<rect x="{g["label_left"]}" y="{g["label_top"]}"'
+        f' width="{g["grid_w"]}" height="{g["grid_h"]}"'
+        f' fill="url(#wt-dot-grid)" pointer-events="none"/>',
+        # Trajectory watermark anchor — populated by Phase 6 (uses traj-mask)
         '<g id="wt-trajectory" opacity="0"></g>',
     ]
 
-    # Column labels (problem types)
+    # Column labels (problem types) — refined: lower-weight, higher tracking,
+    # mixed case with a dimmer fill so they recede behind the cell content.
     for ci, pt in enumerate(pts):
         x = g["label_left"] + ci * (g["cell_w"] + g["gutter_x"]) + g["cell_w"] / 2
-        y = g["label_top"] - 8
+        y = g["label_top"] - 9
         label = pt_labels.get(pt, pt)
         parts.append(
             f'<text x="{x:.1f}" y="{y:.1f}" text-anchor="middle"'
-            f' font-family="system-ui,sans-serif" font-size="10" font-weight="700"'
-            f' fill="#8b949e" letter-spacing=".04em">{html.escape(label.upper())}</text>'
+            f' font-family="system-ui,-apple-system,sans-serif" font-size="9.5"'
+            f' font-weight="600" fill="#7a8493" letter-spacing="0.08em"'
+            f' style="text-transform:uppercase">{html.escape(label)}</text>'
         )
 
     # Row labels + cells
@@ -384,14 +425,14 @@ def _build_threat_matrix_svg(matrix_data: dict) -> str:
         row_y = g["label_top"] + ri * (g["cell_h"] + g["gutter_y"]) + g["cell_h"] / 2
         af_label = af_labels.get(af, af)
         af_color = af_colors.get(af, "#94a3b8")
-        # Row label with color swatch
+        # Row label with color swatch — taller, narrower swatch for elegance
         parts.append(
             f'<g class="wt-row-label" data-affects="{af}" style="cursor:pointer">'
-            f'<rect x="{g["margin"]:.1f}" y="{row_y - 8:.1f}" width="3" height="16"'
-            f' fill="{af_color}" opacity="0.85" rx="1.5"/>'
-            f'<text x="{g["margin"] + 8:.1f}" y="{row_y + 4:.1f}"'
-            f' font-family="system-ui,sans-serif" font-size="11" font-weight="600"'
-            f' fill="#c9d1d9">{html.escape(af_label)}</text>'
+            f'<rect x="{g["margin"]:.1f}" y="{row_y - 9:.1f}" width="2.5" height="18"'
+            f' fill="{af_color}" opacity="0.78" rx="1.25"/>'
+            f'<text x="{g["margin"] + 9:.1f}" y="{row_y + 4:.1f}"'
+            f' font-family="system-ui,-apple-system,sans-serif" font-size="10.5"'
+            f' font-weight="500" fill="#a5afbe">{html.escape(af_label)}</text>'
             f'</g>'
         )
 
@@ -423,70 +464,106 @@ def _build_threat_matrix_svg(matrix_data: dict) -> str:
                 f' role="button" tabindex="0" aria-label="{html.escape(aria_label)}"'
                 f' style="cursor:pointer">'
             )
-            # Background fill — colored by row hue, opacity by heat
+            # Layer 1 — base fill tinted by the row hue (low opacity).
             parts.append(
-                f'<rect x="{cx:.1f}" y="{cy:.1f}" width="{g["cell_w"]}" height="{g["cell_h"]}"'
-                f' rx="6" ry="6" fill="{row_rgb}" fill-opacity="{fill_a:.3f}"'
-                f' stroke="{row_rgb}" stroke-opacity="{ring_a:.3f}" stroke-width="1"/>'
+                f'<rect class="wt-cell-bg" x="{cx:.1f}" y="{cy:.1f}"'
+                f' width="{g["cell_w"]}" height="{g["cell_h"]}"'
+                f' rx="7" ry="7" fill="{row_rgb}" fill-opacity="{fill_a:.3f}"/>'
             )
-            # Inner glow for KEV-bearing cells (Phase 4 adds the per-bubble pulse)
+            # Layer 2 — top-down sheen for depth (single shared gradient).
+            if not empty:
+                parts.append(
+                    f'<rect class="wt-cell-sheen" x="{cx:.1f}" y="{cy:.1f}"'
+                    f' width="{g["cell_w"]}" height="{g["cell_h"]}"'
+                    f' rx="7" ry="7" fill="url(#wt-cell-grad)" pointer-events="none"/>'
+                )
+            # Layer 3 — outline.  Empty cells get a barely-there dotted hint;
+            # populated cells get a soft solid stroke matching their row hue.
+            if empty:
+                parts.append(
+                    f'<rect class="wt-cell-outline" x="{cx:.1f}" y="{cy:.1f}"'
+                    f' width="{g["cell_w"]}" height="{g["cell_h"]}"'
+                    f' rx="7" ry="7" fill="none" stroke="#1d2330"'
+                    f' stroke-opacity="0.55" stroke-width="0.7"'
+                    f' stroke-dasharray="1.5 3"/>'
+                )
+            else:
+                parts.append(
+                    f'<rect class="wt-cell-outline" x="{cx:.1f}" y="{cy:.1f}"'
+                    f' width="{g["cell_w"]}" height="{g["cell_h"]}"'
+                    f' rx="7" ry="7" fill="none" stroke="{row_rgb}"'
+                    f' stroke-opacity="{ring_a:.3f}" stroke-width="0.8"/>'
+                )
+            # KEV indicator — small upper-left pulsing dot (no inner border ring).
             if any_kev:
                 parts.append(
-                    f'<rect x="{cx + 1:.1f}" y="{cy + 1:.1f}"'
-                    f' width="{g["cell_w"] - 2}" height="{g["cell_h"] - 2}"'
-                    f' rx="6" ry="6" fill="none" stroke="#f87171"'
-                    f' stroke-opacity="{0.30 + 0.4 * (max_risk / 100.0):.3f}"'
-                    f' stroke-width="1.2" filter="url(#wt-cell-glow)"/>'
+                    f'<circle class="wt-cell-kev-dot" cx="{cx + 7:.1f}"'
+                    f' cy="{cy + 7:.1f}" r="2.2" fill="#fca5a5"'
+                    f' opacity="0.85"/>'
                 )
-            # Count chip — top-right corner, only when populated
+            # Count + P1 + long-runner badges as a single compact metadata block,
+            # right-aligned in the upper corner.
             if active > 0 or (cell and cell.get("long_runner_count", 0) > 0):
-                chip_x = cx + g["cell_w"] - 6
-                chip_y = cy + 6
+                chip_x = cx + g["cell_w"] - 7
                 count_label = str(active) if active < 100 else "99+"
                 parts.append(
-                    f'<text x="{chip_x:.1f}" y="{chip_y + 9:.1f}" text-anchor="end"'
-                    f' font-family="system-ui,sans-serif" font-size="11" font-weight="800"'
-                    f' fill="#e6edf3">{count_label}</text>'
+                    f'<text class="wt-cell-count" x="{chip_x:.1f}" y="{cy + 14:.1f}"'
+                    f' text-anchor="end" font-family="system-ui,-apple-system,sans-serif"'
+                    f' font-size="10.5" font-weight="700" fill="#d4dce6"'
+                    f' letter-spacing="0.01em">{count_label}</text>'
                 )
                 if p1 > 0:
                     parts.append(
-                        f'<text x="{chip_x:.1f}" y="{chip_y + 22:.1f}" text-anchor="end"'
-                        f' font-family="system-ui,sans-serif" font-size="8" font-weight="700"'
-                        f' fill="#f87171" letter-spacing=".04em">P1·{p1}</text>'
+                        f'<text class="wt-cell-p1" x="{chip_x:.1f}" y="{cy + 26:.1f}"'
+                        f' text-anchor="end" font-family="system-ui,-apple-system,sans-serif"'
+                        f' font-size="7.5" font-weight="700" fill="#fca5a5"'
+                        f' letter-spacing="0.05em">P1·{p1}</text>'
                     )
                 if long_runner > 0:
                     parts.append(
-                        f'<text x="{cx + 6:.1f}" y="{cy + g["cell_h"] - 7:.1f}"'
-                        f' font-family="system-ui,sans-serif" font-size="8" font-weight="700"'
-                        f' fill="#94a3b8" letter-spacing=".04em">{long_runner} ongoing</text>'
+                        f'<text class="wt-cell-runner" x="{cx + 7:.1f}"'
+                        f' y="{cy + g["cell_h"] - 6:.1f}"'
+                        f' font-family="system-ui,-apple-system,sans-serif"'
+                        f' font-size="7.5" font-weight="600" fill="#7a8b9a"'
+                        f' letter-spacing="0.04em" opacity="0.8">{long_runner} ongoing</text>'
                     )
-            # Bubble layer placeholder (Phase 3 hydrates this with petite-vue)
+            # Bubble layer (hydrated client-side).
             parts.append(
                 f'<g class="wt-bubble-layer" data-cell="{cell_key}"'
                 f' transform="translate({cx:.1f},{cy:.1f})"></g>'
             )
-            # Selection ring — hidden at rest; visible when locked
+            # Selection treatment — twin rings: a soft inner glow ring (row hue)
+            # and a thin neutral outer ring.  The stark white stroke is gone.
             parts.append(
-                f'<rect class="wt-cell-sel" x="{cx - 1:.1f}" y="{cy - 1:.1f}"'
-                f' width="{g["cell_w"] + 2}" height="{g["cell_h"] + 2}"'
-                f' rx="7" ry="7" fill="none" stroke="#e6edf3"'
-                f' stroke-width="1.5" opacity="0"/>'
+                f'<rect class="wt-cell-sel-glow" x="{cx:.1f}" y="{cy:.1f}"'
+                f' width="{g["cell_w"]}" height="{g["cell_h"]}"'
+                f' rx="7" ry="7" fill="none" stroke="{row_rgb}"'
+                f' stroke-opacity="0.85" stroke-width="2.5"'
+                f' filter="url(#wt-soft-glow)" opacity="0"/>'
+            )
+            parts.append(
+                f'<rect class="wt-cell-sel" x="{cx - 0.5:.1f}" y="{cy - 0.5:.1f}"'
+                f' width="{g["cell_w"] + 1}" height="{g["cell_h"] + 1}"'
+                f' rx="7.5" ry="7.5" fill="none" stroke="#cbd3dd"'
+                f' stroke-width="0.8" opacity="0"/>'
             )
             parts.append("</g>")
 
-    # Bottom time-axis hint — populated meaningfully in Phase 5 (slider)
-    axis_y = g["label_top"] + g["grid_h"] + 14
+    # Bottom time-axis hint — minimal, dim, non-shouty.
+    axis_y = g["label_top"] + g["grid_h"] + 13
     axis_x_left = g["label_left"]
     axis_x_right = g["label_left"] + g["grid_w"]
     parts.append(
         f'<text x="{axis_x_left:.1f}" y="{axis_y:.1f}"'
-        f' font-family="system-ui,sans-serif" font-size="9" fill="#5a6a7a"'
-        f' letter-spacing=".04em">OLDER ◀</text>'
+        f' font-family="system-ui,-apple-system,sans-serif" font-size="8"'
+        f' fill="#4a5563" letter-spacing="0.08em" style="text-transform:uppercase">'
+        f'older</text>'
     )
     parts.append(
         f'<text x="{axis_x_right:.1f}" y="{axis_y:.1f}" text-anchor="end"'
-        f' font-family="system-ui,sans-serif" font-size="9" fill="#5a6a7a"'
-        f' letter-spacing=".04em">▶ NOW</text>'
+        f' font-family="system-ui,-apple-system,sans-serif" font-size="8"'
+        f' fill="#4a5563" letter-spacing="0.08em" style="text-transform:uppercase">'
+        f'now</text>'
     )
 
     parts.append("</svg>")
@@ -2294,12 +2371,18 @@ p{{color:#c9d1d9}}
 .threat-toolbar{{display:flex;justify-content:space-between;align-items:center;padding:.3rem .3rem .45rem}}
 .threat-title{{font-size:.9rem;font-weight:700;color:#e6edf3}}
 .threat-sub{{font-size:.72rem;color:#8b949e}}
-.wt-cell{{transition:filter .15s ease}}
-.wt-cell:hover{{filter:brightness(1.25)}}
-.wt-cell--empty{{opacity:.55}}
-.wt-cell--locked .wt-cell-sel{{opacity:1}}
-.wt-cell--locked rect:first-of-type{{filter:brightness(1.35)}}
-.wt-row-label:hover text{{fill:#e6edf3}}
+.wt-cell{{transition:filter .18s ease,transform .18s ease}}
+.wt-cell:not(.wt-cell--empty):hover{{filter:brightness(1.18) saturate(1.1)}}
+.wt-cell:not(.wt-cell--empty):hover .wt-cell-bg{{fill-opacity:1!important}}
+.wt-cell--empty{{opacity:.62}}
+.wt-cell--empty:hover{{opacity:.85}}
+.wt-cell--locked .wt-cell-sel,.wt-cell--locked .wt-cell-sel-glow{{opacity:1}}
+.wt-cell--locked .wt-cell-bg{{filter:brightness(1.45) saturate(1.1)}}
+.wt-cell--collapsed{{transform:scaleY(0.12);transform-origin:left center;opacity:0.45}}
+.wt-cell-kev-dot{{animation:wt-kev-pulse 2.4s ease-in-out infinite}}
+@keyframes wt-kev-pulse{{0%,100%{{opacity:0.5;r:2.0}}50%{{opacity:1;r:2.6}}}}
+.wt-row-label:hover text{{fill:#dbe2ec}}
+.wt-row-label:hover rect{{opacity:1}}
 .wt-bubble{{transition:transform .15s ease,filter .15s ease}}
 .wt-bubble:hover{{filter:brightness(1.6) drop-shadow(0 0 4px rgba(255,255,255,.4))}}
 .wt-bubble--low-conf circle{{stroke-dasharray:1.6 1.4}}
@@ -3314,54 +3397,67 @@ wtRenderBubbles=function(){{
       if(b.is_resolved) ariaParts.push('resolved');
       grp.setAttribute('aria-label', ariaParts.filter(Boolean).join(', '));
       grp.style.cursor='pointer';
+      // Soft urgency halo: blurred outer disc, much gentler than a solid ring
       if(classes.indexOf('wt-bubble--urgent')>=0){{
         var halo=document.createElementNS(ns,'circle');
         halo.setAttribute('class','wt-bubble-halo');
-        halo.setAttribute('r',(r+3.5).toFixed(2));
+        halo.setAttribute('r',(r+5).toFixed(2));
         halo.setAttribute('fill',stroke);
-        halo.setAttribute('opacity','0.4');
+        halo.setAttribute('opacity','0.30');
+        halo.setAttribute('filter','url(#wt-bubble-halo)');
         grp.appendChild(halo);
       }}
+      // Long-runner outer ring + Nd label — softened
       if(classes.indexOf('wt-bubble--long-runner')>=0){{
         var ring=document.createElementNS(ns,'circle');
         ring.setAttribute('class','wt-bubble-ring');
-        ring.setAttribute('r',(r+1.8).toFixed(2));
+        ring.setAttribute('r',(r+2.4).toFixed(2));
         ring.setAttribute('fill','none');
-        ring.setAttribute('stroke','#94a3b8');
-        ring.setAttribute('stroke-width','1.0');
-        ring.setAttribute('opacity','0.7');
+        ring.setAttribute('stroke','#a5afbe');
+        ring.setAttribute('stroke-width','0.9');
+        ring.setAttribute('opacity','0.55');
         grp.appendChild(ring);
         if((b.shelf_days||0)>=1){{
           var lbl=document.createElementNS(ns,'text');
           lbl.setAttribute('class','wt-bubble-runner-label');
           lbl.setAttribute('x','0');
-          lbl.setAttribute('y',(r+8.5).toFixed(2));
+          lbl.setAttribute('y',(r+9).toFixed(2));
           lbl.setAttribute('text-anchor','middle');
-          lbl.setAttribute('font-family','system-ui,sans-serif');
-          lbl.setAttribute('font-size','7');
-          lbl.setAttribute('font-weight','700');
-          lbl.setAttribute('fill','#94a3b8');
-          lbl.setAttribute('opacity','0.85');
+          lbl.setAttribute('font-family','system-ui,-apple-system,sans-serif');
+          lbl.setAttribute('font-size','6.5');
+          lbl.setAttribute('font-weight','600');
+          lbl.setAttribute('fill','#7a8493');
+          lbl.setAttribute('opacity','0.75');
           lbl.textContent=b.shelf_days+'d';
           grp.appendChild(lbl);
         }}
       }}
       var lockRing=document.createElementNS(ns,'circle');
       lockRing.setAttribute('class','wt-bubble-lock-ring');
-      lockRing.setAttribute('r',(r+3).toFixed(2));
+      lockRing.setAttribute('r',(r+3.4).toFixed(2));
       lockRing.setAttribute('fill','none');
-      lockRing.setAttribute('stroke','#e6edf3');
+      lockRing.setAttribute('stroke','#cbd3dd');
       lockRing.setAttribute('stroke-width','0');
       lockRing.setAttribute('opacity','0');
       grp.appendChild(lockRing);
+      // Body: solid color disc with a subtle drop shadow for depth
       var body=document.createElementNS(ns,'circle');
+      body.setAttribute('class','wt-bubble-body');
       body.setAttribute('r',r.toFixed(2));
       body.setAttribute('fill',color);
-      body.setAttribute('fill-opacity', b.is_resolved?'0.35':'0.85');
+      body.setAttribute('fill-opacity', b.is_resolved?'0.28':'0.78');
       body.setAttribute('stroke',stroke);
-      body.setAttribute('stroke-opacity', b.is_resolved?'0.45':'0.95');
-      body.setAttribute('stroke-width', b.is_low_confidence?'1.2':'0.8');
+      body.setAttribute('stroke-opacity', b.is_resolved?'0.32':'0.88');
+      body.setAttribute('stroke-width', b.is_low_confidence?'1.1':'0.6');
+      body.setAttribute('filter','url(#wt-bubble-shadow)');
       grp.appendChild(body);
+      // Highlight: small radial-gradient overlay for depth (top-left lighter)
+      var hi=document.createElementNS(ns,'circle');
+      hi.setAttribute('r',r.toFixed(2));
+      hi.setAttribute('fill','url(#wt-bubble-grad)');
+      hi.setAttribute('pointer-events','none');
+      hi.setAttribute('opacity', b.is_resolved?'0.35':'0.85');
+      grp.appendChild(hi);
       if(classes.indexOf('wt-bubble--moved')>=0){{
         var badge=document.createElementNS(ns,'text');
         badge.setAttribute('class','wt-bubble-moved-badge');
@@ -3404,6 +3500,9 @@ wtRenderBubbles=function(){{
 }};
 
 function wtRenderTrajectory(){{
+  // Subtle horizon-style stacked area along the BOTTOM of the matrix.
+  // Capped at ~22% of grid height with a 5-day moving average so single
+  // spikes don't produce harsh wedges.  Each band tops with a fade-out.
   var data=WT_DATA||{{}};
   var traj=data.trajectory||{{}};
   var afs=data.affects||[];
@@ -3418,53 +3517,103 @@ function wtRenderTrajectory(){{
   var x0=g.labelLeft, x1=g.labelLeft+g.cellW*10+g.gutterX*9;
   var y0=g.labelTop, y1=g.labelTop+g.cellH*8+g.gutterY*7;
   var width=x1-x0, height=y1-y0;
+  // Watermark height capped at 22% of grid; anchored at the bottom.
+  var bandH=Math.max(28, Math.min(110, height*0.22));
+  var baseY=y1; // bottom of grid
+  var topY=y1-bandH;
 
-  // Trim each layer to window_ most-recent days
   var bandSeries=afs.map(function(af){{
     var s=traj[af]||[];
     return {{af:af,points:s.slice(-window_)}};
   }});
   var nDays=bandSeries[0].points.length||1;
 
-  // Per-day total to scale the stacked area
+  // 5-day moving average smooths jagged spikes into gentle curves.
+  function smooth(series){{
+    var smoothed=new Array(series.length).fill(0);
+    var half=2; // ±2 days = 5-day window
+    for(var i=0;i<series.length;i++){{
+      var sum=0,cnt=0;
+      for(var j=Math.max(0,i-half);j<=Math.min(series.length-1,i+half);j++){{ sum+=series[j]; cnt++; }}
+      smoothed[i]=cnt?sum/cnt:0;
+    }}
+    return smoothed;
+  }}
+  bandSeries.forEach(function(band){{
+    band.smoothed=smooth(band.points.map(function(p){{return p.n||0;}}));
+  }});
+
   var dayTotals=new Array(nDays).fill(0);
   bandSeries.forEach(function(b){{
-    b.points.forEach(function(pt,i){{ dayTotals[i]+=pt.n; }});
+    b.smoothed.forEach(function(v,i){{ dayTotals[i]+=v; }});
   }});
   var maxTotal=Math.max(1, dayTotals.reduce(function(m,v){{return Math.max(m,v);}},0));
 
+  // Build stacked paths using cubic-bezier between sample points for
+  // smoothness.  Each band gets a fade-out gradient at its top.
+  function buildSmoothPath(topPts,bottomPts){{
+    if(topPts.length<2) return '';
+    var d='M '+topPts[0][0]+' '+topPts[0][1];
+    for(var i=1;i<topPts.length;i++){{
+      var p0=topPts[i-1], p1=topPts[i];
+      var cx=(p0[0]+p1[0])/2;
+      d+=' C '+cx+' '+p0[1]+', '+cx+' '+p1[1]+', '+p1[0]+' '+p1[1];
+    }}
+    for(var j=bottomPts.length-1;j>=0;j--){{
+      d+=' L '+bottomPts[j][0]+' '+bottomPts[j][1];
+    }}
+    d+=' Z';
+    return d;
+  }}
+
   var ns='http://www.w3.org/2000/svg';
-  // Build cumulative stacked paths (top of band = sum below + this band)
   var stackBelow=new Array(nDays).fill(0);
   bandSeries.forEach(function(band){{
     var color=afColors[band.af]||'#94a3b8';
-    var topPoints=[], bottomPoints=[];
-    band.points.forEach(function(pt,i){{
+    var topPts=[], bottomPts=[];
+    band.smoothed.forEach(function(v,i){{
       var px=x0 + (i/(nDays-1||1))*width;
       var below=stackBelow[i];
-      var top=below+pt.n;
-      var pyTop=y1 - (top/maxTotal)*height*0.85; // 85% of grid height max
-      var pyBot=y1 - (below/maxTotal)*height*0.85;
-      topPoints.push(px.toFixed(1)+','+pyTop.toFixed(1));
-      bottomPoints.push(px.toFixed(1)+','+pyBot.toFixed(1));
+      var top=below+v;
+      var pyTop=baseY - (top/maxTotal)*bandH;
+      var pyBot=baseY - (below/maxTotal)*bandH;
+      topPts.push([+px.toFixed(2), +pyTop.toFixed(2)]);
+      bottomPts.push([+px.toFixed(2), +pyBot.toFixed(2)]);
       stackBelow[i]=top;
     }});
-    var pathD='M '+topPoints.join(' L ')+' L '+bottomPoints.reverse().join(' L ')+' Z';
+    var pathD=buildSmoothPath(topPts,bottomPts);
+    if(!pathD) return;
     var p=document.createElementNS(ns,'path');
     p.setAttribute('d',pathD);
     p.setAttribute('fill',color);
-    p.setAttribute('fill-opacity','0.13');
-    p.setAttribute('stroke','none');
+    p.setAttribute('fill-opacity','0.075');
+    p.setAttribute('stroke',color);
+    p.setAttribute('stroke-opacity','0.25');
+    p.setAttribute('stroke-width','0.6');
     p.setAttribute('data-affects',band.af);
+    p.setAttribute('pointer-events','none');
     anchor.appendChild(p);
   }});
 
-  // Hover-capture rect for tooltip on gutters
+  // Soft horizon line so the watermark has a clean baseline edge.
+  var horizon=document.createElementNS(ns,'line');
+  horizon.setAttribute('x1',x0);
+  horizon.setAttribute('y1',baseY);
+  horizon.setAttribute('x2',x1);
+  horizon.setAttribute('y2',baseY);
+  horizon.setAttribute('stroke','#1f2530');
+  horizon.setAttribute('stroke-opacity','0.5');
+  horizon.setAttribute('stroke-width','0.6');
+  horizon.setAttribute('pointer-events','none');
+  anchor.appendChild(horizon);
+
+  // Hover-capture is constrained to the watermark band only (not the entire
+  // grid as before — which interfered with bubble interaction).
   var hover=document.createElementNS(ns,'rect');
   hover.setAttribute('x',x0);
-  hover.setAttribute('y',y0);
+  hover.setAttribute('y',topY);
   hover.setAttribute('width',width);
-  hover.setAttribute('height',height);
+  hover.setAttribute('height',bandH);
   hover.setAttribute('fill','transparent');
   hover.setAttribute('pointer-events','all');
   hover.style.cursor='crosshair';
