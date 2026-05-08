@@ -137,7 +137,11 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
             "headline": it["title"][:100],
             "source": tldextract.extract(it.get("url", "")).registered_domain
             or "unknown",
-            "snippet": (it.get("extracted_text", "") or it.get("summary", ""))[:200],
+            # Up to 900 chars of article body — enough for advisory pages to
+            # surface specific CVE IDs, vendor names, and product versions in
+            # the first few paragraphs (CISA alerts in particular).  The 20K
+            # total payload cap downstream still gives ample headroom.
+            "snippet": (it.get("extracted_text", "") or it.get("summary", ""))[:900],
             "url": it.get("url", ""),
         }
         for it in news_items[:12]
@@ -200,6 +204,19 @@ def groq_analyze_briefing(kev_items: list, nvd_items: list, news_items: list) ->
             "isolate, or monitor, name the affected product/version, and state whether a patch is "
             "currently available or not. "
             "Do NOT use vague language like 'various systems' or 'multiple vendors' \u2014 always name names. "
+            "ABSOLUTELY FORBIDDEN finding titles: 'CISA Exploited Vulnerability', 'New CVE Added', "
+            "'Known Exploited Vulnerability Catalog Update', 'Patch Tuesday Update', 'Security Advisory', "
+            "'Critical Vulnerability Disclosed', 'Zero-Day Discovered', or any wrapper phrasing that "
+            "describes a *publication event* instead of the *underlying vulnerability*. The article "
+            "snippet you are given contains the actual technical details (CVE ID, vendor, product, "
+            "vulnerability class) \u2014 read it and put those in the title.  A correct title looks like: "
+            "'CVE-2026-42208: BerriAI LiteLLM SQL Injection' NOT 'CISA Adds One Known Exploited "
+            "Vulnerability to Catalog'.  A correct title looks like: 'CVE-2025-XXXXX: Microsoft Exchange "
+            "Server RCE via Deserialization' NOT 'Patch Tuesday addresses critical Exchange flaw'. "
+            "Every finding title MUST contain at least one of: a CVE-YYYY-NNNNN identifier, a specific "
+            "vendor + product combination (e.g. 'Apache Tomcat', 'Cisco ASA', 'Linux kernel'), or both. "
+            "If the article snippet does not provide enough specificity to construct such a title, "
+            "DO NOT generate a finding for it \u2014 drop it from your output rather than emitting a wrapper. "
             "CRITICAL: Finding titles and summaries must describe the technical nature of the vulnerability "
             "or attack technique, never alleged attacker nationality or threat-actor attribution. "
             "Do not use phrases like 'Iranian threat actor', 'Chinese APT', 'Russian hackers', "
@@ -655,6 +672,68 @@ _ATTRIBUTION_RE = re.compile(
 )
 
 
+_WRAPPER_TITLE_PATTERNS = re.compile(
+    r"^\s*(cisa\s+(adds?|exploited)|known\s+exploited\s+vulnerability|"
+    r"new\s+cve\s+added|patch\s+tuesday|security\s+advisory\s+update|"
+    r"critical\s+vulnerability\s+(disclosed|reported)|"
+    r"zero[\s-]?day\s+(discovered|found)|"
+    r"vendor\s+releases?\s+(patch|advisory)|"
+    r"weekly\s+(security|threat)\s+(roundup|digest))\b",
+    re.IGNORECASE,
+)
+
+
+def _is_wrapper_title(title: str, enrichment: dict) -> bool:
+    """True if the title describes a publication event rather than a vuln.
+
+    A wrapper title is one Groq generated lazily from the article headline
+    instead of extracting the actual CVE/product details from the body.  We
+    only kill the card if the enrichment ALSO failed to find a CVE — when
+    CVEs are present we can rebuild the title from data (handled separately).
+    """
+    if not title:
+        return True
+    if _WRAPPER_TITLE_PATTERNS.search(title):
+        cves = (enrichment or {}).get("cves") or []
+        products = (enrichment or {}).get("products") or []
+        if not cves and not products:
+            return True
+    return False
+
+
+def _rewrite_wrapper_title(card: dict) -> None:
+    """Promote enrichment data into the title when Groq produced a wrapper.
+
+    Triggered only when the title matches a forbidden wrapper pattern AND the
+    enrichment found at least one CVE or product.  Builds a concrete title
+    like 'CVE-2026-XXXXX: Vendor Product RCE' from extracted fields so the
+    card is salvageable even if Groq's free-text was vague.
+    """
+    title = card.get("title", "")
+    if not _WRAPPER_TITLE_PATTERNS.search(title):
+        return
+    enrichment = card.get("enrichment") or {}
+    cves = enrichment.get("cves") or []
+    products = enrichment.get("products") or []
+    if not cves and not products:
+        return
+    parts = []
+    if cves:
+        parts.append(cves[0])
+    if products:
+        parts.append(products[0])
+    if not parts:
+        return
+    new_title = ": ".join(parts)
+    # Append a vuln-class hint from the original title if possible
+    for kw in ("RCE", "SQL Injection", "SQLi", "Auth Bypass", "Privilege Escalation",
+               "Buffer Overflow", "XSS", "SSRF", "Deserialization", "Path Traversal"):
+        if kw.lower() in title.lower():
+            new_title = f"{new_title} {kw}"
+            break
+    card["title"] = new_title[:140]
+
+
 def _quality_score(card: dict) -> int:
     """Score Groq-generated card signal quality 0–4 (1 point each).
 
@@ -662,19 +741,26 @@ def _quality_score(card: dict) -> int:
     2. CVE ID or product name present in enrichment
     3. Summary longer than 60 characters
     4. why_now field is non-empty
+    5. Title is NOT a wrapper phrasing ("CISA Exploited Vulnerability", etc.)
 
     Cards scoring below 2 are excluded by _findings_to_cards as low-signal noise.
+    Wrapper-titled cards are rewritten in place when enrichment data allows;
+    otherwise dropped outright via the wrapper-only branch.
     """
     score = 0
-    if len(card.get("title", "")) > 20:
-        score += 1
+    title = card.get("title", "")
     enrichment = card.get("enrichment", {}) or {}
+    if len(title) > 20:
+        score += 1
     if enrichment.get("cves") or enrichment.get("products"):
         score += 1
     if len(card.get("summary", "")) > 60:
         score += 1
     if card.get("why_now", "").strip():
         score += 1
+    # Penalty: a wrapper title without enrichment to salvage it kills the score
+    if _is_wrapper_title(title, enrichment):
+        score = 0
     return score
 
 
@@ -865,12 +951,21 @@ def _findings_to_cards(findings: list, all_items: list = None) -> list:
         )
     result = sorted(cards, key=lambda c: c["risk_score"], reverse=True)
     _enrich_cards_from_sources(result, all_items)
+    # Salvage wrapper-titled cards when enrichment found concrete CVEs/products.
+    rewrites = 0
+    for c in result:
+        before = c.get("title", "")
+        _rewrite_wrapper_title(c)
+        if c.get("title", "") != before:
+            rewrites += 1
+    if rewrites:
+        print(f"[TITLE REWRITE] {rewrites} wrapper-titled card(s) rebuilt from enrichment data")
     _before = len(result)
     result = [c for c in result if _quality_score(c) >= 2]
     if len(result) < _before:
         print(
             f"[QUALITY DROP] {_before - len(result)} low-signal card(s) filtered "
-            f"(quality gate: title length, CVE/product, summary, why_now)"
+            f"(quality gate: title length, CVE/product, summary, why_now, wrapper detection)"
         )
     return result
 

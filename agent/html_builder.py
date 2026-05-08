@@ -494,12 +494,14 @@ def _build_threat_matrix_svg(matrix_data: dict) -> str:
                     f' rx="7" ry="7" fill="none" stroke="{row_rgb}"'
                     f' stroke-opacity="{ring_a:.3f}" stroke-width="0.8"/>'
                 )
-            # KEV indicator — small upper-left pulsing dot (no inner border ring).
+            # KEV indicator — small upper-left pulsing red dot.  This is one
+            # of only two places red appears on the matrix (the other is P1
+            # text).  Both flag genuine criticality.
             if any_kev:
                 parts.append(
                     f'<circle class="wt-cell-kev-dot" cx="{cx + 7:.1f}"'
-                    f' cy="{cy + 7:.1f}" r="2.2" fill="#fca5a5"'
-                    f' opacity="0.85"/>'
+                    f' cy="{cy + 7:.1f}" r="2.2" fill="#ef4444"'
+                    f' opacity="0.95"/>'
                 )
             # Count + P1 + long-runner badges as a single compact metadata block,
             # right-aligned in the upper corner.
@@ -516,7 +518,7 @@ def _build_threat_matrix_svg(matrix_data: dict) -> str:
                     parts.append(
                         f'<text class="wt-cell-p1" x="{chip_x:.1f}" y="{cy + 26:.1f}"'
                         f' text-anchor="end" font-family="system-ui,-apple-system,sans-serif"'
-                        f' font-size="7.5" font-weight="700" fill="#fca5a5"'
+                        f' font-size="7.5" font-weight="700" fill="#ef4444"'
                         f' letter-spacing="0.05em">P1·{p1}</text>'
                     )
                 if long_runner > 0:
@@ -606,12 +608,12 @@ def _build_matrix_overview_html(matrix_data: dict) -> str:
             f'onclick="wtSelectCell(\'{cell_key}\')">'
             f'<span class="wt-cell-rank-swatch" style="background:{af_color}"></span>'
             f'<span class="wt-cell-rank-label">{html.escape(pt_labels.get(pt, pt))}'
-            f' · <span style="color:#8b949e">{html.escape(af_labels.get(af, af))}</span></span>'
+            f' · <span style="color:#7a8493">{html.escape(af_labels.get(af, af))}</span></span>'
             f'<span class="wt-cell-rank-bar"><span class="wt-cell-rank-fill" '
-            f'style="width:{bar_pct}%;background:{af_color}"></span></span>'
+            f'style="width:{bar_pct}%;background:#7a8493"></span></span>'
             f'<span class="wt-cell-rank-meta">{active}'
-            + (f' · <span style="color:#f87171">P1·{p1}</span>' if p1 else "")
-            + (f' · <span style="color:#94a3b8">{long_runner}↻</span>' if long_runner else "")
+            + (f' · <span style="color:#ef4444">P1·{p1}</span>' if p1 else "")
+            + (f' · <span style="color:#7a8493">{long_runner}↻</span>' if long_runner else "")
             + "</span></div>"
         )
     if not rows:
@@ -3382,8 +3384,17 @@ wtRenderBubbles=function(){{
       if(b.is_long_runner) classes.push('wt-bubble--long-runner');
       if(b.is_resolved) classes.push('wt-bubble--resolved');
       if(b.recategorized_within_24h) classes.push('wt-bubble--moved');
-      var color=b.priority==='P1' ? '#f87171' : b.priority==='P2' ? '#f59e0b' : '#79b8ff';
-      var stroke=b.is_kev?'#fca5a5':color;
+      // Greyscale-first palette: bubble body is always neutral grey.  Priority
+      // is encoded by *outline* — red for P1/critical, yellow for P2/elevated,
+      // a dimmer grey for P3.  KEV upgrades the outline to a brighter red.
+      var color = b.is_resolved ? '#5a626d'
+                : b.priority==='P1' ? '#cbd3dd'
+                : b.priority==='P2' ? '#a5afbe'
+                : '#7a8493';
+      var stroke = b.is_kev          ? '#f87171'
+                 : b.priority==='P1' ? '#ef4444'
+                 : b.priority==='P2' ? '#eab308'
+                 : '#6b7382';
       var ns='http://www.w3.org/2000/svg';
       var grp=document.createElementNS(ns,'g');
       grp.setAttribute('class',classes.join(' '));
@@ -3397,13 +3408,16 @@ wtRenderBubbles=function(){{
       if(b.is_resolved) ariaParts.push('resolved');
       grp.setAttribute('aria-label', ariaParts.filter(Boolean).join(', '));
       grp.style.cursor='pointer';
-      // Soft urgency halo: blurred outer disc, much gentler than a solid ring
+      // Soft urgency halo: thin red blurred ring (no body fill) — keeps the
+      // critical signal but stays minimal in greyscale context.
       if(classes.indexOf('wt-bubble--urgent')>=0){{
         var halo=document.createElementNS(ns,'circle');
         halo.setAttribute('class','wt-bubble-halo');
-        halo.setAttribute('r',(r+5).toFixed(2));
-        halo.setAttribute('fill',stroke);
-        halo.setAttribute('opacity','0.30');
+        halo.setAttribute('r',(r+4.5).toFixed(2));
+        halo.setAttribute('fill','none');
+        halo.setAttribute('stroke','#f87171');
+        halo.setAttribute('stroke-width','1.6');
+        halo.setAttribute('opacity','0.55');
         halo.setAttribute('filter','url(#wt-bubble-halo)');
         grp.appendChild(halo);
       }}
@@ -3440,24 +3454,33 @@ wtRenderBubbles=function(){{
       lockRing.setAttribute('stroke-width','0');
       lockRing.setAttribute('opacity','0');
       grp.appendChild(lockRing);
-      // Body: solid color disc with a subtle drop shadow for depth
+      // Body: greyscale disc with a subtle drop shadow.  Outline carries the
+      // priority signal — heavier when the finding is P1 or KEV-listed.
+      var isCrit = b.is_kev || b.priority==='P1';
+      var isElev = b.priority==='P2';
+      var strokeWidth = b.is_low_confidence ? '1.0'
+                      : isCrit ? '1.6'
+                      : isElev ? '1.2'
+                      : '0.5';
       var body=document.createElementNS(ns,'circle');
       body.setAttribute('class','wt-bubble-body');
       body.setAttribute('r',r.toFixed(2));
       body.setAttribute('fill',color);
-      body.setAttribute('fill-opacity', b.is_resolved?'0.28':'0.78');
+      body.setAttribute('fill-opacity', b.is_resolved?'0.32':'0.72');
       body.setAttribute('stroke',stroke);
-      body.setAttribute('stroke-opacity', b.is_resolved?'0.32':'0.88');
-      body.setAttribute('stroke-width', b.is_low_confidence?'1.1':'0.6');
+      body.setAttribute('stroke-opacity', b.is_resolved?'0.45':isCrit?'1':'0.85');
+      body.setAttribute('stroke-width', strokeWidth);
       body.setAttribute('filter','url(#wt-bubble-shadow)');
       grp.appendChild(body);
-      // Highlight: small radial-gradient overlay for depth (top-left lighter)
-      var hi=document.createElementNS(ns,'circle');
-      hi.setAttribute('r',r.toFixed(2));
-      hi.setAttribute('fill','url(#wt-bubble-grad)');
-      hi.setAttribute('pointer-events','none');
-      hi.setAttribute('opacity', b.is_resolved?'0.35':'0.85');
-      grp.appendChild(hi);
+      // Subtle inner highlight only on bigger bubbles for depth without gloss.
+      if(r>=4){{
+        var hi=document.createElementNS(ns,'circle');
+        hi.setAttribute('r',r.toFixed(2));
+        hi.setAttribute('fill','url(#wt-bubble-grad)');
+        hi.setAttribute('pointer-events','none');
+        hi.setAttribute('opacity', b.is_resolved?'0.18':'0.35');
+        grp.appendChild(hi);
+      }}
       if(classes.indexOf('wt-bubble--moved')>=0){{
         var badge=document.createElementNS(ns,'text');
         badge.setAttribute('class','wt-bubble-moved-badge');
@@ -3569,7 +3592,10 @@ function wtRenderTrajectory(){{
   var ns='http://www.w3.org/2000/svg';
   var stackBelow=new Array(nDays).fill(0);
   bandSeries.forEach(function(band){{
-    var color=afColors[band.af]||'#94a3b8';
+    // Greyscale-only watermark; per-row color comes from the AFFECTS_COLORS
+    // grey palette we already greyscaled.  Each band reads as a soft layer
+    // of the same dim grey, with deeper layers slightly darker.
+    var color=afColors[band.af]||'#7a8493';
     var topPts=[], bottomPts=[];
     band.smoothed.forEach(function(v,i){{
       var px=x0 + (i/(nDays-1||1))*width;
@@ -3586,10 +3612,10 @@ function wtRenderTrajectory(){{
     var p=document.createElementNS(ns,'path');
     p.setAttribute('d',pathD);
     p.setAttribute('fill',color);
-    p.setAttribute('fill-opacity','0.075');
+    p.setAttribute('fill-opacity','0.085');
     p.setAttribute('stroke',color);
-    p.setAttribute('stroke-opacity','0.25');
-    p.setAttribute('stroke-width','0.6');
+    p.setAttribute('stroke-opacity','0.18');
+    p.setAttribute('stroke-width','0.5');
     p.setAttribute('data-affects',band.af);
     p.setAttribute('pointer-events','none');
     anchor.appendChild(p);

@@ -68,18 +68,20 @@ AFFECTS_LABELS: dict = {
     "foundation": "Foundation",
 }
 
-# Per-row hue palette (one band per affects layer), used both for row labels
-# and for the trajectory watermark in Phase 6.  Hex strings only — RGBA blended
-# at render time.
+# Per-row palette for the matrix.  The matrix is intentionally greyscale —
+# colour is reserved for criticality cues (red/yellow accents elsewhere).
+# Each row gets a slightly different neutral grey so the eye can still
+# distinguish stack layers without competing with the priority signal.
+# Lighter = closer to user; darker = deeper in the stack.
 AFFECTS_COLORS: dict = {
-    "user_data": "#f59e0b",       # amber — closest to end users
-    "application": "#ec4899",     # pink — product surface
-    "framework": "#a855f7",       # violet — libraries
-    "runtime": "#6366f1",         # indigo — language platforms
-    "service": "#3b82f6",         # blue — cloud / hosted
-    "network": "#06b6d4",         # cyan — protocols
-    "build_pipeline": "#10b981",  # emerald — pipeline
-    "foundation": "#94a3b8",      # slate — kernel / libc, the calm depths
+    "user_data":      "#b8c0cc",  # lightest — surface / end-user data
+    "application":    "#a8b0bc",
+    "framework":      "#98a0ac",
+    "runtime":        "#88909c",
+    "service":        "#78808c",
+    "network":        "#68707c",
+    "build_pipeline": "#58606c",
+    "foundation":     "#48505c",  # darkest — kernel / libc, the calm depths
 }
 
 
