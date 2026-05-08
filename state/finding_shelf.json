@@ -802,5 +802,32 @@
     "last_seen": "2026-05-08",
     "run_count": 1,
     "title": "code-projects Feedback System Vulnerability"
+  },
+  "2f9007b834a2": {
+    "first_seen": "2026-05-08",
+    "last_seen": "2026-05-08",
+    "run_count": 1,
+    "title": "BerriAI LiteLLM SQL Injection",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "0a7bdd101cff": {
+    "first_seen": "2026-05-08",
+    "last_seen": "2026-05-08",
+    "run_count": 1,
+    "title": "AstrBotDevs AstrBot RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "2832368914bf": {
+    "first_seen": "2026-05-08",
+    "last_seen": "2026-05-08",
+    "run_count": 1,
+    "title": "Bitrix24 RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }

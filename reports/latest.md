@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-05-08T10:45:39.564528+00:00
+generated_at: 2026-05-08T19:11:24.771956+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-42047 in Inngest, CVE-2026-8097 in CodeAstro Online Classroom, and CVE-2026-8098 in code-projects Feedback System. Internet-facing systems, such as web servers and online classrooms, are most exposed due to the lack of patches for these vulnerabilities. The single most time-sensitive action is to monitor and isolate systems using Inngest, as no patch is currently available for CVE-2026-42047.
+CVE-2026-42208 in BerriAI LiteLLM, CVE-2025-55449 in AstrBotDevs AstrBot, and CVE-2025-67886 in Bitrix24 are the highest-risk items this period. Internet-facing applications and databases are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate BerriAI LiteLLM, but a patch is not currently available, so monitoring for exploitation is crucial.
 
-## Inngest Vulnerability (risk: 40)
-[P1] CVE-2026-42047 is a vulnerability in Inngest that can be exploited for event-driven and scheduled background function execution. No patch is currently available. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.80)
+## BerriAI LiteLLM SQL Injection (risk: 100)
+[P1] BerriAI LiteLLM contains a SQL injection vulnerability that allows an attacker to read data from the proxy's database, and it is being exploited in the wild. No patch is available, making it a high-risk vulnerability. Why now: Reported exploitation in the wild (confidence: 0.90)
 
-- [CVE-2026-42047](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2026-42208](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-42208)
 
-## CodeAstro Online Classroom Vulnerability (risk: 40)
-[P2] CVE-2026-8097 is a vulnerability in CodeAstro Online Classroom that can be exploited for unauthorized access. No patch is currently available. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.70)
+## AstrBotDevs AstrBot RCE (risk: 70)
+[P2] AstrBotDevs AstrBot 3.5.15 has a vulnerability that allows remote code execution, but it is not being exploited in the wild. No patch is available, making it a medium-risk vulnerability. Why now: Newly disclosed vulnerability (confidence: 0.80)
 
-- [CVE-2026-8097](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2025-55449](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-55449)
 
-## code-projects Feedback System Vulnerability (risk: 40)
-[P2] CVE-2026-8098 is a vulnerability in code-projects Feedback System that can be exploited for unauthorized access. No patch is currently available. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.70)
+## Bitrix24 RCE (risk: 70)
+[P2] Bitrix24 through 25.100.300 allows remote code execution because an actor with specific permissions can execute arbitrary code, but it is not being exploited in the wild. No patch is available, making it a medium-risk vulnerability. Why now: Newly disclosed vulnerability (confidence: 0.80)
 
-- [CVE-2026-8098](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2025-67886](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-67886)
