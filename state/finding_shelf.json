@@ -838,5 +838,14 @@
     "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
+  },
+  "9d204c4b65b9": {
+    "first_seen": "2026-05-08",
+    "last_seen": "2026-05-08",
+    "run_count": 1,
+    "title": "CISA Exploited Vulnerability",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.85
   }
 }
