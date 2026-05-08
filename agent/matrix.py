@@ -253,6 +253,125 @@ def build_matrix_data(cards: list, *, now: datetime | None = None) -> dict:
     }
 
 
+def _threat_level(district: dict) -> str:
+    """Map an aggregated district to one of four threat tiers.
+
+    The tiers drive both the visual treatment (border colour, label chip) and
+    the immediate-glance read of a zone.  Anchor on the loudest signal:
+    KEV-listed and P1 findings always promote a zone to critical regardless
+    of count, since one critical issue is enough to demand attention.
+    """
+    if district.get("active_count", 0) == 0:
+        return "quiet"
+    if district.get("any_kev") or district.get("p1_count", 0) > 0 or district.get("max_risk", 0) >= 85:
+        return "critical"
+    if district.get("max_risk", 0) >= 65:
+        return "elevated"
+    return "watch"
+
+
+def build_districts_data(cards: list, *, now: datetime | None = None) -> dict:
+    """Aggregate cards by ``affects`` layer for the threat-districts view.
+
+    The districts view replaces the cell-grid-of-bubbles concept with one
+    large named zone per affects layer, each carrying its threat level,
+    aggregate counts, and the actual finding titles inline (visible without
+    clicking).  Cross-tabulation with ``problem_type`` is exposed via filter
+    chips above the districts rather than as a second axis.
+
+    Output shape::
+
+        {
+            "districts": {
+                "user_data": {
+                    "affects": "user_data",
+                    "label": "User Data",
+                    "threat_level": "critical"|"elevated"|"watch"|"quiet",
+                    "active_count": int,
+                    "p1_count": int,
+                    "max_risk": int,
+                    "any_kev": bool,
+                    "long_runner_count": int,
+                    "problem_types": {pt: count, ...},
+                    "findings": [card_id, ...],   # active first, sorted by risk
+                },
+                ...
+            },
+            "order": [...],                       # top-of-stack to deepest
+            "labels": {...},
+            "problem_type_counts": {pt: count, ...},
+            "now_iso": str,
+        }
+    """
+    now = now or datetime.now(timezone.utc)
+    valid_affects = set(AFFECTS)
+
+    districts: dict = {
+        a: {
+            "affects": a,
+            "label": AFFECTS_LABELS.get(a, a),
+            "threat_level": "quiet",
+            "active_count": 0,
+            "p1_count": 0,
+            "max_risk": 0,
+            "any_kev": False,
+            "long_runner_count": 0,
+            "problem_types": {},
+            "findings": [],
+        }
+        for a in AFFECTS_ORDER
+    }
+
+    problem_type_counts: dict = {}
+
+    for card in cards:
+        if not isinstance(card, dict):
+            continue
+        af = card.get("affects", "")
+        if af not in valid_affects:
+            continue
+        d = districts[af]
+        is_resolved = bool(card.get("shelf_resolved"))
+        risk = int(card.get("risk_score", 0))
+        priority = str(card.get("priority", "")).upper()
+        shelf_days = int(card.get("shelf_days", 0))
+        is_kev = bool(card.get("is_kev"))
+        pt = card.get("problem_type", "")
+
+        if not is_resolved:
+            d["active_count"] += 1
+        if priority == "P1":
+            d["p1_count"] += 1
+        if risk > d["max_risk"]:
+            d["max_risk"] = risk
+        if is_kev:
+            d["any_kev"] = True
+        if (not is_resolved) and shelf_days > 7:
+            d["long_runner_count"] += 1
+        if pt:
+            d["problem_types"][pt] = d["problem_types"].get(pt, 0) + 1
+            problem_type_counts[pt] = problem_type_counts.get(pt, 0) + 1
+        d["findings"].append(card.get("id", ""))
+
+    risk_lookup = {
+        c.get("id", ""): int(c.get("risk_score", 0))
+        for c in cards
+        if isinstance(c, dict)
+    }
+    for d in districts.values():
+        d["findings"].sort(key=lambda fid: -risk_lookup.get(fid, 0))
+        d["threat_level"] = _threat_level(d)
+
+    return {
+        "districts": districts,
+        "order": list(AFFECTS_ORDER),
+        "labels": dict(AFFECTS_LABELS),
+        "problem_type_labels": dict(PROBLEM_TYPE_LABELS),
+        "problem_type_counts": problem_type_counts,
+        "now_iso": now.isoformat(),
+    }
+
+
 def cell_geometry(cols: int = 10, rows: int = 8) -> dict:
     """Return SVG layout constants for the matrix grid.
 

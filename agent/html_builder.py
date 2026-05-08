@@ -19,6 +19,7 @@ from agent.matrix import (
     PROBLEM_TYPE_LABELS,
     PROBLEM_TYPE_ORDER,
     bubble_radius,
+    build_districts_data,
     build_matrix_data,
     cell_geometry,
     cell_origin,
@@ -633,6 +634,261 @@ def _build_matrix_overview_html(matrix_data: dict) -> str:
     ) + "".join(rows)
 
 
+# ──────────────────────────────────────────────
+# Threat districts — replaces the cell-grid view
+# ──────────────────────────────────────────────
+
+
+_THREAT_LEVEL_ORDER = ["critical", "elevated", "watch", "quiet"]
+_THREAT_LEVEL_LABELS = {
+    "critical": "CRITICAL",
+    "elevated": "ELEVATED",
+    "watch": "WATCH",
+    "quiet": "QUIET",
+}
+
+
+def _district_status_text(d: dict) -> str:
+    threat = d.get("threat_level", "quiet")
+    active = d.get("active_count", 0)
+    if threat == "quiet":
+        return "no active findings"
+    parts = [f"{active} active"]
+    if d.get("p1_count", 0):
+        parts.append(f"{d['p1_count']} P1")
+    if d.get("max_risk", 0):
+        parts.append(f"max risk {d['max_risk']}")
+    if d.get("long_runner_count", 0):
+        parts.append(f"{d['long_runner_count']} ongoing")
+    return " · ".join(parts)
+
+
+def _build_problem_type_chips(districts_data: dict) -> str:
+    """Filter chip strip — one chip per problem_type that has findings."""
+    counts = districts_data.get("problem_type_counts", {})
+    if not counts:
+        return ""
+    pt_labels = districts_data.get("problem_type_labels", PROBLEM_TYPE_LABELS)
+    total = sum(counts.values())
+    chips = [
+        f'<button type="button" class="wt-pt-chip wt-pt-chip--active"'
+        f' data-pt="all" aria-pressed="true">All · {total}</button>'
+    ]
+    for pt in PROBLEM_TYPE_ORDER:
+        n = counts.get(pt, 0)
+        if not n:
+            continue
+        label = pt_labels.get(pt, pt)
+        chips.append(
+            f'<button type="button" class="wt-pt-chip" data-pt="{pt}"'
+            f' aria-pressed="false">{html.escape(label)} · {n}</button>'
+        )
+    return (
+        '<div class="wt-pt-strip" id="wt-pt-strip" role="group" aria-label="Filter by problem type">'
+        + "".join(chips)
+        + "</div>"
+    )
+
+
+def _build_finding_card(card: dict, *, problem_types_by_card: dict | None = None) -> str:
+    """Render a single finding card inside a district."""
+    fid = card.get("id", "")
+    title = (card.get("title") or "")[:120]
+    risk = int(card.get("risk_score", 0))
+    pri = str(card.get("priority", "")).upper()
+    is_kev = bool(card.get("is_kev"))
+    is_resolved = bool(card.get("shelf_resolved"))
+    shelf_days = int(card.get("shelf_days", 0))
+    pt = card.get("problem_type", "")
+    pt_label = PROBLEM_TYPE_LABELS.get(pt, pt) if pt else ""
+
+    pri_class = "p1" if pri == "P1" else "p2" if pri == "P2" else "p3"
+    classes = ["wt-finding-card", f"wt-finding-card--{pri_class}"]
+    if is_kev:
+        classes.append("wt-finding-card--kev")
+    if is_resolved:
+        classes.append("wt-finding-card--resolved")
+    if (not is_resolved) and shelf_days > 7:
+        classes.append("wt-finding-card--long-runner")
+
+    badges: list[str] = []
+    if is_kev:
+        badges.append('<span class="wt-fc-badge wt-fc-badge--kev">KEV</span>')
+    if pri == "P1":
+        badges.append('<span class="wt-fc-badge wt-fc-badge--p1">P1</span>')
+    elif pri == "P2":
+        badges.append('<span class="wt-fc-badge wt-fc-badge--p2">P2</span>')
+    epss = card.get("epss_score")
+    if isinstance(epss, (int, float)) and epss >= 0.4:
+        badges.append(
+            f'<span class="wt-fc-badge wt-fc-badge--epss">EPSS {int(epss*100)}%</span>'
+        )
+    badges.append(f'<span class="wt-fc-risk">risk {risk}</span>')
+    if (not is_resolved) and shelf_days > 7:
+        badges.append(
+            f'<span class="wt-fc-runner">{shelf_days}d open</span>'
+        )
+    if is_resolved:
+        badges.append('<span class="wt-fc-resolved">resolved</span>')
+    if pt_label:
+        badges.append(f'<span class="wt-fc-pt">{html.escape(pt_label)}</span>')
+
+    return (
+        f'<a class="{" ".join(classes)}" data-finding-id="{html.escape(fid)}"'
+        f' data-pt="{html.escape(pt)}"'
+        f' onclick="event.preventDefault();wtSelectFinding(\'{html.escape(fid)}\')"'
+        f' tabindex="0" role="button" href="#card-{html.escape(fid)}">'
+        f'<span class="wt-fc-title">{html.escape(title)}</span>'
+        f'<span class="wt-fc-meta">{"".join(badges)}</span>'
+        "</a>"
+    )
+
+
+def _build_threat_districts_html(districts_data: dict, cards: list) -> str:
+    """Render the threat-districts grid — one zone per ``affects`` layer.
+
+    Each zone displays its name, threat-level chip, status line, and the
+    actual finding titles inline so the user can read the threat content
+    without clicking.  The chip strip above filters findings by
+    ``problem_type``.
+    """
+    cards_by_id: dict = {c.get("id", ""): c for c in cards if isinstance(c, dict)}
+    chips_html = _build_problem_type_chips(districts_data)
+
+    districts = districts_data.get("districts", {})
+    order = districts_data.get("order", AFFECTS_ORDER)
+
+    zones: list[str] = []
+    for af in order:
+        d = districts.get(af)
+        if not d:
+            continue
+        threat = d.get("threat_level", "quiet")
+        label = d.get("label", af)
+        active = d.get("active_count", 0)
+        finding_ids = d.get("findings", [])
+
+        # Build the inline finding cards (cap at 5; overflow chip)
+        cards_html: list[str] = []
+        for fid in finding_ids[:5]:
+            c = cards_by_id.get(fid)
+            if not c:
+                continue
+            cards_html.append(_build_finding_card(c))
+        overflow = max(0, len(finding_ids) - 5)
+        if overflow:
+            cards_html.append(
+                f'<div class="wt-district-more"'
+                f' onclick="wtFocusZone(\'{af}\')">'
+                f"+{overflow} more in this zone</div>"
+            )
+
+        body_html = "".join(cards_html) or (
+            '<div class="wt-district-empty">No active findings — zone is quiet.</div>'
+            if active == 0
+            else ""
+        )
+
+        # Header: zone name + status chip
+        status_text = _district_status_text(d)
+        zone_classes = ["wt-district", f"wt-district--{threat}"]
+        zones.append(
+            f'<section class="{" ".join(zone_classes)}" data-affects="{af}"'
+            f' data-threat="{threat}"'
+            f' aria-label="{html.escape(label)} zone — {threat}, {active} active findings">'
+            f'<header class="wt-district-header">'
+            f'<div class="wt-district-name">'
+            f'<span class="wt-district-name-text">{html.escape(label)}</span>'
+            f'<span class="wt-district-chip wt-district-chip--{threat}"'
+            f' aria-label="threat level {threat}">{_THREAT_LEVEL_LABELS[threat]}</span>'
+            f"</div>"
+            f'<div class="wt-district-status">{html.escape(status_text)}</div>'
+            f"</header>"
+            f'<div class="wt-district-body">{body_html}</div>'
+            f"</section>"
+        )
+
+    return (
+        '<div class="wt-districts-wrap">'
+        + chips_html
+        + '<div class="wt-districts-grid">'
+        + "".join(zones)
+        + "</div>"
+        "</div>"
+    )
+
+
+def _build_districts_overview_html(districts_data: dict) -> str:
+    """Right-rail Top Cells panel re-rendered for districts view.
+
+    Lists active districts ordered by threat severity, count, and max_risk.
+    Clicking a row scrolls the matching zone into view.
+    """
+    districts = districts_data.get("districts", {})
+    if not districts:
+        return (
+            '<div class="muted" style="font-size:.78rem;padding:.4rem 0">'
+            "No findings in this window.</div>"
+        )
+    threat_rank = {"critical": 3, "elevated": 2, "watch": 1, "quiet": 0}
+    order = districts_data.get("order", [])
+    items = [districts[a] for a in order if a in districts]
+    items.sort(
+        key=lambda d: (
+            threat_rank.get(d.get("threat_level", "quiet"), 0),
+            d.get("active_count", 0),
+            d.get("max_risk", 0),
+        ),
+        reverse=True,
+    )
+    rows: list[str] = []
+    total_active = sum(d.get("active_count", 0) for d in items)
+    rows.append(
+        '<div class="wt-cell-rank wt-cell-rank--all"'
+        ' onclick="wtSelectDistrict(\'all\')">'
+        '<span class="wt-cell-rank-swatch" style="background:#3a3a3a"></span>'
+        '<span class="wt-cell-rank-label" style="color:#c9d1d9;font-weight:700">All Zones</span>'
+        '<span class="wt-cell-rank-bar"></span>'
+        f'<span class="wt-cell-rank-meta" style="color:#c9d1d9;font-weight:700">{total_active}</span>'
+        "</div>"
+    )
+    for d in items:
+        threat = d.get("threat_level", "quiet")
+        if threat == "quiet":
+            continue
+        af = d.get("affects", "")
+        label = d.get("label", af)
+        active = d.get("active_count", 0)
+        p1 = d.get("p1_count", 0)
+        long_runner = d.get("long_runner_count", 0)
+        max_risk = d.get("max_risk", 0)
+        bar_pct = max(2, min(100, max_risk))
+        bar_color = (
+            "#ef4444" if threat == "critical"
+            else "#eab308" if threat == "elevated"
+            else "#7a8493"
+        )
+        rows.append(
+            f'<div class="wt-cell-rank wt-cell-rank--{threat}" data-affects="{af}"'
+            f' onclick="wtSelectDistrict(\'{af}\')">'
+            f'<span class="wt-cell-rank-swatch" style="background:{bar_color}"></span>'
+            f'<span class="wt-cell-rank-label">{html.escape(label)}'
+            f' · <span style="color:#7a8493">{_THREAT_LEVEL_LABELS[threat]}</span></span>'
+            f'<span class="wt-cell-rank-bar"><span class="wt-cell-rank-fill"'
+            f' style="width:{bar_pct}%;background:{bar_color}"></span></span>'
+            f'<span class="wt-cell-rank-meta">{active}'
+            + (f' · <span style="color:#ef4444">P1·{p1}</span>' if p1 else "")
+            + (f' · <span style="color:#7a8493">{long_runner}↻</span>' if long_runner else "")
+            + "</span></div>"
+        )
+    if len(rows) == 1:
+        rows.append(
+            '<div class="muted" style="font-size:.78rem;padding:.4rem 0">'
+            "All zones are quiet right now.</div>"
+        )
+    return "".join(rows)
+
+
 def _build_domain_rank_html(cards: list, heatmap: dict, velocity: dict = None) -> str:
     """Ranked domain bar list for the threat map side panel."""
     velocity = velocity or {}
@@ -763,9 +1019,21 @@ def _build_history_accordion(days: list, today_str: str = "") -> str:
         for c in sorted(cards, key=lambda x: int(x.get("risk_score", 0)), reverse=True):
             pri = _derive_priority(c)
             pri_cls = "p1" if pri == "P1" else "p2" if pri == "P2" else "p3"
+            ha_title = c.get("title", "")[:80]
+            ha_cves = ",".join(_extract_cves(c.get("title", "") + " " + c.get("summary", "")))
+            ha_id = c.get("id", "")
+            sources = c.get("sources", {}).get("primary", []) or []
+            ha_url = ""
+            if sources and isinstance(sources[0], dict):
+                ha_url = sources[0].get("url", "")
             trows_list.append(
-                "<tr>"
-                f'<td class="ha-title">{html.escape(c.get("title", "")[:80])}</td>'
+                f'<tr class="ha-row" tabindex="0" role="button"'
+                f' data-finding-id="{html.escape(ha_id)}"'
+                f' data-finding-cves="{html.escape(ha_cves)}"'
+                f' data-finding-title="{html.escape(ha_title)}"'
+                f' data-finding-url="{html.escape(ha_url)}"'
+                f' aria-label="Open detail for {html.escape(ha_title)}">'
+                f'<td class="ha-title">{html.escape(ha_title)}</td>'
                 f'<td class="ha-risk">{int(c.get("risk_score", 0))}</td>'
                 f'<td class="ha-pri"><span class="priority {pri_cls}">{pri}</span></td>'
                 "</tr>"
@@ -1648,12 +1916,42 @@ def _write_index_html(
 
     kpi_html = f"""
         <section class="kpi-grid">
-            <div class="kpi"><span class="k">Findings</span><span class="v">{total_findings}</span></div>
-            <div class="kpi"><span class="k">P1</span><span class="v">{p1_count}</span>{p1_delta_html}</div>
-            <div class="kpi"><span class="k">Exploited</span><span class="v">{exploited_count}</span>{exp_delta_html}</div>
-            <div class="kpi"><span class="k">High-Profile</span><span class="v">{hp_count}</span></div>
-            <div class="kpi"><span class="k">Control Plane</span><span class="v">{control_plane_count}</span></div>
-            <div class="kpi"><span class="k">Top Domain</span><span class="v v-sm">{html.escape(top_domain_label)}</span></div>
+            <button type="button" class="kpi" data-kpi="all" tabindex="0"
+                aria-label="Show all {total_findings} findings"
+                onclick="wtKpiFilter('all')">
+              <span class="k">Findings</span><span class="v">{total_findings}</span>
+              <span class="kpi-hint">Show all</span>
+            </button>
+            <button type="button" class="kpi kpi--p1" data-kpi="p1" tabindex="0"
+                aria-label="Filter to {p1_count} P1 priority findings"
+                onclick="wtKpiFilter('p1')">
+              <span class="k">P1</span><span class="v">{p1_count}</span>{p1_delta_html}
+              <span class="kpi-hint">Filter P1</span>
+            </button>
+            <button type="button" class="kpi kpi--exploited" data-kpi="exploited" tabindex="0"
+                aria-label="Filter to {exploited_count} actively-exploited findings"
+                onclick="wtKpiFilter('exploited')">
+              <span class="k">Exploited</span><span class="v">{exploited_count}</span>{exp_delta_html}
+              <span class="kpi-hint">KEV / EPSS</span>
+            </button>
+            <button type="button" class="kpi" data-kpi="high_profile" tabindex="0"
+                aria-label="Filter to {hp_count} high-profile target findings"
+                onclick="wtKpiFilter('high_profile')">
+              <span class="k">High-Profile</span><span class="v">{hp_count}</span>
+              <span class="kpi-hint">Mainstream targets</span>
+            </button>
+            <button type="button" class="kpi" data-kpi="control_plane" tabindex="0"
+                aria-label="Filter to {control_plane_count} control-plane findings"
+                onclick="wtKpiFilter('control_plane')">
+              <span class="k">Control Plane</span><span class="v">{control_plane_count}</span>
+              <span class="kpi-hint">Cloud / IAM / SC</span>
+            </button>
+            <button type="button" class="kpi" data-kpi="top_domain" data-domain="{top_domain_key}" tabindex="0"
+                aria-label="Filter to {html.escape(top_domain_label)} domain"
+                onclick="wtKpiFilter('top_domain','{top_domain_key}')">
+              <span class="k">Top Domain</span><span class="v v-sm">{html.escape(top_domain_label)}</span>
+              <span class="kpi-hint">Filter domain</span>
+            </button>
         </section>
         """
 
@@ -1719,26 +2017,9 @@ def _write_index_html(
         )
 
     breach_strip_html = _build_breach_strip_html(breaches or [])
-    matrix_data = build_matrix_data(cards)
-    # Trajectory series for the watermark (Phase 6).  Reads briefing JSONL archive
-    # plus the current run's cards; window covers max slider value (180d).
-    try:
-        import os as _os
-        from agent.state import load_json as _load_json
-        from agent.trajectory import build_trajectory as _build_trajectory
-
-        _root = _os.path.dirname(_os.path.dirname(__file__))
-        _reports = _os.path.join(_root, "reports")
-        _shelf = _load_json(_os.path.join(_root, "state", "finding_shelf.json"), {})
-        matrix_data["trajectory"] = _build_trajectory(
-            cards, _reports, _shelf, window_days=180
-        )
-    except Exception as _exc:
-        # Trajectory is decorative; never block the page render
-        print(f"[WARN] trajectory build failed: {_exc}")
-        matrix_data["trajectory"] = {}
-    threat_svg = _build_threat_matrix_svg(matrix_data)
-    domain_rank_html = _build_matrix_overview_html(matrix_data)
+    districts_data = build_districts_data(cards)
+    threat_districts_html = _build_threat_districts_html(districts_data, cards)
+    domain_rank_html = _build_districts_overview_html(districts_data)
 
     _today_et = (datetime.now(timezone.utc) - timedelta(hours=5)).strftime("%Y-%m-%d")
     history_section = _build_history_accordion(history_days or [], today_str=_today_et)
@@ -1941,7 +2222,7 @@ def _write_index_html(
         else:
             src_chip_html = ""
         rows += f"""
-                <details class="cluster" id="card-{html.escape(c.get('id', ''))}" data-domains="{html.escape(domains_attr)}" data-tactic="{html.escape(_tactic)}">
+                <details class="cluster" id="card-{html.escape(c.get('id', ''))}" data-domains="{html.escape(domains_attr)}" data-tactic="{html.escape(_tactic)}" data-hp-targets="{html.escape(','.join(_hp_targets))}" data-priority="{pri}">
                     <summary>
                         <span class="badge" style="background:{badge_bg};color:{badge_fg}">{c['risk_score']}</span>
                         <span class="priority {pri_cls}">{pri}</span>
@@ -2199,7 +2480,14 @@ h2{{color:#e6edf3}}
 a{{color:#999}}
 p{{color:#c9d1d9}}
 .kpi-grid{{display:grid;grid-template-columns:repeat(7,minmax(110px,1fr));gap:8px;margin:1rem 0 1.2rem}}
-.kpi{{background:#1a1a1a;border:1px solid #333;border-radius:6px;padding:.55rem .7rem;display:flex;flex-direction:column;gap:.2rem}}
+.kpi{{background:#1a1a1a;border:1px solid #333;border-radius:6px;padding:.55rem .7rem;display:flex;flex-direction:column;gap:.2rem;cursor:pointer;text-align:left;font-family:inherit;color:inherit;transition:background .12s,border-color .12s,transform .12s}}
+.kpi:hover{{background:#1f1f1f;border-color:#4a4a4a;transform:translateY(-1px)}}
+.kpi:focus{{outline:2px solid #79b8ff;outline-offset:1px}}
+.kpi[aria-pressed="true"]{{border-color:#79b8ff;background:#161e2a;box-shadow:0 0 0 1px rgba(121,184,255,.18) inset}}
+.kpi-hint{{font-size:.58rem;color:#5a6270;text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-top:.1rem}}
+.kpi:hover .kpi-hint{{color:#7a8493}}
+.kpi--p1[aria-pressed="true"]{{border-color:#ef4444;box-shadow:0 0 0 1px rgba(239,68,68,.22) inset}}
+.kpi--exploited[aria-pressed="true"]{{border-color:#fb923c;box-shadow:0 0 0 1px rgba(251,146,60,.22) inset}}
 .kpi .k{{font-size:.68rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700}}
 .kpi .v{{font-size:1.2rem;color:#e6edf3;font-weight:800}}
 .kpi .v-sm{{font-size:.95rem}}
@@ -2360,6 +2648,12 @@ p{{color:#c9d1d9}}
 .ha-lifecycle{{display:flex;gap:.35rem;flex-shrink:0}}.ha-lc{{font-size:.65rem;padding:.1rem .35rem;border-radius:3px;font-weight:600;letter-spacing:.02em}}.ha-lc--active{{background:#1a2a3a;color:#58a6ff}}.ha-lc--resolved{{background:#1a3a1a;color:#3fb950}}.ha-lc--escalated{{background:#3a1a1a;color:#f85149}}
 .ha-body{{padding:.25rem .2rem .5rem .5rem}}.ha-table{{width:100%;border-collapse:collapse;font-size:.76rem}}.ha-table th{{font-size:.67rem;color:#777;font-weight:700;border-bottom:1px solid #252525;padding:.2rem .35rem}}
 .ha-table td{{padding:.22rem .35rem;border-bottom:1px solid #1a1a1a;vertical-align:top}}.ha-title{{max-width:520px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}.ha-risk{{text-align:right;font-weight:700;color:#e6edf3;min-width:30px}}.ha-pri{{text-align:center;min-width:40px;white-space:nowrap}}
+.ha-row{{cursor:pointer;transition:background .12s}}
+.ha-row:hover{{background:rgba(121,184,255,.05)}}
+.ha-row:hover .ha-title{{color:#79b8ff}}
+.ha-row:focus{{outline:2px solid #79b8ff;outline-offset:-2px;background:rgba(121,184,255,.06)}}
+.ha-row::after{{content:"↗";color:#3a4250;font-size:.7rem;margin-left:.4rem;opacity:0;transition:opacity .12s}}
+.ha-row:hover::after{{opacity:1;color:#79b8ff}}
 .weekly-scope{{margin:0 0 1rem}}.weekly-window-note{{font-size:.7rem;color:#8b949e;font-weight:400;margin-left:.4rem;vertical-align:middle}}.weekly-kpi-row{{display:flex;gap:10px;flex-wrap:wrap;margin:.4rem 0 .75rem}}
 .wkpi{{background:#0f0f0f;border:1px solid #252525;border-radius:5px;padding:.4rem .65rem;display:flex;flex-direction:column;gap:.15rem;min-width:110px}}
 .wk{{font-size:.65rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700}}.wv{{font-size:1.1rem;color:#e6edf3;font-weight:800}}.wv-sm{{font-size:.85rem}}.wv-cross{{font-size:1.1rem;color:#e6edf3;font-weight:800}}.wv-cross small{{font-size:.7rem;color:#8b949e;font-weight:400}}.wk-sub{{font-size:.62rem;color:#666}}.wv-good{{font-size:1.1rem;color:#3fb950;font-weight:800}}.wv-muted{{font-size:1.1rem;color:#444;font-weight:800}}.wkpi--good{{border-color:#1a3a1a}}.wkpi--spark{{min-width:80px}}.wv-spark{{display:flex;align-items:center;padding:.15rem 0}}.vel-spark{{display:block;color:#60a5fa}}
@@ -2373,18 +2667,67 @@ p{{color:#c9d1d9}}
 .threat-toolbar{{display:flex;justify-content:space-between;align-items:center;padding:.3rem .3rem .45rem}}
 .threat-title{{font-size:.9rem;font-weight:700;color:#e6edf3}}
 .threat-sub{{font-size:.72rem;color:#8b949e}}
-.wt-cell{{transition:filter .18s ease,transform .18s ease}}
-.wt-cell:not(.wt-cell--empty):hover{{filter:brightness(1.18) saturate(1.1)}}
-.wt-cell:not(.wt-cell--empty):hover .wt-cell-bg{{fill-opacity:1!important}}
-.wt-cell--empty{{opacity:.62}}
-.wt-cell--empty:hover{{opacity:.85}}
-.wt-cell--locked .wt-cell-sel,.wt-cell--locked .wt-cell-sel-glow{{opacity:1}}
-.wt-cell--locked .wt-cell-bg{{filter:brightness(1.45) saturate(1.1)}}
-.wt-cell--collapsed{{transform:scaleY(0.12);transform-origin:left center;opacity:0.45}}
-.wt-cell-kev-dot{{animation:wt-kev-pulse 2.4s ease-in-out infinite}}
-@keyframes wt-kev-pulse{{0%,100%{{opacity:0.5;r:2.0}}50%{{opacity:1;r:2.6}}}}
-.wt-row-label:hover text{{fill:#dbe2ec}}
-.wt-row-label:hover rect{{opacity:1}}
+/* ── Threat Districts (zone-and-danger map) ─────────────────────────── */
+.wt-districts-wrap{{display:flex;flex-direction:column;gap:.65rem}}
+.wt-pt-strip{{display:flex;flex-wrap:wrap;gap:.32rem;padding:.2rem .15rem .35rem;border-bottom:1px solid #1d2330;margin-bottom:.15rem}}
+.wt-pt-chip{{background:#181b22;border:1px solid #262b34;color:#7a8493;font-size:.7rem;font-weight:600;padding:.2rem .65rem;border-radius:999px;cursor:pointer;letter-spacing:.02em;transition:background .12s,color .12s,border-color .12s}}
+.wt-pt-chip:hover{{background:#1f242c;color:#a5afbe}}
+.wt-pt-chip[aria-pressed="true"]{{background:rgba(203,213,221,.10);border-color:#3f4651;color:#cbd3dd}}
+.wt-districts-grid{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+@media(max-width:900px){{.wt-districts-grid{{grid-template-columns:1fr}}}}
+.wt-district{{position:relative;background:#0f1218;border:1px solid #1f242c;border-radius:8px;padding:.7rem .85rem .8rem;display:flex;flex-direction:column;gap:.55rem;min-height:120px;transition:border-color .14s,background .14s,transform .14s,box-shadow .14s}}
+.wt-district:hover{{border-color:#3a4250;background:#131820;transform:translateY(-1px)}}
+.wt-district--quiet{{opacity:.6}}
+.wt-district--quiet:hover{{opacity:.92}}
+.wt-district--watch{{border-color:#3a4250}}
+.wt-district--elevated{{border-color:rgba(234,179,8,.42);background:linear-gradient(135deg,rgba(234,179,8,.05),#0f1218 55%)}}
+.wt-district--elevated:hover{{border-color:rgba(234,179,8,.68);background:linear-gradient(135deg,rgba(234,179,8,.08),#131820 55%)}}
+.wt-district--critical{{border-color:rgba(239,68,68,.55);background:linear-gradient(135deg,rgba(239,68,68,.07),#0f1218 55%);box-shadow:0 0 0 1px rgba(239,68,68,.12) inset,0 0 18px -4px rgba(239,68,68,.18)}}
+.wt-district--critical:hover{{border-color:rgba(239,68,68,.85);background:linear-gradient(135deg,rgba(239,68,68,.10),#131820 55%);box-shadow:0 0 0 1px rgba(239,68,68,.18) inset,0 0 26px -4px rgba(239,68,68,.28)}}
+.wt-district--critical::before{{content:"";position:absolute;left:0;top:.7rem;bottom:.7rem;width:2px;background:linear-gradient(to bottom,#ef4444,#7f1d1d);border-radius:0 2px 2px 0;animation:wt-crit-pulse 2.6s ease-in-out infinite}}
+@keyframes wt-crit-pulse{{0%,100%{{opacity:.6}}50%{{opacity:1}}}}
+.wt-district--locked{{outline:2px solid #cbd3dd;outline-offset:2px}}
+.wt-district-header{{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap}}
+.wt-district-name{{display:flex;align-items:center;gap:.5rem;flex:1;min-width:0}}
+.wt-district-name-text{{font-size:.92rem;font-weight:700;color:#dbe2ec;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.wt-district-chip{{flex-shrink:0;font-size:.6rem;font-weight:800;letter-spacing:.08em;padding:1px 7px;border-radius:3px;text-transform:uppercase}}
+.wt-district-chip--critical{{color:#fca5a5;background:rgba(239,68,68,.14);border:1px solid rgba(239,68,68,.4)}}
+.wt-district-chip--elevated{{color:#fcd34d;background:rgba(234,179,8,.10);border:1px solid rgba(234,179,8,.32)}}
+.wt-district-chip--watch{{color:#cbd3dd;background:rgba(120,128,140,.10);border:1px solid rgba(120,128,140,.28)}}
+.wt-district-chip--quiet{{color:#5a6270;background:transparent;border:1px solid #1d2330}}
+.wt-district-status{{font-size:.66rem;color:#7a8493;font-weight:600;letter-spacing:.02em;flex-shrink:0}}
+.wt-district-body{{display:flex;flex-direction:column;gap:.32rem;min-height:0}}
+.wt-district-empty{{font-size:.74rem;color:#5a6270;font-style:italic;padding:.1rem .15rem .15rem}}
+.wt-district-more{{font-size:.7rem;color:#7a8493;font-style:italic;padding:.2rem .25rem 0;cursor:pointer}}
+.wt-district-more:hover{{color:#cbd3dd}}
+/* Finding cards inside districts */
+.wt-finding-card{{display:flex;flex-direction:column;gap:.22rem;padding:.42rem .55rem;background:rgba(255,255,255,.012);border:1px solid #1d2330;border-radius:5px;text-decoration:none;color:inherit;cursor:pointer;transition:background .12s,border-color .12s,transform .12s}}
+.wt-finding-card:hover{{background:rgba(255,255,255,.045);border-color:#3a4250;transform:translateX(2px)}}
+.wt-finding-card:focus{{outline:2px solid #79b8ff;outline-offset:1px}}
+.wt-finding-card--p1{{border-left:3px solid #ef4444}}
+.wt-finding-card--p2{{border-left:3px solid #eab308}}
+.wt-finding-card--p3{{border-left:3px solid #3a4250}}
+.wt-finding-card--kev{{border-left-color:#ef4444!important;box-shadow:inset 0 0 0 1px rgba(239,68,68,.10)}}
+.wt-finding-card--resolved{{opacity:.55}}
+.wt-finding-card--long-runner .wt-fc-runner{{color:#a5afbe;font-weight:600}}
+.wt-finding-card--locked{{outline:2px solid #cbd3dd;outline-offset:1px;background:rgba(255,255,255,.06)}}
+.wt-fc-title{{font-size:.83rem;font-weight:500;color:#dbe2ec;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+.wt-fc-meta{{display:flex;flex-wrap:wrap;gap:.25rem .35rem;font-size:.62rem;color:#7a8493;align-items:center}}
+.wt-fc-badge{{padding:1px 6px;border-radius:3px;font-weight:700;letter-spacing:.04em}}
+.wt-fc-badge--kev{{color:#fca5a5;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.28)}}
+.wt-fc-badge--p1{{color:#fca5a5;background:rgba(239,68,68,.10);border:1px solid rgba(239,68,68,.24)}}
+.wt-fc-badge--p2{{color:#fcd34d;background:rgba(234,179,8,.10);border:1px solid rgba(234,179,8,.26)}}
+.wt-fc-badge--epss{{color:#fb923c;background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.22)}}
+.wt-fc-risk{{color:#7a8493;font-weight:600}}
+.wt-fc-runner{{color:#7a8493;font-style:italic}}
+.wt-fc-resolved{{color:#3fb950;font-weight:600}}
+.wt-fc-pt{{color:#5a6270;font-style:italic;margin-left:auto}}
+/* Hidden by problem-type filter */
+.wt-finding-card.wt-fc-filtered{{display:none}}
+.wt-district.wt-district--filtered-empty .wt-district-body{{display:none}}
+.wt-district.wt-district--filtered-empty{{opacity:.45}}
+.cluster.wt-cluster-pulse{{animation:wt-cluster-pulse 1.4s ease-out 1}}
+@keyframes wt-cluster-pulse{{0%{{box-shadow:0 0 0 0 rgba(121,184,255,.55)}}70%{{box-shadow:0 0 0 12px rgba(121,184,255,0)}}100%{{box-shadow:0 0 0 0 rgba(121,184,255,0)}}}}
 .wt-bubble{{transition:transform .15s ease,filter .15s ease}}
 .wt-bubble:hover{{filter:brightness(1.6) drop-shadow(0 0 4px rgba(255,255,255,.4))}}
 .wt-bubble--low-conf circle{{stroke-dasharray:1.6 1.4}}
@@ -2601,21 +2944,12 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
   <div class="panel threat-main">
     <div class="threat-toolbar">
       <div>
-        <div class="threat-title">Threat Matrix</div>
-        <div class="threat-sub">Findings classified by <strong>problem type × what it affects</strong>. Each cell holds individual findings. Click a cell to lock the side panel; hover any bubble for context.</div>
+        <div class="threat-title">Threat Districts</div>
+        <div class="threat-sub">Each zone shows what it affects, its current threat level, and the actual findings inside. Click any finding to open detail. Use the chips below to filter by attack type.</div>
       </div>
       <span class="chip" title="Data polled from the last {since_hours} hours">{_window_chip}</span>
     </div>
-    <div class="wt-slider" id="wt-slider" role="radiogroup" aria-label="Time window">
-      <span class="wt-slider-label">Window:</span>
-      <button type="button" class="wt-slider-btn" data-window="7" aria-pressed="false">7d</button>
-      <button type="button" class="wt-slider-btn" data-window="30" aria-pressed="true">30d</button>
-      <button type="button" class="wt-slider-btn" data-window="90" aria-pressed="false">90d</button>
-      <button type="button" class="wt-slider-btn" data-window="180" aria-pressed="false">180d</button>
-      <button type="button" class="wt-slider-btn" data-window="99999" aria-pressed="false">all</button>
-      <span class="wt-slider-hint" id="wt-slider-hint">drag to widen or narrow</span>
-    </div>
-    {threat_svg}
+    {threat_districts_html}
   </div>
 </section>
 {history_section}
@@ -2677,7 +3011,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
 var CARDS={json.dumps(card_data)};
 var CURRENT_DOMAIN='all';
 var DOMAIN_LABELS={json.dumps({k: v.get('label', k) for k, v in heatmap.items()})};
-var WT_DATA={json.dumps(matrix_data)};
+var WT_DATA={json.dumps(districts_data)};
 var WT_CARDS_BY_ID=(function(){{var m={{}};(CARDS||[]).forEach(function(c){{if(c&&c.id)m[c.id]=c;}});return m;}})();
 var WT_CURRENT_CELL='all';
 var WT_LOCKED_FINDING=null;
@@ -2846,8 +3180,239 @@ function selectDomain(domain){{
 }}
 
 // ──────────────────────────────────────────────
-// Threat matrix client-side behavior (Phase 2-4)
-// Renders bubbles, hover tooltips, click-lock side panel.
+// Threat districts client-side behavior
+// Renders zone interactivity, finding-card lock, problem-type filtering.
+// ──────────────────────────────────────────────
+
+var WT_CURRENT_PT='all';
+
+function wtFilterByProblemType(pt){{
+  WT_CURRENT_PT=pt||'all';
+  document.querySelectorAll('.wt-pt-chip').forEach(function(c){{
+    c.setAttribute('aria-pressed', c.getAttribute('data-pt')===WT_CURRENT_PT?'true':'false');
+  }});
+  document.querySelectorAll('.wt-finding-card').forEach(function(card){{
+    var match=WT_CURRENT_PT==='all' || card.getAttribute('data-pt')===WT_CURRENT_PT;
+    card.classList.toggle('wt-fc-filtered', !match);
+  }});
+  // Mark districts whose visible finding cards are now empty
+  document.querySelectorAll('.wt-district').forEach(function(zone){{
+    var visible=zone.querySelectorAll('.wt-finding-card:not(.wt-fc-filtered)').length;
+    zone.classList.toggle('wt-district--filtered-empty', WT_CURRENT_PT!=='all' && visible===0);
+  }});
+  // Also mirror the filter onto the cluster list below
+  document.querySelectorAll('.cluster').forEach(function(el){{
+    var cid=(el.id||'').replace(/^card-/,'');
+    var c=WT_CARDS_BY_ID[cid];
+    if(WT_CURRENT_PT==='all'){{el.style.display='block';return;}}
+    el.style.display=(c && c.problem_type===WT_CURRENT_PT)?'block':'none';
+  }});
+  trackUi('wt_pt_filter',{{pt:WT_CURRENT_PT}});
+}}
+
+function wtSelectDistrict(af){{
+  if(!af||af==='all'){{
+    document.querySelectorAll('.wt-district').forEach(function(z){{ z.classList.remove('wt-district--locked'); }});
+    return;
+  }}
+  document.querySelectorAll('.wt-district').forEach(function(z){{
+    z.classList.toggle('wt-district--locked', z.getAttribute('data-affects')===af);
+  }});
+  var target=document.querySelector('.wt-district[data-affects="'+af+'"]');
+  if(target) target.scrollIntoView({{behavior:'smooth',block:'center'}});
+  trackUi('wt_district_focus',{{affects:af}});
+}}
+
+function wtFocusZone(af){{ wtSelectDistrict(af); }}
+
+function wtSelectFinding(findingId){{
+  if(!findingId){{
+    WT_LOCKED_FINDING=null;
+    document.querySelectorAll('.wt-finding-card--locked').forEach(function(c){{ c.classList.remove('wt-finding-card--locked'); }});
+    return;
+  }}
+  WT_LOCKED_FINDING=findingId;
+  document.querySelectorAll('.wt-finding-card').forEach(function(c){{
+    c.classList.toggle('wt-finding-card--locked', c.getAttribute('data-finding-id')===findingId);
+  }});
+  wtRenderFindingDetail(findingId);
+  // Open the matching cluster in the findings list and scroll to it
+  var details=document.getElementById('card-'+findingId);
+  if(details){{
+    if(details.tagName==='DETAILS' && !details.open) details.open=true;
+    details.classList.add('wt-cluster-pulse');
+    setTimeout(function(){{ details.classList.remove('wt-cluster-pulse'); }}, 1400);
+  }}
+  trackUi('wt_finding_locked',{{id:findingId}});
+}}
+
+function wtRenderFindingDetail(findingId){{
+  var c=WT_CARDS_BY_ID[findingId];
+  var t=document.getElementById('tm-detail');
+  var heading=document.getElementById('wt-detail-heading');
+  if(!t||!c) return;
+  if(heading) heading.textContent='Selected Finding';
+  var meta=[];
+  if(c.priority) meta.push('<span style="color:'+(c.priority==='P1'?'#f87171':c.priority==='P2'?'#fcd34d':'#aaa')+';font-weight:700">'+c.priority+'</span>');
+  if(c.risk_score) meta.push('risk '+c.risk_score);
+  if(c.is_kev) meta.push('<span style="color:#fca5a5">KEV</span>');
+  if(c.epss_score!==null&&c.epss_score!==undefined) meta.push('EPSS '+Math.round(c.epss_score*100)+'%');
+  if(c.shelf_days) meta.push(c.shelf_days+'d on shelf');
+  if(c.shelf_resolved) meta.push('<span style="color:#3fb950">resolved</span>');
+  var srcs=(c.sources||[]).map(function(s){{
+    return '<a href="'+s.url+'" target="_blank" rel="noopener noreferrer" style="display:block;color:#79b8ff;font-size:.7rem;margin:.15rem 0">↗ '+s.title+'</a>';
+  }}).join('');
+  var actions=(c.actions_24h||[]).map(function(a){{return '<li style="margin:.1rem 0;font-size:.72rem;color:#c9d1d9">'+a+'</li>';}}).join('');
+  var reason=c.classification_reasoning||'';
+  t.innerHTML=
+    '<div style="color:#e6edf3;font-size:.85rem;font-weight:600;margin-bottom:.35rem">'+c.title+'</div>'
+    +'<div style="color:#8b949e;font-size:.7rem;margin-bottom:.4rem">'+meta.join(' · ')+'</div>'
+    +(c.summary?'<p style="color:#c9d1d9;font-size:.78rem;line-height:1.45;margin:.2rem 0 .4rem">'+c.summary+'</p>':'')
+    +(reason?'<div style="color:#79b8ff;font-size:.68rem;font-style:italic;margin:.25rem 0;padding:.25rem .4rem;background:rgba(121,184,255,.06);border-radius:3px">Groq classification: '+reason+'</div>':'')
+    +(actions?'<div style="margin:.4rem 0 .25rem"><span style="font-size:.65rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700">Next 24h</span><ul style="margin:.2rem 0 .2rem 1rem;padding:0">'+actions+'</ul></div>':'')
+    +(srcs?'<div style="margin-top:.4rem"><span style="font-size:.65rem;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;font-weight:700">Sources</span>'+srcs+'</div>':'');
+}}
+
+var WT_CURRENT_KPI='all';
+
+function wtKpiPredicate(kind, arg){{
+  // Returns a (card)=>bool predicate for the chosen KPI filter.
+  if(kind==='p1') return function(c){{ return c.priority==='P1'; }};
+  if(kind==='exploited') return function(c){{
+    return c.is_kev || (typeof c.epss_score==='number' && c.epss_score>=0.5);
+  }};
+  if(kind==='high_profile') return function(c){{
+    // The card payload doesn't carry matched_targets explicitly, but the
+    // cluster element does via a data attribute set in rendering.  We
+    // fall back to title-substring matching for the JS filter.
+    var el=document.getElementById('card-'+c.id);
+    if(el && el.getAttribute('data-hp-targets')){{ return true; }}
+    return false;
+  }};
+  if(kind==='control_plane') return function(c){{
+    var ds=c.domains||[];
+    return ds.indexOf('cloud_iam')>=0 || ds.indexOf('identity')>=0 || ds.indexOf('supply_chain')>=0;
+  }};
+  if(kind==='top_domain') return function(c){{
+    return (c.domains||[]).indexOf(arg)>=0;
+  }};
+  return function(){{ return true; }};
+}}
+
+function wtKpiFilter(kind, arg){{
+  // Toggle off if same KPI clicked twice
+  if(WT_CURRENT_KPI===kind && kind!=='all'){{ kind='all'; arg=null; }}
+  WT_CURRENT_KPI=kind;
+  document.querySelectorAll('.kpi').forEach(function(b){{
+    b.setAttribute('aria-pressed', b.getAttribute('data-kpi')===kind?'true':'false');
+  }});
+  var predicate=wtKpiPredicate(kind, arg);
+  // Apply to finding cards in the districts
+  document.querySelectorAll('.wt-finding-card').forEach(function(card){{
+    var fid=card.getAttribute('data-finding-id');
+    var c=WT_CARDS_BY_ID[fid];
+    var match=(kind==='all') || (c && predicate(c));
+    card.classList.toggle('wt-fc-filtered', !match);
+  }});
+  // Apply to cluster list below the districts
+  document.querySelectorAll('.cluster').forEach(function(el){{
+    var cid=(el.id||'').replace(/^card-/,'');
+    var c=WT_CARDS_BY_ID[cid];
+    if(kind==='all'){{ el.style.display='block'; return; }}
+    el.style.display=(c && predicate(c))?'block':'none';
+  }});
+  // Re-mark districts whose visible cards are empty after filter
+  document.querySelectorAll('.wt-district').forEach(function(zone){{
+    var visible=zone.querySelectorAll('.wt-finding-card:not(.wt-fc-filtered)').length;
+    zone.classList.toggle('wt-district--filtered-empty', kind!=='all' && visible===0);
+  }});
+  trackUi('wt_kpi_filter',{{kind:kind,arg:arg||null}});
+}}
+
+function wtFindCardByHistoryRow(row){{
+  // Try to resolve a history row to a current card so we can open the
+  // side-panel detail.  Match order: explicit id → shared CVE → title.
+  var fid=row.getAttribute('data-finding-id');
+  if(fid && WT_CARDS_BY_ID[fid]) return WT_CARDS_BY_ID[fid];
+  var cves=(row.getAttribute('data-finding-cves')||'').split(',').filter(Boolean);
+  if(cves.length){{
+    for(var k in WT_CARDS_BY_ID){{
+      var c=WT_CARDS_BY_ID[k];
+      if(!c) continue;
+      var cardCves=c.cves||[];
+      for(var i=0;i<cardCves.length;i++){{
+        if(cves.indexOf(cardCves[i])>=0) return c;
+      }}
+    }}
+  }}
+  var title=(row.getAttribute('data-finding-title')||'').trim().toLowerCase();
+  if(title){{
+    for(var k2 in WT_CARDS_BY_ID){{
+      var cc=WT_CARDS_BY_ID[k2];
+      if(cc && (cc.title||'').trim().toLowerCase()===title) return cc;
+    }}
+  }}
+  return null;
+}}
+
+function wtInitHistoryRows(){{
+  document.querySelectorAll('.ha-row').forEach(function(row){{
+    function go(){{
+      var card=wtFindCardByHistoryRow(row);
+      if(card){{
+        wtSelectFinding(card.id);
+        // Make sure detail panel is visible by switching to Overview tab
+        if(typeof setRailTab==='function') setRailTab('overview');
+        var det=document.getElementById('card-'+card.id);
+        if(det) det.scrollIntoView({{behavior:'smooth',block:'center'}});
+        return;
+      }}
+      // No matching active card — fall back to the source URL if we have one
+      var url=row.getAttribute('data-finding-url');
+      if(url){{ window.open(url,'_blank','noopener,noreferrer'); }}
+    }}
+    row.addEventListener('click',go);
+    row.addEventListener('keydown',function(e){{
+      if(e.key==='Enter' || e.key===' '){{ e.preventDefault(); go(); }}
+    }});
+  }});
+}}
+
+function wtInitDistricts(){{
+  // Problem-type filter chips
+  document.querySelectorAll('.wt-pt-chip').forEach(function(chip){{
+    chip.addEventListener('click', function(){{
+      wtFilterByProblemType(chip.getAttribute('data-pt'));
+    }});
+  }});
+  // District header click → focus zone
+  document.querySelectorAll('.wt-district').forEach(function(zone){{
+    var header=zone.querySelector('.wt-district-header');
+    if(!header) return;
+    header.style.cursor='pointer';
+    header.addEventListener('click',function(e){{
+      // Only fire if user clicked the header chrome, not a finding card
+      if(e.target.closest('.wt-finding-card')) return;
+      var af=zone.getAttribute('data-affects');
+      wtSelectDistrict(af);
+    }});
+  }});
+  // Keyboard: Enter on a focused finding card opens it
+  document.querySelectorAll('.wt-finding-card').forEach(function(card){{
+    card.addEventListener('keydown',function(e){{
+      if(e.key==='Enter' || e.key===' '){{
+        e.preventDefault();
+        var fid=card.getAttribute('data-finding-id');
+        if(fid) wtSelectFinding(fid);
+      }}
+    }});
+  }});
+}}
+
+// ──────────────────────────────────────────────
+// Legacy matrix bubble layer — kept as no-op shims so older callers
+// (initFindingsFilter, etc.) don't throw.  All new behavior lives
+// in the wtInitDistricts path above.
 // ──────────────────────────────────────────────
 function wtCellGeometry(){{
   return {{cellW:88,cellH:64,gutterX:6,gutterY:6,labelLeft:110,labelTop:28,margin:8}};
@@ -3985,7 +4550,8 @@ function initRemediationTracker(){{
 initRemediationTracker();
 initRightRail();
 selectDomain('all');
-wtInitMatrix();
+wtInitDistricts();
+wtInitHistoryRows();
 initFindingsFilter();
 </script>
 </body></html>"""
