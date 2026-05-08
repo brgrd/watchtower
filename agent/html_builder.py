@@ -1798,6 +1798,51 @@ def _build_alerts_html(cards: list, delta: dict | None) -> str:
     return watch_section + _section("P1 / Attribution", p1_rows, len(p1_attr))
 
 
+_WT_LOGO_BODY_SVG = """\
+<defs>
+<linearGradient id="wt-logo-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+<stop offset="0%" stop-color="#e6edf3"/>
+<stop offset="100%" stop-color="#a5afbe"/>
+</linearGradient>
+</defs>
+<!--
+  Tower silhouette (one path, clockwise from top-left of leftmost merlon):
+    body x = 8 -> 32 (width 24)
+    plinth x = 5 -> 35 (width 30, slightly wider foot)
+    crenellated top: 5 merlons (teeth) of width 3, 4 embrasures (gaps) of width 2.25
+    centre merlon midpoint = x=20  → satellite mast lines up exactly
+-->
+<path fill="url(#wt-logo-grad)" d="M 8 14 L 8 10 L 11 10 L 11 14 L 13.25 14 L 13.25 10 L 16.25 10 L 16.25 14 L 18.5 14 L 18.5 10 L 21.5 10 L 21.5 14 L 23.75 14 L 23.75 10 L 26.75 10 L 26.75 14 L 29 14 L 29 10 L 32 10 L 32 14 L 32 33 L 35 33 L 35 36 L 5 36 L 5 33 L 8 33 L 8 14 Z"/>
+<!-- Antenna mast — rises from centre merlon (x=20) -->
+<line x1="20" y1="10" x2="20" y2="5.2" stroke="url(#wt-logo-grad)" stroke-width="1.5" stroke-linecap="round"/>
+<!-- Satellite head -->
+<circle cx="20" cy="3.8" r="1.85" fill="url(#wt-logo-grad)"/>
+<!-- Signal pings (animated, blue accent) -->
+<g fill="none" stroke="#79b8ff" stroke-width="1.4" stroke-linecap="round">
+<path class="wt-logo-ping" d="M 24.2 4.4 Q 26.7 4.4 26.7 6.9" opacity="0.8"/>
+<path class="wt-logo-ping wt-logo-ping-2" d="M 26.8 2.1 Q 30.2 2.1 30.2 6.9" opacity="0.45"/>
+</g>"""
+
+
+_WT_LOGO_SVG = (
+    '<svg class="wt-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"'
+    ' role="img" aria-label="Watchtower logo">'
+    "<title>Watchtower</title>" + _WT_LOGO_BODY_SVG + "</svg>"
+)
+
+
+def _write_favicon_svg(path: str) -> None:
+    """Emit a standalone favicon.svg next to index.html so browsers can
+    render it as the tab/bookmark icon at any zoom."""
+    favicon = (
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">'
+        + _WT_LOGO_BODY_SVG
+        + "</svg>"
+    )
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(favicon)
+
+
 def _build_breach_strip_html(breaches: list) -> str:
     """Phase 7 — breach strip rendered above the matrix.
 
@@ -2457,6 +2502,9 @@ def _write_index_html(
 <head>
 <meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">
 <title>Watchtower — InfraSec Briefing</title>
+<link rel=\"icon\" type=\"image/svg+xml\" href=\"favicon.svg\">
+<link rel=\"alternate icon\" type=\"image/svg+xml\" href=\"favicon.svg\">
+<meta name=\"theme-color\" content=\"#0f0f0f\">
 <style>
 :root{{--rail-width-expanded:360px;--rail-width-collapsed:64px;--rail-width:var(--rail-width-expanded);--rail-min-width:320px;--rail-max-width:480px;--rail-gap:8px;--page-gutter:16px}}
 *{{box-sizing:border-box}}
@@ -2940,33 +2988,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
         <header class="header-bar">
           <div class="header-content">
             <div class="wt-brand">
-              <svg class="wt-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Watchtower logo">
-                <title>Watchtower</title>
-                <defs>
-                  <linearGradient id="wt-logo-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#dbe2ec"/>
-                    <stop offset="100%" stop-color="#a5afbe"/>
-                  </linearGradient>
-                </defs>
-                <!-- Tower body with crenellated top -->
-                <path fill="url(#wt-logo-grad)"
-                      d="M 11 14 L 14 14 L 14 11 L 17 11 L 17 14 L 20 14 L 20 11 L 23 11 L 23 14 L 26 14 L 26 11 L 29 11 L 29 14 L 31 14 L 31 33 L 9 33 L 9 14 Z"/>
-                <!-- Plinth -->
-                <rect x="6" y="33" width="28" height="3" rx="0.6" fill="url(#wt-logo-grad)"/>
-                <!-- Door (negative) -->
-                <path d="M 17 33 L 17 26 Q 17 23 20 23 Q 23 23 23 26 L 23 33 Z" fill="#0f0f0f"/>
-                <!-- Window slit -->
-                <rect x="19.2" y="17" width="1.6" height="3.6" fill="#0f0f0f" rx="0.3"/>
-                <!-- Antenna mast -->
-                <line x1="20" y1="11" x2="20" y2="5.5" stroke="#dbe2ec" stroke-width="1.5" stroke-linecap="round"/>
-                <!-- Satellite head -->
-                <circle cx="20" cy="4" r="1.7" fill="#dbe2ec"/>
-                <!-- Signal pings (animated) -->
-                <g fill="none" stroke="#79b8ff" stroke-width="1.3" stroke-linecap="round">
-                  <path class="wt-logo-ping" d="M 24 4.5 Q 26.5 4.5 26.5 7" opacity="0.7"/>
-                  <path class="wt-logo-ping wt-logo-ping-2" d="M 26.5 2.5 Q 30 2.5 30 7" opacity="0.4"/>
-                </g>
-              </svg>
+              {_WT_LOGO_SVG}
               <div class="wt-brand-text">
                 <h1>Watchtower<span class="wt-brand-sub"> — Infrastructure Security Briefing</span></h1>
                 <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled: 2× daily">Next run —</span></p>
@@ -4601,3 +4623,7 @@ initFindingsFilter();
 
     with open(path, "w", encoding="utf-8") as f:
         f.write(page_html)
+    # Emit the favicon next to index.html so the <link rel="icon"> resolves
+    # whether the page is served from a domain root or a subdirectory.
+    import os as _os
+    _write_favicon_svg(_os.path.join(_os.path.dirname(path), "favicon.svg"))
