@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-05-07T22:11:55.752990+00:00
+generated_at: 2026-05-08T10:45:39.564528+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-6973 in Ivanti EPMM, CVE-2026-43575 in OpenClaw, and the exploitation of PAN-OS Captive Portal Zero-Day. Internet-facing firewalls and VPN appliances are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to patch Ivanti EPMM to prevent exploitation of CVE-2026-6973, although a patch is not currently available, and to monitor for any suspicious activity related to this vulnerability.
+The highest-risk items this period are CVE-2026-42047 in Inngest, CVE-2026-8097 in CodeAstro Online Classroom, and CVE-2026-8098 in code-projects Feedback System. Internet-facing systems, such as web servers and online classrooms, are most exposed due to the lack of patches for these vulnerabilities. The single most time-sensitive action is to monitor and isolate systems using Inngest, as no patch is currently available for CVE-2026-42047.
 
-## Ivanti EPMM RCE (risk: 100)
-[P1] Ivanti EPMM is vulnerable to remote code execution due to CVE-2026-6973, which is under active exploitation and grants admin-level access. No patch is currently available. Why now: Reported attribution (unverified): none, but exploitation is actively occurring in the wild. (confidence: 0.90)
+## Inngest Vulnerability (risk: 40)
+[P1] CVE-2026-42047 is a vulnerability in Inngest that can be exploited for event-driven and scheduled background function execution. No patch is currently available. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.80)
 
-- [Ivanti EPMM CVE-2026-6973 RCE Under Active Exploitation Grants Admin-Level Access](https://thehackernews.com/2026/05/ivanti-epmm-cve-2026-6973-rce-under.html)
+- [CVE-2026-42047](https://www.nvd.nist.gov/v1/nvd.html)
 
-## PAN-OS Captive Portal Zero-Day (risk: 100)
-[P1] The PAN-OS Captive Portal is vulnerable to a zero-day exploit, which could allow attackers to gain unauthorized access. No patch is currently available. Why now: The vulnerability is being actively exploited in the wild and has the potential for significant impact. (confidence: 0.90)
+## CodeAstro Online Classroom Vulnerability (risk: 40)
+[P2] CVE-2026-8097 is a vulnerability in CodeAstro Online Classroom that can be exploited for unauthorized access. No patch is currently available. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.70)
 
-- [Threat Brief: Exploitation of PAN-OS Captive Portal Zero-Day for Unauthenticated Remote Code Execution](https://unit42.paloaltonetworks.com/captive-portal-zero-day/)
+- [CVE-2026-8097](https://www.nvd.nist.gov/v1/nvd.html)
 
-## OpenClaw Auth Bypass (risk: 70)
-[P2] OpenClaw contains an authentication bypass vulnerability due to CVE-2026-43575, which could allow attackers to gain unauthorized access. No patch is currently available. Why now: The vulnerability is relatively new and has not been widely exploited yet, but it has the potential for significant impact. (confidence: 0.60)
+## code-projects Feedback System Vulnerability (risk: 40)
+[P2] CVE-2026-8098 is a vulnerability in code-projects Feedback System that can be exploited for unauthorized access. No patch is currently available. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.70)
 
-- [OpenClaw versions 2026.2.21 before 2026.4.10 contain an authentication bypass vulnerability](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cveId=CVE-2026-43575)
+- [CVE-2026-8098](https://www.nvd.nist.gov/v1/nvd.html)

@@ -1,34 +1,4 @@
 {
-  "cve:CVE-2025-59528": {
-    "first_seen": "2026-04-07",
-    "last_seen": "2026-04-07",
-    "run_count": 1,
-    "title": "Flowise AI Agent Builder"
-  },
-  "cve:CVE-2024-41110": {
-    "first_seen": "2026-04-07",
-    "last_seen": "2026-04-07",
-    "run_count": 1,
-    "title": "CVE-2026-34040"
-  },
-  "cve:CVE-2026-35208": {
-    "first_seen": "2026-04-07",
-    "last_seen": "2026-04-07",
-    "run_count": 1,
-    "title": "CVE-2026-35208"
-  },
-  "cve:CVE-2026-34972": {
-    "first_seen": "2026-04-07",
-    "last_seen": "2026-04-07",
-    "run_count": 1,
-    "title": "CVE-2026-34972"
-  },
-  "cve:CVE-2026-35396": {
-    "first_seen": "2026-04-07",
-    "last_seen": "2026-04-07",
-    "run_count": 1,
-    "title": "CVE-2026-35396"
-  },
   "cve:CVE-2026-1340": {
     "first_seen": "2026-04-08",
     "last_seen": "2026-04-09",
@@ -814,5 +784,23 @@
     "last_seen": "2026-05-07",
     "run_count": 1,
     "title": "OpenClaw Auth Bypass"
+  },
+  "cve:CVE-2026-42047": {
+    "first_seen": "2026-05-08",
+    "last_seen": "2026-05-08",
+    "run_count": 1,
+    "title": "Inngest Vulnerability"
+  },
+  "cve:CVE-2026-8097": {
+    "first_seen": "2026-05-08",
+    "last_seen": "2026-05-08",
+    "run_count": 1,
+    "title": "CodeAstro Online Classroom Vulnerability"
+  },
+  "cve:CVE-2026-8098": {
+    "first_seen": "2026-05-08",
+    "last_seen": "2026-05-08",
+    "run_count": 1,
+    "title": "code-projects Feedback System Vulnerability"
   }
 }
