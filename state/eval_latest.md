@@ -1,22 +1,22 @@
-# Watchtower Pipeline Eval — 2026-05-08T21:25:26Z
+# Watchtower Pipeline Eval — 2026-05-08T22:07:42Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 469 |
-| After dedup + CVE merge | 466 |
+| Items polled (raw) | 462 |
+| After dedup + CVE merge | 459 |
 | Sent to Groq | 30 |
 | Groq findings returned | 2 |
 | Passed quality gate | 2 |
 | Final cards rendered | 2 |
-| **Pipeline yield** | **2/469 (0.4%)** |
+| **Pipeline yield** | **2/462 (0.4%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
 - **Payload**: 9,846 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7611
+- **Rate limit remaining** — requests: 999, tokens: 7618
 
 ## Card Quality
 
@@ -31,7 +31,7 @@
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 47 chars (50% ≥ 60 chars, considered substantive)
+- **`why_now` avg length**: 37 chars (0% ≥ 60 chars, considered substantive)
 - **Recommended actions**: 4 total — 50% specific, 0% generic
 
 ### Persistence
@@ -52,7 +52,7 @@
 | Feed | Items |
 |------|------:|
 | `nvd` | 297 |
-| `bsi_germany` | 141 |
+| `bsi_germany` | 134 |
 | `bleepingcomputer` | 5 |
 | `thehackernews` | 5 |
 | `therecord` | 5 |
@@ -65,9 +65,9 @@
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
 | 2026-05-08 | 3 | 1 | 100% | 0% | 3 | 0 |
-| 2026-05-08 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-05-08 | 1 | 1 | 100% | 100% | 1 | 0 |
 | 2026-05-08 | 1 | 1 | 100% | 0% | 1 | 0 |
 | 2026-05-08 | 2 | 1 | 100% | 0% | 2 | 0 |
 | 2026-05-08 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-05-08 | 3 | 3 | 100% | 0% | 3 | 0 |
+| 2026-05-08 | 2 | 1 | 100% | 0% | 2 | 0 |
