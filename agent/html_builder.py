@@ -2475,6 +2475,14 @@ body.rail-collapsed .app-main{{padding-right:calc(var(--rail-width-collapsed) + 
 body.rail-collapsed .header-content{{padding-right:calc(var(--rail-width-collapsed) + var(--rail-gap))}}
 .header-bar h1{{margin:0;padding:0;border:none;font-size:1.35rem}}
 .header-bar p{{margin:.25rem 0 0;font-size:.82rem;color:#8b949e}}
+.wt-brand{{display:flex;align-items:center;gap:.85rem;min-width:0}}
+.wt-brand-text{{min-width:0;flex:1}}
+.wt-logo{{width:42px;height:42px;flex-shrink:0;display:block;filter:drop-shadow(0 1px 2px rgba(0,0,0,.5))}}
+.wt-brand-sub{{color:#8b949e;font-weight:500;font-size:.95rem}}
+.wt-logo-ping{{animation:wt-ping-fade 2.6s ease-in-out infinite;transform-origin:20px 4px}}
+.wt-logo-ping-2{{animation-delay:.55s}}
+@keyframes wt-ping-fade{{0%,100%{{opacity:.08}}50%{{opacity:.85}}}}
+@media print{{.wt-logo-ping{{animation:none}}}}
 h1{{border-bottom:2px solid #333;padding-bottom:.4rem;color:#e6edf3}}
 h2{{color:#e6edf3}}
 a{{color:#999}}
@@ -2856,6 +2864,9 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
   body.rail-collapsed .header-content{{padding-right:0!important}}
   .header-bar h1{{font-size:1.02rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
   .header-bar p{{font-size:.72rem;display:flex;align-items:center;gap:.2rem;flex-wrap:nowrap;overflow:hidden}}
+  .wt-logo{{width:32px;height:32px}}
+  .wt-brand{{gap:.55rem}}
+  .wt-brand-sub{{display:none}}
   .next-run{{font-size:.64rem;padding:2px 6px;margin-left:.3rem;flex-shrink:0}}
   .app-shell{{padding-top:68px}}
   .app-main{{padding:0 var(--page-gutter) 1rem;padding-right:var(--page-gutter)}}
@@ -2883,6 +2894,7 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
 }}
 @media (max-width:480px){{
   .header-bar h1{{font-size:.92rem}}
+  .wt-logo{{width:26px;height:26px}}
   .next-run{{display:none}}
   .kpi-grid{{gap:5px;margin:.5rem 0 .7rem}}
   .kpi .k{{font-size:.6rem;letter-spacing:0}}
@@ -2927,8 +2939,39 @@ footer{{color:#8b949e;font-size:.8rem;margin-top:2rem;padding-top:.8rem;border-t
         <button id="rail-mobile-toggle" class="rail-mobile-toggle" type="button" aria-controls="domain-rail" aria-expanded="false">Domain Activity</button>
         <header class="header-bar">
           <div class="header-content">
-            <h1>Watchtower — Infrastructure Security Briefing</h1>
-            <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled: 2× daily">Next run —</span></p>
+            <div class="wt-brand">
+              <svg class="wt-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Watchtower logo">
+                <title>Watchtower</title>
+                <defs>
+                  <linearGradient id="wt-logo-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#dbe2ec"/>
+                    <stop offset="100%" stop-color="#a5afbe"/>
+                  </linearGradient>
+                </defs>
+                <!-- Tower body with crenellated top -->
+                <path fill="url(#wt-logo-grad)"
+                      d="M 11 14 L 14 14 L 14 11 L 17 11 L 17 14 L 20 14 L 20 11 L 23 11 L 23 14 L 26 14 L 26 11 L 29 11 L 29 14 L 31 14 L 31 33 L 9 33 L 9 14 Z"/>
+                <!-- Plinth -->
+                <rect x="6" y="33" width="28" height="3" rx="0.6" fill="url(#wt-logo-grad)"/>
+                <!-- Door (negative) -->
+                <path d="M 17 33 L 17 26 Q 17 23 20 23 Q 23 23 23 26 L 23 33 Z" fill="#0f0f0f"/>
+                <!-- Window slit -->
+                <rect x="19.2" y="17" width="1.6" height="3.6" fill="#0f0f0f" rx="0.3"/>
+                <!-- Antenna mast -->
+                <line x1="20" y1="11" x2="20" y2="5.5" stroke="#dbe2ec" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Satellite head -->
+                <circle cx="20" cy="4" r="1.7" fill="#dbe2ec"/>
+                <!-- Signal pings (animated) -->
+                <g fill="none" stroke="#79b8ff" stroke-width="1.3" stroke-linecap="round">
+                  <path class="wt-logo-ping" d="M 24 4.5 Q 26.5 4.5 26.5 7" opacity="0.7"/>
+                  <path class="wt-logo-ping wt-logo-ping-2" d="M 26.5 2.5 Q 30 2.5 30 7" opacity="0.4"/>
+                </g>
+              </svg>
+              <div class="wt-brand-text">
+                <h1>Watchtower<span class="wt-brand-sub"> — Infrastructure Security Briefing</span></h1>
+                <p>Generated <strong>{ts.replace('_', ' ')}</strong> UTC | <a href="latest.md">latest.md</a><span class="next-run" id="next-run-cd" title="Scheduled: 2× daily">Next run —</span></p>
+              </div>
+            </div>
           </div>
         </header>
         <div class="page-wrap">
