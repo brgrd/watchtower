@@ -1,22 +1,22 @@
-# Watchtower Pipeline Eval — 2026-05-08T22:07:42Z
+# Watchtower Pipeline Eval — 2026-05-09T22:58:22Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 462 |
-| After dedup + CVE merge | 459 |
-| Sent to Groq | 30 |
+| Items polled (raw) | 115 |
+| After dedup + CVE merge | 115 |
+| Sent to Groq | 27 |
 | Groq findings returned | 2 |
 | Passed quality gate | 2 |
 | Final cards rendered | 2 |
-| **Pipeline yield** | **2/462 (0.4%)** |
+| **Pipeline yield** | **2/115 (1.7%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 9,846 chars
+- **Payload**: 11,070 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7618
+- **Rate limit remaining** — requests: 999, tokens: 7268
 
 ## Card Quality
 
@@ -31,13 +31,13 @@
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 37 chars (0% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 4 total — 50% specific, 0% generic
+- **`why_now` avg length**: 31 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 4 total — 25% specific, 50% generic
 
 ### Persistence
 
-- New (run=1): **2** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
-- Mean run_count: 1 | Mean shelf_days: 0
+- New (run=1): **1** | Evolving (2–5): **1** | Persistent (>5): **0** | Resolved: **0**
+- Mean run_count: 1.5 | Mean shelf_days: 0.5
 
 ## Enrichment Hit Rates
 
@@ -51,23 +51,23 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 297 |
-| `bsi_germany` | 134 |
-| `bleepingcomputer` | 5 |
-| `thehackernews` | 5 |
-| `therecord` | 5 |
+| `nvd` | 108 |
+| `msrc_update_guide` | 3 |
+| `bleepingcomputer` | 2 |
+| `cisa_kev` | 1 |
+| `thehackernews` | 1 |
 | _(+21 more)_ | … |
 
-**13 feeds returned 0 items this run.**
+**21 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-05-08 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-05-08 | 1 | 1 | 100% | 100% | 1 | 0 |
 | 2026-05-08 | 1 | 1 | 100% | 0% | 1 | 0 |
 | 2026-05-08 | 2 | 1 | 100% | 0% | 2 | 0 |
 | 2026-05-08 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-05-08 | 3 | 3 | 100% | 0% | 3 | 0 |
+| 2026-05-08 | 2 | 1 | 100% | 0% | 2 | 0 |
 | 2026-05-08 | 2 | 1 | 100% | 0% | 2 | 0 |
