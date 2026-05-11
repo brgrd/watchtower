@@ -1,8 +1,8 @@
 {
-  "rebuilt_at": "2026-05-09T22:58:32.559168+00:00",
+  "rebuilt_at": "2026-05-11T12:19:42.206438+00:00",
   "window_days": 7,
-  "total_cards": 19,
-  "unique_cves": 14,
+  "total_cards": 18,
+  "unique_cves": 12,
   "active_domains": [
     "browser_ext",
     "cloud_iam",
@@ -11,23 +11,26 @@
     "identity",
     "os_kernel",
     "pkg_npm",
-    "pkg_pypi",
     "web_framework"
   ],
   "most_active_day": "2026-05-07",
   "day_counts": {
+    "2026-05-11": 2,
     "2026-05-09": 2,
     "2026-05-08": 2,
     "2026-05-07": 3,
     "2026-05-06": 3,
     "2026-05-05": 3,
-    "2026-05-04": 3,
-    "2026-05-03": 3
+    "2026-05-04": 3
   },
   "top_cves": [
     {
       "cve": "CVE-2026-42208",
       "count": 2
+    },
+    {
+      "cve": "CVE-2026-43500",
+      "count": 1
     },
     {
       "cve": "CVE-2026-44400",
@@ -68,20 +71,8 @@
     {
       "cve": "CVE-2026-42220",
       "count": 1
-    },
-    {
-      "cve": "CVE-2026-7687",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-7689",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-7691",
-      "count": 1
     }
   ],
-  "weekly_summary": "Over the past 7 days, our infrastructure security monitoring has identified 19 total findings, tracking 14 unique CVEs across various security domains, including Browser Extensions, Cloud/IAM, and OS/Kernel. The most frequently observed CVEs were CVE-2026-42208, seen twice, and several others, including CVE-2026-44400, CVE-2026-7650, and CVE-2026-6973, each observed once. The majority of activity was concentrated on May 7, indicating a notable surge in security incidents on this day, highlighting the need for continued vigilance across these active security domains.",
-  "weekly_summary_ts": "2026-05-09"
+  "weekly_summary": "Over the past 7 days, our security landscape has been characterized by 18 total findings across 12 unique CVEs, with CVE-2026-42208 being the most frequently seen. The majority of these vulnerabilities were observed on May 7, indicating a peak in malicious activity. Our analysis reveals that multiple security domains were affected, including Browser Extensions, Cloud/IAM, Containers/K8s, and Web/Servers, among others. The diversity of impacted domains suggests a broad range of potential attack vectors, underscoring the need for continued vigilance and proactive measures to mitigate emerging threats.",
+  "weekly_summary_ts": "2026-05-11"
 }

@@ -919,5 +919,23 @@
     "last_problem_type": "auth_bypass",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-43500": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "CVE-2026-43500: Linux Kernel Vulnerability",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "foundation",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-7482": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "Ollama Out-of-Bounds Read Vulnerability",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
   }
 }
