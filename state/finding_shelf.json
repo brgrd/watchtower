@@ -643,8 +643,8 @@
   },
   "cve:CVE-2026-41940": {
     "first_seen": "2026-04-30",
-    "last_seen": "2026-05-01",
-    "run_count": 2,
+    "last_seen": "2026-05-11",
+    "run_count": 3,
     "title": "getsimpletool mcpo-simple-server Vuln"
   },
   "cve:CVE-2026-31431": {
@@ -937,5 +937,89 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
     "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2025-43992": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "CVE-2025-43992"
+  },
+  "cve:CVE-2026-26946": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "CVE-2026-26946"
+  },
+  "cve:CVE-2026-32658": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "CVE-2026-32658"
+  },
+  "cve:CVE-2026-35157": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "CVE-2026-35157"
+  },
+  "cve:CVE-2025-8154": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "CVE-2025-8154"
+  },
+  "cve:CVE-2026-40636": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "CVE-2026-40636"
+  },
+  "e58a8c9eb921": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "GCP-2026-027"
+  },
+  "1ff5a474ecdb": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "GCP-2026-025"
+  },
+  "99356758fb15": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "GCP-2026-030"
+  },
+  "b9e9d2dca15f": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "GCP-2026-028"
+  },
+  "e799fb3564e7": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "GCP-2026-024"
+  },
+  "054859b85814": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "GCP-2026-022"
+  },
+  "906f29eec50d": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "GCP-2026-020"
+  },
+  "945ada04535b": {
+    "first_seen": "2026-05-11",
+    "last_seen": "2026-05-11",
+    "run_count": 1,
+    "title": "GCP-2026-017"
   }
 }
