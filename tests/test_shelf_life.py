@@ -133,12 +133,12 @@ class TestUpdateShelf:
 
     # ── 30-day pruning ────────────────────────────────────────────────────────
 
-    def test_stale_entries_pruned_after_30_days(self):
+    def test_stale_entries_pruned_after_180_days(self):
         with freeze_time("2026-02-01"):
             old_card = _card(cid="card_old")
             _update_shelf([old_card])
 
-        with freeze_time("2026-03-15"):  # 42 days later
+        with freeze_time("2026-08-10"):  # 190 days later — past SHELF_TTL_UNRESOLVED_DAYS (180)
             new_card = _card(cid="card_new")
             _update_shelf([new_card])
 
@@ -351,13 +351,13 @@ class TestUpdateShelfResolved:
         assert shelf["c5"]["resolved"] is True
         assert shelf["c5"]["resolved_date"] == "2026-03-10"
 
-    def test_resolved_entry_pruned_after_7_days(self):
+    def test_resolved_entry_pruned_after_30_days(self):
         with freeze_time("2026-03-01"):
             card = _card(cid="c6", score=50)
             card["patch_status"] = "patched"
             _update_shelf([card])
-        # Run 8 days later with a different card — prune should remove c6
-        with freeze_time("2026-03-09"):
+        # Run 31 days later with a different card — prune should remove c6
+        with freeze_time("2026-04-01"):
             other = _card(cid="c_other", score=40)
             _update_shelf([other])
         shelf = json.loads(open(self.shelf_path).read())

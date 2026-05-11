@@ -199,7 +199,7 @@ class TestRemediationTracker:
             def write(self, s): self.content += s
         cap = _Capture()
         def _fake_open(path, mode="r", **kw):
-            if "w" in mode and path == "/dev/null":
+            if "w" in mode and (path == "/dev/null" or path.replace("\\", "/").startswith("/dev/")):
                 return cap
             return original_open(path, mode, **kw)
         import unittest.mock as mock
