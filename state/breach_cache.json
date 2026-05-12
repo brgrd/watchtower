@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-11T22:16:03.380173+00:00",
+  "fetched_at": "2026-05-12T10:40:40.776259+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -3716,6 +3716,25 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Cultura",
       "summary": "In September 2024, French retailer Cultura was the victim of a cyber attack they attributed to an external IT service provider. The resultant data breach included almost 1.5M unique email addresses along with names, phone numbers, physical addresses and orders. Cultura advised that all affected customers had been notified about the incident.",
+      "action": "monitor"
+    },
+    {
+      "id": "hibp:cushmanwakefield-2026-05-05",
+      "name": "CushmanWakefield",
+      "title": "Cushman & Wakefield",
+      "date": "2026-05-05",
+      "added": "2026-05-12",
+      "affected_count": 310431,
+      "data_classes": [
+        "Email addresses",
+        "Job titles",
+        "Names",
+        "Phone numbers",
+        "Physical addresses",
+        "Salutations"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#CushmanWakefield",
+      "summary": "In May 2026, the real estate services firm Cushman & Wakefield was the target of a \"pay or leak\" extortion campaign by the ShinyHunters group. Following the threat, the group publicly published data they alleged had been obtained from the firm, consisting mostly of C&W email addresses along with tens of thousands of external email addresses and corporate contact records. The exposed data was prima",
       "action": "monitor"
     },
     {
