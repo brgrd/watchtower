@@ -1021,5 +1021,32 @@
     "last_seen": "2026-05-11",
     "run_count": 1,
     "title": "GCP-2026-017"
+  },
+  "cve:CVE-2026-8288": {
+    "first_seen": "2026-05-12",
+    "last_seen": "2026-05-12",
+    "run_count": 1,
+    "title": "CVE-2026-8288: Open5GS RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-4802": {
+    "first_seen": "2026-05-12",
+    "last_seen": "2026-05-12",
+    "run_count": 1,
+    "title": "CVE-2026-4802: Cockpit RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2025-10470": {
+    "first_seen": "2026-05-12",
+    "last_seen": "2026-05-12",
+    "run_count": 1,
+    "title": "CVE-2025-10470: Magic Link Auth Bypass",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.8
   }
 }

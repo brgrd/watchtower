@@ -1,81 +1,25 @@
 ---
-generated_at: 2026-05-11T22:16:02.776905+00:00
+generated_at: 2026-05-12T00:06:59.016681+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## cPanel CVE-2026-41940 Under Active Exploitation to Deploy Filemanager Backdoor (risk: 70)
-1 related updates.
+## Analyst Summary
 
-- [cPanel CVE-2026-41940 Under Active Exploitation to Deploy Filemanager Backdoor](https://thehackernews.com/2026/05/cpanel-cve-2026-41940-under-active.html)
+The highest-risk items this period are CVE-2026-8288 in Open5GS, CVE-2025-10470 in Magic Link authentication flow, and CVE-2026-4802 in Cockpit. These vulnerabilities expose internet-facing systems, such as network devices and web applications, to remote attacks due to lack of patches or workarounds. The most time-sensitive action is to patch or isolate systems affected by these vulnerabilities, specifically Open5GS and Cockpit, as no patches are currently available.
 
-## CVE-2025-43992 (risk: 70)
-1 related updates.
+## CVE-2026-8288: Open5GS RCE (risk: 70)
+[P1] Open5GS up to 2.7.7 is vulnerable to a remote code execution attack, with no patch or workaround available, posing a high risk to network devices and systems. Why now: Lack of patch or workaround for this vulnerability (confidence: 0.80)
 
-- [CVE-2025-43992](https://nvd.nist.gov/vuln/detail/CVE-2025-43992)
+- [CVE-2026-8288](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-026)
 
-## CVE-2026-26946 (risk: 70)
-1 related updates.
+## CVE-2026-4802: Cockpit RCE (risk: 70)
+[P1] Cockpit is vulnerable to a remote code execution attack, with no patch or workaround available, posing a high risk to systems and data. Why now: Lack of patch or workaround for this vulnerability (confidence: 0.80)
 
-- [CVE-2026-26946](https://nvd.nist.gov/vuln/detail/CVE-2026-26946)
+- [CVE-2026-4802](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-001)
 
-## CVE-2026-32658 (risk: 70)
-1 related updates.
+## CVE-2025-10470: Magic Link Auth Bypass (risk: 60)
+[P2] Magic Link authentication flow is vulnerable to authentication bypass attacks, with no patch or workaround available, posing a high risk to web applications and user data. Why now: Lack of patch or workaround for this vulnerability (confidence: 0.70)
 
-- [CVE-2026-32658](https://nvd.nist.gov/vuln/detail/CVE-2026-32658)
-
-## CVE-2026-35157 (risk: 70)
-1 related updates.
-
-- [CVE-2026-35157](https://nvd.nist.gov/vuln/detail/CVE-2026-35157)
-
-## CVE-2025-8154 (risk: 70)
-1 related updates.
-
-- [CVE-2025-8154](https://nvd.nist.gov/vuln/detail/CVE-2025-8154)
-
-## CVE-2026-40636 (risk: 70)
-1 related updates.
-
-- [CVE-2026-40636](https://nvd.nist.gov/vuln/detail/CVE-2026-40636)
-
-## GCP-2026-027 (risk: 55)
-1 related updates.
-
-- [GCP-2026-027](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-027)
-
-## GCP-2026-025 (risk: 55)
-1 related updates.
-
-- [GCP-2026-025](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-025)
-
-## GCP-2026-030 (risk: 55)
-1 related updates.
-
-- [GCP-2026-030](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-030)
-
-## GCP-2026-028 (risk: 55)
-1 related updates.
-
-- [GCP-2026-028](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-028)
-
-## GCP-2026-024 (risk: 55)
-1 related updates.
-
-- [GCP-2026-024](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-024)
-
-## GCP-2026-022 (risk: 55)
-1 related updates.
-
-- [GCP-2026-022](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-022)
-
-## GCP-2026-020 (risk: 55)
-1 related updates.
-
-- [GCP-2026-020](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-020)
-
-## GCP-2026-017 (risk: 55)
-1 related updates.
-
-- [GCP-2026-017](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-017)
+- [CVE-2025-10470](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-004)
