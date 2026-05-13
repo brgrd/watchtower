@@ -1084,5 +1084,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-42158": {
+    "first_seen": "2026-05-13",
+    "last_seen": "2026-05-13",
+    "run_count": 1,
+    "title": "CVE-2026-42158: Flowsint RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-42157": {
+    "first_seen": "2026-05-13",
+    "last_seen": "2026-05-13",
+    "run_count": 1,
+    "title": "CVE-2026-42157: Flowsint RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-43685": {
+    "first_seen": "2026-05-13",
+    "last_seen": "2026-05-13",
+    "run_count": 1,
+    "title": "CVE-2026-43685: Claris FileMaker Cloud RCE",
+    "last_problem_type": "rce",
+    "last_affects": "service",
+    "last_classification_confidence": 0.9
   }
 }

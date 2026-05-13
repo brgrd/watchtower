@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-12T22:20:31.128017+00:00",
+  "fetched_at": "2026-05-13T11:34:53.362540+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -2654,6 +2654,26 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#CanadaGoose",
       "summary": "In February 2026, a data breach allegedly containing data relating to Canada Goose customers was published publicly. The data contained 920k records with 582k unique email addresses and included names, phone numbers, IP addresses, physical addresses and partial credit card data, specifically card type and last 4 digits. Canada Goose advised that the data \"appears to relate to past customer transac",
+      "action": "monitor"
+    },
+    {
+      "id": "hibp:canadalife-2026-04-20",
+      "name": "CanadaLife",
+      "title": "Canada Life",
+      "date": "2026-04-20",
+      "added": "2026-05-13",
+      "affected_count": 237810,
+      "data_classes": [
+        "Email addresses",
+        "Job titles",
+        "Names",
+        "Phone numbers",
+        "Physical addresses",
+        "Salutations",
+        "Support tickets"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#CanadaLife",
+      "summary": "In April 2026, Canada Life was the victim of a \"pay or leak\" extortion campaign by the ShinyHunters group. The group subsequently published the data which contained over 200k unique email addresses along with names, phone numbers, physical addresses and, in some cases, customer support tickets. In their disclosure notice, Canada Life advised that \"it is a small proportion of our customers who may ",
       "action": "monitor"
     },
     {
