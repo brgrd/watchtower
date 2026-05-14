@@ -1174,5 +1174,32 @@
     "last_problem_type": "misconfiguration",
     "last_affects": "application",
     "last_classification_confidence": 0.4
+  },
+  "cve:CVE-2026-2347": {
+    "first_seen": "2026-05-14",
+    "last_seen": "2026-05-14",
+    "run_count": 1,
+    "title": "CVE-2026-2347: Akilli Commerce Auth Bypass",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-8295": {
+    "first_seen": "2026-05-14",
+    "last_seen": "2026-05-14",
+    "run_count": 1,
+    "title": "CVE-2026-8295: simdjson Integer Overflow",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-45205": {
+    "first_seen": "2026-05-14",
+    "last_seen": "2026-05-14",
+    "run_count": 1,
+    "title": "CVE-2026-45205: Apache Commons Uncontrolled Recursion",
+    "last_problem_type": "dos",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.8
   }
 }
