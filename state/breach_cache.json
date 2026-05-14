@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-13T22:21:19.338192+00:00",
+  "fetched_at": "2026-05-14T10:28:56.314202+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -257,6 +257,25 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Abandonia2022",
       "summary": "In November 2022, the gaming website dedicated to classic DOS games Abandonia suffered a data breach resulting in the exposure of 920k unique user records. This breach was in addition to another one 7 years earlier in 2015. The data contained email and IP addresses, usernames and salted MD5 hashes of passwords.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:abrigo-2026-04-14",
+      "name": "Abrigo",
+      "title": "Abrigo",
+      "date": "2026-04-14",
+      "added": "2026-05-14",
+      "affected_count": 711099,
+      "data_classes": [
+        "Email addresses",
+        "Employers",
+        "Job titles",
+        "Names",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Abrigo",
+      "summary": "In April 2026, the fintech software company Abrigo was targeted in a \"pay or leak\" extortion attempt by the ShinyHunters group. Shortly after, data allegedly taken from the company's Salesforce instance was published publicly and contained over 700k unique email addresses belonging to both Abrigo staff and external contacts. Whilst separate from Abrigo's Salesforce compromise via the Drift applica",
+      "action": "monitor"
     },
     {
       "id": "hibp:abusewithus-2016-07-01",
