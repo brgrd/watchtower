@@ -1210,5 +1210,32 @@
     "last_problem_type": "auth_bypass",
     "last_affects": "application",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-44428": {
+    "first_seen": "2026-05-15",
+    "last_seen": "2026-05-15",
+    "run_count": 1,
+    "title": "CVE-2026-44428: MCP Registry RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-6811": {
+    "first_seen": "2026-05-15",
+    "last_seen": "2026-05-15",
+    "run_count": 1,
+    "title": "CVE-2026-6811: MongoDB PHP Driver Stack Exhaustion",
+    "last_problem_type": "dos",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-45248": {
+    "first_seen": "2026-05-15",
+    "last_seen": "2026-05-15",
+    "run_count": 1,
+    "title": "CVE-2026-45248: Hedera Guardian Authentication Bypass",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "service",
+    "last_classification_confidence": 0.9
   }
 }
