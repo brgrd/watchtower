@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-05-16T21:58:30.517674+00:00
+generated_at: 2026-05-16T22:58:52.652315+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2025-4202 in Multicollab, CVE-2020-37228 in iDS6 DSSPro, and CVE-2026-46719 in Net::Statsd::Lite. Internet-facing systems and applications are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by CVE-2026-46719, although no patch is currently available.
+The highest-risk items this period are CVE-2026-46719 in Net::Statsd::Lite, CVE-2025-4202 in Multicollab, and CVE-2020-37229 in OKI sPSV Port Manager. Internet-facing applications and services are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using Net::Statsd::Lite versions before 0.9.0, as no patch is currently available.
 
-## CVE-2025-4202: Multicollab RCE (risk: 40)
-[P2] Multicollab plugin for WordPress has a vulnerability that allows remote code execution. No patch is available, and it is not actively exploited in the wild. Why now: Newly disclosed vulnerability with potential for exploitation. (confidence: 0.80)
+## CVE-2026-46719: Net::Statsd::Lite Metric Injections (risk: 70)
+[P1] Net::Statsd::Lite versions before 0.9.0 for Perl allowed metric injections, with no patch available. This vulnerability can be exploited for arbitrary code execution. Why now: Lack of available patch increases the risk of exploitation. (confidence: 0.80)
 
-- [CVE-2025-4202](https://nvd.nist.gov/v1/nvd.xhtml?nvdlisttype=cve&cvename=CVE-2025-4202)
+- [NVD CVE-2026-46719](https://nvd.nist.gov/v1/cve/2026-46719)
 
-## CVE-2020-37228: iDS6 DSSPro Auth Bypass (risk: 40)
-[P2] iDS6 DSSPro has a vulnerability that allows authentication bypass. No patch is available, and it is not actively exploited in the wild. Why now: Unpatched vulnerability with potential for exploitation. (confidence: 0.80)
+## CVE-2025-4202: Multicollab Content Team Collaboration Vulnerability (risk: 60)
+[P2] The Multicollab plugin for WordPress contains a vulnerability that can be exploited for unauthorized access, with no patch available. This vulnerability can be used for privilege escalation and data disclosure. Why now: Lack of available patch increases the risk of exploitation. (confidence: 0.70)
 
-- [CVE-2020-37228](https://nvd.nist.gov/v1/nvd.xhtml?nvdlisttype=cve&cvename=CVE-2020-37228)
+- [NVD CVE-2025-4202](https://nvd.nist.gov/v1/cve/2025-4202)
 
-## CVE-2026-46719: Net::Statsd::Lite Metric Injections (risk: 40)
-[P1] Net::Statsd::Lite has a vulnerability that allows metric injections. No patch is available, and it is not actively exploited in the wild. Why now: Newly disclosed vulnerability with potential for exploitation. (confidence: 0.90)
+## CVE-2020-37229: OKI sPSV Port Manager Unquoted Service Path Vulnerability (risk: 50)
+[P3] OKI sPSV Port Manager 1.0.41 contains an unquoted service path vulnerability, with no patch available. This vulnerability can be exploited for arbitrary code execution. Why now: Lack of available patch increases the risk of exploitation. (confidence: 0.60)
 
-- [CVE-2026-46719](https://nvd.nist.gov/v1/nvd.xhtml?nvdlisttype=cve&cvename=CVE-2026-46719)
+- [NVD CVE-2020-37229](https://nvd.nist.gov/v1/cve/2020-37229)

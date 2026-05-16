@@ -1,4 +1,4 @@
-# Watchtower Pipeline Eval — 2026-05-16T21:58:22Z
+# Watchtower Pipeline Eval — 2026-05-16T22:58:44Z
 
 ## Pipeline Yield
 
@@ -16,23 +16,23 @@
 - **Model**: `llama-3.3-70b-versatile`
 - **Payload**: 9,591 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7674
+- **Rate limit remaining** — requests: 999, tokens: 7676
 
 ## Card Quality
 
-**3 cards** — P1: 1, P2: 2, P3: 0
+**3 cards** — P1: 1, P2: 1, P3: 1
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 40 / 40 |
+| Risk score mean / p90 | 60 / 60 |
 | Tactic coverage | 100% |
 | CVE coverage | 0% |
 | Patch status | unknown: 3 |
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 60 chars (67% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 6 total — 50% specific, 50% generic
+- **`why_now` avg length**: 59 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 5 total — 60% specific, 0% generic
 
 ### Persistence
 
@@ -51,11 +51,11 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 43 |
+| `nvd` | 44 |
 | `bleepingcomputer` | 2 |
 | `thehackernews` | 1 |
-| `securityweek` | 1 |
 | `darkreading` | 1 |
+| `gh_security_blog` | 0 |
 | _(+21 more)_ | … |
 
 **21 feeds returned 0 items this run.**
@@ -64,10 +64,10 @@
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-05-14 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-05-15 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-05-15 | 3 | ? | 100% | 100% | 3 | 0 |
 | 2026-05-16 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-05-16 | 2 | 1 | 100% | 100% | 2 | 0 |
 | 2026-05-16 | 3 | 1 | 100% | 100% | 3 | 0 |
+| 2026-05-16 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-05-16 | 3 | 1 | 100% | 0% | 3 | 0 |
