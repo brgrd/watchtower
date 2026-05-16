@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-05-16T00:02:18.031151+00:00
+generated_at: 2026-05-16T10:23:20.850849+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,14 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period include CVE-2026-41552 in DHTMLX's products Gantt and Scheduler, CVE-2026-8503 in Apache::Session::Generate::SHA256, and CVE-2026-8454 in Imager::File::GIF. Internet-facing applications and embedded devices are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems using the affected PDF Export Module in DHTMLX's products Gantt and Scheduler, although no patch is currently available.
+The highest-risk items this period are CVE-2026-42897 in Microsoft Exchange Server, CVE-2026-8704 in Crypt::DSA, and CVE-2026-8681 in the Essential Chat Support plugin for WordPress. Internet-facing email servers and web applications are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate Microsoft Exchange Server to prevent exploitation of CVE-2026-42897, although no patch is currently available.
 
-## CVE-2026-41552: DHTMLX Gantt Scheduler RCE (risk: 70)
-[P1] CVE-2026-41552 is a vulnerability in the PDF Export Module used in DHTMLX's products Gantt and Scheduler, which can be exploited for arbitrary code execution. No patch is currently available. Why now: Reported attribution (unverified): none (confidence: 0.80)
+## CVE-2026-42897: Microsoft Exchange RCE (risk: 100)
+[P1] Microsoft Exchange Server contains a cross-site scripting vulnerability during web page generation in Outlook Web Access, which is being exploited in the wild. No patch is currently available. Why now: Reported exploitation in the wild (confidence: 0.90)
 
-- [CVE-2026-41552](https://nvd.nist.gov/v1/nvd.xhtml)
+- [CVE-2026-42897](https://github.blog/changelog/2026-05-15-github-app-installation-tokens-per-request-override-header)
 
-## CVE-2026-8503: Apache::Session::Generate::SHA256 Insecure Randomness (risk: 60)
-[P2] CVE-2026-8503 is a vulnerability in Apache::Session::Generate::SHA256, which can be exploited to gain unauthorized access. No patch is currently available. Why now: Reported attribution (unverified): none (confidence: 0.70)
+## CVE-2026-8704: Crypt::DSA Code Execution (risk: 70)
+[P2] Crypt::DSA versions through 1.19 for Perl use 2-args open, allowing existing file overwrite. No patch is currently available. Why now: Lack of patch and potential for exploitation (confidence: 0.80)
 
-- [CVE-2026-8503](https://nvd.nist.gov/v1/nvd.xhtml)
-
-## CVE-2026-8454: Imager::File::GIF Heap Out-of-Bounds Read (risk: 50)
-[P3] CVE-2026-8454 is a vulnerability in Imager::File::GIF, which can be exploited to cause a denial of service. No patch is currently available. Why now: Reported attribution (unverified): none (confidence: 0.60)
-
-- [CVE-2026-8454](https://nvd.nist.gov/v1/nvd.xhtml)
+- [CVE-2026-8704](https://www.securityweek.com/poc-code-published-for-critical-nginx-vulnerability/)
