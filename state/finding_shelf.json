@@ -1309,5 +1309,23 @@
     "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2026-8681": {
+    "first_seen": "2026-05-16",
+    "last_seen": "2026-05-16",
+    "run_count": 1,
+    "title": "CVE-2026-8681: WordPress Auth Bypass",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-8657": {
+    "first_seen": "2026-05-16",
+    "last_seen": "2026-05-16",
+    "run_count": 1,
+    "title": "CVE-2026-8657: jsondiffpatch RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
   }
 }
