@@ -1,11 +1,10 @@
 {
-  "rebuilt_at": "2026-05-15T11:27:17.212542+00:00",
+  "rebuilt_at": "2026-05-16T00:02:18.223480+00:00",
   "window_days": 7,
   "total_cards": 16,
   "unique_cves": 15,
   "active_domains": [
     "browser_ext",
-    "cloud_iam",
     "container",
     "crypto_lib",
     "identity",
@@ -30,15 +29,15 @@
       "count": 2
     },
     {
-      "cve": "CVE-2026-44428",
+      "cve": "CVE-2026-41552",
       "count": 1
     },
     {
-      "cve": "CVE-2026-6811",
+      "cve": "CVE-2026-8503",
       "count": 1
     },
     {
-      "cve": "CVE-2026-45248",
+      "cve": "CVE-2026-8454",
       "count": 1
     },
     {
@@ -86,6 +85,6 @@
       "count": 1
     }
   ],
-  "weekly_summary": "Over the past 7 days, our infrastructure security monitoring has identified 16 total findings, tracking 15 unique CVEs across various security domains, including Browser Extensions, Cloud/IAM, and Containers/K8s. The most frequently seen vulnerabilities were CVE-2026-42208, which appeared twice, and several others that appeared once, such as CVE-2026-44428 and CVE-2026-6811. The majority of these vulnerabilities were observed on May 15, which was the most active day, indicating a recent surge in security threats, with multiple domains affected, including Crypto Libraries, Identity/Auth, and OS/Kernel.",
-  "weekly_summary_ts": "2026-05-15"
+  "weekly_summary": "Over the past 7 days, our security landscape has been characterized by 16 total findings across 15 unique CVEs, with CVE-2026-42208 being the most frequently seen, albeit only twice. The majority of tracked CVEs appeared only once, including CVE-2026-41552, CVE-2026-8503, and others. Multiple security domains were active, including Browser Extensions, Containers, and Identity Authentication, among others. The most active day was May 15, 2026, indicating a recent surge in security incidents, highlighting the need for continued vigilance across these domains.",
+  "weekly_summary_ts": "2026-05-16"
 }
