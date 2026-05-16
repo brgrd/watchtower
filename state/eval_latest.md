@@ -1,4 +1,4 @@
-# Watchtower Pipeline Eval — 2026-05-16T21:00:02Z
+# Watchtower Pipeline Eval — 2026-05-16T21:58:22Z
 
 ## Pipeline Yield
 
@@ -16,7 +16,7 @@
 - **Model**: `llama-3.3-70b-versatile`
 - **Payload**: 9,591 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7677
+- **Rate limit remaining** — requests: 999, tokens: 7674
 
 ## Card Quality
 
@@ -24,15 +24,15 @@
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 63.3 / 60 |
+| Risk score mean / p90 | 40 / 40 |
 | Tactic coverage | 100% |
 | CVE coverage | 0% |
 | Patch status | unknown: 3 |
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 66.3 chars (67% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 6 total — 0% specific, 0% generic
+- **`why_now` avg length**: 60 chars (67% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 6 total — 50% specific, 50% generic
 
 ### Persistence
 
@@ -65,9 +65,9 @@
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
 | 2026-05-14 | 3 | 2 | 100% | 0% | 3 | 0 |
-| 2026-05-14 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-05-15 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-05-15 | 3 | ? | 100% | 100% | 3 | 0 |
 | 2026-05-16 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-05-16 | 2 | 1 | 100% | 100% | 2 | 0 |
 | 2026-05-16 | 3 | 1 | 100% | 100% | 3 | 0 |
+| 2026-05-16 | 3 | 1 | 100% | 0% | 3 | 0 |
