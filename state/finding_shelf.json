@@ -1387,8 +1387,8 @@
     "last_seen": "2026-05-17",
     "run_count": 1,
     "title": "CVE-2026-8725: CoreWorxLab CAAL RCE",
-    "last_problem_type": "rce",
-    "last_affects": "framework",
+    "last_problem_type": "privilege_escalation",
+    "last_affects": "application",
     "last_classification_confidence": 0.9
   },
   "cve:CVE-2026-46728": {
@@ -1405,6 +1405,15 @@
     "last_seen": "2026-05-17",
     "run_count": 1,
     "title": "CVE-2026-8724: Dataease Security Flaw",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-8719": {
+    "first_seen": "2026-05-17",
+    "last_seen": "2026-05-17",
+    "run_count": 1,
+    "title": "CVE-2026-8719: The AI Engine RCE",
     "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
