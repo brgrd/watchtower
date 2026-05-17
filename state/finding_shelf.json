@@ -1432,7 +1432,7 @@
     "last_seen": "2026-05-17",
     "run_count": 1,
     "title": "CVE-2026-8746: Open5GS Privilege Escalation",
-    "last_problem_type": "privilege_escalation",
+    "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
   },
@@ -1444,5 +1444,23 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "framework",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-8745": {
+    "first_seen": "2026-05-17",
+    "last_seen": "2026-05-17",
+    "run_count": 1,
+    "title": "CVE-2026-8745: Open5GS Vulnerability",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-8747": {
+    "first_seen": "2026-05-17",
+    "last_seen": "2026-05-17",
+    "run_count": 1,
+    "title": "CVE-2026-8747: Z-BlogPHP Weakness",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
   }
 }
