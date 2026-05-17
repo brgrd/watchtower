@@ -1330,11 +1330,11 @@
   },
   "cve:CVE-2026-46719": {
     "first_seen": "2026-05-16",
-    "last_seen": "2026-05-16",
-    "run_count": 1,
+    "last_seen": "2026-05-17",
+    "run_count": 2,
     "title": "CVE-2026-46719: Net::Statsd::Lite Metric Injections",
-    "last_problem_type": "rce",
-    "last_affects": "framework",
+    "last_problem_type": "data_tampering",
+    "last_affects": "application",
     "last_classification_confidence": 0.9
   },
   "cve:CVE-2020-37228": {
@@ -1357,12 +1357,12 @@
   },
   "cve:CVE-2025-4202": {
     "first_seen": "2026-05-16",
-    "last_seen": "2026-05-16",
-    "run_count": 1,
+    "last_seen": "2026-05-17",
+    "run_count": 2,
     "title": "CVE-2025-4202: Multicollab RCE",
-    "last_problem_type": "privilege_escalation",
+    "last_problem_type": "data_tampering",
     "last_affects": "application",
-    "last_classification_confidence": 0.8
+    "last_classification_confidence": 0.85
   },
   "cve:CVE-2020-37229": {
     "first_seen": "2026-05-16",
@@ -1372,5 +1372,14 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.7
+  },
+  "cve:CVE-2020-37227": {
+    "first_seen": "2026-05-17",
+    "last_seen": "2026-05-17",
+    "run_count": 1,
+    "title": "CVE-2020-37227: HS Brand Logo Slider Unrestricted File Upload",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.8
   }
 }
