@@ -1471,5 +1471,32 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-8766": {
+    "first_seen": "2026-05-18",
+    "last_seen": "2026-05-18",
+    "run_count": 1,
+    "title": "CVE-2026-8766: Kilo-Org kilocode RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-8768": {
+    "first_seen": "2026-05-18",
+    "last_seen": "2026-05-18",
+    "run_count": 1,
+    "title": "CVE-2026-8768: vercel ai RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-8774": {
+    "first_seen": "2026-05-18",
+    "last_seen": "2026-05-18",
+    "run_count": 1,
+    "title": "CVE-2026-8774: Edimax BR-6228NC RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
