@@ -1525,5 +1525,32 @@
     "last_problem_type": "auth_bypass",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-26462": {
+    "first_seen": "2026-05-19",
+    "last_seen": "2026-05-19",
+    "run_count": 1,
+    "title": "CVE-2026-26462: Offline Hospital Management System RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-7302": {
+    "first_seen": "2026-05-19",
+    "last_seen": "2026-05-19",
+    "run_count": 1,
+    "title": "CVE-2026-7302: SGLangs Multimodal Generation Runtime Path Traversal",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-41949": {
+    "first_seen": "2026-05-19",
+    "last_seen": "2026-05-19",
+    "run_count": 1,
+    "title": "CVE-2026-41949: Dify Authorization Bypass",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
