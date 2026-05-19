@@ -1,22 +1,22 @@
-# Watchtower Pipeline Eval — 2026-05-19T10:01:50Z
+# Watchtower Pipeline Eval — 2026-05-19T12:50:30Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 235 |
-| After dedup + CVE merge | 235 |
+| Items polled (raw) | 353 |
+| After dedup + CVE merge | 353 |
 | Sent to Groq | 30 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/235 (1.3%)** |
+| **Pipeline yield** | **3/353 (0.8%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 9,590 chars
+- **Payload**: 10,714 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7680
+- **Rate limit remaining** — requests: 999, tokens: 7474
 
 ## Card Quality
 
@@ -51,23 +51,23 @@
 
 | Feed | Items |
 |------|------:|
+| `bsi_germany` | 168 |
 | `msrc_update_guide` | 94 |
-| `bsi_germany` | 88 |
-| `nvd` | 43 |
-| `thehackernews` | 3 |
-| `securityweek` | 2 |
+| `nvd` | 76 |
+| `thehackernews` | 6 |
+| `securityweek` | 5 |
 | _(+21 more)_ | … |
 
-**16 feeds returned 0 items this run.**
+**18 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-05-17 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-05-17 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-05-17 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-05-17 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-05-18 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-05-18 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-05-19 | 3 | 1 | 100% | 0% | 3 | 0 |
+| 2026-05-19 | 3 | 3 | 100% | 0% | 3 | 0 |

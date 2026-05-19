@@ -1579,5 +1579,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-33514": {
+    "first_seen": "2026-05-19",
+    "last_seen": "2026-05-19",
+    "run_count": 1,
+    "title": "CVE-2026-33514: Discourse RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-24792": {
+    "first_seen": "2026-05-19",
+    "last_seen": "2026-05-19",
+    "run_count": 1,
+    "title": "CVE-2026-24792: OpenHarmony RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-27648": {
+    "first_seen": "2026-05-19",
+    "last_seen": "2026-05-19",
+    "run_count": 1,
+    "title": "CVE-2026-27648: OpenHarmony RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
   }
 }
