@@ -1633,5 +1633,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-37979": {
+    "first_seen": "2026-05-19",
+    "last_seen": "2026-05-19",
+    "run_count": 1,
+    "title": "CVE-2026-37979: Keycloak Access Control Vuln",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-43492": {
+    "first_seen": "2026-05-19",
+    "last_seen": "2026-05-19",
+    "run_count": 1,
+    "title": "CVE-2026-43492: Linux Kernel Crypto Vuln",
+    "last_problem_type": "crypto_weakness",
+    "last_affects": "foundation",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-37981": {
+    "first_seen": "2026-05-19",
+    "last_seen": "2026-05-19",
+    "run_count": 1,
+    "title": "CVE-2026-37981: Keycloak Broken Access Control Vuln",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
