@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-18T22:10:01.130830+00:00",
+  "fetched_at": "2026-05-19T10:02:02.588682+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -3765,6 +3765,22 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#CTARS",
       "summary": "In May 2022, the client management system for the Australian government's NDIS (National Disability Insurance Scheme) suffered a data breach which was subsequently posted to an online hacking forum. The CTARS cloud platform is used by care providers to record information about NDIS participants and often contains sensitive medical information. Impacted data includes over 12k unique email addresses",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:ctt-2026-04-26",
+      "name": "CTT",
+      "title": "CTT",
+      "date": "2026-04-26",
+      "added": "2026-05-19",
+      "affected_count": 468124,
+      "data_classes": [
+        "Email addresses",
+        "Names",
+        "Phone numbers"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#CTT",
+      "summary": "In April 2026, data allegedly obtained from CTT, Portugal’s national postal service, was posted to a public hacking forum. The data included 468k unique email addresses along with names, phone numbers and parcel tracking numbers which can be used to retrieve the tracking history of the parcel.",
+      "action": "monitor"
     },
     {
       "id": "hibp:cultura-2024-09-06",
