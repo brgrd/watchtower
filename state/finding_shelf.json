@@ -1777,5 +1777,23 @@
     "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-43494": {
+    "first_seen": "2026-05-21",
+    "last_seen": "2026-05-21",
+    "run_count": 1,
+    "title": "CVE-2026-43494: Linux Kernel RCE",
+    "last_problem_type": "rce",
+    "last_affects": "foundation",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-0393": {
+    "first_seen": "2026-05-21",
+    "last_seen": "2026-05-21",
+    "run_count": 1,
+    "title": "CVE-2026-0393: Credential Exposure",
+    "last_problem_type": "credential_compromise",
+    "last_affects": "user_data",
+    "last_classification_confidence": 0.8
   }
 }
