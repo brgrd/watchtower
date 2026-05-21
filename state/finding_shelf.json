@@ -1723,5 +1723,32 @@
     "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-41091": {
+    "first_seen": "2026-05-21",
+    "last_seen": "2026-05-21",
+    "run_count": 1,
+    "title": "CVE-2026-45498: Microsoft Defender DoS",
+    "last_problem_type": "dos",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2008-4250": {
+    "first_seen": "2026-05-21",
+    "last_seen": "2026-05-21",
+    "run_count": 1,
+    "title": "CVE-2008-4250: Microsoft Windows Buffer Overflow",
+    "last_problem_type": "rce",
+    "last_affects": "foundation",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2010-0806": {
+    "first_seen": "2026-05-21",
+    "last_seen": "2026-05-21",
+    "run_count": 1,
+    "title": "CVE-2010-0806: Microsoft Internet Explorer Use-After-Free",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
   }
 }

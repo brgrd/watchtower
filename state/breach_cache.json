@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-20T21:05:39.395583+00:00",
+  "fetched_at": "2026-05-21T12:24:46.701976+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -3779,7 +3779,7 @@
         "Phone numbers"
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#CTT",
-      "summary": "In April 2026, data allegedly obtained from CTT, Portugal’s national postal service, was posted to a public hacking forum. The data included 468k unique email addresses along with names, phone numbers and parcel tracking numbers which can be used to retrieve the tracking history of the parcel.",
+      "summary": "In April 2026, data allegedly obtained from CTT, Portugal's national postal service, was posted to a public hacking forum. The data included 468k unique email addresses along with names, phone numbers and parcel tracking numbers which can be used to retrieve the tracking history of the parcel.",
       "action": "monitor"
     },
     {
@@ -4610,6 +4610,25 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#DoxbinScrape",
       "summary": "In January 2025, 435k email addresses were scraped from the \"doxing\" service Doxbin. Posts to the service are usually intended to disclose the personal information of non-consensually third parties.",
       "action": "monitor"
+    },
+    {
+      "id": "hibp:dragonica-2025-12-06",
+      "name": "Dragonica",
+      "title": "Dragonica Lunaris",
+      "date": "2025-12-06",
+      "added": "2026-05-21",
+      "affected_count": 126293,
+      "data_classes": [
+        "Dates of birth",
+        "Email addresses",
+        "Names",
+        "Passwords",
+        "Spoken languages",
+        "Usernames"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Dragonica",
+      "summary": "In December 2025, the European Dragonica private server Dragonica Lunaris suffered a data breach. The incident exposed 126k email addresses, usernames, dates of birth and bcrypt password hashes. The service operator confirmed the breach and advised it has since been fixed.",
+      "action": "rotate"
     },
     {
       "id": "hibp:dragonnest-2013-08-23",
@@ -17183,6 +17202,23 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Win7Vista",
       "summary": "In September 2013, the Win7Vista Windows forum (since renamed to the \"Beyond Windows 9\" forum) was hacked and later had its internal database dumped. The dump included over 200k members’ personal information and other internal data extracted from the forum.",
+      "action": "rotate"
+    },
+    {
+      "id": "hibp:windows93-2021-01-01",
+      "name": "Windows93",
+      "title": "Windows93 / Myspace93",
+      "date": "2021-01-01",
+      "added": "2026-05-21",
+      "affected_count": 46105,
+      "data_classes": [
+        "Email addresses",
+        "IP addresses",
+        "Passwords",
+        "Usernames"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Windows93",
+      "summary": "In January 2021, the parody site Windows93 suffered a data breach of the Myspace93 sub-site after a beta application was exploited to download server files. The compromised data was later leaked in June and included 46k Myspace93 accounts containing email and IP addresses, usernames and passwords stored in plain text.",
       "action": "rotate"
     },
     {
