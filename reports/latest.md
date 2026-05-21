@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-05-21T12:24:45.729863+00:00
+generated_at: 2026-05-21T21:44:11.498558+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-45498 in Microsoft Defender, CVE-2008-4250 in Microsoft Windows, and CVE-2010-0806 in Microsoft Internet Explorer. These vulnerabilities are being actively exploited in the wild and affect internet-facing systems, particularly those using Microsoft products. The single most time-sensitive action is to patch or isolate systems affected by these vulnerabilities, specifically Microsoft Defender and Microsoft Windows, although patches are not currently available for all of them.
+The highest-risk items this period are CVE-2026-41999, CVE-2026-28764, and CVE-2026-39461, which affect various software products and vendor platforms. Internet-facing systems, such as those using TCP PROXY requests, are most exposed due to the lack of patches for these vulnerabilities. The single most time-sensitive action is to monitor and patch systems affected by these CVEs, specifically those using MediaArea MediaInfoLib and libcasper, although patches are not currently available.
 
-## CVE-2026-45498: Microsoft Defender DoS (risk: 100)
-[P1] Microsoft Defender contains an unspecified vulnerability that allows for denial of service, and it is being actively exploited in the wild. This affects Microsoft Defender users, particularly those with internet-facing systems. Why now: Reported active exploitation in the wild. (confidence: 0.90)
+## CVE-2026-41999: Incorrect Behaviour of Views with TCP PROXY Requests (risk: 70)
+[P1] CVE-2026-41999 affects systems using TCP PROXY requests, with no patch available, and has a high risk score due to its potential impact on various software products. Why now: Reported attribution (unverified): None, but high-risk due to potential for exploitation. (confidence: 0.80)
 
-- [Microsoft Warns of Two Actively Exploited Defender Vulnerabilities](https://thehackernews.com/2026/05/microsoft-warns-of-two-actively.html)
+- [CVE-2026-41999](https://www.cisa.gov/news-events/ics-advisories/icsa-26-141-01)
 
-## CVE-2008-4250: Microsoft Windows Buffer Overflow (risk: 100)
-[P1] Microsoft Windows contains a buffer overflow vulnerability in the Windows Server Service that allows remote attackers to execute arbitrary code, and it is being actively exploited in the wild. This affects Microsoft Windows users, particularly those with internet-facing systems. Why now: Reported active exploitation in the wild. (confidence: 0.90)
+## CVE-2026-28764: MediaArea MediaInfoLib LXF element parsing heap-based buffer overflow (risk: 70)
+[P1] CVE-2026-28764 is a heap-based buffer overflow vulnerability in MediaArea MediaInfoLib, with no patch available, and has a high risk score due to its potential for exploitation. Why now: Reported attribution (unverified): None, but high-risk due to potential for exploitation. (confidence: 0.80)
 
-- [Microsoft Windows contains a buffer overflow vulnerability](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4250)
+- [CVE-2026-28764](https://www.cisa.gov/news-events/ics-advisories/icsa-26-141-01)
 
-## CVE-2010-0806: Microsoft Internet Explorer Use-After-Free (risk: 100)
-[P1] Microsoft Internet Explorer contains an use-after-free vulnerability that could allow remote attackers to execute arbitrary code, and it is being actively exploited in the wild. This affects Microsoft Internet Explorer users, particularly those with internet-facing systems. Why now: Reported active exploitation in the wild. (confidence: 0.90)
+## CVE-2026-39461: libcasper(3) communicates with helper processes via UNIX domain sockets (risk: 70)
+[P1] CVE-2026-39461 affects libcasper, with no patch available, and has a high risk score due to its potential impact on various software products. Why now: Reported attribution (unverified): None, but high-risk due to potential for exploitation. (confidence: 0.80)
 
-- [Microsoft Internet Explorer contains an use-after-free vulnerability](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0806)
+- [CVE-2026-39461](https://www.cisa.gov/news-events/ics-advisories/icsa-26-141-01)
