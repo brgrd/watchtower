@@ -1822,5 +1822,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.95
+  },
+  "24f5b1b82fdf": {
+    "first_seen": "2026-05-23",
+    "last_seen": "2026-05-23",
+    "run_count": 1,
+    "title": "Claude Mythos AI Vulnerabilities",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "2af436265613": {
+    "first_seen": "2026-05-23",
+    "last_seen": "2026-05-23",
+    "run_count": 1,
+    "title": "Laravel Lang Packages Hijacking",
+    "last_problem_type": "credential_compromise",
+    "last_affects": "user_data",
+    "last_classification_confidence": 0.9
+  },
+  "e7a6376d445a": {
+    "first_seen": "2026-05-23",
+    "last_seen": "2026-05-23",
+    "run_count": 1,
+    "title": "npm 2FA-Gated Publishing",
+    "last_problem_type": "supply_chain",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
   }
 }
