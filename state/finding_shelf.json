@@ -1795,5 +1795,32 @@
     "last_problem_type": "credential_compromise",
     "last_affects": "user_data",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-48172": {
+    "first_seen": "2026-05-23",
+    "last_seen": "2026-05-23",
+    "run_count": 1,
+    "title": "CVE-2026-48172: LiteSpeed cPanel",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-9255": {
+    "first_seen": "2026-05-23",
+    "last_seen": "2026-05-23",
+    "run_count": 1,
+    "title": "CVE-2026-9255: Kiro CLI",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-9291": {
+    "first_seen": "2026-05-23",
+    "last_seen": "2026-05-23",
+    "run_count": 1,
+    "title": "CVE-2026-9291: Amazon Braket SDK",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
   }
 }
