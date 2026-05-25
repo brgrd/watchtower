@@ -1858,5 +1858,32 @@
     "last_problem_type": "privilege_escalation",
     "last_affects": "foundation",
     "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-26980": {
+    "first_seen": "2026-05-25",
+    "last_seen": "2026-05-25",
+    "run_count": 1,
+    "title": "CVE-2026-26980: Ghost CMS SQL Injection",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-43029": {
+    "first_seen": "2026-05-25",
+    "last_seen": "2026-05-25",
+    "run_count": 1,
+    "title": "CVE-2026-43029: mptcp Soft Lockup",
+    "last_problem_type": "dos",
+    "last_affects": "network",
+    "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-43414": {
+    "first_seen": "2026-05-25",
+    "last_seen": "2026-05-25",
+    "run_count": 1,
+    "title": "CVE-2026-43414: scsi: qla2xxx Double Free",
+    "last_problem_type": "dos",
+    "last_affects": "network",
+    "last_classification_confidence": 0.8
   }
 }
