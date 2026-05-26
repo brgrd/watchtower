@@ -1885,5 +1885,23 @@
     "last_problem_type": "dos",
     "last_affects": "network",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-9453": {
+    "first_seen": "2026-05-26",
+    "last_seen": "2026-05-26",
+    "run_count": 1,
+    "title": "CVE-2026-9453: FoundDream miniclawd RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-7766": {
+    "first_seen": "2026-05-26",
+    "last_seen": "2026-05-26",
+    "run_count": 1,
+    "title": "CVE-2026-7766: Kenik Camera management Panel Path Traversal",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.8
   }
 }
