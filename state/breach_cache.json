@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-26T21:55:34.561988+00:00",
+  "fetched_at": "2026-05-27T12:29:06.791189+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -906,6 +906,26 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#AmartFurniture",
       "summary": "In May 2022, the Australian retailer Amart Furniture advised that their warranty claims database hosted on Amazon Web Services had been the target of a cyber attack. Over 100k records containing email and physical address, names, phone numbers and passwords stored as bcrypt hashes were exposed and shared online by the attacker.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:ameriprise-2026-03-02",
+      "name": "Ameriprise",
+      "title": "Ameriprise",
+      "date": "2026-03-02",
+      "added": "2026-05-26",
+      "affected_count": 502597,
+      "data_classes": [
+        "Email addresses",
+        "Employers",
+        "Financial transactions",
+        "Job titles",
+        "Names",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Ameriprise",
+      "summary": "In March 2026, the financial services firm Ameriprise Financial was named by the ShinyHunters group in a \"pay or leak\" extortion campaign. The group claimed possession of more than 200GB of compressed data exfiltrated from Ameriprise's Salesforce environment and internal SharePoint infrastructure, and subsequently published the data after negotiations allegedly failed. The published data contained",
+      "action": "close"
     },
     {
       "id": "hibp:amtrak-2026-04-03",
@@ -10689,6 +10709,26 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#MySpace",
       "summary": "In approximately 2008, MySpace suffered a data breach that exposed almost 360 million accounts. In May 2016 the data was offered up for sale on the \"Real Deal\" dark market website and included email addresses, usernames and SHA1 hashes of the first 10 characters of the password converted to lowercase and stored without a salt. The exact breach date is unknown, but analysis of the data suggests it ",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:mytheresa-2026-04-12",
+      "name": "Mytheresa",
+      "title": "Mytheresa",
+      "date": "2026-04-12",
+      "added": "2026-05-27",
+      "affected_count": 84108,
+      "data_classes": [
+        "Email addresses",
+        "Names",
+        "Partial credit card data",
+        "Phone numbers",
+        "Physical addresses",
+        "Purchases",
+        "Salutations"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Mytheresa",
+      "summary": "In April 2026, the luxury fashion e-commerce platform Mytheresa was listed as a victim of the ShinyHunters \"pay or leak\" extortion group. After the ransom deadline passed, the group publicly released the data which contained 84k unique email addresses. The exposed data also included names, phone numbers, physical addresses, purchases and partial credit card data including card type, last 4 digits ",
+      "action": "monitor"
     },
     {
       "id": "hibp:myvidster-2015-08-15",

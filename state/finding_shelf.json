@@ -1930,5 +1930,14 @@
     "last_problem_type": "data_tampering",
     "last_affects": "application",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-27771": {
+    "first_seen": "2026-05-27",
+    "last_seen": "2026-05-27",
+    "run_count": 1,
+    "title": "CVE-2026-48172: LiteSpeed cPanel Plugin Privilege Escalation",
+    "last_problem_type": "privilege_escalation",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
   }
 }
