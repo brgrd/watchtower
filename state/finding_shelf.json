@@ -2038,5 +2038,32 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-9818": {
+    "first_seen": "2026-05-28",
+    "last_seen": "2026-05-28",
+    "run_count": 1,
+    "title": "CVE-2026-9818: Rejected CVE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2026-40914": {
+    "first_seen": "2026-05-28",
+    "last_seen": "2026-05-28",
+    "run_count": 1,
+    "title": "CVE-2026-40914: Apache Artemis STOMP Vuln",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2026-9658": {
+    "first_seen": "2026-05-28",
+    "last_seen": "2026-05-28",
+    "run_count": 1,
+    "title": "CVE-2026-9658: Plack::Middleware::Security::Common Vuln",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.85
   }
 }
