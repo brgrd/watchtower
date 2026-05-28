@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-27T22:04:46.383926+00:00",
+  "fetched_at": "2026-05-28T12:39:42.887077+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -8372,6 +8372,25 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#KayoMoe",
       "summary": "In September 2018, a collection of almost 42 million email address and plain text password pairs was uploaded to the anonymous file sharing service kayo.moe. The operator of the service contacted HIBP to report the data which, upon further investigation, turned out to be a large credential stuffing list. For more information, read about The 42M Record kayo.moe Credential Stuffing Data.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:kemper-2026-04-15",
+      "name": "Kemper",
+      "title": "Kemper",
+      "date": "2026-04-15",
+      "added": "2026-05-28",
+      "affected_count": 269299,
+      "data_classes": [
+        "Email addresses",
+        "Names",
+        "Partial credit card data",
+        "Phone numbers",
+        "Physical addresses",
+        "Purchases"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Kemper",
+      "summary": "In April 2026, the American insurance holding company Kemper Corporation was named by the ShinyHunters ransomware group in a \"pay or leak\" extortion campaign. The attackers allegedly accessed Kemper's Salesforce environment via social engineering as part of a broader campaign targeting hundreds of organisations using the same method. The group later published tens of gigabytes of data they claimed",
+      "action": "monitor"
     },
     {
       "id": "hibp:kickstarter-2014-02-16",
