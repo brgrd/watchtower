@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-28T12:39:42.887077+00:00",
+  "fetched_at": "2026-05-28T22:03:28.172833+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -3030,6 +3030,24 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#CentralTickets",
       "summary": "In September 2024, data from the ticketing service Central Tickets was publicly posted to a hacking forum. The data suggests the breach occurred several months earlier and exposed 723k unique email addresses alongside names, phone numbers, IP addresses, purchases and passwords stored as unsalted SHA-1 hashes.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:charter-2026-05-23",
+      "name": "Charter",
+      "title": "Charter",
+      "date": "2026-05-23",
+      "added": "2026-05-28",
+      "affected_count": 4851517,
+      "data_classes": [
+        "Email addresses",
+        "Job titles",
+        "Names",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Charter",
+      "summary": "In May 2026, the telecommunications company Charter Communications (the parent company behind the consumer broadband and cable brand Spectrum) was named by the ShinyHunters group in a \"pay or leak\" extortion campaign. The group later published the data, which exposed 4.9M unique email addresses along with names, phone numbers and physical addresses. A subset of approximately 85k records originatin",
+      "action": "monitor"
     },
     {
       "id": "hibp:chatbooks-2020-03-26",
