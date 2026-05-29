@@ -2065,5 +2065,32 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
     "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2026-46062": {
+    "first_seen": "2026-05-29",
+    "last_seen": "2026-05-29",
+    "run_count": 1,
+    "title": "CVE-2026-46062 ntfs3",
+    "last_problem_type": "rce",
+    "last_affects": "foundation",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-45930": {
+    "first_seen": "2026-05-29",
+    "last_seen": "2026-05-29",
+    "run_count": 1,
+    "title": "CVE-2026-45930 net",
+    "last_problem_type": "privilege_escalation",
+    "last_affects": "foundation",
+    "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-46021": {
+    "first_seen": "2026-05-29",
+    "last_seen": "2026-05-29",
+    "run_count": 1,
+    "title": "CVE-2026-46021 thermal",
+    "last_problem_type": "dos",
+    "last_affects": "foundation",
+    "last_classification_confidence": 0.7
   }
 }
