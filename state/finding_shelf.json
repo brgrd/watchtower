@@ -2092,5 +2092,32 @@
     "last_problem_type": "dos",
     "last_affects": "foundation",
     "last_classification_confidence": 0.7
+  },
+  "cve:CVE-2026-42965": {
+    "first_seen": "2026-05-29",
+    "last_seen": "2026-05-29",
+    "run_count": 1,
+    "title": "CVE-2026-42965: OpenShift Router RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-49201": {
+    "first_seen": "2026-05-29",
+    "last_seen": "2026-05-29",
+    "run_count": 1,
+    "title": "CVE-2026-49201: upload.cgi Binary RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-9557": {
+    "first_seen": "2026-05-29",
+    "last_seen": "2026-05-29",
+    "run_count": 1,
+    "title": "CVE-2026-9557: Mautic Focus Component SSRF",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
