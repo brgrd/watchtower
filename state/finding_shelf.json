@@ -2119,5 +2119,32 @@
     "last_problem_type": "auth_bypass",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2025-41266": {
+    "first_seen": "2026-05-29",
+    "last_seen": "2026-05-29",
+    "run_count": 1,
+    "title": "CVE-2025-41266: Nozomi Networks Labs Improper Neutralization",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2025-41267": {
+    "first_seen": "2026-05-29",
+    "last_seen": "2026-05-29",
+    "run_count": 1,
+    "title": "CVE-2025-41267: Nozomi Networks Labs Relative Path Traversal",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2025-41268": {
+    "first_seen": "2026-05-29",
+    "last_seen": "2026-05-29",
+    "run_count": 1,
+    "title": "CVE-2025-41268: Nozomi Networks Labs Improper Neutralization",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.85
   }
 }
