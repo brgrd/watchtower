@@ -2163,7 +2163,7 @@
     "title": "CVE-2026-10112: sambitraj STUDENT-MANAGEMENT-SYSTEM RCE",
     "last_problem_type": "rce",
     "last_affects": "application",
-    "last_classification_confidence": 0.85
+    "last_classification_confidence": 0.95
   },
   "cve:CVE-2026-5071": {
     "first_seen": "2026-05-30",
@@ -2173,5 +2173,23 @@
     "last_problem_type": "rce",
     "last_affects": "network",
     "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2026-10113": {
+    "first_seen": "2026-05-30",
+    "last_seen": "2026-05-30",
+    "run_count": 1,
+    "title": "CVE-2026-10113: Open5GS RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-48840": {
+    "first_seen": "2026-05-30",
+    "last_seen": "2026-05-30",
+    "run_count": 1,
+    "title": "CVE-2026-48840: Exim RCE",
+    "last_problem_type": "rce",
+    "last_affects": "service",
+    "last_classification_confidence": 0.95
   }
 }
