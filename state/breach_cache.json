@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-30T22:09:25.995575+00:00",
+  "fetched_at": "2026-05-31T09:17:43.927417+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -1452,6 +1452,24 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Aternos",
       "summary": "In December 2015, the service for creating and running free Minecraft servers known as Aternos suffered a data breach that impacted 1.4 million subscribers. The data included usernames, email and IP addresses and hashed passwords.",
+      "action": "rotate"
+    },
+    {
+      "id": "hibp:atlasmenu-2026-05-30",
+      "name": "AtlasMenu",
+      "title": "Atlas Menu",
+      "date": "2026-05-30",
+      "added": "2026-05-30",
+      "affected_count": 63926,
+      "data_classes": [
+        "Email addresses",
+        "IP addresses",
+        "Passwords",
+        "Support tickets",
+        "Usernames"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#AtlasMenu",
+      "summary": "In May 2026, the GTA V and CS2 cheat service Atlas Menu suffered a data breach. An attacker claimed to have gained access to all Atlas systems and published the service's database to a public GitHub repository. The incident exposed 64k unique email addresses along with usernames, IP addresses, support tickets and passwords stored as bcrypt hashes.",
       "action": "rotate"
     },
     {
