@@ -2251,9 +2251,9 @@
     "last_seen": "2026-05-31",
     "run_count": 1,
     "title": "CVE-2026-10154: Dolibarr ERP CRM RCE",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
+    "last_problem_type": "data_disclosure",
+    "last_affects": "user_data",
+    "last_classification_confidence": 0.8
   },
   "cve:CVE-2026-10157": {
     "first_seen": "2026-05-31",
@@ -2269,6 +2269,15 @@
     "last_seen": "2026-05-31",
     "run_count": 1,
     "title": "CVE-2026-10158: TRENDnet TEW-432BRP RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-10159": {
+    "first_seen": "2026-05-31",
+    "last_seen": "2026-05-31",
+    "run_count": 1,
+    "title": "CVE-2026-10159: TRENDnet TEW-432BRP RCE",
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
