@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-05-31T11:45:56.430726+00:00
+generated_at: 2026-05-31T22:09:35.667674+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,14 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-10159 in TRENDnet TEW-432BRP, CVE-2026-10154 in Dolibarr ERP CRM, and CVE-2026-10155 in Bdtask Multi-Store Inventory Management System. These vulnerabilities expose internet-facing devices, such as routers and inventory management systems, to potential attacks due to the lack of available patches. The single most time-sensitive action is to monitor and isolate TRENDnet TEW-432BRP devices, as no patch is currently available for CVE-2026-10159.
+The highest-risk items this period are CVE-2026-10180 in TRENDnet TEW-432BRP, CVE-2026-49489 in OpenCATS, and a WP Maps Pro bug exploited to create admin accounts on WordPress sites. Internet-facing firewalls, container orchestration nodes, and VPN appliances are most exposed due to the lack of patches for these vulnerabilities. The single most time-sensitive action is to patch the WP Maps Pro bug, as it is currently being exploited in the wild to create admin accounts on WordPress sites, but no patch is currently available.
 
-## CVE-2026-10159: TRENDnet TEW-432BRP RCE (risk: 70)
-[P1] A weakness in TRENDnet TEW-432BRP 3.10B20 allows for arbitrary code execution, with no patch available. This vulnerability poses a high risk to internet-facing devices. Why now: Lack of patch availability increases the urgency to address this vulnerability. (confidence: 0.80)
+## WP Maps Pro Bug: Admin Account Creation (risk: 70)
+[P1] A bug in WP Maps Pro is being exploited to create admin accounts on WordPress sites, but no patch is currently available. This bug could allow for privilege escalation and data tampering. Why now: Reported attribution (unverified): None (confidence: 0.90)
 
-- [CVE-2026-10159](https://nvd.nist.gov/v1/nvd.cgi?cvename=CVE-2026-10159)
+- [WP Maps Pro bug exploited to create admin accounts on WordPress sites](https://www.bleepingcomputer.com/news/security/wp-maps-pro-bug-exploited-to-create-admin-accounts-on-wordpress-sites/)
 
-## CVE-2026-10154: Dolibarr ERP CRM Vulnerability (risk: 60)
-[P2] A vulnerability in Dolibarr ERP CRM 23.0.0/23.0.1/23.0.2 poses a risk to user data, with no patch or workaround available. This vulnerability highlights the importance of monitoring and securing ERP systems. Why now: The lack of available patches or workarounds for this vulnerability increases its urgency. (confidence: 0.70)
+## CVE-2026-10180: TRENDnet TEW-432BRP Vulnerability (risk: 40)
+[P2] A vulnerability has been found in TRENDnet TEW-432BRP 3.10B20, but it is not currently being exploited in the wild and no patch is available. This vulnerability could allow for remote code execution. Why now: Reported attribution (unverified): None (confidence: 0.60)
 
-- [CVE-2026-10154](https://nvd.nist.gov/v1/nvd.cgi?cvename=CVE-2026-10154)
+- [CVE-2026-10180](https://www.nvd.nist.gov/v1/nvd.html)
+
+## CVE-2026-49489: OpenCATS SQL Injection (risk: 40)
+[P2] OpenCATS through 0.9.7.4 contains a SQL injection vulnerability in the sortDirection parameter, but it is not currently being exploited in the wild and no patch is available. This vulnerability could allow for data disclosure and tampering. Why now: Reported attribution (unverified): None (confidence: 0.60)
+
+- [CVE-2026-49489](https://www.nvd.nist.gov/v1/nvd.html)
