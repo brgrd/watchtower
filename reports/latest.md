@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-05-31T22:09:35.667674+00:00
+generated_at: 2026-06-01T00:13:07.195806+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-10180 in TRENDnet TEW-432BRP, CVE-2026-49489 in OpenCATS, and a WP Maps Pro bug exploited to create admin accounts on WordPress sites. Internet-facing firewalls, container orchestration nodes, and VPN appliances are most exposed due to the lack of patches for these vulnerabilities. The single most time-sensitive action is to patch the WP Maps Pro bug, as it is currently being exploited in the wild to create admin accounts on WordPress sites, but no patch is currently available.
+The highest-risk items this period are CVE-2026-10181 in TRENDnet TEW-432BRP, CVE-2026-49490 in OpenCATS, and CVE-2026-10187 in Totolink N300RH. Internet-facing devices, such as routers and IoT devices, are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate devices using TRENDnet TEW-432BRP and Totolink N300RH, as no patches are currently available.
 
-## WP Maps Pro Bug: Admin Account Creation (risk: 70)
-[P1] A bug in WP Maps Pro is being exploited to create admin accounts on WordPress sites, but no patch is currently available. This bug could allow for privilege escalation and data tampering. Why now: Reported attribution (unverified): None (confidence: 0.90)
+## CVE-2026-10181: TRENDnet TEW-432BRP RCE (risk: 70)
+[P1] A vulnerability in TRENDnet TEW-432BRP allows for remote code execution, and no patch is currently available. This vulnerability is highly critical due to the potential for unauthorized access to sensitive data. Why now: Reported attribution (unverified): none (confidence: 0.80)
 
-- [WP Maps Pro bug exploited to create admin accounts on WordPress sites](https://www.bleepingcomputer.com/news/security/wp-maps-pro-bug-exploited-to-create-admin-accounts-on-wordpress-sites/)
+- [CVE-2026-10181](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-10181)
 
-## CVE-2026-10180: TRENDnet TEW-432BRP Vulnerability (risk: 40)
-[P2] A vulnerability has been found in TRENDnet TEW-432BRP 3.10B20, but it is not currently being exploited in the wild and no patch is available. This vulnerability could allow for remote code execution. Why now: Reported attribution (unverified): None (confidence: 0.60)
+## CVE-2026-49490: OpenCATS SQL Injection (risk: 70)
+[P1] A SQL injection vulnerability in OpenCATS allows for unauthorized data access, and no patch is currently available. This vulnerability is highly critical due to the potential for sensitive data exposure. Why now: Reported attribution (unverified): none (confidence: 0.80)
 
-- [CVE-2026-10180](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2026-49490](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-49490)
 
-## CVE-2026-49489: OpenCATS SQL Injection (risk: 40)
-[P2] OpenCATS through 0.9.7.4 contains a SQL injection vulnerability in the sortDirection parameter, but it is not currently being exploited in the wild and no patch is available. This vulnerability could allow for data disclosure and tampering. Why now: Reported attribution (unverified): None (confidence: 0.60)
+## CVE-2026-10187: Totolink N300RH RCE (risk: 70)
+[P1] A vulnerability in Totolink N300RH allows for remote code execution, and no patch is currently available. This vulnerability is highly critical due to the potential for unauthorized access to sensitive data. Why now: Reported attribution (unverified): none (confidence: 0.80)
 
-- [CVE-2026-49489](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2026-10187](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-10187)
