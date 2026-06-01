@@ -2335,5 +2335,23 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-10199": {
+    "first_seen": "2026-06-01",
+    "last_seen": "2026-06-01",
+    "run_count": 1,
+    "title": "CVE-2026-10199: Assimp RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-10202": {
+    "first_seen": "2026-06-01",
+    "last_seen": "2026-06-01",
+    "run_count": 1,
+    "title": "CVE-2026-10202: OFCMS SQL Injection",
+    "last_problem_type": "data_tampering",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }

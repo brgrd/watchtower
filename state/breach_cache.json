@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-05-31T22:09:36.251332+00:00",
+  "fetched_at": "2026-06-01T12:46:10.979773+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -5025,6 +5025,25 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Edmodo",
       "summary": "In May 2017, the education platform Edmodo was hacked resulting in the exposure of 77 million records comprised of over 43 million unique customer email addresses. The data was consequently published to a popular hacking forum and made freely available. The records in the breach included usernames, email addresses and bcrypt hashes of passwords.",
+      "action": "rotate"
+    },
+    {
+      "id": "hibp:edmunds-2026-01-24",
+      "name": "Edmunds",
+      "title": "Edmunds",
+      "date": "2026-01-24",
+      "added": "2026-06-01",
+      "affected_count": 177860,
+      "data_classes": [
+        "Device information",
+        "Email addresses",
+        "IP addresses",
+        "Passwords",
+        "Phone numbers",
+        "Usernames"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Edmunds",
+      "summary": "In January 2026, the automotive research and car-shopping platform Edmunds was listed by the ShinyHunters hacking group as having been breached. Data purportedly obtained in the incident was later published publicly and included 178k unique email addresses, usernames, passwords, IP addresses, phone numbers and vehicle-related records.",
       "action": "rotate"
     },
     {
