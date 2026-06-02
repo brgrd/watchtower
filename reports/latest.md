@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-06-02T21:55:53.970213+00:00
+generated_at: 2026-06-02T23:57:02.811683+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,16 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-1451 in the rognone plugin for WordPress, CVE-2026-4081 in the ZeM STL plugin for WordPress, and CVE-2026-3514 in prefecthq/prefect. Internet-facing WordPress installations are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate WordPress installations using the rognone and ZeM STL plugins, although no patches are currently available.
+The highest-risk items this period are CVE-2026-10591 in Kiro IDE, CVE-2026-10584 in Graph Explorer, and CVE-2024-21182 in Oracle WebLogic. Internet-facing systems, such as web applications and VPN appliances, are most exposed due to the lack of patches for these vulnerabilities. The single most time-sensitive action is to patch or isolate systems vulnerable to CVE-2026-10591, as it allows remote unauthenticated actors to execute arbitrary commands.
 
-## CVE-2026-1451: rognone WordPress Reflected XSS (risk: 70)
-[P1] The rognone plugin for WordPress is vulnerable to Reflected Cross-Site Scripting, allowing attackers to inject malicious code. No patch is currently available. Why now: Lack of patch and potential for widespread exploitation. (confidence: 0.80)
+## CVE-2026-10591: Kiro IDE RCE (risk: 70)
+[P1] Kiro IDE is vulnerable to remote code execution due to insufficient access control restrictions in the file write tool, allowing remote unauthenticated actors to execute arbitrary commands. No patch is currently available. Why now: Reported exploitation in the wild. (confidence: 0.80)
 
-- [CVE-2026-1451](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-1451)
+- [CVE-2026-10591 - Kiro IDE Insufficient File Write Restrictions to Execution-Sensitive Paths](https://aws.amazon.com/security/security-bulletins/rss/2026-037-aws/)
+- [CVE-2026-10591](https://www.cisa.gov/news-events/alerts/2026/06/02/cisa-adds-two-known-exploited-vulnerabilities-catalog)
 
-## CVE-2026-4081: ZeM STL WordPress Stored XSS (risk: 70)
-[P1] The ZeM STL plugin for WordPress is vulnerable to Stored Cross-Site Scripting, allowing attackers to inject malicious code. No patch is currently available. Why now: Lack of patch and potential for widespread exploitation. (confidence: 0.80)
+## CVE-2026-10584: Graph Explorer HTTPS Fallback (risk: 60)
+[P2] Graph Explorer is vulnerable to HTTPS fallback to HTTP, allowing sensitive information to be transmitted in cleartext. A patch is available in version 3.0.1. Why now: Reported exploitation in the wild. (confidence: 0.70)
 
-- [CVE-2026-4081](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-4081)
-
-## CVE-2026-3514: prefecthq/prefect Authentication Bypass (risk: 70)
-[P1] prefecthq/prefect is vulnerable to an authentication bypass vulnerability, allowing attackers to access sensitive data. No patch is currently available. Why now: Lack of patch and potential for widespread exploitation. (confidence: 0.80)
-
-- [CVE-2026-3514](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-3514)
+- [CVE-2026-10584 - HTTPS Fallback to HTTP in Graph Explorer](https://aws.amazon.com/security/security-bulletins/rss/2026-038-aws/)
+- [CVE-2026-10584](https://www.cisa.gov/news-events/alerts/2026/06/02/cisa-adds-two-known-exploited-vulnerabilities-catalog)
