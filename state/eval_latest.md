@@ -1,38 +1,38 @@
-# Watchtower Pipeline Eval — 2026-06-02T23:56:52Z
+# Watchtower Pipeline Eval — 2026-06-03T11:19:55Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 224 |
-| After dedup + CVE merge | 218 |
-| Sent to Groq | 29 |
+| Items polled (raw) | 332 |
+| After dedup + CVE merge | 332 |
+| Sent to Groq | 3 |
 | Groq findings returned | 2 |
 | Passed quality gate | 2 |
 | Final cards rendered | 2 |
-| **Pipeline yield** | **2/224 (0.9%)** |
+| **Pipeline yield** | **2/332 (0.6%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 16,571 chars
+- **Payload**: 9,198 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 6053
+- **Rate limit remaining** — requests: 999, tokens: 7818
 
 ## Card Quality
 
-**2 cards** — P1: 1, P2: 1, P3: 0
+**2 cards** — P1: 2, P2: 0, P3: 0
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 65 / 60 |
+| Risk score mean / p90 | 100 / 100 |
 | Tactic coverage | 100% |
-| CVE coverage | 100% |
+| CVE coverage | 0% |
 | Patch status | unknown: 2 |
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 34 chars (0% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 3 total — 67% specific, 33% generic
+- **`why_now` avg length**: 33 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 4 total — 50% specific, 50% generic
 
 ### Persistence
 
@@ -43,31 +43,31 @@
 
 | Source | Hits | Rate |
 |--------|-----:|-----:|
-| EPSS | 0 | 0% |
-| NVD (CVE) | 2 | 100% |
-| CISA KEV | 0 | 0% |
+| EPSS | 2 | 100% |
+| NVD (CVE) | 0 | 0% |
+| CISA KEV | 2 | 100% |
 
 ## Feed Yield
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 169 |
-| `github_changelog` | 10 |
-| `bleepingcomputer` | 9 |
-| `darkreading` | 8 |
-| `securityweek` | 7 |
+| `msrc_update_guide` | 147 |
+| `bsi_germany` | 126 |
+| `nvd` | 41 |
+| `bleepingcomputer` | 5 |
+| `thehackernews` | 3 |
 | _(+21 more)_ | … |
 
-**11 feeds returned 0 items this run.**
+**14 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-05-31 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-06-01 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-06-01 | 2 | ? | 100% | 0% | 2 | 0 |
 | 2026-06-01 | 3 | 3 | 100% | 100% | 3 | 0 |
 | 2026-06-02 | 2 | 1 | 100% | 50% | 1 | 0 |
 | 2026-06-02 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-06-02 | 3 | 3 | 100% | 0% | 3 | 0 |
+| 2026-06-02 | 2 | 1 | 100% | 100% | 2 | 0 |
