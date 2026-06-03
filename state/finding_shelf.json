@@ -2479,5 +2479,23 @@
     "last_problem_type": "privilege_escalation",
     "last_affects": "foundation",
     "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-23479": {
+    "first_seen": "2026-06-03",
+    "last_seen": "2026-06-03",
+    "run_count": 1,
+    "title": "CVE-2026-23479: Redis RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2025-14771": {
+    "first_seen": "2026-06-03",
+    "last_seen": "2026-06-03",
+    "run_count": 1,
+    "title": "CVE-2025-14771: ABB T-MAC P Vulnerability",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.8
   }
 }
