@@ -2542,5 +2542,32 @@
     "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2026-20230": {
+    "first_seen": "2026-06-04",
+    "last_seen": "2026-06-04",
+    "run_count": 1,
+    "title": "CVE-2026-20230: Cisco Unified CM RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-10800": {
+    "first_seen": "2026-06-04",
+    "last_seen": "2026-06-04",
+    "run_count": 1,
+    "title": "CVE-2026-10800: PaddlePaddle FastDeploy RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-10305": {
+    "first_seen": "2026-06-04",
+    "last_seen": "2026-06-04",
+    "run_count": 1,
+    "title": "CVE-2026-10305: Samsung Open Source rlottie OOB Read",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.8
   }
 }
