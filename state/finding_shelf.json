@@ -994,8 +994,8 @@
   },
   "b9e9d2dca15f": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-05-11",
-    "run_count": 1,
+    "last_seen": "2026-06-05",
+    "run_count": 2,
     "title": "GCP-2026-028"
   },
   "e799fb3564e7": {
@@ -2149,8 +2149,8 @@
   },
   "cve:CVE-2026-0257": {
     "first_seen": "2026-05-30",
-    "last_seen": "2026-06-02",
-    "run_count": 2,
+    "last_seen": "2026-06-05",
+    "run_count": 3,
     "title": "CVE-2026-0257: PAN-OS Auth Bypass",
     "last_problem_type": "rce",
     "last_affects": "network",
@@ -2623,5 +2623,83 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "ecf5241a53b1": {
+    "first_seen": "2026-06-05",
+    "last_seen": "2026-06-05",
+    "run_count": 1,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "cve:CVE-2026-7191": {
+    "first_seen": "2026-06-05",
+    "last_seen": "2026-06-05",
+    "run_count": 1,
+    "title": "CVE-2026-7191- Arbitrary Code Execution via Sandbox Bypass in QnABot on AWS"
+  },
+  "cve:CVE-2026-6437": {
+    "first_seen": "2026-06-05",
+    "last_seen": "2026-06-05",
+    "run_count": 1,
+    "title": "CVE-2026-6437 - Mount Option Injection in Amazon EFS CSI Driver"
+  },
+  "cve:CVE-2026-1386": {
+    "first_seen": "2026-06-05",
+    "last_seen": "2026-06-05",
+    "run_count": 1,
+    "title": "CVE-2026-1386 - Arbitrary Host File Overwrite via Symlink in Firecracker Jailer"
+  },
+  "6b1a31fa248e": {
+    "first_seen": "2026-06-05",
+    "last_seen": "2026-06-05",
+    "run_count": 1,
+    "title": "Fragnesia Local Privilege Escalation report via ESP-in-TCP in the Linux Kernel"
+  },
+  "cve:CVE-2026-3336": {
+    "first_seen": "2026-06-05",
+    "last_seen": "2026-06-05",
+    "run_count": 1,
+    "title": "Issue with AWS-LC: an open-source, general-purpose cryptographic library (CVE-2026-3336, CVE-2026-3337, CVE-2026-3338)"
+  },
+  "199400a3d537": {
+    "first_seen": "2026-06-05",
+    "last_seen": "2026-06-05",
+    "run_count": 1,
+    "title": "Security Findings in SageMaker Python SDK"
+  },
+  "e6282ba96ef9": {
+    "first_seen": "2026-06-05",
+    "last_seen": "2026-06-05",
+    "run_count": 1,
+    "title": "Issue with FreeRTOS-Plus-TCP - MAC Address Validation Bypass and ICMP Echo Reply Integer Underflow"
+  },
+  "cve:CVE-2026-8596": {
+    "first_seen": "2026-06-05",
+    "last_seen": "2026-06-05",
+    "run_count": 1,
+    "title": "Issue with Amazon SageMaker Python SDK - Model artifact integrity verification issues (CVE-2026-8596 &amp; CVE-2026-8597"
+  },
+  "cve:CVE-2026-7424": {
+    "first_seen": "2026-06-05",
+    "last_seen": "2026-06-05",
+    "run_count": 1,
+    "title": "CVE-2026-7424 - Integer Underflow in DHCPv6 Sub-Option Parser in FreeRTOS-Plus-TCP"
+  },
+  "cve:CVE-2026-11400": {
+    "first_seen": "2026-06-05",
+    "last_seen": "2026-06-05",
+    "run_count": 1,
+    "title": "CVE-2026-11400 and CVE-2026-11401"
+  },
+  "cve:CVE-2026-8686": {
+    "first_seen": "2026-06-05",
+    "last_seen": "2026-06-05",
+    "run_count": 1,
+    "title": "CVE-2026-8686 - Heap out-of-bounds read in coreMQTT MQTT5 property parsing"
+  },
+  "cve:CVE-2025-8069": {
+    "first_seen": "2026-06-05",
+    "last_seen": "2026-06-05",
+    "run_count": 1,
+    "title": "CVE-2025-8069 - AWS Client VPN Windows Client Local Privilege Escalation"
   }
 }
