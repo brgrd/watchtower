@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-04T21:50:15.318151+00:00",
+  "fetched_at": "2026-06-05T12:17:42.141252+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -1788,6 +1788,26 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Baydoner",
       "summary": "In March 2026, the Turkish restaurant chain Baydöner suffered a data breach which was subsequently published to a public hacking forum. The incident exposed over 1.2M unique email addresses along with names, phone numbers, cities of residence and plaintext passwords. A small number of records also included Turkish national ID number and date of birth. In their disclosure notice, Baydöner stated th",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:bcdtravel-2026-05-29",
+      "name": "BCDTravel",
+      "title": "BCD Travel",
+      "date": "2026-05-29",
+      "added": "2026-06-05",
+      "affected_count": 396313,
+      "data_classes": [
+        "Email addresses",
+        "Employers",
+        "Job titles",
+        "Names",
+        "Phone numbers",
+        "Physical addresses",
+        "Support tickets"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#BCDTravel",
+      "summary": "In May 2026, the corporate travel management company BCD Travel was claimed as a victim of the ShinyHunters \"pay or leak\" extortion campaign. Data allegedly obtained from BCD was subsequently published publicly in early June and contained 396k unique email addresses. Other exposed data included names, addresses, phone numbers, job titles and employer names, spanning a variety of different data set",
+      "action": "monitor"
     },
     {
       "id": "hibp:beautifulpeople-2015-11-11",

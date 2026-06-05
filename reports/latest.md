@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-06-04T23:18:46.130900+00:00
+generated_at: 2026-06-05T12:17:41.308761+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-10803 in MLflow, CVE-2026-10802 in keystonejs keystone, and CVE-2026-10804 in Streamlit. These vulnerabilities expose internet-facing applications and services, such as those using MLflow, keystonejs, and Streamlit, to potential attacks, as none of them have patches available yet. The single most time-sensitive action is to monitor and isolate systems using MLflow, keystonejs keystone, and Streamlit, as patches are not currently available.
+The highest-risk items this period are CVE-2026-10872 in Shibby Tomato, CVE-2026-20245 in Cisco Catalyst SD-WAN Manager, and CVE-2026-10882 in Google Chrome. Internet-facing devices and network infrastructure are most exposed due to the lack of available patches for these vulnerabilities. The single most time-sensitive action is to monitor for and patch CVE-2026-10882 in Google Chrome, for which a patch is not currently available.
 
-## CVE-2026-10803: MLflow RCE (risk: 70)
-[P1] A flaw has been found in MLflow up to 3.10.0, allowing for remote code execution. No patch is available yet. Why now: Reported vulnerability in widely used MLflow framework (confidence: 0.80)
+## CVE-2026-10882: Google Chrome Vuln (risk: 70)
+[P1] A use-after-free vulnerability in Google Chrome prior to 149.0.7827.53 allows for remote code execution. There is no available patch or workaround for this vulnerability. Why now: Actively exploited in the wild (confidence: 0.90)
 
-- [CVE-2026-10803](https://nvd.nist.gov/v1/nvdhome)
+- [CVE-2026-10882](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-10882)
 
-## CVE-2026-10802: keystonejs keystone Vulnerability (risk: 60)
-[P2] A vulnerability was detected in keystonejs keystone up to 20260319, potentially allowing for unauthorized access. No patch is available yet. Why now: Reported vulnerability in keystonejs keystone framework (confidence: 0.70)
+## CVE-2026-10872: Shibby Tomato Vuln (risk: 40)
+[P2] A vulnerability was found in Shibby Tomato 1.28.0000, affecting the functionality of the device. There is no available patch or workaround for this vulnerability. Why now: Reported in recent CVE listings (confidence: 0.80)
 
-- [CVE-2026-10802](https://nvd.nist.gov/v1/nvdhome)
+- [CVE-2026-10872](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-10872)
 
-## CVE-2026-10804: Streamlit Vulnerability (risk: 60)
-[P2] A vulnerability has been found in Streamlit up to 1.53.0, potentially allowing for unauthorized access. No patch is available yet. Why now: Reported vulnerability in Streamlit framework (confidence: 0.70)
+## CVE-2026-20245: Cisco SD-WAN Vuln (risk: 40)
+[P2] A vulnerability in the CLI of Cisco Catalyst SD-WAN Manager allows for arbitrary code execution. There is no available patch or workaround for this vulnerability. Why now: Reported in recent CVE listings (confidence: 0.80)
 
-- [CVE-2026-10804](https://nvd.nist.gov/v1/nvdhome)
+- [CVE-2026-20245](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-20245)
