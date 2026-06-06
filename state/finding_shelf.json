@@ -2884,5 +2884,23 @@
     "last_seen": "2026-06-06",
     "run_count": 1,
     "title": "CVE-2026-9719"
+  },
+  "cve:CVE-2026-10725": {
+    "first_seen": "2026-06-06",
+    "last_seen": "2026-06-06",
+    "run_count": 1,
+    "title": "CVE-2026-10725: HTTP/2 Bomb",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-11411": {
+    "first_seen": "2026-06-06",
+    "last_seen": "2026-06-06",
+    "run_count": 1,
+    "title": "CVE-2026-11411: iAI Lab PDF AI App Vulnerability",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.8
   }
 }
