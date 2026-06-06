@@ -649,8 +649,8 @@
   },
   "cve:CVE-2026-31431": {
     "first_seen": "2026-04-30",
-    "last_seen": "2026-05-01",
-    "run_count": 2,
+    "last_seen": "2026-06-06",
+    "run_count": 3,
     "title": "geldata gel-mcp Vuln"
   },
   "cve:CVE-2026-2052": {
@@ -832,8 +832,8 @@
   },
   "cve:CVE-2026-8178": {
     "first_seen": "2026-05-08",
-    "last_seen": "2026-05-08",
-    "run_count": 1,
+    "last_seen": "2026-06-06",
+    "run_count": 2,
     "title": "CVE-2026-8178 RCE",
     "last_problem_type": "rce",
     "last_affects": "framework",
@@ -1807,8 +1807,8 @@
   },
   "cve:CVE-2026-9255": {
     "first_seen": "2026-05-23",
-    "last_seen": "2026-05-23",
-    "run_count": 1,
+    "last_seen": "2026-06-06",
+    "run_count": 2,
     "title": "CVE-2026-9255: Kiro CLI",
     "last_problem_type": "rce",
     "last_affects": "application",
@@ -2674,8 +2674,8 @@
   },
   "cve:CVE-2026-8596": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-06-05",
-    "run_count": 1,
+    "last_seen": "2026-06-06",
+    "run_count": 2,
     "title": "Issue with Amazon SageMaker Python SDK - Model artifact integrity verification issues (CVE-2026-8596 &amp; CVE-2026-8597"
   },
   "cve:CVE-2026-7424": {
@@ -2701,5 +2701,71 @@
     "last_seen": "2026-06-05",
     "run_count": 1,
     "title": "CVE-2025-8069 - AWS Client VPN Windows Client Local Privilege Escalation"
+  },
+  "cve:CVE-2026-5747": {
+    "first_seen": "2026-06-06",
+    "last_seen": "2026-06-06",
+    "run_count": 1,
+    "title": "CVE-2026-5747 - Out-of-bounds Write in Firecracker virtio-pci Transport"
+  },
+  "cve:CVE-2025-6031": {
+    "first_seen": "2026-06-06",
+    "last_seen": "2026-06-06",
+    "run_count": 1,
+    "title": "CVE-2025-6031 - Insecure device pairing in end-of-life Amazon Cloud Cam"
+  },
+  "cve:CVE-2026-8838": {
+    "first_seen": "2026-06-06",
+    "last_seen": "2026-06-06",
+    "run_count": 1,
+    "title": "CVE-2026-8838 - Remote Code Execution in amazon-redshift-python-driver"
+  },
+  "cve:CVE-2026-28318": {
+    "first_seen": "2026-06-06",
+    "last_seen": "2026-06-06",
+    "run_count": 1,
+    "title": "CVE-2026-28318 — SolarWinds Serv-U Uncontrolled Resource Consumption Vulnerability"
+  },
+  "cve:CVE-2025-9039": {
+    "first_seen": "2026-06-06",
+    "last_seen": "2026-06-06",
+    "run_count": 1,
+    "title": "CVE-2025-9039 - Issue with Amazon ECS agent introspection server"
+  },
+  "cve:CVE-2025-8904": {
+    "first_seen": "2026-06-06",
+    "last_seen": "2026-06-06",
+    "run_count": 1,
+    "title": "CVE-2025-8904 - Issue with Amazon EMR Secret Agent component"
+  },
+  "fef32024fa08": {
+    "first_seen": "2026-06-06",
+    "last_seen": "2026-06-06",
+    "run_count": 1,
+    "title": "Buffer Over-read when receiving improperly sized ICMPv6 packets"
+  },
+  "cve:CVE-2025-11573": {
+    "first_seen": "2026-06-06",
+    "last_seen": "2026-06-06",
+    "run_count": 1,
+    "title": "CVE-2025-11573 - Denial of Service issue in Amazon.IonDotnet"
+  },
+  "cve:CVE-2026-6911": {
+    "first_seen": "2026-06-06",
+    "last_seen": "2026-06-06",
+    "run_count": 1,
+    "title": "Issue with AWS Ops Wheel (CVE-2026-6911 and CVE-2026-6912"
+  },
+  "cve:CVE-2025-11462": {
+    "first_seen": "2026-06-06",
+    "last_seen": "2026-06-06",
+    "run_count": 1,
+    "title": "CVE-2025-11462 AWS ClientVPN macOS Client Local Privilege Escalation"
+  },
+  "cve:CVE-2026-0830": {
+    "first_seen": "2026-06-06",
+    "last_seen": "2026-06-06",
+    "run_count": 1,
+    "title": "CVE-2026-0830 - Command Injection in Kiro GitLab Merge Request Helper"
   }
 }
