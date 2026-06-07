@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-06-07T11:57:56.747269+00:00
+generated_at: 2026-06-07T22:13:41.913194+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-11452 in GL.iNet GL-MT3000, CVE-2026-11450 in GL.iNet GL-MT3000, and CVE-2026-11455 in FoundationAgents MetaGPT. Internet-facing devices, such as routers and VPN appliances, are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate GL.iNet GL-MT3000 devices, as no patches are currently available for CVE-2026-11452 and CVE-2026-11450.
+The highest-risk items this period include CVE-2026-49494 in Comodo Internet Security, CVE-2026-11460 in Boost Serialization, and CVE-2026-11459 in SecureAge CatchPulse. Internet-facing firewalls and container orchestration nodes are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems using Comodo Internet Security, as no patch is currently available for CVE-2026-49494.
 
-## CVE-2026-11452: GL.iNet GL-MT3000 RCE (risk: 70)
-[P1] A vulnerability in GL.iNet GL-MT3000 up to 4.4.5 allows for remote code execution. No patch is available, and exploitation status is unknown. Why now: Reported attribution (unverified): None (confidence: 0.80)
+## CVE-2026-49494: Comodo Internet Security RCE (risk: 70)
+[P1] Comodo Internet Security's firewall driver Inspect.sys contains an integer underflow vulnerability, allowing remote code execution. No patch is currently available, and exploitation in the wild has not been reported. Why now: Reported attribution (unverified): none (confidence: 0.80)
 
-- [CVE-2026-11452](https://www.nvd.nist.gov/v1/nvd.xhtml)
+- [CVE-2026-49494](https://www.nvd.nist.gov/v1/nvd.html)
 
-## CVE-2026-11450: GL.iNet GL-MT3000 Privilege Escalation (risk: 70)
-[P1] A vulnerability in GL.iNet GL-MT3000 4.4.5 allows for privilege escalation. No patch is available, and exploitation status is unknown. Why now: Reported attribution (unverified): None (confidence: 0.80)
+## CVE-2026-11460: Boost Serialization Vulnerability (risk: 70)
+[P2] A flaw has been found in Boost Serialization up to 1.91, allowing potential code execution. No patch is currently available, and exploitation in the wild has not been reported. Why now: Newly disclosed vulnerability (confidence: 0.70)
 
-- [CVE-2026-11450](https://www.nvd.nist.gov/v1/nvd.xhtml)
+- [CVE-2026-11460](https://www.nvd.nist.gov/v1/nvd.html)
 
-## CVE-2026-11455: FoundationAgents MetaGPT Data Disclosure (risk: 60)
-[P2] A vulnerability in FoundationAgents MetaGPT up to 0.8.2 allows for data disclosure. No patch is available, and exploitation status is unknown. Why now: Reported attribution (unverified): None (confidence: 0.70)
+## CVE-2026-11459: SecureAge CatchPulse Vulnerability (risk: 70)
+[P2] A security vulnerability has been detected in SecureAge CatchPulse up to 10.9.1, allowing potential code execution. No patch is currently available, and exploitation in the wild has not been reported. Why now: Newly disclosed vulnerability (confidence: 0.70)
 
-- [CVE-2026-11455](https://www.nvd.nist.gov/v1/nvd.xhtml)
+- [CVE-2026-11459](https://www.nvd.nist.gov/v1/nvd.html)
