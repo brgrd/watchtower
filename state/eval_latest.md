@@ -1,22 +1,22 @@
-# Watchtower Pipeline Eval — 2026-06-07T00:14:25Z
+# Watchtower Pipeline Eval — 2026-06-07T09:30:30Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 14 |
-| After dedup + CVE merge | 14 |
-| Sent to Groq | 14 |
+| Items polled (raw) | 26 |
+| After dedup + CVE merge | 26 |
+| Sent to Groq | 13 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/14 (21.4%)** |
+| **Pipeline yield** | **3/26 (11.5%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 13,069 chars
+- **Payload**: 10,677 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 6850
+- **Rate limit remaining** — requests: 999, tokens: 7394
 
 ## Card Quality
 
@@ -31,8 +31,8 @@
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 23 chars (0% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 6 total — 50% specific, 0% generic
+- **`why_now` avg length**: 45.7 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 6 total — 50% specific, 50% generic
 
 ### Persistence
 
@@ -51,10 +51,10 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 11 |
-| `bleepingcomputer` | 1 |
-| `thehackernews` | 1 |
+| `msrc_update_guide` | 13 |
+| `nvd` | 12 |
 | `darkreading` | 1 |
+| `bleepingcomputer` | 0 |
 | `krebs` | 0 |
 | _(+21 more)_ | … |
 
@@ -64,10 +64,10 @@
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-06-04 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-06-05 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-06-05 | 15 | ? | 0% | 0% | 13 | 0 |
 | 2026-06-06 | 15 | ? | 0% | 0% | 11 | 0 |
 | 2026-06-06 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-06-06 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-06-06 | 2 | 1 | 100% | 0% | 2 | 0 |
+| 2026-06-07 | 3 | 3 | 100% | 0% | 3 | 0 |

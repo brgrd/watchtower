@@ -2929,5 +2929,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-11448": {
+    "first_seen": "2026-06-07",
+    "last_seen": "2026-06-07",
+    "run_count": 1,
+    "title": "CVE-2026-11448: GL.iNet GL-MT3000 RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-26422": {
+    "first_seen": "2026-06-07",
+    "last_seen": "2026-06-07",
+    "run_count": 1,
+    "title": "CVE-2026-26422: clash-verge-service-ipc RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-11451": {
+    "first_seen": "2026-06-07",
+    "last_seen": "2026-06-07",
+    "run_count": 1,
+    "title": "CVE-2026-11451: GL.iNet GL-MT3000 RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
