@@ -1,49 +1,49 @@
-# Watchtower Pipeline Eval — 2026-06-06T22:12:51Z
+# Watchtower Pipeline Eval — 2026-06-07T00:14:25Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 19 |
-| After dedup + CVE merge | 19 |
-| Sent to Groq | 19 |
-| Groq findings returned | 2 |
-| Passed quality gate | 2 |
-| Final cards rendered | 2 |
-| **Pipeline yield** | **2/19 (10.5%)** |
+| Items polled (raw) | 14 |
+| After dedup + CVE merge | 14 |
+| Sent to Groq | 14 |
+| Groq findings returned | 3 |
+| Passed quality gate | 3 |
+| Final cards rendered | 3 |
+| **Pipeline yield** | **3/14 (21.4%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 14,206 chars
+- **Payload**: 13,069 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 6641
+- **Rate limit remaining** — requests: 999, tokens: 6850
 
 ## Card Quality
 
-**2 cards** — P1: 1, P2: 1, P3: 0
+**3 cards** — P1: 3, P2: 0, P3: 0
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 65 / 60 |
+| Risk score mean / p90 | 70 / 70 |
 | Tactic coverage | 100% |
 | CVE coverage | 0% |
-| Patch status | unknown: 2 |
+| Patch status | unknown: 3 |
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 18 chars (0% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 4 total — 0% specific, 50% generic
+- **`why_now` avg length**: 23 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 6 total — 50% specific, 0% generic
 
 ### Persistence
 
-- New (run=1): **2** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
+- New (run=1): **3** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
 - Mean run_count: 1 | Mean shelf_days: 0
 
 ## Enrichment Hit Rates
 
 | Source | Hits | Rate |
 |--------|-----:|-----:|
-| EPSS | 2 | 100% |
+| EPSS | 0 | 0% |
 | NVD (CVE) | 0 | 0% |
 | CISA KEV | 0 | 0% |
 
@@ -51,11 +51,11 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 15 |
+| `nvd` | 11 |
 | `bleepingcomputer` | 1 |
 | `thehackernews` | 1 |
-| `securityweek` | 1 |
 | `darkreading` | 1 |
+| `krebs` | 0 |
 | _(+21 more)_ | … |
 
 **21 feeds returned 0 items this run.**
@@ -64,10 +64,10 @@
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-06-04 | 3 | 1 | 100% | 100% | 3 | 0 |
 | 2026-06-04 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-06-05 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-06-05 | 15 | ? | 0% | 0% | 13 | 0 |
 | 2026-06-06 | 15 | ? | 0% | 0% | 11 | 0 |
 | 2026-06-06 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-06-06 | 15 | ? | 0% | 0% | 15 | 0 |
+| 2026-06-06 | 2 | 1 | 100% | 0% | 2 | 0 |

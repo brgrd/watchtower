@@ -2902,5 +2902,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-11435": {
+    "first_seen": "2026-06-07",
+    "last_seen": "2026-06-07",
+    "run_count": 1,
+    "title": "CVE-2026-11435: Jinher OA RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-11434": {
+    "first_seen": "2026-06-07",
+    "last_seen": "2026-06-07",
+    "run_count": 1,
+    "title": "CVE-2026-11434: FluentCMS RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-11413": {
+    "first_seen": "2026-06-07",
+    "last_seen": "2026-06-07",
+    "run_count": 1,
+    "title": "CVE-2026-11413: JingDong JD Cloud Box RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
