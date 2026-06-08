@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-06-08T11:17:45.504962+00:00
+generated_at: 2026-06-08T21:57:52.172840+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-11468 in SourceCodester Hospitals Patient Records Management, CVE-2026-11470 in hs-web hsweb-framework, and CVE-2026-11472 in SourceCodester Class and Exam Timetabling System. Internet-facing applications and frameworks are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using SourceCodester Hospitals Patient Records Management and hs-web hsweb-framework, as no patches are currently available.
+The highest-risk items this period include CVE-2026-11500 in Weaviate, CVE-2026-11501 in SourceCodester Hospitals Patient Records, and CVE-2026-11502 in JeecgBoot. Internet-facing applications and services are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using Weaviate, SourceCodester Hospitals Patient Records, and JeecgBoot, as no patches are currently available.
 
-## CVE-2026-11468: SourceCodester Hospitals Patient Records Management RCE (risk: 70)
-[P1] A vulnerability in SourceCodester Hospitals Patient Records Management allows for remote code execution. No patch is currently available. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-11500: Weaviate RCE (risk: 70)
+[P1] A vulnerability in Weaviate up to 1.37.7 allows for remote code execution, with no patch available. Exploitation is possible, but no public exploits have been reported yet. Why now: Lack of available patch (confidence: 0.80)
 
-- [CVE-2026-11468](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvdetail/CVE-2026-11468)
+- [CVE-2026-11500](https://www.cisa.gov/news-events/alerts/2026/06/08/cisa-adds-two-known-exploited-vulnerabilities-catalog)
 
-## CVE-2026-11470: hs-web hsweb-framework RCE (risk: 70)
-[P1] A vulnerability in hs-web hsweb-framework allows for remote code execution. No patch is currently available. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-11502: JeecgBoot RCE (risk: 70)
+[P1] A weakness in JeecgBoot up to 3.9.2 allows for remote code execution, with no patch available. Exploitation is possible, but no public exploits have been reported yet. Why now: Lack of available patch (confidence: 0.80)
 
-- [CVE-2026-11470](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvdetail/CVE-2026-11470)
+- [CVE-2026-11502](https://thehackernews.com/2026/06/one-character-linux-kernel-flaw-enables.html)
 
-## CVE-2026-11472: SourceCodester Class and Exam Timetabling System RCE (risk: 70)
-[P1] A vulnerability in SourceCodester Class and Exam Timetabling System allows for remote code execution. No patch is currently available. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-11501: SourceCodester Hospitals Patient Records Auth Bypass (risk: 60)
+[P2] A security flaw in SourceCodester Hospitals Patient Records allows for authentication bypass, with no patch available. Exploitation is possible, but no public exploits have been reported yet. Why now: Lack of available patch (confidence: 0.70)
 
-- [CVE-2026-11472](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvdetail/CVE-2026-11472)
+- [CVE-2026-11501](https://aws.amazon.com/security/security-bulletins/rss/2026-040-aws/)
