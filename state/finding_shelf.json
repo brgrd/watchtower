@@ -3091,5 +3091,14 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-42271": {
+    "first_seen": "2026-06-09",
+    "last_seen": "2026-06-09",
+    "run_count": 1,
+    "title": "CVE-2026-50751: Check Point Security Gateway IKEv1 Auth Bypass",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
   }
 }
