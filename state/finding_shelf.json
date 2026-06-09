@@ -976,14 +976,14 @@
   },
   "e58a8c9eb921": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-05-11",
-    "run_count": 1,
+    "last_seen": "2026-06-09",
+    "run_count": 2,
     "title": "GCP-2026-027"
   },
   "1ff5a474ecdb": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-05-11",
-    "run_count": 1,
+    "last_seen": "2026-06-09",
+    "run_count": 2,
     "title": "GCP-2026-025"
   },
   "99356758fb15": {
@@ -994,32 +994,32 @@
   },
   "b9e9d2dca15f": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-06-05",
-    "run_count": 2,
+    "last_seen": "2026-06-09",
+    "run_count": 3,
     "title": "GCP-2026-028"
   },
   "e799fb3564e7": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-05-11",
-    "run_count": 1,
+    "last_seen": "2026-06-09",
+    "run_count": 2,
     "title": "GCP-2026-024"
   },
   "054859b85814": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-05-11",
-    "run_count": 1,
+    "last_seen": "2026-06-09",
+    "run_count": 2,
     "title": "GCP-2026-022"
   },
   "906f29eec50d": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-05-11",
-    "run_count": 1,
+    "last_seen": "2026-06-09",
+    "run_count": 2,
     "title": "GCP-2026-020"
   },
   "945ada04535b": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-05-11",
-    "run_count": 1,
+    "last_seen": "2026-06-09",
+    "run_count": 2,
     "title": "GCP-2026-017"
   },
   "cve:CVE-2026-8288": {
@@ -2617,8 +2617,8 @@
   },
   "cve:CVE-2026-20245": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-06-05",
-    "run_count": 1,
+    "last_seen": "2026-06-09",
+    "run_count": 2,
     "title": "CVE-2026-20245: Cisco SD-WAN Vuln",
     "last_problem_type": "rce",
     "last_affects": "application",
@@ -2650,8 +2650,8 @@
   },
   "6b1a31fa248e": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-06-05",
-    "run_count": 1,
+    "last_seen": "2026-06-09",
+    "run_count": 2,
     "title": "Fragnesia Local Privilege Escalation report via ESP-in-TCP in the Linux Kernel"
   },
   "cve:CVE-2026-3336": {
@@ -3100,5 +3100,41 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.95
+  },
+  "617f24eefc39": {
+    "first_seen": "2026-06-09",
+    "last_seen": "2026-06-09",
+    "run_count": 1,
+    "title": "GCP-2026-030"
+  },
+  "3141ccd5023f": {
+    "first_seen": "2026-06-09",
+    "last_seen": "2026-06-09",
+    "run_count": 1,
+    "title": "CISA Adds Three Known Exploited Vulnerabilities to Catalog"
+  },
+  "76ec463e6739": {
+    "first_seen": "2026-06-09",
+    "last_seen": "2026-06-09",
+    "run_count": 1,
+    "title": "WinRAR Flaw Exploited by Russia-Aligned Groups to Deploy Stealers in Ukraine"
+  },
+  "9a676861f992": {
+    "first_seen": "2026-06-09",
+    "last_seen": "2026-06-09",
+    "run_count": 1,
+    "title": "GCP-2026-015"
+  },
+  "0e6ebfbfa243": {
+    "first_seen": "2026-06-09",
+    "last_seen": "2026-06-09",
+    "run_count": 1,
+    "title": "Veeam Backup & Replication RCE Flaw Lets Domain Users Run Remote Code"
+  },
+  "73edcd4547e1": {
+    "first_seen": "2026-06-09",
+    "last_seen": "2026-06-09",
+    "run_count": 1,
+    "title": "GCP-2026-036"
   }
 }
