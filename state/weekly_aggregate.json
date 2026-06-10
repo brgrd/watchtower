@@ -1,10 +1,10 @@
 {
-  "rebuilt_at": "2026-06-09T12:13:10.294181+00:00",
+  "rebuilt_at": "2026-06-10T12:33:21.122695+00:00",
   "window_days": 7,
-  "total_cards": 31,
-  "unique_cves": 32,
+  "total_cards": 32,
+  "unique_cves": 31,
   "active_domains": [
-    "ai_threat",
+    "browser_ext",
     "cloud_iam",
     "container",
     "identity",
@@ -16,21 +16,25 @@
   ],
   "most_active_day": "2026-06-05",
   "day_counts": {
-    "2026-06-09": 2,
+    "2026-06-10": 2,
+    "2026-06-09": 3,
     "2026-06-08": 3,
     "2026-06-07": 3,
     "2026-06-06": 3,
     "2026-06-05": 15,
-    "2026-06-04": 3,
-    "2026-06-03": 2
+    "2026-06-04": 3
   },
   "top_cves": [
     {
-      "cve": "CVE-2026-50751",
-      "count": 1
+      "cve": "CVE-2026-7473",
+      "count": 2
     },
     {
-      "cve": "CVE-2026-42271",
+      "cve": "CVE-2026-11645",
+      "count": 2
+    },
+    {
+      "cve": "CVE-2026-40404",
       "count": 1
     },
     {
@@ -100,12 +104,8 @@
     {
       "cve": "CVE-2026-28318",
       "count": 1
-    },
-    {
-      "cve": "CVE-2025-9039",
-      "count": 1
     }
   ],
-  "weekly_summary": "Over the past 7 days, our infrastructure security landscape has been characterized by a total of 31 findings, tracking 32 unique CVEs, with the most frequently seen vulnerabilities including CVE-2026-50751, CVE-2026-42271, and several others, each observed only once. The security domains that have been most active include AI and ML threats, cloud and IAM, containers and Kubernetes, and identity and authentication, among others. Notably, the majority of these findings were concentrated on a single day, June 5, 2026, indicating a potential surge in malicious activity that warrants continued monitoring and vigilance to ensure the security and integrity of our infrastructure.",
-  "weekly_summary_ts": "2026-06-09"
+  "weekly_summary": "Over the past 7 days, our security landscape has been characterized by 32 total findings, with 31 unique CVEs tracked across various domains, including Browser Extensions, Cloud/IAM, and Containers/K8s. The most frequently seen vulnerabilities were CVE-2026-7473 and CVE-2026-11645, each observed twice. Other notable CVEs included CVE-2026-40404, CVE-2026-11504, and CVE-2026-11505, each seen once. The majority of activity occurred on June 5, 2026, highlighting a concentrated period of vulnerability exploitation across multiple security domains.",
+  "weekly_summary_ts": "2026-06-10"
 }

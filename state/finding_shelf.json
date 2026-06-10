@@ -3139,21 +3139,21 @@
   },
   "cve:CVE-2026-11645": {
     "first_seen": "2026-06-09",
-    "last_seen": "2026-06-09",
-    "run_count": 1,
+    "last_seen": "2026-06-10",
+    "run_count": 2,
     "title": "CVE-2026-11645: Chrome V8 Zero-Day",
     "last_problem_type": "rce",
     "last_affects": "application",
-    "last_classification_confidence": 0.4
+    "last_classification_confidence": 0.95
   },
   "cve:CVE-2026-7473": {
     "first_seen": "2026-06-09",
-    "last_seen": "2026-06-09",
-    "run_count": 1,
+    "last_seen": "2026-06-10",
+    "run_count": 2,
     "title": "CVE-2026-7473: Arista EOS Incomplete Comparison",
     "last_problem_type": "rce",
-    "last_affects": "foundation",
-    "last_classification_confidence": 0.9
+    "last_affects": "network",
+    "last_classification_confidence": 0.95
   },
   "cve:CVE-2026-40404": {
     "first_seen": "2026-06-09",
