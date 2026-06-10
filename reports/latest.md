@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-06-10T12:33:21.114541+00:00
+generated_at: 2026-06-10T22:15:45.710266+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,14 +7,14 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-7473 in Arista Extensible Operating System (EOS) and CVE-2026-11645 in Google Chromium V8, which are being exploited in the wild. Internet-facing network devices and web browsers are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor for and block potential exploitation of these vulnerabilities, particularly in Arista EOS and Google Chromium V8, as no patches are currently available.
+The highest-risk items this period are CVE-2026-11417 in aws-cdk-lib, CVE-2026-5027 in Langflow, and CVE-2026-10740 in s2n-quic. Internet-facing cloud services and container orchestration nodes are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate affected systems, specifically aws-cdk-lib NodejsFunction and Langflow, although patches are not currently available for these vulnerabilities.
 
-## CVE-2026-7473: Arista EOS RCE (risk: 70)
-[P1] Arista Extensible Operating System (EOS) contains an incomplete comparison with missing factors vulnerability, which is being exploited in the wild. No patch is currently available. Why now: Exploited in the wild with no available patch. (confidence: 0.90)
+## CVE-2026-5027: Unpatched Langflow Flaw (risk: 100)
+[P1] CVE-2026-5027 is a high-severity unpatched security flaw in Langflow, an open-source low-code platform to build artificial intelligence (AI) applications, which has come under active exploitation. This vulnerability allows for unauthenticated RCE. Why now: Reported exploitation in the wild (confidence: 0.90)
 
-- [CISA KEV](https://cisa.gov/known-exploited-vulnerabilities)
+- [Unpatched Langflow Flaw CVE-2026-5027 Exploited for Unauthenticated RCE](https://thehackernews.com/2026/06/unpatched-langflow-flaw-cve-2026-5027.html)
 
-## CVE-2026-11645: Google Chromium V8 RCE (risk: 70)
-[P1] Google Chromium V8 contains an out-of-bounds read and write vulnerability, which could allow a remote attacker to execute arbitrary code. No patch is currently available. Why now: Exploited in the wild with no available patch. (confidence: 0.90)
+## CVE-2026-11417: OS Command Injection in aws-cdk-lib (risk: 70)
+[P1] CVE-2026-11417 is an OS command injection issue in the NodejsFunction local bundling pipeline in aws-cdk-lib, which may allow an actor to execute arbitrary commands. This vulnerability is not yet patched and has not been exploited in the wild. Why now: Reported attribution (unverified): none (confidence: 0.80)
 
-- [CISA KEV](https://cisa.gov/known-exploited-vulnerabilities)
+- [CVE-2026-11417 - OS Command Injection in aws-cdk-lib NodejsFunction bundling](https://aws.amazon.com/security/security-bulletins/rss/2026-041-aws/)

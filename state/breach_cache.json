@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-10T12:33:21.848367+00:00",
+  "fetched_at": "2026-06-10T22:15:46.178339+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -16398,6 +16398,34 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#UC",
       "summary": "In December 2020, the University of California suffered a data breach due to vulnerability in in a third-party provider, Accellion. The breach exposed extensive personal data on both students and staff including 547 thousand unique email addresses, names, dates of birth, genders, social security numbers, ethnicities and other academic related data attributes. Further analysis is available in Explo",
       "action": "close"
+    },
+    {
+      "id": "hibp:universityofnottingham-2026-06-09",
+      "name": "UniversityOfNottingham",
+      "title": "University of Nottingham",
+      "date": "2026-06-09",
+      "added": "2026-06-10",
+      "affected_count": 454635,
+      "data_classes": [
+        "Academic records",
+        "Citizenship statuses",
+        "Dates of birth",
+        "Disabilities",
+        "Email addresses",
+        "Ethnicities",
+        "Genders",
+        "IP addresses",
+        "Names",
+        "Passport numbers",
+        "Phone numbers",
+        "Physical addresses",
+        "Purchases",
+        "Salutations",
+        "Usernames"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#UniversityOfNottingham",
+      "summary": "In June 2026, the University of Nottingham was the target of a cyber attack, later linked to a ShinyHunters \"pay or leak\" extortion campaign. Tens of gigabytes of data were subsequently published online and included 455k unique email addresses along with extensive personal information including names, addresses, phone numbers, ethnicities, disabilities, passport numbers and information relating to",
+      "action": "monitor"
     },
     {
       "id": "hibp:universityofpennsylvania-2025-10-30",
