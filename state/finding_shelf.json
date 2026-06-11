@@ -3181,5 +3181,32 @@
     "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-49496": {
+    "first_seen": "2026-06-11",
+    "last_seen": "2026-06-11",
+    "run_count": 1,
+    "title": "CVE-2026-49496: Ghidra Heap-use-after-free",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-49069": {
+    "first_seen": "2026-06-11",
+    "last_seen": "2026-06-11",
+    "run_count": 1,
+    "title": "CVE-2026-49069: Ghidra Cross-site Scripting",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-49495": {
+    "first_seen": "2026-06-11",
+    "last_seen": "2026-06-11",
+    "run_count": 1,
+    "title": "CVE-2026-49495: Ghidra Uncontrolled Resource Consumption",
+    "last_problem_type": "dos",
+    "last_affects": "application",
+    "last_classification_confidence": 0.8
   }
 }

@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-06-10T22:15:45.710266+00:00
+generated_at: 2026-06-11T00:25:19.921125+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,14 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-11417 in aws-cdk-lib, CVE-2026-5027 in Langflow, and CVE-2026-10740 in s2n-quic. Internet-facing cloud services and container orchestration nodes are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate affected systems, specifically aws-cdk-lib NodejsFunction and Langflow, although patches are not currently available for these vulnerabilities.
+The highest-risk items this period are CVE-2026-49069, CVE-2026-49495, and CVE-2026-49496, which affect Ghidra and other software products. Internet-facing systems, container orchestration nodes, and VPN appliances are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch Ghidra before version 12.1, as no patch is currently available for the affected versions.
 
-## CVE-2026-5027: Unpatched Langflow Flaw (risk: 100)
-[P1] CVE-2026-5027 is a high-severity unpatched security flaw in Langflow, an open-source low-code platform to build artificial intelligence (AI) applications, which has come under active exploitation. This vulnerability allows for unauthenticated RCE. Why now: Reported exploitation in the wild (confidence: 0.90)
+## CVE-2026-49496: Ghidra Heap-use-after-free (risk: 80)
+[P1] Ghidra is affected by a heap-use-after-free vulnerability, which can be exploited by an attacker to execute arbitrary code. No patch is currently available for this vulnerability. Why now: Reported attribution (unverified): None (confidence: 0.90)
 
-- [Unpatched Langflow Flaw CVE-2026-5027 Exploited for Unauthenticated RCE](https://thehackernews.com/2026/06/unpatched-langflow-flaw-cve-2026-5027.html)
+- [CVE-2026-49496](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml)
 
-## CVE-2026-11417: OS Command Injection in aws-cdk-lib (risk: 70)
-[P1] CVE-2026-11417 is an OS command injection issue in the NodejsFunction local bundling pipeline in aws-cdk-lib, which may allow an actor to execute arbitrary commands. This vulnerability is not yet patched and has not been exploited in the wild. Why now: Reported attribution (unverified): none (confidence: 0.80)
+## CVE-2026-49069: Ghidra Cross-site Scripting (risk: 70)
+[P1] Ghidra is affected by a cross-site scripting vulnerability, which can be exploited by an attacker to execute arbitrary code. No patch is currently available for this vulnerability. Why now: Reported attribution (unverified): None (confidence: 0.80)
 
-- [CVE-2026-11417 - OS Command Injection in aws-cdk-lib NodejsFunction bundling](https://aws.amazon.com/security/security-bulletins/rss/2026-041-aws/)
+- [CVE-2026-49069](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml)
+
+## CVE-2026-49495: Ghidra Uncontrolled Resource Consumption (risk: 60)
+[P2] Ghidra is affected by an uncontrolled resource consumption vulnerability, which can be exploited by an attacker to cause a denial of service. No patch is currently available for this vulnerability. Why now: Reported attribution (unverified): None (confidence: 0.70)
+
+- [CVE-2026-49495](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml)
