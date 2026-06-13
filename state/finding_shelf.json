@@ -3352,5 +3352,32 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "framework",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-35273": {
+    "first_seen": "2026-06-13",
+    "last_seen": "2026-06-13",
+    "run_count": 1,
+    "title": "CVE-2026-35273: Oracle PeopleSoft RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-12068": {
+    "first_seen": "2026-06-13",
+    "last_seen": "2026-06-13",
+    "run_count": 1,
+    "title": "CVE-2026-12068: Avira Password Manager Info Disclosure",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2026-11442": {
+    "first_seen": "2026-06-13",
+    "last_seen": "2026-06-13",
+    "run_count": 1,
+    "title": "CVE-2026-11442: Allegra exportReport Directory Traversal",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.85
   }
 }
