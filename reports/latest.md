@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-06-13T11:23:00.144438+00:00
+generated_at: 2026-06-13T22:15:01.141412+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,22 @@ project: Watchtower
 
 ## Analyst Summary
 
-CVE-2026-35273 in Oracle PeopleSoft Enterprise PeopleTools, CVE-2026-12068 in Avira Password Manager, and CVE-2026-11442 in Allegra exportReport are the highest-risk items this period. Internet-facing applications and services are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to isolate and monitor systems using Oracle PeopleSoft Enterprise PeopleTools, as a patch is not currently available.
+The highest-risk items this period are CVE-2026-12174 in D-Link DCS-935L, CVE-2026-6428 in Koha Community Koha, and CVE-2026-1291 in the Meow Gallery plugin for WordPress. Internet-facing devices and web applications are most exposed due to the lack of patches for these vulnerabilities. The single most time-sensitive action is to patch or isolate systems affected by these CVEs, although no patches are currently available.
 
-## CVE-2026-35273: Oracle PeopleSoft RCE (risk: 100)
-[P1] Oracle PeopleSoft Enterprise PeopleTools contains a missing authentication for critical function vulnerability, which is being exploited in the wild. No patch is available. Why now: Exploited in the wild (confidence: 0.90)
+## CVE-2026-12174: D-Link DCS-935L RCE (risk: 70)
+[P1] A security vulnerability has been detected in D-Link DCS-935L 1.10.01, allowing for remote code execution. No patch is currently available. Why now: No patch is currently available for this vulnerability. (confidence: 0.80)
 
-- [CVE-2026-35273](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-35273)
+- [CVE-2026-12174](https://cyberscoop.com/us-government-anthropic-fable-5-mythos-5-export-controls/)
+- [D-Link DCS-935L Vulnerability](https://www.bleepingcomputer.com/news/security/ex-school-district-employee-jailed-for-hacks-on-former-employer/)
 
-## CVE-2026-12068: Avira Password Manager Info Disclosure (risk: 70)
-[P2] Avira Password Manager contains an information disclosure vulnerability when used with Mozilla. No patch is available. Why now: No patch available (confidence: 0.80)
+## CVE-2026-6428: Koha Community Koha SQL Injection (risk: 70)
+[P1] SQL Injection in reports/catalogue_out.pl in Koha Community Koha through 22.11.3 allows for unauthorized data access. No patch is currently available. Why now: No patch is currently available for this vulnerability. (confidence: 0.80)
 
-- [CVE-2026-12068](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-12068)
+- [CVE-2026-6428](https://thehackernews.com/2026/06/critical-splunk-enterprise-flaw-lets.html)
+- [Koha Community Koha Vulnerability](https://www.securityweek.com/npm-12-will-change-script-execution-behavior-to-prevent-supply-chain-attacks/)
 
-## CVE-2026-11442: Allegra exportReport Directory Traversal (risk: 70)
-[P2] Allegra exportReport contains a directory traversal vulnerability, which can lead to information disclosure. No patch is available. Why now: No patch available (confidence: 0.80)
+## CVE-2026-1291: Meow Gallery Plugin for WordPress Unauthorized Modification (risk: 70)
+[P1] The Meow Gallery plugin for WordPress is vulnerable to unauthorized modification. No patch is currently available. Why now: No patch is currently available for this vulnerability. (confidence: 0.80)
 
-- [CVE-2026-11442](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-11442)
+- [CVE-2026-1291](https://cyberscoop.com/us-government-anthropic-fable-5-mythos-5-export-controls/)
+- [Meow Gallery Plugin for WordPress Vulnerability](https://www.bleepingcomputer.com/news/security/ex-school-district-employee-jailed-for-hacks-on-former-employer/)
