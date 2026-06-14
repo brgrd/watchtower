@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-06-14T12:07:44.447485+00:00
+generated_at: 2026-06-14T21:23:35.371352+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-54420 in LiteSpeed cPanel plugin, CVE-2026-54421 in OpenStack Ironic, and CVE-2026-12176 in SourceCodester CET Automated Grading System. Internet-facing servers and cloud services are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using the affected LiteSpeed cPanel plugin, as no patch is currently available.
+The highest-risk items this period are CVE-2026-11527 in Config::IniFiles, CVE-2026-11526 in GD, and CVE-2026-54412 in LiamBindle MQTT-C. Internet-facing systems and applications using these libraries are most exposed due to the lack of available patches. The most time-sensitive action is to monitor and isolate systems using Config::IniFiles and GD, as no patches are currently available for these vulnerabilities.
 
-## CVE-2026-54420: LiteSpeed cPanel RCE (risk: 70)
-[P1] LiteSpeed cPanel plugin before 2.4.8 is vulnerable to remote code execution, with no patch available. Exploitation in the wild has not been reported, but the vulnerability is considered high-risk due to its potential impact on internet-facing servers. Why now: Reported attribution (unverified): none, but vulnerability is highly exploitable. (confidence: 0.80)
+## CVE-2026-11527: Config::IniFiles RCE (risk: 70)
+[P1] Config::IniFiles versions before 3.001000 for Perl allow OS command injection, with no patch available. This vulnerability poses a high risk to internet-facing systems using this library. Why now: No patch available for this vulnerability. (confidence: 0.80)
 
-- [CVE-2026-54420](https://www.nvd.nist.gov/v1/nvd.xhtml?nvdlisttype=cve&cvename=CVE-2026-54420)
+- [CVE-2026-11527](https://www.nvd.nist.gov/v1/nvd.xhtml)
 
-## CVE-2026-54421: OpenStack Ironic Privilege Escalation (risk: 70)
-[P1] OpenStack Ironic through 35.0.1 is vulnerable to privilege escalation, with no patch available. Exploitation in the wild has not been reported, but the vulnerability is considered high-risk due to its potential impact on cloud services. Why now: Vulnerability is highly exploitable and affects cloud services. (confidence: 0.80)
+## CVE-2026-11526: GD RCE (risk: 70)
+[P1] GD versions before 2.86 for Perl allow OS command injection and file overwrite, with no patch available. This vulnerability poses a high risk to internet-facing systems using this library. Why now: No patch available for this vulnerability. (confidence: 0.80)
 
-- [CVE-2026-54421](https://www.nvd.nist.gov/v1/nvd.xhtml?nvdlisttype=cve&cvename=CVE-2026-54421)
+- [CVE-2026-11526](https://www.nvd.nist.gov/v1/nvd.xhtml)
 
-## CVE-2026-12176: SourceCodester CET Automated Grading System Data Disclosure (risk: 60)
-[P2] SourceCodester CET Automated Grading System is vulnerable to data disclosure, with no patch available. Exploitation in the wild has not been reported, but the vulnerability is considered high-risk due to its potential impact on user data. Why now: Vulnerability is highly exploitable and affects user data. (confidence: 0.70)
+## CVE-2026-54412: LiamBindle MQTT-C Heap-Based Buffer Overflow (risk: 60)
+[P2] LiamBindle MQTT-C through version 1.1.6 contains a heap-based out-of-bounds read, with no patch available. This vulnerability poses a high risk to systems using this library, particularly in IoT environments. Why now: No patch available for this vulnerability. (confidence: 0.70)
 
-- [CVE-2026-12176](https://www.nvd.nist.gov/v1/nvd.xhtml?nvdlisttype=cve&cvename=CVE-2026-12176)
+- [CVE-2026-54412](https://www.nvd.nist.gov/v1/nvd.xhtml)
