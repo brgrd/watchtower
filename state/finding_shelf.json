@@ -3529,7 +3529,7 @@
     "last_seen": "2026-06-15",
     "run_count": 1,
     "title": "CVE-2026-50100: Ricoh and KONICA MINOLTA Printer Drivers",
-    "last_problem_type": "rce",
+    "last_problem_type": "data_disclosure",
     "last_affects": "application",
     "last_classification_confidence": 0.9
   },
