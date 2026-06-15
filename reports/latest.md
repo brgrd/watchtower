@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-06-14T23:21:17.875678+00:00
+generated_at: 2026-06-15T12:37:25.563017+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-11527 in Config::IniFiles, CVE-2026-11526 in GD, and CVE-2026-54410 in nanoMODBUS. Internet-facing applications and services are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems using Config::IniFiles and GD, although no patches are currently available.
+The highest-risk items this period are CVE-2026-12192 in GALAYOU Y4, CVE-2026-12187 in GL.iNet GL-MT3000, and CVE-2026-12189 in Moovit Bus & Public Transit App. These vulnerabilities expose internet-facing devices and applications, particularly those using outdated software versions, to potential exploitation. The single most time-sensitive action is to patch or isolate affected devices, specifically GALAYOU Y4 and GL.iNet GL-MT3000, although no patches are currently available.
 
-## CVE-2026-11527: Config::IniFiles RCE (risk: 70)
-[P1] Config::IniFiles versions before 3.001000 for Perl allow OS command injection, and there is no patch available. This vulnerability can be exploited for arbitrary code execution. Why now: Reported attribution (unverified): none (confidence: 0.80)
+## CVE-2026-12192: GALAYOU Y4 RCE (risk: 70)
+[P1] A vulnerability in GALAYOU Y4 1.0.0 allows for arbitrary code execution, although no patch is currently available. This vulnerability has not been exploited in the wild, but its presence in an internet-facing device poses a significant risk. Why now: Reported attribution (unverified): None (confidence: 0.80)
 
-- [CVE-2026-11527](https://nvd.nist.gov/v1/nvd.xhtml?nvdlist=detail&CVE-2026-11527)
+- [NVD CVE-2026-12192](https://nvd.nist.gov/v1/cve/2026-12192)
 
-## CVE-2026-11526: GD RCE (risk: 70)
-[P1] GD versions before 2.86 for Perl allow OS command injection and file overwrite, and there is no patch available. This vulnerability can be exploited for arbitrary code execution. Why now: Reported attribution (unverified): none (confidence: 0.80)
+## CVE-2026-12187: GL.iNet GL-MT3000 RCE (risk: 70)
+[P1] A security vulnerability in GL.iNet GL-MT3000 up to 4.4.5 allows for arbitrary code execution, although no patch is currently available. This vulnerability has not been exploited in the wild, but its presence in an internet-facing device poses a significant risk. Why now: Reported attribution (unverified): None (confidence: 0.80)
 
-- [CVE-2026-11526](https://nvd.nist.gov/v1/nvd.xhtml?nvdlist=detail&CVE-2026-11526)
+- [NVD CVE-2026-12187](https://nvd.nist.gov/v1/cve/2026-12187)
 
-## CVE-2026-54410: nanoMODBUS Buffer Overflow (risk: 70)
-[P1] nanoMODBUS through v1.23.0 contains an off-by-one buffer overflow in the recv_msg function, and there is no patch available. This vulnerability can be exploited for arbitrary code execution. Why now: Reported attribution (unverified): none (confidence: 0.80)
+## CVE-2026-12189: Moovit Bus & Public Transit App RCE (risk: 70)
+[P1] A flaw in Moovit Bus & Public Transit App 1.18 on Android allows for arbitrary code execution, although no patch is currently available. This vulnerability has not been exploited in the wild, but its presence in a widely used application poses a significant risk. Why now: Reported attribution (unverified): None (confidence: 0.80)
 
-- [CVE-2026-54410](https://nvd.nist.gov/v1/nvd.xhtml?nvdlist=detail&CVE-2026-54410)
+- [NVD CVE-2026-12189](https://nvd.nist.gov/v1/cve/2026-12189)

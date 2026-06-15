@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-14T21:23:35.926049+00:00",
+  "fetched_at": "2026-06-15T12:37:26.555664+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -1934,6 +1934,24 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Benchmark",
       "summary": "In November 2019, the Serbian technology news website Benchmark suffered a breach of its forum that exposed 93k customer records. The breach exposed IP and email addresses, usernames and passwords stored as salted MD5 hashes. A forum administrator subsequently advised that the breach was due to the forum previously running on an outdated vBulletin instance.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:berkadia-2026-03-19",
+      "name": "Berkadia",
+      "title": "Berkadia",
+      "date": "2026-03-19",
+      "added": "2026-06-15",
+      "affected_count": 305216,
+      "data_classes": [
+        "Email addresses",
+        "Employers",
+        "Names",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Berkadia",
+      "summary": "In March 2026, the commercial real estate finance company Berkadia was the target of a ShinyHunters \"pay or leak\" extortion campaign. The group subsequently published data they alleged was taken from Berkadia's Salesforce instance, including over 300k unique email addresses as well as names, physical addresses and phone numbers, among other data.",
+      "action": "monitor"
     },
     {
       "id": "hibp:bestialitysextaboo-2018-03-19",
@@ -8017,6 +8035,27 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#IndiHome",
       "summary": "In mid-2021, reports emerged of a data breach of Indonesia's telecommunications company, IndiHome. Over 26M rows of data alleged to have been sourced from the company was posted to a popular hacking forum and contained 12.6M unique email addresses alongside names, IP addresses, genders and geographic locations. The most recent data was stamped as being recorded in November 2019.",
+      "action": "monitor"
+    },
+    {
+      "id": "hibp:infinitecampus-2026-03-18",
+      "name": "InfiniteCampus",
+      "title": "Infinite Campus",
+      "date": "2026-03-18",
+      "added": "2026-06-15",
+      "affected_count": 137123,
+      "data_classes": [
+        "Email addresses",
+        "Employers",
+        "Job titles",
+        "Names",
+        "Phone numbers",
+        "Physical addresses",
+        "Support tickets",
+        "Usernames"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#InfiniteCampus",
+      "summary": "In March 2026, the student information system Infinite Campus was targeted in a ShinyHunters \"pay or leak\" extortion campaign. The group subsequently published data they alleged was taken from Infinite Campus, containing 137k unique email addresses along with names, phone numbers, physical addresses and support tickets. Infinite Campus subsequently sent notifications, advising that the exposed dat",
       "action": "monitor"
     },
     {
