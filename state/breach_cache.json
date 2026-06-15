@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-15T12:37:26.555664+00:00",
+  "fetched_at": "2026-06-15T21:15:32.150466+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -8458,6 +8458,21 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#JukinMedia",
       "summary": "In October 2021, the \"global leader in user-generated entertainment\" Jukin Media suffered a data breach. The breach exposed 13GB of code, configuration and data consisting of 314k unique email addresses along with names, phone numbers, IP addresses and bcrypt password hashes.",
+      "action": "rotate"
+    },
+    {
+      "id": "hibp:june2026stealerlogs-2026-06-15",
+      "name": "June2026StealerLogs",
+      "title": "June 2026 Stealer Logs",
+      "date": "2026-06-15",
+      "added": "2026-06-15",
+      "affected_count": 56278397,
+      "data_classes": [
+        "Email addresses",
+        "Passwords"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#June2026StealerLogs",
+      "summary": "In June 2026, a collection of accumulated stealer logs from various sources was added to HIBP. The corpus comprised 56M unique email addresses across hundreds of millions of stealer log records. The data also contained 124M unique passwords, which have been added to Pwned Passwords and are now searchable. Individuals can view any records captured against their email address in the stealer logs sec",
       "action": "rotate"
     },
     {

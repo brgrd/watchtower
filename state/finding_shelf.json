@@ -3514,5 +3514,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-44188": {
+    "first_seen": "2026-06-15",
+    "last_seen": "2026-06-15",
+    "run_count": 1,
+    "title": "CVE-2026-44188: Ansible Lightspeed RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-11931": {
+    "first_seen": "2026-06-15",
+    "last_seen": "2026-06-15",
+    "run_count": 1,
+    "title": "CVE-2026-50100: Ricoh and KONICA MINOLTA Printer Drivers",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-34021": {
+    "first_seen": "2026-06-15",
+    "last_seen": "2026-06-15",
+    "run_count": 1,
+    "title": "CVE-2026-34021: Wertheim SafeController",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
