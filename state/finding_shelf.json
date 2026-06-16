@@ -3568,5 +3568,32 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-39490": {
+    "first_seen": "2026-06-16",
+    "last_seen": "2026-06-16",
+    "run_count": 1,
+    "title": "CVE-2026-39490: JupiterX Core Unauthenticated Broken Access Control",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-50656": {
+    "first_seen": "2026-06-16",
+    "last_seen": "2026-06-16",
+    "run_count": 1,
+    "title": "CVE-2026-50656: Microsoft Malware Protect Elevation of Privilege",
+    "last_problem_type": "privilege_escalation",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-10825": {
+    "first_seen": "2026-06-16",
+    "last_seen": "2026-06-16",
+    "run_count": 1,
+    "title": "CVE-2026-10825: WebSocket API Denial of Service",
+    "last_problem_type": "dos",
+    "last_affects": "application",
+    "last_classification_confidence": 0.8
   }
 }
