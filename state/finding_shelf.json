@@ -3541,5 +3541,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-12205": {
+    "first_seen": "2026-06-16",
+    "last_seen": "2026-06-16",
+    "run_count": 1,
+    "title": "CVE-2026-12205: Perl DSA Nonce Reuse",
+    "last_problem_type": "crypto_weakness",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-48599": {
+    "first_seen": "2026-06-16",
+    "last_seen": "2026-06-16",
+    "run_count": 1,
+    "title": "CVE-2026-48599: elixir-grpc Auth Bypass",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-48723": {
+    "first_seen": "2026-06-16",
+    "last_seen": "2026-06-16",
+    "run_count": 1,
+    "title": "CVE-2026-48723: browserstack-cypress-cli Deserialization",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
