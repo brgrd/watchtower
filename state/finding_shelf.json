@@ -3682,5 +3682,95 @@
     "last_seen": "2026-06-17",
     "run_count": 1,
     "title": "Security Community Slams US Ban on Exporting Mythos, Fable"
+  },
+  "cve:CVE-2026-12530": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "CVE-2026-12530 - Improper neutralization of argument delimiters in AWS Bedrock AgentCore Python SDK install_packages()"
+  },
+  "4962ac4f2ceb": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Microsoft Confirms RoguePlanet Defender Zero-Day, Says Patch is in Development"
+  },
+  "d98b519ff7fe": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "CISA orders feds to patch max severity Joomla plugin flaw by Friday"
+  },
+  "3083f3f0c596": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "The Top 10 Attack Surface Exposures in 2026"
+  },
+  "0e5b03fb278b": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Google to use UK and EU user IP addresses for ad personalization"
+  },
+  "3f6fa6dafa4f": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "FortiBleed leak exposes Fortinet VPN credentials for 73,000 devices."
+  },
+  "ea1c4bd396bd": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Crypto Clipper Campaign Abuses Fake Reviews, AI Narrators, and VirusTotal Comments"
+  },
+  "e57cd1a44f1a": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "India's Telegram ban hit the UAE too. Here's how to get around it"
+  },
+  "7479314a74d2": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Why Account Takeovers Are Rising and How to Stop Them"
+  },
+  "086c6b7739d5": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Microsoft confirms Office apps launch issues after June updates"
+  },
+  "ea8fdd0bc2a7": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Junior Hacker Used Tailscale and OpenSSH to Keep Access After His C2 Went Offline"
+  },
+  "135a4e5da1ff": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Adversarial Exposure Validation Turns Security Visibility into Confident Prioritization"
+  },
+  "735378a80cd3": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Read remote repository content with GitHub CLI"
+  },
+  "d392f0d4719c": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Secret scanning updates – June 2026"
+  },
+  "f406b6dfe4ba": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Limit open pull requests for users without write access"
   }
 }

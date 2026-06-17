@@ -1,71 +1,81 @@
 ---
-generated_at: 2026-06-17T10:00:07.065172+00:00
+generated_at: 2026-06-17T22:50:29.194333+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CISA Warns of Actively Exploited Joomla JCE Flaw Allowing PHP Code Execution (risk: 70)
+## CVE-2026-12530 - Improper neutralization of argument delimiters in AWS Bedrock AgentCore Python SDK install_packages() (risk: 60)
 1 related updates.
 
-- [CISA Warns of Actively Exploited Joomla JCE Flaw Allowing PHP Code Execution](https://thehackernews.com/2026/06/cisa-warns-of-actively-exploited-joomla.html)
+- [CVE-2026-12530 - Improper neutralization of argument delimiters in AWS Bedrock AgentCore Python SDK install_packages()](https://aws.amazon.com/security/security-bulletins/rss/2026-044-aws/)
 
-## Microsoft Working on Patch for ‘RoguePlanet’ Zero-Day (risk: 45)
+## Microsoft Confirms RoguePlanet Defender Zero-Day, Says Patch is in Development (risk: 40)
 1 related updates.
 
-- [Microsoft Working on Patch for ‘RoguePlanet’ Zero-Day](https://www.securityweek.com/microsoft-working-on-patch-for-rogueplanet-zero-day/)
+- [Microsoft Confirms RoguePlanet Defender Zero-Day, Says Patch is in Development](https://thehackernews.com/2026/06/microsoft-confirms-rogueplanet-defender_02022423645.html)
 
-## Joomla, LiteSpeed Vulnerabilities Exploited in Attacks (risk: 30)
+## CISA orders feds to patch max severity Joomla plugin flaw by Friday (risk: 30)
 1 related updates.
 
-- [Joomla, LiteSpeed Vulnerabilities Exploited in Attacks](https://www.securityweek.com/joomla-litespeed-vulnerabilities-exploited-in-attacks/)
+- [CISA orders feds to patch max severity Joomla plugin flaw by Friday](https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-max-severity-joomla-plugin-flaw-by-friday/)
 
-## 144 Mastra npm Packages Compromised via Hijacked Contributor Account (risk: 20)
+## The Top 10 Attack Surface Exposures in 2026 (risk: 30)
 1 related updates.
 
-- [144 Mastra npm Packages Compromised via Hijacked Contributor Account](https://thehackernews.com/2026/06/144-mastra-npm-packages-compromised-via.html)
+- [The Top 10 Attack Surface Exposures in 2026](https://thehackernews.com/2026/06/the-top-10-attack-surface-exposures-in.html)
 
-## Malicious JetBrains Plugins Steal AI API Keys as Chrome Extensions Capture Chatbot Chats (risk: 0)
+## Google to use UK and EU user IP addresses for ad personalization (risk: 0)
 1 related updates.
 
-- [Malicious JetBrains Plugins Steal AI API Keys as Chrome Extensions Capture Chatbot Chats](https://thehackernews.com/2026/06/malicious-jetbrains-plugins-steal-ai.html)
+- [Google to use UK and EU user IP addresses for ad personalization](https://www.bleepingcomputer.com/news/security/google-to-use-uk-and-eu-user-ip-addresses-for-ad-personalization/)
 
-## Oracle’s Second Monthly Security Updates Deliver 245 Patches (risk: 0)
+## FortiBleed leak exposes Fortinet VPN credentials for 73,000 devices. (risk: 0)
 1 related updates.
 
-- [Oracle’s Second Monthly Security Updates Deliver 245 Patches](https://www.securityweek.com/oracles-second-monthly-security-updates-deliver-245-patches/)
+- [FortiBleed leak exposes Fortinet VPN credentials for 73,000 devices.](https://www.bleepingcomputer.com/news/security/fortibleed-leak-exposes-fortinet-vpn-credentials-for-73-000-devices/)
 
-## 3 Recently Patched Fortinet FortiSandbox Vulnerabilities in Hacker Crosshairs (risk: 0)
+## Crypto Clipper Campaign Abuses Fake Reviews, AI Narrators, and VirusTotal Comments (risk: 0)
 1 related updates.
 
-- [3 Recently Patched Fortinet FortiSandbox Vulnerabilities in Hacker Crosshairs](https://www.securityweek.com/3-recently-patched-fortinet-fortisandbox-vulnerabilities-in-hacker-crosshairs/)
+- [Crypto Clipper Campaign Abuses Fake Reviews, AI Narrators, and VirusTotal Comments](https://thehackernews.com/2026/06/crypto-clipper-campaign-abuses-fake.html)
 
-## Chrome and Firefox Updated to Patch Critical, High-Severity Vulnerabilities (risk: 0)
+## India's Telegram ban hit the UAE too. Here's how to get around it (risk: 0)
 1 related updates.
 
-- [Chrome and Firefox Updated to Patch Critical, High-Severity Vulnerabilities](https://www.securityweek.com/chrome-and-firefox-updated-to-patch-critical-high-severity-vulnerabilities/)
+- [India's Telegram ban hit the UAE too. Here's how to get around it](https://www.bleepingcomputer.com/news/security/indias-telegram-ban-hit-the-uae-too-heres-how-to-get-around-it/)
 
-## Microsoft working on Defender patch for RoguePlanet zero-day (risk: 0)
+## Why Account Takeovers Are Rising and How to Stop Them (risk: 0)
 1 related updates.
 
-- [Microsoft working on Defender patch for RoguePlanet zero-day](https://www.bleepingcomputer.com/news/microsoft/microsoft-working-on-defender-patch-for-rogueplanet-zero-day/)
+- [Why Account Takeovers Are Rising and How to Stop Them](https://www.bleepingcomputer.com/news/security/why-account-takeovers-are-rising-and-how-to-stop-them/)
 
-## Kodak confirms data breach claimed by ShinyHunters extortion gang (risk: 0)
+## Microsoft confirms Office apps launch issues after June updates (risk: 0)
 1 related updates.
 
-- [Kodak confirms data breach claimed by ShinyHunters extortion gang](https://www.bleepingcomputer.com/news/security/kodak-confirms-data-breach-claimed-by-shinyhunters-extortion-gang/)
+- [Microsoft confirms Office apps launch issues after June updates](https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-office-apps-launch-issues-after-june-updates/)
 
-## UK Social Media Ban for Minors Has Privacy Experts Worried (risk: 0)
+## Junior Hacker Used Tailscale and OpenSSH to Keep Access After His C2 Went Offline (risk: 0)
 1 related updates.
 
-- [UK Social Media Ban for Minors Has Privacy Experts Worried](https://www.darkreading.com/cyber-risk/uk-social-media-ban-privacy-experts-worried)
+- [Junior Hacker Used Tailscale and OpenSSH to Keep Access After His C2 Went Offline](https://thehackernews.com/2026/06/junior-hacker-used-tailscale-and.html)
 
-## Fileless Phantom Stealer Targets Browser Credentials (risk: 0)
+## Adversarial Exposure Validation Turns Security Visibility into Confident Prioritization (risk: 0)
 1 related updates.
 
-- [Fileless Phantom Stealer Targets Browser Credentials](https://www.darkreading.com/cyberattacks-data-breaches/fileless-phantom-stealer-targets-browser-credentials)
+- [Adversarial Exposure Validation Turns Security Visibility into Confident Prioritization](https://thehackernews.com/2026/06/adversarial-exposure-validation-turns.html)
 
-## Security Community Slams US Ban on Exporting Mythos, Fable (risk: 0)
+## Read remote repository content with GitHub CLI (risk: 0)
 1 related updates.
 
-- [Security Community Slams US Ban on Exporting Mythos, Fable](https://www.darkreading.com/vulnerabilities-threats/security-community-slams-us-ban-on-exporting-mythos-fable)
+- [Read remote repository content with GitHub CLI](https://github.blog/changelog/2026-06-17-read-remote-repository-content-with-github-cli)
+
+## Secret scanning updates – June 2026 (risk: 0)
+1 related updates.
+
+- [Secret scanning updates – June 2026](https://github.blog/changelog/2026-06-17-secret-scanning-updates-june-2026)
+
+## Limit open pull requests for users without write access (risk: 0)
+1 related updates.
+
+- [Limit open pull requests for users without write access](https://github.blog/changelog/2026-06-17-limit-open-pull-requests-for-users-without-write-access)
