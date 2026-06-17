@@ -3604,5 +3604,83 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "48d56e93699e": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "CISA Warns of Actively Exploited Joomla JCE Flaw Allowing PHP Code Execution"
+  },
+  "3c58ff81929f": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Microsoft Working on Patch for ‘RoguePlanet’ Zero-Day"
+  },
+  "861b1a8ba1f4": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Joomla, LiteSpeed Vulnerabilities Exploited in Attacks"
+  },
+  "113ed3d663c8": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "144 Mastra npm Packages Compromised via Hijacked Contributor Account"
+  },
+  "745d5336d9e9": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Malicious JetBrains Plugins Steal AI API Keys as Chrome Extensions Capture Chatbot Chats"
+  },
+  "6e988ff99023": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Oracle’s Second Monthly Security Updates Deliver 245 Patches"
+  },
+  "875f8530a154": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "3 Recently Patched Fortinet FortiSandbox Vulnerabilities in Hacker Crosshairs"
+  },
+  "20d985b11265": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Chrome and Firefox Updated to Patch Critical, High-Severity Vulnerabilities"
+  },
+  "785b1d9b1d71": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Microsoft working on Defender patch for RoguePlanet zero-day"
+  },
+  "72bb903b662b": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Kodak confirms data breach claimed by ShinyHunters extortion gang"
+  },
+  "7a59c15146d0": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "UK Social Media Ban for Minors Has Privacy Experts Worried"
+  },
+  "d9a13f4f67e0": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Fileless Phantom Stealer Targets Browser Credentials"
+  },
+  "da779c896435": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "run_count": 1,
+    "title": "Security Community Slams US Ban on Exporting Mythos, Fable"
   }
 }
