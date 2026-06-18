@@ -3391,8 +3391,8 @@
   },
   "cve:CVE-2026-20253": {
     "first_seen": "2026-06-13",
-    "last_seen": "2026-06-14",
-    "run_count": 2,
+    "last_seen": "2026-06-18",
+    "run_count": 3,
     "title": "CVE-2026-6428: Koha Community Koha SQL Injection",
     "last_problem_type": "rce",
     "last_affects": "application",
@@ -3916,5 +3916,89 @@
     "last_problem_type": "auth_bypass",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "3ac0a58852f4": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "F5 Patches Two Critical NGINX Open Source Flaws Enabling Remote Code Execution"
+  },
+  "7bae433955a0": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Rockwell Automation FactoryTalk Historian Site Edition"
+  },
+  "9018c952f77e": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "AzeoTech DAQFactory"
+  },
+  "8a9fbdd61673": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "AVer PTC cameras"
+  },
+  "f1a066359c2d": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Apollo Pharmacy Blood Glucose Monitoring System APG-01 BT"
+  },
+  "75906738bfa8": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Mitsubishi Electric Co.'s MELSEC iQ-F Series FX5-ENET/IP Ethernet Module"
+  },
+  "2ed2079fc751": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Mitsubishi Electric MELSEC iQ-F Series"
+  },
+  "0bf9298fa335": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "ShapedPlugin update flow hacked to infect WordPress sites"
+  },
+  "596615c2671c": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Nintendo confirms data stolen in WebMD subsidiary cyberattack"
+  },
+  "12c3066bbf93": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Gentlemen ransomware uses multiple EDR killers to disable defenses"
+  },
+  "0433e2131f15": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Klue OAuth breach linked to 'Icarus' Salesforce data theft attacks"
+  },
+  "0da28ea6d09b": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "USB worm spreads crypto-stealing malware via Windows shortcut files"
+  },
+  "453e27cc78d1": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "5 reasons Microsoft 365 backup isn’t enough for business data protection"
+  },
+  "04880645b508": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Police cleans nearly 15,000 SocGholish-infected sites tied to Evil Corp"
   }
 }
