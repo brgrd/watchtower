@@ -3862,5 +3862,32 @@
     "last_seen": "2026-06-18",
     "run_count": 1,
     "title": "Introducing AWS Continuum: Security at machine speed"
+  },
+  "ba8dc96944ba": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Cisco ISE Command Execution",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "c50920ae3be8": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "F5 NGINX Vulnerabilities",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "758d24e92734": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Kodak Data Breach",
+    "last_problem_type": "credential_compromise",
+    "last_affects": "user_data",
+    "last_classification_confidence": 0.9
   }
 }

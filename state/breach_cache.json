@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-17T22:50:29.604620+00:00",
+  "fetched_at": "2026-06-18T10:46:06.254074+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -3104,6 +3104,25 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#CentralTickets",
       "summary": "In September 2024, data from the ticketing service Central Tickets was publicly posted to a hacking forum. The data suggests the breach occurred several months earlier and exposed 723k unique email addresses alongside names, phone numbers, IP addresses, purchases and passwords stored as unsalted SHA-1 hashes.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:cfgi-2026-03-06",
+      "name": "CFGI",
+      "title": "CFGI",
+      "date": "2026-03-06",
+      "added": "2026-06-18",
+      "affected_count": 248235,
+      "data_classes": [
+        "Email addresses",
+        "Employers",
+        "Job titles",
+        "Names",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#CFGI",
+      "summary": "In March 2026, the financial consulting and advisory firm CFGI was the target of a ShinyHunters \"pay-or-leak\" extortion campaign. The group subsequently publicised data allegedly obtained from CFGI comprising corporate contact information, including 243k unique email addresses, names, phone numbers and physical addresses.",
+      "action": "monitor"
     },
     {
       "id": "hibp:charter-2026-05-23",
