@@ -1,81 +1,81 @@
 ---
-generated_at: 2026-06-17T22:50:29.194333+00:00
+generated_at: 2026-06-18T00:23:49.417016+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-12530 - Improper neutralization of argument delimiters in AWS Bedrock AgentCore Python SDK install_packages() (risk: 60)
+## Attackers hit pair of critical Fortinet vulnerabilities the vendor disclosed in April (risk: 30)
 1 related updates.
 
-- [CVE-2026-12530 - Improper neutralization of argument delimiters in AWS Bedrock AgentCore Python SDK install_packages()](https://aws.amazon.com/security/security-bulletins/rss/2026-044-aws/)
+- [Attackers hit pair of critical Fortinet vulnerabilities the vendor disclosed in April](https://cyberscoop.com/fortinet-fortisandbox-vulnerabilities-exploits/)
 
-## Microsoft Confirms RoguePlanet Defender Zero-Day, Says Patch is in Development (risk: 40)
+## Enterprise-managed settings now support bypass permission controls (risk: 0)
 1 related updates.
 
-- [Microsoft Confirms RoguePlanet Defender Zero-Day, Says Patch is in Development](https://thehackernews.com/2026/06/microsoft-confirms-rogueplanet-defender_02022423645.html)
+- [Enterprise-managed settings now support bypass permission controls](https://github.blog/changelog/2026-06-17-enterprise-managed-settings-now-support-bypass-permission-controls)
 
-## CISA orders feds to patch max severity Joomla plugin flaw by Friday (risk: 30)
+## Bringing more agent harnesses and frameworks to Cloudflare, starting with Flue (risk: 0)
 1 related updates.
 
-- [CISA orders feds to patch max severity Joomla plugin flaw by Friday](https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-max-severity-joomla-plugin-flaw-by-friday/)
+- [Bringing more agent harnesses and frameworks to Cloudflare, starting with Flue](https://blog.cloudflare.com/agents-platform-flue-sdk/)
 
-## The Top 10 Attack Surface Exposures in 2026 (risk: 30)
+## Auto mode in Copilot Chat available for all users (risk: 0)
 1 related updates.
 
-- [The Top 10 Attack Surface Exposures in 2026](https://thehackernews.com/2026/06/the-top-10-attack-surface-exposures-in.html)
+- [Auto mode in Copilot Chat available for all users](https://github.blog/changelog/2026-06-17-auto-mode-in-copilot-chat-available-for-all-users)
 
-## Google to use UK and EU user IP addresses for ad personalization (risk: 0)
+## Agent finder for GitHub Copilot now available (risk: 0)
 1 related updates.
 
-- [Google to use UK and EU user IP addresses for ad personalization](https://www.bleepingcomputer.com/news/security/google-to-use-uk-and-eu-user-ip-addresses-for-ad-personalization/)
+- [Agent finder for GitHub Copilot now available](https://github.blog/changelog/2026-06-17-agent-finder-for-github-copilot-now-available)
 
-## FortiBleed leak exposes Fortinet VPN credentials for 73,000 devices. (risk: 0)
+## Copilot individual plan sign-ups are reopening (risk: 0)
 1 related updates.
 
-- [FortiBleed leak exposes Fortinet VPN credentials for 73,000 devices.](https://www.bleepingcomputer.com/news/security/fortibleed-leak-exposes-fortinet-vpn-credentials-for-73-000-devices/)
+- [Copilot individual plan sign-ups are reopening](https://github.blog/changelog/2026-06-17-copilot-individual-plan-sign-ups-are-reopening)
 
-## Crypto Clipper Campaign Abuses Fake Reviews, AI Narrators, and VirusTotal Comments (risk: 0)
+## Webinar Today: How Modern Breaches Bypass MFA and Evade Detection (risk: 0)
 1 related updates.
 
-- [Crypto Clipper Campaign Abuses Fake Reviews, AI Narrators, and VirusTotal Comments](https://thehackernews.com/2026/06/crypto-clipper-campaign-abuses-fake.html)
+- [Webinar Today: How Modern Breaches Bypass MFA and Evade Detection](https://www.securityweek.com/webinar-today-how-modern-breaches-bypass-mfa-and-evade-detection/)
 
-## India's Telegram ban hit the UAE too. Here's how to get around it (risk: 0)
+## Introducing the Cloudflare One stack: agent-powered deployment (risk: 0)
 1 related updates.
 
-- [India's Telegram ban hit the UAE too. Here's how to get around it](https://www.bleepingcomputer.com/news/security/indias-telegram-ban-hit-the-uae-too-heres-how-to-get-around-it/)
+- [Introducing the Cloudflare One stack: agent-powered deployment](https://blog.cloudflare.com/cloudflare-one-stack/)
 
-## Why Account Takeovers Are Rising and How to Stop Them (risk: 0)
+## Hostile states behind three-quarters of attacks on Britain's critical infrastructure, cyber chief warns (risk: 0)
 1 related updates.
 
-- [Why Account Takeovers Are Rising and How to Stop Them](https://www.bleepingcomputer.com/news/security/why-account-takeovers-are-rising-and-how-to-stop-them/)
+- [Hostile states behind three-quarters of attacks on Britain's critical infrastructure, cyber chief warns](https://therecord.media/britain-nation-state-cyberattacks-richard-horne-rusi)
 
-## Microsoft confirms Office apps launch issues after June updates (risk: 0)
+## GitHub Copilot app generally available (risk: 0)
 1 related updates.
 
-- [Microsoft confirms Office apps launch issues after June updates](https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-office-apps-launch-issues-after-june-updates/)
+- [GitHub Copilot app generally available](https://github.blog/changelog/2026-06-17-github-copilot-app-generally-available)
 
-## Junior Hacker Used Tailscale and OpenSSH to Keep Access After His C2 Went Offline (risk: 0)
+## 1Password Acquires Apono in Reported $250M-$300M Deal (risk: 0)
 1 related updates.
 
-- [Junior Hacker Used Tailscale and OpenSSH to Keep Access After His C2 Went Offline](https://thehackernews.com/2026/06/junior-hacker-used-tailscale-and.html)
+- [1Password Acquires Apono in Reported $250M-$300M Deal](https://www.securityweek.com/1password-acquires-apono-in-reported-250m-300m-deal/)
 
-## Adversarial Exposure Validation Turns Security Visibility into Confident Prioritization (risk: 0)
+## INC Ransomware Thrives by Mastering the Basics (risk: 0)
 1 related updates.
 
-- [Adversarial Exposure Validation Turns Security Visibility into Confident Prioritization](https://thehackernews.com/2026/06/adversarial-exposure-validation-turns.html)
+- [INC Ransomware Thrives by Mastering the Basics](https://www.darkreading.com/cyberattacks-data-breaches/inc-ransomware-thrives-by-mastering-the-basics)
 
-## Read remote repository content with GitHub CLI (risk: 0)
+## Sweeping Credential-Harvesting Heist Compromises 30K+ Fortinet Devices (risk: 0)
 1 related updates.
 
-- [Read remote repository content with GitHub CLI](https://github.blog/changelog/2026-06-17-read-remote-repository-content-with-github-cli)
+- [Sweeping Credential-Harvesting Heist Compromises 30K+ Fortinet Devices](https://www.darkreading.com/cyberattacks-data-breaches/sweeping-credential-harvesting-heist-compromises-30k-fortinet-devices)
 
-## Secret scanning updates – June 2026 (risk: 0)
+## EU grants Ukraine access to cybersecurity reserve for major attacks (risk: 0)
 1 related updates.
 
-- [Secret scanning updates – June 2026](https://github.blog/changelog/2026-06-17-secret-scanning-updates-june-2026)
+- [EU grants Ukraine access to cybersecurity reserve for major attacks](https://therecord.media/ukraine-access-eu-cybersecurity-reserve)
 
-## Limit open pull requests for users without write access (risk: 0)
+## Introducing AWS Continuum: Security at machine speed (risk: 0)
 1 related updates.
 
-- [Limit open pull requests for users without write access](https://github.blog/changelog/2026-06-17-limit-open-pull-requests-for-users-without-write-access)
+- [Introducing AWS Continuum: Security at machine speed](https://aws.amazon.com/blogs/security/introducing-aws-continuum-security-at-machine-speed/)

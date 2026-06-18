@@ -1,26 +1,22 @@
 {
-  "rebuilt_at": "2026-06-17T10:00:07.075551+00:00",
+  "rebuilt_at": "2026-06-18T00:23:49.425092+00:00",
   "window_days": 7,
-  "total_cards": 30,
+  "total_cards": 32,
   "unique_cves": 16,
   "active_domains": [
     "ai_threat",
-    "browser_ext",
     "cloud_iam",
     "container",
     "crypto_lib",
     "identity",
     "os_kernel",
-    "pkg_maven",
-    "pkg_npm",
-    "pkg_nuget",
     "pkg_pypi",
     "supply_chain",
     "web_framework"
   ],
   "most_active_day": "2026-06-17",
   "day_counts": {
-    "2026-06-17": 13,
+    "2026-06-17": 15,
     "2026-06-16": 2,
     "2026-06-15": 1,
     "2026-06-14": 3,
@@ -94,6 +90,6 @@
       "count": 1
     }
   ],
-  "weekly_summary": "Over the past 7 days, our security landscape has been characterized by a total of 30 findings, with 16 unique CVEs tracked, including CVE-2026-10829, CVE-2026-50656, and others, each observed only once. The threat landscape spans multiple active security domains, including AI/ML threats, browser extensions, and cloud/IAM, among others. Notably, the most active day was 2026-06-17, indicating a recent surge in security-related activity, highlighting the need for continued vigilance across these domains to mitigate potential risks and ensure the security and integrity of our infrastructure.",
-  "weekly_summary_ts": "2026-06-17"
+  "weekly_summary": "Over the past 7 days, our security landscape has been characterized by 32 total findings, with 16 unique CVEs tracked, including CVE-2026-10829, CVE-2026-50656, and others, each observed only once. The most active day was June 17, 2026, with various security domains impacted, including AI/ML threats, cloud/IAM, containers/K8s, and others. The diversity of affected domains, such as crypto libraries, identity/auth, OS/kernel, and PyPI/Python, highlights the complexity of the current threat environment, while the limited frequency of each CVE suggests a broad but relatively shallow attack surface, with no single vulnerability dominating the landscape.",
+  "weekly_summary_ts": "2026-06-18"
 }

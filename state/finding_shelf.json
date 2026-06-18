@@ -3772,5 +3772,95 @@
     "last_seen": "2026-06-17",
     "run_count": 1,
     "title": "Limit open pull requests for users without write access"
+  },
+  "bdf66917bb66": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Attackers hit pair of critical Fortinet vulnerabilities the vendor disclosed in April"
+  },
+  "d413a5e63081": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Enterprise-managed settings now support bypass permission controls"
+  },
+  "34f5df5f6e8b": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Bringing more agent harnesses and frameworks to Cloudflare, starting with Flue"
+  },
+  "fcb2a59e8906": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Auto mode in Copilot Chat available for all users"
+  },
+  "fc39a087935b": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Agent finder for GitHub Copilot now available"
+  },
+  "89b63c14fe83": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Copilot individual plan sign-ups are reopening"
+  },
+  "ddafe46e7bf8": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Webinar Today: How Modern Breaches Bypass MFA and Evade Detection"
+  },
+  "e6e45df084d7": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Introducing the Cloudflare One stack: agent-powered deployment"
+  },
+  "0099d15c26df": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Hostile states behind three-quarters of attacks on Britain's critical infrastructure, cyber chief warns"
+  },
+  "3df1cca6708a": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "GitHub Copilot app generally available"
+  },
+  "9590b8d26ba9": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "1Password Acquires Apono in Reported $250M-$300M Deal"
+  },
+  "74c274056411": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "INC Ransomware Thrives by Mastering the Basics"
+  },
+  "31df979015cb": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Sweeping Credential-Harvesting Heist Compromises 30K+ Fortinet Devices"
+  },
+  "8edb1c6ff993": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "EU grants Ukraine access to cybersecurity reserve for major attacks"
+  },
+  "9a30b25c1095": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "run_count": 1,
+    "title": "Introducing AWS Continuum: Security at machine speed"
   }
 }
