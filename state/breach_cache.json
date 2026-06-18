@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-18T10:46:06.254074+00:00",
+  "fetched_at": "2026-06-18T21:25:59.445875+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -11705,6 +11705,21 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#OperationEndgame3",
       "summary": "Between 10 and 13 November 2025, the latest phase of Operation Endgame was coordinated from Europol's headquarters in The Hague. The actions targeted one of the biggest infostealer Rhadamanthys, the Remote Access Trojan VenomRAT, and the botnet Elysium, all of which played a key role in international cybercrime. Authorities took down these three large cybercrime enablers and provided 2 million imp",
+      "action": "rotate"
+    },
+    {
+      "id": "hibp:operationendgame4-2026-06-18",
+      "name": "OperationEndgame4",
+      "title": "Operation Endgame 4.0",
+      "date": "2026-06-18",
+      "added": "2026-06-18",
+      "affected_count": 153527,
+      "data_classes": [
+        "Email addresses",
+        "Passwords"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#OperationEndgame4",
+      "summary": "On 18 June 2026, the latest phase of Operation Endgame targeted the SocGholish malware operation, a prolific malware distribution network used to compromise systems and facilitate further cybercrime. Coordinated by international law enforcement agencies with support from Europol and Eurojust, the operation remediated almost 15,000 compromised websites and disrupted more than 100 servers and domain",
       "action": "rotate"
     },
     {
