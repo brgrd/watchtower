@@ -1,81 +1,81 @@
 ---
-generated_at: 2026-06-18T23:55:39.392591+00:00
+generated_at: 2026-06-19T10:53:59.009485+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## F5 Patches Two Critical NGINX Open Source Flaws Enabling Remote Code Execution (risk: 85)
+## Apple Patches Beats Studio Buds Flaw Letting Nearby Attackers Spy via Microphone (risk: 70)
 1 related updates.
 
-- [F5 Patches Two Critical NGINX Open Source Flaws Enabling Remote Code Execution](https://thehackernews.com/2026/06/f5-patches-two-critical-nginx-open.html)
+- [Apple Patches Beats Studio Buds Flaw Letting Nearby Attackers Spy via Microphone](https://thehackernews.com/2026/06/apple-patches-beats-studio-buds-flaw.html)
 
-## Rockwell Automation FactoryTalk Historian Site Edition (risk: 70)
+## Splunk Enterprise Vulnerability Exploited in Attacks Days After Disclosure (risk: 70)
 1 related updates.
 
-- [Rockwell Automation FactoryTalk Historian Site Edition](https://www.cisa.gov/news-events/ics-advisories/icsa-26-169-03)
+- [Splunk Enterprise Vulnerability Exploited in Attacks Days After Disclosure](https://www.securityweek.com/splunk-enterprise-vulnerability-exploited-in-attacks-days-after-disclosure/)
 
-## AzeoTech DAQFactory (risk: 70)
+## Issue with containerd CRI Plugin - CVE-2026-50195, CVE-2026-53488, CVE-2026-53492, CVE-2026-53489, CVE-2026-47262 (risk: 55)
 1 related updates.
 
-- [AzeoTech DAQFactory](https://www.cisa.gov/news-events/ics-advisories/icsa-26-169-02)
+- [Issue with containerd CRI Plugin - CVE-2026-50195, CVE-2026-53488, CVE-2026-53492, CVE-2026-53489, CVE-2026-47262](https://aws.amazon.com/security/security-bulletins/rss/2026-046-aws/)
 
-## AVer PTC cameras (risk: 70)
+## GCP-2026-026 (risk: 55)
 1 related updates.
 
-- [AVer PTC cameras](https://www.cisa.gov/news-events/ics-advisories/icsa-26-169-01)
+- [GCP-2026-026](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-026)
 
-## CVE-2026-20253 — Splunk Enterprise Missing Authentication for Critical Function Vulnerability (risk: 40)
+## GCP-2026-008 (risk: 40)
 1 related updates.
 
-- [CVE-2026-20253 — Splunk Enterprise Missing Authentication for Critical Function Vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2026-20253)
+- [GCP-2026-008](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-008)
 
-## Apollo Pharmacy Blood Glucose Monitoring System APG-01 BT (risk: 30)
+## GCP-2026-013 (risk: 40)
 1 related updates.
 
-- [Apollo Pharmacy Blood Glucose Monitoring System APG-01 BT](https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-169-01)
+- [GCP-2026-013](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-013)
 
-## Mitsubishi Electric Co.'s MELSEC iQ-F Series FX5-ENET/IP Ethernet Module (risk: 30)
+## CISA: Splunk Enterprise flaw actively exploited, patch by Sunday (risk: 30)
 1 related updates.
 
-- [Mitsubishi Electric Co.'s MELSEC iQ-F Series FX5-ENET/IP Ethernet Module](https://www.cisa.gov/news-events/ics-advisories/icsa-26-169-06)
+- [CISA: Splunk Enterprise flaw actively exploited, patch by Sunday](https://www.bleepingcomputer.com/news/security/cisa-splunk-enterprise-flaw-actively-exploited-patch-by-sunday/)
 
-## Mitsubishi Electric MELSEC iQ-F Series (risk: 30)
+## Cybersecurity Firms Impacted by Klue Supply Chain Attack (risk: 20)
 1 related updates.
 
-- [Mitsubishi Electric MELSEC iQ-F Series](https://www.cisa.gov/news-events/ics-advisories/icsa-26-169-05)
+- [Cybersecurity Firms Impacted by Klue Supply Chain Attack](https://www.securityweek.com/cybersecurity-firms-impacted-by-klue-supply-chain-attack/)
 
-## ShapedPlugin update flow hacked to infect WordPress sites (risk: 20)
+## GCP-2026-037 (risk: 15)
 1 related updates.
 
-- [ShapedPlugin update flow hacked to infect WordPress sites](https://www.bleepingcomputer.com/news/security/shapedplugin-update-flow-hacked-to-infect-wordpress-sites/)
+- [GCP-2026-037](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-037)
 
-## Nintendo confirms data stolen in WebMD subsidiary cyberattack (risk: 0)
+## CISA warns Fortinet users to secure devices after FortiBleed leak (risk: 0)
 1 related updates.
 
-- [Nintendo confirms data stolen in WebMD subsidiary cyberattack](https://www.bleepingcomputer.com/news/security/nintendo-confirms-data-stolen-in-webmd-subsidiary-cyberattack/)
+- [CISA warns Fortinet users to secure devices after FortiBleed leak](https://www.bleepingcomputer.com/news/security/cisa-warns-fortinet-users-to-secure-devices-after-fortibleed-leak/)
 
-## Gentlemen ransomware uses multiple EDR killers to disable defenses (risk: 0)
+## NY man charged after harassing college student with AI-generated nudes (risk: 0)
 1 related updates.
 
-- [Gentlemen ransomware uses multiple EDR killers to disable defenses](https://www.bleepingcomputer.com/news/security/gentlemen-ransomware-uses-multiple-edr-killers-to-disable-defenses/)
+- [NY man charged after harassing college student with AI-generated nudes](https://www.bleepingcomputer.com/news/security/new-york-man-faces-cyberstalking-charge-after-sharing-ai-generated-nudes-online/)
 
-## Klue OAuth breach linked to 'Icarus' Salesforce data theft attacks (risk: 0)
+## Salesforce Disables Klue App Integration After OAuth Token Abuse Exposes Customer Data (risk: 0)
 1 related updates.
 
-- [Klue OAuth breach linked to 'Icarus' Salesforce data theft attacks](https://www.bleepingcomputer.com/news/security/klue-oauth-breach-linked-to-icarus-salesforce-data-theft-attacks/)
+- [Salesforce Disables Klue App Integration After OAuth Token Abuse Exposes Customer Data](https://thehackernews.com/2026/06/salesforce-disables-klue-app.html)
 
-## USB worm spreads crypto-stealing malware via Windows shortcut files (risk: 0)
+## FortiBleed: 86,000 Fortinet Device Credentials Compromised (risk: 0)
 1 related updates.
 
-- [USB worm spreads crypto-stealing malware via Windows shortcut files](https://www.bleepingcomputer.com/news/security/usb-worm-spreads-crypto-stealing-malware-via-windows-shortcut-files/)
+- [FortiBleed: 86,000 Fortinet Device Credentials Compromised](https://www.securityweek.com/fortibleed-86000-fortinet-device-credentials-compromised/)
 
-## 5 reasons Microsoft 365 backup isn’t enough for business data protection (risk: 0)
+## Cisco to Acquire WideField Security to Boost Splunk’s Agentic SOC (risk: 0)
 1 related updates.
 
-- [5 reasons Microsoft 365 backup isn’t enough for business data protection](https://www.bleepingcomputer.com/news/security/5-reasons-microsoft-365-backup-isnt-enough-for-business-data-protection/)
+- [Cisco to Acquire WideField Security to Boost Splunk’s Agentic SOC](https://www.securityweek.com/cisco-to-acquire-widefield-security-to-boost-splunks-agentic-soc/)
 
-## Police cleans nearly 15,000 SocGholish-infected sites tied to Evil Corp (risk: 0)
+## 15,000 WordPress Websites Cleaned Up in SocGholish Botnet Takedown (risk: 0)
 1 related updates.
 
-- [Police cleans nearly 15,000 SocGholish-infected sites tied to Evil Corp](https://www.bleepingcomputer.com/news/security/law-enforcement-nukes-socgholish-malware-from-nearly-15-000-sites/)
+- [15,000 WordPress Websites Cleaned Up in SocGholish Botnet Takedown](https://www.securityweek.com/15000-wordpress-websites-cleaned-up-in-socgholish-botnet-takedown/)

@@ -994,8 +994,8 @@
   },
   "b9e9d2dca15f": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-06-09",
-    "run_count": 3,
+    "last_seen": "2026-06-19",
+    "run_count": 4,
     "title": "GCP-2026-028"
   },
   "e799fb3564e7": {
@@ -4000,5 +4000,89 @@
     "last_seen": "2026-06-18",
     "run_count": 1,
     "title": "Police cleans nearly 15,000 SocGholish-infected sites tied to Evil Corp"
+  },
+  "b7ff8ff382f0": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "Apple Patches Beats Studio Buds Flaw Letting Nearby Attackers Spy via Microphone"
+  },
+  "1f52e74f114a": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "Splunk Enterprise Vulnerability Exploited in Attacks Days After Disclosure"
+  },
+  "cve:CVE-2026-47262": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "Issue with containerd CRI Plugin - CVE-2026-50195, CVE-2026-53488, CVE-2026-53492, CVE-2026-53489, CVE-2026-47262"
+  },
+  "98f3c46dd71a": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "GCP-2026-008"
+  },
+  "fba7782a8ad8": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "GCP-2026-013"
+  },
+  "c2a8c43dada9": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "CISA: Splunk Enterprise flaw actively exploited, patch by Sunday"
+  },
+  "10e5be2a93f0": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "Cybersecurity Firms Impacted by Klue Supply Chain Attack"
+  },
+  "7e064eb76058": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "GCP-2026-037"
+  },
+  "701bf70ec7e8": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "CISA warns Fortinet users to secure devices after FortiBleed leak"
+  },
+  "4d145c3fc483": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "NY man charged after harassing college student with AI-generated nudes"
+  },
+  "41287956803c": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "Salesforce Disables Klue App Integration After OAuth Token Abuse Exposes Customer Data"
+  },
+  "450434a28d8a": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "FortiBleed: 86,000 Fortinet Device Credentials Compromised"
+  },
+  "c65413befe62": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "Cisco to Acquire WideField Security to Boost Splunk’s Agentic SOC"
+  },
+  "20fbed84c3ca": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "15,000 WordPress Websites Cleaned Up in SocGholish Botnet Takedown"
   }
 }
