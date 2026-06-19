@@ -4111,5 +4111,77 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-45471": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "CVE-2026-45471 Microsoft Word Remote Code Execution Vulnerability"
+  },
+  "cve:CVE-2026-45474": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "CVE-2026-45474 Microsoft Office Remote Code Execution Vulnerability"
+  },
+  "cve:CVE-2026-45486": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "CVE-2026-45486 Microsoft Word Remote Code Execution Vulnerability"
+  },
+  "cve:CVE-2026-45485": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "CVE-2026-45485 Microsoft Office Information Disclosure Vulnerability"
+  },
+  "cve:CVE-2026-44817": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "CVE-2026-44817 Microsoft Excel Remote Code Execution Vulnerability"
+  },
+  "cve:CVE-2026-44818": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "CVE-2026-44818 Microsoft Excel Remote Code Execution Vulnerability"
+  },
+  "cve:CVE-2026-44819": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "CVE-2026-44819 Microsoft Office Remote Code Execution Vulnerability"
+  },
+  "cve:CVE-2026-44820": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "CVE-2026-44820 Microsoft Excel Remote Code Execution Vulnerability"
+  },
+  "cve:CVE-2026-44821": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "CVE-2026-44821 Microsoft Office Information Disclosure Vulnerability"
+  },
+  "cve:CVE-2026-44823": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "CVE-2026-44823 Microsoft Excel Remote Code Execution Vulnerability"
+  },
+  "cve:CVE-2026-44824": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "CVE-2026-44824 Microsoft Office Remote Code Execution Vulnerability"
+  },
+  "cve:CVE-2026-45456": {
+    "first_seen": "2026-06-19",
+    "last_seen": "2026-06-19",
+    "run_count": 1,
+    "title": "CVE-2026-45456 Microsoft Outlook and Word Remote Code Execution Vulnerability"
   }
 }
