@@ -1,81 +1,25 @@
 ---
-generated_at: 2026-06-19T23:10:22.333318+00:00
+generated_at: 2026-06-20T11:24:36.186151+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-45469 Microsoft Excel Remote Code Execution Vulnerability (risk: 40)
-1 related updates.
+## Analyst Summary
 
-- [CVE-2026-45469 Microsoft Excel Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45469)
+CVE-2026-56080, CVE-2026-11551, and CVE-2026-9843 represent the highest-risk items this period, affecting Capgo and WordPress plugins. Internet-facing WordPress sites with vulnerable plugins are most exposed due to the lack of available patches. The most time-sensitive action is to monitor and isolate WordPress sites with the Branda plugin, as no patch is currently available.
 
-## CVE-2026-45475 Microsoft Office Remote Code Execution Vulnerability (risk: 40)
-1 related updates.
+## CVE-2026-56080: Capgo Auth Bypass (risk: 40)
+[P2] Capgo before 12.128.2 contains a flaw in the Enforce Password Policy feature, allowing authentication bypass. No patch is available, and exploitation status is unknown. Why now: Lack of available patch (confidence: 0.80)
 
-- [CVE-2026-45475 Microsoft Office Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45475)
+- [CVE-2026-56080](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-56080)
 
-## CVE-2026-45472 Microsoft Office Remote Code Execution Vulnerability (risk: 40)
-1 related updates.
+## CVE-2026-11551: Branda Privilege Escalation (risk: 40)
+[P2] The Branda plugin for WordPress is vulnerable to privilege escalation via account takeover. No patch is available, and exploitation status is unknown. Why now: Lack of available patch (confidence: 0.80)
 
-- [CVE-2026-45472 Microsoft Office Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45472)
+- [CVE-2026-11551](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-11551)
 
-## CVE-2026-45471 Microsoft Word Remote Code Execution Vulnerability (risk: 40)
-1 related updates.
+## CVE-2026-9843: Database for Contact Form 7 Data Disclosure (risk: 40)
+[P2] The Database for Contact Form 7, WPforms, Elementor forms plugin for WordPress is vulnerable to data disclosure. No patch is available, and exploitation status is unknown. Why now: Lack of available patch (confidence: 0.80)
 
-- [CVE-2026-45471 Microsoft Word Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45471)
-
-## CVE-2026-45474 Microsoft Office Remote Code Execution Vulnerability (risk: 40)
-1 related updates.
-
-- [CVE-2026-45474 Microsoft Office Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45474)
-
-## CVE-2026-45486 Microsoft Word Remote Code Execution Vulnerability (risk: 40)
-1 related updates.
-
-- [CVE-2026-45486 Microsoft Word Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45486)
-
-## CVE-2026-45485 Microsoft Office Information Disclosure Vulnerability (risk: 40)
-1 related updates.
-
-- [CVE-2026-45485 Microsoft Office Information Disclosure Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45485)
-
-## CVE-2026-44817 Microsoft Excel Remote Code Execution Vulnerability (risk: 40)
-1 related updates.
-
-- [CVE-2026-44817 Microsoft Excel Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-44817)
-
-## CVE-2026-44818 Microsoft Excel Remote Code Execution Vulnerability (risk: 40)
-1 related updates.
-
-- [CVE-2026-44818 Microsoft Excel Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-44818)
-
-## CVE-2026-44819 Microsoft Office Remote Code Execution Vulnerability (risk: 40)
-1 related updates.
-
-- [CVE-2026-44819 Microsoft Office Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-44819)
-
-## CVE-2026-44820 Microsoft Excel Remote Code Execution Vulnerability (risk: 40)
-1 related updates.
-
-- [CVE-2026-44820 Microsoft Excel Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-44820)
-
-## CVE-2026-44821 Microsoft Office Information Disclosure Vulnerability (risk: 40)
-1 related updates.
-
-- [CVE-2026-44821 Microsoft Office Information Disclosure Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-44821)
-
-## CVE-2026-44823 Microsoft Excel Remote Code Execution Vulnerability (risk: 40)
-1 related updates.
-
-- [CVE-2026-44823 Microsoft Excel Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-44823)
-
-## CVE-2026-44824 Microsoft Office Remote Code Execution Vulnerability (risk: 40)
-1 related updates.
-
-- [CVE-2026-44824 Microsoft Office Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-44824)
-
-## CVE-2026-45456 Microsoft Outlook and Word Remote Code Execution Vulnerability (risk: 40)
-1 related updates.
-
-- [CVE-2026-45456 Microsoft Outlook and Word Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45456)
+- [CVE-2026-9843](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-9843)

@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-19T21:17:22.257012+00:00",
+  "fetched_at": "2026-06-20T11:24:37.249202+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -8308,6 +8308,27 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#James",
       "summary": "In June 2020, 14 previously undisclosed data breaches appeared for sale including the Brazilian delivery service, \"James\". The breach occurred in March 2020 and exposed 1.5M unique email addresses, customer locations expressed in longitude and latitude and passwords stored as bcrypt hashes. The data was provided to HIBP by dehashed.com.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:jcpenney-2026-06-12",
+      "name": "JCPenney",
+      "title": "JCPenney",
+      "date": "2026-06-12",
+      "added": "2026-06-20",
+      "affected_count": 368418,
+      "data_classes": [
+        "Dates of birth",
+        "Email addresses",
+        "Government issued IDs",
+        "Job titles",
+        "Names",
+        "Phone numbers",
+        "Physical addresses",
+        "Usernames"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#JCPenney",
+      "summary": "In June 2026, retailer JCPenney and associated brands were targeted in a ShinyHunters \"pay or leak\" extortion campaign. Data allegedly obtained from JCPenney through the exploitation of a critical zero-day vulnerability in Oracle PeopleSoft was later published publicly. The exposed records indicated they primarily related to internal HR systems and impacted current and former employees. The data i",
+      "action": "monitor"
     },
     {
       "id": "hibp:jd-2013-01-01",
