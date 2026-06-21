@@ -4264,5 +4264,14 @@
     "last_problem_type": "privilege_escalation",
     "last_affects": "framework",
     "last_classification_confidence": 0.85
+  },
+  "0e266bd42e63": {
+    "first_seen": "2026-06-21",
+    "last_seen": "2026-06-21",
+    "run_count": 1,
+    "title": "AryStinger Botnet",
+    "last_problem_type": "rce",
+    "last_affects": "network",
+    "last_classification_confidence": 0.95
   }
 }
