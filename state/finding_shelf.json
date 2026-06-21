@@ -4228,5 +4228,23 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "user_data",
     "last_classification_confidence": 0.8
+  },
+  "3da7a8ec7498": {
+    "first_seen": "2026-06-21",
+    "last_seen": "2026-06-21",
+    "run_count": 1,
+    "title": "Mastra AI Supply Chain Attack",
+    "last_problem_type": "supply_chain",
+    "last_affects": "user_data",
+    "last_classification_confidence": 0.9
+  },
+  "00e763e1d662": {
+    "first_seen": "2026-06-21",
+    "last_seen": "2026-06-21",
+    "run_count": 1,
+    "title": "New Prinz Eugen Ransomware",
+    "last_problem_type": "data_tampering",
+    "last_affects": "user_data",
+    "last_classification_confidence": 0.9
   }
 }
