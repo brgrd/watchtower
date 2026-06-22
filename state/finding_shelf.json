@@ -4324,5 +4324,95 @@
     "last_seen": "2026-06-22",
     "run_count": 1,
     "title": "What the Latest ShinyHunters Breaches Reveal About Modern Cyberattacks"
+  },
+  "8acff4b140d8": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "run_count": 1,
+    "title": "Microsoft says Windows 11 26H2 is coming soon, details upgrade process"
+  },
+  "f5b8c2c7ca89": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "run_count": 1,
+    "title": "ShapedPlugin WordPress Pro Plugins Backdoored in Supply Chain Attack"
+  },
+  "22ea88a709da": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "run_count": 1,
+    "title": "GCP-2026-023"
+  },
+  "4efacc9cdd96": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "run_count": 1,
+    "title": "GCP-2026-016"
+  },
+  "8aeabdedcfb1": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "run_count": 1,
+    "title": "GCP-2026-018"
+  },
+  "9480125f452e": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "run_count": 1,
+    "title": "GCP-2026-014"
+  },
+  "9acd2a3f923d": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "run_count": 1,
+    "title": "WhatsApp phishing attack uses fake business docs to hack PCs"
+  },
+  "c5d167e73785": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "run_count": 1,
+    "title": "A Glimpse into the “Search Your Target” Market for Stolen Credentials"
+  },
+  "8026c1fab16e": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "run_count": 1,
+    "title": "JaredFromSubway MEV bot hacked in $15 million crypto theft"
+  },
+  "01da8e6625b2": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "run_count": 1,
+    "title": "Microsoft fixes AutoGen Studio flaw that enabled code execution"
+  },
+  "166c2d730dc6": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "run_count": 1,
+    "title": "FortiBleed campaign used custom FortiGate sniffer to steal credentials"
+  },
+  "d7ec0b0ae8bc": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "run_count": 1,
+    "title": "Researchers Detail DifyTap Flaws in Dify That Could Expose AI Chats Across Tenants"
+  },
+  "b21d8d42eeb4": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "run_count": 1,
+    "title": "29-Year-Old Squid Proxy Bug 'Squidbleed' Can Leak Cleartext HTTP Requests"
+  },
+  "7ae5bd4ef9dc": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "run_count": 1,
+    "title": "Google Sets Sept. 30 Deadline for Android Developer Verification in Four Countries"
+  },
+  "7ca009a13010": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "run_count": 1,
+    "title": "Stop Your Legacy Infrastructure from Hijacking Your AI Agents"
   }
 }

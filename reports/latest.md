@@ -1,81 +1,81 @@
 ---
-generated_at: 2026-06-22T21:10:19.805625+00:00
+generated_at: 2026-06-22T23:40:25.597072+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## GCP-2026-030 (risk: 85)
+## Microsoft says Windows 11 26H2 is coming soon, details upgrade process (risk: 20)
 1 related updates.
 
-- [GCP-2026-030](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-030)
+- [Microsoft says Windows 11 26H2 is coming soon, details upgrade process](https://www.bleepingcomputer.com/news/microsoft/microsoft-says-windows-11-26h2-is-coming-soon-details-upgrade-process/)
 
-## GCP-2026-027 (risk: 55)
+## ShapedPlugin WordPress Pro Plugins Backdoored in Supply Chain Attack (risk: 20)
 1 related updates.
 
-- [GCP-2026-027](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-027)
+- [ShapedPlugin WordPress Pro Plugins Backdoored in Supply Chain Attack](https://thehackernews.com/2026/06/shapedplugin-wordpress-pro-plugins.html)
 
-## GCP-2026-033 (risk: 55)
+## GCP-2026-023 (risk: 15)
 1 related updates.
 
-- [GCP-2026-033](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-033)
+- [GCP-2026-023](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-023)
 
-## GCP-2026-028 (risk: 55)
+## GCP-2026-016 (risk: 15)
 1 related updates.
 
-- [GCP-2026-028](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-028)
+- [GCP-2026-016](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-016)
 
-## GCP-2026-025 (risk: 55)
+## GCP-2026-018 (risk: 15)
 1 related updates.
 
-- [GCP-2026-025](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-025)
+- [GCP-2026-018](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-018)
 
-## GCP-2026-020 (risk: 55)
+## GCP-2026-014 (risk: 15)
 1 related updates.
 
-- [GCP-2026-020](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-020)
+- [GCP-2026-014](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-014)
 
-## GCP-2026-017 (risk: 55)
+## WhatsApp phishing attack uses fake business docs to hack PCs (risk: 0)
 1 related updates.
 
-- [GCP-2026-017](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-017)
+- [WhatsApp phishing attack uses fake business docs to hack PCs](https://www.bleepingcomputer.com/news/security/whatsapp-phishing-attack-uses-fake-business-docs-to-hack-pcs/)
 
-## GCP-2026-015 (risk: 55)
+## A Glimpse into the “Search Your Target” Market for Stolen Credentials (risk: 0)
 1 related updates.
 
-- [GCP-2026-015](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-015)
+- [A Glimpse into the “Search Your Target” Market for Stolen Credentials](https://www.bleepingcomputer.com/news/security/a-glimpse-into-the-search-your-target-market-for-stolen-credentials/)
 
-## GCP-2026-022 (risk: 55)
+## JaredFromSubway MEV bot hacked in $15 million crypto theft (risk: 0)
 1 related updates.
 
-- [GCP-2026-022](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-022)
+- [JaredFromSubway MEV bot hacked in $15 million crypto theft](https://www.bleepingcomputer.com/news/security/jaredfromsubway-mev-bot-hacked-in-15-million-crypto-theft/)
 
-## GCP-2026-024 (risk: 55)
+## Microsoft fixes AutoGen Studio flaw that enabled code execution (risk: 0)
 1 related updates.
 
-- [GCP-2026-024](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-024)
+- [Microsoft fixes AutoGen Studio flaw that enabled code execution](https://www.bleepingcomputer.com/news/security/microsoft-fixes-autogen-studio-flaw-that-enabled-code-execution/)
 
-## New Exploit Bypasses Apple’s Boot Defenses, Affects Millions of iPhones (risk: 45)
+## FortiBleed campaign used custom FortiGate sniffer to steal credentials (risk: 0)
 1 related updates.
 
-- [New Exploit Bypasses Apple’s Boot Defenses, Affects Millions of iPhones](https://www.securityweek.com/new-exploit-bypasses-apples-boot-defenses-affects-millions-of-iphones/)
+- [FortiBleed campaign used custom FortiGate sniffer to steal credentials](https://www.bleepingcomputer.com/news/security/fortibleed-campaign-used-custom-fortigate-sniffer-to-steal-credentials/)
 
-## GCP-2026-036 (risk: 40)
+## Researchers Detail DifyTap Flaws in Dify That Could Expose AI Chats Across Tenants (risk: 0)
 1 related updates.
 
-- [GCP-2026-036](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-036)
+- [Researchers Detail DifyTap Flaws in Dify That Could Expose AI Chats Across Tenants](https://thehackernews.com/2026/06/researchers-detail-difytap-flaws-in.html)
 
-## FFmpeg fixes PixelSmash flaw in widely used video decoder (risk: 30)
+## 29-Year-Old Squid Proxy Bug 'Squidbleed' Can Leak Cleartext HTTP Requests (risk: 0)
 1 related updates.
 
-- [FFmpeg fixes PixelSmash flaw in widely used video decoder](https://www.bleepingcomputer.com/news/security/ffmpeg-fixes-pixelsmash-flaw-in-widely-used-video-decoder/)
+- [29-Year-Old Squid Proxy Bug 'Squidbleed' Can Leak Cleartext HTTP Requests](https://thehackernews.com/2026/06/29-year-old-squid-proxy-bug-squidbleed.html)
 
-## Attackers Exploit Gravity SMTP Plugin Flaw to Harvest Valuable WordPress Data (risk: 30)
+## Google Sets Sept. 30 Deadline for Android Developer Verification in Four Countries (risk: 0)
 1 related updates.
 
-- [Attackers Exploit Gravity SMTP Plugin Flaw to Harvest Valuable WordPress Data](https://www.securityweek.com/attackers-exploit-gravity-smtp-plugin-flaw-to-harvest-valuable-wordpress-data/)
+- [Google Sets Sept. 30 Deadline for Android Developer Verification in Four Countries](https://thehackernews.com/2026/06/google-sets-sept-30-deadline-for.html)
 
-## What the Latest ShinyHunters Breaches Reveal About Modern Cyberattacks (risk: 30)
+## Stop Your Legacy Infrastructure from Hijacking Your AI Agents (risk: 0)
 1 related updates.
 
-- [What the Latest ShinyHunters Breaches Reveal About Modern Cyberattacks](https://www.securityweek.com/what-the-latest-shinyhunters-breaches-reveal-about-modern-cyberattacks/)
+- [Stop Your Legacy Infrastructure from Hijacking Your AI Agents](https://thehackernews.com/2026/06/stop-your-legacy-infrastructure-from.html)
