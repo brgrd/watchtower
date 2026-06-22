@@ -1,43 +1,39 @@
-# Watchtower Pipeline Eval — 2026-06-22T12:22:00Z
+# Watchtower Pipeline Eval — 2026-06-22T21:10:08Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 125 |
-| After dedup + CVE merge | 125 |
+| Items polled (raw) | 81 |
+| After dedup + CVE merge | 77 |
 | Sent to Groq | 30 |
-| Groq findings returned | 3 |
-| Passed quality gate | 3 |
-| Final cards rendered | 3 |
-| **Pipeline yield** | **3/125 (2.4%)** |
+| Groq findings returned | 0 |
+| Final cards rendered | 15 |
+| **Pipeline yield** | **15/81 (18.5%)** |
 
 ## Groq
-- **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 9,591 chars
-- **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7654
+_Groq not called this run (placeholder mode or no API key)._
 
 ## Card Quality
 
-**3 cards** — P1: 3, P2: 0, P3: 0
+**15 cards** — P1: 0, P2: 0, P3: 15
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 70 / 70 |
-| Tactic coverage | 100% |
+| Risk score mean / p90 | 57.3 / 65 |
+| Tactic coverage | 0% |
 | CVE coverage | 0% |
-| Patch status | unknown: 3 |
+| Patch status | unknown: 15 |
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 23 chars (0% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 6 total — 50% specific, 50% generic
+- **`why_now` avg length**: 0 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 0 total — 0% specific, 0% generic
 
 ### Persistence
 
-- New (run=1): **3** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
-- Mean run_count: 1 | Mean shelf_days: 0
+- New (run=1): **4** | Evolving (2–5): **11** | Persistent (>5): **0** | Resolved: **0**
+- Mean run_count: 2.4 | Mean shelf_days: 23.3
 
 ## Enrichment Hit Rates
 
@@ -51,23 +47,23 @@
 
 | Feed | Items |
 |------|------:|
-| `bsi_germany` | 80 |
-| `nvd` | 35 |
-| `securityweek` | 7 |
-| `thehackernews` | 3 |
-| `bleepingcomputer` | 0 |
+| `gcp_security` | 30 |
+| `bsi_germany` | 23 |
+| `thehackernews` | 8 |
+| `securityweek` | 6 |
+| `bleepingcomputer` | 5 |
 | _(+21 more)_ | … |
 
-**21 feeds returned 0 items this run.**
+**13 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-06-19 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-06-20 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-06-20 | 2 | 1 | 100% | 0% | 2 | 0 |
 | 2026-06-21 | 2 | 2 | 100% | 0% | 2 | 0 |
 | 2026-06-21 | ? | ? | ?% | ?% | ? | ? |
 | 2026-06-21 | 2 | 1 | 100% | 0% | 2 | 0 |
 | 2026-06-21 | 1 | 1 | 100% | 0% | 1 | 0 |
+| 2026-06-22 | 3 | 3 | 100% | 0% | 3 | 0 |
