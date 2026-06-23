@@ -4486,5 +4486,23 @@
     "last_seen": "2026-06-23",
     "run_count": 1,
     "title": "Announcing Agentic Development Security (ADS)"
+  },
+  "cve:CVE-2026-34910": {
+    "first_seen": "2026-06-23",
+    "last_seen": "2026-06-23",
+    "run_count": 1,
+    "title": "CVE-2026-34910: Ubiquiti UniFi OS RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-34909": {
+    "first_seen": "2026-06-23",
+    "last_seen": "2026-06-23",
+    "run_count": 1,
+    "title": "CVE-2026-34909: Ubiquiti UniFi OS Path Traversal",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
   }
 }
