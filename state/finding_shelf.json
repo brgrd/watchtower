@@ -4414,5 +4414,77 @@
     "last_seen": "2026-06-22",
     "run_count": 1,
     "title": "Stop Your Legacy Infrastructure from Hijacking Your AI Agents"
+  },
+  "db6df5686c22": {
+    "first_seen": "2026-06-23",
+    "last_seen": "2026-06-23",
+    "run_count": 1,
+    "title": "Malicious npm Packages Pose as PostCSS Tools to Deliver Windows RAT"
+  },
+  "05a1568c324d": {
+    "first_seen": "2026-06-23",
+    "last_seen": "2026-06-23",
+    "run_count": 1,
+    "title": "WhatsApp VBScript Campaign Uses Fake Documents to Install ManageEngine RMM Tool"
+  },
+  "b29f3f31922d": {
+    "first_seen": "2026-06-23",
+    "last_seen": "2026-06-23",
+    "run_count": 1,
+    "title": "FFmpeg PixelSmash Flaw Allows RCE on Video Players, Media Servers, NAS Appliances"
+  },
+  "23d1d5cf515c": {
+    "first_seen": "2026-06-23",
+    "last_seen": "2026-06-23",
+    "run_count": 1,
+    "title": "Algerian Man Extradited to US for Running Cybercrime Marketplaces"
+  },
+  "d34b3519e895": {
+    "first_seen": "2026-06-23",
+    "last_seen": "2026-06-23",
+    "run_count": 1,
+    "title": "OpenAI Expands Daybreak With GPT-5.5-Cyber to Help Defenders Patch Security Flaws"
+  },
+  "034e9b02b2a0": {
+    "first_seen": "2026-06-23",
+    "last_seen": "2026-06-23",
+    "run_count": 1,
+    "title": "OpenAI Refocuses Cybersecurity Efforts on Patching Over Discovery"
+  },
+  "24ab890fb7ce": {
+    "first_seen": "2026-06-23",
+    "last_seen": "2026-06-23",
+    "run_count": 1,
+    "title": "Russian Initial Access Broker Behind FortiBleed Campaign"
+  },
+  "e1c17b468efa": {
+    "first_seen": "2026-06-23",
+    "last_seen": "2026-06-23",
+    "run_count": 1,
+    "title": "Canadian Electricity Provider London Hydro Discloses Data Breach"
+  },
+  "2d6c948ab016": {
+    "first_seen": "2026-06-23",
+    "last_seen": "2026-06-23",
+    "run_count": 1,
+    "title": "Trump Signs Executive Order Accelerating Post-Quantum Cryptography Migration"
+  },
+  "771a9549d357": {
+    "first_seen": "2026-06-23",
+    "last_seen": "2026-06-23",
+    "run_count": 1,
+    "title": "When a vendor's breach becomes yours: lessons from the Klue incident"
+  },
+  "d2080b60042c": {
+    "first_seen": "2026-06-23",
+    "last_seen": "2026-06-23",
+    "run_count": 1,
+    "title": "Xsolis Data Breach Affects 1.4 Million Individuals"
+  },
+  "32d87aebd57f": {
+    "first_seen": "2026-06-23",
+    "last_seen": "2026-06-23",
+    "run_count": 1,
+    "title": "Announcing Agentic Development Security (ADS)"
   }
 }

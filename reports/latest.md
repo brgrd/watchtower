@@ -1,81 +1,66 @@
 ---
-generated_at: 2026-06-22T23:40:25.597072+00:00
+generated_at: 2026-06-23T12:13:03.000099+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Microsoft says Windows 11 26H2 is coming soon, details upgrade process (risk: 20)
+## Malicious npm Packages Pose as PostCSS Tools to Deliver Windows RAT (risk: 20)
 1 related updates.
 
-- [Microsoft says Windows 11 26H2 is coming soon, details upgrade process](https://www.bleepingcomputer.com/news/microsoft/microsoft-says-windows-11-26h2-is-coming-soon-details-upgrade-process/)
+- [Malicious npm Packages Pose as PostCSS Tools to Deliver Windows RAT](https://thehackernews.com/2026/06/malicious-npm-packages-pose-as-postcss.html)
 
-## ShapedPlugin WordPress Pro Plugins Backdoored in Supply Chain Attack (risk: 20)
+## WhatsApp VBScript Campaign Uses Fake Documents to Install ManageEngine RMM Tool (risk: 0)
 1 related updates.
 
-- [ShapedPlugin WordPress Pro Plugins Backdoored in Supply Chain Attack](https://thehackernews.com/2026/06/shapedplugin-wordpress-pro-plugins.html)
+- [WhatsApp VBScript Campaign Uses Fake Documents to Install ManageEngine RMM Tool](https://thehackernews.com/2026/06/whatsapp-vbscript-campaign-uses-fake.html)
 
-## GCP-2026-023 (risk: 15)
+## FFmpeg PixelSmash Flaw Allows RCE on Video Players, Media Servers, NAS Appliances (risk: 0)
 1 related updates.
 
-- [GCP-2026-023](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-023)
+- [FFmpeg PixelSmash Flaw Allows RCE on Video Players, Media Servers, NAS Appliances](https://www.securityweek.com/ffmpeg-pixelsmash-flaw-allows-rce-on-video-players-media-servers-nas-appliances/)
 
-## GCP-2026-016 (risk: 15)
+## Algerian Man Extradited to US for Running Cybercrime Marketplaces (risk: 0)
 1 related updates.
 
-- [GCP-2026-016](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-016)
+- [Algerian Man Extradited to US for Running Cybercrime Marketplaces](https://www.securityweek.com/algerian-man-extradited-to-us-for-running-cybercrime-marketplaces/)
 
-## GCP-2026-018 (risk: 15)
+## OpenAI Expands Daybreak With GPT-5.5-Cyber to Help Defenders Patch Security Flaws (risk: 0)
 1 related updates.
 
-- [GCP-2026-018](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-018)
+- [OpenAI Expands Daybreak With GPT-5.5-Cyber to Help Defenders Patch Security Flaws](https://thehackernews.com/2026/06/openai-expands-daybreak-with-gpt-55.html)
 
-## GCP-2026-014 (risk: 15)
+## OpenAI Refocuses Cybersecurity Efforts on Patching Over Discovery (risk: 0)
 1 related updates.
 
-- [GCP-2026-014](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-014)
+- [OpenAI Refocuses Cybersecurity Efforts on Patching Over Discovery](https://www.securityweek.com/openai-refocuses-cybersecurity-efforts-on-patching-over-discovery/)
 
-## WhatsApp phishing attack uses fake business docs to hack PCs (risk: 0)
+## Russian Initial Access Broker Behind FortiBleed Campaign (risk: 0)
 1 related updates.
 
-- [WhatsApp phishing attack uses fake business docs to hack PCs](https://www.bleepingcomputer.com/news/security/whatsapp-phishing-attack-uses-fake-business-docs-to-hack-pcs/)
+- [Russian Initial Access Broker Behind FortiBleed Campaign](https://www.securityweek.com/russian-initial-access-broker-behind-fortibleed-campaign/)
 
-## A Glimpse into the “Search Your Target” Market for Stolen Credentials (risk: 0)
+## Canadian Electricity Provider London Hydro Discloses Data Breach (risk: 0)
 1 related updates.
 
-- [A Glimpse into the “Search Your Target” Market for Stolen Credentials](https://www.bleepingcomputer.com/news/security/a-glimpse-into-the-search-your-target-market-for-stolen-credentials/)
+- [Canadian Electricity Provider London Hydro Discloses Data Breach](https://www.securityweek.com/canadian-electricity-provider-london-hydro-discloses-data-breach/)
 
-## JaredFromSubway MEV bot hacked in $15 million crypto theft (risk: 0)
+## Trump Signs Executive Order Accelerating Post-Quantum Cryptography Migration (risk: 0)
 1 related updates.
 
-- [JaredFromSubway MEV bot hacked in $15 million crypto theft](https://www.bleepingcomputer.com/news/security/jaredfromsubway-mev-bot-hacked-in-15-million-crypto-theft/)
+- [Trump Signs Executive Order Accelerating Post-Quantum Cryptography Migration](https://www.securityweek.com/trump-signs-executive-order-accelerating-post-quantum-cryptography-migration/)
 
-## Microsoft fixes AutoGen Studio flaw that enabled code execution (risk: 0)
+## When a vendor's breach becomes yours: lessons from the Klue incident (risk: 0)
 1 related updates.
 
-- [Microsoft fixes AutoGen Studio flaw that enabled code execution](https://www.bleepingcomputer.com/news/security/microsoft-fixes-autogen-studio-flaw-that-enabled-code-execution/)
+- [When a vendor's breach becomes yours: lessons from the Klue incident](https://snyk.io/blog/when-a-vendors-breach-becomes-yours-lessons-from-the-klue-incident/)
 
-## FortiBleed campaign used custom FortiGate sniffer to steal credentials (risk: 0)
+## Xsolis Data Breach Affects 1.4 Million Individuals (risk: 0)
 1 related updates.
 
-- [FortiBleed campaign used custom FortiGate sniffer to steal credentials](https://www.bleepingcomputer.com/news/security/fortibleed-campaign-used-custom-fortigate-sniffer-to-steal-credentials/)
+- [Xsolis Data Breach Affects 1.4 Million Individuals](https://www.securityweek.com/xsolis-data-breach-affects-1-4-million-individuals/)
 
-## Researchers Detail DifyTap Flaws in Dify That Could Expose AI Chats Across Tenants (risk: 0)
+## Announcing Agentic Development Security (ADS) (risk: 0)
 1 related updates.
 
-- [Researchers Detail DifyTap Flaws in Dify That Could Expose AI Chats Across Tenants](https://thehackernews.com/2026/06/researchers-detail-difytap-flaws-in.html)
-
-## 29-Year-Old Squid Proxy Bug 'Squidbleed' Can Leak Cleartext HTTP Requests (risk: 0)
-1 related updates.
-
-- [29-Year-Old Squid Proxy Bug 'Squidbleed' Can Leak Cleartext HTTP Requests](https://thehackernews.com/2026/06/29-year-old-squid-proxy-bug-squidbleed.html)
-
-## Google Sets Sept. 30 Deadline for Android Developer Verification in Four Countries (risk: 0)
-1 related updates.
-
-- [Google Sets Sept. 30 Deadline for Android Developer Verification in Four Countries](https://thehackernews.com/2026/06/google-sets-sept-30-deadline-for.html)
-
-## Stop Your Legacy Infrastructure from Hijacking Your AI Agents (risk: 0)
-1 related updates.
-
-- [Stop Your Legacy Infrastructure from Hijacking Your AI Agents](https://thehackernews.com/2026/06/stop-your-legacy-infrastructure-from.html)
+- [Announcing Agentic Development Security (ADS)](https://snyk.io/blog/agentic-development-security-ads/)
