@@ -4717,5 +4717,95 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
     "last_classification_confidence": 0.8
+  },
+  "9462534e7193": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "CISA Warns Critical Lantronix EDS5000 Flaw Is Being Actively Exploited"
+  },
+  "b6d8714f71b6": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Mandiant reveals how Cisco SD-WAN zero-day attacks gained root access"
+  },
+  "35dbfcd222b9": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Cordyceps CI/CD Flaws Expose 300+ GitHub Repositories to Supply-Chain Attacks"
+  },
+  "59cb912ad39d": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "CISA warns of max severity Ubiquiti flaws exploited in attacks"
+  },
+  "310ff0adb975": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "macOS Weaknesses Chained to Silently Disable Endpoint Security Agents"
+  },
+  "bb904cfc076b": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Malicious hackers exploit Cisco zero-day for highest access level at communications service provider"
+  },
+  "f8376ef0b3c7": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Exclusive: Meet AIVEX, a New Triage Model Built to Reduce Supply Chain Threat and Risk"
+  },
+  "011601f98550": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Three ‘cybercrime as a service’ operations undercut by Microsoft, law enforcement"
+  },
+  "a8729750c1bc": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Amadey, StealC malware operations disrupted in Operation Endgame action"
+  },
+  "08ee5184d0ee": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "DraftKings hacker 'Snoopy' sentenced to 18 months in prison"
+  },
+  "53326ade33e5": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Malicious Edge extension abuses Native Messaging as bridge to malware"
+  },
+  "73c45a28229e": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Using SASE in a Modern TIC 3.0 Solution"
+  },
+  "8fcc8b15d9cb": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Securing the service desk: Why social engineering attacks keep succeeding"
+  },
+  "03843b527784": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Amadey and StealC Malware Network Disrupted, 27M Stolen Credentials Recovered"
+  },
+  "44109fc5f6b1": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Microsoft and Allies Smash Shared Infrastructure of Amadey and StealC Malware"
   }
 }
