@@ -4582,5 +4582,95 @@
     "last_seen": "2026-06-24",
     "run_count": 1,
     "title": "New macOS ClickFix attack silently mounts DMGs to push infostealer"
+  },
+  "e92d1967ac9b": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Cisco Unified CM Flaw Exploited After PoC Reveals File-Write Path to Root"
+  },
+  "4ef43c3ae997": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "GCP-2026-041"
+  },
+  "0149ede49c0d": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Anthropic’s Mythos Model Found Vulnerabilities in Classified US Government Systems, Official Says"
+  },
+  "a2546c9d92cb": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Webinar Today: Modern Exposure Validation in the AI Era"
+  },
+  "8b4ac5417a92": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "OpenClaw’s Skill Marketplace and the Emerging AI Supply Chain Threat"
+  },
+  "f1405857e23d": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Open-source security is posing challenges governments can’t easily solve"
+  },
+  "73a04c776d26": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "DoJ Seizes Huione Cloud Account Tied to Cyber Scam Money Laundering"
+  },
+  "dd3698d5f463": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "GCP-2026-039"
+  },
+  "3a5f82714119": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "GCP-2026-038"
+  },
+  "b250691a0184": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "GCP-2026-035"
+  },
+  "d71c3459b933": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "GCP-2026-034"
+  },
+  "6a2bc415863b": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "GCP-2026-032"
+  },
+  "4a6aa207b281": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "GCP-2026-040"
+  },
+  "4b0bb3a847ef": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "GCP-2026-029"
+  },
+  "6c5159f1e347": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "GCP-2026-021"
   }
 }

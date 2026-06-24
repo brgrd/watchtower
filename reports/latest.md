@@ -1,81 +1,81 @@
 ---
-generated_at: 2026-06-24T00:06:34.842005+00:00
+generated_at: 2026-06-24T09:47:57.286664+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Cisco Unified CM flaw CVE-2026-20230 now exploited in attacks (risk: 70)
+## Cisco Unified CM Flaw Exploited After PoC Reveals File-Write Path to Root (risk: 85)
 1 related updates.
 
-- [Cisco Unified CM flaw CVE-2026-20230 now exploited in attacks](https://www.bleepingcomputer.com/news/security/cisco-unified-cm-sme-flaw-cve-2026-20230-now-exploited-in-attacks/)
+- [Cisco Unified CM Flaw Exploited After PoC Reveals File-Write Path to Root](https://thehackernews.com/2026/06/cisco-unified-cm-flaw-exploited-after.html)
 
-## GitHub Updates actions/checkout to Block Common Pwn Request Attack Patterns (risk: 50)
+## GCP-2026-041 (risk: 40)
 1 related updates.
 
-- [GitHub Updates actions/checkout to Block Common Pwn Request Attack Patterns](https://thehackernews.com/2026/06/github-updates-actionscheckout-to-block.html)
+- [GCP-2026-041](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-041)
 
-## CVE-2026-12957 and CVE-2026-12958 - Issues in Language Servers for AWS and Amazon Q Developer Plugins (risk: 40)
+## Anthropic’s Mythos Model Found Vulnerabilities in Classified US Government Systems, Official Says (risk: 30)
 1 related updates.
 
-- [CVE-2026-12957 and CVE-2026-12958 - Issues in Language Servers for AWS and Amazon Q Developer Plugins](https://aws.amazon.com/security/security-bulletins/rss/2026-047-aws/)
+- [Anthropic’s Mythos Model Found Vulnerabilities in Classified US Government Systems, Official Says](https://www.securityweek.com/anthropics-mythos-model-found-vulnerabilities-in-classified-us-government-systems-official-says/)
 
-## CVE-2026-34910 — Ubiquiti UniFi OS Improper Input Validation Vulnerability (risk: 40)
+## Webinar Today: Modern Exposure Validation in the AI Era (risk: 30)
 1 related updates.
 
-- [CVE-2026-34910 — Ubiquiti UniFi OS Improper Input Validation Vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2026-34910)
+- [Webinar Today: Modern Exposure Validation in the AI Era](https://www.securityweek.com/webinar-today-modern-exposure-validation-in-the-ai-era/)
 
-## CVE-2026-34909 — Ubiquiti UniFi OS Path Traversal Vulnerability (risk: 40)
+## OpenClaw’s Skill Marketplace and the Emerging AI Supply Chain Threat (risk: 20)
 1 related updates.
 
-- [CVE-2026-34909 — Ubiquiti UniFi OS Path Traversal Vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2026-34909)
+- [OpenClaw’s Skill Marketplace and the Emerging AI Supply Chain Threat](https://unit42.paloaltonetworks.com/openclaw-ai-supply-chain-risk/)
 
-## CVE-2025-67038 — Lantronix EDS5000 Code Injection Vulnerability (risk: 40)
+## Open-source security is posing challenges governments can’t easily solve (risk: 0)
 1 related updates.
 
-- [CVE-2025-67038 — Lantronix EDS5000 Code Injection Vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2025-67038)
+- [Open-source security is posing challenges governments can’t easily solve](https://cyberscoop.com/open-source-software-security-crisis/)
 
-## CVE-2026-34908 — Ubiquiti UniFi OS Improper Access Control Vulnerability (risk: 40)
+## DoJ Seizes Huione Cloud Account Tied to Cyber Scam Money Laundering (risk: 0)
 1 related updates.
 
-- [CVE-2026-34908 — Ubiquiti UniFi OS Improper Access Control Vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2026-34908)
+- [DoJ Seizes Huione Cloud Account Tied to Cyber Scam Money Laundering](https://thehackernews.com/2026/06/doj-seizes-huione-cloud-account-tied-to.html)
 
-## The Exploit Doesn't Exist. You Can Still Prove It Works Against You (risk: 30)
+## GCP-2026-039 (risk: 0)
 1 related updates.
 
-- [The Exploit Doesn't Exist. You Can Still Prove It Works Against You](https://www.bleepingcomputer.com/news/security/the-exploit-doesnt-exist-you-can-still-prove-it-works-against-you/)
+- [GCP-2026-039](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-039)
 
-## LastPass confirms data breach in Klue supply chain attack (risk: 20)
+## GCP-2026-038 (risk: 0)
 1 related updates.
 
-- [LastPass confirms data breach in Klue supply chain attack](https://www.bleepingcomputer.com/news/security/lastpass-confirms-data-breach-in-klue-supply-chain-attack/)
+- [GCP-2026-038](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-038)
 
-## Automatic Dependabot access to GitHub-hosted registries (risk: 20)
+## GCP-2026-035 (risk: 0)
 1 related updates.
 
-- [Automatic Dependabot access to GitHub-hosted registries](https://github.blog/changelog/2026-06-23-automatic-dependabot-access-to-github-hosted-registries)
+- [GCP-2026-035](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-035)
 
-## Scattered Spider Hackers Plead Guilty on Day 1 of Trial (risk: 0)
+## GCP-2026-034 (risk: 0)
 1 related updates.
 
-- [Scattered Spider Hackers Plead Guilty on Day 1 of Trial](https://krebsonsecurity.com/2026/06/scattered-spider-hackers-plead-guilty-on-day-1-of-trial/)
+- [GCP-2026-034](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-034)
 
-## Tata Electronics confirms cyberattack as hackers leak data (risk: 0)
+## GCP-2026-032 (risk: 0)
 1 related updates.
 
-- [Tata Electronics confirms cyberattack as hackers leak data](https://www.bleepingcomputer.com/news/security/tata-electronics-confirms-cyberattack-as-hackers-leak-data/)
+- [GCP-2026-032](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-032)
 
-## Healthtech firm Xolis suffers data breach impacting 1.4 million people (risk: 0)
+## GCP-2026-040 (risk: 0)
 1 related updates.
 
-- [Healthtech firm Xolis suffers data breach impacting 1.4 million people](https://www.bleepingcomputer.com/news/security/healthtech-firm-xolis-suffers-data-breach-impacting-14-million-people/)
+- [GCP-2026-040](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-040)
 
-## Windows 11 KB5095093 update rolls out new Point-in-Time restore feature (risk: 0)
+## GCP-2026-029 (risk: 0)
 1 related updates.
 
-- [Windows 11 KB5095093 update rolls out new Point-in-Time restore feature](https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5095093-update-rolls-out-new-point-in-time-restore-feature/)
+- [GCP-2026-029](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-029)
 
-## New macOS ClickFix attack silently mounts DMGs to push infostealer (risk: 0)
+## GCP-2026-021 (risk: 0)
 1 related updates.
 
-- [New macOS ClickFix attack silently mounts DMGs to push infostealer](https://www.bleepingcomputer.com/news/security/new-macos-clickfix-attack-silently-mounts-dmgs-to-push-infostealer/)
+- [GCP-2026-021](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-021)
