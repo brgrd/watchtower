@@ -2545,8 +2545,8 @@
   },
   "cve:CVE-2026-20230": {
     "first_seen": "2026-06-04",
-    "last_seen": "2026-06-04",
-    "run_count": 1,
+    "last_seen": "2026-06-24",
+    "run_count": 2,
     "title": "CVE-2026-20230: Cisco Unified CM RCE",
     "last_problem_type": "rce",
     "last_affects": "framework",
@@ -4489,8 +4489,8 @@
   },
   "cve:CVE-2026-34910": {
     "first_seen": "2026-06-23",
-    "last_seen": "2026-06-23",
-    "run_count": 1,
+    "last_seen": "2026-06-24",
+    "run_count": 2,
     "title": "CVE-2026-34910: Ubiquiti UniFi OS RCE",
     "last_problem_type": "rce",
     "last_affects": "network",
@@ -4498,8 +4498,8 @@
   },
   "cve:CVE-2026-34909": {
     "first_seen": "2026-06-23",
-    "last_seen": "2026-06-23",
-    "run_count": 1,
+    "last_seen": "2026-06-24",
+    "run_count": 2,
     "title": "CVE-2026-34909: Ubiquiti UniFi OS Path Traversal",
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
@@ -4507,8 +4507,8 @@
   },
   "cve:CVE-2026-34908": {
     "first_seen": "2026-06-23",
-    "last_seen": "2026-06-23",
-    "run_count": 1,
+    "last_seen": "2026-06-24",
+    "run_count": 2,
     "title": "CVE-2026-34908: Ubiquiti UniFi OS Improper Access Control",
     "last_problem_type": "auth_bypass",
     "last_affects": "network",
@@ -4516,11 +4516,71 @@
   },
   "cve:CVE-2025-67038": {
     "first_seen": "2026-06-23",
-    "last_seen": "2026-06-23",
-    "run_count": 1,
+    "last_seen": "2026-06-24",
+    "run_count": 2,
     "title": "CVE-2025-67038: Lantronix EDS5000 Code Injection",
     "last_problem_type": "rce",
     "last_affects": "network",
     "last_classification_confidence": 0.9
+  },
+  "81b40ad35c91": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "GitHub Updates actions/checkout to Block Common Pwn Request Attack Patterns"
+  },
+  "cve:CVE-2026-12957": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "CVE-2026-12957 and CVE-2026-12958 - Issues in Language Servers for AWS and Amazon Q Developer Plugins"
+  },
+  "b49587409593": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "The Exploit Doesn't Exist. You Can Still Prove It Works Against You"
+  },
+  "22749cdc7dd8": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "LastPass confirms data breach in Klue supply chain attack"
+  },
+  "d4bfb7afa6a4": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Automatic Dependabot access to GitHub-hosted registries"
+  },
+  "bd94cc7b14ac": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Scattered Spider Hackers Plead Guilty on Day 1 of Trial"
+  },
+  "c26bce157296": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Tata Electronics confirms cyberattack as hackers leak data"
+  },
+  "de16f3eee896": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Healthtech firm Xolis suffers data breach impacting 1.4 million people"
+  },
+  "1051790d40fc": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "Windows 11 KB5095093 update rolls out new Point-in-Time restore feature"
+  },
+  "ea4eef20d701": {
+    "first_seen": "2026-06-24",
+    "last_seen": "2026-06-24",
+    "run_count": 1,
+    "title": "New macOS ClickFix attack silently mounts DMGs to push infostealer"
   }
 }
