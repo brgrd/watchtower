@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-24T09:47:57.479066+00:00",
+  "fetched_at": "2026-06-24T21:42:09.550143+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -1535,7 +1535,7 @@
       "added": "2026-03-18",
       "affected_count": 903080,
       "data_classes": [
-        "Customer service comments",
+        "Customer service records",
         "Email addresses",
         "IP addresses",
         "Names",
@@ -9711,6 +9711,24 @@
       "action": "rotate"
     },
     {
+      "id": "hibp:madisonsquaregardensports-2026-06-05",
+      "name": "MadisonSquareGardenSports",
+      "title": "Madison Square Garden Sports",
+      "date": "2026-06-05",
+      "added": "2026-06-24",
+      "affected_count": 9796738,
+      "data_classes": [
+        "Customer service records",
+        "Email addresses",
+        "Names",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#MadisonSquareGardenSports",
+      "summary": "In June 2026, the sports and entertainment company Madison Square Garden Sports was the target of a ShinyHunters \"pay or leak\" extortion campaign. The group later published the alleged data, which included almost 10M unique email addresses spanning staff and customers, along with extensive personal, employment and customer relationship information.",
+      "action": "monitor"
+    },
+    {
       "id": "hibp:magicduel-2023-08-02",
       "name": "MagicDuel",
       "title": "MagicDuel",
@@ -11459,7 +11477,7 @@
       "affected_count": 6077025,
       "data_classes": [
         "Bank account numbers",
-        "Customer service comments",
+        "Customer service records",
         "Dates of birth",
         "Driver's licenses",
         "Email addresses",
@@ -11734,7 +11752,7 @@
       "title": "Operation Endgame 4.0",
       "date": "2026-06-18",
       "added": "2026-06-18",
-      "affected_count": 153527,
+      "affected_count": 4160519,
       "data_classes": [
         "Email addresses",
         "Passwords"
