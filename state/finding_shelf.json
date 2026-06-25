@@ -4825,5 +4825,32 @@
     "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-42005": {
+    "first_seen": "2026-06-25",
+    "last_seen": "2026-06-25",
+    "run_count": 1,
+    "title": "CVE-2026-42005: DNS Unlimited Memory Allocation",
+    "last_problem_type": "dos",
+    "last_affects": "network",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-40208": {
+    "first_seen": "2026-06-25",
+    "last_seen": "2026-06-25",
+    "run_count": 1,
+    "title": "CVE-2026-40208: DoH3 Query Delay",
+    "last_problem_type": "dos",
+    "last_affects": "network",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-33612": {
+    "first_seen": "2026-06-25",
+    "last_seen": "2026-06-25",
+    "run_count": 1,
+    "title": "CVE-2026-33612: Crafted Zone ZoneToCache Function",
+    "last_problem_type": "data_tampering",
+    "last_affects": "network",
+    "last_classification_confidence": 0.9
   }
 }

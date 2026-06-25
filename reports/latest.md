@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-06-25T11:47:43.062529+00:00
+generated_at: 2026-06-25T22:40:38.243658+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-39894 in Cacti, CVE-2026-2050 in GIMP, and CVE-2026-39897 in Cacti. Internet-facing systems, particularly those using Cacti and GIMP, are most exposed due to the lack of available patches for these vulnerabilities. The single most time-sensitive action is to monitor for and isolate any systems using Cacti or GIMP, as patches are not currently available for these products.
+The highest-risk items this period include CVE-2026-42005, CVE-2026-40208, and CVE-2026-33612, which represent vulnerabilities in DNS and HTTP/3 queries. Internet-facing DNS servers and HTTP/3-enabled applications are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor DNS and HTTP/3 traffic for signs of exploitation and to apply workarounds or mitigations until patches become available, specifically for DNSdist and DoH3 implementations.
 
-## CVE-2026-39894: Cacti RCE (risk: 70)
-[P1] Cacti is vulnerable to remote code execution due to a flaw in its performance and fault management framework. There is no available patch for this vulnerability, making it a high-risk item. Why now: Reported attribution (unverified): None (confidence: 0.80)
+## CVE-2026-42005: DNS Unlimited Memory Allocation (risk: 70)
+[P1] CVE-2026-42005 allows an attacker to send a web request that causes unlimited memory allocation in DNS servers, with no patch available. This vulnerability can lead to denial-of-service attacks. Why now: Reported attribution (unverified): none (confidence: 0.80)
 
-- [Cacti is an open source performance and fault management framework](https://cyberscoop.com/why-security-patching-is-not-enough-cve-2026-50751-op-ed/)
+- [CVE-2026-42005](https://www.cisa.gov/news-events/alerts/2026/06/25/cisa-adds-two-known-exploited-vulnerabilities-catalog)
 
-## CVE-2026-2050: GIMP RCE (risk: 70)
-[P1] GIMP is vulnerable to remote code execution due to a heap-based buffer overflow flaw in its HDR file parsing. There is no available patch for this vulnerability, making it a high-risk item. Why now: Reported attribution (unverified): None (confidence: 0.80)
+## CVE-2026-40208: DoH3 Query Delay (risk: 70)
+[P1] CVE-2026-40208 allows an attacker to delay the processing of DoH3 queries by sending crafted queries, with no patch available. This vulnerability can lead to denial-of-service attacks. Why now: Reported attribution (unverified): none (confidence: 0.80)
 
-- [GIMP HDR File Parsing Heap-based Buffer Overflow Remote Code Execution Vulnerability](https://thehackernews.com/2026/06/cisco-catalyst-sd-wan-zero-day-cve-2026.html)
+- [CVE-2026-40208](https://www.cisa.gov/news-events/alerts/2026/06/25/cisa-adds-two-known-exploited-vulnerabilities-catalog)
 
-## CVE-2026-39897: Cacti RCE (risk: 70)
-[P1] Cacti is vulnerable to remote code execution due to a flaw in its performance and fault management framework. There is no available patch for this vulnerability, making it a high-risk item. Why now: Reported attribution (unverified): None (confidence: 0.80)
+## CVE-2026-33612: Crafted Zone ZoneToCache Function (risk: 70)
+[P1] CVE-2026-33612 allows a malicious authoritative server to send a crafted zone via the ZoneToCache function, with no patch available. This vulnerability can lead to unauthorized data modification. Why now: Reported attribution (unverified): none (confidence: 0.80)
 
-- [Cacti is an open source performance and fault management framework](https://cyberscoop.com/why-security-patching-is-not-enough-cve-2026-50751-op-ed/)
+- [CVE-2026-33612](https://www.cisa.gov/news-events/alerts/2026/06/25/cisa-adds-two-known-exploited-vulnerabilities-catalog)
