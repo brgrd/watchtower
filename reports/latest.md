@@ -1,81 +1,25 @@
 ---
-generated_at: 2026-06-24T23:17:25.311537+00:00
+generated_at: 2026-06-25T11:47:43.062529+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CISA Warns Critical Lantronix EDS5000 Flaw Is Being Actively Exploited (risk: 70)
-1 related updates.
+## Analyst Summary
 
-- [CISA Warns Critical Lantronix EDS5000 Flaw Is Being Actively Exploited](https://thehackernews.com/2026/06/cisa-warns-critical-lantronix-eds5000.html)
+The highest-risk items this period are CVE-2026-39894 in Cacti, CVE-2026-2050 in GIMP, and CVE-2026-39897 in Cacti. Internet-facing systems, particularly those using Cacti and GIMP, are most exposed due to the lack of available patches for these vulnerabilities. The single most time-sensitive action is to monitor for and isolate any systems using Cacti or GIMP, as patches are not currently available for these products.
 
-## Mandiant reveals how Cisco SD-WAN zero-day attacks gained root access (risk: 70)
-1 related updates.
+## CVE-2026-39894: Cacti RCE (risk: 70)
+[P1] Cacti is vulnerable to remote code execution due to a flaw in its performance and fault management framework. There is no available patch for this vulnerability, making it a high-risk item. Why now: Reported attribution (unverified): None (confidence: 0.80)
 
-- [Mandiant reveals how Cisco SD-WAN zero-day attacks gained root access](https://www.bleepingcomputer.com/news/security/mandiant-reveals-how-cisco-sd-wan-zero-day-attacks-gained-root-access/)
+- [Cacti is an open source performance and fault management framework](https://cyberscoop.com/why-security-patching-is-not-enough-cve-2026-50751-op-ed/)
 
-## Cordyceps CI/CD Flaws Expose 300+ GitHub Repositories to Supply-Chain Attacks (risk: 50)
-1 related updates.
+## CVE-2026-2050: GIMP RCE (risk: 70)
+[P1] GIMP is vulnerable to remote code execution due to a heap-based buffer overflow flaw in its HDR file parsing. There is no available patch for this vulnerability, making it a high-risk item. Why now: Reported attribution (unverified): None (confidence: 0.80)
 
-- [Cordyceps CI/CD Flaws Expose 300+ GitHub Repositories to Supply-Chain Attacks](https://thehackernews.com/2026/06/cordyceps-cicd-flaws-expose-300-github.html)
+- [GIMP HDR File Parsing Heap-based Buffer Overflow Remote Code Execution Vulnerability](https://thehackernews.com/2026/06/cisco-catalyst-sd-wan-zero-day-cve-2026.html)
 
-## CISA warns of max severity Ubiquiti flaws exploited in attacks (risk: 30)
-1 related updates.
+## CVE-2026-39897: Cacti RCE (risk: 70)
+[P1] Cacti is vulnerable to remote code execution due to a flaw in its performance and fault management framework. There is no available patch for this vulnerability, making it a high-risk item. Why now: Reported attribution (unverified): None (confidence: 0.80)
 
-- [CISA warns of max severity Ubiquiti flaws exploited in attacks](https://www.bleepingcomputer.com/news/security/cisa-warns-of-max-severity-ubiquiti-flaws-exploited-in-attacks/)
-
-## macOS Weaknesses Chained to Silently Disable Endpoint Security Agents (risk: 30)
-1 related updates.
-
-- [macOS Weaknesses Chained to Silently Disable Endpoint Security Agents](https://www.securityweek.com/macos-weaknesses-chained-to-silently-disable-endpoint-security-agents/)
-
-## Malicious hackers exploit Cisco zero-day for highest access level at communications service provider (risk: 30)
-1 related updates.
-
-- [Malicious hackers exploit Cisco zero-day for highest access level at communications service provider](https://cyberscoop.com/cisco-sd-wan-zero-day-exploit-communications-provider/)
-
-## Exclusive: Meet AIVEX, a New Triage Model Built to Reduce Supply Chain Threat and Risk (risk: 20)
-1 related updates.
-
-- [Exclusive: Meet AIVEX, a New Triage Model Built to Reduce Supply Chain Threat and Risk](https://www.securityweek.com/exclusive-meet-aivex-a-new-triage-model-built-to-reduce-supply-chain-threat-and-risk/)
-
-## Three ‘cybercrime as a service’ operations undercut by Microsoft, law enforcement (risk: 20)
-1 related updates.
-
-- [Three ‘cybercrime as a service’ operations undercut by Microsoft, law enforcement](https://therecord.media/stealc-amadey-socgholish-malware-takedown-europol-microsoft)
-
-## Amadey, StealC malware operations disrupted in Operation Endgame action (risk: 0)
-1 related updates.
-
-- [Amadey, StealC malware operations disrupted in Operation Endgame action](https://www.bleepingcomputer.com/news/security/amadey-stealc-malware-operations-disrupted-in-operation-endgame-action/)
-
-## DraftKings hacker 'Snoopy' sentenced to 18 months in prison (risk: 0)
-1 related updates.
-
-- [DraftKings hacker 'Snoopy' sentenced to 18 months in prison](https://www.bleepingcomputer.com/news/security/draftkings-hacker-snoopy-sentenced-to-18-months-in-prison/)
-
-## Malicious Edge extension abuses Native Messaging as bridge to malware (risk: 0)
-1 related updates.
-
-- [Malicious Edge extension abuses Native Messaging as bridge to malware](https://www.bleepingcomputer.com/news/security/malicious-edge-extension-abuses-native-messaging-as-bridge-to-malware/)
-
-## Using SASE in a Modern TIC 3.0 Solution (risk: 0)
-1 related updates.
-
-- [Using SASE in a Modern TIC 3.0 Solution](https://www.cisa.gov/resources-tools/resources/using-sase-modern-tic-30-solution)
-
-## Securing the service desk: Why social engineering attacks keep succeeding (risk: 0)
-1 related updates.
-
-- [Securing the service desk: Why social engineering attacks keep succeeding](https://www.bleepingcomputer.com/news/security/securing-the-service-desk-why-social-engineering-attacks-keep-succeeding/)
-
-## Amadey and StealC Malware Network Disrupted, 27M Stolen Credentials Recovered (risk: 0)
-1 related updates.
-
-- [Amadey and StealC Malware Network Disrupted, 27M Stolen Credentials Recovered](https://thehackernews.com/2026/06/amadey-and-stealc-malware-network.html)
-
-## Microsoft and Allies Smash Shared Infrastructure of Amadey and StealC Malware (risk: 0)
-1 related updates.
-
-- [Microsoft and Allies Smash Shared Infrastructure of Amadey and StealC Malware](https://www.securityweek.com/microsoft-and-allies-smash-shared-infrastructure-of-amadey-and-stealc-malware/)
+- [Cacti is an open source performance and fault management framework](https://cyberscoop.com/why-security-patching-is-not-enough-cve-2026-50751-op-ed/)

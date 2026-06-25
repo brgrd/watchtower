@@ -2617,11 +2617,11 @@
   },
   "cve:CVE-2026-20245": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-06-09",
-    "run_count": 2,
+    "last_seen": "2026-06-25",
+    "run_count": 3,
     "title": "CVE-2026-20245: Cisco SD-WAN Vuln",
     "last_problem_type": "rce",
-    "last_affects": "application",
+    "last_affects": "framework",
     "last_classification_confidence": 0.9
   },
   "ecf5241a53b1": {
@@ -4807,5 +4807,23 @@
     "last_seen": "2026-06-24",
     "run_count": 1,
     "title": "Microsoft and Allies Smash Shared Infrastructure of Amadey and StealC Malware"
+  },
+  "cve:CVE-2026-39894": {
+    "first_seen": "2026-06-25",
+    "last_seen": "2026-06-25",
+    "run_count": 1,
+    "title": "CVE-2026-39894: Cacti RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-39897": {
+    "first_seen": "2026-06-25",
+    "last_seen": "2026-06-25",
+    "run_count": 1,
+    "title": "CVE-2026-39897: Cacti RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
   }
 }
