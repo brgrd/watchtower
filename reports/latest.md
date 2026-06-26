@@ -1,81 +1,25 @@
 ---
-generated_at: 2026-06-26T09:47:24.376725+00:00
+generated_at: 2026-06-26T12:21:55.591670+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2021-47986 (risk: 90)
-1 related updates.
+## Analyst Summary
 
-- [CVE-2021-47986](https://nvd.nist.gov/vuln/detail/CVE-2021-47986)
+The highest-risk items this period are CVE-2026-48928, CVE-2026-48619, and CVE-2026-48615, all related to Node.js vulnerabilities. Internet-facing Node.js applications are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate Node.js applications, especially those using HTTP/2 client and proxy tunnel error handling, as patches are not currently available. 
 
-## CVE-2025-71338 (risk: 90)
-1 related updates.
+## CVE-2026-48928: Node.js Hostname Matching (risk: 40)
+[P2] A trust-policy bypass vulnerability in Node.js hostname matching can be exploited, but no patches are available.  Why now: Lack of patches for recent Node.js vulnerabilities (confidence: 0.80)
 
-- [CVE-2025-71338](https://nvd.nist.gov/vuln/detail/CVE-2025-71338)
+- [CVE-2026-48928](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=NVD-CVE-2026-48928)
 
-## First-Ever Exploitation of PTC Windchill Vulnerability Discovered in the Wild (risk: 70)
-1 related updates.
+## CVE-2026-48619: Node.js HTTP/2 Client (risk: 40)
+[P2] A flaw in Node.js HTTP/2 client allows a server to send an unlimited number of O frames, but no patches are available.  Why now: Lack of patches for recent Node.js vulnerabilities (confidence: 0.80)
 
-- [First-Ever Exploitation of PTC Windchill Vulnerability Discovered in the Wild](https://www.securityweek.com/first-ever-exploitation-of-ptc-windchill-vulnerability-discovered-in-the-wild/)
+- [CVE-2026-48619](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=NVD-CVE-2026-48619)
 
-## CVE-2025-71327 (risk: 70)
-1 related updates.
+## CVE-2026-48615: Node.js Proxy Tunnel Error Handling (risk: 40)
+[P2] A flaw in Node.js proxy tunnel error handling could expose proxy credentials, but no patches are available.  Why now: Lack of patches for recent Node.js vulnerabilities (confidence: 0.80)
 
-- [CVE-2025-71327](https://nvd.nist.gov/vuln/detail/CVE-2025-71327)
-
-## CVE-2025-71333 (risk: 70)
-1 related updates.
-
-- [CVE-2025-71333](https://nvd.nist.gov/vuln/detail/CVE-2025-71333)
-
-## CVE-2026-13282 (risk: 70)
-1 related updates.
-
-- [CVE-2026-13282](https://nvd.nist.gov/vuln/detail/CVE-2026-13282)
-
-## CVE-2021-47987 (risk: 60)
-1 related updates.
-
-- [CVE-2021-47987](https://nvd.nist.gov/vuln/detail/CVE-2021-47987)
-
-## CVE-2025-71340 (risk: 60)
-1 related updates.
-
-- [CVE-2025-71340](https://nvd.nist.gov/vuln/detail/CVE-2025-71340)
-
-## CVE-2025-71324 (risk: 40)
-1 related updates.
-
-- [CVE-2025-71324](https://nvd.nist.gov/vuln/detail/CVE-2025-71324)
-
-## CVE-2020-37256 (risk: 40)
-1 related updates.
-
-- [CVE-2020-37256](https://nvd.nist.gov/vuln/detail/CVE-2020-37256)
-
-## CVE-2025-71328 (risk: 40)
-1 related updates.
-
-- [CVE-2025-71328](https://nvd.nist.gov/vuln/detail/CVE-2025-71328)
-
-## CVE-2025-71335 (risk: 40)
-1 related updates.
-
-- [CVE-2025-71335](https://nvd.nist.gov/vuln/detail/CVE-2025-71335)
-
-## CVE-2026-12975 (risk: 40)
-1 related updates.
-
-- [CVE-2026-12975](https://nvd.nist.gov/vuln/detail/CVE-2026-12975)
-
-## CVE-2026-10098 (risk: 40)
-1 related updates.
-
-- [CVE-2026-10098](https://nvd.nist.gov/vuln/detail/CVE-2026-10098)
-
-## CVE-2025-71334 (risk: 40)
-1 related updates.
-
-- [CVE-2025-71334](https://nvd.nist.gov/vuln/detail/CVE-2025-71334)
+- [CVE-2026-48615](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=NVD-CVE-2026-48615)

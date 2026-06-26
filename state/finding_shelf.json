@@ -5026,5 +5026,32 @@
     "last_seen": "2026-06-26",
     "run_count": 1,
     "title": "CVE-2025-71334"
+  },
+  "cve:CVE-2026-48928": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2026-48928: Node.js Hostname Matching",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-48619": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2026-48619: Node.js HTTP/2 Client",
+    "last_problem_type": "dos",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-48615": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2026-48615: Node.js Proxy Tunnel Error Handling",
+    "last_problem_type": "credential_compromise",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
   }
 }
