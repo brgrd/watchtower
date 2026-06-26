@@ -4936,5 +4936,95 @@
     "last_seen": "2026-06-26",
     "run_count": 1,
     "title": "The Four Elevations of Effective Fraud Prevention"
+  },
+  "cve:CVE-2021-47986": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2021-47986"
+  },
+  "cve:CVE-2025-71338": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2025-71338"
+  },
+  "2d484b291cb3": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "First-Ever Exploitation of PTC Windchill Vulnerability Discovered in the Wild"
+  },
+  "cve:CVE-2025-71327": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2025-71327"
+  },
+  "cve:CVE-2025-71333": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2025-71333"
+  },
+  "cve:CVE-2026-13282": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2026-13282"
+  },
+  "cve:CVE-2021-47987": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2021-47987"
+  },
+  "cve:CVE-2025-71340": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2025-71340"
+  },
+  "cve:CVE-2025-71324": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2025-71324"
+  },
+  "cve:CVE-2020-37256": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2020-37256"
+  },
+  "cve:CVE-2025-71328": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2025-71328"
+  },
+  "cve:CVE-2025-71335": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2025-71335"
+  },
+  "cve:CVE-2026-12975": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2026-12975"
+  },
+  "cve:CVE-2026-10098": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2026-10098"
+  },
+  "cve:CVE-2025-71334": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2025-71334"
   }
 }
