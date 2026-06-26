@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-06-26T12:21:55.591670+00:00
+generated_at: 2026-06-26T21:38:10.750037+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-48928, CVE-2026-48619, and CVE-2026-48615, all related to Node.js vulnerabilities. Internet-facing Node.js applications are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate Node.js applications, especially those using HTTP/2 client and proxy tunnel error handling, as patches are not currently available. 
+The highest-risk items this period include CVE-2026-46331 in Linux kernel, CVE-2026-6658 in jupyter/nbconvert, and CVE-2026-57918 in libnfs. Internet-facing systems and container orchestration nodes are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by CVE-2026-46331, also known as 'pedit COW', as a working exploit is available.
 
-## CVE-2026-48928: Node.js Hostname Matching (risk: 40)
-[P2] A trust-policy bypass vulnerability in Node.js hostname matching can be exploited, but no patches are available.  Why now: Lack of patches for recent Node.js vulnerabilities (confidence: 0.80)
+## CVE-2026-46331: Linux pedit COW (risk: 70)
+[P1] A flaw in the Linux kernel's traffic-control subsystem can let a local unprivileged user gain root on affected systems. A working exploit is available. Why now: A working exploit is available (confidence: 0.90)
 
-- [CVE-2026-48928](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=NVD-CVE-2026-48928)
+- [New Linux pedit COW Exploit Enables Root Access by Poisoning Cached Binaries](https://thehackernews.com/2026/06/new-linux-pedit-cow-exploit-enables.html)
 
-## CVE-2026-48619: Node.js HTTP/2 Client (risk: 40)
-[P2] A flaw in Node.js HTTP/2 client allows a server to send an unlimited number of O frames, but no patches are available.  Why now: Lack of patches for recent Node.js vulnerabilities (confidence: 0.80)
+## CVE-2026-6658: jupyter/nbconvert (risk: 40)
+[P2] A vulnerability in jupyter/nbconvert versions <= 7.17.0 allows for Cross-site Scripting. No patch is available. Why now: No patch is available (confidence: 0.60)
 
-- [CVE-2026-48619](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=NVD-CVE-2026-48619)
+- [CVE-2026-6658](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cveId=CVE-2026-6658)
 
-## CVE-2026-48615: Node.js Proxy Tunnel Error Handling (risk: 40)
-[P2] A flaw in Node.js proxy tunnel error handling could expose proxy credentials, but no patches are available.  Why now: Lack of patches for recent Node.js vulnerabilities (confidence: 0.80)
+## CVE-2026-57918: libnfs (risk: 40)
+[P2] A vulnerability exists in libnfs through 6.0.2 before 935b8db. No patch is available. Why now: No patch is available (confidence: 0.60)
 
-- [CVE-2026-48615](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=NVD-CVE-2026-48615)
+- [CVE-2026-57918](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cveId=CVE-2026-57918)
