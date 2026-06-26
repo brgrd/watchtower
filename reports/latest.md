@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-06-26T21:38:10.750037+00:00
+generated_at: 2026-06-26T23:17:54.034864+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period include CVE-2026-46331 in Linux kernel, CVE-2026-6658 in jupyter/nbconvert, and CVE-2026-57918 in libnfs. Internet-facing systems and container orchestration nodes are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by CVE-2026-46331, also known as 'pedit COW', as a working exploit is available.
+The highest-risk items this period are CVE-2026-57914 in Apache Kerby, CVE-2026-57915 in Apache Kerby, and CVE-2026-13426 in Mattermost. Internet-facing services and container orchestration nodes are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems running Apache Kerby and Mattermost, as no patches are currently available for these vulnerabilities.
 
-## CVE-2026-46331: Linux pedit COW (risk: 70)
-[P1] A flaw in the Linux kernel's traffic-control subsystem can let a local unprivileged user gain root on affected systems. A working exploit is available. Why now: A working exploit is available (confidence: 0.90)
+## CVE-2026-57914: Apache Kerby RCE (risk: 70)
+[P1] Apache Kerby is vulnerable to a remote code execution vulnerability due to a deeply nested ASN1 structure. No patch is currently available, and exploitation in the wild has not been reported. Why now: Reported attribution (unverified): none (confidence: 0.80)
 
-- [New Linux pedit COW Exploit Enables Root Access by Poisoning Cached Binaries](https://thehackernews.com/2026/06/new-linux-pedit-cow-exploit-enables.html)
+- [CVE-2026-57914](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-57914)
 
-## CVE-2026-6658: jupyter/nbconvert (risk: 40)
-[P2] A vulnerability in jupyter/nbconvert versions <= 7.17.0 allows for Cross-site Scripting. No patch is available. Why now: No patch is available (confidence: 0.60)
+## CVE-2026-57915: Apache Kerby Auth Bypass (risk: 70)
+[P1] Apache Kerby is vulnerable to an authentication bypass vulnerability due to a flaw in the Kerberos pre-authentication check. No patch is currently available, and exploitation in the wild has not been reported. Why now: Reported attribution (unverified): none (confidence: 0.80)
 
-- [CVE-2026-6658](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cveId=CVE-2026-6658)
+- [CVE-2026-57915](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-57915)
 
-## CVE-2026-57918: libnfs (risk: 40)
-[P2] A vulnerability exists in libnfs through 6.0.2 before 935b8db. No patch is available. Why now: No patch is available (confidence: 0.60)
+## CVE-2026-13426: Mattermost RCE (risk: 70)
+[P1] Mattermost is vulnerable to a remote code execution vulnerability due to a flaw in the Go module. No patch is currently available, and exploitation in the wild has not been reported. Why now: Reported attribution (unverified): none (confidence: 0.80)
 
-- [CVE-2026-57918](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cveId=CVE-2026-57918)
+- [CVE-2026-13426](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-13426)
