@@ -2545,8 +2545,8 @@
   },
   "cve:CVE-2026-20230": {
     "first_seen": "2026-06-04",
-    "last_seen": "2026-06-24",
-    "run_count": 2,
+    "last_seen": "2026-06-26",
+    "run_count": 3,
     "title": "CVE-2026-20230: Cisco Unified CM RCE",
     "last_problem_type": "rce",
     "last_affects": "framework",
@@ -4852,5 +4852,89 @@
     "last_problem_type": "data_tampering",
     "last_affects": "network",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-12569": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "CVE-2026-12569 — PTC Windchill and FlexPLM Improper Input Validation Vulnerability"
+  },
+  "8077495f4fa1": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "npm adds preventive account protection for high-impact accounts"
+  },
+  "fa0f01752017": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "Anthropic is testing desktop-like Claude Cowork for mobile"
+  },
+  "57c7ff4da138": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "Poland busts SIM-swapping gang tied to millions in crypto theft"
+  },
+  "f197419aa5b2": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "Order-tracking app Shop abused to push callback phishing attacks"
+  },
+  "121a6e1bacb5": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "Microsoft quietly extends free Windows 10 ESU support to October 2027"
+  },
+  "93f9f66c08fc": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "Chrome Ad Blocker with 10M+ Installs Found with Dormant Script Injection Capability"
+  },
+  "3aba80f5cb51": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "Bluekit phishing kit adopts browser-in-the-middle for login theft"
+  },
+  "69bba18eb1e0": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "PirloTV sports piracy network disrupted as 44 domains seized"
+  },
+  "8e7b73f6e6f7": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "ThreatsDay Bulletin: Smart TV Proxyware, 24-Year curl Bug, AI Crime Forums + 13 More Stories"
+  },
+  "9207b3b5c5d6": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "New macOS malware embeds fake errors to confuse AI analysis tools"
+  },
+  "f4df5f88c87b": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "Copilot code review: Analysis depth and efficiency updates"
+  },
+  "dcf57373add6": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "Enterprise-managed settings now support strictKnownMarketplaces in VS Code and GitHub Copilot CLI"
+  },
+  "b41752a50db9": {
+    "first_seen": "2026-06-26",
+    "last_seen": "2026-06-26",
+    "run_count": 1,
+    "title": "The Four Elevations of Effective Fraud Prevention"
   }
 }
