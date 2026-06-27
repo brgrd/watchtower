@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-06-27T12:13:48.295530+00:00
+generated_at: 2026-06-27T22:12:37.461871+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-11356 in Ivory Search, CVE-2026-13331 in Groundhogg, and CVE-2026-13335 in CodePeople Post Map. Internet-facing WordPress plugins are most exposed due to the lack of available patches for these vulnerabilities. The single most time-sensitive action is to monitor and isolate WordPress instances with the affected plugins, as no patches are currently available.
+The highest-risk items this period include third-party breaches, Russian intelligence using fake support texts to steal messaging credentials, and a Chinese framework powering 200,000 scam sites. Internet-facing systems, such as those using GitHub repositories, are most exposed due to the potential for AI coding agents to run malware. The single most time-sensitive action is to patch and monitor GitHub repositories for suspicious activity, as a patch is currently available for some affected products.
 
-## CVE-2026-11356: Ivory Search SQLi (risk: 40)
-[P2] Ivory Search WordPress plugin is vulnerable to SQL injection, allowing unauthorized data access. No patch is available, and exploitation status is unknown. Why now: Increased exploitation of WordPress plugins (confidence: 0.60)
+## Russian Intelligence Messaging Credentials (risk: 80)
+[P1] Russian intelligence is using fake support texts to steal messaging credentials, potentially affecting user data and application security. The risk is high due to the potential for unauthorized access to sensitive information. Why now: Reported attribution (unverified): Russian intelligence, and the potential impact on user data and application security is high. (confidence: 0.80)
 
-- [NVD](https://nvd.nist.gov/v1/nvd.xhtml)
+- [Ukraine Says Russian Intelligence Used Fake Support Texts to Steal Messaging Credentials](https://thehackernews.com/2026/06/ukraine-says-russian-intelligence-used.html)
 
-## CVE-2026-13331: Groundhogg RCE (risk: 40)
-[P2] Groundhogg WordPress plugin is vulnerable to remote code execution, allowing unauthorized code execution. No patch is available, and exploitation status is unknown. Why now: Increased exploitation of WordPress plugins (confidence: 0.60)
+## GitHub Repo Malware (risk: 70)
+[P1] A clean GitHub repository is tricking AI coding agents into running malware, potentially affecting user data and application security. The risk is high due to the widespread use of GitHub repositories in software development. Why now: Reported attribution (unverified): None, but the potential impact on user data and application security is high. (confidence: 0.80)
 
-- [NVD](https://nvd.nist.gov/v1/nvd.xhtml)
+- [Clean GitHub repo tricks AI coding agents into running malware](https://www.bleepingcomputer.com/news/security/clean-github-repo-tricks-ai-coding-agents-into-running-malware/)
 
-## CVE-2026-13335: CodePeople Post Map Stored XSS (risk: 40)
-[P2] CodePeople Post Map WordPress plugin is vulnerable to stored cross-site scripting, allowing unauthorized code execution. No patch is available, and exploitation status is unknown. Why now: Increased exploitation of WordPress plugins (confidence: 0.60)
+## Chinese Framework Scam Sites (risk: 60)
+[P2] A Chinese framework is powering 200,000 scam sites, potentially affecting user data and application security. The risk is high due to the potential for unauthorized access to sensitive information. Why now: The potential impact on user data and application security is high, but the incident is not as recent as the others. (confidence: 0.70)
 
-- [NVD](https://nvd.nist.gov/v1/nvd.xhtml)
+- [Chinese Framework Powers 200,000 Scam Sites](https://www.securityweek.com/chinese-framework-powers-200000-scam-sites/)
