@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-06-27T10:19:15.165193+00:00
+generated_at: 2026-06-27T12:13:48.295530+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,9 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are related to Signal backup recovery keys being targeted by Russian hackers, with no specific CVE IDs or software products mentioned. Internet-facing messaging services are most exposed due to the potential for attackers to gain access to sensitive information. The single most time-sensitive action is to monitor Signal backup recovery keys for any suspicious activity, as there is no patch currently available. 
+The highest-risk items this period are CVE-2026-11356 in Ivory Search, CVE-2026-13331 in Groundhogg, and CVE-2026-13335 in CodePeople Post Map. Internet-facing WordPress plugins are most exposed due to the lack of available patches for these vulnerabilities. The single most time-sensitive action is to monitor and isolate WordPress instances with the affected plugins, as no patches are currently available.
 
-## Signal Backup Recovery Key Targeting (risk: 70)
-[P1] Russian hackers are targeting Signal backup recovery keys, which could lead to unauthorized access to sensitive information. There is no patch currently available, and users should monitor their accounts for suspicious activity. Why now: Reported attribution (unverified): Russian hackers are targeting Signal backup recovery keys. (confidence: 0.80)
+## CVE-2026-11356: Ivory Search SQLi (risk: 40)
+[P2] Ivory Search WordPress plugin is vulnerable to SQL injection, allowing unauthorized data access. No patch is available, and exploitation status is unknown. Why now: Increased exploitation of WordPress plugins (confidence: 0.60)
 
-- [FBI: Russian hackers now target Signal backup recovery keys](https://www.bleepingcomputer.com/news/security/fbi-russian-hackers-now-target-signal-backup-recovery-keys/)
+- [NVD](https://nvd.nist.gov/v1/nvd.xhtml)
+
+## CVE-2026-13331: Groundhogg RCE (risk: 40)
+[P2] Groundhogg WordPress plugin is vulnerable to remote code execution, allowing unauthorized code execution. No patch is available, and exploitation status is unknown. Why now: Increased exploitation of WordPress plugins (confidence: 0.60)
+
+- [NVD](https://nvd.nist.gov/v1/nvd.xhtml)
+
+## CVE-2026-13335: CodePeople Post Map Stored XSS (risk: 40)
+[P2] CodePeople Post Map WordPress plugin is vulnerable to stored cross-site scripting, allowing unauthorized code execution. No patch is available, and exploitation status is unknown. Why now: Increased exploitation of WordPress plugins (confidence: 0.60)
+
+- [NVD](https://nvd.nist.gov/v1/nvd.xhtml)
