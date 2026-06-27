@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-06-26T23:17:54.034864+00:00
+generated_at: 2026-06-27T10:19:15.165193+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,9 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-57914 in Apache Kerby, CVE-2026-57915 in Apache Kerby, and CVE-2026-13426 in Mattermost. Internet-facing services and container orchestration nodes are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems running Apache Kerby and Mattermost, as no patches are currently available for these vulnerabilities.
+The highest-risk items this period are related to Signal backup recovery keys being targeted by Russian hackers, with no specific CVE IDs or software products mentioned. Internet-facing messaging services are most exposed due to the potential for attackers to gain access to sensitive information. The single most time-sensitive action is to monitor Signal backup recovery keys for any suspicious activity, as there is no patch currently available. 
 
-## CVE-2026-57914: Apache Kerby RCE (risk: 70)
-[P1] Apache Kerby is vulnerable to a remote code execution vulnerability due to a deeply nested ASN1 structure. No patch is currently available, and exploitation in the wild has not been reported. Why now: Reported attribution (unverified): none (confidence: 0.80)
+## Signal Backup Recovery Key Targeting (risk: 70)
+[P1] Russian hackers are targeting Signal backup recovery keys, which could lead to unauthorized access to sensitive information. There is no patch currently available, and users should monitor their accounts for suspicious activity. Why now: Reported attribution (unverified): Russian hackers are targeting Signal backup recovery keys. (confidence: 0.80)
 
-- [CVE-2026-57914](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-57914)
-
-## CVE-2026-57915: Apache Kerby Auth Bypass (risk: 70)
-[P1] Apache Kerby is vulnerable to an authentication bypass vulnerability due to a flaw in the Kerberos pre-authentication check. No patch is currently available, and exploitation in the wild has not been reported. Why now: Reported attribution (unverified): none (confidence: 0.80)
-
-- [CVE-2026-57915](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-57915)
-
-## CVE-2026-13426: Mattermost RCE (risk: 70)
-[P1] Mattermost is vulnerable to a remote code execution vulnerability due to a flaw in the Go module. No patch is currently available, and exploitation in the wild has not been reported. Why now: Reported attribution (unverified): none (confidence: 0.80)
-
-- [CVE-2026-13426](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-13426)
+- [FBI: Russian hackers now target Signal backup recovery keys](https://www.bleepingcomputer.com/news/security/fbi-russian-hackers-now-target-signal-backup-recovery-keys/)

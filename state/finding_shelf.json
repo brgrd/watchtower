@@ -5107,5 +5107,14 @@
     "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
+  },
+  "bdedf724888c": {
+    "first_seen": "2026-06-27",
+    "last_seen": "2026-06-27",
+    "run_count": 1,
+    "title": "Signal Backup Recovery Key Targeting",
+    "last_problem_type": "credential_compromise",
+    "last_affects": "user_data",
+    "last_classification_confidence": 0.9
   }
 }

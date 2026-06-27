@@ -1,8 +1,8 @@
 {
-  "rebuilt_at": "2026-06-26T00:20:39.729794+00:00",
+  "rebuilt_at": "2026-06-27T10:19:15.176853+00:00",
   "window_days": 7,
-  "total_cards": 78,
-  "unique_cves": 23,
+  "total_cards": 65,
+  "unique_cves": 11,
   "active_domains": [
     "ai_threat",
     "cloud_iam",
@@ -19,18 +19,30 @@
   ],
   "most_active_day": "2026-06-25",
   "day_counts": {
+    "2026-06-27": 1,
+    "2026-06-26": 3,
     "2026-06-25": 15,
     "2026-06-24": 15,
     "2026-06-23": 15,
     "2026-06-22": 15,
-    "2026-06-21": 1,
-    "2026-06-20": 2,
-    "2026-06-19": 15
+    "2026-06-21": 1
   },
   "top_cves": [
     {
       "cve": "CVE-2026-20230",
       "count": 2
+    },
+    {
+      "cve": "CVE-2026-57914",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-57915",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-13426",
+      "count": 1
     },
     {
       "cve": "CVE-2026-12569",
@@ -59,56 +71,8 @@
     {
       "cve": "CVE-2026-34908",
       "count": 1
-    },
-    {
-      "cve": "CVE-2026-45469",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-45475",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-45472",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-45471",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-45474",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-45486",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-45485",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-44817",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-44818",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-44819",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-44820",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-44821",
-      "count": 1
     }
   ],
-  "weekly_summary": "Over the past 7 days, our security landscape has been characterized by 78 total findings, with 23 unique CVEs tracked, including CVE-2026-20230, which was observed twice, and several others seen once, such as CVE-2026-12569 and CVE-2026-12957. The most active day was June 25, 2026, with multiple security domains actively engaged, including AI/ML threats, cloud/IAM, and containers/K8s, among others. These findings spanned various areas, including OS/kernel, crypto libraries, and identity/auth, as well as Maven/Java and npm/Node, indicating a diverse range of potential vulnerabilities that require attention and mitigation.",
-  "weekly_summary_ts": "2026-06-26"
+  "weekly_summary": "Over the past 7 days, our security landscape has been characterized by 65 total findings, with 11 unique CVEs tracked, including multiple instances of CVE-2026-20230. The most active day was June 25, 2026, with various security domains impacted, including AI/ML threats, cloud/IAM, and identity/authentication. Notable CVEs include CVE-2026-57914, CVE-2026-57915, and CVE-2026-13426, among others, affecting areas such as crypto libraries, OS/kernel, and Maven/Java, highlighting the need for continued vigilance across these domains.",
+  "weekly_summary_ts": "2026-06-27"
 }
