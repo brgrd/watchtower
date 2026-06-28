@@ -5203,5 +5203,32 @@
     "last_problem_type": "crypto_weakness",
     "last_affects": "application",
     "last_classification_confidence": 0.4
+  },
+  "cve:CVE-2026-10643": {
+    "first_seen": "2026-06-28",
+    "last_seen": "2026-06-28",
+    "run_count": 1,
+    "title": "CVE-2026-10643: Zephyr IP Socket Recvmsg RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-58050": {
+    "first_seen": "2026-06-28",
+    "last_seen": "2026-06-28",
+    "run_count": 1,
+    "title": "CVE-2026-58050: libssh2 Public Key List Vulnerability",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-8095": {
+    "first_seen": "2026-06-28",
+    "last_seen": "2026-06-28",
+    "run_count": 1,
+    "title": "CVE-2026-8095: WordPress Frontend File Manager Plugin Vulnerability",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
