@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-28T09:26:40.436603+00:00",
+  "fetched_at": "2026-06-28T22:10:34.477474+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -15198,6 +15198,27 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#SynthientStealerLogThreatData",
       "summary": "During 2025, Synthient aggregated billions of records of \"threat data\" from various internet sources. The data contained 183M unique email addresses alongside the websites they were entered into and the passwords used. After normalising and deduplicating the data, 183 million unique email addresses remained, each linked to the website where the credentials were captured, and the password used. Thi",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:sysco-2026-06-15",
+      "name": "Sysco",
+      "title": "Sysco",
+      "date": "2026-06-15",
+      "added": "2026-06-28",
+      "affected_count": 2691852,
+      "data_classes": [
+        "Customer feedback",
+        "Email addresses",
+        "Employers",
+        "Job titles",
+        "Names",
+        "Phone numbers",
+        "Physical addresses",
+        "Usernames"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Sysco",
+      "summary": "In June 2026, the food distribution company Sysco was targeted by a ShinyHunters \"pay or leak\" extortion campaign. Data was subsequently published containing 2.7M unique email addresses belonging to staff and customers. The data also contained largely corporate contact information including names, phone numbers, physical addresses, internal job titles, and customer feedback.",
+      "action": "monitor"
     },
     {
       "id": "hibp:t2-2024-04-17",
