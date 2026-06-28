@@ -5170,5 +5170,11 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
     "last_classification_confidence": 0.8
+  },
+  "b2ad62112f42": {
+    "first_seen": "2026-06-28",
+    "last_seen": "2026-06-28",
+    "run_count": 1,
+    "title": "OpenAI Previews GPT-5.6 Sol With Restricted Access and Stronger Cyber Safeguards"
   }
 }
