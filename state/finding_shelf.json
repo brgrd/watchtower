@@ -5176,5 +5176,32 @@
     "last_seen": "2026-06-28",
     "run_count": 1,
     "title": "OpenAI Previews GPT-5.6 Sol With Restricted Access and Stronger Cyber Safeguards"
+  },
+  "cve:CVE-2025-39932": {
+    "first_seen": "2026-06-28",
+    "last_seen": "2026-06-28",
+    "run_count": 1,
+    "title": "CVE-2025-39932: Microsoft SMB RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2025-40064": {
+    "first_seen": "2026-06-28",
+    "last_seen": "2026-06-28",
+    "run_count": 1,
+    "title": "CVE-2025-40064: Microsoft SMC Use-After-Free",
+    "last_problem_type": "privilege_escalation",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2025-58188": {
+    "first_seen": "2026-06-28",
+    "last_seen": "2026-06-28",
+    "run_count": 1,
+    "title": "CVE-2025-58188: Microsoft Crypto X509 Panic",
+    "last_problem_type": "crypto_weakness",
+    "last_affects": "application",
+    "last_classification_confidence": 0.4
   }
 }
