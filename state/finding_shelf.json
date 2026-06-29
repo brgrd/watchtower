@@ -5284,5 +5284,23 @@
     "last_problem_type": "privilege_escalation",
     "last_affects": "application",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-13554": {
+    "first_seen": "2026-06-29",
+    "last_seen": "2026-06-29",
+    "run_count": 1,
+    "title": "CVE-2026-13554",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-57346": {
+    "first_seen": "2026-06-29",
+    "last_seen": "2026-06-29",
+    "run_count": 1,
+    "title": "CVE-2026-57346",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "foundation",
+    "last_classification_confidence": 0.9
   }
 }
