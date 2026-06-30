@@ -1,81 +1,25 @@
 ---
-generated_at: 2026-06-30T09:56:52.602765+00:00
+generated_at: 2026-06-30T12:20:01.601893+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-12240 (risk: 70)
-1 related updates.
+## Analyst Summary
 
-- [CVE-2026-12240](https://nvd.nist.gov/vuln/detail/CVE-2026-12240)
+The highest-risk items this period include CVE-2026-46817 in Oracle E-Business Suite, CVE-2026-48558 in SimpleHelp, and CVE-2026-56137 in RPG MAKER MV and MZ. Internet-facing systems, such as Progress Kemp LoadMaster and Delta Electronics DVP12SE PLC, are most exposed due to the lack of available patches for recently disclosed vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by CVE-2026-46817, for which no patch is currently available.
 
-## CVE-2026-14164 (risk: 70)
-1 related updates.
+## CVE-2026-46817: Oracle E-Business Suite RCE (risk: 100)
+[P1] A critical security flaw in Oracle E-Business Suite is being actively exploited in the wild, allowing for remote code execution. No patch is currently available. Why now: Active exploitation in the wild (confidence: 0.90)
 
-- [CVE-2026-14164](https://nvd.nist.gov/vuln/detail/CVE-2026-14164)
+- [Oracle E-Business Suite Flaw CVE-2026-46817 Actively Exploited in the Wild](https://thehackernews.com/2026/06/oracle-e-business-suite-flaw-cve-2026.html)
 
-## CVE-2026-51221 (risk: 40)
-1 related updates.
+## CVE-2026-48558: SimpleHelp RCE (risk: 100)
+[P1] A recently disclosed vulnerability in SimpleHelp is being exploited to deploy TaskWeaver and Djinn Stealer. No patch is currently available. Why now: Active exploitation in the wild (confidence: 0.90)
 
-- [CVE-2026-51221](https://nvd.nist.gov/vuln/detail/CVE-2026-51221)
+- [Attackers Exploit SimpleHelp CVE-2026-48558 to Deploy TaskWeaver and Djinn Stealer](https://thehackernews.com/2026/06/attackers-exploit-simplehelp-cve-2026.html)
 
-## CVE-2026-51218 (risk: 40)
-1 related updates.
+## CVE-2026-56137: RPG MAKER MV and MZ RCE (risk: 70)
+[P2] A vulnerability in RPG MAKER MV and MZ allows for remote code execution. No patch is currently available. Why now: Recently disclosed vulnerability (confidence: 0.70)
 
-- [CVE-2026-51218](https://nvd.nist.gov/vuln/detail/CVE-2026-51218)
-
-## CVE-2026-51219 (risk: 40)
-1 related updates.
-
-- [CVE-2026-51219](https://nvd.nist.gov/vuln/detail/CVE-2026-51219)
-
-## CVE-2026-10647 (risk: 40)
-1 related updates.
-
-- [CVE-2026-10647](https://nvd.nist.gov/vuln/detail/CVE-2026-10647)
-
-## CVE-2026-7656 (risk: 40)
-1 related updates.
-
-- [CVE-2026-7656](https://nvd.nist.gov/vuln/detail/CVE-2026-7656)
-
-## CVE-2026-57997 (risk: 40)
-1 related updates.
-
-- [CVE-2026-57997](https://nvd.nist.gov/vuln/detail/CVE-2026-57997)
-
-## CVE-2026-34592 (risk: 40)
-1 related updates.
-
-- [CVE-2026-34592](https://nvd.nist.gov/vuln/detail/CVE-2026-34592)
-
-## CVE-2026-10648 (risk: 40)
-1 related updates.
-
-- [CVE-2026-10648](https://nvd.nist.gov/vuln/detail/CVE-2026-10648)
-
-## CVE-2026-12243 (risk: 40)
-1 related updates.
-
-- [CVE-2026-12243](https://nvd.nist.gov/vuln/detail/CVE-2026-12243)
-
-## CVE-2026-58302 (risk: 40)
-1 related updates.
-
-- [CVE-2026-58302](https://nvd.nist.gov/vuln/detail/CVE-2026-58302)
-
-## CVE-2026-14160 (risk: 40)
-1 related updates.
-
-- [CVE-2026-14160](https://nvd.nist.gov/vuln/detail/CVE-2026-14160)
-
-## CVE-2026-12349 (risk: 40)
-1 related updates.
-
-- [CVE-2026-12349](https://nvd.nist.gov/vuln/detail/CVE-2026-12349)
-
-## CVE-2026-12114 (risk: 40)
-1 related updates.
-
-- [CVE-2026-12114](https://nvd.nist.gov/vuln/detail/CVE-2026-12114)
+- [RPG MAKER MV and MZ provided by Gotcha Gotcha Games Inc. contain an OS command injection vulnerability](https://thehackernews.com/2026/06/oracle-e-business-suite-flaw-cve-2026.html)
