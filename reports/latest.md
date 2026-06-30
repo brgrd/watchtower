@@ -1,25 +1,81 @@
 ---
-generated_at: 2026-06-30T00:15:22.438237+00:00
+generated_at: 2026-06-30T09:56:52.602765+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Analyst Summary
+## CVE-2026-12240 (risk: 70)
+1 related updates.
 
-The highest-risk items this period are CVE-2026-48558 in SimpleHelp, CVE-2026-13762 and CVE-2026-13763 in AWS WAF, and CVE-2026-11979 in libxml2. Internet-facing firewalls, container orchestration nodes, and VPN appliances are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by CVE-2026-48558, as it is being actively exploited in the wild and no patch is currently available.
+- [CVE-2026-12240](https://nvd.nist.gov/vuln/detail/CVE-2026-12240)
 
-## CVE-2026-48558: SimpleHelp Auth Bypass (risk: 100)
-[P1] SimpleHelp contains an authentication bypass vulnerability in the OIDC authentication flow, which is being actively exploited in the wild. No patch is currently available. Why now: Reported attribution (unverified): Unknown (confidence: 0.90)
+## CVE-2026-14164 (risk: 70)
+1 related updates.
 
-- [CVE-2026-48558](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-48558)
+- [CVE-2026-14164](https://nvd.nist.gov/vuln/detail/CVE-2026-14164)
 
-## CVE-2026-13762 and CVE-2026-13763: AWS WAF HTTP/2 Vulnerability (risk: 70)
-[P2] AWS WAF contains issues with HTTP/2 multi-frame request body inspection, which can be exploited by attackers. No customer action is required for CVE-2026-13762, but CVE-2026-13763 may require additional attention. Why now: Recently disclosed vulnerabilities in AWS WAF (confidence: 0.80)
+## CVE-2026-51221 (risk: 40)
+1 related updates.
 
-- [CVE-2026-13762 and CVE-2026-13763](https://aws.amazon.com/security/security-bulletins/rss/2026-048-aws/)
+- [CVE-2026-51221](https://nvd.nist.gov/vuln/detail/CVE-2026-51221)
 
-## CVE-2026-11979: libxml2 Stack-Based Buffer Overflow (risk: 60)
-[P2] libxml2 contains multiple stack-based buffer overflows in the xmlcatalog module, which can be exploited by attackers. No patch is currently available. Why now: Recently disclosed vulnerability in libxml2 (confidence: 0.70)
+## CVE-2026-51218 (risk: 40)
+1 related updates.
 
-- [CVE-2026-11979](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-11979)
+- [CVE-2026-51218](https://nvd.nist.gov/vuln/detail/CVE-2026-51218)
+
+## CVE-2026-51219 (risk: 40)
+1 related updates.
+
+- [CVE-2026-51219](https://nvd.nist.gov/vuln/detail/CVE-2026-51219)
+
+## CVE-2026-10647 (risk: 40)
+1 related updates.
+
+- [CVE-2026-10647](https://nvd.nist.gov/vuln/detail/CVE-2026-10647)
+
+## CVE-2026-7656 (risk: 40)
+1 related updates.
+
+- [CVE-2026-7656](https://nvd.nist.gov/vuln/detail/CVE-2026-7656)
+
+## CVE-2026-57997 (risk: 40)
+1 related updates.
+
+- [CVE-2026-57997](https://nvd.nist.gov/vuln/detail/CVE-2026-57997)
+
+## CVE-2026-34592 (risk: 40)
+1 related updates.
+
+- [CVE-2026-34592](https://nvd.nist.gov/vuln/detail/CVE-2026-34592)
+
+## CVE-2026-10648 (risk: 40)
+1 related updates.
+
+- [CVE-2026-10648](https://nvd.nist.gov/vuln/detail/CVE-2026-10648)
+
+## CVE-2026-12243 (risk: 40)
+1 related updates.
+
+- [CVE-2026-12243](https://nvd.nist.gov/vuln/detail/CVE-2026-12243)
+
+## CVE-2026-58302 (risk: 40)
+1 related updates.
+
+- [CVE-2026-58302](https://nvd.nist.gov/vuln/detail/CVE-2026-58302)
+
+## CVE-2026-14160 (risk: 40)
+1 related updates.
+
+- [CVE-2026-14160](https://nvd.nist.gov/vuln/detail/CVE-2026-14160)
+
+## CVE-2026-12349 (risk: 40)
+1 related updates.
+
+- [CVE-2026-12349](https://nvd.nist.gov/vuln/detail/CVE-2026-12349)
+
+## CVE-2026-12114 (risk: 40)
+1 related updates.
+
+- [CVE-2026-12114](https://nvd.nist.gov/vuln/detail/CVE-2026-12114)
