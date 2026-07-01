@@ -5482,5 +5482,32 @@
     "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-10816": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "run_count": 1,
+    "title": "CVE-2026-10816: NetScaler ADC Arbitrary File Read",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-12388": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "run_count": 1,
+    "title": "CVE-2026-12388: Keycloak IdP Mapper Flaw",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-13474": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "run_count": 1,
+    "title": "CVE-2026-13474: NetScaler ADC DoS",
+    "last_problem_type": "dos",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
