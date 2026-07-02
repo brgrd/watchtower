@@ -5572,5 +5572,95 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
     "last_classification_confidence": 0.8
+  },
+  "b9edc20723e5": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "CISA Warns of Actively Exploited Microsoft SharePoint Vulnerability"
+  },
+  "be4022d01f94": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "New ChocoPoC RAT Targets Vulnerability Researchers via Fake PoC Exploit Repos"
+  },
+  "58b4a68f4dec": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "Cisco Confirms In-the-Wild Exploitation of Unified CM Vulnerability"
+  },
+  "c70d2d499d04": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "CISA: Microsoft SharePoint RCE flaw now actively exploited"
+  },
+  "decc32ba07da": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "Cisco finally confirms attackers exploiting Unified CM flaw"
+  },
+  "aa4ad3e732d9": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "AI Agent Exploits Langflow RCE to Automate Database Ransomware Attack"
+  },
+  "f0f1831eabb1": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "Opera rolls out Paste Protect feature to fight ClickFix attacks"
+  },
+  "6df30cdfaa94": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "Alleged Scattered Spider hacker extradited to the United States"
+  },
+  "cc6a8a8f7f55": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "Microsoft fixes bug that removed Copilot button in Outlook"
+  },
+  "6a6a995c7dd3": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "Issue fields are now generally available"
+  },
+  "022ab6daf66d": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "Medtronic notifies customers impacted by ShinyHunters data breach"
+  },
+  "8be273185999": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "FortiBleed Credential Theft Linked to INC and Lynx Ransomware Operations"
+  },
+  "230a53623ba9": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "Trump Administration Lifts Restrictions on Anthropic’s Claude Models After Cybersecurity Alarm"
+  },
+  "08a89c85b8e2": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "‘BioShocking’ Attack Tricks AI Browsers Into Stealing Credentials"
+  },
+  "58f7300079b7": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "Secret scanning public monitoring for enterprises"
   }
 }

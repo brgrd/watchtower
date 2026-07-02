@@ -1,25 +1,81 @@
 ---
-generated_at: 2026-07-02T09:29:06.610872+00:00
+generated_at: 2026-07-02T12:17:37.513240+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Analyst Summary
+## CISA Warns of Actively Exploited Microsoft SharePoint Vulnerability (risk: 70)
+1 related updates.
 
-The highest-risk items this period include CVE-2026-45659 in Microsoft SharePoint Server, CVE-2026-36912 in A, and CVE-2026-52186 in UTT nv518G. Internet-facing servers and applications are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to patch or isolate Microsoft SharePoint Server to prevent exploitation of CVE-2026-45659, although a patch is not currently available.
+- [CISA Warns of Actively Exploited Microsoft SharePoint Vulnerability](https://www.securityweek.com/cisa-warns-of-actively-exploited-microsoft-sharepoint-vulnerability/)
 
-## CVE-2026-45659: Microsoft SharePoint RCE (risk: 70)
-[P1] Microsoft SharePoint Server is vulnerable to remote code execution via CVE-2026-45659, which has been added to the CISA KEV catalog after active exploitation. No patch is currently available. Why now: Reported active exploitation in the wild. (confidence: 0.80)
+## New ChocoPoC RAT Targets Vulnerability Researchers via Fake PoC Exploit Repos (risk: 45)
+1 related updates.
 
-- [SharePoint RCE CVE-2026-45659 Added to CISA KEV After Active Exploitation](https://thehackernews.com/2026/07/sharepoint-rce-cve-2026-45659-added-to.html)
+- [New ChocoPoC RAT Targets Vulnerability Researchers via Fake PoC Exploit Repos](https://thehackernews.com/2026/07/new-chocopoc-rat-targets-vulnerability.html)
 
-## CVE-2026-36912: A NULL Pointer Dereference (risk: 40)
-[P2] A NULL pointer dereference vulnerability in A could allow for denial of service or potentially other impacts. No patch or workaround is currently available. Why now: Newly disclosed vulnerability with potential for exploitation. (confidence: 0.60)
+## Cisco Confirms In-the-Wild Exploitation of Unified CM Vulnerability (risk: 45)
+1 related updates.
 
-- [CVE-2026-36912](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd)
+- [Cisco Confirms In-the-Wild Exploitation of Unified CM Vulnerability](https://www.securityweek.com/cisco-confirms-in-the-wild-exploitation-of-unified-cm-vulnerability/)
 
-## CVE-2026-52186: UTT nv518G SQL Injection (risk: 40)
-[P2] UTT nv518G is vulnerable to SQL injection, which could allow for data disclosure or other impacts. No patch or workaround is currently available. Why now: Newly disclosed vulnerability with potential for exploitation. (confidence: 0.60)
+## CISA: Microsoft SharePoint RCE flaw now actively exploited (risk: 30)
+1 related updates.
 
-- [CVE-2026-52186](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd)
+- [CISA: Microsoft SharePoint RCE flaw now actively exploited](https://www.bleepingcomputer.com/news/security/cisa-microsoft-sharepoint-rce-flaw-now-actively-exploited/)
+
+## Cisco finally confirms attackers exploiting Unified CM flaw (risk: 30)
+1 related updates.
+
+- [Cisco finally confirms attackers exploiting Unified CM flaw](https://www.bleepingcomputer.com/news/security/cisco-finally-confirms-attackers-exploiting-unified-cm-flaw/)
+
+## AI Agent Exploits Langflow RCE to Automate Database Ransomware Attack (risk: 30)
+1 related updates.
+
+- [AI Agent Exploits Langflow RCE to Automate Database Ransomware Attack](https://thehackernews.com/2026/07/ai-agent-exploits-langflow-rce-to.html)
+
+## Opera rolls out Paste Protect feature to fight ClickFix attacks (risk: 0)
+1 related updates.
+
+- [Opera rolls out Paste Protect feature to fight ClickFix attacks](https://www.bleepingcomputer.com/news/security/opera-rolls-out-paste-protect-feature-to-fight-clickfix-attacks/)
+
+## Alleged Scattered Spider hacker extradited to the United States (risk: 0)
+1 related updates.
+
+- [Alleged Scattered Spider hacker extradited to the United States](https://www.bleepingcomputer.com/news/security/alleged-scattered-spider-hacker-extradited-to-the-united-states/)
+
+## Microsoft fixes bug that removed Copilot button in Outlook (risk: 0)
+1 related updates.
+
+- [Microsoft fixes bug that removed Copilot button in Outlook](https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-bug-that-removed-copilot-button-in-outlook/)
+
+## Issue fields are now generally available (risk: 0)
+1 related updates.
+
+- [Issue fields are now generally available](https://github.blog/changelog/2026-07-02-issue-fields-are-now-generally-available)
+
+## Medtronic notifies customers impacted by ShinyHunters data breach (risk: 0)
+1 related updates.
+
+- [Medtronic notifies customers impacted by ShinyHunters data breach](https://www.bleepingcomputer.com/news/security/medtronic-notifies-customers-impacted-by-shinyhunters-data-breach/)
+
+## FortiBleed Credential Theft Linked to INC and Lynx Ransomware Operations (risk: 0)
+1 related updates.
+
+- [FortiBleed Credential Theft Linked to INC and Lynx Ransomware Operations](https://thehackernews.com/2026/07/fortibleed-credential-theft-linked-to.html)
+
+## Trump Administration Lifts Restrictions on Anthropic’s Claude Models After Cybersecurity Alarm (risk: 0)
+1 related updates.
+
+- [Trump Administration Lifts Restrictions on Anthropic’s Claude Models After Cybersecurity Alarm](https://www.securityweek.com/trump-administration-lifts-restrictions-on-anthropics-claude-models-after-cybersecurity-alarm/)
+
+## ‘BioShocking’ Attack Tricks AI Browsers Into Stealing Credentials (risk: 0)
+1 related updates.
+
+- [‘BioShocking’ Attack Tricks AI Browsers Into Stealing Credentials](https://www.securityweek.com/bioshocking-attack-tricks-ai-browsers-into-stealing-credentials/)
+
+## Secret scanning public monitoring for enterprises (risk: 0)
+1 related updates.
+
+- [Secret scanning public monitoring for enterprises](https://github.blog/changelog/2026-07-01-secret-scanning-public-monitoring-for-enterprises)
