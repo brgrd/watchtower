@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-01T22:24:28.250155+00:00
+generated_at: 2026-07-02T00:17:58.377760+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,14 @@ project: Watchtower
 
 ## Analyst Summary
 
-CVE-2026-27435 in WofficeIO Woffice, CVE-2026-12754 in VikBooking Hotel Booking Engine & PMS, and CVE-2026-13228 in LatePoint Calendar Booking Plugin are the highest-risk items this period. Internet-facing WordPress plugins and AWS services are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using the affected WordPress plugins and AWS services, as no patches are currently available.
+CVE-2026-45659 in Microsoft SharePoint Server, CVE-2026-13769 in AWS CLI, and CVE-2026-14265 in AWS Advanced JDBC Wrapper are the highest-risk items this period. Internet-facing servers and cloud services are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by CVE-2026-45659, although no patch is currently available.
 
-## CVE-2026-27435: WofficeIO Woffice RCE (risk: 70)
-[P1] WofficeIO Woffice is vulnerable to a Missing Authorization vulnerability, allowing for remote code execution. No patch is available, and exploitation in the wild has not been reported. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-45659: Microsoft SharePoint RCE (risk: 100)
+[P1] Microsoft SharePoint Server contains a deserialization of untrusted data vulnerability, which allows an authorized attack. This vulnerability is being exploited in the wild and no patch is currently available. Why now: Reported exploitation in the wild (confidence: 0.90)
 
-- [CVE-2026-27435](https://www.cisa.gov/news-events/alerts/2026/07/01/cisa-adds-one-known-exploited-vulnerability-catalog)
+- [CVE-2026-45659](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45659)
 
-## CVE-2026-12754: VikBooking Hotel Booking Engine & PMS RCE (risk: 70)
-[P1] VikBooking Hotel Booking Engine & PMS plugin for WordPress is vulnerable to a remote code execution vulnerability. No patch is available, and exploitation in the wild has not been reported. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-13769: AWS CLI Insecure File Permissions (risk: 70)
+[P2] AWS CLI on Unix-like systems writes credential and configuration files with world-readable permissions, allowing other local users to read credentials. No patch is currently available. Why now: Newly disclosed vulnerability (confidence: 0.80)
 
-- [CVE-2026-12754](https://www.cisa.gov/news-events/alerts/2026/07/01/cisa-adds-one-known-exploited-vulnerability-catalog)
-
-## CVE-2026-13228: LatePoint Calendar Booking Plugin RCE (risk: 70)
-[P1] LatePoint Calendar Booking Plugin for WordPress is vulnerable to a remote code execution vulnerability. No patch is available, and exploitation in the wild has not been reported. Why now: Lack of available patch (confidence: 0.80)
-
-- [CVE-2026-13228](https://www.cisa.gov/news-events/alerts/2026/07/01/cisa-adds-one-known-exploited-vulnerability-catalog)
+- [CVE-2026-13769](https://aws.amazon.com/security/security-bulletins/rss/2026-049-aws/)
