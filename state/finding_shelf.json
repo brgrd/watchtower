@@ -5662,5 +5662,32 @@
     "last_seen": "2026-07-02",
     "run_count": 1,
     "title": "Secret scanning public monitoring for enterprises"
+  },
+  "cve:CVE-2026-10104": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "CVE-2026-10104: Woocommerce RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-12134": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "CVE-2026-12134: JoomSport RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-12472": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "CVE-2026-12472: Kirki RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
