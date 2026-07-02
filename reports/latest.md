@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-02T00:17:58.377760+00:00
+generated_at: 2026-07-02T09:29:06.610872+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,14 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-CVE-2026-45659 in Microsoft SharePoint Server, CVE-2026-13769 in AWS CLI, and CVE-2026-14265 in AWS Advanced JDBC Wrapper are the highest-risk items this period. Internet-facing servers and cloud services are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by CVE-2026-45659, although no patch is currently available.
+The highest-risk items this period include CVE-2026-45659 in Microsoft SharePoint Server, CVE-2026-36912 in A, and CVE-2026-52186 in UTT nv518G. Internet-facing servers and applications are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to patch or isolate Microsoft SharePoint Server to prevent exploitation of CVE-2026-45659, although a patch is not currently available.
 
-## CVE-2026-45659: Microsoft SharePoint RCE (risk: 100)
-[P1] Microsoft SharePoint Server contains a deserialization of untrusted data vulnerability, which allows an authorized attack. This vulnerability is being exploited in the wild and no patch is currently available. Why now: Reported exploitation in the wild (confidence: 0.90)
+## CVE-2026-45659: Microsoft SharePoint RCE (risk: 70)
+[P1] Microsoft SharePoint Server is vulnerable to remote code execution via CVE-2026-45659, which has been added to the CISA KEV catalog after active exploitation. No patch is currently available. Why now: Reported active exploitation in the wild. (confidence: 0.80)
 
-- [CVE-2026-45659](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45659)
+- [SharePoint RCE CVE-2026-45659 Added to CISA KEV After Active Exploitation](https://thehackernews.com/2026/07/sharepoint-rce-cve-2026-45659-added-to.html)
 
-## CVE-2026-13769: AWS CLI Insecure File Permissions (risk: 70)
-[P2] AWS CLI on Unix-like systems writes credential and configuration files with world-readable permissions, allowing other local users to read credentials. No patch is currently available. Why now: Newly disclosed vulnerability (confidence: 0.80)
+## CVE-2026-36912: A NULL Pointer Dereference (risk: 40)
+[P2] A NULL pointer dereference vulnerability in A could allow for denial of service or potentially other impacts. No patch or workaround is currently available. Why now: Newly disclosed vulnerability with potential for exploitation. (confidence: 0.60)
 
-- [CVE-2026-13769](https://aws.amazon.com/security/security-bulletins/rss/2026-049-aws/)
+- [CVE-2026-36912](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd)
+
+## CVE-2026-52186: UTT nv518G SQL Injection (risk: 40)
+[P2] UTT nv518G is vulnerable to SQL injection, which could allow for data disclosure or other impacts. No patch or workaround is currently available. Why now: Newly disclosed vulnerability with potential for exploitation. (confidence: 0.60)
+
+- [CVE-2026-52186](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd)
