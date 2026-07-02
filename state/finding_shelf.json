@@ -5689,5 +5689,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2025-58902": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "CVE-2025-58902: Lighthouse RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2025-66076": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "CVE-2025-66076: Woostify Sites Library Broken Access Control",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2025-69133": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "run_count": 1,
+    "title": "CVE-2025-69133: Tourmaster Local File Inclusion",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.85
   }
 }
