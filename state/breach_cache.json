@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-03T10:47:19.193762+00:00",
+  "fetched_at": "2026-07-03T21:18:17.846295+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -10605,6 +10605,26 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Moneycontrol",
       "summary": "In April 2021, hackers posted data for sale originating from the online Indian financial platform, Moneycontrol. The data included 763 thousand unique email addresses (allegedly a subset of a larger 40 million account breach), alongside geographic locations, phone numbers, genders, dates of birth and plain text passwords. The date of the original breach is unclear, although the breached data indic",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:moodybibleinstitute-2026-06-15",
+      "name": "MoodyBibleInstitute",
+      "title": "Moody Bible Institute",
+      "date": "2026-06-15",
+      "added": "2026-07-03",
+      "affected_count": 2303416,
+      "data_classes": [
+        "Dates of birth",
+        "Email addresses",
+        "Genders",
+        "Marital statuses",
+        "Names",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#MoodyBibleInstitute",
+      "summary": "In June 2026, Moody Bible Institute was targeted by a ShinyHunters \"pay or leak\" extortion campaign. Over 2.3M unique email addresses and other personal data were later published publicly, including names, physical addresses, phone numbers, dates of birth and other information relating to donors, supporters, students and alumni. In their disclosure notice, Moody advised that they had \"engaged both",
+      "action": "monitor"
     },
     {
       "id": "hibp:morelenet-2018-10-10",

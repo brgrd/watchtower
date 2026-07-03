@@ -2230,12 +2230,12 @@
   },
   "cve:CVE-2026-46242": {
     "first_seen": "2026-05-31",
-    "last_seen": "2026-05-31",
-    "run_count": 1,
+    "last_seen": "2026-07-03",
+    "run_count": 2,
     "title": "CVE-2026-46242: Linux Kernel Privilege Escalation",
     "last_problem_type": "privilege_escalation",
     "last_affects": "foundation",
-    "last_classification_confidence": 0.9
+    "last_classification_confidence": 0.95
   },
   "cve:CVE-2026-10120": {
     "first_seen": "2026-05-31",
