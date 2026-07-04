@@ -1,22 +1,22 @@
-# Watchtower Pipeline Eval — 2026-07-04T11:41:33Z
+# Watchtower Pipeline Eval — 2026-07-04T21:09:26Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 28 |
-| After dedup + CVE merge | 28 |
-| Sent to Groq | 27 |
+| Items polled (raw) | 39 |
+| After dedup + CVE merge | 39 |
+| Sent to Groq | 30 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/28 (10.7%)** |
+| **Pipeline yield** | **3/39 (7.7%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 10,821 chars
+- **Payload**: 9,592 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7349
+- **Rate limit remaining** — requests: 999, tokens: 7649
 
 ## Card Quality
 
@@ -31,7 +31,7 @@
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 39 chars (0% ≥ 60 chars, considered substantive)
+- **`why_now` avg length**: 62 chars (100% ≥ 60 chars, considered substantive)
 - **Recommended actions**: 6 total — 50% specific, 0% generic
 
 ### Persistence
@@ -43,7 +43,7 @@
 
 | Source | Hits | Rate |
 |--------|-----:|-----:|
-| EPSS | 0 | 0% |
+| EPSS | 1 | 33% |
 | NVD (CVE) | 0 | 0% |
 | CISA KEV | 0 | 0% |
 
@@ -51,10 +51,10 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 26 |
-| `thehackernews` | 1 |
-| `msrc_update_guide` | 1 |
-| `bleepingcomputer` | 0 |
+| `nvd` | 36 |
+| `thehackernews` | 2 |
+| `bleepingcomputer` | 1 |
+| `cisa_alerts` | 0 |
 | `gh_security_blog` | 0 |
 | _(+21 more)_ | … |
 
@@ -64,10 +64,10 @@
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-07-02 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-07-02 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-07-02 | 3 | 1 | 100% | 100% | 3 | 0 |
 | 2026-07-03 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-07-03 | 1 | 1 | 100% | 100% | 0 | 0 |
 | 2026-07-03 | 15 | ? | 0% | 0% | 15 | 0 |
+| 2026-07-04 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-07-04 | 3 | 2 | 100% | 0% | 3 | 0 |
