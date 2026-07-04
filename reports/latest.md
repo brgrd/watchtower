@@ -1,81 +1,25 @@
 ---
-generated_at: 2026-07-03T23:14:33.170582+00:00
+generated_at: 2026-07-04T09:28:54.794247+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-26355 (risk: 70)
-1 related updates.
+## Analyst Summary
 
-- [CVE-2026-26355](https://nvd.nist.gov/vuln/detail/CVE-2026-26355)
+The highest-risk items this period are CVE-2026-14617 in NousResearch hermes-agent, CVE-2025-71345 in picklescan, and CVE-2026-58523 in Microsoft Edge for Android. Internet-facing applications and services are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using NousResearch hermes-agent and picklescan, as patches are not currently available. 
 
-## CVE-2026-41123 (risk: 70)
-1 related updates.
+## CVE-2026-14617: NousResearch hermes-agent RCE (risk: 70)
+[P1] NousResearch hermes-agent up to 20 contains a security vulnerability that can be exploited for arbitrary code execution. No patch is currently available. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.80)
 
-- [CVE-2026-41123](https://nvd.nist.gov/vuln/detail/CVE-2026-41123)
+- [CVE-2026-14617](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=CVE-2026-14617)
 
-## CVE-2026-41124 (risk: 70)
-1 related updates.
+## CVE-2025-71345: picklescan RCE (risk: 70)
+[P1] picklescan before 0.0.30 fails to detect malicious pickle files that invoke torc, allowing for arbitrary code execution. No patch is currently available. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.80)
 
-- [CVE-2026-41124](https://nvd.nist.gov/vuln/detail/CVE-2026-41124)
+- [CVE-2025-71345](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=CVE-2025-71345)
 
-## CVE-2026-44268 (risk: 70)
-1 related updates.
+## CVE-2026-58523: Microsoft Edge for Android Improper Access Control (risk: 60)
+[P2] Microsoft Edge for Android contains an improper access control vulnerability that can be exploited to gain unauthorized access. No patch is currently available. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.70)
 
-- [CVE-2026-44268](https://nvd.nist.gov/vuln/detail/CVE-2026-44268)
-
-## CVE-2026-44269 (risk: 70)
-1 related updates.
-
-- [CVE-2026-44269](https://nvd.nist.gov/vuln/detail/CVE-2026-44269)
-
-## CVE-2026-46467 (risk: 70)
-1 related updates.
-
-- [CVE-2026-46467](https://nvd.nist.gov/vuln/detail/CVE-2026-46467)
-
-## CVE-2026-46468 (risk: 70)
-1 related updates.
-
-- [CVE-2026-46468](https://nvd.nist.gov/vuln/detail/CVE-2026-46468)
-
-## CVE-2026-46730 (risk: 70)
-1 related updates.
-
-- [CVE-2026-46730](https://nvd.nist.gov/vuln/detail/CVE-2026-46730)
-
-## CVE-2026-54483 (risk: 70)
-1 related updates.
-
-- [CVE-2026-54483](https://nvd.nist.gov/vuln/detail/CVE-2026-54483)
-
-## CVE-2026-56085 (risk: 70)
-1 related updates.
-
-- [CVE-2026-56085](https://nvd.nist.gov/vuln/detail/CVE-2026-56085)
-
-## CVE-2026-46463 (risk: 70)
-1 related updates.
-
-- [CVE-2026-46463](https://nvd.nist.gov/vuln/detail/CVE-2026-46463)
-
-## CVE-2026-46464 (risk: 70)
-1 related updates.
-
-- [CVE-2026-46464](https://nvd.nist.gov/vuln/detail/CVE-2026-46464)
-
-## CVE-2026-46465 (risk: 70)
-1 related updates.
-
-- [CVE-2026-46465](https://nvd.nist.gov/vuln/detail/CVE-2026-46465)
-
-## CVE-2026-46466 (risk: 70)
-1 related updates.
-
-- [CVE-2026-46466](https://nvd.nist.gov/vuln/detail/CVE-2026-46466)
-
-## CVE-2026-49813 (risk: 70)
-1 related updates.
-
-- [CVE-2026-49813](https://nvd.nist.gov/vuln/detail/CVE-2026-49813)
+- [CVE-2026-58523](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=CVE-2026-58523)

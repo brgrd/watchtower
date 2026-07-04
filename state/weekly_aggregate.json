@@ -1,38 +1,99 @@
 {
-  "rebuilt_at": "2026-07-03T10:47:18.212145+00:00",
+  "rebuilt_at": "2026-07-04T09:28:54.960144+00:00",
   "window_days": 7,
-  "total_cards": 15,
-  "unique_cves": 15,
+  "total_cards": 29,
+  "unique_cves": 30,
   "active_domains": [
-    "ai_threat",
+    "browser_ext",
     "cloud_iam",
     "container",
     "crypto_lib",
     "identity",
     "os_kernel",
+    "pkg_pypi",
     "web_framework"
   ],
   "most_active_day": "2026-07-03",
   "day_counts": {
-    "2026-07-03": 3,
+    "2026-07-04": 3,
+    "2026-07-03": 15,
     "2026-07-02": 3,
     "2026-07-01": 2,
     "2026-06-30": 3,
     "2026-06-29": 3,
-    "2026-06-28": 0,
-    "2026-06-27": 1
+    "2026-06-28": 0
   },
   "top_cves": [
     {
-      "cve": "CVE-2026-26145",
+      "cve": "CVE-2026-14617",
       "count": 1
     },
     {
-      "cve": "CVE-2026-50721",
+      "cve": "CVE-2025-71345",
       "count": 1
     },
     {
-      "cve": "CVE-2026-12413",
+      "cve": "CVE-2026-58523",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-26355",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-41123",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-41124",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-44268",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-44269",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-46467",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-46468",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-46730",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-54483",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-56085",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-46463",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-46464",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-46465",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-46466",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-49813",
       "count": 1
     },
     {
@@ -42,48 +103,8 @@
     {
       "cve": "CVE-2025-66076",
       "count": 1
-    },
-    {
-      "cve": "CVE-2025-69133",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-45659",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-13769",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-10816",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-12388",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-13474",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-48558",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-13762",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-13763",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-11979",
-      "count": 1
     }
   ],
-  "weekly_summary": "Over the past 7 days, our security landscape has been characterized by a diverse set of vulnerabilities, with 15 unique CVEs tracked across various domains, including AI/ML threats, cloud/IAM, and web/servers. The most active day was July 3, 2026, with a range of CVEs identified, including CVE-2026-26145, CVE-2026-50721, and CVE-2026-12413, among others. Each of these CVEs was observed only once, indicating a broad but relatively shallow threat landscape, with no single vulnerability dominating the landscape, and active security domains spanning multiple areas, including containers, crypto libraries, and identity/authentication.",
-  "weekly_summary_ts": "2026-07-03"
+  "weekly_summary": "Over the past 7 days, our infrastructure security monitoring has identified 29 total findings across 30 unique CVEs, with no single vulnerability dominating the landscape, as the most frequently seen CVEs, including CVE-2026-14617, CVE-2025-71345, and several others, were each observed only once. The security domains of Browser Extensions, Cloud/IAM, Containers/K8s, and others were all active, with the majority of findings occurring on July 3, indicating a relatively evenly distributed threat landscape with no major spikes or outbreaks in any particular area.",
+  "weekly_summary_ts": "2026-07-04"
 }
