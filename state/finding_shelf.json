@@ -5884,9 +5884,9 @@
     "last_seen": "2026-07-04",
     "run_count": 1,
     "title": "CVE-2026-12196: HestiaCP RCE",
-    "last_problem_type": "rce",
+    "last_problem_type": "auth_bypass",
     "last_affects": "application",
-    "last_classification_confidence": 0.9
+    "last_classification_confidence": 0.85
   },
   "cve:CVE-2026-14624": {
     "first_seen": "2026-07-04",
@@ -5905,5 +5905,14 @@
     "last_problem_type": "privilege_escalation",
     "last_affects": "application",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-12195": {
+    "first_seen": "2026-07-04",
+    "last_seen": "2026-07-04",
+    "run_count": 1,
+    "title": "CVE-2026-12195: myVesta RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
