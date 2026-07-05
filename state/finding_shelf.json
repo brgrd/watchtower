@@ -5941,5 +5941,23 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-14732": {
+    "first_seen": "2026-07-05",
+    "last_seen": "2026-07-05",
+    "run_count": 1,
+    "title": "CVE-2026-14732: SourceCodester Class and Exam Time RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-14730": {
+    "first_seen": "2026-07-05",
+    "last_seen": "2026-07-05",
+    "run_count": 1,
+    "title": "CVE-2026-14730: itsourcecode Hospital Management System 1 Auth Bypass",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.85
   }
 }
