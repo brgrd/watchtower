@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-05T23:12:11.795756+00:00
+generated_at: 2026-07-06T09:07:32.060518+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-14742 in langchain-ai langgraph, CVE-2026-14743 in code-projects Real State Services, and CVE-2026-14744 in code-projects Real State Services. Internet-facing applications and services are most exposed due to the lack of available patches for these vulnerabilities. The single most time-sensitive action is to monitor and isolate systems using langchain-ai langgraph and code-projects Real State Services, as no patches are currently available.
+The highest-risk items this period are CVE-2026-59519 in Softaculous F, CVE-2026-14769 in code-projects Real State Services, and CVE-2026-14770 in SourceCodester Class and Exam Timetabling System. Internet-facing applications and services are most exposed due to the lack of available patches for these vulnerabilities. The single most time-sensitive action is to monitor for potential exploitation of these vulnerabilities, particularly in applications using Softaculous F, code-projects Real State Services, and SourceCodester Class and Exam Timetabling System, as no patches are currently available.
 
-## CVE-2026-14742: langchain-ai langgraph RCE (risk: 40)
-[P2] A vulnerability in langchain-ai langgraph up to 1.2.4 allows for arbitrary code execution, with no patch available. Exploitation in the wild has not been reported. Why now: Newly disclosed vulnerability with potential for significant impact. (confidence: 0.80)
+## CVE-2026-59519: Softaculous F Sensitive Info Disclosure (risk: 40)
+[P2] CVE-2026-59519 is an Insertion of Sensitive Information Into Sent Data vulnerability in Softaculous F, with no available patch or workaround. This vulnerability could allow attackers to gain access to sensitive information. Why now: Lack of available patch or workaround (confidence: 0.80)
 
-- [NVD CVE-2026-14742](https://nvd.nist.gov/v1/cve/2026-14742)
+- [CVE-2026-59519](https://nvd.nist.gov/v1/nvd.xhtml?nvdlisttype=cve)
 
-## CVE-2026-14743: code-projects Real State Services RCE (risk: 40)
-[P2] A vulnerability in code-projects Real State Services 1.0 allows for arbitrary code execution, with no patch available. Exploitation in the wild has not been reported. Why now: Newly disclosed vulnerability with potential for significant impact. (confidence: 0.80)
+## CVE-2026-14769: code-projects Real State Services Security Vulnerability (risk: 40)
+[P2] A security vulnerability has been detected in code-projects Real State Services, with no available patch or workaround. This vulnerability could allow attackers to gain unauthorized access or control. Why now: Lack of available patch or workaround (confidence: 0.80)
 
-- [NVD CVE-2026-14743](https://nvd.nist.gov/v1/cve/2026-14743)
+- [CVE-2026-14769](https://nvd.nist.gov/v1/nvd.xhtml?nvdlisttype=cve)
 
-## CVE-2026-14744: code-projects Real State Services RCE (risk: 40)
-[P2] A vulnerability in code-projects Real State Services 1.0 allows for arbitrary code execution, with no patch available. Exploitation in the wild has not been reported. Why now: Newly disclosed vulnerability with potential for significant impact. (confidence: 0.80)
+## CVE-2026-14770: SourceCodester Class and Exam Timetabling System Vulnerability (risk: 40)
+[P2] A vulnerability was detected in SourceCodester Class and Exam Timetabling System, with no available patch or workaround. This vulnerability could allow attackers to gain unauthorized access or control. Why now: Lack of available patch or workaround (confidence: 0.80)
 
-- [NVD CVE-2026-14744](https://nvd.nist.gov/v1/cve/2026-14744)
+- [CVE-2026-14770](https://nvd.nist.gov/v1/nvd.xhtml?nvdlisttype=cve)

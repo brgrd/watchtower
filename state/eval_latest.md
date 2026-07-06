@@ -1,22 +1,22 @@
-# Watchtower Pipeline Eval — 2026-07-05T23:12:00Z
+# Watchtower Pipeline Eval — 2026-07-06T09:07:12Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 42 |
-| After dedup + CVE merge | 42 |
-| Sent to Groq | 30 |
+| Items polled (raw) | 185 |
+| After dedup + CVE merge | 185 |
+| Sent to Groq | 29 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/42 (7.1%)** |
+| **Pipeline yield** | **3/185 (1.6%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
 - **Payload**: 9,588 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7658
+- **Rate limit remaining** — requests: 999, tokens: 7686
 
 ## Card Quality
 
@@ -31,8 +31,8 @@
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 68 chars (100% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 6 total — 50% specific, 0% generic
+- **`why_now` avg length**: 37 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 6 total — 0% specific, 50% generic
 
 ### Persistence
 
@@ -51,11 +51,11 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 41 |
-| `bleepingcomputer` | 1 |
-| `cisa_alerts` | 0 |
-| `gh_security_blog` | 0 |
-| `krebs` | 0 |
+| `bsi_germany` | 136 |
+| `nvd` | 44 |
+| `thehackernews` | 4 |
+| `cyberscoop` | 1 |
+| `cisa_kev` | 0 |
 | _(+21 more)_ | … |
 
 **21 feeds returned 0 items this run.**
@@ -64,10 +64,10 @@
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-07-03 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-07-04 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-07-04 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-07-04 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-07-04 | 2 | 1 | 100% | 0% | 2 | 0 |
 | 2026-07-05 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-07-05 | 2 | 1 | 100% | 0% | 2 | 0 |
+| 2026-07-05 | 3 | ? | 100% | 0% | 3 | 0 |
