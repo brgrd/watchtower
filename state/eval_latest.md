@@ -1,69 +1,73 @@
-# Watchtower Pipeline Eval — 2026-07-07T12:06:34Z
+# Watchtower Pipeline Eval — 2026-07-07T22:18:31Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 269 |
-| After dedup + CVE merge | 268 |
+| Items polled (raw) | 160 |
+| After dedup + CVE merge | 155 |
 | Sent to Groq | 30 |
-| Groq findings returned | 0 |
-| Final cards rendered | 15 |
-| **Pipeline yield** | **15/269 (5.6%)** |
+| Groq findings returned | 3 |
+| Passed quality gate | 3 |
+| Final cards rendered | 3 |
+| **Pipeline yield** | **3/160 (1.9%)** |
 
 ## Groq
-_Groq not called this run (placeholder mode or no API key)._
+- **Model**: `llama-3.3-70b-versatile`
+- **Payload**: 11,878 chars
+- **Parse**: ✓  |  **Retries**: 0
+- **Rate limit remaining** — requests: 999, tokens: 7188
 
 ## Card Quality
 
-**15 cards** — P1: 0, P2: 0, P3: 15
+**3 cards** — P1: 3, P2: 0, P3: 0
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 66 / 70 |
-| Tactic coverage | 0% |
-| CVE coverage | 0% |
-| Patch status | unknown: 15 |
+| Risk score mean / p90 | 70 / 70 |
+| Tactic coverage | 100% |
+| CVE coverage | 100% |
+| Patch status | unknown: 3 |
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 0 chars (0% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 0 total — 0% specific, 0% generic
+- **`why_now` avg length**: 39 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 6 total — 50% specific, 50% generic
 
 ### Persistence
 
-- New (run=1): **4** | Evolving (2–5): **10** | Persistent (>5): **1** | Resolved: **0**
-- Mean run_count: 3.1 | Mean shelf_days: 33.3
+- New (run=1): **3** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
+- Mean run_count: 1 | Mean shelf_days: 0
 
 ## Enrichment Hit Rates
 
 | Source | Hits | Rate |
 |--------|-----:|-----:|
 | EPSS | 0 | 0% |
-| NVD (CVE) | 0 | 0% |
+| NVD (CVE) | 3 | 100% |
 | CISA KEV | 0 | 0% |
 
 ## Feed Yield
 
 | Feed | Items |
 |------|------:|
-| `bsi_germany` | 144 |
-| `nvd` | 67 |
-| `gcp_security` | 30 |
-| `msrc_update_guide` | 15 |
-| `bleepingcomputer` | 4 |
+| `nvd` | 92 |
+| `bsi_germany` | 16 |
+| `cisa_alerts` | 9 |
+| `bleepingcomputer` | 7 |
+| `thehackernews` | 7 |
 | _(+21 more)_ | … |
 
-**17 feeds returned 0 items this run.**
+**10 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-07-04 | 2 | 1 | 100% | 0% | 2 | 0 |
 | 2026-07-05 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-07-05 | 2 | 1 | 100% | 0% | 2 | 0 |
 | 2026-07-05 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-07-06 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-07-06 | 2 | 2 | 100% | 100% | 2 | 0 |
 | 2026-07-07 | 2 | 1 | 100% | 0% | 2 | 0 |
+| 2026-07-07 | 15 | ? | 0% | 0% | 4 | 1 |
