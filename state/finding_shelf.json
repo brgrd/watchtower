@@ -976,14 +976,14 @@
   },
   "e58a8c9eb921": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-06-22",
-    "run_count": 3,
+    "last_seen": "2026-07-07",
+    "run_count": 4,
     "title": "GCP-2026-027"
   },
   "1ff5a474ecdb": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-06-22",
-    "run_count": 3,
+    "last_seen": "2026-07-07",
+    "run_count": 4,
     "title": "GCP-2026-025"
   },
   "99356758fb15": {
@@ -994,32 +994,32 @@
   },
   "b9e9d2dca15f": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-06-22",
-    "run_count": 5,
+    "last_seen": "2026-07-07",
+    "run_count": 6,
     "title": "GCP-2026-028"
   },
   "e799fb3564e7": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-06-22",
-    "run_count": 3,
+    "last_seen": "2026-07-07",
+    "run_count": 4,
     "title": "GCP-2026-024"
   },
   "054859b85814": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-06-22",
-    "run_count": 3,
+    "last_seen": "2026-07-07",
+    "run_count": 4,
     "title": "GCP-2026-022"
   },
   "906f29eec50d": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-06-22",
-    "run_count": 3,
+    "last_seen": "2026-07-07",
+    "run_count": 4,
     "title": "GCP-2026-020"
   },
   "945ada04535b": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-06-22",
-    "run_count": 3,
+    "last_seen": "2026-07-07",
+    "run_count": 4,
     "title": "GCP-2026-017"
   },
   "cve:CVE-2026-8288": {
@@ -2650,8 +2650,8 @@
   },
   "6b1a31fa248e": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-06-22",
-    "run_count": 3,
+    "last_seen": "2026-07-07",
+    "run_count": 4,
     "title": "Fragnesia Local Privilege Escalation report via ESP-in-TCP in the Linux Kernel"
   },
   "cve:CVE-2026-3336": {
@@ -3103,8 +3103,8 @@
   },
   "617f24eefc39": {
     "first_seen": "2026-06-09",
-    "last_seen": "2026-06-22",
-    "run_count": 2,
+    "last_seen": "2026-07-07",
+    "run_count": 3,
     "title": "GCP-2026-030"
   },
   "3141ccd5023f": {
@@ -3133,8 +3133,8 @@
   },
   "73edcd4547e1": {
     "first_seen": "2026-06-09",
-    "last_seen": "2026-06-22",
-    "run_count": 2,
+    "last_seen": "2026-07-07",
+    "run_count": 3,
     "title": "GCP-2026-036"
   },
   "cve:CVE-2026-11645": {
@@ -4591,8 +4591,8 @@
   },
   "4ef43c3ae997": {
     "first_seen": "2026-06-24",
-    "last_seen": "2026-06-24",
-    "run_count": 1,
+    "last_seen": "2026-07-07",
+    "run_count": 2,
     "title": "GCP-2026-041"
   },
   "0149ede49c0d": {
@@ -6049,5 +6049,29 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "network",
     "last_classification_confidence": 0.95
+  },
+  "1621c71b0ed4": {
+    "first_seen": "2026-07-07",
+    "last_seen": "2026-07-07",
+    "run_count": 1,
+    "title": "BeyondTrust Patches Critical Auth Bypass Flaws in Remote Support and PRA"
+  },
+  "2fd1719a7fa4": {
+    "first_seen": "2026-07-07",
+    "last_seen": "2026-07-07",
+    "run_count": 1,
+    "title": "Suspected China-Aligned Hackers Exploit Roundcube Flaws Against Universities"
+  },
+  "e6d24084b633": {
+    "first_seen": "2026-07-07",
+    "last_seen": "2026-07-07",
+    "run_count": 1,
+    "title": "CERT/CC Warns of Hidden Admin Backdoor in Tenda Router Firmware"
+  },
+  "cve:CVE-2026-53640": {
+    "first_seen": "2026-07-07",
+    "last_seen": "2026-07-07",
+    "run_count": 1,
+    "title": "CVE-2026-53640"
   }
 }
