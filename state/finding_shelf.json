@@ -6127,5 +6127,23 @@
     "last_problem_type": "data_tampering",
     "last_affects": "application",
     "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-43499": {
+    "first_seen": "2026-07-08",
+    "last_seen": "2026-07-08",
+    "run_count": 1,
+    "title": "CVE-2026-43499: Linux Kernel GhostLock",
+    "last_problem_type": "privilege_escalation",
+    "last_affects": "foundation",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-59997": {
+    "first_seen": "2026-07-08",
+    "last_seen": "2026-07-08",
+    "run_count": 1,
+    "title": "CVE-2026-59997: OpenSSH SFTP Vulnerability",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.85
   }
 }
