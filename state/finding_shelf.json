@@ -6172,5 +6172,32 @@
     "last_problem_type": "privilege_escalation",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-12936": {
+    "first_seen": "2026-07-08",
+    "last_seen": "2026-07-08",
+    "run_count": 1,
+    "title": "CVE-2026-12936: Recurio SQLi",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-3688": {
+    "first_seen": "2026-07-08",
+    "last_seen": "2026-07-08",
+    "run_count": 1,
+    "title": "CVE-2026-3688: WCFM Membership PrivEsc",
+    "last_problem_type": "privilege_escalation",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-41042": {
+    "first_seen": "2026-07-08",
+    "last_seen": "2026-07-08",
+    "run_count": 1,
+    "title": "CVE-2026-41042: H2 JDBC URL Injection",
+    "last_problem_type": "rce",
+    "last_affects": "runtime",
+    "last_classification_confidence": 0.9
   }
 }
