@@ -6199,5 +6199,23 @@
     "last_problem_type": "rce",
     "last_affects": "runtime",
     "last_classification_confidence": 0.9
+  },
+  "17cfa6aea1f7": {
+    "first_seen": "2026-07-09",
+    "last_seen": "2026-07-09",
+    "run_count": 1,
+    "title": "Tenda Firmware Backdoor",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "099b2d3ca23a": {
+    "first_seen": "2026-07-09",
+    "last_seen": "2026-07-09",
+    "run_count": 1,
+    "title": "Microsoft Defender 'RoguePlanet' Vulnerability",
+    "last_problem_type": "privilege_escalation",
+    "last_affects": "application",
+    "last_classification_confidence": 0.85
   }
 }
