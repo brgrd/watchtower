@@ -6217,5 +6217,32 @@
     "last_problem_type": "privilege_escalation",
     "last_affects": "application",
     "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2026-4298": {
+    "first_seen": "2026-07-09",
+    "last_seen": "2026-07-09",
+    "run_count": 1,
+    "title": "CVE-2026-4298: WP Plugin RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-12590": {
+    "first_seen": "2026-07-09",
+    "last_seen": "2026-07-09",
+    "run_count": 1,
+    "title": "CVE-2026-12590: body-parser RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-12428": {
+    "first_seen": "2026-07-09",
+    "last_seen": "2026-07-09",
+    "run_count": 1,
+    "title": "CVE-2026-12428: ACF Fields Plugin RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
