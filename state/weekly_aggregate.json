@@ -1,10 +1,9 @@
 {
-  "rebuilt_at": "2026-07-09T12:13:10.023844+00:00",
+  "rebuilt_at": "2026-07-10T00:14:34.541996+00:00",
   "window_days": 7,
-  "total_cards": 30,
-  "unique_cves": 28,
+  "total_cards": 31,
+  "unique_cves": 31,
   "active_domains": [
-    "cloud_iam",
     "container",
     "crypto_lib",
     "identity",
@@ -14,7 +13,7 @@
   ],
   "most_active_day": "2026-07-03",
   "day_counts": {
-    "2026-07-09": 2,
+    "2026-07-09": 3,
     "2026-07-08": 3,
     "2026-07-07": 3,
     "2026-07-06": 2,
@@ -23,6 +22,18 @@
     "2026-07-03": 15
   },
   "top_cves": [
+    {
+      "cve": "CVE-2026-12116",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-14261",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-60094",
+      "count": 1
+    },
     {
       "cve": "CVE-2026-12936",
       "count": 1
@@ -90,20 +101,8 @@
     {
       "cve": "CVE-2026-44268",
       "count": 1
-    },
-    {
-      "cve": "CVE-2026-44269",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-46467",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-46468",
-      "count": 1
     }
   ],
-  "weekly_summary": "Over the past 7 days, our security landscape has been characterized by a diverse range of vulnerabilities, with 30 total findings and 28 unique CVEs tracked. The most frequently seen CVEs, each occurring once, include CVE-2026-12936, CVE-2026-3688, and several others, indicating a broad attack surface. Active security domains span multiple areas, including Cloud and IAM, Containers and K8s, and Web Servers, among others. Notably, 2026-07-03 was the most active day, suggesting a potential surge in malicious activity, and highlighting the need for continued vigilance across these domains.",
-  "weekly_summary_ts": "2026-07-09"
+  "weekly_summary": "Over the past 7 days, our security landscape has been characterized by a diverse range of vulnerabilities, with 31 unique CVEs tracked across various domains, including Containers, Crypto Libraries, Identity and Authentication, OS and Kernel, npm and Node, and Web Servers. The most active day was July 3, 2026, with multiple CVEs identified, including CVE-2026-12116, CVE-2026-14261, and others, each occurring once, indicating a relatively evenly distributed threat landscape with no single dominant vulnerability, and highlighting the need for continued vigilance across all security domains.",
+  "weekly_summary_ts": "2026-07-10"
 }

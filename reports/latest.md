@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-09T22:40:19.953266+00:00
+generated_at: 2026-07-10T00:14:34.278120+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-4298 in the DSGVO All in one for WP plugin, CVE-2026-12590 in body-parser, and CVE-2026-12428 in the Blocks for ACF Fields plugin. Internet-facing WordPress installations are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate WordPress installations using the DSGVO All in one for WP plugin, as no patch is currently available.
+The highest-risk items this period are CVE-2026-12116 in Xerte Online Tools, CVE-2026-14261 in Xerte Online Tools, and CVE-2026-60094 in Vinchin Backup & Recovery. These vulnerabilities expose internet-facing systems, particularly those using Xerte Online Tools and Vinchin Backup & Recovery, due to the lack of available patches. The single most time-sensitive action is to isolate systems using Xerte Online Tools and Vinchin Backup & Recovery, as no patches are currently available for these products.
 
-## CVE-2026-4298: WP Plugin RCE (risk: 70)
-[P1] The DSGVO All in one for WP plugin is vulnerable to missing authorization, allowing for remote code execution. No patch is currently available. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-12116: Xerte Online Tools RCE (risk: 70)
+[P1] Xerte Online Tools is vulnerable to remote code execution, with no patch available. This vulnerability is particularly concerning due to its potential for exploitation in the wild. Why now: Lack of available patch increases risk of exploitation. (confidence: 0.80)
 
-- [CVE-2026-4298](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-4298)
+- [CVE-2026-12116](https://nvd.nist.gov/v1/nvd.xhtml?nvdlist=detail&CVE-2026-12116)
 
-## CVE-2026-12590: body-parser RCE (risk: 70)
-[P1] body-parser is vulnerable to remote code execution due to improper input validation. No patch is currently available. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-14261: Xerte Online Tools Auth Bypass (risk: 70)
+[P1] Xerte Online Tools is vulnerable to authentication bypass, with no patch available. This vulnerability is concerning due to its potential for exploitation in the wild. Why now: Lack of available patch increases risk of exploitation. (confidence: 0.80)
 
-- [CVE-2026-12590](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-12590)
+- [CVE-2026-14261](https://nvd.nist.gov/v1/nvd.xhtml?nvdlist=detail&CVE-2026-14261)
 
-## CVE-2026-12428: ACF Fields Plugin RCE (risk: 70)
-[P1] The Blocks for ACF Fields plugin is vulnerable to unauthorized access, allowing for remote code execution. No patch is currently available. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-60094: Vinchin Backup & Recovery Heap Buffer Overflow (risk: 70)
+[P1] Vinchin Backup & Recovery is vulnerable to a heap buffer overflow, with no patch available. This vulnerability is concerning due to its potential for exploitation in the wild. Why now: Lack of available patch increases risk of exploitation. (confidence: 0.80)
 
-- [CVE-2026-12428](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-12428)
+- [CVE-2026-60094](https://nvd.nist.gov/v1/nvd.xhtml?nvdlist=detail&CVE-2026-60094)
