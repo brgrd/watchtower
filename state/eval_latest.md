@@ -1,22 +1,22 @@
-# Watchtower Pipeline Eval — 2026-07-10T00:14:19Z
+# Watchtower Pipeline Eval — 2026-07-10T12:06:34Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 227 |
-| After dedup + CVE merge | 225 |
-| Sent to Groq | 30 |
+| Items polled (raw) | 321 |
+| After dedup + CVE merge | 321 |
+| Sent to Groq | 27 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/227 (1.3%)** |
+| **Pipeline yield** | **3/321 (0.9%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 9,612 chars
+- **Payload**: 9,593 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7657
+- **Rate limit remaining** — requests: 999, tokens: 7639
 
 ## Card Quality
 
@@ -31,8 +31,8 @@
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 55 chars (0% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 6 total — 50% specific, 50% generic
+- **`why_now` avg length**: 62 chars (100% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 6 total — 50% specific, 0% generic
 
 ### Persistence
 
@@ -51,23 +51,23 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 193 |
-| `bleepingcomputer` | 6 |
-| `thehackernews` | 5 |
-| `darkreading` | 5 |
-| `securityweek` | 4 |
+| `bsi_germany` | 181 |
+| `nvd` | 120 |
+| `thehackernews` | 7 |
+| `securityweek` | 5 |
+| `msrc_update_guide` | 3 |
 | _(+21 more)_ | … |
 
-**13 feeds returned 0 items this run.**
+**17 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-07-08 | 3 | 3 | 100% | 0% | 2 | 0 |
 | 2026-07-08 | 3 | 3 | 100% | 100% | 3 | 0 |
 | 2026-07-08 | 2 | 1 | 100% | 50% | 2 | 0 |
 | 2026-07-08 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-07-08 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-07-09 | 2 | 1 | 100% | 0% | 2 | 0 |
 | 2026-07-09 | 3 | 3 | 100% | 0% | 3 | 0 |
+| 2026-07-10 | 3 | 3 | 100% | 0% | 3 | 0 |
