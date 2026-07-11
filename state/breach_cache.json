@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-11T10:22:12.465931+00:00",
+  "fetched_at": "2026-07-11T21:00:44.672833+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -6969,6 +6969,27 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#GLAMIRA",
       "summary": "In late 2023, the online jewellery store GLAMIRA suffered a data breach they attributed to \"an unauthorised individual [who] briefly accessed one of our servers\". The data was subsequently published on a popular hacking forum and included 875k email addresses, names, phone numbers and purchases.",
+      "action": "monitor"
+    },
+    {
+      "id": "hibp:glendalecommunitycollege-2026-06-15",
+      "name": "GlendaleCommunityCollege",
+      "title": "Glendale Community College",
+      "date": "2026-06-15",
+      "added": "2026-07-11",
+      "affected_count": 793925,
+      "data_classes": [
+        "Academic records",
+        "Dates of birth",
+        "Email addresses",
+        "Genders",
+        "Government issued IDs",
+        "Names",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#GlendaleCommunityCollege",
+      "summary": "In June 2026, Glendale Community College was the target of a ShinyHunters \"pay or leak\" extortion campaign. Data allegedly obtained from Glendale was later published online and included almost 800k unique email addresses along with various other data fields, including names, addresses, phone numbers, Social Security numbers and other information relating to student enrolments. In its disclosure no",
       "action": "monitor"
     },
     {
