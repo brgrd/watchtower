@@ -6370,5 +6370,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-13114": {
+    "first_seen": "2026-07-11",
+    "last_seen": "2026-07-11",
+    "run_count": 1,
+    "title": "CVE-2026-13114: Motors Car Dealership & Classified Listings Plugin",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-11426": {
+    "first_seen": "2026-07-11",
+    "last_seen": "2026-07-11",
+    "run_count": 1,
+    "title": "CVE-2026-11426: UnderConstructionPage PRO plugin",
+    "last_problem_type": "privilege_escalation",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-13756": {
+    "first_seen": "2026-07-11",
+    "last_seen": "2026-07-11",
+    "run_count": 1,
+    "title": "CVE-2026-13756: WP Grid Builder plugin",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }

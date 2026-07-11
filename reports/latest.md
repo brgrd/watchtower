@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-11T10:22:11.484111+00:00
+generated_at: 2026-07-11T11:59:41.605403+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,14 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-56291 in Balbooa Forms and CVE-2026-48939 in iCagenda, which are being exploited in the wild. Internet-facing web applications are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to isolate or patch Balbooa Forms and iCagenda to prevent exploitation of the unrestricted file upload vulnerabilities, although no patches are currently available.
+The highest-risk items this period are CVE-2026-13114 in Motors Car Dealership & Classified Listings Plugin, CVE-2026-11426 in UnderConstructionPage PRO plugin, and CVE-2026-13756 in WP Grid Builder plugin. These vulnerabilities expose internet-facing WordPress installations to arbitrary file inclusion, privilege escalation, and data disclosure risks. The single most time-sensitive action is to patch or isolate affected WordPress plugins, specifically Motors Car Dealership & Classified Listings Plugin, UnderConstructionPage PRO plugin, and WP Grid Builder plugin, although no patches are currently available.
 
-## CVE-2026-56291: Balbooa Forms RCE (risk: 100)
-[P1] CVE-2026-56291 is an unrestricted file upload vulnerability in Balbooa Forms that allows unauthenticated attackers to execute arbitrary code, and it is being exploited in the wild. No patch is currently available. Why now: Reported exploitation in the wild (confidence: 0.90)
+## CVE-2026-13114: Motors Car Dealership & Classified Listings Plugin (risk: 70)
+[P1] The Motors Car Dealership & Classified Listings Plugin for WordPress is vulnerable to arbitrary file inclusion, allowing attackers to execute malicious code. No patch is currently available. Why now: High-risk vulnerability in widely used WordPress plugin. (confidence: 0.80)
 
-- [CVE-2026-56291](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-56291)
+- [CVE-2026-13114](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve_id=CVE-2026-13114)
 
-## CVE-2026-48939: iCagenda RCE (risk: 100)
-[P1] CVE-2026-48939 is an unrestricted file upload vulnerability in iCagenda that allows attackers to upload arbitrary files, and it is being exploited in the wild. No patch is currently available. Why now: Reported exploitation in the wild (confidence: 0.90)
+## CVE-2026-11426: UnderConstructionPage PRO plugin (risk: 70)
+[P1] The UnderConstructionPage PRO plugin for WordPress is vulnerable to privilege escalation, allowing attackers to gain elevated privileges. No patch is currently available. Why now: High-risk vulnerability in widely used WordPress plugin. (confidence: 0.80)
 
-- [CVE-2026-48939](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-48939)
+- [CVE-2026-11426](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve_id=CVE-2026-11426)
+
+## CVE-2026-13756: WP Grid Builder plugin (risk: 70)
+[P1] The WP Grid Builder plugin for WordPress is vulnerable to data disclosure, allowing attackers to access sensitive data. No patch is currently available. Why now: High-risk vulnerability in widely used WordPress plugin. (confidence: 0.80)
+
+- [CVE-2026-13756](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve_id=CVE-2026-13756)
