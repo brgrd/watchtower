@@ -6496,5 +6496,23 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-15474": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-15474: Eleveo Call Recording RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-15475": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-15475: MiniTool Partition Wizard Weakness",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "user_data",
+    "last_classification_confidence": 0.8
   }
 }
