@@ -6541,5 +6541,83 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-15490": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-15490"
+  },
+  "cve:CVE-2026-15494": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-15494"
+  },
+  "cve:CVE-2026-15495": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-15495"
+  },
+  "cve:CVE-2026-15496": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-15496"
+  },
+  "cve:CVE-2026-15497": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-15497"
+  },
+  "cve:CVE-2026-15500": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-15500"
+  },
+  "cve:CVE-2026-15499": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-15499"
+  },
+  "cve:CVE-2026-56259": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-56259"
+  },
+  "cve:CVE-2026-56241": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-56241"
+  },
+  "cve:CVE-2026-15501": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-15501"
+  },
+  "cve:CVE-2026-56271": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-56271"
+  },
+  "cve:CVE-2026-15493": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-15493"
+  },
+  "cve:CVE-2026-56238": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-56238"
   }
 }
