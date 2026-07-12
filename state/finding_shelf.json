@@ -6514,5 +6514,32 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "user_data",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-15487": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-15487: TRENDnet TEW-821DAP RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-15491": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-15491: RafyMrX TOKO-ONLINE-ROTI Weakness",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-15492": {
+    "first_seen": "2026-07-12",
+    "last_seen": "2026-07-12",
+    "run_count": 1,
+    "title": "CVE-2026-15492: igweze wizgrade Security Vulnerability",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
