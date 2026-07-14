@@ -6808,5 +6808,23 @@
     "last_problem_type": "auth_bypass",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-15738": {
+    "first_seen": "2026-07-14",
+    "last_seen": "2026-07-14",
+    "run_count": 1,
+    "title": "CVE-2026-15738: AWS Load Balancer Controller RCE",
+    "last_problem_type": "rce",
+    "last_affects": "service",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-15643": {
+    "first_seen": "2026-07-14",
+    "last_seen": "2026-07-14",
+    "run_count": 1,
+    "title": "CVE-2026-15643: AWS HealthLake MCP Server SSRF",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
