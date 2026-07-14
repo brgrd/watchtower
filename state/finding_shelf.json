@@ -6745,5 +6745,32 @@
     "last_problem_type": "data_tampering",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-15558": {
+    "first_seen": "2026-07-14",
+    "last_seen": "2026-07-14",
+    "run_count": 1,
+    "title": "CVE-2026-15558: CodeAstro Simple Online Leave Management RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-62147": {
+    "first_seen": "2026-07-14",
+    "last_seen": "2026-07-14",
+    "run_count": 1,
+    "title": "CVE-2026-62147: Tempo Operator's Gateway Component Privilege Escalation",
+    "last_problem_type": "privilege_escalation",
+    "last_affects": "application",
+    "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2008-4128": {
+    "first_seen": "2026-07-14",
+    "last_seen": "2026-07-14",
+    "run_count": 1,
+    "title": "CVE-2008-4128: Cisco IOS 12.4 Cross-Site Forgery",
+    "last_problem_type": "rce",
+    "last_affects": "network",
+    "last_classification_confidence": 0.7
   }
 }
