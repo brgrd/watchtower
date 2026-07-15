@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-14T22:08:11.985510+00:00",
+  "fetched_at": "2026-07-15T09:17:43.102967+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -6230,6 +6230,25 @@
       "action": "rotate"
     },
     {
+      "id": "hibp:fluke-2026-07-01",
+      "name": "Fluke",
+      "title": "Fluke",
+      "date": "2026-07-01",
+      "added": "2026-07-15",
+      "affected_count": 821100,
+      "data_classes": [
+        "Email addresses",
+        "Employers",
+        "Job titles",
+        "Names",
+        "Physical addresses",
+        "Support tickets"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Fluke",
+      "summary": "In July 2026, electronic test and measurement equipment company Fluke was targeted in a ShinyHunters \"pay or leak\" extortion campaign. The group subsequently published more than 100GB of data allegedly taken from the company. The corpus contained largely corporate contact information, including over 800k unique email addresses, names, phone numbers and physical addresses. A large collection of sup",
+      "action": "monitor"
+    },
+    {
       "id": "hibp:robloxdeveloperconference2024-2024-07-04",
       "name": "RobloxDeveloperConference2024",
       "title": "FNTECH",
@@ -7068,6 +7087,24 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#GoldSilver",
       "summary": "In October 2018, the bullion education and dealer services site GoldSilver suffered a data breach that exposed 243k unique email addresses spanning customers and mailing list subscribers. An extensive amount of personal information on customers was obtained including names, addresses, phone numbers, purchases and passwords and answers to security questions stored as MD5 hashes. In a small number o",
       "action": "close"
+    },
+    {
+      "id": "hibp:goosecreek-2026-06-09",
+      "name": "GooseCreek",
+      "title": "Goose Creek",
+      "date": "2026-06-09",
+      "added": "2026-07-15",
+      "affected_count": 6574121,
+      "data_classes": [
+        "Email addresses",
+        "Names",
+        "Phone numbers",
+        "Physical addresses",
+        "Purchases"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#GooseCreek",
+      "summary": "In June 2026, a party claiming to have access to data from Goose Creek Candle Company sent emails to a number of the company's customers, claiming the company had a security vulnerability and suffered a data breach. The data was subsequently sent to Have I Been Pwned and contained 6.6M unique email addresses along with names, phone numbers, physical addresses, order IDs and total spent. The data a",
+      "action": "monitor"
     },
     {
       "id": "hibp:gpotato-2007-07-12",

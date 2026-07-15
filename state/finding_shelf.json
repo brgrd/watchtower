@@ -6835,5 +6835,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.4
+  },
+  "cve:CVE-2026-21840": {
+    "first_seen": "2026-07-15",
+    "last_seen": "2026-07-15",
+    "run_count": 1,
+    "title": "CVE-2026-21840: HCL BigFix User Enum",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-42049": {
+    "first_seen": "2026-07-15",
+    "last_seen": "2026-07-15",
+    "run_count": 1,
+    "title": "CVE-2026-42049: jadx HTML Injection",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-15750": {
+    "first_seen": "2026-07-15",
+    "last_seen": "2026-07-15",
+    "run_count": 1,
+    "title": "CVE-2026-15750: mastergo-design mastergo-magic-mcp Weakness",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
