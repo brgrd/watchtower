@@ -6793,12 +6793,12 @@
   },
   "cve:CVE-2026-44747": {
     "first_seen": "2026-07-14",
-    "last_seen": "2026-07-14",
-    "run_count": 1,
+    "last_seen": "2026-07-15",
+    "run_count": 2,
     "title": "CVE-2026-44747: SAP NetWeaver ABAP Privilege Escalation",
-    "last_problem_type": "privilege_escalation",
+    "last_problem_type": "data_disclosure",
     "last_affects": "application",
-    "last_classification_confidence": 0.9
+    "last_classification_confidence": 0.95
   },
   "cve:CVE-2026-44753": {
     "first_seen": "2026-07-14",
@@ -6811,12 +6811,12 @@
   },
   "cve:CVE-2026-15738": {
     "first_seen": "2026-07-14",
-    "last_seen": "2026-07-14",
-    "run_count": 1,
+    "last_seen": "2026-07-15",
+    "run_count": 2,
     "title": "CVE-2026-15738: AWS Load Balancer Controller RCE",
-    "last_problem_type": "rce",
+    "last_problem_type": "data_tampering",
     "last_affects": "service",
-    "last_classification_confidence": 0.95
+    "last_classification_confidence": 0.9
   },
   "cve:CVE-2026-15643": {
     "first_seen": "2026-07-14",
@@ -6826,5 +6826,14 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-56155": {
+    "first_seen": "2026-07-15",
+    "last_seen": "2026-07-15",
+    "run_count": 1,
+    "title": "Microsoft Patch Tuesday for July 2026",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.4
   }
 }
