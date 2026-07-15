@@ -5422,12 +5422,12 @@
   },
   "cve:CVE-2026-46817": {
     "first_seen": "2026-06-30",
-    "last_seen": "2026-06-30",
-    "run_count": 1,
+    "last_seen": "2026-07-15",
+    "run_count": 2,
     "title": "CVE-2026-46817: Oracle E-Business Suite RCE",
-    "last_problem_type": "rce",
-    "last_affects": "framework",
-    "last_classification_confidence": 0.8
+    "last_problem_type": "privilege_escalation",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
   },
   "cve:CVE-2026-12076": {
     "first_seen": "2026-06-30",
@@ -6871,5 +6871,14 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-57831": {
+    "first_seen": "2026-07-15",
+    "last_seen": "2026-07-15",
+    "run_count": 1,
+    "title": "CVE-2026-57831: Joomla DP Calendar SQL Injection",
+    "last_problem_type": "data_tampering",
+    "last_affects": "application",
+    "last_classification_confidence": 0.85
   }
 }
