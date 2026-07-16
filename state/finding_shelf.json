@@ -6907,5 +6907,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-3842": {
+    "first_seen": "2026-07-16",
+    "last_seen": "2026-07-16",
+    "run_count": 1,
+    "title": "CVE-2026-3842: QEMU RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-23538": {
+    "first_seen": "2026-07-16",
+    "last_seen": "2026-07-16",
+    "run_count": 1,
+    "title": "CVE-2026-23538: Feast Feature Server Auth Bypass",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-15909": {
+    "first_seen": "2026-07-16",
+    "last_seen": "2026-07-16",
+    "run_count": 1,
+    "title": "CVE-2026-15909: RafyMrX TOKO-ONLINE-ROTI RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
   }
 }
