@@ -7006,5 +7006,32 @@
     "last_problem_type": "privilege_escalation",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-59695": {
+    "first_seen": "2026-07-17",
+    "last_seen": "2026-07-17",
+    "run_count": 1,
+    "title": "CVE-2026-59695: ZenHive mpp RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-59252": {
+    "first_seen": "2026-07-17",
+    "last_seen": "2026-07-17",
+    "run_count": 1,
+    "title": "CVE-2026-59252: ZenHive mpp RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-59694": {
+    "first_seen": "2026-07-17",
+    "last_seen": "2026-07-17",
+    "run_count": 1,
+    "title": "CVE-2026-59694: ZenHive mpp RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
