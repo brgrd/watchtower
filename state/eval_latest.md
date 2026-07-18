@@ -1,26 +1,26 @@
-# Watchtower Pipeline Eval — 2026-07-18T00:00:10Z
+# Watchtower Pipeline Eval — 2026-07-18T10:34:07Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 246 |
-| After dedup + CVE merge | 243 |
-| Sent to Groq | 22 |
+| Items polled (raw) | 28 |
+| After dedup + CVE merge | 28 |
+| Sent to Groq | 17 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/246 (1.2%)** |
+| **Pipeline yield** | **3/28 (10.7%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 11,826 chars
+- **Payload**: 9,587 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7170
+- **Rate limit remaining** — requests: 999, tokens: 7638
 
 ## Card Quality
 
-**3 cards** — P1: 3, P2: 0, P3: 0
+**3 cards** — P1: 2, P2: 1, P3: 0
 
 | Metric | Value |
 |--------|-------|
@@ -31,7 +31,7 @@
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 23 chars (0% ≥ 60 chars, considered substantive)
+- **`why_now` avg length**: 58 chars (0% ≥ 60 chars, considered substantive)
 - **Recommended actions**: 6 total — 50% specific, 0% generic
 
 ### Persistence
@@ -51,23 +51,23 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 211 |
-| `msrc_update_guide` | 8 |
-| `thehackernews` | 6 |
-| `bleepingcomputer` | 4 |
-| `github_changelog` | 4 |
+| `nvd` | 17 |
+| `msrc_update_guide` | 11 |
+| `gh_security_blog` | 0 |
+| `bleepingcomputer` | 0 |
+| `krebs` | 0 |
 | _(+21 more)_ | … |
 
-**14 feeds returned 0 items this run.**
+**21 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-07-16 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-07-16 | 3 | 1 | 100% | 33% | 3 | 0 |
 | 2026-07-17 | 3 | 3 | 100% | 0% | 2 | 0 |
 | 2026-07-17 | 2 | 2 | 100% | 100% | 2 | 0 |
 | 2026-07-17 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-07-17 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-07-17 | 3 | ? | 100% | 0% | 3 | 0 |
+| 2026-07-18 | 3 | 3 | 100% | 0% | 3 | 0 |

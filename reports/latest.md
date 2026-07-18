@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-18T00:00:54.700245+00:00
+generated_at: 2026-07-18T10:34:17.127569+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-16009 in itsourcecode Hospital Management System, CVE-2026-15943 in Keycloak keycloak-services component, and CVE-2026-16014 in code-projects Hospital Bed Management System. Internet-facing applications and services are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using the affected software products, as no patches are currently available.
+The highest-risk items this period are CVE-2026-47866 and CVE-2026-47867 in VMware Avi Load Balancer, as well as CVE-2026-16077, CVE-2026-16075, and CVE-2026-16076 in AstrBotDevs AstrBot. These vulnerabilities expose internet-facing load balancers and bot applications to remote code execution and authorization bypass attacks, with no patches currently available. The single most time-sensitive action is to isolate and monitor VMware Avi Load Balancer and AstrBotDevs AstrBot instances, as no patches are currently available for these critical vulnerabilities.
 
-## CVE-2026-16009: itsourcecode Hospital Management System RCE (risk: 70)
-[P1] A vulnerability was detected in itsourcecode Hospital Management System 1.0, allowing for remote code execution. No patch is currently available. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-47867: VMware Avi Load Balancer RCE (risk: 80)
+[P1] VMware Avi Load Balancer contains a remote code execution vulnerability, allowing malicious actors to execute arbitrary code. No patch is currently available. Why now: Reported vulnerability in widely used load balancer product. (confidence: 0.80)
 
-- [CVE-2026-16009](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-16009)
+- [CVE-2026-47867](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cveId=CVE-2026-47867)
 
-## CVE-2026-15943: Keycloak keycloak-services component flaw (risk: 70)
-[P1] A flaw was found in the Keycloak keycloak-services component, which handles the authentication and authorization. No patch is currently available. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-47866: VMware Avi Load Balancer Auth Bypass (risk: 70)
+[P1] VMware Avi Load Balancer contains an authorization bypass vulnerability, allowing malicious actors to gain unauthorized access. No patch is currently available. Why now: Reported vulnerability in widely used load balancer product. (confidence: 0.80)
 
-- [CVE-2026-15943](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-15943)
+- [CVE-2026-47866](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cveId=CVE-2026-47866)
 
-## CVE-2026-16014: code-projects Hospital Bed Management System vulnerability (risk: 70)
-[P1] A vulnerability was found in code-projects Hospital Bed Management System 1.0. No patch is currently available. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-16077: AstrBotDevs AstrBot Vulnerability (risk: 60)
+[P2] AstrBotDevs AstrBot contains a vulnerability, allowing malicious actors to gain unauthorized access. No patch is currently available. Why now: Reported vulnerability in widely used bot application. (confidence: 0.70)
 
-- [CVE-2026-16014](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-16014)
+- [CVE-2026-16077](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cveId=CVE-2026-16077)
