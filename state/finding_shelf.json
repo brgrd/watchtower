@@ -7085,7 +7085,7 @@
     "run_count": 1,
     "title": "CVE-2026-47866: VMware Avi Load Balancer Auth Bypass",
     "last_problem_type": "auth_bypass",
-    "last_affects": "service",
+    "last_affects": "application",
     "last_classification_confidence": 0.9
   },
   "cve:CVE-2026-16077": {
@@ -7096,5 +7096,14 @@
     "last_problem_type": "auth_bypass",
     "last_affects": "application",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-47865": {
+    "first_seen": "2026-07-18",
+    "last_seen": "2026-07-18",
+    "run_count": 1,
+    "title": "CVE-2026-47865: VMware Avi Load Balancer Auth Bypass",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
