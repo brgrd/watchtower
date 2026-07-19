@@ -1,1 +1,11 @@
-{}
+{
+  "ip:37.0.3.1": {
+    "type": "Network IOC",
+    "first_seen": "2026-07-19",
+    "run_count": 1,
+    "cards": [
+      "Critical NGINX Vulnerability"
+    ],
+    "last_seen": "2026-07-19"
+  }
+}
