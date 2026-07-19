@@ -7231,5 +7231,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-16227": {
+    "first_seen": "2026-07-19",
+    "last_seen": "2026-07-19",
+    "run_count": 1,
+    "title": "CVE-2026-16227",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-53373": {
+    "first_seen": "2026-07-19",
+    "last_seen": "2026-07-19",
+    "run_count": 1,
+    "title": "CVE-2026-53373",
+    "last_problem_type": "rce",
+    "last_affects": "foundation",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-16228": {
+    "first_seen": "2026-07-19",
+    "last_seen": "2026-07-19",
+    "run_count": 1,
+    "title": "CVE-2026-16228",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
