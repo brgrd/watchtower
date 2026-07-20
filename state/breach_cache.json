@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-19T21:02:48.217914+00:00",
+  "fetched_at": "2026-07-20T11:09:28.761192+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -12007,6 +12007,33 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#PaddyPower",
       "summary": "In October 2010, the Irish bookmaker Paddy Power suffered a data breach that exposed 750,000 customer records with nearly 600,000 unique email addresses. The breach was not disclosed until July 2014 and contained extensive personal information including names, addresses, phone numbers and plain text security questions and answers.",
       "action": "monitor"
+    },
+    {
+      "id": "hibp:paidwork-2026-03-29",
+      "name": "Paidwork",
+      "title": "Paidwork",
+      "date": "2026-03-29",
+      "added": "2026-07-19",
+      "affected_count": 23272765,
+      "data_classes": [
+        "Bank account numbers",
+        "Dates of birth",
+        "Device information",
+        "Education levels",
+        "Email addresses",
+        "Financial transactions",
+        "Genders",
+        "IP addresses",
+        "Names",
+        "Passwords",
+        "Personal interests",
+        "Phone numbers",
+        "Physical addresses",
+        "Profile photos"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Paidwork",
+      "summary": "In March 2026, hackers claimed they had obtained data from the gig economy platform Paidwork which they then listed for sale. Almost 11GB of data allegedly obtained from the platform was subsequently posted publicly in July and contained over 23M unique email addresses. The breach also included a broad range of other data relating to the operation of the platform including user profile data, banki",
+      "action": "rotate"
     },
     {
       "id": "hibp:pampling-2020-01-04",
