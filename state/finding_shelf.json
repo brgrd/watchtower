@@ -7303,5 +7303,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-14448": {
+    "first_seen": "2026-07-20",
+    "last_seen": "2026-07-20",
+    "run_count": 1,
+    "title": "CVE-2026-14448: OS Command Injection",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-16246": {
+    "first_seen": "2026-07-20",
+    "last_seen": "2026-07-20",
+    "run_count": 1,
+    "title": "CVE-2026-16246: BRAIN2 LogPathConfig.exe",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-15588": {
+    "first_seen": "2026-07-20",
+    "last_seen": "2026-07-20",
+    "run_count": 1,
+    "title": "CVE-2026-15588: GDB DoS",
+    "last_problem_type": "dos",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }

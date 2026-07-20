@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-20T11:09:28.761192+00:00",
+  "fetched_at": "2026-07-20T22:08:47.468399+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -15129,6 +15129,25 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#SundryFiles",
       "summary": "In January 2022, the now defunct file upload service Sundry Files suffered a data breach that exposed 274k unique email addresses. The data also included usernames, IP addresses and passwords stored as salted SHA-256 hashes.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:suno-2025-11-25",
+      "name": "Suno",
+      "title": "Suno",
+      "date": "2025-11-25",
+      "added": "2026-07-20",
+      "affected_count": 55282226,
+      "data_classes": [
+        "Email addresses",
+        "Names",
+        "Partial credit card data",
+        "Phone numbers",
+        "Physical addresses",
+        "Purchases"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Suno",
+      "summary": "In November 2025, AI music generation tool Suno suffered a data breach that later came to light in July the following year. The data contained over 55M unique email addresses. Phone numbers were also present where they had been used as the sign-up method. Although representing a small portion of the corpus, the breach also included tens of thousands of Stripe records relating to purchases, contain",
+      "action": "monitor"
     },
     {
       "id": "hibp:superdraft-2024-10-27",
