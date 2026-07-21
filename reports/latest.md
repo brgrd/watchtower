@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-21T00:05:18.721270+00:00
+generated_at: 2026-07-21T09:33:18.788965+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-15813 in krono, CVE-2026-15588 in GDB, and CVE-2026-16246 in BRAIN2. Internet-facing firewalls and container orchestration nodes are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by these CVEs, although no patches are currently available.
+The highest-risk items this period are CVE-2026-16324 in Metasoft MetaCRM, CVE-2026-47128 in nono AI agents, and CVE-2026-44510 in Rsync. Internet-facing systems and applications are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using Rsync and nono AI agents, as patches are not currently available.
 
-## CVE-2026-15813: krono RCE (risk: 40)
-[P2] A vulnerability in krono's network packet de-fragmentation engine allows for remote code execution. No patch is available, and it is not currently exploited in the wild. Why now: Newly disclosed vulnerability with potential for high impact. (confidence: 0.80)
+## CVE-2026-16324: MetaCRM RCE (risk: 70)
+[P1] Metasoft MetaCRM up to 6.4.0 Beta06 is vulnerable to a critical RCE flaw, with no patch available. Exploitation is not yet reported in the wild, but the vulnerability is highly critical. Why now: Public disclosure of the vulnerability without a patch available. (confidence: 0.80)
 
-- [CVE-2026-15813](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2026-16324](https://nvd.nist.gov/v1/nvd.xhtml?nvdlisttype=cve&cvename=CVE-2026-16324)
 
-## CVE-2026-15588: GDB DoS (risk: 40)
-[P2] A denial-of-service vulnerability in GDB allows for resource exhaustion. No patch is available, and it is not currently exploited in the wild. Why now: Newly disclosed vulnerability with potential for high impact. (confidence: 0.80)
+## CVE-2026-47128: nono AI RCE (risk: 70)
+[P1] nono AI agents are vulnerable to a critical RCE flaw, with no patch available. Exploitation is not yet reported in the wild, but the vulnerability is highly critical. Why now: Public disclosure of the vulnerability without a patch available. (confidence: 0.80)
 
-- [CVE-2026-15588](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2026-47128](https://nvd.nist.gov/v1/nvd.xhtml?nvdlisttype=cve&cvename=CVE-2026-47128)
 
-## CVE-2026-16246: BRAIN2 RCE (risk: 40)
-[P2] A vulnerability in BRAIN2's LogPathConfig.exe allows for remote code execution. No patch is available, and it is not currently exploited in the wild. Why now: Newly disclosed vulnerability with potential for high impact. (confidence: 0.80)
+## CVE-2026-44510: Rsync RCE (risk: 70)
+[P1] Rsync is vulnerable to a critical RCE flaw, with no patch available. Exploitation is not yet reported in the wild, but the vulnerability is highly critical. Why now: Public disclosure of the vulnerability without a patch available. (confidence: 0.80)
 
-- [CVE-2026-16246](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2026-44510](https://nvd.nist.gov/v1/nvd.xhtml?nvdlisttype=cve&cvename=CVE-2026-44510)

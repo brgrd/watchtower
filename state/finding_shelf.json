@@ -7339,5 +7339,32 @@
     "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-16324": {
+    "first_seen": "2026-07-21",
+    "last_seen": "2026-07-21",
+    "run_count": 1,
+    "title": "CVE-2026-16324: MetaCRM RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-47128": {
+    "first_seen": "2026-07-21",
+    "last_seen": "2026-07-21",
+    "run_count": 1,
+    "title": "CVE-2026-47128: nono AI RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-44510": {
+    "first_seen": "2026-07-21",
+    "last_seen": "2026-07-21",
+    "run_count": 1,
+    "title": "CVE-2026-44510: Rsync RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
