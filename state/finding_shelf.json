@@ -7393,5 +7393,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-60137": {
+    "first_seen": "2026-07-21",
+    "last_seen": "2026-07-21",
+    "run_count": 1,
+    "title": "CVE-2026-60137: WordPress Core SQL Injection",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-50522": {
+    "first_seen": "2026-07-21",
+    "last_seen": "2026-07-21",
+    "run_count": 1,
+    "title": "CVE-2026-50522: SharePoint RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.99
+  },
+  "cve:CVE-2026-16461": {
+    "first_seen": "2026-07-21",
+    "last_seen": "2026-07-21",
+    "run_count": 1,
+    "title": "CVE-2026-16461: rpcbind rpcinfo Utility Buffer Overflow",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.7
   }
 }
