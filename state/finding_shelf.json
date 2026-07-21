@@ -7366,5 +7366,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-6875": {
+    "first_seen": "2026-07-21",
+    "last_seen": "2026-07-21",
+    "run_count": 1,
+    "title": "ServiceNow AI Platform Flaw",
+    "last_problem_type": "rce",
+    "last_affects": "service",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-55833": {
+    "first_seen": "2026-07-21",
+    "last_seen": "2026-07-21",
+    "run_count": 1,
+    "title": "CVE-2026-55833: Netty RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-16327": {
+    "first_seen": "2026-07-21",
+    "last_seen": "2026-07-21",
+    "run_count": 1,
+    "title": "CVE-2026-16327: D-Link DNS-320 Vulnerability",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
