@@ -7510,9 +7510,9 @@
     "last_seen": "2026-07-22",
     "run_count": 1,
     "title": "CVE-2026-63030: WordPress Core SQL Injection",
-    "last_problem_type": "rce",
+    "last_problem_type": "data_tampering",
     "last_affects": "application",
-    "last_classification_confidence": 0.95
+    "last_classification_confidence": 0.9
   },
   "cve:CVE-2026-10674": {
     "first_seen": "2026-07-22",
@@ -7522,5 +7522,14 @@
     "last_problem_type": "rce",
     "last_affects": "foundation",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-16488": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "CVE-2026-16488: QUSETIONS MiniCode-Python Vulnerability",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.7
   }
 }
