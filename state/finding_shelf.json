@@ -976,14 +976,14 @@
   },
   "e58a8c9eb921": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-07-07",
-    "run_count": 4,
+    "last_seen": "2026-07-22",
+    "run_count": 5,
     "title": "GCP-2026-027"
   },
   "1ff5a474ecdb": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-07-07",
-    "run_count": 4,
+    "last_seen": "2026-07-22",
+    "run_count": 5,
     "title": "GCP-2026-025"
   },
   "99356758fb15": {
@@ -994,26 +994,26 @@
   },
   "b9e9d2dca15f": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-07-07",
-    "run_count": 6,
+    "last_seen": "2026-07-22",
+    "run_count": 7,
     "title": "GCP-2026-028"
   },
   "e799fb3564e7": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-07-07",
-    "run_count": 4,
+    "last_seen": "2026-07-22",
+    "run_count": 5,
     "title": "GCP-2026-024"
   },
   "054859b85814": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-07-07",
-    "run_count": 4,
+    "last_seen": "2026-07-22",
+    "run_count": 5,
     "title": "GCP-2026-022"
   },
   "906f29eec50d": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-07-07",
-    "run_count": 4,
+    "last_seen": "2026-07-22",
+    "run_count": 5,
     "title": "GCP-2026-020"
   },
   "945ada04535b": {
@@ -3103,8 +3103,8 @@
   },
   "617f24eefc39": {
     "first_seen": "2026-06-09",
-    "last_seen": "2026-07-07",
-    "run_count": 3,
+    "last_seen": "2026-07-22",
+    "run_count": 4,
     "title": "GCP-2026-030"
   },
   "3141ccd5023f": {
@@ -3133,8 +3133,8 @@
   },
   "73edcd4547e1": {
     "first_seen": "2026-06-09",
-    "last_seen": "2026-07-07",
-    "run_count": 3,
+    "last_seen": "2026-07-22",
+    "run_count": 4,
     "title": "GCP-2026-036"
   },
   "cve:CVE-2026-11645": {
@@ -4591,8 +4591,8 @@
   },
   "4ef43c3ae997": {
     "first_seen": "2026-06-24",
-    "last_seen": "2026-07-07",
-    "run_count": 2,
+    "last_seen": "2026-07-22",
+    "run_count": 3,
     "title": "GCP-2026-041"
   },
   "0149ede49c0d": {
@@ -7531,5 +7531,41 @@
     "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.7
+  },
+  "040aa0a8d650": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
+  },
+  "73a6efb1fcbc": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "Hackers Exploit Windmill Flaw to Read Arbitrary Server Files Without Authentication"
+  },
+  "17fe8890ca97": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "Adobe Acrobat Extension Flaw Let Malicious Sites Read WhatsApp Web Data"
+  },
+  "cve:CVE-2026-44190": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "CVE-2026-44190"
+  },
+  "652a824e2a2f": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "Ubuntu snap-confine Flaw Could Give Local Users Root on Default Desktop Installs"
+  },
+  "cve:CVE-2026-14551": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "CVE-2026-14551"
   }
 }
