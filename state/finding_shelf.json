@@ -7396,8 +7396,8 @@
   },
   "cve:CVE-2026-60137": {
     "first_seen": "2026-07-21",
-    "last_seen": "2026-07-21",
-    "run_count": 1,
+    "last_seen": "2026-07-22",
+    "run_count": 2,
     "title": "CVE-2026-60137: WordPress Core SQL Injection",
     "last_problem_type": "rce",
     "last_affects": "application",
@@ -7420,5 +7420,89 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.7
+  },
+  "d28f2a2e992e": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "Qilin Ransomware Attackers Exploit PAN-OS Authentication Bypass for Initial Access"
+  },
+  "360f4560f57c": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "Critical SharePoint RCE flaw exploited to steal machine keys"
+  },
+  "cve:CVE-2026-16317": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "CVE-2026-16317 and CVE-2026-16318: Issues with s2n-tls: an open-source implementation of the TLS/SSL protocols"
+  },
+  "cve:CVE-2026-15957": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "CVE-2026-15957 - Uncontrolled recursion in smithy-rs generated JSON, CBOR, and XML deserializers allows unauthenticated "
+  },
+  "cve:CVE-2021-27137": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "CVE-2021-27137 — DD-WRT Stack-Based Buffer Overflow Vulnerability"
+  },
+  "cve:CVE-2026-0770": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "CVE-2026-0770 — Langflow Inclusion of Functionality from Untrusted Control Sphere Vulnerability"
+  },
+  "1b3c27a08e42": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "Trump Orders Defense Contractors to Map Software, Suppliers Across Critical Supply Chains"
+  },
+  "d27ff9abbf70": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "Apple Fixes Hide My Email Bug That Exposed Real Addresses in Mail Logs"
+  },
+  "dbd3a1c3151b": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "AWS Kiro Flaw Let a Poisoned Web Page Rewrite Its Config and Run Code"
+  },
+  "1b6c3cfee691": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "Google Launches Gemini 3.5 Flash Cyber AI to Find and Fix Software Vulnerabilities"
+  },
+  "1dfd34a39769": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "Anubis ransomware claims Coca-Cola Fairlife attack, threatens data leak"
+  },
+  "7082c0fedf53": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "FakeGit campaign uses 7,600 GitHub repos to push SmartLoader malware"
+  },
+  "ae6773194bfd": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "Zimbra Patches Critical SNMP Command Injection and Four XSS Vulnerabilities"
+  },
+  "ceb90dfc371b": {
+    "first_seen": "2026-07-22",
+    "last_seen": "2026-07-22",
+    "run_count": 1,
+    "title": "Police dismantle Kratos phishing platform, arrest developer"
   }
 }
