@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-23T00:10:09.833711+00:00
+generated_at: 2026-07-23T10:32:25.914469+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,14 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-50522 in Microsoft SharePoint, CVE-2026-16551 in Thinkst Applied Research OpenCanary, and CVE-2026-61391 in Hikvision cameras. Internet-facing SharePoint servers and Hikvision cameras are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to isolate and monitor Hikvision cameras, as a patch is not currently available.
+The highest-risk items this period are CVE-2026-50522 in Microsoft SharePoint, CVE-2026-38765 in Unistal Systems Pvt. Ltd. Protegent 360, and CVE-2026-60367 in Oracle Platform Security for Java. Internet-facing SharePoint servers and Oracle Java applications are most exposed due to the lack of available patches for these vulnerabilities. The single most time-sensitive action is to patch or isolate Microsoft SharePoint servers to prevent exploitation of CVE-2026-50522, although no patch is currently available.
 
 ## CVE-2026-50522: Microsoft SharePoint RCE (risk: 100)
-[P1] Microsoft SharePoint contains a deserialization of untrusted data vulnerability that could allow an unauthorized attack. This vulnerability is being exploited in the wild and a patch is not currently available. Why now: Reported exploitation in the wild (confidence: 0.90)
+[P1] Microsoft SharePoint contains a deserialization of untrusted data vulnerability, which could allow an unauthorized attack. This vulnerability is being exploited in the wild and no patch is currently available. Why now: Reported exploitation in the wild (confidence: 0.90)
 
-- [CVE-2026-50522](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-50522)
+- [CVE-2026-50522](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-50522)
 
-## CVE-2026-16551: Thinkst Applied Research OpenCanary DoS (risk: 40)
-[P2] Thinkst Applied Research OpenCanary contains a Denial-of-Service vulnerability in the MongoDB module. This vulnerability is not being exploited in the wild and a patch is not currently available. Why now: Newly disclosed vulnerability (confidence: 0.60)
+## CVE-2026-38765: Unistal Systems Pvt. Ltd. Protegent 360 Local Attack (risk: 40)
+[P2] An issue in Unistal Systems Pvt. Ltd. Protegent 360 v2.0.0.4 allows a local attack. This vulnerability has not been exploited in the wild and no patch is currently available. Why now: Newly disclosed vulnerability (confidence: 0.60)
 
-- [CVE-2026-16551](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-16551)
-
-## CVE-2026-61391: Hikvision Camera Buffer Overflow (risk: 40)
-[P2] Hikvision cameras contain a stack-based buffer overflow vulnerability. This vulnerability is not being exploited in the wild and a patch is not currently available. Why now: Newly disclosed vulnerability (confidence: 0.60)
-
-- [CVE-2026-61391](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-61391)
+- [CVE-2026-38765](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-38765)
