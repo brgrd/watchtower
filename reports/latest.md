@@ -1,81 +1,25 @@
 ---
-generated_at: 2026-07-22T22:12:45.871771+00:00
+generated_at: 2026-07-23T00:10:09.833711+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CISA Adds Two Known Exploited Vulnerabilities to Catalog (risk: 70)
-1 related updates.
+## Analyst Summary
 
-- [CISA Adds Two Known Exploited Vulnerabilities to Catalog](https://www.cisa.gov/news-events/alerts/2026/07/22/cisa-adds-two-known-exploited-vulnerabilities-catalog)
+The highest-risk items this period are CVE-2026-50522 in Microsoft SharePoint, CVE-2026-16551 in Thinkst Applied Research OpenCanary, and CVE-2026-61391 in Hikvision cameras. Internet-facing SharePoint servers and Hikvision cameras are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to isolate and monitor Hikvision cameras, as a patch is not currently available.
 
-## Hackers Exploit Windmill Flaw to Read Arbitrary Server Files Without Authentication (risk: 70)
-1 related updates.
+## CVE-2026-50522: Microsoft SharePoint RCE (risk: 100)
+[P1] Microsoft SharePoint contains a deserialization of untrusted data vulnerability that could allow an unauthorized attack. This vulnerability is being exploited in the wild and a patch is not currently available. Why now: Reported exploitation in the wild (confidence: 0.90)
 
-- [Hackers Exploit Windmill Flaw to Read Arbitrary Server Files Without Authentication](https://thehackernews.com/2026/07/hackers-exploit-windmill-flaw-to-read.html)
+- [CVE-2026-50522](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-50522)
 
-## Adobe Acrobat Extension Flaw Let Malicious Sites Read WhatsApp Web Data (risk: 70)
-1 related updates.
+## CVE-2026-16551: Thinkst Applied Research OpenCanary DoS (risk: 40)
+[P2] Thinkst Applied Research OpenCanary contains a Denial-of-Service vulnerability in the MongoDB module. This vulnerability is not being exploited in the wild and a patch is not currently available. Why now: Newly disclosed vulnerability (confidence: 0.60)
 
-- [Adobe Acrobat Extension Flaw Let Malicious Sites Read WhatsApp Web Data](https://thehackernews.com/2026/07/adobe-acrobat-extension-flaw-let.html)
+- [CVE-2026-16551](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-16551)
 
-## GCP-2026-030 (risk: 70)
-1 related updates.
+## CVE-2026-61391: Hikvision Camera Buffer Overflow (risk: 40)
+[P2] Hikvision cameras contain a stack-based buffer overflow vulnerability. This vulnerability is not being exploited in the wild and a patch is not currently available. Why now: Newly disclosed vulnerability (confidence: 0.60)
 
-- [GCP-2026-030](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-030)
-
-## CVE-2026-44190 (risk: 70)
-1 related updates.
-
-- [CVE-2026-44190](https://nvd.nist.gov/vuln/detail/CVE-2026-44190)
-
-## GCP-2026-027 (risk: 55)
-1 related updates.
-
-- [GCP-2026-027](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-027)
-
-## GCP-2026-025 (risk: 55)
-1 related updates.
-
-- [GCP-2026-025](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-025)
-
-## GCP-2026-028 (risk: 55)
-1 related updates.
-
-- [GCP-2026-028](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-028)
-
-## GCP-2026-024 (risk: 55)
-1 related updates.
-
-- [GCP-2026-024](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-024)
-
-## GCP-2026-020 (risk: 55)
-1 related updates.
-
-- [GCP-2026-020](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-020)
-
-## GCP-2026-022 (risk: 55)
-1 related updates.
-
-- [GCP-2026-022](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-022)
-
-## Ubuntu snap-confine Flaw Could Give Local Users Root on Default Desktop Installs (risk: 40)
-1 related updates.
-
-- [Ubuntu snap-confine Flaw Could Give Local Users Root on Default Desktop Installs](https://thehackernews.com/2026/07/ubuntu-snap-confine-flaw-could-give.html)
-
-## GCP-2026-041 (risk: 40)
-1 related updates.
-
-- [GCP-2026-041](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-041)
-
-## CVE-2026-14551 (risk: 40)
-1 related updates.
-
-- [CVE-2026-14551](https://nvd.nist.gov/vuln/detail/CVE-2026-14551)
-
-## GCP-2026-036 (risk: 40)
-1 related updates.
-
-- [GCP-2026-036](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-036)
+- [CVE-2026-61391](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-61391)
