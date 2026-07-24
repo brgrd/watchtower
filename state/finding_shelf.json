@@ -7729,5 +7729,23 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-15243": {
+    "first_seen": "2026-07-24",
+    "last_seen": "2026-07-24",
+    "run_count": 1,
+    "title": "CVE-2026-15243: Apereo CAS Client RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-16730": {
+    "first_seen": "2026-07-24",
+    "last_seen": "2026-07-24",
+    "run_count": 1,
+    "title": "CVE-2026-16730: dbus-broker Privilege Escalation",
+    "last_problem_type": "privilege_escalation",
+    "last_affects": "application",
+    "last_classification_confidence": 0.4
   }
 }
