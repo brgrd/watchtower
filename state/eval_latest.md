@@ -1,41 +1,42 @@
-# Watchtower Pipeline Eval — 2026-07-25T09:06:59Z
+# Watchtower Pipeline Eval — 2026-07-25T11:20:23Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 23 |
-| After dedup + CVE merge | 23 |
-| Sent to Groq | 19 |
-| Groq findings returned | 0 |
-| Final cards rendered | 15 |
-| **Pipeline yield** | **15/23 (65.2%)** |
+| Items polled (raw) | 290 |
+| After dedup + CVE merge | 286 |
+| Sent to Groq | 26 |
+| Groq findings returned | 3 |
+| Passed quality gate | 3 |
+| Final cards rendered | 3 |
+| **Pipeline yield** | **3/290 (1.0%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 13,055 chars
-- **Parse**: ✗  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 6902
+- **Payload**: 9,602 chars
+- **Parse**: ✓  |  **Retries**: 0
+- **Rate limit remaining** — requests: 999, tokens: 7684
 
 ## Card Quality
 
-**15 cards** — P1: 0, P2: 0, P3: 15
+**3 cards** — P1: 3, P2: 0, P3: 0
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 44.3 / 45 |
-| Tactic coverage | 0% |
+| Risk score mean / p90 | 70 / 70 |
+| Tactic coverage | 100% |
 | CVE coverage | 0% |
-| Patch status | unknown: 15 |
+| Patch status | unknown: 3 |
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 0 chars (0% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 0 total — 0% specific, 0% generic
+- **`why_now` avg length**: 23 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 3 total — 0% specific, 0% generic
 
 ### Persistence
 
-- New (run=1): **15** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
+- New (run=1): **3** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
 - Mean run_count: 1 | Mean shelf_days: 0
 
 ## Enrichment Hit Rates
@@ -50,11 +51,11 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 16 |
+| `nvd` | 283 |
 | `msrc_update_guide` | 4 |
+| `bleepingcomputer` | 1 |
 | `thehackernews` | 1 |
 | `securityweek` | 1 |
-| `darkreading` | 1 |
 | _(+21 more)_ | … |
 
 **21 feeds returned 0 items this run.**
@@ -63,10 +64,10 @@
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-07-23 | 2 | 1 | 100% | 50% | 2 | 0 |
 | 2026-07-23 | 3 | 2 | 67% | 67% | 3 | 0 |
 | 2026-07-23 | 2 | 1 | 100% | 50% | 2 | 0 |
 | 2026-07-24 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-07-24 | 2 | 2 | 100% | 0% | 2 | 0 |
 | 2026-07-24 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-07-24 | 2 | 1 | 100% | 0% | 2 | 0 |
+| 2026-07-25 | 15 | ? | 0% | 0% | 15 | 0 |
