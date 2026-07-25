@@ -1,20 +1,81 @@
 ---
-generated_at: 2026-07-24T23:11:06.493283+00:00
+generated_at: 2026-07-25T09:07:08.906420+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Analyst Summary
+## CVE-2026-66337 (risk: 70)
+1 related updates.
 
-The highest-risk items this period are CVE-2026-15243 in Apereo CAS Client, CVE-2026-16730 in dbus-broker, and CVE-2026-10610 for local privilege escalation. Internet-facing systems and container orchestration nodes are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems affected by these CVEs, as no patches are currently available.
+- [CVE-2026-66337](https://nvd.nist.gov/vuln/detail/CVE-2026-66337)
 
-## CVE-2026-15243: Apereo CAS Client RCE (risk: 70)
-[P1] Apereo CAS Client accepts any CA-trusted certificate for any hostname, provided. No patch is available, and exploitation status is unknown. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.80)
+## CVE-2026-66338 (risk: 70)
+1 related updates.
 
-- [CVE-2026-15243](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-15243)
+- [CVE-2026-66338](https://nvd.nist.gov/vuln/detail/CVE-2026-66338)
 
-## CVE-2026-16730: dbus-broker Privilege Escalation (risk: 40)
-[P2] A flaw was found in dbus-broker, allowing for potential privilege escalation. No patch or exploit is currently available. Why now: The vulnerability affects a core system component, increasing the potential impact of exploitation. (confidence: 0.70)
+## Researcher Publishes GitLab RCE PoC Letting Authenticated Users Run Commands as Git (risk: 45)
+1 related updates.
 
-- [CVE-2026-16730](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-16730)
+- [Researcher Publishes GitLab RCE PoC Letting Authenticated Users Run Commands as Git](https://thehackernews.com/2026/07/researcher-publishes-gitlab-rce-poc.html)
+
+## CVE-2025-71408 (risk: 40)
+1 related updates.
+
+- [CVE-2025-71408](https://nvd.nist.gov/vuln/detail/CVE-2025-71408)
+
+## CVE-2026-55985 (risk: 40)
+1 related updates.
+
+- [CVE-2026-55985](https://nvd.nist.gov/vuln/detail/CVE-2026-55985)
+
+## CVE-2026-16280 (risk: 40)
+1 related updates.
+
+- [CVE-2026-16280](https://nvd.nist.gov/vuln/detail/CVE-2026-16280)
+
+## CVE-2026-61886 (risk: 40)
+1 related updates.
+
+- [CVE-2026-61886](https://nvd.nist.gov/vuln/detail/CVE-2026-61886)
+
+## CVE-2026-60135 (risk: 40)
+1 related updates.
+
+- [CVE-2026-60135](https://nvd.nist.gov/vuln/detail/CVE-2026-60135)
+
+## CVE-2026-61892 (risk: 40)
+1 related updates.
+
+- [CVE-2026-61892](https://nvd.nist.gov/vuln/detail/CVE-2026-61892)
+
+## CVE-2026-60134 (risk: 40)
+1 related updates.
+
+- [CVE-2026-60134](https://nvd.nist.gov/vuln/detail/CVE-2026-60134)
+
+## CVE-2026-66339 (risk: 40)
+1 related updates.
+
+- [CVE-2026-66339](https://nvd.nist.gov/vuln/detail/CVE-2026-66339)
+
+## CVE-2026-66373 (risk: 40)
+1 related updates.
+
+- [CVE-2026-66373](https://nvd.nist.gov/vuln/detail/CVE-2026-66373)
+
+## CVE-2026-61884 (risk: 40)
+1 related updates.
+
+- [CVE-2026-61884](https://nvd.nist.gov/vuln/detail/CVE-2026-61884)
+
+## CVE-2026-15425 (risk: 40)
+1 related updates.
+
+- [CVE-2026-15425](https://nvd.nist.gov/vuln/detail/CVE-2026-15425)
+
+## CVE-2026-66374 (risk: 40)
+1 related updates.
+
+- [CVE-2026-66374](https://nvd.nist.gov/vuln/detail/CVE-2026-66374)
