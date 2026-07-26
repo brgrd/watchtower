@@ -7936,5 +7936,32 @@
     "last_problem_type": "data_tampering",
     "last_affects": "application",
     "last_classification_confidence": 0.7
+  },
+  "cve:CVE-2026-15962": {
+    "first_seen": "2026-07-26",
+    "last_seen": "2026-07-26",
+    "run_count": 1,
+    "title": "CVE-2026-15962: Fluent Forms Pro Add On Pack RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-63720": {
+    "first_seen": "2026-07-26",
+    "last_seen": "2026-07-26",
+    "run_count": 1,
+    "title": "CVE-2026-63720: datamodel-code-generator Code Injection",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-17434": {
+    "first_seen": "2026-07-26",
+    "last_seen": "2026-07-26",
+    "run_count": 1,
+    "title": "CVE-2026-17434: nanocoai NanoClaw Vulnerability",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }

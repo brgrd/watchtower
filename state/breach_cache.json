@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-25T21:04:00.482937+00:00",
+  "fetched_at": "2026-07-26T09:21:45.738327+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -11848,7 +11848,7 @@
       "title": "Operation Endgame 4.0",
       "date": "2026-06-18",
       "added": "2026-06-18",
-      "affected_count": 4160519,
+      "affected_count": 4348526,
       "data_classes": [
         "Email addresses",
         "Passwords"
