@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-26T09:21:44.569907+00:00
+generated_at: 2026-07-26T11:28:25.707724+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-15962 in Fluent Forms Pro Add On Pack, CVE-2026-63720 in datamodel-code-generator, and CVE-2026-17434 in nanocoai NanoClaw. Internet-facing WordPress installations and container orchestration nodes are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor for suspicious activity related to these vulnerabilities, as no patches are currently available.
+The highest-risk items this period are CVE-2026-63720 in datamodel-code-generator, CVE-2026-17432 in NousResearch hermes-agent, and CVE-2026-17433 in nanocoai NanoClaw. Internet-facing applications and services are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using datamodel-code-generator prior to version 0.70.0, as no patch is currently available.
 
-## CVE-2026-15962: Fluent Forms Pro Add On Pack RCE (risk: 70)
-[P1] The Fluent Forms Pro Add On Pack plugin for WordPress is vulnerable to PHP Object Injection, allowing for remote code execution. No patch is currently available. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-63720: datamodel-code-generator RCE (risk: 40)
+[P1] datamodel-code-generator prior to version 0.70.0 contains a code injection vulnerability, with no patch available. This vulnerability can be exploited for arbitrary code execution. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.80)
 
-- [CVE-2026-15962](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2026-63720](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=NVD-CVE-2026-63720)
 
-## CVE-2026-63720: datamodel-code-generator Code Injection (risk: 70)
-[P1] datamodel-code-generator prior to version 0.70.0 contains a code injection vulnerability, allowing for arbitrary code execution. No patch is currently available. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-17432: NousResearch hermes-agent Vulnerability (risk: 40)
+[P2] A vulnerability was detected in NousResearch hermes-agent 2026.6.5, with no patch or workaround available. This vulnerability can be exploited for unauthorized access. Why now: Lack of patch or workaround availability increases the risk of exploitation. (confidence: 0.70)
 
-- [CVE-2026-63720](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2026-17432](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=NVD-CVE-2026-17432)
 
-## CVE-2026-17434: nanocoai NanoClaw Vulnerability (risk: 70)
-[P1] A flaw has been found in nanocoai NanoClaw up to 2.0.64, allowing for potential code execution. No patch is currently available. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-17433: nanocoai NanoClaw Vulnerability (risk: 40)
+[P2] A vulnerability was detected in nanocoai NanoClaw up to 2.0.64, with no patch or workaround available. This vulnerability can be exploited for unauthorized access. Why now: Lack of patch or workaround availability increases the risk of exploitation. (confidence: 0.70)
 
-- [CVE-2026-17434](https://www.nvd.nist.gov/v1/nvd.html)
+- [CVE-2026-17433](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=NVD-CVE-2026-17433)
