@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-26T11:28:25.707724+00:00
+generated_at: 2026-07-26T21:07:10.113096+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-63720 in datamodel-code-generator, CVE-2026-17432 in NousResearch hermes-agent, and CVE-2026-17433 in nanocoai NanoClaw. Internet-facing applications and services are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using datamodel-code-generator prior to version 0.70.0, as no patch is currently available.
+The highest-risk items this period are CVE-2026-17497 in NoteGen, CVE-2026-57978 in Microsoft Edge, and CVE-2026-17496 in NoteGen. Internet-facing applications and browser plugins are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor for and isolate any suspicious activity related to these CVEs, particularly in applications using the Tauri shell plugin or markdown-it, as patches are not currently available.
 
-## CVE-2026-63720: datamodel-code-generator RCE (risk: 40)
-[P1] datamodel-code-generator prior to version 0.70.0 contains a code injection vulnerability, with no patch available. This vulnerability can be exploited for arbitrary code execution. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.80)
+## CVE-2026-17497: NoteGen RCE (risk: 70)
+[P1] NoteGen before 0.32.0 grants the Tauri shell plugin shell:allow-execute capability, allowing for arbitrary code execution. No patch is currently available. Why now: Lack of available patch (confidence: 0.90)
 
-- [CVE-2026-63720](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=NVD-CVE-2026-63720)
+- [CVE-2026-17497](https://www.nvd.nist.gov/v1/nvd.xhtml?nvdlisttype=1)
 
-## CVE-2026-17432: NousResearch hermes-agent Vulnerability (risk: 40)
-[P2] A vulnerability was detected in NousResearch hermes-agent 2026.6.5, with no patch or workaround available. This vulnerability can be exploited for unauthorized access. Why now: Lack of patch or workaround availability increases the risk of exploitation. (confidence: 0.70)
+## CVE-2026-57978: Microsoft Edge Origin Validation Error (risk: 70)
+[P1] Origin validation error in Microsoft Edge allows an unauthorized entity to access sensitive data. No patch is currently available. Why now: Lack of available patch (confidence: 0.90)
 
-- [CVE-2026-17432](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=NVD-CVE-2026-17432)
+- [CVE-2026-57978](https://www.nvd.nist.gov/v1/nvd.xhtml?nvdlisttype=1)
 
-## CVE-2026-17433: nanocoai NanoClaw Vulnerability (risk: 40)
-[P2] A vulnerability was detected in nanocoai NanoClaw up to 2.0.64, with no patch or workaround available. This vulnerability can be exploited for unauthorized access. Why now: Lack of patch or workaround availability increases the risk of exploitation. (confidence: 0.70)
+## CVE-2026-17496: NoteGen Markdown-it Vulnerability (risk: 70)
+[P1] NoteGen before 0.32.0 renders AI chat responses with markdown-it configured with insecure settings, allowing for arbitrary code execution. No patch is currently available. Why now: Lack of available patch (confidence: 0.90)
 
-- [CVE-2026-17433](https://nvd.nist.gov/v1/nvd.xhtml?nvdid=NVD-CVE-2026-17433)
+- [CVE-2026-17496](https://www.nvd.nist.gov/v1/nvd.xhtml?nvdlisttype=1)
