@@ -8044,5 +8044,32 @@
     "last_problem_type": "data_tampering",
     "last_affects": "framework",
     "last_classification_confidence": 0.7
+  },
+  "cve:CVE-2026-17534": {
+    "first_seen": "2026-07-27",
+    "last_seen": "2026-07-27",
+    "run_count": 1,
+    "title": "CVE-2026-17534: Kimi Code SSRF",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-12495": {
+    "first_seen": "2026-07-27",
+    "last_seen": "2026-07-27",
+    "run_count": 1,
+    "title": "CVE-2026-12495: http DoS",
+    "last_problem_type": "dos",
+    "last_affects": "network",
+    "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-16812": {
+    "first_seen": "2026-07-27",
+    "last_seen": "2026-07-27",
+    "run_count": 1,
+    "title": "CVE-2026-16812: VeloCloud Orchestrator Security Issue",
+    "last_problem_type": "rce",
+    "last_affects": "service",
+    "last_classification_confidence": 0.8
   }
 }
