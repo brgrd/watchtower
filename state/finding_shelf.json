@@ -8069,7 +8069,25 @@
     "run_count": 1,
     "title": "CVE-2026-16812: VeloCloud Orchestrator Security Issue",
     "last_problem_type": "rce",
-    "last_affects": "service",
-    "last_classification_confidence": 0.8
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-14856": {
+    "first_seen": "2026-07-27",
+    "last_seen": "2026-07-27",
+    "run_count": 1,
+    "title": "CVE-2026-14856: File Upload XSS",
+    "last_problem_type": "misconfiguration",
+    "last_affects": "application",
+    "last_classification_confidence": 0.4
+  },
+  "cve:CVE-2026-45112": {
+    "first_seen": "2026-07-27",
+    "last_seen": "2026-07-27",
+    "run_count": 1,
+    "title": "CVE-2026-45112: Apache Thrift Allocation of Resources",
+    "last_problem_type": "dos",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
   }
 }
