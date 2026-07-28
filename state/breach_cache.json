@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-27T21:20:21.424771+00:00",
+  "fetched_at": "2026-07-28T09:41:42.606276+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -7790,6 +7790,27 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#HoundDawgs",
       "summary": "In December 2017, the Danish torrent tracker known as HoundDawgs suffered a data breach. More than 55GB of data was dumped publicly and whilst there was initially contention as to the severity of the incident, the data did indeed contain more than 45k unique email addresses complete extensive logs of torrenting activity, IP addresses and SHA1 passwords.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:houstoncitycollege-2026-06-16",
+      "name": "HoustonCityCollege",
+      "title": "Houston City College",
+      "date": "2026-06-16",
+      "added": "2026-07-28",
+      "affected_count": 831642,
+      "data_classes": [
+        "Academic records",
+        "Citizenship statuses",
+        "Dates of birth",
+        "Email addresses",
+        "Genders",
+        "Names",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#HoustonCityCollege",
+      "summary": "In June 2026, Houston City College was the target of a ShinyHunters \"pay or leak\" extortion campaign. Data allegedly obtained from the college was later published publicly and included 832k unique email addresses along with names, addresses, phone numbers, academic records, and other personal information relating to both current students and alumni.",
+      "action": "monitor"
     },
     {
       "id": "hibp:houzz-2018-05-23",
