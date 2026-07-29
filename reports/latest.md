@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-29T00:05:59.751529+00:00
+generated_at: 2026-07-29T10:47:15.205837+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,14 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-13110 in the Storegrowth Sales Booster plugin for WordPress, CVE-2026-15444 in the Tutor LMS plugin for WordPress, and CVE-2026-16773 in the WPBot plugin for WordPress. Internet-facing WordPress installations are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate WordPress installations using the affected plugins, as no patches are currently available.
+The highest-risk items this period are CVE-2026-47219 in find-my-way, CVE-2026-54658 in Hypequery, and CVE-2026-54719 in goshs. Internet-facing file servers and HTTP routers are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using find-my-way and Hypequery, as no patches are currently available.
 
-## CVE-2026-13110: WordPress Storegrowth Sales Booster (risk: 70)
-[P1] The Storegrowth Sales Booster plugin for WordPress is vulnerable to Missing Authorization, allowing attackers to exploit this vulnerability. No patch is currently available. Why now: Lack of patch and high exploitation potential (confidence: 0.80)
+## CVE-2026-47219: find-my-way RCE (risk: 70)
+[P1] find-my-way is vulnerable to RCE due to a Radix tree issue, with no patch available. Exploitation in the wild has not been reported, but a PoC exists. Why now: Public disclosure of the vulnerability and existence of a PoC increase the likelihood of exploitation. (confidence: 0.80)
 
-- [CVE-2026-13110](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-13110)
+- [CVE-2026-47219](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-47219)
 
-## CVE-2026-15444: WordPress Tutor LMS (risk: 70)
-[P1] The Tutor LMS plugin for WordPress is vulnerable to a vulnerability that could allow attackers to exploit this vulnerability. No patch is currently available. Why now: Lack of patch and high exploitation potential (confidence: 0.80)
+## CVE-2026-54658: Hypequery SQL Injection (risk: 70)
+[P1] Hypequery is vulnerable to SQL injection due to an issue in the escapeV function, with no patch available. Exploitation in the wild has not been reported, but a PoC exists. Why now: Public disclosure of the vulnerability and existence of a PoC increase the likelihood of exploitation. (confidence: 0.80)
 
-- [CVE-2026-15444](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-15444)
-
-## CVE-2026-16773: WordPress WPBot (risk: 70)
-[P1] The WPBot plugin for WordPress is vulnerable to Missing Authorization, allowing attackers to exploit this vulnerability. No patch is currently available. Why now: Lack of patch and high exploitation potential (confidence: 0.80)
-
-- [CVE-2026-16773](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-16773)
+- [CVE-2026-54658](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-54658)
