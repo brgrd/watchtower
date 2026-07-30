@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-30T11:59:19.154282+00:00
+generated_at: 2026-07-30T22:15:03.378380+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-62363 in ImageMagick, CVE-2026-17650 in Google Chrome, and CVE-2026-17651 in Google Chrome. Internet-facing systems running these software products are most exposed due to the lack of available patches. The most time-sensitive action is to monitor systems for potential exploitation of these vulnerabilities, particularly in Google Chrome prior to version 151.0.7922.72, for which no patch is currently available.
+The highest-risk items this period include CVE-2026-16970 in the IRIS web application, CVE-2026-16971 in the IRIS web application, and CVE-2026-16969 in the IRIS web application. Internet-facing web applications are most exposed right now due to the lack of patches for these vulnerabilities. The single most time-sensitive action is to patch or isolate the IRIS web application, specifically version 2.4.26, as no patches are currently available.
 
-## CVE-2026-62363: ImageMagick RCE (risk: 40)
-[P2] ImageMagick is vulnerable to a remote code execution vulnerability, but no patch is currently available. Exploitation in the wild has not been reported. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.80)
+## CVE-2026-16970: IRIS Web App Logout Vulnerability (risk: 70)
+[P1] The IRIS web application is vulnerable to a logout vulnerability, allowing attackers to gain unauthorized access. No patch is currently available. Why now: Reported attribution (unverified): None (confidence: 0.80)
 
-- [CVE-2026-62363](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-62363)
+- [CVE-2026-16970](https://cisa.gov/news-events/ics-advisories/icsa-26-211-09)
 
-## CVE-2026-17650: Google Chrome Use-after-Free (risk: 40)
-[P2] Google Chrome is vulnerable to a use-after-free vulnerability, but no patch is currently available. Exploitation in the wild has not been reported. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.80)
+## CVE-2026-16971: IRIS Web App Protection Vulnerability (risk: 70)
+[P1] The IRIS web application does not protect against certain attacks, allowing attackers to gain unauthorized access. No patch is currently available. Why now: Reported attribution (unverified): None (confidence: 0.80)
 
-- [CVE-2026-17650](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-17650)
+- [CVE-2026-16971](https://cisa.gov/news-events/ics-advisories/icsa-26-211-09)
 
-## CVE-2026-17651: Google Chrome Insufficient Validation (risk: 40)
-[P2] Google Chrome is vulnerable to an insufficient validation vulnerability, but no patch is currently available. Exploitation in the wild has not been reported. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.80)
+## CVE-2026-16969: IRIS Web App Vulnerability (risk: 70)
+[P1] The IRIS web application is vulnerable to a certain attack, allowing attackers to gain unauthorized access. No patch is currently available. Why now: Reported attribution (unverified): None (confidence: 0.80)
 
-- [CVE-2026-17651](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-17651)
+- [CVE-2026-16969](https://cisa.gov/news-events/ics-advisories/icsa-26-211-09)
