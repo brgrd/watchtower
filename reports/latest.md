@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-29T23:07:33.309924+00:00
+generated_at: 2026-07-30T09:36:42.050017+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-12895 in Frappe's ERPNext, CVE-2026-18220 in the BFD library's DLX ELF back, and CVE-2026-14488 in the Meta Box AIO plugin for WordPress. These vulnerabilities expose internet-facing web applications, particularly those using WordPress plugins, to potential SQL injection and out-of-bounds write attacks. The most time-sensitive action is to patch or isolate affected systems, specifically updating Frappe's ERPNext to a version newer than 15.107.0 and Frappe 15.107.2, as no patches are currently available for these vulnerabilities.
+The highest-risk items this period are CVE-2025-67406 in Sourcecodester Advocate office management system 1.0, CVE-2025-67405 in Sourcecodester CASAP Automated Enrollment System 1.0, and CVE-2025-69944 in kishan0725 Hospital Management System 4.0. Internet-facing applications and databases are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to isolate and monitor systems running these applications, as no patches are currently available.
 
-## CVE-2026-12895: Frappe ERPNext SQL Injection (risk: 70)
-[P1] Frappe's ERPNext versions 15.107.0 and Frappe 15.107.2 are vulnerable to SQL injection, allowing attackers to execute arbitrary SQL code. No patch is currently available. Why now: High-risk vulnerability with potential for significant impact. (confidence: 0.90)
+## CVE-2025-67406: Sourcecodester Office Management SQL Inject (risk: 70)
+[P1] Sourcecodester Advocate office management system 1.0 is vulnerable to SQL injection, with no patch available. This vulnerability can be exploited to gain unauthorized access to sensitive data. Why now: Lack of patch and potential for data breach. (confidence: 0.80)
 
-- [CVE-2026-12895](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-12895)
+- [CVE-2025-67406](https://www.sourcecodester.com)
 
-## CVE-2026-18220: BFD Library Out-of-Bounds Write (risk: 70)
-[P1] The BFD library's DLX ELF back is vulnerable to an out-of-bounds write, allowing attackers to execute arbitrary code. No patch is currently available. Why now: High-risk vulnerability with potential for significant impact. (confidence: 0.90)
+## CVE-2025-67405: Sourcecodester CASAP Enrollment SQL Inject (risk: 70)
+[P1] Sourcecodester CASAP Automated Enrollment System 1.0 is vulnerable to SQL injection, with no patch available. This vulnerability can be exploited to gain unauthorized access to sensitive data. Why now: Lack of patch and potential for data breach. (confidence: 0.80)
 
-- [CVE-2026-18220](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-18220)
+- [CVE-2025-67405](https://www.sourcecodester.com)
 
-## CVE-2026-14488: Meta Box AIO Plugin Vulnerability (risk: 60)
-[P2] The Meta Box AIO plugin for WordPress is vulnerable to missing authorization, allowing attackers to access sensitive data. No patch is currently available. Why now: Medium-risk vulnerability with potential for significant impact. (confidence: 0.80)
+## CVE-2025-69944: kishan0725 Hospital Management SQL Inject (risk: 70)
+[P1] kishan0725 Hospital Management System 4.0 is vulnerable to SQL injection, with no patch available. This vulnerability can be exploited to gain unauthorized access to sensitive data. Why now: Lack of patch and potential for data breach. (confidence: 0.80)
 
-- [CVE-2026-14488](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-14488)
+- [CVE-2025-69944](https://www.sourcecodester.com)
