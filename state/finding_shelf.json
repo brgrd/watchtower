@@ -8296,5 +8296,32 @@
     "last_problem_type": "data_tampering",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-62363": {
+    "first_seen": "2026-07-30",
+    "last_seen": "2026-07-30",
+    "run_count": 1,
+    "title": "CVE-2026-62363: ImageMagick RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-17650": {
+    "first_seen": "2026-07-30",
+    "last_seen": "2026-07-30",
+    "run_count": 1,
+    "title": "CVE-2026-17650: Google Chrome Use-after-Free",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-17651": {
+    "first_seen": "2026-07-30",
+    "last_seen": "2026-07-30",
+    "run_count": 1,
+    "title": "CVE-2026-17651: Google Chrome Insufficient Validation",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }

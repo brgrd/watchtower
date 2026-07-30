@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-30T09:36:42.050017+00:00
+generated_at: 2026-07-30T11:59:19.154282+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2025-67406 in Sourcecodester Advocate office management system 1.0, CVE-2025-67405 in Sourcecodester CASAP Automated Enrollment System 1.0, and CVE-2025-69944 in kishan0725 Hospital Management System 4.0. Internet-facing applications and databases are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to isolate and monitor systems running these applications, as no patches are currently available.
+The highest-risk items this period are CVE-2026-62363 in ImageMagick, CVE-2026-17650 in Google Chrome, and CVE-2026-17651 in Google Chrome. Internet-facing systems running these software products are most exposed due to the lack of available patches. The most time-sensitive action is to monitor systems for potential exploitation of these vulnerabilities, particularly in Google Chrome prior to version 151.0.7922.72, for which no patch is currently available.
 
-## CVE-2025-67406: Sourcecodester Office Management SQL Inject (risk: 70)
-[P1] Sourcecodester Advocate office management system 1.0 is vulnerable to SQL injection, with no patch available. This vulnerability can be exploited to gain unauthorized access to sensitive data. Why now: Lack of patch and potential for data breach. (confidence: 0.80)
+## CVE-2026-62363: ImageMagick RCE (risk: 40)
+[P2] ImageMagick is vulnerable to a remote code execution vulnerability, but no patch is currently available. Exploitation in the wild has not been reported. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.80)
 
-- [CVE-2025-67406](https://www.sourcecodester.com)
+- [CVE-2026-62363](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-62363)
 
-## CVE-2025-67405: Sourcecodester CASAP Enrollment SQL Inject (risk: 70)
-[P1] Sourcecodester CASAP Automated Enrollment System 1.0 is vulnerable to SQL injection, with no patch available. This vulnerability can be exploited to gain unauthorized access to sensitive data. Why now: Lack of patch and potential for data breach. (confidence: 0.80)
+## CVE-2026-17650: Google Chrome Use-after-Free (risk: 40)
+[P2] Google Chrome is vulnerable to a use-after-free vulnerability, but no patch is currently available. Exploitation in the wild has not been reported. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.80)
 
-- [CVE-2025-67405](https://www.sourcecodester.com)
+- [CVE-2026-17650](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-17650)
 
-## CVE-2025-69944: kishan0725 Hospital Management SQL Inject (risk: 70)
-[P1] kishan0725 Hospital Management System 4.0 is vulnerable to SQL injection, with no patch available. This vulnerability can be exploited to gain unauthorized access to sensitive data. Why now: Lack of patch and potential for data breach. (confidence: 0.80)
+## CVE-2026-17651: Google Chrome Insufficient Validation (risk: 40)
+[P2] Google Chrome is vulnerable to an insufficient validation vulnerability, but no patch is currently available. Exploitation in the wild has not been reported. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.80)
 
-- [CVE-2025-69944](https://www.sourcecodester.com)
+- [CVE-2026-17651](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-17651)
