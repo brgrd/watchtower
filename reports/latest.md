@@ -1,81 +1,25 @@
 ---
-generated_at: 2026-07-31T00:11:52.326278+00:00
+generated_at: 2026-07-31T10:49:09.578386+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-47876 (risk: 70)
-1 related updates.
+## Analyst Summary
 
-- [CVE-2026-47876](https://nvd.nist.gov/vuln/detail/CVE-2026-47876)
+The highest-risk items this period are CVE-2026-56758, CVE-2026-63035, and CVE-2026-61893, which affect the ACSE layer, TransferSubscriptions service, and IEC 60870-5-104 I-frame processing, respectively. Internet-facing systems, particularly those using MMS and IEC 60870-5-104 protocols, are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using the affected protocols, as no patches are currently available for these vulnerabilities.
 
-## CVE-2026-54363 (risk: 70)
-1 related updates.
+## CVE-2026-56758: ACSE Layer Flaw (risk: 40)
+[P2] A flaw in the ACSE layer's processing of AARQ PDUs during MMS connections can be exploited, but no patch is currently available. The vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with potential for high impact. (confidence: 0.80)
 
-- [CVE-2026-54363](https://nvd.nist.gov/vuln/detail/CVE-2026-54363)
+- [NVD CVE-2026-56758](https://nvd.nist.gov/v1/cve/2026-56758)
 
-## CVE-2026-54367 (risk: 70)
-1 related updates.
+## CVE-2026-63035: TransferSubscriptions Service Vulnerability (risk: 40)
+[P2] A heap use-after-free vulnerability in the TransferSubscriptions service can be exploited, but no patch is currently available. The vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with potential for high impact. (confidence: 0.80)
 
-- [CVE-2026-54367](https://nvd.nist.gov/vuln/detail/CVE-2026-54367)
+- [NVD CVE-2026-63035](https://nvd.nist.gov/v1/cve/2026-63035)
 
-## CVE-2026-59309 (risk: 70)
-1 related updates.
+## CVE-2026-61893: IEC 60870-5-104 I-Frame Processing Flaw (risk: 40)
+[P2] A crafted IEC 60870-5-104 I-frame with an inflated object count can cause a vulnerability, but no patch is currently available. The vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with potential for high impact. (confidence: 0.80)
 
-- [CVE-2026-59309](https://nvd.nist.gov/vuln/detail/CVE-2026-59309)
-
-## CVE-2026-54364 (risk: 70)
-1 related updates.
-
-- [CVE-2026-54364](https://nvd.nist.gov/vuln/detail/CVE-2026-54364)
-
-## CVE-2026-59310 (risk: 70)
-1 related updates.
-
-- [CVE-2026-59310](https://nvd.nist.gov/vuln/detail/CVE-2026-59310)
-
-## CVE-2026-41709 (risk: 70)
-1 related updates.
-
-- [CVE-2026-41709](https://nvd.nist.gov/vuln/detail/CVE-2026-41709)
-
-## CVE-2026-54368 (risk: 70)
-1 related updates.
-
-- [CVE-2026-54368](https://nvd.nist.gov/vuln/detail/CVE-2026-54368)
-
-## CVE-2026-58218 (risk: 70)
-1 related updates.
-
-- [CVE-2026-58218](https://nvd.nist.gov/vuln/detail/CVE-2026-58218)
-
-## CVE-2026-18381 (risk: 55)
-1 related updates.
-
-- [CVE-2026-18381](https://nvd.nist.gov/vuln/detail/CVE-2026-18381)
-
-## CVE-2026-17543 (risk: 40)
-1 related updates.
-
-- [CVE-2026-17543](https://nvd.nist.gov/vuln/detail/CVE-2026-17543)
-
-## CVE-2026-17544 (risk: 40)
-1 related updates.
-
-- [CVE-2026-17544](https://nvd.nist.gov/vuln/detail/CVE-2026-17544)
-
-## CVE-2026-15397 (risk: 40)
-1 related updates.
-
-- [CVE-2026-15397](https://nvd.nist.gov/vuln/detail/CVE-2026-15397)
-
-## CVE-2026-18378 (risk: 40)
-1 related updates.
-
-- [CVE-2026-18378](https://nvd.nist.gov/vuln/detail/CVE-2026-18378)
-
-## CVE-2026-5582 (risk: 40)
-1 related updates.
-
-- [CVE-2026-5582](https://nvd.nist.gov/vuln/detail/CVE-2026-5582)
+- [NVD CVE-2026-61893](https://nvd.nist.gov/v1/cve/2026-61893)
