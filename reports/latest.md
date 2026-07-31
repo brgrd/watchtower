@@ -1,25 +1,81 @@
 ---
-generated_at: 2026-07-30T22:15:03.378380+00:00
+generated_at: 2026-07-31T00:11:52.326278+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Analyst Summary
+## CVE-2026-47876 (risk: 70)
+1 related updates.
 
-The highest-risk items this period include CVE-2026-16970 in the IRIS web application, CVE-2026-16971 in the IRIS web application, and CVE-2026-16969 in the IRIS web application. Internet-facing web applications are most exposed right now due to the lack of patches for these vulnerabilities. The single most time-sensitive action is to patch or isolate the IRIS web application, specifically version 2.4.26, as no patches are currently available.
+- [CVE-2026-47876](https://nvd.nist.gov/vuln/detail/CVE-2026-47876)
 
-## CVE-2026-16970: IRIS Web App Logout Vulnerability (risk: 70)
-[P1] The IRIS web application is vulnerable to a logout vulnerability, allowing attackers to gain unauthorized access. No patch is currently available. Why now: Reported attribution (unverified): None (confidence: 0.80)
+## CVE-2026-54363 (risk: 70)
+1 related updates.
 
-- [CVE-2026-16970](https://cisa.gov/news-events/ics-advisories/icsa-26-211-09)
+- [CVE-2026-54363](https://nvd.nist.gov/vuln/detail/CVE-2026-54363)
 
-## CVE-2026-16971: IRIS Web App Protection Vulnerability (risk: 70)
-[P1] The IRIS web application does not protect against certain attacks, allowing attackers to gain unauthorized access. No patch is currently available. Why now: Reported attribution (unverified): None (confidence: 0.80)
+## CVE-2026-54367 (risk: 70)
+1 related updates.
 
-- [CVE-2026-16971](https://cisa.gov/news-events/ics-advisories/icsa-26-211-09)
+- [CVE-2026-54367](https://nvd.nist.gov/vuln/detail/CVE-2026-54367)
 
-## CVE-2026-16969: IRIS Web App Vulnerability (risk: 70)
-[P1] The IRIS web application is vulnerable to a certain attack, allowing attackers to gain unauthorized access. No patch is currently available. Why now: Reported attribution (unverified): None (confidence: 0.80)
+## CVE-2026-59309 (risk: 70)
+1 related updates.
 
-- [CVE-2026-16969](https://cisa.gov/news-events/ics-advisories/icsa-26-211-09)
+- [CVE-2026-59309](https://nvd.nist.gov/vuln/detail/CVE-2026-59309)
+
+## CVE-2026-54364 (risk: 70)
+1 related updates.
+
+- [CVE-2026-54364](https://nvd.nist.gov/vuln/detail/CVE-2026-54364)
+
+## CVE-2026-59310 (risk: 70)
+1 related updates.
+
+- [CVE-2026-59310](https://nvd.nist.gov/vuln/detail/CVE-2026-59310)
+
+## CVE-2026-41709 (risk: 70)
+1 related updates.
+
+- [CVE-2026-41709](https://nvd.nist.gov/vuln/detail/CVE-2026-41709)
+
+## CVE-2026-54368 (risk: 70)
+1 related updates.
+
+- [CVE-2026-54368](https://nvd.nist.gov/vuln/detail/CVE-2026-54368)
+
+## CVE-2026-58218 (risk: 70)
+1 related updates.
+
+- [CVE-2026-58218](https://nvd.nist.gov/vuln/detail/CVE-2026-58218)
+
+## CVE-2026-18381 (risk: 55)
+1 related updates.
+
+- [CVE-2026-18381](https://nvd.nist.gov/vuln/detail/CVE-2026-18381)
+
+## CVE-2026-17543 (risk: 40)
+1 related updates.
+
+- [CVE-2026-17543](https://nvd.nist.gov/vuln/detail/CVE-2026-17543)
+
+## CVE-2026-17544 (risk: 40)
+1 related updates.
+
+- [CVE-2026-17544](https://nvd.nist.gov/vuln/detail/CVE-2026-17544)
+
+## CVE-2026-15397 (risk: 40)
+1 related updates.
+
+- [CVE-2026-15397](https://nvd.nist.gov/vuln/detail/CVE-2026-15397)
+
+## CVE-2026-18378 (risk: 40)
+1 related updates.
+
+- [CVE-2026-18378](https://nvd.nist.gov/vuln/detail/CVE-2026-18378)
+
+## CVE-2026-5582 (risk: 40)
+1 related updates.
+
+- [CVE-2026-5582](https://nvd.nist.gov/vuln/detail/CVE-2026-5582)
