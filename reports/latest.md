@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-31T10:49:09.578386+00:00
+generated_at: 2026-07-31T21:16:57.744755+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-56758, CVE-2026-63035, and CVE-2026-61893, which affect the ACSE layer, TransferSubscriptions service, and IEC 60870-5-104 I-frame processing, respectively. Internet-facing systems, particularly those using MMS and IEC 60870-5-104 protocols, are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using the affected protocols, as no patches are currently available for these vulnerabilities.
+The highest-risk items this period are CVE-2026-65310 in ANDRITZ HIPASE-250, CVE-2026-65311 in ANDRITZ HIPASE-250, and CVE-2026-18436 in MailPress plugin for WordPress. Internet-facing systems, such as web servers and VPN appliances, are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by CVE-2026-65310 and CVE-2026-65311, although no patches are currently available.
 
-## CVE-2026-56758: ACSE Layer Flaw (risk: 40)
-[P2] A flaw in the ACSE layer's processing of AARQ PDUs during MMS connections can be exploited, but no patch is currently available. The vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with potential for high impact. (confidence: 0.80)
+## CVE-2026-65310: ANDRITZ HIPASE-250 RCE (risk: 70)
+[P1] ANDRITZ HIPASE-250 is vulnerable to remote code execution due to a flaw in its default configuration. No patch is available, and exploitation in the wild has not been reported. Why now: Reported attribution (unverified): none (confidence: 0.80)
 
-- [NVD CVE-2026-56758](https://nvd.nist.gov/v1/cve/2026-56758)
+- [CVE-2026-65310](https://aws.amazon.com/security/security-bulletins/rss/2026-068-aws/)
 
-## CVE-2026-63035: TransferSubscriptions Service Vulnerability (risk: 40)
-[P2] A heap use-after-free vulnerability in the TransferSubscriptions service can be exploited, but no patch is currently available. The vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with potential for high impact. (confidence: 0.80)
+## CVE-2026-65311: ANDRITZ HIPASE-250 HTTP Server RCE (risk: 70)
+[P1] The HTTP server component of ANDRITZ HIPASE-250 is vulnerable to remote code execution. No patch is available, and exploitation in the wild has not been reported. Why now: Reported attribution (unverified): none (confidence: 0.80)
 
-- [NVD CVE-2026-63035](https://nvd.nist.gov/v1/cve/2026-63035)
+- [CVE-2026-65311](https://aws.amazon.com/security/security-bulletins/rss/2026-068-aws/)
 
-## CVE-2026-61893: IEC 60870-5-104 I-Frame Processing Flaw (risk: 40)
-[P2] A crafted IEC 60870-5-104 I-frame with an inflated object count can cause a vulnerability, but no patch is currently available. The vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with potential for high impact. (confidence: 0.80)
+## CVE-2026-18436: MailPress Plugin for WordPress Unauthorized Access (risk: 60)
+[P2] The MailPress plugin for WordPress is vulnerable to unauthorized access. No patch is available, and exploitation in the wild has not been reported. Why now: Reported attribution (unverified): none (confidence: 0.70)
 
-- [NVD CVE-2026-61893](https://nvd.nist.gov/v1/cve/2026-61893)
+- [CVE-2026-18436](https://aws.amazon.com/security/security-bulletins/rss/2026-068-aws/)
