@@ -8473,8 +8473,26 @@
     "last_seen": "2026-07-31",
     "run_count": 1,
     "title": "CVE-2026-65310: ANDRITZ HIPASE-250 RCE",
-    "last_problem_type": "auth_bypass",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-16843": {
+    "first_seen": "2026-07-31",
+    "last_seen": "2026-07-31",
+    "run_count": 1,
+    "title": "CVE-2026-16843: Hikvision RCE",
+    "last_problem_type": "rce",
     "last_affects": "application",
-    "last_classification_confidence": 0.8
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-18140": {
+    "first_seen": "2026-07-31",
+    "last_seen": "2026-07-31",
+    "run_count": 1,
+    "title": "CVE-2026-44615: Apache Zeppelin RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
