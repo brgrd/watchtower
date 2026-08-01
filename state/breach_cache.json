@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-31T21:16:58.195371+00:00",
+  "fetched_at": "2026-08-01T09:13:13.747912+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -14625,6 +14625,24 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Spirol",
       "summary": "In February 2014, Connecticut based Spirol Fastening Solutions suffered a data breach that exposed over 70,000 customer records. The attack was allegedly mounted by exploiting a SQL injection vulnerability which yielded data from Spirol’s CRM system ranging from customers’ names, companies, contact information and over 55,000 unique email addresses.",
+      "action": "monitor"
+    },
+    {
+      "id": "hibp:splitvpn-2026-07-21",
+      "name": "SplitVPN",
+      "title": "SplitVPN",
+      "date": "2026-07-21",
+      "added": "2026-08-01",
+      "affected_count": 865336,
+      "data_classes": [
+        "Device information",
+        "Email addresses",
+        "Geographic locations",
+        "IP addresses",
+        "Partial credit card data"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#SplitVPN",
+      "summary": "In July 2026, the Russian VPN service SplitVPN (previously known as NotVPN) suffered a data breach. The incident exposed millions of customer records, including 865k unique email addresses. Other impacted data included IP addresses, the user's country, and partial payment card data (first 6 and last 4 digits plus expiry date).",
       "action": "monitor"
     },
     {

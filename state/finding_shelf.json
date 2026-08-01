@@ -8494,5 +8494,32 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-38708": {
+    "first_seen": "2026-08-01",
+    "last_seen": "2026-08-01",
+    "run_count": 1,
+    "title": "CVE-2026-38708: TR1200 SQL Injection",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2025-69948": {
+    "first_seen": "2026-08-01",
+    "last_seen": "2026-08-01",
+    "run_count": 1,
+    "title": "CVE-2025-69948: SourceCodester Modern Loan Management System SQL Injection",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-38710": {
+    "first_seen": "2026-08-01",
+    "last_seen": "2026-08-01",
+    "run_count": 1,
+    "title": "CVE-2026-38710: TR3000 Command Injection",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
