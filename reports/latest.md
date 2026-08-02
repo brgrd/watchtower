@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-08-01T22:07:53.693716+00:00
+generated_at: 2026-08-02T00:05:53.634356+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,14 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-10773 in the DHCPv4 client helper, CVE-2025-71404 in better-auth versions, and CVE-2026-66401 in FreeRDP. Internet-facing systems, particularly those using affected versions of FreeRDP and better-auth, are most exposed due to the lack of available patches and potential for exploitation. The most time-sensitive action is to monitor and isolate systems using FreeRDP before version 3.29.0, as no patch is currently available.
+The highest-risk items this period include a critical Active Storage flaw in Rails with RCE potential, a Coldcard Hardware Wallet flaw linked to a $70 million Bitcoin theft, and a Balance Theory investment to help enterprises manage cybersecurity investments. Internet-facing systems, container orchestration nodes, and VPN appliances are most exposed due to the Rails and Coldcard vulnerabilities. The most time-sensitive action is to patch the Rails Active Storage flaw, as a patch is currently available, and to monitor for any suspicious activity related to the Coldcard Hardware Wallet flaw.
 
-## CVE-2026-10773: DHCPv4 Client Helper RCE (risk: 40)
-[P2] The DHCPv4 client helper net_dhcpv4_msg_type_name() contains a vulnerability, but no patch or exploit is currently available. Affected systems should be monitored for potential exploitation. Why now: Newly disclosed vulnerability with potential for exploitation. (confidence: 0.60)
+## Rails Active Storage RCE (risk: 100)
+[P1] A critical Active Storage flaw in Rails has RCE potential, and a patch is currently available. The vulnerability can be exploited by an attacker to execute arbitrary code on the system. Why now: The vulnerability has RCE potential and a patch is available, making it a high-priority issue. (confidence: 0.90)
 
-- [CVE-2026-10773](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve.id=CVE-2026-10773)
+- [Rails patches critical Active Storage flaw with RCE potential](https://www.bleepingcomputer.com/news/security/rails-patches-critical-active-storage-flaw-with-rce-potential/)
 
-## CVE-2025-71404: better-auth Reflected Cross-Site Scripting (risk: 40)
-[P2] better-auth versions after v0.0.2 and before 1.1.16 contain a reflected cross-site scripting vulnerability, but no patch or exploit is currently available. Affected systems should be monitored for potential exploitation. Why now: Newly disclosed vulnerability with potential for exploitation. (confidence: 0.60)
+## Coldcard Hardware Wallet Flaw (risk: 90)
+[P2] A Coldcard Hardware Wallet flaw was linked to a $70 million Bitcoin theft, and users are advised to monitor their accounts for suspicious activity. The flaw can be exploited by an attacker to drain Bitcoin addresses. Why now: The flaw was linked to a significant Bitcoin theft, making it a high-priority issue. (confidence: 0.80)
 
-- [CVE-2025-71404](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve.id=CVE-2025-71404)
-
-## CVE-2026-66401: FreeRDP Out-of-Bounds Heap Read (risk: 40)
-[P1] FreeRDP before 3.29.0 contains an out-of-bounds heap read vulnerability, but no patch is currently available. Affected systems should be monitored and isolated to prevent potential exploitation. Why now: Newly disclosed vulnerability with potential for exploitation and no available patch. (confidence: 0.80)
-
-- [CVE-2026-66401](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve.id=CVE-2026-66401)
+- [Coldcard Hardware Wallet Flaw Linked to $70 Million Bitcoin Theft in 41 Minutes](https://thehackernews.com/2026/08/coldcard-hardware-wallet-flaw-linked-to.html)

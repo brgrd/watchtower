@@ -8602,5 +8602,23 @@
     "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
+  },
+  "ef71a8d3e035": {
+    "first_seen": "2026-08-02",
+    "last_seen": "2026-08-02",
+    "run_count": 1,
+    "title": "Rails Active Storage RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.95
+  },
+  "0aff2b478a8d": {
+    "first_seen": "2026-08-02",
+    "last_seen": "2026-08-02",
+    "run_count": 1,
+    "title": "Coldcard Hardware Wallet Flaw",
+    "last_problem_type": "data_tampering",
+    "last_affects": "user_data",
+    "last_classification_confidence": 0.9
   }
 }
