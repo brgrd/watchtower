@@ -8626,7 +8626,7 @@
     "last_seen": "2026-08-02",
     "run_count": 1,
     "title": "CVE-2026-9335: keras-team/keras RCE",
-    "last_problem_type": "rce",
+    "last_problem_type": "data_disclosure",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
   },
@@ -8645,6 +8645,15 @@
     "run_count": 1,
     "title": "CVE-2026-13339: CubeWP Framework plugin for WordPress Directory Traversal",
     "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-11872": {
+    "first_seen": "2026-08-02",
+    "last_seen": "2026-08-02",
+    "run_count": 1,
+    "title": "CVE-2026-11872: Clever Mega Menu Authentication Bypass",
+    "last_problem_type": "auth_bypass",
     "last_affects": "application",
     "last_classification_confidence": 0.9
   }
