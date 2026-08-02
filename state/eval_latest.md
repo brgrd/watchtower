@@ -1,26 +1,26 @@
-# Watchtower Pipeline Eval — 2026-08-02T11:32:05Z
+# Watchtower Pipeline Eval — 2026-08-02T21:05:16Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 36 |
-| After dedup + CVE merge | 36 |
-| Sent to Groq | 30 |
+| Items polled (raw) | 18 |
+| After dedup + CVE merge | 18 |
+| Sent to Groq | 18 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/36 (8.3%)** |
+| **Pipeline yield** | **3/18 (16.7%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 9,522 chars
+- **Payload**: 12,387 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7697
+- **Rate limit remaining** — requests: 999, tokens: 6777
 
 ## Card Quality
 
-**3 cards** — P1: 3, P2: 0, P3: 0
+**3 cards** — P1: 2, P2: 1, P3: 0
 
 | Metric | Value |
 |--------|-------|
@@ -31,8 +31,8 @@
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 62 chars (100% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 6 total — 50% specific, 0% generic
+- **`why_now` avg length**: 23 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 6 total — 50% specific, 50% generic
 
 ### Persistence
 
@@ -43,7 +43,7 @@
 
 | Source | Hits | Rate |
 |--------|-----:|-----:|
-| EPSS | 0 | 0% |
+| EPSS | 1 | 33% |
 | NVD (CVE) | 0 | 0% |
 | CISA KEV | 0 | 0% |
 
@@ -51,11 +51,11 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 36 |
-| `bleepingcomputer` | 0 |
+| `nvd` | 16 |
+| `bleepingcomputer` | 1 |
+| `cloudflare_blog` | 1 |
 | `gh_security_blog` | 0 |
-| `cisa_kev` | 0 |
-| `krebs` | 0 |
+| `thehackernews` | 0 |
 | _(+21 more)_ | … |
 
 **21 feeds returned 0 items this run.**
@@ -64,10 +64,10 @@
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-07-31 | 3 | 3 | 100% | 100% | 3 | 0 |
 | 2026-08-01 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-08-01 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-08-01 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-08-01 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-08-02 | 2 | 1 | 100% | 0% | 2 | 0 |
 | 2026-08-02 | 3 | ? | 100% | 0% | 3 | 0 |
+| 2026-08-02 | 3 | 3 | 100% | 0% | 3 | 0 |

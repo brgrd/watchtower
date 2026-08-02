@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-08-02T11:32:14.383442+00:00
+generated_at: 2026-08-02T21:05:26.652644+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-13339 in CubeWP Framework, CVE-2026-11872 in Clever Mega Menu, and CVE-2026-9335 in keras-team/keras. Internet-facing WordPress plugins and frameworks are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using the affected plugins and frameworks, as no patches are currently available.
+The highest-risk items this period are CVE-2026-67357 in ArcadeDB, CVE-2026-68579 in FreeRDP, and CVE-2026-12231 in Exclusive Addons for Elementor plugin. Internet-facing databases and remote desktop protocol servers are most exposed due to the lack of available patches for these vulnerabilities. The single most time-sensitive action is to isolate or patch ArcadeDB versions before 26.7.3, although no patch is currently available.
 
-## CVE-2026-13339: CubeWP Framework Directory Traversal (risk: 70)
-[P1] The CubeWP Framework plugin for WordPress is vulnerable to Directory Traversal, allowing attackers to access sensitive files. No patch is currently available. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.80)
+## CVE-2026-68579: FreeRDP Heap-Based Buffer Overflow (risk: 80)
+[P1] FreeRDP before 3.30.0 contains a heap-based buffer overflow vulnerability in the Windows login process, with no patch available. This vulnerability can be exploited to execute arbitrary code on the target system. Why now: Lack of available patch (confidence: 0.80)
 
-- [NVD](https://nvd.nist.gov/v1/nvd.xhtml)
+- [CVE-2026-68579](https://www.nvd.nist.gov/v1/nvd.xhtml)
 
-## CVE-2026-11872: Clever Mega Menu Authentication Bypass (risk: 70)
-[P1] The Clever Mega Menu plugin for WordPress is vulnerable to Authentication Bypass, allowing attackers to access sensitive areas. No patch is currently available. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.80)
+## CVE-2026-67357: ArcadeDB Info Disclosure (risk: 70)
+[P1] ArcadeDB versions before 26.7.3 contain an information disclosure vulnerability, with no patch available. This vulnerability can be exploited to gain unauthorized access to sensitive data. Why now: Lack of available patch (confidence: 0.80)
 
-- [NVD](https://nvd.nist.gov/v1/nvd.xhtml)
+- [CVE-2026-67357](https://www.nvd.nist.gov/v1/nvd.xhtml)
 
-## CVE-2026-9335: keras-team/keras Arbitrary Local File Access (risk: 70)
-[P1] The keras-team/keras library is vulnerable to Arbitrary Local File Access, allowing attackers to access sensitive files. No patch is currently available. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.80)
+## CVE-2026-12231: Exclusive Addons for Elementor Plugin Vulnerability (risk: 60)
+[P2] The Exclusive Addons for Elementor plugin for WordPress is vulnerable to stored cross-site scripting (XSS), with no patch available. This vulnerability can be exploited to inject malicious scripts into the target system. Why now: Lack of available patch (confidence: 0.70)
 
-- [NVD](https://nvd.nist.gov/v1/nvd.xhtml)
+- [CVE-2026-12231](https://www.nvd.nist.gov/v1/nvd.xhtml)
