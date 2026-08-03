@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-08-03T21:14:47.695343+00:00
+generated_at: 2026-08-03T23:13:31.646359+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,14 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-60011 in Sharp and Toshiba Tec MFPs, CVE-2026-62416 in Network Scanner Tool and Network Scanner Tool Lite, and CVE-2026-63545 in Sharp and Toshiba Tec MFPs. These vulnerabilities expose internet-facing multifunction printers and network scanner tools to potential attacks, with no patches currently available. The single most time-sensitive action is to isolate and monitor Sharp and Toshiba Tec MFPs, as well as Network Scanner Tool and Network Scanner Tool Lite, to prevent potential exploitation of these vulnerabilities.
+The highest-risk items this period are CVE-2026-18598 in GL.iNet GL-MT3000, CVE-2026-18574 in Check Point Security Management Server, and CVE-2026-56608 in HCL iControl. Internet-facing devices and applications are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to patch or isolate affected GL.iNet GL-MT3000 devices, although no patch is currently available.
 
-## CVE-2026-60011: Sharp MFP Auth Bypass (risk: 70)
-[P1] Sharp and Toshiba Tec MFPs fail to properly authorize remote access, allowing potential attackers to bypass authentication. No patch is currently available. Why now: Reported attribution (unverified): none (confidence: 0.80)
+## CVE-2026-18598: GL.iNet GL-MT3000 RCE (risk: 70)
+[P1] A vulnerability in GL.iNet GL-MT3000 up to 4.4.5 allows remote code execution. No patch is available, and exploitation status is unknown. Why now: Reported vulnerability in widely used device. (confidence: 0.80)
 
-- [CVE-2026-60011](https://www.cisa.gov/news-events/alerts/2026/08/03/cisa-adds-one-known-exploited-vulnerability-catalog)
+- [CVE-2026-18598](https://www.cisa.gov/news-events/alerts/2026/08/03/cisa-adds-one-known-exploited-vulnerability-catalog)
 
-## CVE-2026-62416: Network Scanner Tool Vuln (risk: 60)
-[P2] Network Scanner Tool and Network Scanner Tool Lite are vulnerable to potential attacks, with no patch currently available. These tools are used to scan and manage network devices, making them a potential target for attackers. Why now: New CVE added to NVD (confidence: 0.70)
+## CVE-2026-18574: Check Point Security Management Server Auth Bypass (risk: 70)
+[P1] An authentication bypass vulnerability in Check Point Security Management Server allows unauthorized access. No patch is available, and exploitation status is unknown. Why now: Reported vulnerability in widely used security management server. (confidence: 0.80)
 
-- [CVE-2026-62416](https://aws.amazon.com/security/security-bulletins/rss/2026-071-aws/)
+- [CVE-2026-18574](https://www.cisa.gov/news-events/alerts/2026/08/03/cisa-adds-one-known-exploited-vulnerability-catalog)
+
+## CVE-2026-56608: HCL iControl Missing Access Control (risk: 70)
+[P1] A missing access control vulnerability in HCL iControl allows unauthorized access. No patch is available, and exploitation status is unknown. Why now: Reported vulnerability in widely used control system. (confidence: 0.80)
+
+- [CVE-2026-56608](https://aws.amazon.com/security/security-bulletins/rss/2026-072-aws/)
