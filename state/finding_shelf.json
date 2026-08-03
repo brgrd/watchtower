@@ -8737,5 +8737,23 @@
     "last_problem_type": "crypto_weakness",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-60011": {
+    "first_seen": "2026-08-03",
+    "last_seen": "2026-08-03",
+    "run_count": 1,
+    "title": "CVE-2026-60011: Sharp MFP Auth Bypass",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-18654": {
+    "first_seen": "2026-08-03",
+    "last_seen": "2026-08-03",
+    "run_count": 1,
+    "title": "CVE-2026-62416: Network Scanner Tool Vuln",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.8
   }
 }
