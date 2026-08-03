@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-08-03T00:06:37.841492+00:00
+generated_at: 2026-08-03T12:33:40.774893+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-67357 in ArcadeDB, CVE-2025-71401 in better-auth, and CVE-2026-68580 in FreeRDP. Internet-facing databases and authentication systems are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to isolate and monitor systems using ArcadeDB and better-auth, as patches are not currently available.
+The highest-risk items this period are CVE-2026-18581 in ggml-org llama.cpp, CVE-2026-15055 in Bouncy Castle for Java, and CVE-2026-59638 in Bouncy Castle for Java. Internet-facing servers and applications using these libraries are most exposed due to the lack of available patches. The most time-sensitive action is to monitor for and isolate any suspicious activity related to these vulnerabilities, particularly for applications using Bouncy Castle for Java, as no patches are currently available.
 
-## CVE-2026-67357: ArcadeDB Info Disclosure (risk: 70)
-[P1] ArcadeDB versions before 26.7.3 contain an information disclosure vulnerability, with no patch available. This vulnerability can be exploited to gain unauthorized access to sensitive data. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-18581: ggml-org llama.cpp RCE (risk: 40)
+[P2] A vulnerability in ggml-org llama.cpp allows for remote code execution, but no patch is currently available. Exploitation in the wild has not been reported. Why now: Reported attribution (unverified): None (confidence: 0.80)
 
-- [CVE-2026-67357](https://www.nvd.nist.gov/v1/nvd.xhtml)
+- [CVE-2026-18581](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-18581)
 
-## CVE-2025-71401: better-auth Auth Bypass (risk: 70)
-[P1] better-auth versions before 1.4.2 allow an external request to configure the baseURL, with no patch available. This vulnerability can be exploited to bypass authentication mechanisms. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-15055: Bouncy Castle for Java PKCS#8/PBES2 decryptor (risk: 40)
+[P2] A vulnerability in Bouncy Castle for Java allows for unbounded data decryption, but no patch is currently available. Exploitation in the wild has not been reported. Why now: Reported attribution (unverified): None (confidence: 0.80)
 
-- [CVE-2025-71401](https://www.nvd.nist.gov/v1/nvd.xhtml)
+- [CVE-2026-15055](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-15055)
 
-## CVE-2026-68580: FreeRDP Integer Overflow (risk: 70)
-[P1] FreeRDP versions before 3.29.0 contain integer overflow vulnerabilities in the audio input handling, with no patch available. This vulnerability can be exploited to execute arbitrary code. Why now: Lack of available patch (confidence: 0.80)
+## CVE-2026-59638: Bouncy Castle for Java JSSE hostname verifier (risk: 40)
+[P2] A vulnerability in Bouncy Castle for Java allows for CN-fallback, but no patch is currently available. Exploitation in the wild has not been reported. Why now: Reported attribution (unverified): None (confidence: 0.80)
 
-- [CVE-2026-68580](https://www.nvd.nist.gov/v1/nvd.xhtml)
+- [CVE-2026-59638](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-59638)
