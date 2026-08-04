@@ -8844,7 +8844,7 @@
     "title": "CVE-2026-34486: Apache Tomcat RCE",
     "last_problem_type": "rce",
     "last_affects": "framework",
-    "last_classification_confidence": 0.95
+    "last_classification_confidence": 0.9
   },
   "cve:CVE-2026-14175": {
     "first_seen": "2026-08-04",
@@ -8863,5 +8863,23 @@
     "last_problem_type": "rce",
     "last_affects": "service",
     "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2026-18556": {
+    "first_seen": "2026-08-04",
+    "last_seen": "2026-08-04",
+    "run_count": 1,
+    "title": "CVE-2026-18556: N-able N-central Auth Bypass",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-9198": {
+    "first_seen": "2026-08-04",
+    "last_seen": "2026-08-04",
+    "run_count": 1,
+    "title": "CVE-2026-9198: Langflow Code Injection",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
   }
 }
