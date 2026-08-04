@@ -1,38 +1,38 @@
-# Watchtower Pipeline Eval — 2026-08-03T23:13:20Z
+# Watchtower Pipeline Eval — 2026-08-04T09:44:13Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 219 |
-| After dedup + CVE merge | 211 |
-| Sent to Groq | 27 |
+| Items polled (raw) | 216 |
+| After dedup + CVE merge | 215 |
+| Sent to Groq | 30 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/219 (1.4%)** |
+| **Pipeline yield** | **3/216 (1.4%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 14,108 chars
+- **Payload**: 10,817 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 6744
+- **Rate limit remaining** — requests: 999, tokens: 7308
 
 ## Card Quality
 
-**3 cards** — P1: 3, P2: 0, P3: 0
+**3 cards** — P1: 0, P2: 3, P3: 0
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 70 / 70 |
+| Risk score mean / p90 | 40 / 40 |
 | Tactic coverage | 100% |
-| CVE coverage | 100% |
+| CVE coverage | 0% |
 | Patch status | unknown: 3 |
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 54.3 chars (33% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 6 total — 50% specific, 50% generic
+- **`why_now` avg length**: 39 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 6 total — 50% specific, 0% generic
 
 ### Persistence
 
@@ -44,30 +44,30 @@
 | Source | Hits | Rate |
 |--------|-----:|-----:|
 | EPSS | 0 | 0% |
-| NVD (CVE) | 3 | 100% |
+| NVD (CVE) | 0 | 0% |
 | CISA KEV | 0 | 0% |
 
 ## Feed Yield
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 149 |
-| `bsi_germany` | 26 |
-| `securityweek` | 7 |
-| `bleepingcomputer` | 5 |
-| `thehackernews` | 5 |
+| `bsi_germany` | 103 |
+| `nvd` | 103 |
+| `securityweek` | 3 |
+| `bleepingcomputer` | 2 |
+| `github_changelog` | 2 |
 | _(+21 more)_ | … |
 
-**10 feeds returned 0 items this run.**
+**18 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-08-02 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-08-02 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-08-02 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-08-02 | 2 | 2 | 100% | 0% | 2 | 0 |
 | 2026-08-03 | 3 | 3 | 100% | 0% | 2 | 0 |
 | 2026-08-03 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-08-03 | 2 | 1 | 100% | 100% | 2 | 0 |
+| 2026-08-03 | 3 | 3 | 100% | 100% | 3 | 0 |
