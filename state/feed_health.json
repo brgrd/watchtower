@@ -1,146 +1,146 @@
 {
   "cisa_alerts": {
-    "consecutive_ok": 0,
-    "consecutive_fail": 2,
-    "total_ok": 84,
-    "total_calls": 419,
-    "last_ok": "2026-08-03T23:13:21.900099+00:00",
+    "consecutive_ok": 1,
+    "consecutive_fail": 0,
+    "total_ok": 85,
+    "total_calls": 420,
+    "last_ok": "2026-08-04T21:21:19.485724+00:00",
     "last_fail": "2026-08-04T12:08:56.121375+00:00"
   },
   "cisa_kev": {
-    "consecutive_ok": 0,
-    "consecutive_fail": 1,
-    "total_ok": 177,
-    "total_calls": 419,
-    "last_ok": "2026-08-04T09:44:13.985696+00:00",
+    "consecutive_ok": 1,
+    "consecutive_fail": 0,
+    "total_ok": 178,
+    "total_calls": 420,
+    "last_ok": "2026-08-04T21:21:19.399840+00:00",
     "last_fail": "2026-08-04T12:08:55.683207+00:00"
   },
   "bleepingcomputer": {
-    "consecutive_ok": 4,
+    "consecutive_ok": 5,
     "consecutive_fail": 0,
-    "total_ok": 363,
-    "total_calls": 419,
-    "last_ok": "2026-08-04T12:08:54.957873+00:00",
+    "total_ok": 364,
+    "total_calls": 420,
+    "last_ok": "2026-08-04T21:21:18.647501+00:00",
     "last_fail": "2026-08-03T12:33:25.478351+00:00"
   },
   "krebs": {
     "consecutive_ok": 0,
-    "consecutive_fail": 18,
+    "consecutive_fail": 19,
     "total_ok": 42,
-    "total_calls": 419,
+    "total_calls": 420,
     "last_ok": "2026-07-31T00:11:33.368454+00:00",
-    "last_fail": "2026-08-04T12:08:55.358464+00:00"
+    "last_fail": "2026-08-04T21:21:19.319832+00:00"
   },
   "thehackernews": {
-    "consecutive_ok": 5,
+    "consecutive_ok": 6,
     "consecutive_fail": 0,
-    "total_ok": 345,
-    "total_calls": 419,
-    "last_ok": "2026-08-04T12:08:55.551134+00:00",
+    "total_ok": 346,
+    "total_calls": 420,
+    "last_ok": "2026-08-04T21:21:19.271780+00:00",
     "last_fail": "2026-08-03T00:06:28.991772+00:00"
   },
   "gh_security_blog": {
     "consecutive_ok": 0,
-    "consecutive_fail": 22,
+    "consecutive_fail": 23,
     "total_ok": 21,
-    "total_calls": 419,
+    "total_calls": 420,
     "last_ok": "2026-07-29T23:07:22.612280+00:00",
-    "last_fail": "2026-08-04T12:08:54.988910+00:00"
+    "last_fail": "2026-08-04T21:21:18.887811+00:00"
   },
   "github_changelog": {
-    "consecutive_ok": 4,
+    "consecutive_ok": 5,
     "consecutive_fail": 0,
-    "total_ok": 222,
-    "total_calls": 419,
-    "last_ok": "2026-08-04T12:08:56.003769+00:00",
+    "total_ok": 223,
+    "total_calls": 420,
+    "last_ok": "2026-08-04T21:21:19.596491+00:00",
     "last_fail": "2026-08-03T12:33:26.377712+00:00"
   },
   "ncsc_uk": {
     "consecutive_ok": 0,
-    "consecutive_fail": 419,
+    "consecutive_fail": 420,
     "total_ok": 0,
-    "total_calls": 419,
+    "total_calls": 420,
     "last_ok": null,
-    "last_fail": "2026-08-04T12:08:55.689950+00:00"
+    "last_fail": "2026-08-04T21:21:19.476063+00:00"
   },
   "cloudflare_blog": {
-    "consecutive_ok": 0,
-    "consecutive_fail": 2,
-    "total_ok": 142,
-    "total_calls": 419,
-    "last_ok": "2026-08-03T23:13:21.712328+00:00",
+    "consecutive_ok": 1,
+    "consecutive_fail": 0,
+    "total_ok": 143,
+    "total_calls": 420,
+    "last_ok": "2026-08-04T21:21:19.589902+00:00",
     "last_fail": "2026-08-04T12:08:55.966870+00:00"
   },
   "snyk_blog": {
-    "consecutive_ok": 1,
-    "consecutive_fail": 0,
+    "consecutive_ok": 0,
+    "consecutive_fail": 1,
     "total_ok": 25,
-    "total_calls": 419,
+    "total_calls": 420,
     "last_ok": "2026-08-04T12:08:57.072817+00:00",
-    "last_fail": "2026-08-04T09:44:15.626643+00:00"
+    "last_fail": "2026-08-04T21:21:20.227269+00:00"
   },
   "bsi_germany": {
-    "consecutive_ok": 5,
+    "consecutive_ok": 6,
     "consecutive_fail": 0,
-    "total_ok": 245,
-    "total_calls": 419,
-    "last_ok": "2026-08-04T12:08:56.783392+00:00",
+    "total_ok": 246,
+    "total_calls": 420,
+    "last_ok": "2026-08-04T21:21:20.305451+00:00",
     "last_fail": "2026-08-03T00:06:29.658292+00:00"
   },
   "gcp_security": {
     "consecutive_ok": 0,
-    "consecutive_fail": 15,
+    "consecutive_fail": 16,
     "total_ok": 36,
-    "total_calls": 419,
+    "total_calls": 420,
     "last_ok": "2026-07-31T23:11:58.817249+00:00",
-    "last_fail": "2026-08-04T12:08:56.660162+00:00"
+    "last_fail": "2026-08-04T21:21:19.997432+00:00"
   },
   "cyberscoop": {
-    "consecutive_ok": 1,
+    "consecutive_ok": 2,
     "consecutive_fail": 0,
-    "total_ok": 235,
-    "total_calls": 419,
-    "last_ok": "2026-08-04T12:08:56.540049+00:00",
+    "total_ok": 236,
+    "total_calls": 420,
+    "last_ok": "2026-08-04T21:21:20.133690+00:00",
     "last_fail": "2026-08-04T09:44:15.308351+00:00"
   },
   "securityweek": {
-    "consecutive_ok": 5,
+    "consecutive_ok": 6,
     "consecutive_fail": 0,
-    "total_ok": 326,
-    "total_calls": 419,
-    "last_ok": "2026-08-04T12:08:56.214812+00:00",
+    "total_ok": 327,
+    "total_calls": 420,
+    "last_ok": "2026-08-04T21:21:19.878350+00:00",
     "last_fail": "2026-08-03T00:06:29.737431+00:00"
   },
   "darkreading": {
-    "consecutive_ok": 4,
+    "consecutive_ok": 5,
     "consecutive_fail": 0,
-    "total_ok": 289,
-    "total_calls": 419,
-    "last_ok": "2026-08-04T12:08:56.783405+00:00",
+    "total_ok": 290,
+    "total_calls": 420,
+    "last_ok": "2026-08-04T21:21:20.243914+00:00",
     "last_fail": "2026-08-03T12:33:27.789823+00:00"
   },
   "therecord": {
-    "consecutive_ok": 0,
-    "consecutive_fail": 2,
-    "total_ok": 201,
-    "total_calls": 419,
-    "last_ok": "2026-08-03T23:13:22.680172+00:00",
+    "consecutive_ok": 1,
+    "consecutive_fail": 0,
+    "total_ok": 202,
+    "total_calls": 420,
+    "last_ok": "2026-08-04T21:21:20.456536+00:00",
     "last_fail": "2026-08-04T12:08:57.072840+00:00"
   },
   "talos_blog": {
-    "consecutive_ok": 1,
+    "consecutive_ok": 2,
     "consecutive_fail": 0,
-    "total_ok": 55,
-    "total_calls": 419,
-    "last_ok": "2026-08-04T12:08:57.579551+00:00",
+    "total_ok": 56,
+    "total_calls": 420,
+    "last_ok": "2026-08-04T21:21:20.484687+00:00",
     "last_fail": "2026-08-04T09:44:15.825692+00:00"
   },
   "unit42": {
-    "consecutive_ok": 0,
-    "consecutive_fail": 3,
-    "total_ok": 102,
-    "total_calls": 419,
-    "last_ok": "2026-08-03T21:14:38.907227+00:00",
+    "consecutive_ok": 1,
+    "consecutive_fail": 0,
+    "total_ok": 103,
+    "total_calls": 420,
+    "last_ok": "2026-08-04T21:21:20.400692+00:00",
     "last_fail": "2026-08-04T12:08:56.894961+00:00"
   },
   "portswigger_daily": {
@@ -152,11 +152,11 @@
     "last_fail": "2026-05-08T19:11:04.347932+00:00"
   },
   "ms_security_blog": {
-    "consecutive_ok": 0,
-    "consecutive_fail": 15,
-    "total_ok": 148,
-    "total_calls": 419,
-    "last_ok": "2026-07-31T23:11:59.117088+00:00",
+    "consecutive_ok": 1,
+    "consecutive_fail": 0,
+    "total_ok": 149,
+    "total_calls": 420,
+    "last_ok": "2026-08-04T21:21:20.593070+00:00",
     "last_fail": "2026-08-04T12:08:57.183188+00:00"
   },
   "malwarebytes_blog": {
@@ -168,19 +168,19 @@
     "last_fail": "2026-05-08T10:45:20.348571+00:00"
   },
   "aws_security_blog": {
-    "consecutive_ok": 0,
-    "consecutive_fail": 15,
-    "total_ok": 129,
-    "total_calls": 419,
-    "last_ok": "2026-07-31T23:11:59.462823+00:00",
+    "consecutive_ok": 1,
+    "consecutive_fail": 0,
+    "total_ok": 130,
+    "total_calls": 420,
+    "last_ok": "2026-08-04T21:21:20.753425+00:00",
     "last_fail": "2026-08-04T12:08:57.602379+00:00"
   },
   "nvd": {
-    "consecutive_ok": 10,
+    "consecutive_ok": 11,
     "consecutive_fail": 0,
-    "total_ok": 386,
-    "total_calls": 417,
-    "last_ok": "2026-08-04T12:08:56.783369+00:00",
+    "total_ok": 387,
+    "total_calls": 418,
+    "last_ok": "2026-08-04T21:21:25.907905+00:00",
     "last_fail": "2026-08-02T00:05:50.842405+00:00"
   },
   "acsc_australia": {
@@ -193,42 +193,42 @@
   },
   "projectdiscovery": {
     "consecutive_ok": 0,
-    "consecutive_fail": 2,
+    "consecutive_fail": 3,
     "total_ok": 18,
-    "total_calls": 307,
+    "total_calls": 308,
     "last_ok": "2026-08-03T23:13:23.228792+00:00",
-    "last_fail": "2026-08-04T12:08:57.498991+00:00"
+    "last_fail": "2026-08-04T21:21:20.767418+00:00"
   },
   "aws_security_bulletins": {
-    "consecutive_ok": 0,
-    "consecutive_fail": 2,
-    "total_ok": 60,
-    "total_calls": 307,
-    "last_ok": "2026-08-03T23:13:23.403707+00:00",
+    "consecutive_ok": 1,
+    "consecutive_fail": 0,
+    "total_ok": 61,
+    "total_calls": 308,
+    "last_ok": "2026-08-04T21:21:21.090324+00:00",
     "last_fail": "2026-08-04T12:08:57.974079+00:00"
   },
   "trail_of_bits": {
     "consecutive_ok": 0,
-    "consecutive_fail": 19,
+    "consecutive_fail": 20,
     "total_ok": 20,
-    "total_calls": 307,
+    "total_calls": 308,
     "last_ok": "2026-07-30T22:14:54.030996+00:00",
-    "last_fail": "2026-08-04T12:08:57.899856+00:00"
+    "last_fail": "2026-08-04T21:21:21.066343+00:00"
   },
   "msrc_update_guide": {
     "consecutive_ok": 0,
-    "consecutive_fail": 2,
+    "consecutive_fail": 3,
     "total_ok": 187,
-    "total_calls": 307,
+    "total_calls": 308,
     "last_ok": "2026-08-03T23:13:24.764743+00:00",
-    "last_fail": "2026-08-04T12:08:59.638608+00:00"
+    "last_fail": "2026-08-04T21:21:22.302124+00:00"
   },
   "project_zero": {
     "consecutive_ok": 0,
-    "consecutive_fail": 307,
+    "consecutive_fail": 308,
     "total_ok": 0,
-    "total_calls": 307,
+    "total_calls": 308,
     "last_ok": null,
-    "last_fail": "2026-08-04T12:09:01.020274+00:00"
+    "last_fail": "2026-08-04T21:21:23.931312+00:00"
   }
 }

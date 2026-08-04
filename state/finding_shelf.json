@@ -8836,5 +8836,32 @@
     "last_problem_type": "rce",
     "last_affects": "foundation",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-34486": {
+    "first_seen": "2026-08-04",
+    "last_seen": "2026-08-04",
+    "run_count": 1,
+    "title": "CVE-2026-34486: Apache Tomcat RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-14175": {
+    "first_seen": "2026-08-04",
+    "last_seen": "2026-08-04",
+    "run_count": 1,
+    "title": "CVE-2026-14175: Bilin Software Unrestricted File Upload",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2026-18830": {
+    "first_seen": "2026-08-04",
+    "last_seen": "2026-08-04",
+    "run_count": 1,
+    "title": "CVE-2026-18830: Amazon Bedrock AgentCore Insufficient Input Validation",
+    "last_problem_type": "rce",
+    "last_affects": "service",
+    "last_classification_confidence": 0.85
   }
 }
