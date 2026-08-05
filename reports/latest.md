@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-08-05T09:43:00.501274+00:00
+generated_at: 2026-08-05T12:07:02.873042+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,14 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-CVE-2026-18556 in N-able N-central and CVE-2026-34486 in Apache Tomcat are being actively exploited, with internet-facing servers and authentication systems most exposed due to the lack of available patches. These vulnerabilities allow for authentication bypass and missing encryption of sensitive data, respectively. The most time-sensitive action is to patch or isolate affected N-able N-central and Apache Tomcat systems, although no patches are currently available.
+The highest-risk items this period are CVE-2026-18103 in dhcp-server, CVE-2026-18853 in ZomboDroid Meme Generator App, and CVE-2026-45705 in OpenSIPS. Internet-facing servers and applications are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems running OpenSIPS, as a patch is not currently available. 
 
-## CVE-2026-18556: N-able N-central Auth Bypass (risk: 70)
-[P1] N-able N-central contains an authentication bypass vulnerability that is being actively exploited in the wild, with no patch available. This vulnerability allows attackers to bypass authentication entirely, gaining unauthorized access to the system. Why now: Reported attribution (unverified): none, but exploitation is ongoing (confidence: 0.80)
+## CVE-2026-45705: OpenSIPS RCE (risk: 80)
+[P1] A vulnerability in OpenSIPS allows for remote code execution, but no patch is available. The risk of exploitation is high due to the lack of a patch and the potential for widespread impact. Why now: The vulnerability is easily exploitable and has a high potential impact. (confidence: 0.90)
 
-- [CISA Flags Langflow RCE, Tomcat, and N-central Flaws as Actively Exploited](https://thehackernews.com/2026/08/cisa-flags-langflow-rce-tomcat-and-n.html)
+- [CVE-2026-45705](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-45705)
 
-## CVE-2026-34486: Apache Tomcat Missing Encryption (risk: 70)
-[P1] Apache Tomcat contains a missing encryption of sensitive data vulnerability that is being actively exploited in the wild, with no patch available. This vulnerability allows attackers to bypass encryption, gaining access to sensitive data. Why now: Reported attribution (unverified): none, but exploitation is ongoing (confidence: 0.80)
+## CVE-2026-18103: dhcp-server RCE (risk: 70)
+[P1] A remote attacker with network access to the OM can exploit a flaw in dhcp-server, but no patch is available. The risk of exploitation is high due to the lack of a patch and the potential for widespread impact. Why now: The vulnerability is easily exploitable and has a high potential impact. (confidence: 0.80)
 
-- [CISA Flags Langflow RCE, Tomcat, and N-central Flaws as Actively Exploited](https://thehackernews.com/2026/08/cisa-flags-langflow-rce-tomcat-and-n.html)
+- [CVE-2026-18103](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-18103)
+
+## CVE-2026-18853: ZomboDroid Meme Generator App auth_bypass (risk: 60)
+[P2] A vulnerability in ZomboDroid Meme Generator App allows for authentication bypass, but no patch is available. The risk of exploitation is high due to the lack of a patch and the potential for widespread impact. Why now: The vulnerability is easily exploitable and has a high potential impact. (confidence: 0.70)
+
+- [CVE-2026-18853](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-18853)

@@ -8881,5 +8881,32 @@
     "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-45705": {
+    "first_seen": "2026-08-05",
+    "last_seen": "2026-08-05",
+    "run_count": 1,
+    "title": "CVE-2026-45705: OpenSIPS RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "cve:CVE-2026-18103": {
+    "first_seen": "2026-08-05",
+    "last_seen": "2026-08-05",
+    "run_count": 1,
+    "title": "CVE-2026-18103: dhcp-server RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-18853": {
+    "first_seen": "2026-08-05",
+    "last_seen": "2026-08-05",
+    "run_count": 1,
+    "title": "CVE-2026-18853: ZomboDroid Meme Generator App auth_bypass",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.8
   }
 }
