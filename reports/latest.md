@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-08-06T09:46:13.826723+00:00
+generated_at: 2026-08-06T12:09:57.005401+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-67865 in S2OPC, CVE-2026-71319 in Nuxt, and CVE-2026-63077 in TeamCity. Internet-facing development frameworks and container orchestration nodes are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to isolate and monitor TeamCity instances, as a patch is not currently available for CVE-2026-63077.
+The highest-risk items this period include CVE-2023-54378, CVE-2023-54379, and CVE-2023-54380, which are related to erroneously reserved vulnerabilities under the wrong year by automation defect. Internet-facing systems and applications are most exposed due to the lack of patches and workarounds for these vulnerabilities. The most time-sensitive action is to monitor and patch systems affected by these vulnerabilities, specifically those related to JetBrains TeamCity, as hackers have started exploiting a recent vulnerability in this product, although no patch is currently available.
 
-## CVE-2026-63077: TeamCity RCE (risk: 100)
-[P1] TeamCity has a remote code execution vulnerability, CVE-2026-63077, which is under active exploitation in the wild. No patch is currently available. Why now: Reported attribution (unverified): Active exploitation in the wild. (confidence: 0.90)
+## Hackers Start Exploiting Recent JetBrains TeamCity Vulnerability (risk: 70)
+[P1] Hackers have started exploiting a recent JetBrains TeamCity vulnerability, which poses a significant risk to affected systems. Although the article does not provide a specific CVE ID, it highlights the importance of monitoring and patching systems affected by this vulnerability. Why now: The vulnerability is being actively exploited in the wild, which increases its risk score and priority. (confidence: 0.80)
 
-- [CISA Flags TeamCity CVE-2026-63077 RCE Flaw Under Active Exploitation in the Wild](https://thehackernews.com/2026/08/cisa-flags-teamcity-cve-2026-63077-rce.html)
+- [Hackers Start Exploiting Recent JetBrains TeamCity Vulnerability](https://www.securityweek.com/hackers-start-exploiting-recent-jetbrains-teamcity-vulnerability/)
 
-## CVE-2026-67865: S2OPC OOB Read (risk: 70)
-[P2] S2OPC 1.7.3 contains an out-of-bounds read in RepublishResponse handling, with no patch available. This vulnerability could be exploited for remote code execution. Why now: Reported as a new CVE with potential for exploitation in the wild. (confidence: 0.80)
+## CVE-2023-54378: Erroneous Reservation (risk: 40)
+[P2] CVE-2023-54378 is a vulnerability with no patch or workaround available, and it has been erroneously reserved under the wrong year by automation defect. This vulnerability has not been exploited in the wild yet, but its presence poses a significant risk to affected systems. Why now: Reported attribution (unverified): none, but the vulnerability's presence poses a significant risk to affected systems. (confidence: 0.60)
 
-- [CVE-2026-67865](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-67865)
+- [CVE-2023-54378](https://www.nvd.nist.gov/v1/nvd.html)
 
-## CVE-2026-71319: Nuxt JS Injection (risk: 70)
-[P2] Nuxt is an open-source web development framework for Vue.js, with a vulnerability prior to version 3.3.1. No patch is available for this specific issue. Why now: Newly disclosed vulnerability with potential for exploitation. (confidence: 0.80)
+## CVE-2023-54379: Erroneous Reservation (risk: 40)
+[P2] CVE-2023-54379 is another vulnerability with no patch or workaround available, and it has been erroneously reserved under the wrong year by automation defect. This vulnerability has not been exploited in the wild yet, but its presence poses a significant risk to affected systems. Why now: Reported attribution (unverified): none, but the vulnerability's presence poses a significant risk to affected systems. (confidence: 0.60)
 
-- [CVE-2026-71319](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-71319)
+- [CVE-2023-54379](https://www.nvd.nist.gov/v1/nvd.html)

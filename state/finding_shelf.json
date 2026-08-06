@@ -8989,5 +8989,32 @@
     "last_problem_type": "rce",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
+  },
+  "91a5c70e2432": {
+    "first_seen": "2026-08-06",
+    "last_seen": "2026-08-06",
+    "run_count": 1,
+    "title": "Hackers Start Exploiting Recent JetBrains TeamCity Vulnerability",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2023-54378": {
+    "first_seen": "2026-08-06",
+    "last_seen": "2026-08-06",
+    "run_count": 1,
+    "title": "CVE-2023-54378: Erroneous Reservation",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2023-54379": {
+    "first_seen": "2026-08-06",
+    "last_seen": "2026-08-06",
+    "run_count": 1,
+    "title": "CVE-2023-54379: Erroneous Reservation",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.85
   }
 }
