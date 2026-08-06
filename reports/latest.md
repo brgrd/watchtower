@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-08-05T23:12:11.663862+00:00
+generated_at: 2026-08-06T09:46:13.826723+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-14304 in Eclipse Accessibility Tools Framework, CVE-2026-14574 in Eclipse Theia, and CVE-2026-12609 in Eclipse Theia. Internet-facing applications and developer tools are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using Eclipse Theia versions 0.7.0 to 1.73.1, as no patches are currently available.
+The highest-risk items this period are CVE-2026-67865 in S2OPC, CVE-2026-71319 in Nuxt, and CVE-2026-63077 in TeamCity. Internet-facing development frameworks and container orchestration nodes are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to isolate and monitor TeamCity instances, as a patch is not currently available for CVE-2026-63077.
 
-## CVE-2026-14304: Eclipse ACTF RCE (risk: 40)
-[P2] CVE-2026-14304 is a vulnerability in Eclipse Accessibility Tools Framework that allows for remote code execution. There is no available patch, and it has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.80)
+## CVE-2026-63077: TeamCity RCE (risk: 100)
+[P1] TeamCity has a remote code execution vulnerability, CVE-2026-63077, which is under active exploitation in the wild. No patch is currently available. Why now: Reported attribution (unverified): Active exploitation in the wild. (confidence: 0.90)
 
-- [CVE-2026-14304](https://www.cisa.gov/news-events/alerts/2026/08/05/cisa-adds-one-known-exploited-vulnerability-catalog)
+- [CISA Flags TeamCity CVE-2026-63077 RCE Flaw Under Active Exploitation in the Wild](https://thehackernews.com/2026/08/cisa-flags-teamcity-cve-2026-63077-rce.html)
 
-## CVE-2026-14574: Eclipse Theia Privilege Escalation (risk: 40)
-[P2] CVE-2026-14574 is a vulnerability in Eclipse Theia that allows for privilege escalation. There is no available patch, and it has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.80)
+## CVE-2026-67865: S2OPC OOB Read (risk: 70)
+[P2] S2OPC 1.7.3 contains an out-of-bounds read in RepublishResponse handling, with no patch available. This vulnerability could be exploited for remote code execution. Why now: Reported as a new CVE with potential for exploitation in the wild. (confidence: 0.80)
 
-- [CVE-2026-14574](https://www.cisa.gov/news-events/alerts/2026/08/05/cisa-adds-one-known-exploited-vulnerability-catalog)
+- [CVE-2026-67865](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-67865)
 
-## CVE-2026-12609: Eclipse Theia Data Tampering (risk: 40)
-[P2] CVE-2026-12609 is a vulnerability in Eclipse Theia that allows for data tampering. There is no available patch, and it has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.80)
+## CVE-2026-71319: Nuxt JS Injection (risk: 70)
+[P2] Nuxt is an open-source web development framework for Vue.js, with a vulnerability prior to version 3.3.1. No patch is available for this specific issue. Why now: Newly disclosed vulnerability with potential for exploitation. (confidence: 0.80)
 
-- [CVE-2026-12609](https://www.cisa.gov/news-events/alerts/2026/08/05/cisa-adds-one-known-exploited-vulnerability-catalog)
+- [CVE-2026-71319](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-71319)
