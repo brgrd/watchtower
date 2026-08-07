@@ -1,25 +1,31 @@
 ---
-generated_at: 2026-08-07T22:49:40.728222+00:00
+generated_at: 2026-08-07T23:42:02.401779+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Analyst Summary
+## CISA Adds One Known Exploited Vulnerability to Catalog (risk: 70)
+1 related updates.
 
-The highest-risk items this period include GCP-2026-041, GCP-2026-036, and GCP-2026-027, which are security bulletins from Google Cloud. Internet-facing cloud services are most exposed right now due to the lack of patches for these vulnerabilities. The single most time-sensitive action is to patch or isolate affected Google Cloud services, specifically those mentioned in the security bulletins, as patches are currently available for some of them.
+- [CISA Adds One Known Exploited Vulnerability to Catalog](https://www.cisa.gov/news-events/alerts/2026/08/07/cisa-adds-one-known-exploited-vulnerability-catalog)
 
-## GCP-2026-041 (risk: 70)
-[P1] Google Cloud security bulletin GCP-2026-041 affects Google Cloud services, with a potential for remote code execution. Patch status is currently available for some services, but not all. Why now: Reported attribution (unverified): None, but high-risk due to cloud exposure. (confidence: 0.80)
+## GCP-2026-030 (risk: 70)
+1 related updates.
 
-- [GCP-2026-041](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-041)
+- [GCP-2026-030](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-030)
 
-## GCP-2026-036 (risk: 60)
-[P2] Google Cloud security bulletin GCP-2026-036 affects Google Cloud services, with a potential for data disclosure. Patch status is currently available for some services, but not all. Why now: Reported attribution (unverified): None, but high-risk due to cloud exposure. (confidence: 0.70)
+## GCP-2026-028 (risk: 55)
+1 related updates.
 
-- [GCP-2026-036](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-036)
+- [GCP-2026-028](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-028)
 
-## GCP-2026-027 (risk: 50)
-[P2] Google Cloud security bulletin GCP-2026-027 affects Google Cloud services, with a potential for privilege escalation. Patch status is currently available for some services, but not all. Why now: Reported attribution (unverified): None, but high-risk due to cloud exposure. (confidence: 0.60)
+## GCP-2026-025 (risk: 55)
+1 related updates.
 
-- [GCP-2026-027](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-027)
+- [GCP-2026-025](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-025)
+
+## GCP-2026-024 (risk: 55)
+1 related updates.
+
+- [GCP-2026-024](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-024)
