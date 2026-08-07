@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-07T00:10:59.665153+00:00",
+  "fetched_at": "2026-08-07T09:11:44.823638+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -5568,6 +5568,26 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Evony",
       "summary": "In June 2016, the online multiplayer game Evony was hacked and over 29 million unique accounts were exposed. The attack led to the exposure of usernames, email and IP addresses and MD5 hashes of passwords (without salt).",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:exactsciences-2026-07-15",
+      "name": "ExactSciences",
+      "title": "Exact Sciences",
+      "date": "2026-07-15",
+      "added": "2026-08-07",
+      "affected_count": 10869543,
+      "data_classes": [
+        "Dates of birth",
+        "Email addresses",
+        "Genders",
+        "Names",
+        "Personal health data",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#ExactSciences",
+      "summary": "In July 2026, Exact Sciences (now owned by Abbott Laboratories) was the target of a ShinyHunters \"pay or leak\" extortion campaign. The group claimed to have obtained data from the company's cancer diagnostics business, which they later published publicly. The breach contained 10.9M unique email addresses belonging to customers, patients and healthcare providers, along with names, addresses, phone ",
+      "action": "monitor"
     },
     {
       "id": "hibp:exactis-2018-06-01",
