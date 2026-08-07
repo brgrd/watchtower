@@ -9097,5 +9097,32 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "service",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-64638": {
+    "first_seen": "2026-08-07",
+    "last_seen": "2026-08-07",
+    "run_count": 1,
+    "title": "CVE-2026-64638: WordPress XSS",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-12070": {
+    "first_seen": "2026-08-07",
+    "last_seen": "2026-08-07",
+    "run_count": 1,
+    "title": "CVE-2026-12070: Tobit Laboratories AG TeamDavid's Webbox File Deletion",
+    "last_problem_type": "data_tampering",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-54200": {
+    "first_seen": "2026-08-07",
+    "last_seen": "2026-08-07",
+    "run_count": 1,
+    "title": "CVE-2026-54200: Tobit Laboratories AG TeamDavid's Webbox Local File Inclusion",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
