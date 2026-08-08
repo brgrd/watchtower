@@ -9220,5 +9220,23 @@
     "last_problem_type": "privilege_escalation",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "20b94605752a": {
+    "first_seen": "2026-08-08",
+    "last_seen": "2026-08-08",
+    "run_count": 1,
+    "title": "Atlassian Rovo AI Vulnerability",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.95
+  },
+  "e240998a40bd": {
+    "first_seen": "2026-08-08",
+    "last_seen": "2026-08-08",
+    "run_count": 1,
+    "title": "TrueConf Breach",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
