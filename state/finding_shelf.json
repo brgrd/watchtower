@@ -9238,5 +9238,14 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "632e143d917c": {
+    "first_seen": "2026-08-08",
+    "last_seen": "2026-08-08",
+    "run_count": 1,
+    "title": "Atlassian Rovo AI One-Click Vulnerability",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
