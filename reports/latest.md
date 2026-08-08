@@ -1,31 +1,25 @@
 ---
-generated_at: 2026-08-07T23:42:02.401779+00:00
+generated_at: 2026-08-08T09:48:33.872914+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CISA Adds One Known Exploited Vulnerability to Catalog (risk: 70)
-1 related updates.
+## Analyst Summary
 
-- [CISA Adds One Known Exploited Vulnerability to Catalog](https://www.cisa.gov/news-events/alerts/2026/08/07/cisa-adds-one-known-exploited-vulnerability-catalog)
+The highest-risk items this period are CVE-2026-45808 in OpenBao, CVE-2026-48169 in PraisonAI, and CVE-2026-11742 in the kernel queue helper. These vulnerabilities expose internet-facing systems, container orchestration nodes, and VPN appliances to potential attacks, with no patches currently available. The single most time-sensitive action is to monitor and isolate systems using OpenBao and PraisonAI, as no patches are currently available for these products.
 
-## GCP-2026-030 (risk: 70)
-1 related updates.
+## CVE-2026-45808: OpenBao RCE (risk: 70)
+[P1] OpenBao is an open source identity-based secrets management system. Prior to version 0.1.4, it is vulnerable to arbitrary code execution. No patch is currently available. Why now: No patch is currently available for this vulnerability. (confidence: 0.80)
 
-- [GCP-2026-030](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-030)
+- [CVE-2026-45808](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml#)
 
-## GCP-2026-028 (risk: 55)
-1 related updates.
+## CVE-2026-48169: PraisonAI RCE (risk: 70)
+[P1] PraisonAI is a multi-agent teams system. Versions prior to 0.1.4 of the PraisonAI system are vulnerable to arbitrary code execution. No patch is currently available. Why now: No patch is currently available for this vulnerability. (confidence: 0.80)
 
-- [GCP-2026-028](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-028)
+- [CVE-2026-48169](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml#)
 
-## GCP-2026-025 (risk: 55)
-1 related updates.
+## CVE-2026-11742: Kernel Queue Helper RCE (risk: 70)
+[P1] The kernel queue helper z_queue_node_peek() in kernel/queue.c dereferences a node that has already been freed, leading to a use-after-free vulnerability. No patch is currently available. Why now: No patch is currently available for this vulnerability. (confidence: 0.80)
 
-- [GCP-2026-025](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-025)
-
-## GCP-2026-024 (risk: 55)
-1 related updates.
-
-- [GCP-2026-024](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-024)
+- [CVE-2026-11742](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml#)

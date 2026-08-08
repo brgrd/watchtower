@@ -1,42 +1,43 @@
-# Watchtower Pipeline Eval — 2026-08-07T23:41:11Z
+# Watchtower Pipeline Eval — 2026-08-08T09:48:23Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 212 |
-| After dedup + CVE merge | 206 |
-| Sent to Groq | 5 |
-| Groq findings returned | 0 |
-| Final cards rendered | 5 |
-| **Pipeline yield** | **5/212 (2.4%)** |
+| Items polled (raw) | 97 |
+| After dedup + CVE merge | 89 |
+| Sent to Groq | 30 |
+| Groq findings returned | 3 |
+| Passed quality gate | 3 |
+| Final cards rendered | 3 |
+| **Pipeline yield** | **3/97 (3.1%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 13,345 chars
-- **Parse**: ✗  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 6866
+- **Payload**: 9,593 chars
+- **Parse**: ✓  |  **Retries**: 0
+- **Rate limit remaining** — requests: 999, tokens: 7677
 
 ## Card Quality
 
-**5 cards** — P1: 0, P2: 0, P3: 5
+**3 cards** — P1: 3, P2: 0, P3: 0
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 77 / 75 |
-| Tactic coverage | 0% |
+| Risk score mean / p90 | 70 / 70 |
+| Tactic coverage | 100% |
 | CVE coverage | 0% |
-| Patch status | unknown: 5 |
+| Patch status | unknown: 3 |
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 0 chars (0% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 0 total — 0% specific, 0% generic
+- **`why_now` avg length**: 55 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 6 total — 50% specific, 0% generic
 
 ### Persistence
 
-- New (run=1): **1** | Evolving (2–5): **1** | Persistent (>5): **3** | Resolved: **0**
-- Mean run_count: 5.2 | Mean shelf_days: 64.6
+- New (run=1): **3** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
+- Mean run_count: 1 | Mean shelf_days: 0
 
 ## Enrichment Hit Rates
 
@@ -50,23 +51,23 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 143 |
+| `nvd` | 47 |
 | `gcp_security` | 30 |
-| `github_changelog` | 7 |
-| `bleepingcomputer` | 5 |
+| `msrc_update_guide` | 12 |
 | `thehackernews` | 5 |
+| `cisa_kev` | 1 |
 | _(+21 more)_ | … |
 
-**11 feeds returned 0 items this run.**
+**19 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-08-06 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-08-07 | 2 | 1 | 100% | 0% | 2 | 0 |
 | 2026-08-07 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-08-07 | 2 | 2 | 100% | 0% | 2 | 0 |
 | 2026-08-07 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-08-07 | 3 | ? | 100% | 100% | 3 | 0 |
 | 2026-08-07 | 3 | 1 | 100% | 0% | 3 | 0 |
+| 2026-08-07 | 5 | ? | 0% | 0% | 1 | 3 |
