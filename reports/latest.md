@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-08-08T22:39:49.667023+00:00
+generated_at: 2026-08-08T23:37:31.937212+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,9 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-Atlassian's Rovo AI has been exposed to a critical one-click vulnerability, potentially allowing attackers to access enterprise data. Internet-facing applications and services are most exposed due to the nature of the vulnerability. The most time-sensitive action is to patch or isolate Atlassian Rovo AI to prevent exploitation, although a patch is not currently available.
+The highest-risk items this period are CVE-2026-19288 in astralisone rive-mcp-server-core, CVE-2026-19287 in abrinsmead mindpilot-mcp, and CVE-2026-19281 in adolfosalasgomez3011 slidev-builder-mcp. Internet-facing servers and applications are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems running astralisone rive-mcp-server-core, as no patch is currently available.
 
-## Atlassian Rovo AI One-Click Vulnerability (risk: 70)
-[P1] A critical one-click vulnerability in Atlassian's Rovo AI has been exposed, potentially allowing attackers to access enterprise data. The vulnerability is currently unpatched and could be exploited in the wild. Why now: The vulnerability is currently unpatched and could be exploited in the wild. (confidence: 0.80)
+## CVE-2026-19288: rive-mcp-server-core RCE (risk: 70)
+[P1] A vulnerability in astralisone rive-mcp-server-core allows for arbitrary code execution, with no patch available. Exploitation in the wild has not been reported, but the lack of a patch makes it a high-risk item. Why now: Lack of available patch increases risk of exploitation. (confidence: 0.80)
 
-- [Critical One-Click Vulnerability in Atlassian’s Rovo AI Exposed Enterprise Data](https://www.securityweek.com/critical-one-click-vulnerability-in-atlassians-rovo-ai-exposed-enterprise-data/)
+- [CVE-2026-19288](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve.id=CVE-2026-19288)
+
+## CVE-2026-19287: mindpilot-mcp RCE (risk: 70)
+[P1] A flaw in abrinsmead mindpilot-mcp allows for arbitrary code execution, with no patch available. Exploitation in the wild has not been reported, but the lack of a patch makes it a high-risk item. Why now: Lack of available patch increases risk of exploitation. (confidence: 0.80)
+
+- [CVE-2026-19287](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve.id=CVE-2026-19287)
+
+## CVE-2026-19281: slidev-builder-mcp RCE (risk: 70)
+[P1] A security flaw in adolfosalasgomez3011 slidev-builder-mcp allows for arbitrary code execution, with no patch available. Exploitation in the wild has not been reported, but the lack of a patch makes it a high-risk item. Why now: Lack of available patch increases risk of exploitation. (confidence: 0.80)
+
+- [CVE-2026-19281](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml?cve.id=CVE-2026-19281)

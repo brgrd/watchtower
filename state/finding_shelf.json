@@ -9247,5 +9247,32 @@
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-19288": {
+    "first_seen": "2026-08-08",
+    "last_seen": "2026-08-08",
+    "run_count": 1,
+    "title": "CVE-2026-19288: rive-mcp-server-core RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-19287": {
+    "first_seen": "2026-08-08",
+    "last_seen": "2026-08-08",
+    "run_count": 1,
+    "title": "CVE-2026-19287: mindpilot-mcp RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-19281": {
+    "first_seen": "2026-08-08",
+    "last_seen": "2026-08-08",
+    "run_count": 1,
+    "title": "CVE-2026-19281: slidev-builder-mcp RCE",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
