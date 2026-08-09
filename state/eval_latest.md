@@ -1,26 +1,26 @@
-# Watchtower Pipeline Eval — 2026-08-09T22:41:45Z
+# Watchtower Pipeline Eval — 2026-08-09T23:40:14Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 26 |
-| After dedup + CVE merge | 14 |
-| Sent to Groq | 14 |
+| Items polled (raw) | 28 |
+| After dedup + CVE merge | 18 |
+| Sent to Groq | 18 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/26 (11.5%)** |
+| **Pipeline yield** | **3/28 (10.7%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
 - **Payload**: 9,594 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7638
+- **Rate limit remaining** — requests: 999, tokens: 7636
 
 ## Card Quality
 
-**3 cards** — P1: 0, P2: 3, P3: 0
+**3 cards** — P1: 2, P2: 1, P3: 0
 
 | Metric | Value |
 |--------|-------|
@@ -31,7 +31,7 @@
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 54 chars (0% ≥ 60 chars, considered substantive)
+- **`why_now` avg length**: 58.7 chars (33% ≥ 60 chars, considered substantive)
 - **Recommended actions**: 6 total — 50% specific, 0% generic
 
 ### Persistence
@@ -51,11 +51,11 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 26 |
-| `krebs` | 0 |
-| `gh_security_blog` | 0 |
+| `nvd` | 28 |
 | `bleepingcomputer` | 0 |
-| `thehackernews` | 0 |
+| `gh_security_blog` | 0 |
+| `krebs` | 0 |
+| `ncsc_uk` | 0 |
 | _(+21 more)_ | … |
 
 **21 feeds returned 0 items this run.**
@@ -64,10 +64,10 @@
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-08-08 | 2 | 2 | 100% | 0% | 2 | 0 |
 | 2026-08-08 | 1 | 1 | 100% | 0% | 1 | 0 |
 | 2026-08-08 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-08-09 | 2 | 1 | 100% | 0% | 2 | 0 |
 | 2026-08-09 | 3 | 1 | 100% | 67% | 3 | 0 |
 | 2026-08-09 | 3 | 2 | 100% | 33% | 3 | 0 |
 | 2026-08-09 | 15 | ? | 0% | 0% | 15 | 0 |
+| 2026-08-09 | 3 | ? | 100% | 0% | 3 | 0 |
