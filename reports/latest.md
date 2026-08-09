@@ -1,81 +1,25 @@
 ---
-generated_at: 2026-08-09T21:41:19.637467+00:00
+generated_at: 2026-08-09T22:42:22.556041+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-19346 (risk: 70)
-1 related updates.
+## Analyst Summary
 
-- [CVE-2026-19346](https://nvd.nist.gov/vuln/detail/CVE-2026-19346)
+The highest-risk items this period are CVE-2026-19350 in Dolibarr ERP, CVE-2026-19354 in lock-upme OPMS, and CVE-2026-15534 in Perl. Internet-facing applications and services are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems running Dolibarr ERP and Perl until patches become available.
 
-## CVE-2026-19345 (risk: 70)
-1 related updates.
+## CVE-2026-19350: Dolibarr ERP Vuln (risk: 40)
+[P2] Dolibarr ERP is vulnerable to an unspecified attack, with no patch available. This vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.80)
 
-- [CVE-2026-19345](https://nvd.nist.gov/vuln/detail/CVE-2026-19345)
+- [NVD CVE-2026-19350](https://nvd.nist.gov/v1/cve/2026-19350)
 
-## CVE-2026-19344 (risk: 70)
-1 related updates.
+## CVE-2026-19354: lock-upme OPMS Vuln (risk: 40)
+[P2] lock-upme OPMS is vulnerable to an unspecified attack, with no patch available. This vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.80)
 
-- [CVE-2026-19344](https://nvd.nist.gov/vuln/detail/CVE-2026-19344)
+- [NVD CVE-2026-19354](https://nvd.nist.gov/v1/cve/2026-19354)
 
-## CVE-2026-19348 (risk: 70)
-1 related updates.
+## CVE-2026-15534: Perl Vuln (risk: 40)
+[P2] Perl is vulnerable to out-of-bounds heap reads and writes, with no patch available. This vulnerability has not been exploited in the wild yet. Why now: Newly disclosed vulnerability with no available patch. (confidence: 0.80)
 
-- [CVE-2026-19348](https://nvd.nist.gov/vuln/detail/CVE-2026-19348)
-
-## CVE-2026-19351 (risk: 70)
-1 related updates.
-
-- [CVE-2026-19351](https://nvd.nist.gov/vuln/detail/CVE-2026-19351)
-
-## CVE-2026-19347 (risk: 70)
-1 related updates.
-
-- [CVE-2026-19347](https://nvd.nist.gov/vuln/detail/CVE-2026-19347)
-
-## CVE-2026-19352 (risk: 70)
-1 related updates.
-
-- [CVE-2026-19352](https://nvd.nist.gov/vuln/detail/CVE-2026-19352)
-
-## CVE-2026-19353 (risk: 70)
-1 related updates.
-
-- [CVE-2026-19353](https://nvd.nist.gov/vuln/detail/CVE-2026-19353)
-
-## CVE-2026-19357 (risk: 70)
-1 related updates.
-
-- [CVE-2026-19357](https://nvd.nist.gov/vuln/detail/CVE-2026-19357)
-
-## CVE-2026-19355 (risk: 70)
-1 related updates.
-
-- [CVE-2026-19355](https://nvd.nist.gov/vuln/detail/CVE-2026-19355)
-
-## CVE-2026-19356 (risk: 70)
-1 related updates.
-
-- [CVE-2026-19356](https://nvd.nist.gov/vuln/detail/CVE-2026-19356)
-
-## CVE-2026-19363 (risk: 70)
-1 related updates.
-
-- [CVE-2026-19363](https://nvd.nist.gov/vuln/detail/CVE-2026-19363)
-
-## CVE-2026-19362 (risk: 70)
-1 related updates.
-
-- [CVE-2026-19362](https://nvd.nist.gov/vuln/detail/CVE-2026-19362)
-
-## CVE-2026-19361 (risk: 70)
-1 related updates.
-
-- [CVE-2026-19361](https://nvd.nist.gov/vuln/detail/CVE-2026-19361)
-
-## CVE-2026-19364 (risk: 70)
-1 related updates.
-
-- [CVE-2026-19364](https://nvd.nist.gov/vuln/detail/CVE-2026-19364)
+- [NVD CVE-2026-15534](https://nvd.nist.gov/v1/cve/2026-15534)
