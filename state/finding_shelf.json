@@ -9290,7 +9290,25 @@
     "run_count": 1,
     "title": "CVE-2026-71983: MSI Radix AXE6600 Command Injection",
     "last_problem_type": "rce",
-    "last_affects": "foundation",
-    "last_classification_confidence": 0.95
+    "last_affects": "network",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-64572": {
+    "first_seen": "2026-08-09",
+    "last_seen": "2026-08-09",
+    "run_count": 1,
+    "title": "CVE-2026-64572: ipv4 fib NULL Pointer Dereference",
+    "last_problem_type": "dos",
+    "last_affects": "application",
+    "last_classification_confidence": 0.4
+  },
+  "cve:CVE-2026-64569": {
+    "first_seen": "2026-08-09",
+    "last_seen": "2026-08-09",
+    "run_count": 1,
+    "title": "CVE-2026-64569: mpls NULL Pointer Dereference",
+    "last_problem_type": "dos",
+    "last_affects": "application",
+    "last_classification_confidence": 0.4
   }
 }
