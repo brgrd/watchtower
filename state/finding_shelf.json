@@ -9517,5 +9517,32 @@
     "last_problem_type": "rce",
     "last_affects": "network",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-32227": {
+    "first_seen": "2026-08-10",
+    "last_seen": "2026-08-10",
+    "run_count": 1,
+    "title": "CVE-2026-32227: Apache Ranger SQL Injection",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-44630": {
+    "first_seen": "2026-08-10",
+    "last_seen": "2026-08-10",
+    "run_count": 1,
+    "title": "CVE-2026-44630: Apache IoTDB RPC Service Vulnerability",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-40920": {
+    "first_seen": "2026-08-10",
+    "last_seen": "2026-08-10",
+    "run_count": 1,
+    "title": "CVE-2026-40920: Apache Ranger Privilege Escalation",
+    "last_problem_type": "privilege_escalation",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
