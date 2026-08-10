@@ -1,22 +1,22 @@
-# Watchtower Pipeline Eval — 2026-08-10T10:25:15Z
+# Watchtower Pipeline Eval — 2026-08-10T11:54:29Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 136 |
-| After dedup + CVE merge | 136 |
+| Items polled (raw) | 295 |
+| After dedup + CVE merge | 295 |
 | Sent to Groq | 12 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/136 (2.2%)** |
+| **Pipeline yield** | **3/295 (1.0%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
 - **Payload**: 9,594 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7640
+- **Rate limit remaining** — requests: 999, tokens: 7657
 
 ## Card Quality
 
@@ -31,7 +31,7 @@
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 62 chars (100% ≥ 60 chars, considered substantive)
+- **`why_now` avg length**: 55 chars (0% ≥ 60 chars, considered substantive)
 - **Recommended actions**: 6 total — 50% specific, 0% generic
 
 ### Persistence
@@ -51,11 +51,11 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 109 |
+| `nvd` | 155 |
+| `bsi_germany` | 112 |
 | `msrc_update_guide` | 18 |
-| `securityweek` | 4 |
-| `thehackernews` | 2 |
-| `bsi_germany` | 2 |
+| `securityweek` | 6 |
+| `bleepingcomputer` | 2 |
 | _(+21 more)_ | … |
 
 **20 feeds returned 0 items this run.**
@@ -64,10 +64,10 @@
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-08-08 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-08-09 | 2 | 1 | 100% | 0% | 2 | 0 |
 | 2026-08-09 | 3 | 1 | 100% | 67% | 3 | 0 |
 | 2026-08-09 | 3 | 2 | 100% | 33% | 3 | 0 |
 | 2026-08-09 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-09 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-08-09 | 3 | 2 | 100% | 0% | 3 | 0 |
+| 2026-08-10 | 3 | 3 | 100% | 0% | 3 | 0 |
