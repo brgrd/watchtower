@@ -1,42 +1,42 @@
-# Watchtower Pipeline Eval — 2026-08-10T22:49:41Z
+# Watchtower Pipeline Eval — 2026-08-10T23:45:15Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 696 |
-| After dedup + CVE merge | 696 |
-| Sent to Groq | 120 |
-| Groq findings returned | 3 |
-| Passed quality gate | 3 |
-| Final cards rendered | 3 |
-| **Pipeline yield** | **3/696 (0.4%)** |
+| Items polled (raw) | 690 |
+| After dedup + CVE merge | 690 |
+| Sent to Groq | 21 |
+| Groq findings returned | 2 |
+| Passed quality gate | 2 |
+| Final cards rendered | 2 |
+| **Pipeline yield** | **2/690 (0.3%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 12,176 chars
+- **Payload**: 9,608 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7049
+- **Rate limit remaining** — requests: 999, tokens: 7690
 
 ## Card Quality
 
-**3 cards** — P1: 3, P2: 0, P3: 0
+**2 cards** — P1: 0, P2: 2, P3: 0
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 70 / 70 |
+| Risk score mean / p90 | 40 / 40 |
 | Tactic coverage | 100% |
 | CVE coverage | 0% |
-| Patch status | unknown: 3 |
+| Patch status | unknown: 2 |
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 56 chars (0% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 6 total — 50% specific, 50% generic
+- **`why_now` avg length**: 48.5 chars (0% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 2 total — 0% specific, 0% generic
 
 ### Persistence
 
-- New (run=1): **3** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
+- New (run=1): **2** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
 - Mean run_count: 1 | Mean shelf_days: 0
 
 ## Enrichment Hit Rates
@@ -52,9 +52,9 @@
 | Feed | Items |
 |------|------:|
 | `nvd` | 500 |
-| `bsi_germany` | 138 |
+| `bsi_germany` | 134 |
+| `bleepingcomputer` | 9 |
 | `msrc_update_guide` | 9 |
-| `bleepingcomputer` | 8 |
 | `darkreading` | 7 |
 | _(+21 more)_ | … |
 
@@ -64,10 +64,10 @@
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-08-09 | 3 | 2 | 100% | 33% | 3 | 0 |
 | 2026-08-09 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-09 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-08-09 | 3 | 2 | 100% | 0% | 3 | 0 |
+| 2026-08-10 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-08-10 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-08-10 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-08-10 | 3 | 3 | 100% | 0% | 3 | 0 |
