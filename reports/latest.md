@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-08-11T22:55:24.000090+00:00
+generated_at: 2026-08-11T23:52:20.593285+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -12,9 +12,9 @@ The highest-risk items this period are CVE-2026-72898 in Metabase, CVE-2026-2034
 ## CVE-2026-72898: Metabase SQL Injection (risk: 100)
 [P1] Metabase contains a SQL Injection vulnerability that allows an unauthenticated remote attacker to inject arbitrary SQL code, which is being exploited in the wild. No patch is currently available. Why now: Reported exploitation in the wild (confidence: 0.90)
 
-- [CVE-2026-72898](https://cisa.gov/news-events/ics-advisories/icsa-26-204-01)
+- [CISA Known Exploited Vulnerabilities Catalog](https://www.cisa.gov/known-exploited-vulnerabilities)
 
 ## CVE-2026-20349: Cisco Secure Firewall Vulnerability (risk: 70)
 [P2] A vulnerability in the Remote Access SSL VPN service for Cisco Secure Firewall allows an unauthenticated attacker to gain access to sensitive data. No patch is currently available. Why now: Newly disclosed vulnerability (confidence: 0.80)
 
-- [CVE-2026-20349](https://cisa.gov/news-events/ics-advisories/icsa-26-204-01)
+- [Cisco Security Advisory](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/csa-apache-log4j)
