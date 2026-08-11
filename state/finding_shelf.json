@@ -9679,5 +9679,14 @@
     "last_problem_type": "crypto_weakness",
     "last_affects": "application",
     "last_classification_confidence": 0.4
+  },
+  "cve:CVE-2026-20349": {
+    "first_seen": "2026-08-11",
+    "last_seen": "2026-08-11",
+    "run_count": 1,
+    "title": "CVE-2026-20349: Cisco Secure Firewall Vulnerability",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "network",
+    "last_classification_confidence": 0.9
   }
 }
