@@ -1,30 +1,30 @@
-# Watchtower Pipeline Eval — 2026-08-11T10:59:30Z
+# Watchtower Pipeline Eval — 2026-08-11T11:51:13Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 539 |
-| After dedup + CVE merge | 539 |
+| Items polled (raw) | 543 |
+| After dedup + CVE merge | 543 |
 | Sent to Groq | 120 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/539 (0.6%)** |
+| **Pipeline yield** | **3/543 (0.6%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 12,443 chars
+- **Payload**: 12,436 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 6883
+- **Rate limit remaining** — requests: 999, tokens: 6925
 
 ## Card Quality
 
-**3 cards** — P1: 3, P2: 0, P3: 0
+**3 cards** — P1: 2, P2: 1, P3: 0
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 70 / 70 |
+| Risk score mean / p90 | 66.7 / 70 |
 | Tactic coverage | 100% |
 | CVE coverage | 0% |
 | Patch status | unknown: 3 |
@@ -32,7 +32,7 @@
 ### Reasoning Quality
 
 - **`why_now` avg length**: 23 chars (0% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 6 total — 0% specific, 50% generic
+- **Recommended actions**: 6 total — 50% specific, 50% generic
 
 ### Persistence
 
@@ -52,10 +52,10 @@
 | Feed | Items |
 |------|------:|
 | `msrc_update_guide` | 314 |
-| `bsi_germany` | 119 |
-| `nvd` | 95 |
+| `bsi_germany` | 130 |
+| `nvd` | 87 |
 | `thehackernews` | 5 |
-| `securityweek` | 3 |
+| `securityweek` | 4 |
 | _(+21 more)_ | … |
 
 **19 feeds returned 0 items this run.**
@@ -64,10 +64,10 @@
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-08-09 | 3 | 2 | 100% | 0% | 3 | 0 |
 | 2026-08-10 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-08-10 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-08-10 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-08-10 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-08-10 | 2 | ? | 100% | 0% | 2 | 0 |
 | 2026-08-11 | 2 | 1 | 100% | 0% | 2 | 0 |
+| 2026-08-11 | 3 | 3 | 100% | 0% | 3 | 0 |
