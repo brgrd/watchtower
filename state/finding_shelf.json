@@ -9727,5 +9727,32 @@
     "last_problem_type": "rce",
     "last_affects": "foundation",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-18663": {
+    "first_seen": "2026-08-12",
+    "last_seen": "2026-08-12",
+    "run_count": 1,
+    "title": "CVE-2026-18663: 389-ds-base RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-64951": {
+    "first_seen": "2026-08-12",
+    "last_seen": "2026-08-12",
+    "run_count": 1,
+    "title": "CVE-2026-64951: Velociraptor RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-19311": {
+    "first_seen": "2026-08-12",
+    "last_seen": "2026-08-12",
+    "run_count": 1,
+    "title": "CVE-2026-19311: OpenSearch Alerting Plugin Auth Bypass",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.8
   }
 }
