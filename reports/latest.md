@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-08-11T23:52:20.593285+00:00
+generated_at: 2026-08-12T10:16:01.357826+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,14 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-72898 in Metabase, CVE-2026-20349 in Cisco Secure Firewall, and CVE-2026-6727 in RSA OAEP decryption implementation. Internet-facing firewalls, container orchestration nodes, and VPN appliances are most exposed due to the lack of patches for these vulnerabilities. The most time-sensitive action is to patch or isolate systems affected by CVE-2026-72898, as it is being exploited in the wild and no patch is currently available.
+The highest-risk items this period include Cisco ASA and FTD flaws, SAP Commerce Cloud flaws, and VMware vCenter vulnerabilities. Internet-facing firewalls, container orchestration nodes, and VPN appliances are most exposed due to active exploitation and lack of patches. The most time-sensitive action is to patch Cisco ASA and FTD software to prevent remote denial-of-service attacks.
 
-## CVE-2026-72898: Metabase SQL Injection (risk: 100)
-[P1] Metabase contains a SQL Injection vulnerability that allows an unauthenticated remote attacker to inject arbitrary SQL code, which is being exploited in the wild. No patch is currently available. Why now: Reported exploitation in the wild (confidence: 0.90)
+## Cisco ASA and FTD Flaw (risk: 100)
+[P1] A new vulnerability in Cisco ASA and FTD software has been exploited in the wild, allowing remote denial-of-service attacks. A patch is available. Why now: Active exploitation in the wild (confidence: 0.90)
 
-- [CISA Known Exploited Vulnerabilities Catalog](https://www.cisa.gov/known-exploited-vulnerabilities)
+- [Cisco ASA and FTD Flaw Exploited in the Wild Can Trigger Remote DoS](https://thehackernews.com/2026/08/cisco-asa-and-ftd-flaw-exploited-in.html)
 
-## CVE-2026-20349: Cisco Secure Firewall Vulnerability (risk: 70)
-[P2] A vulnerability in the Remote Access SSL VPN service for Cisco Secure Firewall allows an unauthenticated attacker to gain access to sensitive data. No patch is currently available. Why now: Newly disclosed vulnerability (confidence: 0.80)
+## VMware vCenter Vulnerability (risk: 100)
+[P1] Attackers are exploiting a critical security flaw in VMware vCenter to gain persistent remote access. A patch is available. Why now: Active exploitation in the wild (confidence: 0.90)
 
-- [Cisco Security Advisory](https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/csa-apache-log4j)
+- [Attackers Exploit VMware vCenter Vulnerability to Gain Persistent Remote Access](https://thehackernews.com/2026/08/attackers-exploit-vmware-vcenter.html)
+
+## SAP Commerce Cloud Flaw (risk: 90)
+[P2] A maximum-severity security flaw in SAP Commerce Cloud could allow unauthenticated attackers to execute arbitrary code. A patch is available. Why now: Public disclosure of exploit code (confidence: 0.80)
+
+- [SAP Commerce Cloud Flaw Could Let Unauthenticated Attackers Execute Arbitrary Code](https://thehackernews.com/2026/08/sap-commerce-cloud-flaw-could-let.html)
