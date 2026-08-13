@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-08-13T11:54:53.992516+00:00
+generated_at: 2026-08-13T21:56:05.861958+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
@@ -7,19 +7,19 @@ project: Watchtower
 
 ## Analyst Summary
 
-The highest-risk items this period are CVE-2026-48791 in sigstore-java, CVE-2026-46688 in the Meeting Room Booking System, and CVE-2026-0289 in Palo Alto Networks Prisma Access Agent. Internet-facing systems and cloud services are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using sigstore-java and the Meeting Room Booking System, as no patches are currently available.
+The highest-risk items this period are CVE-2026-18428 in OpenSearch SQL Plugin, CVE-2026-18952 in OpenSearch Security Analytics Plugin, and the Adobe Commerce bug. Internet-facing systems and cloud services are most exposed due to the exploitation of these vulnerabilities. The single most time-sensitive action is to patch the OpenSearch SQL Plugin and Security Analytics Plugin immediately, as exploits are actively being used in the wild.
 
-## CVE-2026-48791: sigstore-java RCE (risk: 70)
-[P1] sigstore-java is vulnerable to RCE, and no patch is available. This vulnerability can be exploited to gain unauthorized access to systems using sigstore-java. Why now: Lack of available patch and potential for RCE exploitation. (confidence: 0.80)
+## CVE-2026-18428: OpenSearch SQL Plugin RCE (risk: 100)
+[P1] OpenSearch SQL Plugin is vulnerable to async query validation bypass, allowing remote code execution. This vulnerability is being actively exploited in the wild. Why now: Reported exploitation in the wild (confidence: 0.90)
 
-- [CVE-2026-48791](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-48791)
+- [CVE-2026-18428 - OpenSearch SQL Plugin - Async Query Validation Bypass](https://aws.amazon.com/security/security-bulletins/rss/2026-081-aws/)
 
-## CVE-2026-46688: Meeting Room Booking System Auth Bypass (risk: 70)
-[P1] The Meeting Room Booking System is vulnerable to authentication bypass, and no patch is available. This vulnerability can be exploited to gain unauthorized access to systems using the Meeting Room Booking System. Why now: Lack of available patch and potential for authentication bypass exploitation. (confidence: 0.80)
+## CVE-2026-18952: OpenSearch Security Analytics Plugin Input Validation Bypass (risk: 100)
+[P1] OpenSearch Security Analytics Plugin is vulnerable to missing input validation, allowing remote code execution. This vulnerability is being actively exploited in the wild. Why now: Reported exploitation in the wild (confidence: 0.90)
 
-- [CVE-2026-46688](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-46688)
+- [CVE-2026-18952 - Missing Input Validation in OpenSearch Security Analytics Plugin](https://aws.amazon.com/security/security-bulletins/rss/2026-079-aws/)
 
-## CVE-2026-0289: Palo Alto Networks Prisma Access Agent Security Bypass (risk: 70)
-[P1] Palo Alto Networks Prisma Access Agent is vulnerable to security bypass, and no patch is available. This vulnerability can be exploited to gain unauthorized access to systems using Prisma Access Agent. Why now: Lack of available patch and potential for security bypass exploitation. (confidence: 0.80)
+## Adobe Commerce Bug (risk: 70)
+[P2] Adobe Commerce bug is being targeted immediately after disclosure, allowing for potential remote code execution. Why now: Reported targeting in the wild (confidence: 0.70)
 
-- [CVE-2026-0289](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd/detail/CVE-2026-0289)
+- [Adobe Commerce Bug Targeted Immediately After Disclosure](https://www.securityweek.com/adobe-commerce-bug-targeted-immediately-after-disclosure/)

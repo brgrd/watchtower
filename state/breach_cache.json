@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-13T10:17:34.954138+00:00",
+  "fetched_at": "2026-08-13T21:56:06.410731+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -13673,6 +13673,23 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Rightbiz",
       "summary": "In June 2023, data belonging to the \"UK's No.1 Business Marketplace\" Rightbiz appeared on a popular hacking forum. Comprising of more than 18M rows of data, the breach included 65k unique email addresses along with names, phone numbers and physical address. Rightbiz didn't respond to mulitple attempts to disclose the incident./a>.",
+      "action": "monitor"
+    },
+    {
+      "id": "hibp:ringcentral-2026-07-27",
+      "name": "RingCentral",
+      "title": "RingCentral",
+      "date": "2026-07-27",
+      "added": "2026-08-13",
+      "affected_count": 1596490,
+      "data_classes": [
+        "Email addresses",
+        "Names",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#RingCentral",
+      "summary": "In July 2026, the cloud-based business communications platform RingCentral was the target of a ShinyHunters \"pay or leak\" extortion campaign. The group subsequently published data they claimed was obtained from the platform, which included 1.6M unique email addresses along with names, physical addresses and phone numbers. In their disclosure notice, RingCentral advised that the incident affected \"",
       "action": "monitor"
     },
     {

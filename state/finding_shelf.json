@@ -9853,5 +9853,32 @@
     "last_problem_type": "misconfiguration",
     "last_affects": "service",
     "last_classification_confidence": 0.4
+  },
+  "cve:CVE-2026-18428": {
+    "first_seen": "2026-08-13",
+    "last_seen": "2026-08-13",
+    "run_count": 1,
+    "title": "CVE-2026-18428: OpenSearch SQL Plugin RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-18952": {
+    "first_seen": "2026-08-13",
+    "last_seen": "2026-08-13",
+    "run_count": 1,
+    "title": "CVE-2026-18952: OpenSearch Security Analytics Plugin Input Validation Bypass",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.9
+  },
+  "fa6b466e6459": {
+    "first_seen": "2026-08-13",
+    "last_seen": "2026-08-13",
+    "run_count": 1,
+    "title": "Adobe Commerce Bug",
+    "last_problem_type": "rce",
+    "last_affects": "application",
+    "last_classification_confidence": 0.8
   }
 }
