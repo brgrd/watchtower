@@ -1,26 +1,26 @@
-# Watchtower Pipeline Eval — 2026-08-14T10:12:23Z
+# Watchtower Pipeline Eval — 2026-08-14T11:51:51Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 238 |
-| After dedup + CVE merge | 238 |
+| Items polled (raw) | 222 |
+| After dedup + CVE merge | 222 |
 | Sent to Groq | 30 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/238 (1.3%)** |
+| **Pipeline yield** | **3/222 (1.4%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
 - **Payload**: 9,594 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7672
+- **Rate limit remaining** — requests: 999, tokens: 7645
 
 ## Card Quality
 
-**3 cards** — P1: 1, P2: 2, P3: 0
+**3 cards** — P1: 0, P2: 3, P3: 0
 
 | Metric | Value |
 |--------|-------|
@@ -31,8 +31,8 @@
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 104 chars (100% ≥ 60 chars, considered substantive)
-- **Recommended actions**: 6 total — 50% specific, 0% generic
+- **`why_now` avg length**: 61 chars (100% ≥ 60 chars, considered substantive)
+- **Recommended actions**: 6 total — 50% specific, 50% generic
 
 ### Persistence
 
@@ -51,11 +51,11 @@
 
 | Feed | Items |
 |------|------:|
-| `bsi_germany` | 142 |
-| `nvd` | 89 |
-| `securityweek` | 4 |
-| `bleepingcomputer` | 2 |
-| `cyberscoop` | 1 |
+| `bsi_germany` | 175 |
+| `nvd` | 36 |
+| `securityweek` | 7 |
+| `bleepingcomputer` | 3 |
+| `krebs` | 1 |
 | _(+21 more)_ | … |
 
 **21 feeds returned 0 items this run.**
@@ -64,10 +64,10 @@
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-08-12 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-08-12 | 3 | 3 | 100% | 100% | 3 | 0 |
 | 2026-08-13 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-08-13 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-08-13 | 3 | 2 | 100% | 67% | 3 | 0 |
 | 2026-08-13 | 4 | 4 | 100% | 0% | 4 | 0 |
 | 2026-08-13 | 2 | ? | 100% | 0% | 2 | 0 |
+| 2026-08-14 | 3 | 1 | 100% | 0% | 3 | 0 |

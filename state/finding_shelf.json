@@ -9961,5 +9961,32 @@
     "last_problem_type": "dos",
     "last_affects": "service",
     "last_classification_confidence": 0.8
+  },
+  "cve:CVE-2026-19758": {
+    "first_seen": "2026-08-14",
+    "last_seen": "2026-08-14",
+    "run_count": 1,
+    "title": "CVE-2026-19758: Dromara lamp-cloud RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2026-19762": {
+    "first_seen": "2026-08-14",
+    "last_seen": "2026-08-14",
+    "run_count": 1,
+    "title": "CVE-2026-19762: DTStack Taier RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.85
+  },
+  "cve:CVE-2026-19764": {
+    "first_seen": "2026-08-14",
+    "last_seen": "2026-08-14",
+    "run_count": 1,
+    "title": "CVE-2026-19764: Raisecom Communication Command and Dispatch RCE",
+    "last_problem_type": "rce",
+    "last_affects": "framework",
+    "last_classification_confidence": 0.85
   }
 }
