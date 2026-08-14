@@ -9995,7 +9995,7 @@
     "run_count": 1,
     "title": "CVE-2026-50523: Command Injection",
     "last_problem_type": "rce",
-    "last_affects": "application",
+    "last_affects": "framework",
     "last_classification_confidence": 0.9
   },
   "cve:CVE-2026-72811": {
@@ -10022,6 +10022,15 @@
     "run_count": 1,
     "title": "CVE-2026-69414: Microsoft Malware Protection EoP",
     "last_problem_type": "privilege_escalation",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-19822": {
+    "first_seen": "2026-08-14",
+    "last_seen": "2026-08-14",
+    "run_count": 1,
+    "title": "CVE-2026-19822: Tenda W20E Vulnerability",
+    "last_problem_type": "auth_bypass",
     "last_affects": "application",
     "last_classification_confidence": 0.9
   }
