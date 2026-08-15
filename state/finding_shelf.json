@@ -10123,5 +10123,23 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-73632": {
+    "first_seen": "2026-08-15",
+    "last_seen": "2026-08-15",
+    "run_count": 1,
+    "title": "CVE-2026-73632: Apache JSON Plugin Vulnerability",
+    "last_problem_type": "data_disclosure",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-73634": {
+    "first_seen": "2026-08-15",
+    "last_seen": "2026-08-15",
+    "run_count": 1,
+    "title": "CVE-2026-73634: Apache Struts Uncontrolled Resource Consumption",
+    "last_problem_type": "dos",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }
