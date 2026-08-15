@@ -10069,5 +10069,32 @@
     "last_problem_type": "auth_bypass",
     "last_affects": "application",
     "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-12128": {
+    "first_seen": "2026-08-15",
+    "last_seen": "2026-08-15",
+    "run_count": 1,
+    "title": "CVE-2026-12128: Pinpoint Booking System SQLi",
+    "last_problem_type": "data_tampering",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-15001": {
+    "first_seen": "2026-08-15",
+    "last_seen": "2026-08-15",
+    "run_count": 1,
+    "title": "CVE-2026-15001: bLoyal Auth Bypass",
+    "last_problem_type": "auth_bypass",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
+  },
+  "cve:CVE-2026-15162": {
+    "first_seen": "2026-08-15",
+    "last_seen": "2026-08-15",
+    "run_count": 1,
+    "title": "CVE-2026-15162: Object Sync for Salesforce SQLi",
+    "last_problem_type": "data_tampering",
+    "last_affects": "application",
+    "last_classification_confidence": 0.9
   }
 }

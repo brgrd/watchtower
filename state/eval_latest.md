@@ -1,22 +1,22 @@
-# Watchtower Pipeline Eval — 2026-08-15T10:32:24Z
+# Watchtower Pipeline Eval — 2026-08-15T11:28:46Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 507 |
-| After dedup + CVE merge | 507 |
+| Items polled (raw) | 505 |
+| After dedup + CVE merge | 505 |
 | Sent to Groq | 25 |
 | Groq findings returned | 3 |
 | Passed quality gate | 3 |
 | Final cards rendered | 3 |
-| **Pipeline yield** | **3/507 (0.6%)** |
+| **Pipeline yield** | **3/505 (0.6%)** |
 
 ## Groq
 - **Model**: `llama-3.3-70b-versatile`
-- **Payload**: 9,594 chars
+- **Payload**: 9,614 chars
 - **Parse**: ✓  |  **Retries**: 0
-- **Rate limit remaining** — requests: 999, tokens: 7658
+- **Rate limit remaining** — requests: 999, tokens: 7691
 
 ## Card Quality
 
@@ -31,7 +31,7 @@
 
 ### Reasoning Quality
 
-- **`why_now` avg length**: 55.7 chars (33% ≥ 60 chars, considered substantive)
+- **`why_now` avg length**: 58 chars (0% ≥ 60 chars, considered substantive)
 - **Recommended actions**: 6 total — 50% specific, 50% generic
 
 ### Persistence
@@ -53,9 +53,9 @@
 |------|------:|
 | `nvd` | 500 |
 | `msrc_update_guide` | 5 |
-| `bleepingcomputer` | 1 |
-| `github_changelog` | 1 |
+| `bleepingcomputer` | 0 |
 | `cisa_alerts` | 0 |
+| `cisa_kev` | 0 |
 | _(+21 more)_ | … |
 
 **21 feeds returned 0 items this run.**
@@ -64,10 +64,10 @@
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-08-13 | 2 | ? | 100% | 0% | 2 | 0 |
 | 2026-08-14 | 3 | 1 | 100% | 0% | 3 | 0 |
 | 2026-08-14 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-08-14 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-08-14 | 3 | ? | 100% | 0% | 3 | 0 |
 | 2026-08-14 | 3 | 3 | 100% | 0% | 3 | 0 |
 | 2026-08-15 | 3 | ? | 100% | 0% | 2 | 0 |
+| 2026-08-15 | 3 | 3 | 100% | 0% | 3 | 0 |
