@@ -10246,16 +10246,16 @@
     "last_seen": "2026-08-16",
     "run_count": 1,
     "title": "CVE-2026-73056: SiYuan Kernel RCE",
-    "last_problem_type": "dos",
+    "last_problem_type": "privilege_escalation",
     "last_affects": "foundation",
-    "last_classification_confidence": 0.8
+    "last_classification_confidence": 0.9
   },
   "cve:CVE-2026-74251": {
     "first_seen": "2026-08-16",
     "last_seen": "2026-08-16",
     "run_count": 1,
     "title": "CVE-2026-74251: Joomla Extension SQL Injection",
-    "last_problem_type": "auth_bypass",
+    "last_problem_type": "data_disclosure",
     "last_affects": "application",
     "last_classification_confidence": 0.9
   },
@@ -10273,7 +10273,7 @@
     "last_seen": "2026-08-16",
     "run_count": 1,
     "title": "CVE-2026-72888: Net::OAuth RCE",
-    "last_problem_type": "rce",
+    "last_problem_type": "dos",
     "last_affects": "framework",
     "last_classification_confidence": 0.9
   }
