@@ -10456,5 +10456,95 @@
     "last_seen": "2026-08-17",
     "run_count": 1,
     "title": "CVE-2026-19997"
+  },
+  "964c96747df2": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "Suspected China-Nexus Actor Exploits VMware vCenter Flaw, Deploys Babuk-Derived Ransomware"
+  },
+  "cve:CVE-2026-19984": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-19984"
+  },
+  "cve:CVE-2026-19996": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-19996"
+  },
+  "cve:CVE-2026-19998": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-19998"
+  },
+  "cve:CVE-2026-20000": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-20000"
+  },
+  "cve:CVE-2026-19999": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-19999"
+  },
+  "cve:CVE-2026-49302": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-49302"
+  },
+  "cve:CVE-2026-49301": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-49301"
+  },
+  "cve:CVE-2026-49303": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-49303"
+  },
+  "cve:CVE-2026-49305": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-49305"
+  },
+  "cve:CVE-2026-49308": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-49308"
+  },
+  "cve:CVE-2026-49304": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-49304"
+  },
+  "cve:CVE-2026-49306": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-49306"
+  },
+  "cve:CVE-2026-49307": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-49307"
+  },
+  "cve:CVE-2026-58560": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-58560"
   }
 }
