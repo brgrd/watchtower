@@ -1,81 +1,81 @@
 ---
-generated_at: 2026-08-17T11:34:22.947083+00:00
+generated_at: 2026-08-17T21:33:58.360772+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Suspected China-Nexus Actor Exploits VMware vCenter Flaw, Deploys Babuk-Derived Ransomware (risk: 70)
+## CVE-2026-74875 (risk: 75)
 1 related updates.
 
-- [Suspected China-Nexus Actor Exploits VMware vCenter Flaw, Deploys Babuk-Derived Ransomware](https://thehackernews.com/2026/08/suspected-china-nexus-actor-exploits.html)
+- [CVE-2026-74875](https://nvd.nist.gov/vuln/detail/CVE-2026-74875)
 
-## CVE-2026-19984 (risk: 70)
+## CVE-2026-74872 (risk: 75)
 1 related updates.
 
-- [CVE-2026-19984](https://nvd.nist.gov/vuln/detail/CVE-2026-19984)
+- [CVE-2026-74872](https://nvd.nist.gov/vuln/detail/CVE-2026-74872)
 
-## CVE-2026-19996 (risk: 70)
+## CISA Adds One Known Exploited Vulnerability to Catalog (risk: 70)
 1 related updates.
 
-- [CVE-2026-19996](https://nvd.nist.gov/vuln/detail/CVE-2026-19996)
+- [CISA Adds One Known Exploited Vulnerability to Catalog](https://www.cisa.gov/news-events/alerts/2026/08/17/cisa-adds-one-known-exploited-vulnerability-catalog)
 
-## CVE-2026-19998 (risk: 70)
+## Forminator WordPress Flaw Can Enable Unauthenticated RCE via Malicious PHP Uploads (risk: 70)
 1 related updates.
 
-- [CVE-2026-19998](https://nvd.nist.gov/vuln/detail/CVE-2026-19998)
+- [Forminator WordPress Flaw Can Enable Unauthenticated RCE via Malicious PHP Uploads](https://thehackernews.com/2026/08/forminator-wordpress-flaw-can-enable.html)
 
-## CVE-2026-20000 (risk: 70)
+## CVE-2026-74842 (risk: 70)
 1 related updates.
 
-- [CVE-2026-20000](https://nvd.nist.gov/vuln/detail/CVE-2026-20000)
+- [CVE-2026-74842](https://nvd.nist.gov/vuln/detail/CVE-2026-74842)
 
-## CVE-2026-19999 (risk: 70)
+## CVE-2026-74870 (risk: 55)
 1 related updates.
 
-- [CVE-2026-19999](https://nvd.nist.gov/vuln/detail/CVE-2026-19999)
+- [CVE-2026-74870](https://nvd.nist.gov/vuln/detail/CVE-2026-74870)
 
-## CVE-2026-49302 (risk: 70)
+## CVE-2026-74871 (risk: 55)
 1 related updates.
 
-- [CVE-2026-49302](https://nvd.nist.gov/vuln/detail/CVE-2026-49302)
+- [CVE-2026-74871](https://nvd.nist.gov/vuln/detail/CVE-2026-74871)
 
-## CVE-2026-49301 (risk: 70)
+## CVE-2026-74873 (risk: 55)
 1 related updates.
 
-- [CVE-2026-49301](https://nvd.nist.gov/vuln/detail/CVE-2026-49301)
+- [CVE-2026-74873](https://nvd.nist.gov/vuln/detail/CVE-2026-74873)
 
-## CVE-2026-49303 (risk: 70)
+## CVE-2026-74874 (risk: 55)
 1 related updates.
 
-- [CVE-2026-49303](https://nvd.nist.gov/vuln/detail/CVE-2026-49303)
+- [CVE-2026-74874](https://nvd.nist.gov/vuln/detail/CVE-2026-74874)
 
-## CVE-2026-49305 (risk: 70)
+## Critical GitLab GraphQL Flaw Could Let Unauthenticated Attackers Delete Public Projects (risk: 40)
 1 related updates.
 
-- [CVE-2026-49305](https://nvd.nist.gov/vuln/detail/CVE-2026-49305)
+- [Critical GitLab GraphQL Flaw Could Let Unauthenticated Attackers Delete Public Projects](https://thehackernews.com/2026/08/critical-gitlab-graphql-flaw-could-let.html)
 
-## CVE-2026-49308 (risk: 70)
+## Certighost and the Privilege Hiding in Your Certificate Authority (risk: 40)
 1 related updates.
 
-- [CVE-2026-49308](https://nvd.nist.gov/vuln/detail/CVE-2026-49308)
+- [Certighost and the Privilege Hiding in Your Certificate Authority](https://www.bleepingcomputer.com/news/security/certighost-and-the-privilege-hiding-in-your-certificate-authority/)
 
-## CVE-2026-49304 (risk: 70)
+## CVE-2026-74845 (risk: 40)
 1 related updates.
 
-- [CVE-2026-49304](https://nvd.nist.gov/vuln/detail/CVE-2026-49304)
+- [CVE-2026-74845](https://nvd.nist.gov/vuln/detail/CVE-2026-74845)
 
-## CVE-2026-49306 (risk: 70)
+## CVE-2026-74798 (risk: 40)
 1 related updates.
 
-- [CVE-2026-49306](https://nvd.nist.gov/vuln/detail/CVE-2026-49306)
+- [CVE-2026-74798](https://nvd.nist.gov/vuln/detail/CVE-2026-74798)
 
-## CVE-2026-49307 (risk: 70)
+## CVE-2026-74802 (risk: 40)
 1 related updates.
 
-- [CVE-2026-49307](https://nvd.nist.gov/vuln/detail/CVE-2026-49307)
+- [CVE-2026-74802](https://nvd.nist.gov/vuln/detail/CVE-2026-74802)
 
-## CVE-2026-58560 (risk: 70)
+## CVE-2026-74801 (risk: 40)
 1 related updates.
 
-- [CVE-2026-58560](https://nvd.nist.gov/vuln/detail/CVE-2026-58560)
+- [CVE-2026-74801](https://nvd.nist.gov/vuln/detail/CVE-2026-74801)

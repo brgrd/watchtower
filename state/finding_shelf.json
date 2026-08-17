@@ -10546,5 +10546,95 @@
     "last_seen": "2026-08-17",
     "run_count": 1,
     "title": "CVE-2026-58560"
+  },
+  "cve:CVE-2026-74875": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-74875"
+  },
+  "cve:CVE-2026-74872": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-74872"
+  },
+  "2e2142f27078": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "83184d27f574": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "Forminator WordPress Flaw Can Enable Unauthenticated RCE via Malicious PHP Uploads"
+  },
+  "cve:CVE-2026-74842": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-74842"
+  },
+  "cve:CVE-2026-74870": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-74870"
+  },
+  "cve:CVE-2026-74871": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-74871"
+  },
+  "cve:CVE-2026-74873": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-74873"
+  },
+  "cve:CVE-2026-74874": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-74874"
+  },
+  "8c8b767532f4": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "Critical GitLab GraphQL Flaw Could Let Unauthenticated Attackers Delete Public Projects"
+  },
+  "22c7e7e48fba": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "Certighost and the Privilege Hiding in Your Certificate Authority"
+  },
+  "cve:CVE-2026-74845": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-74845"
+  },
+  "cve:CVE-2026-74798": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-74798"
+  },
+  "cve:CVE-2026-74802": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-74802"
+  },
+  "cve:CVE-2026-74801": {
+    "first_seen": "2026-08-17",
+    "last_seen": "2026-08-17",
+    "run_count": 1,
+    "title": "CVE-2026-74801"
   }
 }
