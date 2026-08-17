@@ -1,25 +1,81 @@
 ---
-generated_at: 2026-08-16T23:28:45.238588+00:00
+generated_at: 2026-08-17T09:52:24.115732+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Analyst Summary
+## CVE-2026-19978 (risk: 90)
+1 related updates.
 
-The highest-risk items this period are CVE-2026-72888 in Net::OAuth, CVE-2026-73056 in SiYuan kernel, and CVE-2026-74251 in Joomla Extension - phoca.cz. Internet-facing applications and frameworks are most exposed due to the lack of available patches for these vulnerabilities. The most time-sensitive action is to monitor and isolate systems using Net::OAuth and SiYuan kernel until patches become available.
+- [CVE-2026-19978](https://nvd.nist.gov/vuln/detail/CVE-2026-19978)
 
-## CVE-2026-72888: Net::OAuth Memory Exhaustion (risk: 70)
-[P1] Net::OAuth versions before 0.32 for Perl allow memory exhaustion via unbounded c, with no patch available. This vulnerability can be exploited for denial-of-service attacks. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.80)
+## Critical SAP Commerce Cloud Vulnerability Exploited 3 Days After Disclosure (risk: 70)
+1 related updates.
 
-- [CVE-2026-72888](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml#CVE-2026-72888)
+- [Critical SAP Commerce Cloud Vulnerability Exploited 3 Days After Disclosure](https://www.securityweek.com/critical-sap-commerce-cloud-vulnerability-exploited-3-days-after-disclosure/)
 
-## CVE-2026-73056: SiYuan Kernel Restriction Bypass (risk: 70)
-[P1] SiYuan kernel versions before 3.7.4 contain an improper restriction of excessive, with no patch available. This vulnerability can be exploited for privilege escalation attacks. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.80)
+## CVE-2026-19957 (risk: 70)
+1 related updates.
 
-- [CVE-2026-73056](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml#CVE-2026-73056)
+- [CVE-2026-19957](https://nvd.nist.gov/vuln/detail/CVE-2026-19957)
 
-## CVE-2026-74251: Joomla Extension - phoca.cz SQL Injection (risk: 70)
-[P1] Joomla Extension - phoca.cz is vulnerable to unauthenticated SQL injection via attribute filter, with no patch available. This vulnerability can be exploited for data disclosure and tampering attacks. Why now: Lack of patch availability increases the risk of exploitation. (confidence: 0.80)
+## CVE-2026-19959 (risk: 70)
+1 related updates.
 
-- [CVE-2026-74251](https://nvd.nist.gov/v1/nvd.xhtml?nvd.nist.gov/v1/nvd.xhtml#CVE-2026-74251)
+- [CVE-2026-19959](https://nvd.nist.gov/vuln/detail/CVE-2026-19959)
+
+## CVE-2026-19962 (risk: 70)
+1 related updates.
+
+- [CVE-2026-19962](https://nvd.nist.gov/vuln/detail/CVE-2026-19962)
+
+## CVE-2026-19958 (risk: 70)
+1 related updates.
+
+- [CVE-2026-19958](https://nvd.nist.gov/vuln/detail/CVE-2026-19958)
+
+## CVE-2026-19963 (risk: 70)
+1 related updates.
+
+- [CVE-2026-19963](https://nvd.nist.gov/vuln/detail/CVE-2026-19963)
+
+## CVE-2026-19961 (risk: 70)
+1 related updates.
+
+- [CVE-2026-19961](https://nvd.nist.gov/vuln/detail/CVE-2026-19961)
+
+## CVE-2026-19960 (risk: 70)
+1 related updates.
+
+- [CVE-2026-19960](https://nvd.nist.gov/vuln/detail/CVE-2026-19960)
+
+## CVE-2026-19964 (risk: 70)
+1 related updates.
+
+- [CVE-2026-19964](https://nvd.nist.gov/vuln/detail/CVE-2026-19964)
+
+## CVE-2026-19965 (risk: 70)
+1 related updates.
+
+- [CVE-2026-19965](https://nvd.nist.gov/vuln/detail/CVE-2026-19965)
+
+## CVE-2026-19966 (risk: 70)
+1 related updates.
+
+- [CVE-2026-19966](https://nvd.nist.gov/vuln/detail/CVE-2026-19966)
+
+## CVE-2026-19968 (risk: 70)
+1 related updates.
+
+- [CVE-2026-19968](https://nvd.nist.gov/vuln/detail/CVE-2026-19968)
+
+## CVE-2026-19969 (risk: 70)
+1 related updates.
+
+- [CVE-2026-19969](https://nvd.nist.gov/vuln/detail/CVE-2026-19969)
+
+## CVE-2026-19973 (risk: 70)
+1 related updates.
+
+- [CVE-2026-19973](https://nvd.nist.gov/vuln/detail/CVE-2026-19973)
