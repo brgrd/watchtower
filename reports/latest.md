@@ -1,81 +1,81 @@
 ---
-generated_at: 2026-08-18T10:38:25.717822+00:00
+generated_at: 2026-08-18T11:34:03.996667+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-75078 (risk: 70)
+## CVE-2024-14046 (risk: 70)
 1 related updates.
 
-- [CVE-2026-75078](https://nvd.nist.gov/vuln/detail/CVE-2026-75078)
+- [CVE-2024-14046](https://nvd.nist.gov/vuln/detail/CVE-2024-14046)
 
-## CVE-2026-75079 (risk: 70)
+## CVE-2026-75773 (risk: 70)
 1 related updates.
 
-- [CVE-2026-75079](https://nvd.nist.gov/vuln/detail/CVE-2026-75079)
+- [CVE-2026-75773](https://nvd.nist.gov/vuln/detail/CVE-2026-75773)
 
-## CVE-2026-75081 (risk: 70)
+## CVE-2026-34884 (risk: 40)
 1 related updates.
 
-- [CVE-2026-75081](https://nvd.nist.gov/vuln/detail/CVE-2026-75081)
+- [CVE-2026-34884](https://nvd.nist.gov/vuln/detail/CVE-2026-34884)
 
-## CVE-2026-75088 (risk: 70)
+## CVE-2026-11801 (risk: 40)
 1 related updates.
 
-- [CVE-2026-75088](https://nvd.nist.gov/vuln/detail/CVE-2026-75088)
+- [CVE-2026-11801](https://nvd.nist.gov/vuln/detail/CVE-2026-11801)
 
-## CVE-2026-75086 (risk: 70)
+## CVE-2026-15371 (risk: 40)
 1 related updates.
 
-- [CVE-2026-75086](https://nvd.nist.gov/vuln/detail/CVE-2026-75086)
+- [CVE-2026-15371](https://nvd.nist.gov/vuln/detail/CVE-2026-15371)
 
-## CVE-2026-75089 (risk: 70)
+## CVE-2026-75091 (risk: 40)
 1 related updates.
 
-- [CVE-2026-75089](https://nvd.nist.gov/vuln/detail/CVE-2026-75089)
+- [CVE-2026-75091](https://nvd.nist.gov/vuln/detail/CVE-2026-75091)
 
-## CVE-2026-75090 (risk: 70)
+## CVE-2026-75151 (risk: 40)
 1 related updates.
 
-- [CVE-2026-75090](https://nvd.nist.gov/vuln/detail/CVE-2026-75090)
+- [CVE-2026-75151](https://nvd.nist.gov/vuln/detail/CVE-2026-75151)
 
-## CVE-2026-75087 (risk: 70)
+## CVE-2026-19447 (risk: 40)
 1 related updates.
 
-- [CVE-2026-75087](https://nvd.nist.gov/vuln/detail/CVE-2026-75087)
+- [CVE-2026-19447](https://nvd.nist.gov/vuln/detail/CVE-2026-19447)
 
-## CVE-2026-75093 (risk: 70)
+## CVE-2026-43971 (risk: 40)
 1 related updates.
 
-- [CVE-2026-75093](https://nvd.nist.gov/vuln/detail/CVE-2026-75093)
+- [CVE-2026-43971](https://nvd.nist.gov/vuln/detail/CVE-2026-43971)
 
-## CVE-2026-75094 (risk: 70)
+## CVE-2026-15748 (risk: 40)
 1 related updates.
 
-- [CVE-2026-75094](https://nvd.nist.gov/vuln/detail/CVE-2026-75094)
+- [CVE-2026-15748](https://nvd.nist.gov/vuln/detail/CVE-2026-15748)
 
-## CVE-2026-75082 (risk: 70)
+## CVE-2026-19608 (risk: 40)
 1 related updates.
 
-- [CVE-2026-75082](https://nvd.nist.gov/vuln/detail/CVE-2026-75082)
+- [CVE-2026-19608](https://nvd.nist.gov/vuln/detail/CVE-2026-19608)
 
-## CVE-2026-75080 (risk: 70)
+## CVE-2026-18929 (risk: 40)
 1 related updates.
 
-- [CVE-2026-75080](https://nvd.nist.gov/vuln/detail/CVE-2026-75080)
+- [CVE-2026-18929](https://nvd.nist.gov/vuln/detail/CVE-2026-18929)
 
-## CVE-2024-14045 (risk: 70)
+## CVE-2026-75626 (risk: 40)
 1 related updates.
 
-- [CVE-2024-14045](https://nvd.nist.gov/vuln/detail/CVE-2024-14045)
+- [CVE-2026-75626](https://nvd.nist.gov/vuln/detail/CVE-2026-75626)
 
-## CVE-2026-67961 (risk: 40)
+## CVE-2026-75627 (risk: 40)
 1 related updates.
 
-- [CVE-2026-67961](https://nvd.nist.gov/vuln/detail/CVE-2026-67961)
+- [CVE-2026-75627](https://nvd.nist.gov/vuln/detail/CVE-2026-75627)
 
-## CVE-2026-67919 (risk: 40)
+## CISA: Windows Task Host flaw now exploited by ransomware gangs (risk: 30)
 1 related updates.
 
-- [CVE-2026-67919](https://nvd.nist.gov/vuln/detail/CVE-2026-67919)
+- [CISA: Windows Task Host flaw now exploited by ransomware gangs](https://www.bleepingcomputer.com/news/security/cisa-windows-task-host-flaw-now-exploited-by-ransomware-gangs/)

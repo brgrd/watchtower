@@ -10996,5 +10996,95 @@
     "last_seen": "2026-08-18",
     "run_count": 1,
     "title": "CVE-2026-67919"
+  },
+  "cve:CVE-2024-14046": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2024-14046"
+  },
+  "cve:CVE-2026-75773": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75773"
+  },
+  "cve:CVE-2026-34884": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-34884"
+  },
+  "cve:CVE-2026-11801": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-11801"
+  },
+  "cve:CVE-2026-15371": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-15371"
+  },
+  "cve:CVE-2026-75091": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75091"
+  },
+  "cve:CVE-2026-75151": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75151"
+  },
+  "cve:CVE-2026-19447": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-19447"
+  },
+  "cve:CVE-2026-43971": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-43971"
+  },
+  "cve:CVE-2026-15748": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-15748"
+  },
+  "cve:CVE-2026-19608": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-19608"
+  },
+  "cve:CVE-2026-18929": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-18929"
+  },
+  "cve:CVE-2026-75626": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75626"
+  },
+  "cve:CVE-2026-75627": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75627"
+  },
+  "ad35a03136c1": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CISA: Windows Task Host flaw now exploited by ransomware gangs"
   }
 }
