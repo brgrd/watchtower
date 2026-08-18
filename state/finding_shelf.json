@@ -8383,8 +8383,8 @@
   },
   "cve:CVE-2026-59310": {
     "first_seen": "2026-07-31",
-    "last_seen": "2026-08-12",
-    "run_count": 2,
+    "last_seen": "2026-08-18",
+    "run_count": 3,
     "title": "CVE-2026-59310",
     "last_problem_type": "rce",
     "last_affects": "application",
@@ -10567,8 +10567,8 @@
   },
   "83184d27f574": {
     "first_seen": "2026-08-17",
-    "last_seen": "2026-08-17",
-    "run_count": 1,
+    "last_seen": "2026-08-18",
+    "run_count": 2,
     "title": "Forminator WordPress Flaw Can Enable Unauthenticated RCE via Malicious PHP Uploads"
   },
   "cve:CVE-2026-74842": {
@@ -11086,5 +11086,83 @@
     "last_seen": "2026-08-18",
     "run_count": 1,
     "title": "CISA: Windows Task Host flaw now exploited by ransomware gangs"
+  },
+  "8b08d0bbe35c": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CISA Malcolm"
+  },
+  "948951593792": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog"
+  },
+  "cve:CVE-2026-74907": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-74907"
+  },
+  "cve:CVE-2026-75774": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75774"
+  },
+  "cve:CVE-2026-75897": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75897 - Uncontrolled resource consumption in OpenSearch Dashboards capabilities route"
+  },
+  "cve:CVE-2026-75935": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75935 and CVE-2026-75936 - Issue with Amazon ion-java - Memory-amplification denial of service"
+  },
+  "cve:CVE-2026-65400": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-65400 — Apple macOS Improper Authentication Vulnerability"
+  },
+  "cve:CVE-2026-15585": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-15585"
+  },
+  "cve:CVE-2026-5224": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-5224"
+  },
+  "cve:CVE-2026-74902": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-74902"
+  },
+  "cve:CVE-2026-74903": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-74903"
+  },
+  "cve:CVE-2026-74904": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-74904"
+  },
+  "cve:CVE-2026-74905": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-74905"
   }
 }
