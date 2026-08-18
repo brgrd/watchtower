@@ -10603,8 +10603,8 @@
   },
   "8c8b767532f4": {
     "first_seen": "2026-08-17",
-    "last_seen": "2026-08-17",
-    "run_count": 1,
+    "last_seen": "2026-08-18",
+    "run_count": 2,
     "title": "Critical GitLab GraphQL Flaw Could Let Unauthenticated Attackers Delete Public Projects"
   },
   "22c7e7e48fba": {
@@ -11164,5 +11164,89 @@
     "last_seen": "2026-08-18",
     "run_count": 1,
     "title": "CVE-2026-74905"
+  },
+  "cve:CVE-2026-75840": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75840"
+  },
+  "cve:CVE-2026-33824": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-33824 — Microsoft Internet Key Exchange (IKE) Service Extensions Double Free Vulnerability"
+  },
+  "cve:CVE-2026-55040": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-55040 — Microsoft SharePoint Weak Authentication Vulnerability"
+  },
+  "cve:CVE-2026-75827": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75827"
+  },
+  "cve:CVE-2026-74908": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-74908"
+  },
+  "cve:CVE-2026-74906": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-74906"
+  },
+  "cve:CVE-2026-75828": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75828"
+  },
+  "cve:CVE-2026-75829": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75829"
+  },
+  "cve:CVE-2026-75107": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75107"
+  },
+  "cve:CVE-2026-75832": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75832"
+  },
+  "cve:CVE-2026-75833": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75833"
+  },
+  "cve:CVE-2026-75831": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75831"
+  },
+  "cve:CVE-2026-75830": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75830"
+  },
+  "cve:CVE-2026-75835": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "run_count": 1,
+    "title": "CVE-2026-75835"
   }
 }
