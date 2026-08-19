@@ -11608,5 +11608,95 @@
     "last_seen": "2026-08-19",
     "run_count": 1,
     "title": "CVE-2026-13175"
+  },
+  "7e5b981b5b0a": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "c7b3c5fa417d": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "Critical macOS, SharePoint, vCenter, and Microsoft IKE Flaws Under Active Exploitation"
+  },
+  "cve:CVE-2026-16440": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-16440"
+  },
+  "cve:CVE-2026-19489": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-19489"
+  },
+  "cve:CVE-2026-18371": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-18371"
+  },
+  "cve:CVE-2026-76166": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-76166"
+  },
+  "cve:CVE-2026-19490": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-19490"
+  },
+  "cve:CVE-2026-18372": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-18372"
+  },
+  "cve:CVE-2026-32552": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-32552"
+  },
+  "cve:CVE-2026-66596": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-66596"
+  },
+  "cve:CVE-2026-61986": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-61986"
+  },
+  "cve:CVE-2026-66613": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-66613"
+  },
+  "cve:CVE-2026-67363": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-67363"
+  },
+  "cve:CVE-2026-66668": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-66668"
+  },
+  "cve:CVE-2026-67364": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-67364"
   }
 }
