@@ -11698,5 +11698,95 @@
     "last_seen": "2026-08-19",
     "run_count": 1,
     "title": "CVE-2026-67364"
+  },
+  "cve:CVE-2026-64849": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-64849 — MLflow Server-Side Request Forgery Vulnerability"
+  },
+  "cve:CVE-2026-73182": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-73182"
+  },
+  "cve:CVE-2026-73185": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-73185"
+  },
+  "cve:CVE-2026-73183": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-73183"
+  },
+  "cve:CVE-2026-73347": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-73347"
+  },
+  "cve:CVE-2026-73184": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-73184"
+  },
+  "cve:CVE-2026-73363": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-73363"
+  },
+  "cve:CVE-2026-73364": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-73364"
+  },
+  "cve:CVE-2026-73354": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-73354"
+  },
+  "cve:CVE-2026-73385": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-73385"
+  },
+  "cve:CVE-2026-73384": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-73384"
+  },
+  "cve:CVE-2026-73386": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-73386"
+  },
+  "cve:CVE-2026-73387": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-73387"
+  },
+  "cve:CVE-2026-73389": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-73389"
+  },
+  "cve:CVE-2026-73388": {
+    "first_seen": "2026-08-19",
+    "last_seen": "2026-08-19",
+    "run_count": 1,
+    "title": "CVE-2026-73388"
   }
 }
