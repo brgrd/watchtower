@@ -1,81 +1,81 @@
 ---
-generated_at: 2026-08-19T22:34:42.019955+00:00
+generated_at: 2026-08-19T23:31:23.062136+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-64849 — MLflow Server-Side Request Forgery Vulnerability (risk: 40)
+## CVE-2026-54795 (risk: 70)
 1 related updates.
 
-- [CVE-2026-64849 — MLflow Server-Side Request Forgery Vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2026-64849)
+- [CVE-2026-54795](https://nvd.nist.gov/vuln/detail/CVE-2026-54795)
 
-## CVE-2026-73182 (risk: 40)
+## CVE-2026-54794 (risk: 70)
 1 related updates.
 
-- [CVE-2026-73182](https://nvd.nist.gov/vuln/detail/CVE-2026-73182)
+- [CVE-2026-54794](https://nvd.nist.gov/vuln/detail/CVE-2026-54794)
 
-## CVE-2026-73185 (risk: 40)
+## CVE-2026-73390 (risk: 40)
 1 related updates.
 
-- [CVE-2026-73185](https://nvd.nist.gov/vuln/detail/CVE-2026-73185)
+- [CVE-2026-73390](https://nvd.nist.gov/vuln/detail/CVE-2026-73390)
 
-## CVE-2026-73183 (risk: 40)
+## CVE-2026-73394 (risk: 40)
 1 related updates.
 
-- [CVE-2026-73183](https://nvd.nist.gov/vuln/detail/CVE-2026-73183)
+- [CVE-2026-73394](https://nvd.nist.gov/vuln/detail/CVE-2026-73394)
 
-## CVE-2026-73347 (risk: 40)
+## CVE-2020-37267 (risk: 40)
 1 related updates.
 
-- [CVE-2026-73347](https://nvd.nist.gov/vuln/detail/CVE-2026-73347)
+- [CVE-2020-37267](https://nvd.nist.gov/vuln/detail/CVE-2020-37267)
 
-## CVE-2026-73184 (risk: 40)
+## CVE-2026-76235 (risk: 40)
 1 related updates.
 
-- [CVE-2026-73184](https://nvd.nist.gov/vuln/detail/CVE-2026-73184)
+- [CVE-2026-76235](https://nvd.nist.gov/vuln/detail/CVE-2026-76235)
 
-## CVE-2026-73363 (risk: 40)
+## CVE-2019-25766 (risk: 40)
 1 related updates.
 
-- [CVE-2026-73363](https://nvd.nist.gov/vuln/detail/CVE-2026-73363)
+- [CVE-2019-25766](https://nvd.nist.gov/vuln/detail/CVE-2019-25766)
 
-## CVE-2026-73364 (risk: 40)
+## CVE-2026-16019 (risk: 40)
 1 related updates.
 
-- [CVE-2026-73364](https://nvd.nist.gov/vuln/detail/CVE-2026-73364)
+- [CVE-2026-16019](https://nvd.nist.gov/vuln/detail/CVE-2026-16019)
 
-## CVE-2026-73354 (risk: 40)
+## CVE-2024-58376 (risk: 40)
 1 related updates.
 
-- [CVE-2026-73354](https://nvd.nist.gov/vuln/detail/CVE-2026-73354)
+- [CVE-2024-58376](https://nvd.nist.gov/vuln/detail/CVE-2024-58376)
 
-## CVE-2026-73385 (risk: 40)
+## CVE-2026-50719 (risk: 40)
 1 related updates.
 
-- [CVE-2026-73385](https://nvd.nist.gov/vuln/detail/CVE-2026-73385)
+- [CVE-2026-50719](https://nvd.nist.gov/vuln/detail/CVE-2026-50719)
 
-## CVE-2026-73384 (risk: 40)
+## CVE-2026-73391 (risk: 40)
 1 related updates.
 
-- [CVE-2026-73384](https://nvd.nist.gov/vuln/detail/CVE-2026-73384)
+- [CVE-2026-73391](https://nvd.nist.gov/vuln/detail/CVE-2026-73391)
 
-## CVE-2026-73386 (risk: 40)
+## CVE-2026-43961 (risk: 40)
 1 related updates.
 
-- [CVE-2026-73386](https://nvd.nist.gov/vuln/detail/CVE-2026-73386)
+- [CVE-2026-43961](https://nvd.nist.gov/vuln/detail/CVE-2026-43961)
 
-## CVE-2026-73387 (risk: 40)
+## CVE-2026-51366 (risk: 40)
 1 related updates.
 
-- [CVE-2026-73387](https://nvd.nist.gov/vuln/detail/CVE-2026-73387)
+- [CVE-2026-51366](https://nvd.nist.gov/vuln/detail/CVE-2026-51366)
 
-## CVE-2026-73389 (risk: 40)
+## CVE-2026-51367 (risk: 40)
 1 related updates.
 
-- [CVE-2026-73389](https://nvd.nist.gov/vuln/detail/CVE-2026-73389)
+- [CVE-2026-51367](https://nvd.nist.gov/vuln/detail/CVE-2026-51367)
 
-## CVE-2026-73388 (risk: 40)
+## CVE-2026-50720 (risk: 40)
 1 related updates.
 
-- [CVE-2026-73388](https://nvd.nist.gov/vuln/detail/CVE-2026-73388)
+- [CVE-2026-50720](https://nvd.nist.gov/vuln/detail/CVE-2026-50720)
