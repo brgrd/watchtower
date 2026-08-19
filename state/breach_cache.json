@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-18T21:32:36.760439+00:00",
+  "fetched_at": "2026-08-19T09:42:37.163712+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -5956,6 +5956,23 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Famm",
       "summary": "In late 2020, the Japanese family photos website Famm suffered a data breach that subsequently exposed 1.3M customer records, including 535k unique email addresses. Impacted data also included names, dates of birth, genders and passwords stored as SHA-256 hashes.",
+      "action": "rotate"
+    },
+    {
+      "id": "hibp:fanlore-2026-08-06",
+      "name": "Fanlore",
+      "title": "Fanlore",
+      "date": "2026-08-06",
+      "added": "2026-08-19",
+      "affected_count": 144520,
+      "data_classes": [
+        "Email addresses",
+        "Names",
+        "Passwords",
+        "Usernames"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Fanlore",
+      "summary": "In August 2026, the Organization for Transformative Works (OTW) identified unauthorised access to the Fanlore wiki it operates. The breach resulted in the exposure of 145k unique email addresses along with usernames and passwords stored as either MD5 or PBKDF2 hashes. OTW self-submitted the exposed data to HIBP.",
       "action": "rotate"
     },
     {
@@ -12081,6 +12098,24 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Oxfam",
       "summary": "In January 2021, Oxfam Australia was the victim of a data breach which exposed 1.8M unique email addresses of supporters of the charity. The data was put up for sale on a popular hacking forum and also included names, phone numbers, addresses, genders and dates of birth. A small number of people also had partial credit card data exposed (the first 6 and last 3 digits of the card, plus card type an",
       "action": "close"
+    },
+    {
+      "id": "hibp:ozhairandbeauty-2026-08-15",
+      "name": "OzHairAndBeauty",
+      "title": "Oz Hair and Beauty",
+      "date": "2026-08-15",
+      "added": "2026-08-19",
+      "affected_count": 1988331,
+      "data_classes": [
+        "Email addresses",
+        "Geographic locations",
+        "Names",
+        "Phone numbers",
+        "Purchases"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#OzHairAndBeauty",
+      "summary": "In August 2026, Australian beauty retailer Oz Hair and Beauty was the target of an xpl0itrs extortion attack. The group subsequently published data allegedly obtained from the company, which included 2M unique email addresses along with names, phone numbers, geographic locations (suburb and postcode) and purchases.",
+      "action": "monitor"
     },
     {
       "id": "hibp:paddypower-2010-10-25",
