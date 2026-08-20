@@ -12142,5 +12142,95 @@
     "last_seen": "2026-08-20",
     "run_count": 1,
     "title": "CVE-2026-76957"
+  },
+  "ac47cabe84a0": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
+  },
+  "e1cdd1824a4c": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "Attackers Exploit Zimbra SNMP Flaw for Unauthenticated Remote Code Execution"
+  },
+  "cve:CVE-2026-18917": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CVE-2026-18917"
+  },
+  "cve:CVE-2026-73196": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CVE-2026-73196"
+  },
+  "cve:CVE-2026-73197": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CVE-2026-73197"
+  },
+  "cve:CVE-2026-73198": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CVE-2026-73198"
+  },
+  "cve:CVE-2026-73199": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CVE-2026-73199"
+  },
+  "cve:CVE-2026-77066": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CVE-2026-77066"
+  },
+  "cve:CVE-2026-77067": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CVE-2026-77067"
+  },
+  "cve:CVE-2026-11861": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CVE-2026-11861"
+  },
+  "cve:CVE-2026-13097": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CVE-2026-13097"
+  },
+  "cve:CVE-2026-77026": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CVE-2026-77026"
+  },
+  "cve:CVE-2025-15637": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CVE-2025-15637"
+  },
+  "cve:CVE-2025-15688": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CVE-2025-15688"
+  },
+  "cve:CVE-2025-15689": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CVE-2025-15689"
   }
 }

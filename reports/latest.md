@@ -1,81 +1,81 @@
 ---
-generated_at: 2026-08-20T11:35:46.631522+00:00
+generated_at: 2026-08-20T21:37:07.488113+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-8619 (risk: 70)
+## CISA Adds Two Known Exploited Vulnerabilities to Catalog (risk: 70)
 1 related updates.
 
-- [CVE-2026-8619](https://nvd.nist.gov/vuln/detail/CVE-2026-8619)
+- [CISA Adds Two Known Exploited Vulnerabilities to Catalog](https://www.cisa.gov/news-events/alerts/2026/08/20/cisa-adds-two-known-exploited-vulnerabilities-catalog)
 
-## CVE-2022-4996 (risk: 70)
+## Attackers Exploit Zimbra SNMP Flaw for Unauthenticated Remote Code Execution (risk: 70)
 1 related updates.
 
-- [CVE-2022-4996](https://nvd.nist.gov/vuln/detail/CVE-2022-4996)
+- [Attackers Exploit Zimbra SNMP Flaw for Unauthenticated Remote Code Execution](https://thehackernews.com/2026/08/attackers-exploit-zimbra-snmp-flaw-for.html)
 
-## CVE-2026-76783 (risk: 70)
+## CVE-2026-18917 (risk: 70)
 1 related updates.
 
-- [CVE-2026-76783](https://nvd.nist.gov/vuln/detail/CVE-2026-76783)
+- [CVE-2026-18917](https://nvd.nist.gov/vuln/detail/CVE-2026-18917)
 
-## CVE-2026-76764 (risk: 70)
+## CVE-2026-73196 (risk: 70)
 1 related updates.
 
-- [CVE-2026-76764](https://nvd.nist.gov/vuln/detail/CVE-2026-76764)
+- [CVE-2026-73196](https://nvd.nist.gov/vuln/detail/CVE-2026-73196)
 
-## CVE-2026-76785 (risk: 70)
+## CVE-2026-73197 (risk: 70)
 1 related updates.
 
-- [CVE-2026-76785](https://nvd.nist.gov/vuln/detail/CVE-2026-76785)
+- [CVE-2026-73197](https://nvd.nist.gov/vuln/detail/CVE-2026-73197)
 
-## CVE-2026-76795 (risk: 70)
+## CVE-2026-73198 (risk: 70)
 1 related updates.
 
-- [CVE-2026-76795](https://nvd.nist.gov/vuln/detail/CVE-2026-76795)
+- [CVE-2026-73198](https://nvd.nist.gov/vuln/detail/CVE-2026-73198)
 
-## CVE-2026-76799 (risk: 70)
+## CVE-2026-73199 (risk: 70)
 1 related updates.
 
-- [CVE-2026-76799](https://nvd.nist.gov/vuln/detail/CVE-2026-76799)
+- [CVE-2026-73199](https://nvd.nist.gov/vuln/detail/CVE-2026-73199)
 
-## CVE-2026-76800 (risk: 70)
+## CVE-2026-77066 (risk: 60)
 1 related updates.
 
-- [CVE-2026-76800](https://nvd.nist.gov/vuln/detail/CVE-2026-76800)
+- [CVE-2026-77066](https://nvd.nist.gov/vuln/detail/CVE-2026-77066)
 
-## CVE-2026-76762 (risk: 70)
+## CVE-2026-77067 (risk: 60)
 1 related updates.
 
-- [CVE-2026-76762](https://nvd.nist.gov/vuln/detail/CVE-2026-76762)
+- [CVE-2026-77067](https://nvd.nist.gov/vuln/detail/CVE-2026-77067)
 
-## CVE-2025-14601 (risk: 70)
+## CVE-2026-11861 (risk: 40)
 1 related updates.
 
-- [CVE-2025-14601](https://nvd.nist.gov/vuln/detail/CVE-2025-14601)
+- [CVE-2026-11861](https://nvd.nist.gov/vuln/detail/CVE-2026-11861)
 
-## CVE-2026-75628 (risk: 40)
+## CVE-2026-13097 (risk: 40)
 1 related updates.
 
-- [CVE-2026-75628](https://nvd.nist.gov/vuln/detail/CVE-2026-75628)
+- [CVE-2026-13097](https://nvd.nist.gov/vuln/detail/CVE-2026-13097)
 
-## CVE-2026-19582 (risk: 40)
+## CVE-2026-77026 (risk: 40)
 1 related updates.
 
-- [CVE-2026-19582](https://nvd.nist.gov/vuln/detail/CVE-2026-19582)
+- [CVE-2026-77026](https://nvd.nist.gov/vuln/detail/CVE-2026-77026)
 
-## CVE-2026-76956 (risk: 40)
+## CVE-2025-15637 (risk: 40)
 1 related updates.
 
-- [CVE-2026-76956](https://nvd.nist.gov/vuln/detail/CVE-2026-76956)
+- [CVE-2025-15637](https://nvd.nist.gov/vuln/detail/CVE-2025-15637)
 
-## CVE-2026-15049 (risk: 40)
+## CVE-2025-15688 (risk: 40)
 1 related updates.
 
-- [CVE-2026-15049](https://nvd.nist.gov/vuln/detail/CVE-2026-15049)
+- [CVE-2025-15688](https://nvd.nist.gov/vuln/detail/CVE-2025-15688)
 
-## CVE-2026-76957 (risk: 40)
+## CVE-2025-15689 (risk: 40)
 1 related updates.
 
-- [CVE-2026-76957](https://nvd.nist.gov/vuln/detail/CVE-2026-76957)
+- [CVE-2025-15689](https://nvd.nist.gov/vuln/detail/CVE-2025-15689)
