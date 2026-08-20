@@ -1,15 +1,15 @@
-# Watchtower Pipeline Eval — 2026-08-20T22:37:09Z
+# Watchtower Pipeline Eval — 2026-08-20T23:33:53Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 614 |
-| After dedup + CVE merge | 569 |
+| Items polled (raw) | 599 |
+| After dedup + CVE merge | 549 |
 | Sent to Groq | 30 |
 | Groq findings returned | 0 |
 | Final cards rendered | 15 |
-| **Pipeline yield** | **15/614 (2.4%)** |
+| **Pipeline yield** | **15/599 (2.5%)** |
 
 ## Groq
 _Groq not called this run (placeholder mode or no API key)._
@@ -20,7 +20,7 @@ _Groq not called this run (placeholder mode or no API key)._
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 53.3 / 65 |
+| Risk score mean / p90 | 45.3 / 50 |
 | Tactic coverage | 0% |
 | CVE coverage | 0% |
 | Patch status | unknown: 15 |
@@ -32,14 +32,14 @@ _Groq not called this run (placeholder mode or no API key)._
 
 ### Persistence
 
-- New (run=1): **4** | Evolving (2–5): **11** | Persistent (>5): **0** | Resolved: **0**
-- Mean run_count: 1.9 | Mean shelf_days: 40.9
+- New (run=1): **5** | Evolving (2–5): **10** | Persistent (>5): **0** | Resolved: **0**
+- Mean run_count: 1.8 | Mean shelf_days: 44.9
 
 ## Enrichment Hit Rates
 
 | Source | Hits | Rate |
 |--------|-----:|-----:|
-| EPSS | 12 | 80% |
+| EPSS | 14 | 93% |
 | NVD (CVE) | 0 | 0% |
 | CISA KEV | 0 | 0% |
 
@@ -47,11 +47,11 @@ _Groq not called this run (placeholder mode or no API key)._
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 438 |
+| `nvd` | 432 |
 | `aws_security_bulletins` | 85 |
 | `msrc_update_guide` | 36 |
-| `thehackernews` | 14 |
-| `securityweek` | 7 |
+| `thehackernews` | 11 |
+| `darkreading` | 7 |
 | _(+21 more)_ | … |
 
 **10 feeds returned 0 items this run.**
@@ -62,8 +62,8 @@ _Groq not called this run (placeholder mode or no API key)._
 |------|---------|----|---------|------|-----|------------|
 | 2026-08-19 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-19 | 15 | ? | 0% | 0% | 15 | 0 |
-| 2026-08-19 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-20 | 15 | ? | 0% | 0% | 14 | 0 |
 | 2026-08-20 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-20 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-20 | 15 | ? | 0% | 0% | 15 | 0 |
+| 2026-08-20 | 15 | ? | 0% | 0% | 4 | 0 |
