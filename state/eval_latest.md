@@ -1,15 +1,15 @@
-# Watchtower Pipeline Eval — 2026-08-20T09:44:01Z
+# Watchtower Pipeline Eval — 2026-08-20T10:39:33Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 211 |
-| After dedup + CVE merge | 210 |
+| Items polled (raw) | 200 |
+| After dedup + CVE merge | 197 |
 | Sent to Groq | 30 |
 | Groq findings returned | 0 |
 | Final cards rendered | 15 |
-| **Pipeline yield** | **15/211 (7.1%)** |
+| **Pipeline yield** | **15/200 (7.5%)** |
 
 ## Groq
 - **Model**: `unknown`
@@ -23,7 +23,7 @@
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 49.3 / 70 |
+| Risk score mean / p90 | 44 / 40 |
 | Tactic coverage | 0% |
 | CVE coverage | 0% |
 | Patch status | unknown: 15 |
@@ -35,8 +35,8 @@
 
 ### Persistence
 
-- New (run=1): **14** | Evolving (2–5): **1** | Persistent (>5): **0** | Resolved: **0**
-- Mean run_count: 1.1 | Mean shelf_days: 0.2
+- New (run=1): **15** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
+- Mean run_count: 1 | Mean shelf_days: 0
 
 ## Enrichment Hit Rates
 
@@ -50,23 +50,23 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 195 |
-| `bsi_germany` | 9 |
+| `bsi_germany` | 114 |
+| `nvd` | 74 |
+| `bleepingcomputer` | 4 |
 | `securityweek` | 3 |
-| `bleepingcomputer` | 2 |
-| `cisa_kev` | 1 |
+| `talos_blog` | 2 |
 | _(+21 more)_ | … |
 
-**20 feeds returned 0 items this run.**
+**18 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-08-18 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-19 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-19 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-19 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-19 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-19 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-19 | 15 | ? | 0% | 0% | 15 | 0 |
+| 2026-08-20 | 15 | ? | 0% | 0% | 14 | 0 |
