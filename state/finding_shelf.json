@@ -2638,26 +2638,26 @@
   },
   "cve:CVE-2026-6437": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-06-05",
-    "run_count": 1,
+    "last_seen": "2026-08-20",
+    "run_count": 2,
     "title": "CVE-2026-6437 - Mount Option Injection in Amazon EFS CSI Driver"
   },
   "cve:CVE-2026-1386": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-06-05",
-    "run_count": 1,
+    "last_seen": "2026-08-20",
+    "run_count": 2,
     "title": "CVE-2026-1386 - Arbitrary Host File Overwrite via Symlink in Firecracker Jailer"
   },
   "6b1a31fa248e": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-07-07",
-    "run_count": 4,
+    "last_seen": "2026-08-20",
+    "run_count": 5,
     "title": "Fragnesia Local Privilege Escalation report via ESP-in-TCP in the Linux Kernel"
   },
   "cve:CVE-2026-3336": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-06-05",
-    "run_count": 1,
+    "last_seen": "2026-08-20",
+    "run_count": 2,
     "title": "Issue with AWS-LC: an open-source, general-purpose cryptographic library (CVE-2026-3336, CVE-2026-3337, CVE-2026-3338)"
   },
   "199400a3d537": {
@@ -2668,8 +2668,8 @@
   },
   "e6282ba96ef9": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-06-05",
-    "run_count": 1,
+    "last_seen": "2026-08-20",
+    "run_count": 2,
     "title": "Issue with FreeRTOS-Plus-TCP - MAC Address Validation Bypass and ICMP Echo Reply Integer Underflow"
   },
   "cve:CVE-2026-8596": {
@@ -4015,8 +4015,8 @@
   },
   "cve:CVE-2026-47262": {
     "first_seen": "2026-06-19",
-    "last_seen": "2026-06-19",
-    "run_count": 1,
+    "last_seen": "2026-08-20",
+    "run_count": 2,
     "title": "Issue with containerd CRI Plugin - CVE-2026-50195, CVE-2026-53488, CVE-2026-53492, CVE-2026-53489, CVE-2026-47262"
   },
   "98f3c46dd71a": {
@@ -5314,8 +5314,8 @@
   },
   "cve:CVE-2026-13762": {
     "first_seen": "2026-06-30",
-    "last_seen": "2026-06-30",
-    "run_count": 1,
+    "last_seen": "2026-08-20",
+    "run_count": 2,
     "title": "CVE-2026-13762 and CVE-2026-13763: AWS WAF HTTP/2 Vulnerability",
     "last_problem_type": "data_disclosure",
     "last_affects": "service",
@@ -5548,8 +5548,8 @@
   },
   "cve:CVE-2026-13769": {
     "first_seen": "2026-07-02",
-    "last_seen": "2026-07-02",
-    "run_count": 1,
+    "last_seen": "2026-08-20",
+    "run_count": 2,
     "title": "CVE-2026-13769: AWS CLI Insecure File Permissions",
     "last_problem_type": "credential_compromise",
     "last_affects": "user_data",
@@ -7615,8 +7615,8 @@
   },
   "cve:CVE-2026-16796": {
     "first_seen": "2026-07-23",
-    "last_seen": "2026-07-23",
-    "run_count": 1,
+    "last_seen": "2026-08-20",
+    "run_count": 2,
     "title": "CVE-2026-16796: AWS Bedrock AgentCore Python SDK RCE",
     "last_problem_type": "rce",
     "last_affects": "framework",
@@ -7633,8 +7633,8 @@
   },
   "cve:CVE-2026-16756": {
     "first_seen": "2026-07-23",
-    "last_seen": "2026-07-23",
-    "run_count": 1,
+    "last_seen": "2026-08-20",
+    "run_count": 2,
     "title": "CVE-2026-16756: aws-smithy-http-server DoS",
     "last_problem_type": "dos",
     "last_affects": "service",
@@ -8860,8 +8860,8 @@
   },
   "cve:CVE-2026-18830": {
     "first_seen": "2026-08-04",
-    "last_seen": "2026-08-04",
-    "run_count": 1,
+    "last_seen": "2026-08-20",
+    "run_count": 2,
     "title": "CVE-2026-18830: Amazon Bedrock AgentCore Insufficient Input Validation",
     "last_problem_type": "rce",
     "last_affects": "service",
@@ -12232,5 +12232,23 @@
     "last_seen": "2026-08-20",
     "run_count": 1,
     "title": "CVE-2025-15689"
+  },
+  "cve:CVE-2026-15746": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CVE-2026-15746 - Credential disclosure in Strands Agents Tools elasticsearch_memory tool"
+  },
+  "cve:CVE-2026-15895": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "CVE-2026-15895: OS command injection in jsii-diff in AWS jsii"
+  },
+  "cve:CVE-2025-4318": {
+    "first_seen": "2026-08-20",
+    "last_seen": "2026-08-20",
+    "run_count": 1,
+    "title": "Incomplete fix for CVE-2025-4318 code injection in Amazon &commat;aws-amplify/codegen-ui-react"
   }
 }
