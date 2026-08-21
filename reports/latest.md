@@ -1,81 +1,81 @@
 ---
-generated_at: 2026-08-21T21:33:07.592995+00:00
+generated_at: 2026-08-21T22:34:07.318326+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CISA Adds One Known Exploited Vulnerability to Catalog (risk: 70)
+## CVE-2026-77769 (risk: 60)
 1 related updates.
 
-- [CISA Adds One Known Exploited Vulnerability to Catalog](https://www.cisa.gov/news-events/alerts/2026/08/21/cisa-adds-one-known-exploited-vulnerability-catalog)
+- [CVE-2026-77769](https://nvd.nist.gov/vuln/detail/CVE-2026-77769)
 
-## CVE-2026-77681 (risk: 70)
+## CVE-2026-77768 (risk: 60)
 1 related updates.
 
-- [CVE-2026-77681](https://nvd.nist.gov/vuln/detail/CVE-2026-77681)
+- [CVE-2026-77768](https://nvd.nist.gov/vuln/detail/CVE-2026-77768)
 
-## CVE-2026-77683 (risk: 70)
+## CVE-2026-77761 (risk: 40)
 1 related updates.
 
-- [CVE-2026-77683](https://nvd.nist.gov/vuln/detail/CVE-2026-77683)
+- [CVE-2026-77761](https://nvd.nist.gov/vuln/detail/CVE-2026-77761)
 
-## CVE-2026-77686 (risk: 70)
+## CVE-2026-73570 — Zimbra Collaboration Suite (ZCS) OS Command Injection Vulnerability (risk: 40)
 1 related updates.
 
-- [CVE-2026-77686](https://nvd.nist.gov/vuln/detail/CVE-2026-77686)
+- [CVE-2026-73570 — Zimbra Collaboration Suite (ZCS) OS Command Injection Vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2026-73570)
 
-## CVE-2026-77086 (risk: 60)
+## CVE-2026-77763 (risk: 40)
 1 related updates.
 
-- [CVE-2026-77086](https://nvd.nist.gov/vuln/detail/CVE-2026-77086)
+- [CVE-2026-77763](https://nvd.nist.gov/vuln/detail/CVE-2026-77763)
 
-## CVE-2026-77811 - Stored Cross-Site Scripting via Integration Template Asset in OpenSearch Dashboards (risk: 40)
+## CVE-2026-77767 (risk: 40)
 1 related updates.
 
-- [CVE-2026-77811 - Stored Cross-Site Scripting via Integration Template Asset in OpenSearch Dashboards](https://aws.amazon.com/security/security-bulletins/rss/2026-088-aws/)
+- [CVE-2026-77767](https://nvd.nist.gov/vuln/detail/CVE-2026-77767)
 
-## Issue with FreeRTOS-Kernel - CVE-2026-77234, CVE-2026-77235, CVE-2026-77236, CVE-2026-77237 (risk: 40)
+## CVE-2026-14208 (risk: 40)
 1 related updates.
 
-- [Issue with FreeRTOS-Kernel - CVE-2026-77234, CVE-2026-77235, CVE-2026-77236, CVE-2026-77237](https://aws.amazon.com/security/security-bulletins/rss/2026-086-aws/)
+- [CVE-2026-14208](https://nvd.nist.gov/vuln/detail/CVE-2026-14208)
 
-## CVE-2026-77810 - Issue with Athena Federated Query Neptune Connector (risk: 40)
+## CVE-2026-59296 (risk: 40)
 1 related updates.
 
-- [CVE-2026-77810 - Issue with Athena Federated Query Neptune Connector](https://aws.amazon.com/security/security-bulletins/rss/2026-087-aws/)
+- [CVE-2026-59296](https://nvd.nist.gov/vuln/detail/CVE-2026-59296)
 
-## CVE-2026-47827 (risk: 40)
+## CVE-2026-15150 (risk: 40)
 1 related updates.
 
-- [CVE-2026-47827](https://nvd.nist.gov/vuln/detail/CVE-2026-47827)
+- [CVE-2026-15150](https://nvd.nist.gov/vuln/detail/CVE-2026-15150)
 
-## CVE-2026-47079 (risk: 40)
+## CVE-2026-16650 (risk: 40)
 1 related updates.
 
-- [CVE-2026-47079](https://nvd.nist.gov/vuln/detail/CVE-2026-47079)
+- [CVE-2026-16650](https://nvd.nist.gov/vuln/detail/CVE-2026-16650)
 
-## CVE-2026-48590 (risk: 40)
+## CVE-2026-13176 (risk: 40)
 1 related updates.
 
-- [CVE-2026-48590](https://nvd.nist.gov/vuln/detail/CVE-2026-48590)
+- [CVE-2026-13176](https://nvd.nist.gov/vuln/detail/CVE-2026-13176)
 
-## CVE-2026-47080 (risk: 40)
+## CVE-2026-15046 (risk: 40)
 1 related updates.
 
-- [CVE-2026-47080](https://nvd.nist.gov/vuln/detail/CVE-2026-47080)
+- [CVE-2026-15046](https://nvd.nist.gov/vuln/detail/CVE-2026-15046)
 
-## CVE-2026-59323 (risk: 40)
+## CVE-2026-17559 (risk: 40)
 1 related updates.
 
-- [CVE-2026-59323](https://nvd.nist.gov/vuln/detail/CVE-2026-59323)
+- [CVE-2026-17559](https://nvd.nist.gov/vuln/detail/CVE-2026-17559)
 
-## CVE-2026-77751 (risk: 40)
+## CVE-2026-18356 (risk: 40)
 1 related updates.
 
-- [CVE-2026-77751](https://nvd.nist.gov/vuln/detail/CVE-2026-77751)
+- [CVE-2026-18356](https://nvd.nist.gov/vuln/detail/CVE-2026-18356)
 
-## CVE-2026-15576 (risk: 40)
+## CVE-2026-59308 (risk: 40)
 1 related updates.
 
-- [CVE-2026-15576](https://nvd.nist.gov/vuln/detail/CVE-2026-15576)
+- [CVE-2026-59308](https://nvd.nist.gov/vuln/detail/CVE-2026-59308)

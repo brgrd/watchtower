@@ -12634,5 +12634,95 @@
     "last_seen": "2026-08-21",
     "run_count": 1,
     "title": "CVE-2026-15576"
+  },
+  "cve:CVE-2026-77769": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-77769"
+  },
+  "cve:CVE-2026-77768": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-77768"
+  },
+  "cve:CVE-2026-77761": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-77761"
+  },
+  "cve:CVE-2026-73570": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-73570 — Zimbra Collaboration Suite (ZCS) OS Command Injection Vulnerability"
+  },
+  "cve:CVE-2026-77763": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-77763"
+  },
+  "cve:CVE-2026-77767": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-77767"
+  },
+  "cve:CVE-2026-14208": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-14208"
+  },
+  "cve:CVE-2026-59296": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-59296"
+  },
+  "cve:CVE-2026-15150": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-15150"
+  },
+  "cve:CVE-2026-16650": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-16650"
+  },
+  "cve:CVE-2026-13176": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-13176"
+  },
+  "cve:CVE-2026-15046": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-15046"
+  },
+  "cve:CVE-2026-17559": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-17559"
+  },
+  "cve:CVE-2026-18356": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-18356"
+  },
+  "cve:CVE-2026-59308": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-59308"
   }
 }
