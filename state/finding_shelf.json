@@ -12280,5 +12280,95 @@
     "last_seen": "2026-08-20",
     "run_count": 1,
     "title": "CVE-2026-18953 - Improper limitation of a pathname in AWS Transform MCP Server"
+  },
+  "cve:CVE-2026-19478": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "GitLab CVE-2026-19478 Comes Under Active Exploitation Within Days of Disclosure"
+  },
+  "5158f8970760": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "Microsoft Entra ID Flaw (CVSS 10.0) Exploited in Wild, Allows Remote Code Execution"
+  },
+  "cve:CVE-2026-16936": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-16936"
+  },
+  "cve:CVE-2026-16935": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-16935"
+  },
+  "cve:CVE-2026-16934": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-16934"
+  },
+  "cve:CVE-2025-52182": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2025-52182"
+  },
+  "cve:CVE-2026-16937": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-16937"
+  },
+  "cve:CVE-2026-16944": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-16944"
+  },
+  "cve:CVE-2026-16943": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-16943"
+  },
+  "cve:CVE-2026-16945": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-16945"
+  },
+  "cve:CVE-2026-16952": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-16952"
+  },
+  "cve:CVE-2026-16972": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-16972"
+  },
+  "cve:CVE-2026-16951": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-16951"
+  },
+  "cve:CVE-2026-16946": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-16946"
+  },
+  "cve:CVE-2026-16958": {
+    "first_seen": "2026-08-21",
+    "last_seen": "2026-08-21",
+    "run_count": 1,
+    "title": "CVE-2026-16958"
   }
 }
