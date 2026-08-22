@@ -1,15 +1,15 @@
-# Watchtower Pipeline Eval — 2026-08-22T10:33:24Z
+# Watchtower Pipeline Eval — 2026-08-22T11:29:08Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 42 |
-| After dedup + CVE merge | 40 |
-| Sent to Groq | 30 |
+| Items polled (raw) | 24 |
+| After dedup + CVE merge | 23 |
+| Sent to Groq | 23 |
 | Groq findings returned | 0 |
 | Final cards rendered | 15 |
-| **Pipeline yield** | **15/42 (35.7%)** |
+| **Pipeline yield** | **15/24 (62.5%)** |
 
 ## Groq
 - **Model**: `unknown`
@@ -23,7 +23,7 @@
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 42 / 40 |
+| Risk score mean / p90 | 44 / 40 |
 | Tactic coverage | 0% |
 | CVE coverage | 0% |
 | Patch status | unknown: 15 |
@@ -50,11 +50,11 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 38 |
+| `nvd` | 22 |
 | `cisa_kev` | 1 |
-| `cloudflare_blog` | 1 |
 | `securityweek` | 1 |
-| `unit42` | 1 |
+| `gh_security_blog` | 0 |
+| `bleepingcomputer` | 0 |
 | _(+21 more)_ | … |
 
 **21 feeds returned 0 items this run.**
@@ -65,8 +65,8 @@
 |------|---------|----|---------|------|-----|------------|
 | 2026-08-21 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-21 | 15 | ? | 0% | 0% | 15 | 0 |
-| 2026-08-21 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-21 | 15 | ? | 0% | 0% | 14 | 0 |
 | 2026-08-21 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-21 | 15 | ? | 0% | 0% | 15 | 0 |
+| 2026-08-22 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-22 | 15 | ? | 0% | 0% | 15 | 0 |
