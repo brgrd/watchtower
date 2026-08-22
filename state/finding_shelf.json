@@ -13162,5 +13162,95 @@
     "last_seen": "2026-08-22",
     "run_count": 1,
     "title": "Banking Trojans Manic, Grandoreiro, ToxicPanda 2.0 in the Spotlight"
+  },
+  "cve:CVE-2026-62204": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-62204"
+  },
+  "cve:CVE-2026-62243": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-62243"
+  },
+  "cve:CVE-2026-57944": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-57944"
+  },
+  "cve:CVE-2026-56380": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-56380"
+  },
+  "cve:CVE-2026-11947": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-11947"
+  },
+  "cve:CVE-2026-11948": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-11948"
+  },
+  "cve:CVE-2026-4244": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-4244"
+  },
+  "cve:CVE-2026-57998": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-57998"
+  },
+  "cve:CVE-2026-58001": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-58001"
+  },
+  "cve:CVE-2026-58003": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-58003"
+  },
+  "cve:CVE-2026-59809": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-59809"
+  },
+  "cve:CVE-2026-59256": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-59256"
+  },
+  "cve:CVE-2026-59808": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-59808"
+  },
+  "cve:CVE-2026-58002": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-58002"
+  },
+  "cve:CVE-2026-60084": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-60084"
   }
 }

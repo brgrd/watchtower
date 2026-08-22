@@ -1,71 +1,81 @@
 ---
-generated_at: 2026-08-22T12:54:50.257283+00:00
+generated_at: 2026-08-22T21:30:05.906860+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-77988 (risk: 70)
+## CVE-2026-62204 (risk: 60)
 1 related updates.
 
-- [CVE-2026-77988](https://nvd.nist.gov/vuln/detail/CVE-2026-77988)
+- [CVE-2026-62204](https://nvd.nist.gov/vuln/detail/CVE-2026-62204)
 
-## CVE-2026-76793 (risk: 40)
+## CVE-2026-62243 (risk: 55)
 1 related updates.
 
-- [CVE-2026-76793](https://nvd.nist.gov/vuln/detail/CVE-2026-76793)
+- [CVE-2026-62243](https://nvd.nist.gov/vuln/detail/CVE-2026-62243)
 
-## CVE-2026-77001 (risk: 40)
+## CVE-2026-57944 (risk: 40)
 1 related updates.
 
-- [CVE-2026-77001](https://nvd.nist.gov/vuln/detail/CVE-2026-77001)
+- [CVE-2026-57944](https://nvd.nist.gov/vuln/detail/CVE-2026-57944)
 
-## CVE-2026-18052 (risk: 40)
+## CVE-2026-56380 (risk: 40)
 1 related updates.
 
-- [CVE-2026-18052](https://nvd.nist.gov/vuln/detail/CVE-2026-18052)
+- [CVE-2026-56380](https://nvd.nist.gov/vuln/detail/CVE-2026-56380)
 
-## CVE-2026-77002 (risk: 40)
+## CVE-2026-11947 (risk: 40)
 1 related updates.
 
-- [CVE-2026-77002](https://nvd.nist.gov/vuln/detail/CVE-2026-77002)
+- [CVE-2026-11947](https://nvd.nist.gov/vuln/detail/CVE-2026-11947)
 
-## CVE-2026-12710 (risk: 40)
+## CVE-2026-11948 (risk: 40)
 1 related updates.
 
-- [CVE-2026-12710](https://nvd.nist.gov/vuln/detail/CVE-2026-12710)
+- [CVE-2026-11948](https://nvd.nist.gov/vuln/detail/CVE-2026-11948)
 
-## CVE-2026-78003 (risk: 40)
+## CVE-2026-4244 (risk: 40)
 1 related updates.
 
-- [CVE-2026-78003](https://nvd.nist.gov/vuln/detail/CVE-2026-78003)
+- [CVE-2026-4244](https://nvd.nist.gov/vuln/detail/CVE-2026-4244)
 
-## CVE-2026-77000 (risk: 40)
+## CVE-2026-57998 (risk: 40)
 1 related updates.
 
-- [CVE-2026-77000](https://nvd.nist.gov/vuln/detail/CVE-2026-77000)
+- [CVE-2026-57998](https://nvd.nist.gov/vuln/detail/CVE-2026-57998)
 
-## CVE-2026-4245 (risk: 40)
+## CVE-2026-58001 (risk: 40)
 1 related updates.
 
-- [CVE-2026-4245](https://nvd.nist.gov/vuln/detail/CVE-2026-4245)
+- [CVE-2026-58001](https://nvd.nist.gov/vuln/detail/CVE-2026-58001)
 
-## CVE-2026-66916 (risk: 40)
+## CVE-2026-58003 (risk: 40)
 1 related updates.
 
-- [CVE-2026-66916](https://nvd.nist.gov/vuln/detail/CVE-2026-66916)
+- [CVE-2026-58003](https://nvd.nist.gov/vuln/detail/CVE-2026-58003)
 
-## CVE-2026-3424 (risk: 40)
+## CVE-2026-59809 (risk: 40)
 1 related updates.
 
-- [CVE-2026-3424](https://nvd.nist.gov/vuln/detail/CVE-2026-3424)
+- [CVE-2026-59809](https://nvd.nist.gov/vuln/detail/CVE-2026-59809)
 
-## CVE-2026-66917 (risk: 40)
+## CVE-2026-59256 (risk: 40)
 1 related updates.
 
-- [CVE-2026-66917](https://nvd.nist.gov/vuln/detail/CVE-2026-66917)
+- [CVE-2026-59256](https://nvd.nist.gov/vuln/detail/CVE-2026-59256)
 
-## Banking Trojans Manic, Grandoreiro, ToxicPanda 2.0 in the Spotlight (risk: 0)
+## CVE-2026-59808 (risk: 40)
 1 related updates.
 
-- [Banking Trojans Manic, Grandoreiro, ToxicPanda 2.0 in the Spotlight](https://www.securityweek.com/banking-trojans-manic-grandoreiro-toxicpanda-2-0-in-the-spotlight/)
+- [CVE-2026-59808](https://nvd.nist.gov/vuln/detail/CVE-2026-59808)
+
+## CVE-2026-58002 (risk: 40)
+1 related updates.
+
+- [CVE-2026-58002](https://nvd.nist.gov/vuln/detail/CVE-2026-58002)
+
+## CVE-2026-60084 (risk: 40)
+1 related updates.
+
+- [CVE-2026-60084](https://nvd.nist.gov/vuln/detail/CVE-2026-60084)
