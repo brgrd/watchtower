@@ -12814,5 +12814,95 @@
     "last_seen": "2026-08-21",
     "run_count": 1,
     "title": "CVE-2026-15580"
+  },
+  "cve:CVE-2026-53527": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-53527"
+  },
+  "cve:CVE-2026-53509": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-53509"
+  },
+  "cve:CVE-2026-53487": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-53487"
+  },
+  "cve:CVE-2026-34836": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-34836"
+  },
+  "cve:CVE-2026-31936": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-31936"
+  },
+  "cve:CVE-2026-34741": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-34741"
+  },
+  "cve:CVE-2026-33240": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-33240"
+  },
+  "cve:CVE-2026-33333": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-33333"
+  },
+  "cve:CVE-2026-33047": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-33047"
+  },
+  "cve:CVE-2026-53497": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-53497"
+  },
+  "cve:CVE-2026-49849": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-49849"
+  },
+  "cve:CVE-2026-53468": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-53468"
+  },
+  "cve:CVE-2026-43980": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-43980"
+  },
+  "cve:CVE-2026-53530": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-53530"
+  },
+  "cve:CVE-2026-11418": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-11418"
   }
 }

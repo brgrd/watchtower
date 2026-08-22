@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-21T21:33:08.062960+00:00",
+  "fetched_at": "2026-08-22T09:36:11.565668+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -7161,6 +7161,25 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#GoldSilver",
       "summary": "In October 2018, the bullion education and dealer services site GoldSilver suffered a data breach that exposed 243k unique email addresses spanning customers and mailing list subscribers. An extensive amount of personal information on customers was obtained including names, addresses, phone numbers, purchases and passwords and answers to security questions stored as MD5 hashes. In a small number o",
       "action": "close"
+    },
+    {
+      "id": "hibp:golfcanada-2026-05-14",
+      "name": "GolfCanada",
+      "title": "Golf Canada",
+      "date": "2026-05-14",
+      "added": "2026-08-22",
+      "affected_count": 568972,
+      "data_classes": [
+        "Dates of birth",
+        "Email addresses",
+        "Genders",
+        "Geographic locations",
+        "Names",
+        "Usernames"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#GolfCanada",
+      "summary": "In mid-2026, hundreds of thousands of user records allegedly sourced from Golf Canada began circulating via Telegram. The data included 569k unique email addresses along with names, usernames, dates of birth, genders and approximate geographic locations (city, province and postcode). Golf Canada didn't respond to multiple attempts to make contact, and it remains unclear whether the data was obtain",
+      "action": "monitor"
     },
     {
       "id": "hibp:goosecreek-2026-06-09",
