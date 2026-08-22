@@ -13084,5 +13084,83 @@
     "last_seen": "2026-08-22",
     "run_count": 1,
     "title": "CVE-2026-19093"
+  },
+  "cve:CVE-2026-77988": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-77988"
+  },
+  "cve:CVE-2026-76793": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-76793"
+  },
+  "cve:CVE-2026-77001": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-77001"
+  },
+  "cve:CVE-2026-18052": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-18052"
+  },
+  "cve:CVE-2026-77002": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-77002"
+  },
+  "cve:CVE-2026-12710": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-12710"
+  },
+  "cve:CVE-2026-78003": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-78003"
+  },
+  "cve:CVE-2026-77000": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-77000"
+  },
+  "cve:CVE-2026-4245": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-4245"
+  },
+  "cve:CVE-2026-66916": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-66916"
+  },
+  "cve:CVE-2026-3424": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-3424"
+  },
+  "cve:CVE-2026-66917": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "CVE-2026-66917"
+  },
+  "d0c733f4a2a8": {
+    "first_seen": "2026-08-22",
+    "last_seen": "2026-08-22",
+    "run_count": 1,
+    "title": "Banking Trojans Manic, Grandoreiro, ToxicPanda 2.0 in the Spotlight"
   }
 }
