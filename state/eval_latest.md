@@ -1,15 +1,15 @@
-# Watchtower Pipeline Eval — 2026-08-23T21:29:22Z
+# Watchtower Pipeline Eval — 2026-08-23T22:32:00Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 20 |
-| After dedup + CVE merge | 16 |
-| Sent to Groq | 16 |
+| Items polled (raw) | 18 |
+| After dedup + CVE merge | 3 |
+| Sent to Groq | 3 |
 | Groq findings returned | 0 |
-| Final cards rendered | 15 |
-| **Pipeline yield** | **15/20 (75.0%)** |
+| Final cards rendered | 3 |
+| **Pipeline yield** | **3/18 (16.7%)** |
 
 ## Groq
 - **Model**: `unknown`
@@ -19,14 +19,14 @@
 
 ## Card Quality
 
-**15 cards** — P1: 0, P2: 0, P3: 15
+**3 cards** — P1: 0, P2: 0, P3: 3
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 42 / 40 |
+| Risk score mean / p90 | 46.7 / 70 |
 | Tactic coverage | 0% |
 | CVE coverage | 0% |
-| Patch status | unknown: 15 |
+| Patch status | unknown: 3 |
 
 ### Reasoning Quality
 
@@ -35,7 +35,7 @@
 
 ### Persistence
 
-- New (run=1): **15** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
+- New (run=1): **3** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
 - Mean run_count: 1 | Mean shelf_days: 0
 
 ## Enrichment Hit Rates
@@ -50,11 +50,11 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 19 |
+| `nvd` | 17 |
 | `bleepingcomputer` | 1 |
-| `gh_security_blog` | 0 |
-| `krebs` | 0 |
 | `cisa_alerts` | 0 |
+| `cisa_kev` | 0 |
+| `krebs` | 0 |
 | _(+21 more)_ | … |
 
 **21 feeds returned 0 items this run.**
@@ -65,8 +65,8 @@
 |------|---------|----|---------|------|-----|------------|
 | 2026-08-22 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-22 | 15 | ? | 0% | 0% | 15 | 0 |
-| 2026-08-22 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-23 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-23 | 14 | ? | 0% | 0% | 14 | 0 |
 | 2026-08-23 | ? | ? | ?% | ?% | ? | ? |
 | 2026-08-23 | ? | ? | ?% | ?% | ? | ? |
+| 2026-08-23 | 15 | ? | 0% | 0% | 15 | 0 |
