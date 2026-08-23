@@ -13714,5 +13714,29 @@
     "last_seen": "2026-08-23",
     "run_count": 1,
     "title": "ToxicPanda Android malware uses VPN permissions to block Google Play"
+  },
+  "cve:CVE-2026-78145": {
+    "first_seen": "2026-08-23",
+    "last_seen": "2026-08-23",
+    "run_count": 1,
+    "title": "CVE-2026-78145"
+  },
+  "cve:CVE-2026-78143": {
+    "first_seen": "2026-08-23",
+    "last_seen": "2026-08-23",
+    "run_count": 1,
+    "title": "CVE-2026-78143"
+  },
+  "cve:CVE-2026-78144": {
+    "first_seen": "2026-08-23",
+    "last_seen": "2026-08-23",
+    "run_count": 1,
+    "title": "CVE-2026-78144"
+  },
+  "cve:CVE-2026-78147": {
+    "first_seen": "2026-08-23",
+    "last_seen": "2026-08-23",
+    "run_count": 1,
+    "title": "CVE-2026-78147"
   }
 }
