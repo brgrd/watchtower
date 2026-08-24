@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-23T21:29:30.929848+00:00",
+  "fetched_at": "2026-08-24T09:57:16.257746+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -11557,6 +11557,25 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Nitro",
       "summary": "In September 2020, the Nitro PDF service suffered a massive data breach which exposed over 70 million unique email addresses. The breach also exposed names, bcrypt password hashes and the titles of converted documents. The data was provided to HIBP by dehashed.com.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:nius-2025-07-13",
+      "name": "NIUS",
+      "title": "NIUS",
+      "date": "2025-07-13",
+      "added": "2026-08-23",
+      "affected_count": 6090,
+      "data_classes": [
+        "Bank account numbers",
+        "Email addresses",
+        "Names",
+        "Partial credit card data",
+        "Physical addresses",
+        "Purchases"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#NIUS",
+      "summary": "In July 2025, the German news service NIUS suffered a data breach which was subsequently leaked publicly. The data included 6k unique email addresses along with names, physical addresses and payment details for purchases including either IBANs or partial credit card data (masked card number, type and expiry).",
+      "action": "monitor"
     },
     {
       "id": "hibp:nival-2016-02-29",
