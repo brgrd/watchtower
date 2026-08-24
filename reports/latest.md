@@ -1,81 +1,81 @@
 ---
-generated_at: 2026-08-24T22:36:51.697348+00:00
+generated_at: 2026-08-24T23:30:14.696478+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Exploited Zimbra Flaw Highlights Shrinking Window to Patch (risk: 70)
+## ⚡ Weekly Recap: AI-Powered PLC Attacks, GitLab Attacks, Stripe Key Leaks and More (risk: 50)
 1 related updates.
 
-- [Exploited Zimbra Flaw Highlights Shrinking Window to Patch](https://www.darkreading.com/vulnerabilities-threats/zimbra-flaw-exploitation-shrinking-window-patch)
+- [⚡ Weekly Recap: AI-Powered PLC Attacks, GitLab Attacks, Stripe Key Leaks and More](https://thehackernews.com/2026/08/weekly-recap-ai-powered-plc-attacks.html)
 
-## CVE-2025-63080 (risk: 40)
+## Hackers target WordPress sites in miniOrange auth bypass attacks (risk: 30)
 1 related updates.
 
-- [CVE-2025-63080](https://nvd.nist.gov/vuln/detail/CVE-2025-63080)
+- [Hackers target WordPress sites in miniOrange auth bypass attacks](https://www.bleepingcomputer.com/news/security/hackers-target-wordpress-sites-in-miniorange-auth-bypass-attacks/)
 
-## CVE-2026-59295 (risk: 40)
+## Shipping More AI Code Than You Can Secure? Watch How to Control Remediation Debt (risk: 20)
 1 related updates.
 
-- [CVE-2026-59295](https://nvd.nist.gov/vuln/detail/CVE-2026-59295)
+- [Shipping More AI Code Than You Can Secure? Watch How to Control Remediation Debt](https://thehackernews.com/2026/08/shipping-more-ai-code-than-you-can.html)
 
-## CVE-2026-21962 — Oracle HTTP Server and Oracle Weblogic Server Proxy Plug-in Improper Access Control Vulnerability (risk: 40)
+## The Outsized Shadow: Why 5% of AI Users Are Your Biggest Security Risk (risk: 20)
 1 related updates.
 
-- [CVE-2026-21962 — Oracle HTTP Server and Oracle Weblogic Server Proxy Plug-in Improper Access Control Vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2026-21962)
+- [The Outsized Shadow: Why 5% of AI Users Are Your Biggest Security Risk](https://thehackernews.com/2026/08/the-outsized-shadow-why-5-of-ai-users.html)
 
-## CVE-2026-76172 (risk: 40)
+## TikTok reaches $400M settlement with US over COPPA violations (risk: 0)
 1 related updates.
 
-- [CVE-2026-76172](https://nvd.nist.gov/vuln/detail/CVE-2026-76172)
+- [TikTok reaches $400M settlement with US over COPPA violations](https://www.bleepingcomputer.com/news/legal/tiktok-reaches-400m-settlement-with-us-over-coppa-violations/)
 
-## CVE-2026-78337 (risk: 40)
+## Microsoft Teams now lets admins block external bots from meetings (risk: 0)
 1 related updates.
 
-- [CVE-2026-78337](https://nvd.nist.gov/vuln/detail/CVE-2026-78337)
+- [Microsoft Teams now lets admins block external bots from meetings](https://www.bleepingcomputer.com/news/security/microsoft-teams-now-lets-admins-block-external-bots-from-meetings/)
 
-## CVE-2026-28152 (risk: 40)
+## Unpatched Calix flaw lets hackers bypass NAT to expose internal devices (risk: 0)
 1 related updates.
 
-- [CVE-2026-28152](https://nvd.nist.gov/vuln/detail/CVE-2026-28152)
+- [Unpatched Calix flaw lets hackers bypass NAT to expose internal devices](https://www.bleepingcomputer.com/news/security/unpatched-calix-flaw-lets-hackers-bypass-nat-to-expose-internal-devices/)
 
-## CVE-2026-28153 (risk: 40)
+## ReliaQuest confirms failed data-theft attack after ShinyHunters breach (risk: 0)
 1 related updates.
 
-- [CVE-2026-28153](https://nvd.nist.gov/vuln/detail/CVE-2026-28153)
+- [ReliaQuest confirms failed data-theft attack after ShinyHunters breach](https://www.bleepingcomputer.com/news/security/reliaquest-confirms-failed-data-theft-attack-after-shinyhunters-breach/)
 
-## CVE-2026-28162 (risk: 40)
+## South Korean startup platform breach exposes key management failures (risk: 0)
 1 related updates.
 
-- [CVE-2026-28162](https://nvd.nist.gov/vuln/detail/CVE-2026-28162)
+- [South Korean startup platform breach exposes key management failures](https://www.bleepingcomputer.com/news/security/south-korean-startup-platform-breach-exposes-key-management-failures/)
 
-## CVE-2026-28151 (risk: 40)
+## WordlistLoader Delivers Amatera via ClickFix, SynkLoader Phishes Windows Passwords (risk: 0)
 1 related updates.
 
-- [CVE-2026-28151](https://nvd.nist.gov/vuln/detail/CVE-2026-28151)
+- [WordlistLoader Delivers Amatera via ClickFix, SynkLoader Phishes Windows Passwords](https://thehackernews.com/2026/08/wordlistloader-delivers-amatera-via.html)
 
-## CVE-2026-28190 (risk: 40)
+## Weedhack Malware Spreads via Fake Minecraft Clients and SEO Poisoning (risk: 0)
 1 related updates.
 
-- [CVE-2026-28190](https://nvd.nist.gov/vuln/detail/CVE-2026-28190)
+- [Weedhack Malware Spreads via Fake Minecraft Clients and SEO Poisoning](https://thehackernews.com/2026/08/weedhack-malware-spreads-via-fake.html)
 
-## CVE-2026-28171 (risk: 40)
+## Operation QUICSILVER Targets Myanmar Government and IT with QUICAgent Backdoor (risk: 0)
 1 related updates.
 
-- [CVE-2026-28171](https://nvd.nist.gov/vuln/detail/CVE-2026-28171)
+- [Operation QUICSILVER Targets Myanmar Government and IT with QUICAgent Backdoor](https://thehackernews.com/2026/08/operation-quicsilver-targets-myanmar.html)
 
-## CVE-2026-28165 (risk: 40)
+## The Cloudflare Blog – Brought to you by EmDash (risk: 0)
 1 related updates.
 
-- [CVE-2026-28165](https://nvd.nist.gov/vuln/detail/CVE-2026-28165)
+- [The Cloudflare Blog – Brought to you by EmDash](https://blog.cloudflare.com/cloudflare-blog-uses-emdash/)
 
-## CVE-2026-28166 (risk: 40)
+## Microsoft: August updates break printing, PDF export in WPF apps (risk: 0)
 1 related updates.
 
-- [CVE-2026-28166](https://nvd.nist.gov/vuln/detail/CVE-2026-28166)
+- [Microsoft: August updates break printing, PDF export in WPF apps](https://www.bleepingcomputer.com/news/microsoft/microsoft-august-updates-break-printing-pdf-export-in-wpf-apps/)
 
-## CVE-2026-32476 (risk: 40)
+## ReliaQuest Confirms ShinyHunters Hack, but Says Impact Was Limited (risk: 0)
 1 related updates.
 
-- [CVE-2026-32476](https://nvd.nist.gov/vuln/detail/CVE-2026-32476)
+- [ReliaQuest Confirms ShinyHunters Hack, but Says Impact Was Limited](https://www.securityweek.com/reliaquest-confirms-shinyhunters-hack-but-says-impact-was-limited/)
