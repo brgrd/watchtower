@@ -1,81 +1,81 @@
 ---
-generated_at: 2026-08-24T11:37:13.709181+00:00
+generated_at: 2026-08-24T21:37:49.975657+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-78207 (risk: 40)
+## CISA Adds One Known Exploited Vulnerability to Catalog (risk: 70)
 1 related updates.
 
-- [CVE-2026-78207](https://nvd.nist.gov/vuln/detail/CVE-2026-78207)
+- [CISA Adds One Known Exploited Vulnerability to Catalog](https://www.cisa.gov/news-events/alerts/2026/08/24/cisa-adds-one-known-exploited-vulnerability-catalog)
 
-## CVE-2026-78209 (risk: 40)
+## CVE-2026-78244 (risk: 70)
 1 related updates.
 
-- [CVE-2026-78209](https://nvd.nist.gov/vuln/detail/CVE-2026-78209)
+- [CVE-2026-78244](https://nvd.nist.gov/vuln/detail/CVE-2026-78244)
 
-## CVE-2026-78158 (risk: 40)
+## CVE-2026-78245 (risk: 70)
 1 related updates.
 
-- [CVE-2026-78158](https://nvd.nist.gov/vuln/detail/CVE-2026-78158)
+- [CVE-2026-78245](https://nvd.nist.gov/vuln/detail/CVE-2026-78245)
 
-## CVE-2026-78178 (risk: 40)
+## CVE-2026-16249 (risk: 40)
 1 related updates.
 
-- [CVE-2026-78178](https://nvd.nist.gov/vuln/detail/CVE-2026-78178)
+- [CVE-2026-16249](https://nvd.nist.gov/vuln/detail/CVE-2026-16249)
 
-## CVE-2026-78208 (risk: 40)
+## CVE-2026-66897 (risk: 40)
 1 related updates.
 
-- [CVE-2026-78208](https://nvd.nist.gov/vuln/detail/CVE-2026-78208)
+- [CVE-2026-66897](https://nvd.nist.gov/vuln/detail/CVE-2026-66897)
 
-## CVE-2026-19852 (risk: 40)
+## CVE-2026-75931 (risk: 40)
 1 related updates.
 
-- [CVE-2026-19852](https://nvd.nist.gov/vuln/detail/CVE-2026-19852)
+- [CVE-2026-75931](https://nvd.nist.gov/vuln/detail/CVE-2026-75931)
 
-## CVE-2026-78211 (risk: 40)
+## CVE-2026-75899 (risk: 40)
 1 related updates.
 
-- [CVE-2026-78211](https://nvd.nist.gov/vuln/detail/CVE-2026-78211)
+- [CVE-2026-75899](https://nvd.nist.gov/vuln/detail/CVE-2026-75899)
 
-## CVE-2026-78180 (risk: 40)
+## CVE-2026-75975 (risk: 40)
 1 related updates.
 
-- [CVE-2026-78180](https://nvd.nist.gov/vuln/detail/CVE-2026-78180)
+- [CVE-2026-75975](https://nvd.nist.gov/vuln/detail/CVE-2026-75975)
 
-## CVE-2026-78179 (risk: 40)
+## Critical Keycloak Password Reset Flaw Could Let Unauthenticated Attackers Take Over Any Account (risk: 40)
 1 related updates.
 
-- [CVE-2026-78179](https://nvd.nist.gov/vuln/detail/CVE-2026-78179)
+- [Critical Keycloak Password Reset Flaw Could Let Unauthenticated Attackers Take Over Any Account](https://thehackernews.com/2026/08/critical-keycloak-password-reset-flaw.html)
 
-## CVE-2026-8173 (risk: 40)
+## CVE-2026-78314 (risk: 40)
 1 related updates.
 
-- [CVE-2026-8173](https://nvd.nist.gov/vuln/detail/CVE-2026-8173)
+- [CVE-2026-78314](https://nvd.nist.gov/vuln/detail/CVE-2026-78314)
 
-## CVE-2026-59561 (risk: 40)
+## CVE-2026-78315 (risk: 40)
 1 related updates.
 
-- [CVE-2026-59561](https://nvd.nist.gov/vuln/detail/CVE-2026-59561)
+- [CVE-2026-78315](https://nvd.nist.gov/vuln/detail/CVE-2026-78315)
 
-## CVE-2026-78196 (risk: 40)
+## CVE-2026-78316 (risk: 40)
 1 related updates.
 
-- [CVE-2026-78196](https://nvd.nist.gov/vuln/detail/CVE-2026-78196)
+- [CVE-2026-78316](https://nvd.nist.gov/vuln/detail/CVE-2026-78316)
 
-## CVE-2026-19200 (risk: 40)
+## CVE-2026-10582 (risk: 40)
 1 related updates.
 
-- [CVE-2026-19200](https://nvd.nist.gov/vuln/detail/CVE-2026-19200)
+- [CVE-2026-10582](https://nvd.nist.gov/vuln/detail/CVE-2026-10582)
 
-## CVE-2026-78213 (risk: 40)
+## CVE-2026-10618 (risk: 40)
 1 related updates.
 
-- [CVE-2026-78213](https://nvd.nist.gov/vuln/detail/CVE-2026-78213)
+- [CVE-2026-10618](https://nvd.nist.gov/vuln/detail/CVE-2026-10618)
 
-## CVE-2026-77993 (risk: 40)
+## CVE-2026-78317 (risk: 40)
 1 related updates.
 
-- [CVE-2026-77993](https://nvd.nist.gov/vuln/detail/CVE-2026-77993)
+- [CVE-2026-78317](https://nvd.nist.gov/vuln/detail/CVE-2026-78317)

@@ -14008,5 +14008,95 @@
     "last_seen": "2026-08-24",
     "run_count": 1,
     "title": "CVE-2026-77993"
+  },
+  "36f163812a4e": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "cve:CVE-2026-78244": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-78244"
+  },
+  "cve:CVE-2026-78245": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-78245"
+  },
+  "cve:CVE-2026-16249": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-16249"
+  },
+  "cve:CVE-2026-66897": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-66897"
+  },
+  "cve:CVE-2026-75931": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-75931"
+  },
+  "cve:CVE-2026-75899": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-75899"
+  },
+  "cve:CVE-2026-75975": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-75975"
+  },
+  "e7db34bfe308": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "Critical Keycloak Password Reset Flaw Could Let Unauthenticated Attackers Take Over Any Account"
+  },
+  "cve:CVE-2026-78314": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-78314"
+  },
+  "cve:CVE-2026-78315": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-78315"
+  },
+  "cve:CVE-2026-78316": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-78316"
+  },
+  "cve:CVE-2026-10582": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-10582"
+  },
+  "cve:CVE-2026-10618": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-10618"
+  },
+  "cve:CVE-2026-78317": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-78317"
   }
 }
