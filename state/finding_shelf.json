@@ -12151,8 +12151,8 @@
   },
   "e1cdd1824a4c": {
     "first_seen": "2026-08-20",
-    "last_seen": "2026-08-21",
-    "run_count": 2,
+    "last_seen": "2026-08-24",
+    "run_count": 3,
     "title": "Attackers Exploit Zimbra SNMP Flaw for Unauthenticated Remote Code Execution"
   },
   "cve:CVE-2026-18917": {
@@ -14098,5 +14098,89 @@
     "last_seen": "2026-08-24",
     "run_count": 1,
     "title": "CVE-2026-78317"
+  },
+  "cve:CVE-2025-63080": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2025-63080"
+  },
+  "cve:CVE-2026-59295": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-59295"
+  },
+  "cve:CVE-2026-21962": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-21962 — Oracle HTTP Server and Oracle Weblogic Server Proxy Plug-in Improper Access Control Vulnerability"
+  },
+  "cve:CVE-2026-76172": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-76172"
+  },
+  "cve:CVE-2026-78337": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-78337"
+  },
+  "cve:CVE-2026-28152": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-28152"
+  },
+  "cve:CVE-2026-28153": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-28153"
+  },
+  "cve:CVE-2026-28162": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-28162"
+  },
+  "cve:CVE-2026-28151": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-28151"
+  },
+  "cve:CVE-2026-28190": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-28190"
+  },
+  "cve:CVE-2026-28171": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-28171"
+  },
+  "cve:CVE-2026-28165": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-28165"
+  },
+  "cve:CVE-2026-28166": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-28166"
+  },
+  "cve:CVE-2026-32476": {
+    "first_seen": "2026-08-24",
+    "last_seen": "2026-08-24",
+    "run_count": 1,
+    "title": "CVE-2026-32476"
   }
 }
