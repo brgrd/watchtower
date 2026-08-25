@@ -14530,5 +14530,89 @@
     "last_seen": "2026-08-25",
     "run_count": 1,
     "title": "CVE-2026-72698"
+  },
+  "cve:CVE-2026-78379": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-78379 - Consent bypass in Strands Agents Tools python_repl tool"
+  },
+  "cve:CVE-2026-21753": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-21753"
+  },
+  "cve:CVE-2026-60004": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-60004 — Gitea Code Injection Vulnerability"
+  },
+  "cve:CVE-2026-16231": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-16231"
+  },
+  "cve:CVE-2026-49050": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-49050"
+  },
+  "cve:CVE-2026-75037": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-75037"
+  },
+  "cve:CVE-2026-76128": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-76128"
+  },
+  "cve:CVE-2026-78570": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-78570"
+  },
+  "cve:CVE-2026-75038": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-75038"
+  },
+  "cve:CVE-2026-78572": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-78572"
+  },
+  "cve:CVE-2026-12878": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-12878"
+  },
+  "cve:CVE-2026-21754": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-21754"
+  },
+  "cve:CVE-2026-12600": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-12600"
+  },
+  "cve:CVE-2026-21758": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-21758"
   }
 }
