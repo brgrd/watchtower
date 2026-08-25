@@ -14011,8 +14011,8 @@
   },
   "36f163812a4e": {
     "first_seen": "2026-08-24",
-    "last_seen": "2026-08-24",
-    "run_count": 1,
+    "last_seen": "2026-08-25",
+    "run_count": 2,
     "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
   },
   "cve:CVE-2026-78244": {
@@ -14272,5 +14272,89 @@
     "last_seen": "2026-08-24",
     "run_count": 1,
     "title": "ReliaQuest Confirms ShinyHunters Hack, but Says Impact Was Limited"
+  },
+  "b05ac1767316": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "Attackers Target miniOrange SAML Flaws That Can Grant WordPress Admin Access"
+  },
+  "cve:CVE-2026-78434": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-78434"
+  },
+  "cve:CVE-2026-78435": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-78435"
+  },
+  "cve:CVE-2026-17113": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-17113"
+  },
+  "cve:CVE-2026-32554": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-32554"
+  },
+  "cve:CVE-2026-27364": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-27364"
+  },
+  "cve:CVE-2026-32555": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-32555"
+  },
+  "cve:CVE-2026-32559": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-32559"
+  },
+  "cve:CVE-2026-32556": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-32556"
+  },
+  "cve:CVE-2026-32560": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-32560"
+  },
+  "cve:CVE-2026-32561": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-32561"
+  },
+  "cve:CVE-2026-32563": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-32563"
+  },
+  "cve:CVE-2026-45404": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-45404"
+  },
+  "cve:CVE-2026-78259": {
+    "first_seen": "2026-08-25",
+    "last_seen": "2026-08-25",
+    "run_count": 1,
+    "title": "CVE-2026-78259"
   }
 }
