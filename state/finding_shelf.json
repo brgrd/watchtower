@@ -976,8 +976,8 @@
   },
   "e58a8c9eb921": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-07-22",
-    "run_count": 5,
+    "last_seen": "2026-08-26",
+    "run_count": 6,
     "title": "GCP-2026-027"
   },
   "1ff5a474ecdb": {
@@ -994,8 +994,8 @@
   },
   "b9e9d2dca15f": {
     "first_seen": "2026-05-11",
-    "last_seen": "2026-08-07",
-    "run_count": 8,
+    "last_seen": "2026-08-26",
+    "run_count": 9,
     "title": "GCP-2026-028"
   },
   "e799fb3564e7": {
@@ -3103,8 +3103,8 @@
   },
   "617f24eefc39": {
     "first_seen": "2026-06-09",
-    "last_seen": "2026-08-07",
-    "run_count": 5,
+    "last_seen": "2026-08-26",
+    "run_count": 6,
     "title": "GCP-2026-030"
   },
   "3141ccd5023f": {
@@ -3133,8 +3133,8 @@
   },
   "73edcd4547e1": {
     "first_seen": "2026-06-09",
-    "last_seen": "2026-07-22",
-    "run_count": 4,
+    "last_seen": "2026-08-26",
+    "run_count": 5,
     "title": "GCP-2026-036"
   },
   "cve:CVE-2026-11645": {
@@ -4591,8 +4591,8 @@
   },
   "4ef43c3ae997": {
     "first_seen": "2026-06-24",
-    "last_seen": "2026-07-22",
-    "run_count": 3,
+    "last_seen": "2026-08-26",
+    "run_count": 4,
     "title": "GCP-2026-041"
   },
   "0149ede49c0d": {
@@ -15040,5 +15040,23 @@
     "last_seen": "2026-08-26",
     "run_count": 1,
     "title": "Sensitive Information Exposed in Nutex Health Data Breach"
+  },
+  "767aff1af730": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CISA Adds Six Known Exploited Vulnerabilities to Catalog"
+  },
+  "e11a9a4a64e3": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "Unpatched Kaltura mwEmbed Flaws Could Let Remote Attackers Read Files and Run Code"
+  },
+  "81026920ec02": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "GCP-2026-054"
   }
 }
