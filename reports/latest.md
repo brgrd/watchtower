@@ -1,81 +1,66 @@
 ---
-generated_at: 2026-08-26T10:45:02.583655+00:00
+generated_at: 2026-08-26T11:37:39.591869+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CISA Warns of Exploited Gitea Vulnerability (risk: 70)
+## Claude Opus 4.6 Bypasses Gym Booking Limit, Cancels Other Users' Reservations in Tests (risk: 30)
 1 related updates.
 
-- [CISA Warns of Exploited Gitea Vulnerability](https://www.securityweek.com/cisa-warns-of-exploited-gitea-vulnerability/)
+- [Claude Opus 4.6 Bypasses Gym Booking Limit, Cancels Other Users' Reservations in Tests](https://thehackernews.com/2026/08/claude-opus-46-bypasses-gym-booking.html)
 
-## CVE-2026-79912 (risk: 70)
+## Hackers now exploit critical Gitea flaw in code injection attacks (risk: 30)
 1 related updates.
 
-- [CVE-2026-79912](https://nvd.nist.gov/vuln/detail/CVE-2026-79912)
+- [Hackers now exploit critical Gitea flaw in code injection attacks](https://www.bleepingcomputer.com/news/security/hackers-now-exploit-critical-gitea-flaw-in-code-injection-attacks/)
 
-## CVE-2026-79911 (risk: 70)
+## INTERPOL Operation Jackal IV Arrests 58, Identifies 263 in Global Cyber Fraud Crackdown (risk: 0)
 1 related updates.
 
-- [CVE-2026-79911](https://nvd.nist.gov/vuln/detail/CVE-2026-79911)
+- [INTERPOL Operation Jackal IV Arrests 58, Identifies 263 in Global Cyber Fraud Crackdown](https://thehackernews.com/2026/08/interpol-operation-jackal-iv-arrests-58.html)
 
-## CVE-2026-16639 (risk: 40)
+## Fake Apple Support AI Calls Target Stolen-Device Owners for Passcodes and 2FA Codes (risk: 0)
 1 related updates.
 
-- [CVE-2026-16639](https://nvd.nist.gov/vuln/detail/CVE-2026-16639)
+- [Fake Apple Support AI Calls Target Stolen-Device Owners for Passcodes and 2FA Codes](https://thehackernews.com/2026/08/fake-apple-support-ai-calls-target.html)
 
-## CVE-2026-16638 (risk: 40)
+## Newly SLEEPWALKER Backdoor Waits for One Crafted Packet, Then Runs Its Own Bytecode (risk: 0)
 1 related updates.
 
-- [CVE-2026-16638](https://nvd.nist.gov/vuln/detail/CVE-2026-16638)
+- [Newly SLEEPWALKER Backdoor Waits for One Crafted Packet, Then Runs Its Own Bytecode](https://thehackernews.com/2026/08/newly-sleepwalker-backdoor-waits-for.html)
 
-## CVE-2026-16640 (risk: 40)
+## OpenAI Bans Russian ChatGPT Accounts Used to Run Influence Operation (risk: 0)
 1 related updates.
 
-- [CVE-2026-16640](https://nvd.nist.gov/vuln/detail/CVE-2026-16640)
+- [OpenAI Bans Russian ChatGPT Accounts Used to Run Influence Operation](https://thehackernews.com/2026/08/openai-bans-russian-chatgpt-accounts.html)
 
-## CVE-2026-15916 (risk: 40)
+## The MFA Identity Trap: When Authentication Creates a False Sense of Security (risk: 0)
 1 related updates.
 
-- [CVE-2026-15916](https://nvd.nist.gov/vuln/detail/CVE-2026-15916)
+- [The MFA Identity Trap: When Authentication Creates a False Sense of Security](https://www.securityweek.com/the-mfa-identity-trap-when-authentication-creates-a-false-sense-of-security/)
 
-## CVE-2026-15917 (risk: 40)
+## Chrome 152 Patches Over 300 Vulnerabilities (risk: 0)
 1 related updates.
 
-- [CVE-2026-15917](https://nvd.nist.gov/vuln/detail/CVE-2026-15917)
+- [Chrome 152 Patches Over 300 Vulnerabilities](https://www.securityweek.com/chrome-152-patches-over-300-vulnerabilities/)
 
-## CVE-2026-15088 (risk: 40)
+## CISA: Over 100 Internet-Exposed Water Systems Targeted in July Cyberattacks (risk: 0)
 1 related updates.
 
-- [CVE-2026-15088](https://nvd.nist.gov/vuln/detail/CVE-2026-15088)
+- [CISA: Over 100 Internet-Exposed Water Systems Targeted in July Cyberattacks](https://www.securityweek.com/cisa-over-100-internet-exposed-water-systems-targeted-in-july-cyberattacks/)
 
-## CVE-2026-16644 (risk: 40)
+## Interpol's Jackal IV Disrupts West African Crime Infrastructure (risk: 0)
 1 related updates.
 
-- [CVE-2026-16644](https://nvd.nist.gov/vuln/detail/CVE-2026-16644)
+- [Interpol's Jackal IV Disrupts West African Crime Infrastructure](https://www.darkreading.com/threat-intelligence/interpols-jackal-iv-west-african-crime-infrastructure)
 
-## CVE-2026-16645 (risk: 40)
+## Nigeria Looks to Sovereign Cloud for Cyber, National Security (risk: 0)
 1 related updates.
 
-- [CVE-2026-16645](https://nvd.nist.gov/vuln/detail/CVE-2026-16645)
+- [Nigeria Looks to Sovereign Cloud for Cyber, National Security](https://www.darkreading.com/cybersecurity-operations/nigeria-sovereign-cloud-cyber-national-security)
 
-## CVE-2026-16646 (risk: 40)
+## Sensitive Information Exposed in Nutex Health Data Breach (risk: 0)
 1 related updates.
 
-- [CVE-2026-16646](https://nvd.nist.gov/vuln/detail/CVE-2026-16646)
-
-## CVE-2026-18259 (risk: 40)
-1 related updates.
-
-- [CVE-2026-18259](https://nvd.nist.gov/vuln/detail/CVE-2026-18259)
-
-## CVE-2026-16643 (risk: 40)
-1 related updates.
-
-- [CVE-2026-16643](https://nvd.nist.gov/vuln/detail/CVE-2026-16643)
-
-## CVE-2026-18260 (risk: 40)
-1 related updates.
-
-- [CVE-2026-18260](https://nvd.nist.gov/vuln/detail/CVE-2026-18260)
+- [Sensitive Information Exposed in Nutex Health Data Breach](https://www.securityweek.com/sensitive-information-exposed-in-nutex-health-data-breach/)

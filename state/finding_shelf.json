@@ -14968,5 +14968,77 @@
     "last_seen": "2026-08-26",
     "run_count": 1,
     "title": "CVE-2026-18260"
+  },
+  "c183dcd6d441": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "Claude Opus 4.6 Bypasses Gym Booking Limit, Cancels Other Users' Reservations in Tests"
+  },
+  "dc4725afb993": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "Hackers now exploit critical Gitea flaw in code injection attacks"
+  },
+  "3f468c59062c": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "INTERPOL Operation Jackal IV Arrests 58, Identifies 263 in Global Cyber Fraud Crackdown"
+  },
+  "3d2320876861": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "Fake Apple Support AI Calls Target Stolen-Device Owners for Passcodes and 2FA Codes"
+  },
+  "00ea792187de": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "Newly SLEEPWALKER Backdoor Waits for One Crafted Packet, Then Runs Its Own Bytecode"
+  },
+  "2b56d4f54be5": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "OpenAI Bans Russian ChatGPT Accounts Used to Run Influence Operation"
+  },
+  "9c0afe83cfd3": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "The MFA Identity Trap: When Authentication Creates a False Sense of Security"
+  },
+  "3481356884c4": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "Chrome 152 Patches Over 300 Vulnerabilities"
+  },
+  "8a54f57f4513": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CISA: Over 100 Internet-Exposed Water Systems Targeted in July Cyberattacks"
+  },
+  "bc47e373537a": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "Interpol's Jackal IV Disrupts West African Crime Infrastructure"
+  },
+  "be9ddbe7531c": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "Nigeria Looks to Sovereign Cloud for Cyber, National Security"
+  },
+  "7aa5cfd7ca67": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "Sensitive Information Exposed in Nutex Health Data Breach"
   }
 }
