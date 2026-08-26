@@ -14794,5 +14794,95 @@
     "last_seen": "2026-08-25",
     "run_count": 1,
     "title": "CVE-2026-79670"
+  },
+  "dd2a18f77375": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "Critical Gitea RCE Actively Exploited as Reported Attack Drops Miner-Like Payload"
+  },
+  "cve:CVE-2026-79804": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CVE-2026-79804"
+  },
+  "cve:CVE-2026-79845": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CVE-2026-79845"
+  },
+  "cve:CVE-2026-32637": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CVE-2026-32637"
+  },
+  "cve:CVE-2026-38468": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CVE-2026-38468"
+  },
+  "cve:CVE-2026-38467": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CVE-2026-38467"
+  },
+  "cve:CVE-2026-38470": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CVE-2026-38470"
+  },
+  "cve:CVE-2026-38469": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CVE-2026-38469"
+  },
+  "cve:CVE-2026-38466": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CVE-2026-38466"
+  },
+  "cve:CVE-2026-38465": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CVE-2026-38465"
+  },
+  "cve:CVE-2026-38472": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CVE-2026-38472"
+  },
+  "cve:CVE-2026-62862": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CVE-2026-62862"
+  },
+  "cve:CVE-2026-38473": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CVE-2026-38473"
+  },
+  "cve:CVE-2026-63403": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CVE-2026-63403"
+  },
+  "cve:CVE-2026-62865": {
+    "first_seen": "2026-08-26",
+    "last_seen": "2026-08-26",
+    "run_count": 1,
+    "title": "CVE-2026-62865"
   }
 }
