@@ -1,15 +1,15 @@
-# Watchtower Pipeline Eval — 2026-08-26T23:21:01Z
+# Watchtower Pipeline Eval — 2026-08-27T09:27:39Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 474 |
-| After dedup + CVE merge | 468 |
-| Sent to Groq | 8 |
+| Items polled (raw) | 336 |
+| After dedup + CVE merge | 334 |
+| Sent to Groq | 2 |
 | Groq findings returned | 0 |
-| Final cards rendered | 8 |
-| **Pipeline yield** | **8/474 (1.7%)** |
+| Final cards rendered | 2 |
+| **Pipeline yield** | **2/336 (0.6%)** |
 
 ## Groq
 - **Model**: `unknown`
@@ -19,14 +19,14 @@
 
 ## Card Quality
 
-**8 cards** — P1: 0, P2: 0, P3: 8
+**2 cards** — P1: 0, P2: 0, P3: 2
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 63.1 / 75 |
+| Risk score mean / p90 | 70 / 70 |
 | Tactic coverage | 0% |
 | CVE coverage | 0% |
-| Patch status | unknown: 8 |
+| Patch status | unknown: 2 |
 
 ### Reasoning Quality
 
@@ -35,8 +35,8 @@
 
 ### Persistence
 
-- New (run=1): **3** | Evolving (2–5): **2** | Persistent (>5): **3** | Resolved: **0**
-- Mean run_count: 4.1 | Mean shelf_days: 54.1
+- New (run=1): **2** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
+- Mean run_count: 1 | Mean shelf_days: 0
 
 ## Enrichment Hit Rates
 
@@ -50,14 +50,14 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 290 |
-| `bsi_germany` | 102 |
-| `gcp_security` | 31 |
-| `bleepingcomputer` | 10 |
-| `thehackernews` | 7 |
+| `bsi_germany` | 195 |
+| `nvd` | 124 |
+| `cisa_kev` | 6 |
+| `bleepingcomputer` | 3 |
+| `thehackernews` | 2 |
 | _(+21 more)_ | … |
 
-**10 feeds returned 0 items this run.**
+**17 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
@@ -66,7 +66,7 @@
 | 2026-08-25 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-25 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-25 | 15 | ? | 0% | 0% | 15 | 0 |
-| 2026-08-25 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-26 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-26 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-26 | 12 | ? | 0% | 0% | 12 | 0 |
+| 2026-08-26 | 8 | ? | 0% | 0% | 3 | 3 |

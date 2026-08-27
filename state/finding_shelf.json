@@ -15058,5 +15058,17 @@
     "last_seen": "2026-08-26",
     "run_count": 1,
     "title": "GCP-2026-054"
+  },
+  "80d7b640a09f": {
+    "first_seen": "2026-08-27",
+    "last_seen": "2026-08-27",
+    "run_count": 1,
+    "title": "Recent Citrix NetScaler Vulnerability Exploited in the Wild"
+  },
+  "82f0e734580b": {
+    "first_seen": "2026-08-27",
+    "last_seen": "2026-08-27",
+    "run_count": 1,
+    "title": "CISA Adds Six Exploited Flaws to KEV, Including NetScaler, Linux, and SQL Server Bugs"
   }
 }
