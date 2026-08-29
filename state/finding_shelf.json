@@ -15070,5 +15070,65 @@
     "last_seen": "2026-08-27",
     "run_count": 1,
     "title": "CISA Adds Six Exploited Flaws to KEV, Including NetScaler, Linux, and SQL Server Bugs"
+  },
+  "07969313bc8e": {
+    "first_seen": "2026-08-29",
+    "last_seen": "2026-08-29",
+    "run_count": 1,
+    "title": "Xiiaozet LK100W"
+  },
+  "ae6292179593": {
+    "first_seen": "2026-08-29",
+    "last_seen": "2026-08-29",
+    "run_count": 1,
+    "title": "CISA Adds Three Known Exploited Vulnerabilities to Catalog"
+  },
+  "98fe421cbe7c": {
+    "first_seen": "2026-08-29",
+    "last_seen": "2026-08-29",
+    "run_count": 1,
+    "title": "All-Line Equipment Company Fuel-Boss"
+  },
+  "9940afb6f37d": {
+    "first_seen": "2026-08-29",
+    "last_seen": "2026-08-29",
+    "run_count": 1,
+    "title": "Ebyte NA111-M"
+  },
+  "402fdd75b78a": {
+    "first_seen": "2026-08-29",
+    "last_seen": "2026-08-29",
+    "run_count": 1,
+    "title": "Rockwell Automation OTTO Fleet Manager"
+  },
+  "e95d44d0c243": {
+    "first_seen": "2026-08-29",
+    "last_seen": "2026-08-29",
+    "run_count": 1,
+    "title": "Next.js Patches Critical AVIF and Windows Flaws Enabling Unauthenticated RCE"
+  },
+  "f876a974ae6d": {
+    "first_seen": "2026-08-29",
+    "last_seen": "2026-08-29",
+    "run_count": 1,
+    "title": "Critical cPanel Flaw Could Let One Hosting Customer Take Root Control of a Whole Server"
+  },
+  "152138a34690": {
+    "first_seen": "2026-08-29",
+    "last_seen": "2026-08-29",
+    "run_count": 1,
+    "title": "Five Critical WordPress Plugin and Theme Flaws Enable Site Takeover or RCE"
+  },
+  "cve:CVE-2026-81849": {
+    "first_seen": "2026-08-29",
+    "last_seen": "2026-08-29",
+    "run_count": 1,
+    "title": "CVE-2026-81849 - Path traversal in the aws:downloadContent plugin in amazon-ssm-agent"
+  },
+  "cve:CVE-2026-81838": {
+    "first_seen": "2026-08-29",
+    "last_seen": "2026-08-29",
+    "run_count": 1,
+    "title": "CVE-2026-81838 - Zip Slip path traversal in awsdac (diagram-as-code)"
   }
 }
