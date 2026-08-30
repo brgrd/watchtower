@@ -15130,5 +15130,95 @@
     "last_seen": "2026-08-29",
     "run_count": 1,
     "title": "CVE-2026-81838 - Zip Slip path traversal in awsdac (diagram-as-code)"
+  },
+  "cve:CVE-2026-82466": {
+    "first_seen": "2026-08-30",
+    "last_seen": "2026-08-30",
+    "run_count": 1,
+    "title": "CVE-2026-82466"
+  },
+  "cve:CVE-2026-82421": {
+    "first_seen": "2026-08-30",
+    "last_seen": "2026-08-30",
+    "run_count": 1,
+    "title": "CVE-2026-82421"
+  },
+  "cve:CVE-2026-82422": {
+    "first_seen": "2026-08-30",
+    "last_seen": "2026-08-30",
+    "run_count": 1,
+    "title": "CVE-2026-82422"
+  },
+  "cve:CVE-2026-82424": {
+    "first_seen": "2026-08-30",
+    "last_seen": "2026-08-30",
+    "run_count": 1,
+    "title": "CVE-2026-82424"
+  },
+  "cve:CVE-2026-82454": {
+    "first_seen": "2026-08-30",
+    "last_seen": "2026-08-30",
+    "run_count": 1,
+    "title": "CVE-2026-82454"
+  },
+  "cve:CVE-2026-82455": {
+    "first_seen": "2026-08-30",
+    "last_seen": "2026-08-30",
+    "run_count": 1,
+    "title": "CVE-2026-82455"
+  },
+  "cve:CVE-2026-82481": {
+    "first_seen": "2026-08-30",
+    "last_seen": "2026-08-30",
+    "run_count": 1,
+    "title": "CVE-2026-82481"
+  },
+  "cve:CVE-2026-68821": {
+    "first_seen": "2026-08-30",
+    "last_seen": "2026-08-30",
+    "run_count": 1,
+    "title": "CVE-2026-68821 Windows Package Manager Elevation of Privilege Vulnerability"
+  },
+  "cve:CVE-2026-14494": {
+    "first_seen": "2026-08-30",
+    "last_seen": "2026-08-30",
+    "run_count": 1,
+    "title": "CVE-2026-14494"
+  },
+  "cve:CVE-2026-82447": {
+    "first_seen": "2026-08-30",
+    "last_seen": "2026-08-30",
+    "run_count": 1,
+    "title": "CVE-2026-82447"
+  },
+  "cve:CVE-2026-82448": {
+    "first_seen": "2026-08-30",
+    "last_seen": "2026-08-30",
+    "run_count": 1,
+    "title": "CVE-2026-82448"
+  },
+  "cve:CVE-2026-82449": {
+    "first_seen": "2026-08-30",
+    "last_seen": "2026-08-30",
+    "run_count": 1,
+    "title": "CVE-2026-82449"
+  },
+  "cve:CVE-2026-82450": {
+    "first_seen": "2026-08-30",
+    "last_seen": "2026-08-30",
+    "run_count": 1,
+    "title": "CVE-2026-82450"
+  },
+  "cve:CVE-2026-82451": {
+    "first_seen": "2026-08-30",
+    "last_seen": "2026-08-30",
+    "run_count": 1,
+    "title": "CVE-2026-82451"
+  },
+  "cve:CVE-2026-82452": {
+    "first_seen": "2026-08-30",
+    "last_seen": "2026-08-30",
+    "run_count": 1,
+    "title": "CVE-2026-82452"
   }
 }
