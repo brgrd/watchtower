@@ -15424,5 +15424,53 @@
     "last_seen": "2026-09-01",
     "run_count": 1,
     "title": "Attackers Exploit Critical Langflow and Rails Flaws in Credential-Probing and C2 Activity"
+  },
+  "0f96d8915070": {
+    "first_seen": "2026-09-01",
+    "last_seen": "2026-09-01",
+    "run_count": 1,
+    "title": "Rockwell Automation RSLinx Classic"
+  },
+  "f3691c34e8d2": {
+    "first_seen": "2026-09-01",
+    "last_seen": "2026-09-01",
+    "run_count": 1,
+    "title": "Rockwell Automation Redundancy Module Configuration Tool"
+  },
+  "0a8a95a2cee0": {
+    "first_seen": "2026-09-01",
+    "last_seen": "2026-09-01",
+    "run_count": 1,
+    "title": "Rockwell Automation Historian ME"
+  },
+  "1dbadcbd8e44": {
+    "first_seen": "2026-09-01",
+    "last_seen": "2026-09-01",
+    "run_count": 1,
+    "title": "Critical JFrog Artifactory Vulnerability Reportedly Exploited in the Wild"
+  },
+  "138a4c66e9b4": {
+    "first_seen": "2026-09-01",
+    "last_seen": "2026-09-01",
+    "run_count": 1,
+    "title": "Rockwell Automation ControlLogix, CompactLogix, CompactLogix 5480, GuardLogix, Compact GuardLogix"
+  },
+  "d51dbc19a658": {
+    "first_seen": "2026-09-01",
+    "last_seen": "2026-09-01",
+    "run_count": 1,
+    "title": "Rockwell Automation Logix Platform"
+  },
+  "c20fea1faffb": {
+    "first_seen": "2026-09-01",
+    "last_seen": "2026-09-01",
+    "run_count": 1,
+    "title": "Rockwell Automation FactoryTalk Activation Manager"
+  },
+  "cve:CVE-2026-83551": {
+    "first_seen": "2026-09-01",
+    "last_seen": "2026-09-01",
+    "run_count": 1,
+    "title": "CVE-2026-83551 - Cleartext storage of HMAC signing key in Amazon SageMaker Python SDK"
   }
 }
