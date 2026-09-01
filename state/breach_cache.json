@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-31T23:45:05.575399+00:00",
+  "fetched_at": "2026-09-01T09:57:42.187751+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -13292,6 +13292,26 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#QuantumBooter",
       "summary": "In March 2014, the booter service Quantum Booter (also referred to as Quantum Stresser) suffered a breach which lead to the disclosure of their internal database. The leaked data included private discussions relating to malicious activity Quantum Booter users were performing against online adversaries, including the IP addresses of those using the service to mount DDoS attacks.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:questel-2026-08-01",
+      "name": "Questel",
+      "title": "Questel",
+      "date": "2026-08-01",
+      "added": "2026-09-01",
+      "affected_count": 1226209,
+      "data_classes": [
+        "Email addresses",
+        "Employers",
+        "Job titles",
+        "Names",
+        "Phone numbers",
+        "Physical addresses",
+        "Support tickets"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Questel",
+      "summary": "In August 2026, the French intellectual property software and services company Questel was the target of a ShinyHunters \"pay or leak\" extortion campaign. The group subsequently published an extensive corpus of data they alleged was obtained from the company, largely comprising corporate contact information associated with sales leads, support cases and marketing activities, with 1.2M unique email ",
+      "action": "monitor"
     },
     {
       "id": "hibp:questionpro-2022-05-21",

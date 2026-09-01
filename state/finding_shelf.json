@@ -15412,5 +15412,17 @@
     "last_seen": "2026-08-31",
     "run_count": 1,
     "title": "CVE-2026-83497 - OpenSearch SQL Plugin - Unrestricted Java Deserialization in Cursor Pagination"
+  },
+  "3323d1b84ba2": {
+    "first_seen": "2026-09-01",
+    "last_seen": "2026-09-01",
+    "run_count": 1,
+    "title": "PaperCut Exploitation Escalates to Active Intrusions"
+  },
+  "0d19b877bb90": {
+    "first_seen": "2026-09-01",
+    "last_seen": "2026-09-01",
+    "run_count": 1,
+    "title": "Attackers Exploit Critical Langflow and Rails Flaws in Credential-Probing and C2 Activity"
   }
 }

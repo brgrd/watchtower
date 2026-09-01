@@ -1,16 +1,16 @@
 ---
-generated_at: 2026-08-31T23:45:04.977703+00:00
+generated_at: 2026-09-01T09:57:41.952974+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CISA Adds Two Known Exploited Vulnerabilities to Catalog (risk: 70)
+## PaperCut Exploitation Escalates to Active Intrusions (risk: 70)
 1 related updates.
 
-- [CISA Adds Two Known Exploited Vulnerabilities to Catalog](https://www.cisa.gov/news-events/alerts/2026/08/31/cisa-adds-two-known-exploited-vulnerabilities-catalog)
+- [PaperCut Exploitation Escalates to Active Intrusions](https://www.securityweek.com/papercut-exploitation-escalates-to-active-intrusions/)
 
-## CVE-2026-83497 - OpenSearch SQL Plugin - Unrestricted Java Deserialization in Cursor Pagination (risk: 40)
+## Attackers Exploit Critical Langflow and Rails Flaws in Credential-Probing and C2 Activity (risk: 70)
 1 related updates.
 
-- [CVE-2026-83497 - OpenSearch SQL Plugin - Unrestricted Java Deserialization in Cursor Pagination](https://aws.amazon.com/security/security-bulletins/rss/2026-092-aws/)
+- [Attackers Exploit Critical Langflow and Rails Flaws in Credential-Probing and C2 Activity](https://thehackernews.com/2026/09/attackers-exploit-critical-langflow-and.html)
