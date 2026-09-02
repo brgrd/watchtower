@@ -15421,8 +15421,8 @@
   },
   "0d19b877bb90": {
     "first_seen": "2026-09-01",
-    "last_seen": "2026-09-01",
-    "run_count": 1,
+    "last_seen": "2026-09-02",
+    "run_count": 2,
     "title": "Attackers Exploit Critical Langflow and Rails Flaws in Credential-Probing and C2 Activity"
   },
   "0f96d8915070": {
@@ -15445,8 +15445,8 @@
   },
   "1dbadcbd8e44": {
     "first_seen": "2026-09-01",
-    "last_seen": "2026-09-01",
-    "run_count": 1,
+    "last_seen": "2026-09-02",
+    "run_count": 2,
     "title": "Critical JFrog Artifactory Vulnerability Reportedly Exploited in the Wild"
   },
   "138a4c66e9b4": {
