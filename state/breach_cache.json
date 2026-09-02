@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-09-01T21:43:24.596263+00:00",
+  "fetched_at": "2026-09-02T09:29:21.677125+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -10061,6 +10061,27 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Malwarebytes",
       "summary": "In November 2014, the Malwarebytes forum was hacked and 111k member records were exposed. The IP.Board forum included email and IP addresses, birth dates and passwords stored as salted hashes using a weak implementation enabling many to be rapidly cracked.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:manchesterairportsgroup-2026-08-27",
+      "name": "ManchesterAirportsGroup",
+      "title": "Manchester Airports Group",
+      "date": "2026-08-27",
+      "added": "2026-09-02",
+      "affected_count": 8728451,
+      "data_classes": [
+        "Browser user agent details",
+        "Email addresses",
+        "Geographic locations",
+        "IP addresses",
+        "Names",
+        "Phone numbers",
+        "Purchases",
+        "Vehicle registration plates"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#ManchesterAirportsGroup",
+      "summary": "In August 2026, Manchester Airports Group (MAG) disclosed a data breach impacting their services. The incident was later claimed by the FulcrumSec hacking group, who subsequently published email addresses and phone numbers relating to 8.7M customers of Manchester, Stansted and East Midlands airports. The data contained personal information relating to airport services, including vehicle registrati",
+      "action": "monitor"
     },
     {
       "id": "hibp:mangatraders-2014-06-09",

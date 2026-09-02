@@ -1,16 +1,21 @@
 ---
-generated_at: 2026-09-02T00:01:05.330812+00:00
+generated_at: 2026-09-02T09:29:21.368519+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Critical Langflow flaw exploited to steal OpenAI and AWS keys (risk: 70)
+## SonicWall Warns of Two SMA1000 Zero-Days Exploited in Attacks (risk: 70)
 1 related updates.
 
-- [Critical Langflow flaw exploited to steal OpenAI and AWS keys](https://www.bleepingcomputer.com/news/security/critical-langflow-flaw-exploited-to-steal-openai-and-aws-keys/)
+- [SonicWall Warns of Two SMA1000 Zero-Days Exploited in Attacks](https://www.securityweek.com/sonicwall-warns-of-two-sma1000-zero-days-exploited-in-attacks/)
 
-## Attackers Exploit Critical JFrog Artifactory Flaw to Mint Admin Tokens Days After Disclosure (risk: 70)
+## Researchers Use Claude to Port Pre-Auth RCE Exploit From One PLC Model to Another (risk: 70)
 1 related updates.
 
-- [Attackers Exploit Critical JFrog Artifactory Flaw to Mint Admin Tokens Days After Disclosure](https://thehackernews.com/2026/09/attackers-exploit-critical-jfrog.html)
+- [Researchers Use Claude to Port Pre-Auth RCE Exploit From One PLC Model to Another](https://thehackernews.com/2026/09/researchers-use-claude-to-port-pre-auth.html)
+
+## Attackers Exploit Critical Switchvox Flaw to Deploy Reverse Shells Without Credentials (risk: 70)
+1 related updates.
+
+- [Attackers Exploit Critical Switchvox Flaw to Deploy Reverse Shells Without Credentials](https://thehackernews.com/2026/09/attackers-exploit-critical-switchvox.html)

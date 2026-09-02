@@ -15472,5 +15472,23 @@
     "last_seen": "2026-09-01",
     "run_count": 1,
     "title": "CVE-2026-83551 - Cleartext storage of HMAC signing key in Amazon SageMaker Python SDK"
+  },
+  "b55d7f867964": {
+    "first_seen": "2026-09-02",
+    "last_seen": "2026-09-02",
+    "run_count": 1,
+    "title": "SonicWall Warns of Two SMA1000 Zero-Days Exploited in Attacks"
+  },
+  "eeb0b852e6ba": {
+    "first_seen": "2026-09-02",
+    "last_seen": "2026-09-02",
+    "run_count": 1,
+    "title": "Researchers Use Claude to Port Pre-Auth RCE Exploit From One PLC Model to Another"
+  },
+  "e2380dbbf986": {
+    "first_seen": "2026-09-02",
+    "last_seen": "2026-09-02",
+    "run_count": 1,
+    "title": "Attackers Exploit Critical Switchvox Flaw to Deploy Reverse Shells Without Credentials"
   }
 }
