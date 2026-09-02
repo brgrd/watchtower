@@ -15490,5 +15490,17 @@
     "last_seen": "2026-09-02",
     "run_count": 1,
     "title": "Attackers Exploit Critical Switchvox Flaw to Deploy Reverse Shells Without Credentials"
+  },
+  "48c9aa30b1c5": {
+    "first_seen": "2026-09-02",
+    "last_seen": "2026-09-02",
+    "run_count": 1,
+    "title": "Attackers Exploit Two SonicWall SMA 1000 Zero-Days That May Form an Attack Chain"
+  },
+  "cve:CVE-2026-84851": {
+    "first_seen": "2026-09-02",
+    "last_seen": "2026-09-02",
+    "run_count": 1,
+    "title": "CVE-2026-84851- Uncontrolled recursion in the Ion reader in Amazon Ion-C before 1.1.6"
   }
 }
