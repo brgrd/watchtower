@@ -11881,8 +11881,8 @@
   },
   "063a131bfcd1": {
     "first_seen": "2026-08-20",
-    "last_seen": "2026-08-20",
-    "run_count": 1,
+    "last_seen": "2026-09-03",
+    "run_count": 2,
     "title": "Elementor Pro Flaw Could Let Unauthenticated Attackers Upload PHP and Execute Code"
   },
   "cve:CVE-2026-76260": {
@@ -15616,5 +15616,53 @@
     "last_seen": "2026-09-03",
     "run_count": 1,
     "title": "Microsoft Teams, Outlook fail to launch on ARM-based Windows PCs"
+  },
+  "68325f0e6c9f": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "IXON VPN Client"
+  },
+  "bd9b8eefa2c3": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "Rockwell Automation 1756-ENBT Module"
+  },
+  "626c3cdd8763": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "OPCFoundation OPC UA LocalDiscoveryServer (LDS)"
+  },
+  "ef0f71d86c46": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "Inductive Automation Ignition"
+  },
+  "cve:CVE-2026-85012": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-85012 - OS command injection in the Amazon CodeCatalyst blueprints SDK"
+  },
+  "cve:CVE-2026-85028": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-85028: Creation of Temporary File in Directory with Insecure Permissions in AWS FPGA Development Kit"
+  },
+  "897142101006": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "Critical Cisco Nexus 9000 Flaw Lets Unauthenticated Remote Attackers Run Code as Root"
+  },
+  "b0da52e3b240": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "Over 3 Million WordPress Sites Affected by Migration Plugin Vulnerability"
   }
 }

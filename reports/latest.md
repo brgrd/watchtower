@@ -1,31 +1,51 @@
 ---
-generated_at: 2026-09-03T09:38:21.724801+00:00
+generated_at: 2026-09-03T21:39:33.210999+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CISA Adds Seven Exploited Flaws as Attackers Deploy Reverse Shells and Crypto Miners (risk: 70)
+## IXON VPN Client (risk: 70)
 1 related updates.
 
-- [CISA Adds Seven Exploited Flaws as Attackers Deploy Reverse Shells and Crypto Miners](https://thehackernews.com/2026/09/cisa-adds-seven-exploited-flaws-as.html)
+- [IXON VPN Client](https://www.cisa.gov/news-events/ics-advisories/icsa-26-246-02)
 
-## Researcher Releases FalconFlank PoC Showing Privilege Escalation in CrowdStrike Falcon (risk: 15)
+## Rockwell Automation 1756-ENBT Module (risk: 70)
 1 related updates.
 
-- [Researcher Releases FalconFlank PoC Showing Privilege Escalation in CrowdStrike Falcon](https://thehackernews.com/2026/09/researcher-releases-falconflank-poc.html)
+- [Rockwell Automation 1756-ENBT Module](https://www.cisa.gov/news-events/ics-advisories/icsa-26-246-05)
 
-## [Virtual Event] What Every Enterprise Should Know About Securing Cloud Assets in the Age of AI (risk: 0)
+## OPCFoundation OPC UA LocalDiscoveryServer (LDS) (risk: 70)
 1 related updates.
 
-- [[Virtual Event] What Every Enterprise Should Know About Securing Cloud Assets in the Age of AI](https://www.darkreading.com/events/virtual-event-what-every-enterprise-know-securing-cloud-2026)
+- [OPCFoundation OPC UA LocalDiscoveryServer (LDS)](https://www.cisa.gov/news-events/ics-advisories/icsa-26-246-01)
 
-## [Virtual Event] Building a Secure AI Strategy for the Enterprise (risk: 0)
+## Inductive Automation Ignition (risk: 70)
 1 related updates.
 
-- [[Virtual Event] Building a Secure AI Strategy for the Enterprise](https://www.darkreading.com/events/virtual-event-building-secure-ai-strategy-enterprise-2026)
+- [Inductive Automation Ignition](https://www.cisa.gov/news-events/ics-advisories/icsa-26-246-06)
 
-## Microsoft Teams, Outlook fail to launch on ARM-based Windows PCs (risk: 0)
+## Critical Elementor Pro flaw exploited to take over WordPress sites (risk: 70)
 1 related updates.
 
-- [Microsoft Teams, Outlook fail to launch on ARM-based Windows PCs](https://www.bleepingcomputer.com/news/microsoft/microsoft-teams-outlook-fail-to-launch-on-arm-based-windows-pcs/)
+- [Critical Elementor Pro flaw exploited to take over WordPress sites](https://www.bleepingcomputer.com/news/security/critical-elementor-pro-flaw-exploited-to-take-over-wordpress-sites/)
+
+## CVE-2026-85012 - OS command injection in the Amazon CodeCatalyst blueprints SDK (risk: 60)
+1 related updates.
+
+- [CVE-2026-85012 - OS command injection in the Amazon CodeCatalyst blueprints SDK](https://aws.amazon.com/security/security-bulletins/rss/2026-095-aws/)
+
+## CVE-2026-85028: Creation of Temporary File in Directory with Insecure Permissions in AWS FPGA Development Kit (risk: 40)
+1 related updates.
+
+- [CVE-2026-85028: Creation of Temporary File in Directory with Insecure Permissions in AWS FPGA Development Kit](https://aws.amazon.com/security/security-bulletins/rss/2026-096-aws/)
+
+## Critical Cisco Nexus 9000 Flaw Lets Unauthenticated Remote Attackers Run Code as Root (risk: 40)
+1 related updates.
+
+- [Critical Cisco Nexus 9000 Flaw Lets Unauthenticated Remote Attackers Run Code as Root](https://thehackernews.com/2026/09/critical-cisco-nexus-9000-flaw-lets.html)
+
+## Over 3 Million WordPress Sites Affected by Migration Plugin Vulnerability (risk: 40)
+1 related updates.
+
+- [Over 3 Million WordPress Sites Affected by Migration Plugin Vulnerability](https://www.securityweek.com/over-3-million-wordpress-sites-affected-by-migration-plugin-vulnerability/)
