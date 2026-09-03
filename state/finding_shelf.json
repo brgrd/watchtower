@@ -15493,8 +15493,8 @@
   },
   "48c9aa30b1c5": {
     "first_seen": "2026-09-02",
-    "last_seen": "2026-09-02",
-    "run_count": 1,
+    "last_seen": "2026-09-03",
+    "run_count": 2,
     "title": "Attackers Exploit Two SonicWall SMA 1000 Zero-Days That May Form an Attack Chain"
   },
   "cve:CVE-2026-84851": {
@@ -15592,5 +15592,29 @@
     "last_seen": "2026-09-03",
     "run_count": 1,
     "title": "CVE-2026-84677"
+  },
+  "2753207808b7": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "Researcher Releases FalconFlank PoC Showing Privilege Escalation in CrowdStrike Falcon"
+  },
+  "43c4e90db645": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "[Virtual Event] What Every Enterprise Should Know About Securing Cloud Assets in the Age of AI"
+  },
+  "d6bc123f7208": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "[Virtual Event] Building a Secure AI Strategy for the Enterprise"
+  },
+  "dc1ba8d71ab4": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "Microsoft Teams, Outlook fail to launch on ARM-based Windows PCs"
   }
 }

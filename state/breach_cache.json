@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-09-02T21:44:53.770481+00:00",
+  "fetched_at": "2026-09-03T09:38:21.873586+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -10068,7 +10068,7 @@
       "title": "Manchester Airports Group",
       "date": "2026-08-27",
       "added": "2026-09-02",
-      "affected_count": 8728451,
+      "affected_count": 8849657,
       "data_classes": [
         "Browser user agent details",
         "Email addresses",
@@ -10080,7 +10080,7 @@
         "Vehicle registration plates"
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#ManchesterAirportsGroup",
-      "summary": "In August 2026, Manchester Airports Group (MAG) disclosed a data breach impacting their services. The incident was later claimed by the FulcrumSec hacking group, who subsequently published email addresses and phone numbers relating to 8.7M customers of Manchester, Stansted and East Midlands airports. The data contained personal information relating to airport services, including vehicle registrati",
+      "summary": "In August 2026, Manchester Airports Group (MAG) disclosed a data breach impacting their services. The incident was later claimed by the FulcrumSec hacking group, who subsequently published email addresses and phone numbers relating to 8.8M customers of Manchester, Stansted and East Midlands airports. The data contained personal information relating to airport services, including vehicle registrati",
       "action": "monitor"
     },
     {
