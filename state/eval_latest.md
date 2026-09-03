@@ -1,15 +1,15 @@
-# Watchtower Pipeline Eval — 2026-09-02T21:44:39Z
+# Watchtower Pipeline Eval — 2026-09-03T00:03:52Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 503 |
-| After dedup + CVE merge | 494 |
-| Sent to Groq | 3 |
+| Items polled (raw) | 319 |
+| After dedup + CVE merge | 312 |
+| Sent to Groq | 120 |
 | Groq findings returned | 0 |
-| Final cards rendered | 3 |
-| **Pipeline yield** | **3/503 (0.6%)** |
+| Final cards rendered | 15 |
+| **Pipeline yield** | **15/319 (4.7%)** |
 
 ## Groq
 - **Model**: `unknown`
@@ -19,14 +19,14 @@
 
 ## Card Quality
 
-**3 cards** — P1: 0, P2: 0, P3: 3
+**15 cards** — P1: 0, P2: 0, P3: 15
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 60 / 70 |
+| Risk score mean / p90 | 73.3 / 85 |
 | Tactic coverage | 0% |
 | CVE coverage | 0% |
-| Patch status | unknown: 3 |
+| Patch status | unknown: 15 |
 
 ### Reasoning Quality
 
@@ -35,7 +35,7 @@
 
 ### Persistence
 
-- New (run=1): **3** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
+- New (run=1): **15** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
 - Mean run_count: 1 | Mean shelf_days: 0
 
 ## Enrichment Hit Rates
@@ -50,23 +50,23 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 252 |
-| `bsi_germany` | 151 |
+| `nvd` | 234 |
 | `gcp_security` | 30 |
 | `msrc_update_guide` | 12 |
-| `thehackernews` | 11 |
+| `cisa_kev` | 7 |
+| `thehackernews` | 6 |
 | _(+21 more)_ | … |
 
-**9 feeds returned 0 items this run.**
+**13 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
 | 2026-08-30 | 15 | ? | 0% | 0% | 15 | 0 |
-| 2026-08-30 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-08-31 | 2 | ? | 0% | 0% | 2 | 0 |
 | 2026-09-01 | 2 | ? | 0% | 0% | 2 | 0 |
 | 2026-09-01 | 9 | ? | 0% | 0% | 9 | 0 |
 | 2026-09-02 | 2 | ? | 0% | 0% | 0 | 0 |
+| 2026-09-02 | 3 | ? | 0% | 0% | 3 | 0 |
 | 2026-09-02 | 3 | ? | 0% | 0% | 3 | 0 |

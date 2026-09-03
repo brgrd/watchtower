@@ -15502,5 +15502,95 @@
     "last_seen": "2026-09-02",
     "run_count": 1,
     "title": "CVE-2026-84851- Uncontrolled recursion in the Ion reader in Amazon Ion-C before 1.1.6"
+  },
+  "cve:CVE-2026-84833": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-84833"
+  },
+  "cve:CVE-2026-18329": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-18329"
+  },
+  "cve:CVE-2026-78222": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-78222"
+  },
+  "cve:CVE-2026-84797": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-84797"
+  },
+  "cve:CVE-2026-84806": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-84806"
+  },
+  "cve:CVE-2026-84835": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-84835"
+  },
+  "cve:CVE-2024-7956": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2024-7956"
+  },
+  "cve:CVE-2026-14255": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-14255"
+  },
+  "cve:CVE-2026-78590": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-78590"
+  },
+  "cve:CVE-2026-78598": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-78598"
+  },
+  "cve:CVE-2026-78599": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-78599"
+  },
+  "cve:CVE-2026-82293": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-82293"
+  },
+  "cve:CVE-2026-84648": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-84648"
+  },
+  "cve:CVE-2026-84665": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-84665"
+  },
+  "cve:CVE-2026-84677": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-84677"
   }
 }
