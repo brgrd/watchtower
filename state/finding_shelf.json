@@ -15664,5 +15664,95 @@
     "last_seen": "2026-09-03",
     "run_count": 1,
     "title": "Over 3 Million WordPress Sites Affected by Migration Plugin Vulnerability"
+  },
+  "cve:CVE-2026-3416": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-3416"
+  },
+  "cve:CVE-2026-68860": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-68860"
+  },
+  "cve:CVE-2026-73600": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-73600"
+  },
+  "cve:CVE-2026-74768": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-74768"
+  },
+  "cve:CVE-2026-74769": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-74769"
+  },
+  "cve:CVE-2026-76642": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-76642"
+  },
+  "cve:CVE-2026-80253": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-80253"
+  },
+  "cve:CVE-2026-80254": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-80254"
+  },
+  "cve:CVE-2026-85021": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-85021"
+  },
+  "cve:CVE-2026-85022": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-85022"
+  },
+  "cve:CVE-2026-85030": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-85030"
+  },
+  "cve:CVE-2026-85031": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-85031"
+  },
+  "cve:CVE-2026-85040": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-85040"
+  },
+  "cve:CVE-2026-85100": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-85100"
+  },
+  "cve:CVE-2026-85155": {
+    "first_seen": "2026-09-03",
+    "last_seen": "2026-09-03",
+    "run_count": 1,
+    "title": "CVE-2026-85155"
   }
 }
