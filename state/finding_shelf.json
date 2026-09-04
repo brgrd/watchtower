@@ -15754,5 +15754,11 @@
     "last_seen": "2026-09-03",
     "run_count": 1,
     "title": "CVE-2026-85155"
+  },
+  "f79326c94b0d": {
+    "first_seen": "2026-09-04",
+    "last_seen": "2026-09-04",
+    "run_count": 1,
+    "title": "Google Releases Chrome Update to Patch Actively Exploited V8 Zero-Day"
   }
 }
