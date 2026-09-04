@@ -15487,8 +15487,8 @@
   },
   "e2380dbbf986": {
     "first_seen": "2026-09-02",
-    "last_seen": "2026-09-02",
-    "run_count": 1,
+    "last_seen": "2026-09-04",
+    "run_count": 2,
     "title": "Attackers Exploit Critical Switchvox Flaw to Deploy Reverse Shells Without Credentials"
   },
   "48c9aa30b1c5": {
@@ -15760,5 +15760,59 @@
     "last_seen": "2026-09-04",
     "run_count": 1,
     "title": "Google Releases Chrome Update to Patch Actively Exploited V8 Zero-Day"
+  },
+  "4cf741595517": {
+    "first_seen": "2026-09-04",
+    "last_seen": "2026-09-04",
+    "run_count": 1,
+    "title": "Over 440,000 Exploit Attempts Target Super Forms and Elementor Pro RCE Flaws"
+  },
+  "190f04484b6b": {
+    "first_seen": "2026-09-04",
+    "last_seen": "2026-09-04",
+    "run_count": 1,
+    "title": "Critical Citrix NetScaler auth bypass now leveraged in attacks"
+  },
+  "cve:CVE-2026-85781": {
+    "first_seen": "2026-09-04",
+    "last_seen": "2026-09-04",
+    "run_count": 1,
+    "title": "CVE-2026-85781 - Unverified access point ownership in Amazon EFS CSI Driver"
+  },
+  "73476f5baf24": {
+    "first_seen": "2026-09-04",
+    "last_seen": "2026-09-04",
+    "run_count": 1,
+    "title": "12-Year-Old PostgreSQL Vulnerability Enables Database, Server Takeover"
+  },
+  "687451e4700d": {
+    "first_seen": "2026-09-04",
+    "last_seen": "2026-09-04",
+    "run_count": 1,
+    "title": "HPE Patches Critical RCE Vulnerabilities in AOS-CX"
+  },
+  "cve:CVE-2026-75936": {
+    "first_seen": "2026-09-04",
+    "last_seen": "2026-09-04",
+    "run_count": 1,
+    "title": "CVE-2026-85786 - Incomplete fix for CVE-2026-75936 memory-amplification denial of service in Amazon ion-java"
+  },
+  "cve:CVE-2026-85654": {
+    "first_seen": "2026-09-04",
+    "last_seen": "2026-09-04",
+    "run_count": 1,
+    "title": "CVE-2026-85654 - Code injection in the CDK generator in Amazon awslabs.dynamodb-mcp-server"
+  },
+  "cve:CVE-2026-85787": {
+    "first_seen": "2026-09-04",
+    "last_seen": "2026-09-04",
+    "run_count": 1,
+    "title": "CVE-2026-85787 - An incomplete list of disallowed inputs in the SQL validation component in Amazon awslabs postgres-mcp-"
+  },
+  "1aba8f91d526": {
+    "first_seen": "2026-09-04",
+    "last_seen": "2026-09-04",
+    "run_count": 1,
+    "title": "GCP-2026-060"
   }
 }
