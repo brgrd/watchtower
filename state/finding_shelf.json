@@ -11881,8 +11881,8 @@
   },
   "063a131bfcd1": {
     "first_seen": "2026-08-20",
-    "last_seen": "2026-09-03",
-    "run_count": 2,
+    "last_seen": "2026-09-05",
+    "run_count": 3,
     "title": "Elementor Pro Flaw Could Let Unauthenticated Attackers Upload PHP and Execute Code"
   },
   "cve:CVE-2026-76260": {
@@ -15814,5 +15814,89 @@
     "last_seen": "2026-09-04",
     "run_count": 1,
     "title": "GCP-2026-060"
+  },
+  "cve:CVE-2026-86113": {
+    "first_seen": "2026-09-05",
+    "last_seen": "2026-09-05",
+    "run_count": 1,
+    "title": "CVE-2026-86113"
+  },
+  "cve:CVE-2026-86120": {
+    "first_seen": "2026-09-05",
+    "last_seen": "2026-09-05",
+    "run_count": 1,
+    "title": "CVE-2026-86120"
+  },
+  "cve:CVE-2026-86173": {
+    "first_seen": "2026-09-05",
+    "last_seen": "2026-09-05",
+    "run_count": 1,
+    "title": "CVE-2026-86173"
+  },
+  "cve:CVE-2026-86060": {
+    "first_seen": "2026-09-05",
+    "last_seen": "2026-09-05",
+    "run_count": 1,
+    "title": "CVE-2026-86060"
+  },
+  "ac55bbaceed9": {
+    "first_seen": "2026-09-05",
+    "last_seen": "2026-09-05",
+    "run_count": 1,
+    "title": "Critical VMware Workstation and Fusion Flaw Lets VM Admins Execute Host Code"
+  },
+  "cve:CVE-2024-11080": {
+    "first_seen": "2026-09-05",
+    "last_seen": "2026-09-05",
+    "run_count": 1,
+    "title": "CVE-2024-11080"
+  },
+  "cve:CVE-2026-76573": {
+    "first_seen": "2026-09-05",
+    "last_seen": "2026-09-05",
+    "run_count": 1,
+    "title": "CVE-2026-76573"
+  },
+  "cve:CVE-2026-86111": {
+    "first_seen": "2026-09-05",
+    "last_seen": "2026-09-05",
+    "run_count": 1,
+    "title": "CVE-2026-86111"
+  },
+  "cve:CVE-2026-86112": {
+    "first_seen": "2026-09-05",
+    "last_seen": "2026-09-05",
+    "run_count": 1,
+    "title": "CVE-2026-86112"
+  },
+  "cve:CVE-2026-86114": {
+    "first_seen": "2026-09-05",
+    "last_seen": "2026-09-05",
+    "run_count": 1,
+    "title": "CVE-2026-86114"
+  },
+  "cve:CVE-2026-86115": {
+    "first_seen": "2026-09-05",
+    "last_seen": "2026-09-05",
+    "run_count": 1,
+    "title": "CVE-2026-86115"
+  },
+  "cve:CVE-2026-86116": {
+    "first_seen": "2026-09-05",
+    "last_seen": "2026-09-05",
+    "run_count": 1,
+    "title": "CVE-2026-86116"
+  },
+  "cve:CVE-2026-86117": {
+    "first_seen": "2026-09-05",
+    "last_seen": "2026-09-05",
+    "run_count": 1,
+    "title": "CVE-2026-86117"
+  },
+  "cve:CVE-2026-86118": {
+    "first_seen": "2026-09-05",
+    "last_seen": "2026-09-05",
+    "run_count": 1,
+    "title": "CVE-2026-86118"
   }
 }
