@@ -15403,8 +15403,8 @@
   },
   "bf297781e6bb": {
     "first_seen": "2026-08-31",
-    "last_seen": "2026-08-31",
-    "run_count": 1,
+    "last_seen": "2026-09-05",
+    "run_count": 2,
     "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
   },
   "cve:CVE-2026-83497": {
