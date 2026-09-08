@@ -3133,8 +3133,8 @@
   },
   "73edcd4547e1": {
     "first_seen": "2026-06-09",
-    "last_seen": "2026-08-26",
-    "run_count": 5,
+    "last_seen": "2026-09-08",
+    "run_count": 6,
     "title": "GCP-2026-036"
   },
   "cve:CVE-2026-11645": {
@@ -4591,8 +4591,8 @@
   },
   "4ef43c3ae997": {
     "first_seen": "2026-06-24",
-    "last_seen": "2026-08-26",
-    "run_count": 4,
+    "last_seen": "2026-09-08",
+    "run_count": 5,
     "title": "GCP-2026-041"
   },
   "0149ede49c0d": {
@@ -15055,8 +15055,8 @@
   },
   "81026920ec02": {
     "first_seen": "2026-08-26",
-    "last_seen": "2026-08-26",
-    "run_count": 1,
+    "last_seen": "2026-09-08",
+    "run_count": 2,
     "title": "GCP-2026-054"
   },
   "80d7b640a09f": {
@@ -16528,5 +16528,23 @@
     "last_seen": "2026-09-08",
     "run_count": 1,
     "title": "CVE-2026-86513"
+  },
+  "c36c93794d9a": {
+    "first_seen": "2026-09-08",
+    "last_seen": "2026-09-08",
+    "run_count": 1,
+    "title": "CareCam Pro IP Cameras"
+  },
+  "1c014e2386d8": {
+    "first_seen": "2026-09-08",
+    "last_seen": "2026-09-08",
+    "run_count": 1,
+    "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog"
+  },
+  "cve:CVE-2026-84942": {
+    "first_seen": "2026-09-08",
+    "last_seen": "2026-09-08",
+    "run_count": 1,
+    "title": "CVE-2026-84942 - Stored Cross-Site Scripting via Vega Expression Function Bypass in OpenSearch Dashboards"
   }
 }
