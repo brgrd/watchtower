@@ -16546,5 +16546,29 @@
     "last_seen": "2026-09-08",
     "run_count": 1,
     "title": "CVE-2026-84942 - Stored Cross-Site Scripting via Vega Expression Function Bypass in OpenSearch Dashboards"
+  },
+  "c15235cabeb8": {
+    "first_seen": "2026-09-09",
+    "last_seen": "2026-09-09",
+    "run_count": 1,
+    "title": "Chrome V8 Zero-Day Exploited in the Wild Enables Code Execution Inside Sandbox"
+  },
+  "54dc57386e50": {
+    "first_seen": "2026-09-09",
+    "last_seen": "2026-09-09",
+    "run_count": 1,
+    "title": "N-able N-central Pre-Auth RCE Flaw Exploited in the Wild"
+  },
+  "ae05a1975dcd": {
+    "first_seen": "2026-09-09",
+    "last_seen": "2026-09-09",
+    "run_count": 1,
+    "title": "Researcher Drops New Microsoft Defender PoC Showing ShieldBreak Patch Can Be Bypassed"
+  },
+  "287c47cbc0cb": {
+    "first_seen": "2026-09-09",
+    "last_seen": "2026-09-09",
+    "run_count": 1,
+    "title": "SAP Patches CVSS 10.0 Kernel Flaw Enabling Unauthenticated Remote Code Execution"
   }
 }
