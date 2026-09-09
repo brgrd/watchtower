@@ -8779,8 +8779,8 @@
   },
   "cve:CVE-2026-18733": {
     "first_seen": "2026-08-03",
-    "last_seen": "2026-08-03",
-    "run_count": 1,
+    "last_seen": "2026-09-09",
+    "run_count": 2,
     "title": "CVE-2026-56608: HCL iControl Missing Access Control",
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
@@ -8860,8 +8860,8 @@
   },
   "cve:CVE-2026-18830": {
     "first_seen": "2026-08-04",
-    "last_seen": "2026-08-20",
-    "run_count": 2,
+    "last_seen": "2026-09-09",
+    "run_count": 3,
     "title": "CVE-2026-18830: Amazon Bedrock AgentCore Insufficient Input Validation",
     "last_problem_type": "rce",
     "last_affects": "service",
@@ -9748,8 +9748,8 @@
   },
   "cve:CVE-2026-19311": {
     "first_seen": "2026-08-12",
-    "last_seen": "2026-08-12",
-    "run_count": 1,
+    "last_seen": "2026-09-09",
+    "run_count": 2,
     "title": "CVE-2026-19311: OpenSearch Alerting Plugin Auth Bypass",
     "last_problem_type": "auth_bypass",
     "last_affects": "application",
@@ -9856,8 +9856,8 @@
   },
   "cve:CVE-2026-18428": {
     "first_seen": "2026-08-13",
-    "last_seen": "2026-08-13",
-    "run_count": 1,
+    "last_seen": "2026-09-09",
+    "run_count": 2,
     "title": "CVE-2026-18428: OpenSearch SQL Plugin RCE",
     "last_problem_type": "rce",
     "last_affects": "framework",
@@ -9865,8 +9865,8 @@
   },
   "cve:CVE-2026-18952": {
     "first_seen": "2026-08-13",
-    "last_seen": "2026-08-13",
-    "run_count": 1,
+    "last_seen": "2026-09-09",
+    "run_count": 2,
     "title": "CVE-2026-18952: OpenSearch Security Analytics Plugin Input Validation Bypass",
     "last_problem_type": "rce",
     "last_affects": "framework",
@@ -11119,8 +11119,8 @@
   },
   "cve:CVE-2026-75935": {
     "first_seen": "2026-08-18",
-    "last_seen": "2026-08-18",
-    "run_count": 1,
+    "last_seen": "2026-09-09",
+    "run_count": 2,
     "title": "CVE-2026-75935 and CVE-2026-75936 - Issue with Amazon ion-java - Memory-amplification denial of service"
   },
   "cve:CVE-2026-65400": {
@@ -12583,14 +12583,14 @@
   },
   "cve:CVE-2026-77234": {
     "first_seen": "2026-08-21",
-    "last_seen": "2026-08-21",
-    "run_count": 1,
+    "last_seen": "2026-09-09",
+    "run_count": 2,
     "title": "Issue with FreeRTOS-Kernel - CVE-2026-77234, CVE-2026-77235, CVE-2026-77236, CVE-2026-77237"
   },
   "cve:CVE-2026-77810": {
     "first_seen": "2026-08-21",
-    "last_seen": "2026-08-21",
-    "run_count": 1,
+    "last_seen": "2026-09-09",
+    "run_count": 2,
     "title": "CVE-2026-77810 - Issue with Athena Federated Query Neptune Connector"
   },
   "cve:CVE-2026-47827": {
@@ -14533,8 +14533,8 @@
   },
   "cve:CVE-2026-78379": {
     "first_seen": "2026-08-25",
-    "last_seen": "2026-08-25",
-    "run_count": 1,
+    "last_seen": "2026-09-09",
+    "run_count": 2,
     "title": "CVE-2026-78379 - Consent bypass in Strands Agents Tools python_repl tool"
   },
   "cve:CVE-2026-21753": {
@@ -15121,14 +15121,14 @@
   },
   "cve:CVE-2026-81849": {
     "first_seen": "2026-08-29",
-    "last_seen": "2026-08-29",
-    "run_count": 1,
+    "last_seen": "2026-09-09",
+    "run_count": 2,
     "title": "CVE-2026-81849 - Path traversal in the aws:downloadContent plugin in amazon-ssm-agent"
   },
   "cve:CVE-2026-81838": {
     "first_seen": "2026-08-29",
-    "last_seen": "2026-08-29",
-    "run_count": 1,
+    "last_seen": "2026-09-09",
+    "run_count": 2,
     "title": "CVE-2026-81838 - Zip Slip path traversal in awsdac (diagram-as-code)"
   },
   "cve:CVE-2026-82466": {
@@ -15805,8 +15805,8 @@
   },
   "cve:CVE-2026-85787": {
     "first_seen": "2026-09-04",
-    "last_seen": "2026-09-04",
-    "run_count": 1,
+    "last_seen": "2026-09-09",
+    "run_count": 2,
     "title": "CVE-2026-85787 - An incomplete list of disallowed inputs in the SQL validation component in Amazon awslabs postgres-mcp-"
   },
   "1aba8f91d526": {
@@ -16570,5 +16570,23 @@
     "last_seen": "2026-09-09",
     "run_count": 1,
     "title": "SAP Patches CVSS 10.0 Kernel Flaw Enabling Unauthenticated Remote Code Execution"
+  },
+  "5023157b0743": {
+    "first_seen": "2026-09-09",
+    "last_seen": "2026-09-09",
+    "run_count": 1,
+    "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog"
+  },
+  "cve:CVE-2026-19111": {
+    "first_seen": "2026-09-09",
+    "last_seen": "2026-09-09",
+    "run_count": 1,
+    "title": "CVE-2026-19111 - Insecure direct object reference in Strands Agents Tools memory tools"
+  },
+  "cve:CVE-2026-85788": {
+    "first_seen": "2026-09-09",
+    "last_seen": "2026-09-09",
+    "run_count": 1,
+    "title": "CVE-2026-85788 - Issue with awslabs mysql-mcp-server"
   }
 }

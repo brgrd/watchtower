@@ -1,32 +1,29 @@
-# Watchtower Pipeline Eval — 2026-09-09T09:36:10Z
+# Watchtower Pipeline Eval — 2026-09-09T21:38:22Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 608 |
-| After dedup + CVE merge | 604 |
-| Sent to Groq | 4 |
+| Items polled (raw) | 464 |
+| After dedup + CVE merge | 448 |
+| Sent to Groq | 25 |
 | Groq findings returned | 0 |
-| Final cards rendered | 4 |
-| **Pipeline yield** | **4/608 (0.7%)** |
+| Final cards rendered | 15 |
+| **Pipeline yield** | **15/464 (3.2%)** |
 
 ## Groq
-- **Model**: `unknown`
-- **Payload**: ? chars
-- **Parse**: ✗  |  **Retries**: 0
-- **Rate limit remaining** — requests: ?, tokens: ?
+_Groq not called this run (placeholder mode or no API key)._
 
 ## Card Quality
 
-**4 cards** — P1: 0, P2: 0, P3: 4
+**15 cards** — P1: 0, P2: 0, P3: 15
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 58.8 / 70 |
+| Risk score mean / p90 | 50.3 / 65 |
 | Tactic coverage | 0% |
 | CVE coverage | 0% |
-| Patch status | unknown: 4 |
+| Patch status | unknown: 15 |
 
 ### Reasoning Quality
 
@@ -35,14 +32,14 @@
 
 ### Persistence
 
-- New (run=1): **4** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
-- Mean run_count: 1 | Mean shelf_days: 0
+- New (run=1): **3** | Evolving (2–5): **12** | Persistent (>5): **0** | Resolved: **0**
+- Mean run_count: 1.9 | Mean shelf_days: 17.1
 
 ## Enrichment Hit Rates
 
 | Source | Hits | Rate |
 |--------|-----:|-----:|
-| EPSS | 0 | 0% |
+| EPSS | 13 | 87% |
 | NVD (CVE) | 0 | 0% |
 | CISA KEV | 0 | 0% |
 
@@ -50,23 +47,23 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 416 |
-| `bsi_germany` | 169 |
-| `thehackernews` | 7 |
-| `bleepingcomputer` | 4 |
-| `cisa_kev` | 4 |
+| `nvd` | 279 |
+| `bsi_germany` | 87 |
+| `aws_security_bulletins` | 34 |
+| `securityweek` | 10 |
+| `thehackernews` | 9 |
 | _(+21 more)_ | … |
 
-**15 feeds returned 0 items this run.**
+**7 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
 | 2026-09-06 | 15 | ? | 0% | 0% | 15 | 0 |
-| 2026-09-06 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-09-07 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-09-07 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-09-08 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-09-08 | 6 | ? | 0% | 0% | 3 | 1 |
 | 2026-09-09 | 1 | ? | 0% | 0% | 0 | 0 |
+| 2026-09-09 | 4 | ? | 0% | 0% | 4 | 0 |
