@@ -8473,8 +8473,8 @@
   },
   "cve:CVE-2026-18420": {
     "first_seen": "2026-07-31",
-    "last_seen": "2026-07-31",
-    "run_count": 1,
+    "last_seen": "2026-09-10",
+    "run_count": 2,
     "title": "CVE-2026-65310: ANDRITZ HIPASE-250 RCE",
     "last_problem_type": "rce",
     "last_affects": "framework",
@@ -8752,8 +8752,8 @@
   },
   "cve:CVE-2026-18654": {
     "first_seen": "2026-08-03",
-    "last_seen": "2026-08-03",
-    "run_count": 1,
+    "last_seen": "2026-09-10",
+    "run_count": 2,
     "title": "CVE-2026-62416: Network Scanner Tool Vuln",
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
@@ -11113,8 +11113,8 @@
   },
   "cve:CVE-2026-75897": {
     "first_seen": "2026-08-18",
-    "last_seen": "2026-08-18",
-    "run_count": 1,
+    "last_seen": "2026-09-10",
+    "run_count": 2,
     "title": "CVE-2026-75897 - Uncontrolled resource consumption in OpenSearch Dashboards capabilities route"
   },
   "cve:CVE-2026-75935": {
@@ -12253,8 +12253,8 @@
   },
   "cve:CVE-2026-18656": {
     "first_seen": "2026-08-20",
-    "last_seen": "2026-08-20",
-    "run_count": 1,
+    "last_seen": "2026-09-10",
+    "run_count": 2,
     "title": "CVE-2026-18656 & CVE-2026-18657 - Issue with Kiro IDE and CLI - Executable Resolution from Untrusted Project Directory o"
   },
   "cve:CVE-2026-72530": {
@@ -12277,8 +12277,8 @@
   },
   "cve:CVE-2026-18953": {
     "first_seen": "2026-08-20",
-    "last_seen": "2026-08-20",
-    "run_count": 1,
+    "last_seen": "2026-09-10",
+    "run_count": 2,
     "title": "CVE-2026-18953 - Improper limitation of a pathname in AWS Transform MCP Server"
   },
   "cve:CVE-2026-19478": {
@@ -12577,8 +12577,8 @@
   },
   "cve:CVE-2026-77811": {
     "first_seen": "2026-08-21",
-    "last_seen": "2026-08-21",
-    "run_count": 1,
+    "last_seen": "2026-09-10",
+    "run_count": 2,
     "title": "CVE-2026-77811 - Stored Cross-Site Scripting via Integration Template Asset in OpenSearch Dashboards"
   },
   "cve:CVE-2026-77234": {
@@ -15805,8 +15805,8 @@
   },
   "cve:CVE-2026-85787": {
     "first_seen": "2026-09-04",
-    "last_seen": "2026-09-09",
-    "run_count": 2,
+    "last_seen": "2026-09-10",
+    "run_count": 3,
     "title": "CVE-2026-85787 - An incomplete list of disallowed inputs in the SQL validation component in Amazon awslabs postgres-mcp-"
   },
   "1aba8f91d526": {
@@ -16588,5 +16588,29 @@
     "last_seen": "2026-09-09",
     "run_count": 1,
     "title": "CVE-2026-85788 - Issue with awslabs mysql-mcp-server"
+  },
+  "cve:CVE-2026-75910": {
+    "first_seen": "2026-09-10",
+    "last_seen": "2026-09-10",
+    "run_count": 1,
+    "title": "CVE-2026-75910 - Issue with Athena Federated Query Clickhouse Connector"
+  },
+  "cve:CVE-2026-19642": {
+    "first_seen": "2026-09-10",
+    "last_seen": "2026-09-10",
+    "run_count": 1,
+    "title": "CVE-2026-19642 & CVE-2026-19643 - Memory-safety issues in the Base64 decoder in the AWS SDK for C&plus;&plus;"
+  },
+  "cve:CVE-2021-44228": {
+    "first_seen": "2026-09-10",
+    "last_seen": "2026-09-10",
+    "run_count": 1,
+    "title": "CVE-2026-85656 - OS command injection in Amazon log4j-cve-2021-44228-hotpatch"
+  },
+  "cve:CVE-2026-18954": {
+    "first_seen": "2026-09-10",
+    "last_seen": "2026-09-10",
+    "run_count": 1,
+    "title": "CVE-2026-18954 - Incorrect authorization in the aggregation pipeline tool in Amazon AWS Labs DocumentDB MCP Server"
   }
 }
