@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-09-09T21:38:36.523075+00:00",
+  "fetched_at": "2026-09-10T11:08:41.790944+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -1372,7 +1372,7 @@
     {
       "id": "hibp:artvalue-2019-06-19",
       "name": "Artvalue",
-      "title": "Artvalue",
+      "title": "Artvalue.com",
       "date": "2019-06-19",
       "added": "2019-07-19",
       "affected_count": 157692,
@@ -1384,7 +1384,7 @@
         "Usernames"
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Artvalue",
-      "summary": "In June 2019, the France-based art valuation website Artvalue.com left their 158k member subscriber base publicly exposed in a text file on their website. The exposed data included names, usernames, email addresses and passwords stored as MD5 hashes. The site operator did not respond when contacted about the incident, although the exposed file was subsequently removed.",
+      "summary": "In June 2019, the France-based art valuation website Artvalue.com (now defunct) left their 158k member subscriber base publicly exposed in a text file on their website. The exposed data included names, usernames, email addresses and passwords stored as MD5 hashes. The site operator did not respond when contacted about the incident, although the exposed file was subsequently removed.",
       "action": "rotate"
     },
     {
@@ -10407,6 +10407,27 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#McGrawHill",
       "summary": "In April 2026, education company McGraw Hill confirmed a data breach following an extortion attempt. Attributed to a Salesforce misconfiguration, the company stated the incident exposed \"a limited set of data from a webpage hosted by Salesforce on its platform\". More than 100GB of data was later publicly distributed, containing 13.5M unique email addresses across multiple files, with additional fi",
+      "action": "monitor"
+    },
+    {
+      "id": "hibp:mckesson-2026-08-21",
+      "name": "McKesson",
+      "title": "McKesson",
+      "date": "2026-08-21",
+      "added": "2026-09-10",
+      "affected_count": 6404340,
+      "data_classes": [
+        "Dates of birth",
+        "Email addresses",
+        "Employers",
+        "Genders",
+        "Names",
+        "Personal health data",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#McKesson",
+      "summary": "In August 2026, healthcare and pharmaceutical company McKesson was targeted in a ShinyHunters \"pay or leak\" extortion campaign. The group subsequently published a substantial corpus of data they alleged was sourced from the company, which included 6.4M unique email addresses among other personal and corporate data attributes. The impacted data related to a range of individuals and roles, including",
       "action": "monitor"
     },
     {

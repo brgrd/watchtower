@@ -16573,8 +16573,8 @@
   },
   "5023157b0743": {
     "first_seen": "2026-09-09",
-    "last_seen": "2026-09-09",
-    "run_count": 1,
+    "last_seen": "2026-09-10",
+    "run_count": 2,
     "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog"
   },
   "cve:CVE-2026-19111": {
