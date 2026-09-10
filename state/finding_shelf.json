@@ -15769,8 +15769,8 @@
   },
   "190f04484b6b": {
     "first_seen": "2026-09-04",
-    "last_seen": "2026-09-04",
-    "run_count": 1,
+    "last_seen": "2026-09-10",
+    "run_count": 2,
     "title": "Critical Citrix NetScaler auth bypass now leveraged in attacks"
   },
   "cve:CVE-2026-85781": {
@@ -16612,5 +16612,35 @@
     "last_seen": "2026-09-10",
     "run_count": 1,
     "title": "CVE-2026-18954 - Incorrect authorization in the aggregation pipeline tool in Amazon AWS Labs DocumentDB MCP Server"
+  },
+  "b1038b27c880": {
+    "first_seen": "2026-09-10",
+    "last_seen": "2026-09-10",
+    "run_count": 1,
+    "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
+  },
+  "c518d9fa2eee": {
+    "first_seen": "2026-09-10",
+    "last_seen": "2026-09-10",
+    "run_count": 1,
+    "title": "NextGen Healthcare Mirth Connect"
+  },
+  "0c72bc2899d3": {
+    "first_seen": "2026-09-10",
+    "last_seen": "2026-09-10",
+    "run_count": 1,
+    "title": "CISA Flags Exploited Cisco, Citrix, Fortinet Flaws, Sets Sept. 12 Federal Patch Deadline"
+  },
+  "cve:CVE-2026-85228": {
+    "first_seen": "2026-09-10",
+    "last_seen": "2026-09-10",
+    "run_count": 1,
+    "title": "CVE-2026-85228 - Integer overflow in tensor buffer validation in Deep Java Library"
+  },
+  "cve:CVE-2026-89049": {
+    "first_seen": "2026-09-10",
+    "last_seen": "2026-09-10",
+    "run_count": 1,
+    "title": "CVE-2026-89049 - Server-side request forgery in the Session Manager port forwarding functionality in AWS Systems Manager"
   }
 }
