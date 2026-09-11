@@ -1,11 +1,11 @@
 ---
-generated_at: 2026-09-11T00:57:50.384133+00:00
+generated_at: 2026-09-11T11:08:20.019583+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-89049 - Server-side request forgery in the Session Manager port forwarding functionality in AWS Systems Manager Agent (risk: 40)
+## Cisco FMC Flaws Exploited to Steal Credentials and Deploy Qilin Ransomware (risk: 70)
 1 related updates.
 
-- [CVE-2026-89049 - Server-side request forgery in the Session Manager port forwarding functionality in AWS Systems Manager](https://aws.amazon.com/security/security-bulletins/rss/2026-107-aws/)
+- [Cisco FMC Flaws Exploited to Steal Credentials and Deploy Qilin Ransomware](https://thehackernews.com/2026/09/cisco-fmc-flaws-exploited-to-steal.html)

@@ -16627,8 +16627,8 @@
   },
   "0c72bc2899d3": {
     "first_seen": "2026-09-10",
-    "last_seen": "2026-09-10",
-    "run_count": 1,
+    "last_seen": "2026-09-11",
+    "run_count": 2,
     "title": "CISA Flags Exploited Cisco, Citrix, Fortinet Flaws, Sets Sept. 12 Federal Patch Deadline"
   },
   "cve:CVE-2026-85228": {
