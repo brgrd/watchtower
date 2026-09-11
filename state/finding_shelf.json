@@ -16642,5 +16642,47 @@
     "last_seen": "2026-09-11",
     "run_count": 2,
     "title": "CVE-2026-89049 - Server-side request forgery in the Session Manager port forwarding functionality in AWS Systems Manager"
+  },
+  "a1bfcf7e9a3c": {
+    "first_seen": "2026-09-11",
+    "last_seen": "2026-09-11",
+    "run_count": 1,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "932d666908f3": {
+    "first_seen": "2026-09-11",
+    "last_seen": "2026-09-11",
+    "run_count": 1,
+    "title": "CISA Adds Three Known Exploited Vulnerabilities to Catalog"
+  },
+  "fa51d053d148": {
+    "first_seen": "2026-09-11",
+    "last_seen": "2026-09-11",
+    "run_count": 1,
+    "title": "Check Point Patches Critical VPN Vulnerabilities"
+  },
+  "cve:CVE-2026-89090": {
+    "first_seen": "2026-09-11",
+    "last_seen": "2026-09-11",
+    "run_count": 1,
+    "title": "CVE-2026-89090 - Denial of service in the event stream header decoder in AWS SDK for Go v2"
+  },
+  "cve:CVE-2026-89332": {
+    "first_seen": "2026-09-11",
+    "last_seen": "2026-09-11",
+    "run_count": 1,
+    "title": "CVE-2026-89332 - Kiro IDE Sensitive Workspace Data Exfiltration via Agent-Written Workspace Configuration"
+  },
+  "cve:CVE-2026-18061": {
+    "first_seen": "2026-09-11",
+    "last_seen": "2026-09-11",
+    "run_count": 1,
+    "title": "CVE-2026-18061 - XML External Entity (XXE) in AWS Advanced JDBC Wrapper RemoteQueryCachePlugin"
+  },
+  "cve:CVE-2026-89065": {
+    "first_seen": "2026-09-11",
+    "last_seen": "2026-09-11",
+    "run_count": 1,
+    "title": "CVE-2026-89065 and CVE-2026-89066: Issue with projen - Path traversal and OS command injection"
   }
 }
