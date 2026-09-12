@@ -16651,14 +16651,14 @@
   },
   "932d666908f3": {
     "first_seen": "2026-09-11",
-    "last_seen": "2026-09-11",
-    "run_count": 1,
+    "last_seen": "2026-09-12",
+    "run_count": 2,
     "title": "CISA Adds Three Known Exploited Vulnerabilities to Catalog"
   },
   "fa51d053d148": {
     "first_seen": "2026-09-11",
-    "last_seen": "2026-09-11",
-    "run_count": 1,
+    "last_seen": "2026-09-12",
+    "run_count": 2,
     "title": "Check Point Patches Critical VPN Vulnerabilities"
   },
   "cve:CVE-2026-89090": {
