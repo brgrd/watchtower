@@ -16684,5 +16684,95 @@
     "last_seen": "2026-09-11",
     "run_count": 1,
     "title": "CVE-2026-89065 and CVE-2026-89066: Issue with projen - Path traversal and OS command injection"
+  },
+  "cve:CVE-2026-81917": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "run_count": 1,
+    "title": "CVE-2026-81917"
+  },
+  "cve:CVE-2026-45056": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "run_count": 1,
+    "title": "CVE-2026-45056"
+  },
+  "cve:CVE-2026-90443": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "run_count": 1,
+    "title": "CVE-2026-90443"
+  },
+  "cve:CVE-2026-90455": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "run_count": 1,
+    "title": "CVE-2026-90455"
+  },
+  "cve:CVE-2026-78159": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "run_count": 1,
+    "title": "CVE-2026-78159"
+  },
+  "cve:CVE-2026-87491": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "run_count": 1,
+    "title": "Chromium CVE-2026-87491:  Out of bounds write in V8"
+  },
+  "cve:CVE-2026-49464": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "run_count": 1,
+    "title": "CVE-2026-49464"
+  },
+  "cve:CVE-2026-54174": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "run_count": 1,
+    "title": "CVE-2026-54174"
+  },
+  "cve:CVE-2026-11355": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "run_count": 1,
+    "title": "CVE-2026-11355"
+  },
+  "cve:CVE-2026-45057": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "run_count": 1,
+    "title": "CVE-2026-45057"
+  },
+  "cve:CVE-2026-47773": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "run_count": 1,
+    "title": "CVE-2026-47773"
+  },
+  "cve:CVE-2026-48490": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "run_count": 1,
+    "title": "CVE-2026-48490"
+  },
+  "cve:CVE-2026-49439": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "run_count": 1,
+    "title": "CVE-2026-49439"
+  },
+  "cve:CVE-2026-49865": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "run_count": 1,
+    "title": "CVE-2026-49865"
+  },
+  "cve:CVE-2026-50025": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "run_count": 1,
+    "title": "CVE-2026-50025"
   }
 }

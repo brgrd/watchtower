@@ -1,41 +1,81 @@
 ---
-generated_at: 2026-09-11T22:28:41.371935+00:00
+generated_at: 2026-09-12T10:37:13.561946+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CISA Adds One Known Exploited Vulnerability to Catalog (risk: 70)
+## CVE-2026-81917 (risk: 70)
 1 related updates.
 
-- [CISA Adds One Known Exploited Vulnerability to Catalog](https://www.cisa.gov/news-events/alerts/2026/09/11/cisa-adds-one-known-exploited-vulnerability-catalog)
+- [CVE-2026-81917](https://nvd.nist.gov/vuln/detail/CVE-2026-81917)
 
-## CISA Adds Three Known Exploited Vulnerabilities to Catalog (risk: 70)
+## CVE-2026-45056 (risk: 70)
 1 related updates.
 
-- [CISA Adds Three Known Exploited Vulnerabilities to Catalog](https://www.cisa.gov/news-events/alerts/2026/09/11/cisa-adds-three-known-exploited-vulnerabilities-catalog)
+- [CVE-2026-45056](https://nvd.nist.gov/vuln/detail/CVE-2026-45056)
 
-## Check Point Patches Critical VPN Vulnerabilities (risk: 70)
+## CVE-2026-90443 (risk: 70)
 1 related updates.
 
-- [Check Point Patches Critical VPN Vulnerabilities](https://www.securityweek.com/check-point-patches-critical-vpn-vulnerabilities/)
+- [CVE-2026-90443](https://nvd.nist.gov/vuln/detail/CVE-2026-90443)
 
-## CVE-2026-89090 - Denial of service in the event stream header decoder in AWS SDK for Go v2 (risk: 40)
+## CVE-2026-90455 (risk: 70)
 1 related updates.
 
-- [CVE-2026-89090 - Denial of service in the event stream header decoder in AWS SDK for Go v2](https://aws.amazon.com/security/security-bulletins/rss/2026-110-aws/)
+- [CVE-2026-90455](https://nvd.nist.gov/vuln/detail/CVE-2026-90455)
 
-## CVE-2026-89332 - Kiro IDE Sensitive Workspace Data Exfiltration via Agent-Written Workspace Configuration (risk: 40)
+## CVE-2026-78159 (risk: 70)
 1 related updates.
 
-- [CVE-2026-89332 - Kiro IDE Sensitive Workspace Data Exfiltration via Agent-Written Workspace Configuration](https://aws.amazon.com/security/security-bulletins/rss/2026-111-aws/)
+- [CVE-2026-78159](https://nvd.nist.gov/vuln/detail/CVE-2026-78159)
 
-## CVE-2026-18061 - XML External Entity (XXE) in AWS Advanced JDBC Wrapper RemoteQueryCachePlugin (risk: 40)
+## Chromium CVE-2026-87491:  Out of bounds write in V8 (risk: 70)
 1 related updates.
 
-- [CVE-2026-18061 - XML External Entity (XXE) in AWS Advanced JDBC Wrapper RemoteQueryCachePlugin](https://aws.amazon.com/security/security-bulletins/rss/2026-109-aws/)
+- [Chromium CVE-2026-87491:  Out of bounds write in V8](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-87491)
 
-## CVE-2026-89065 and CVE-2026-89066: Issue with projen - Path traversal and OS command injection (risk: 40)
+## CVE-2026-49464 (risk: 60)
 1 related updates.
 
-- [CVE-2026-89065 and CVE-2026-89066: Issue with projen - Path traversal and OS command injection](https://aws.amazon.com/security/security-bulletins/rss/2026-108-aws/)
+- [CVE-2026-49464](https://nvd.nist.gov/vuln/detail/CVE-2026-49464)
+
+## CVE-2026-54174 (risk: 60)
+1 related updates.
+
+- [CVE-2026-54174](https://nvd.nist.gov/vuln/detail/CVE-2026-54174)
+
+## CVE-2026-11355 (risk: 55)
+1 related updates.
+
+- [CVE-2026-11355](https://nvd.nist.gov/vuln/detail/CVE-2026-11355)
+
+## CVE-2026-45057 (risk: 40)
+1 related updates.
+
+- [CVE-2026-45057](https://nvd.nist.gov/vuln/detail/CVE-2026-45057)
+
+## CVE-2026-47773 (risk: 40)
+1 related updates.
+
+- [CVE-2026-47773](https://nvd.nist.gov/vuln/detail/CVE-2026-47773)
+
+## CVE-2026-48490 (risk: 40)
+1 related updates.
+
+- [CVE-2026-48490](https://nvd.nist.gov/vuln/detail/CVE-2026-48490)
+
+## CVE-2026-49439 (risk: 40)
+1 related updates.
+
+- [CVE-2026-49439](https://nvd.nist.gov/vuln/detail/CVE-2026-49439)
+
+## CVE-2026-49865 (risk: 40)
+1 related updates.
+
+- [CVE-2026-49865](https://nvd.nist.gov/vuln/detail/CVE-2026-49865)
+
+## CVE-2026-50025 (risk: 40)
+1 related updates.
+
+- [CVE-2026-50025](https://nvd.nist.gov/vuln/detail/CVE-2026-50025)
