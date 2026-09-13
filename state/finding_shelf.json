@@ -16954,5 +16954,11 @@
     "last_seen": "2026-09-13",
     "run_count": 1,
     "title": "CVE-2026-90503"
+  },
+  "b43eba185f89": {
+    "first_seen": "2026-09-13",
+    "last_seen": "2026-09-13",
+    "run_count": 1,
+    "title": "Hackers exploit Tencent app flaw to deploy GrayRabbit malware"
   }
 }
