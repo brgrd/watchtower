@@ -16645,8 +16645,8 @@
   },
   "a1bfcf7e9a3c": {
     "first_seen": "2026-09-11",
-    "last_seen": "2026-09-11",
-    "run_count": 1,
+    "last_seen": "2026-09-14",
+    "run_count": 2,
     "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
   },
   "932d666908f3": {
@@ -17050,5 +17050,17 @@
     "last_seen": "2026-09-14",
     "run_count": 1,
     "title": "CVE-2026-90573"
+  },
+  "3c3ad75d61a6": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "cve:CVE-2026-86830": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-86830 - Incorrect privilege assignment in Temporary Elevated Access Management (TEAM) for AWS IAM Identity Cent"
   }
 }

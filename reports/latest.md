@@ -1,81 +1,21 @@
 ---
-generated_at: 2026-09-14T00:57:41.458132+00:00
+generated_at: 2026-09-14T23:04:38.669403+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-90580 (risk: 90)
+## CISA Adds One Known Exploited Vulnerability to Catalog (risk: 70)
 1 related updates.
 
-- [CVE-2026-90580](https://nvd.nist.gov/vuln/detail/CVE-2026-90580)
+- [CISA Adds One Known Exploited Vulnerability to Catalog](https://www.cisa.gov/news-events/alerts/2026/09/14/cisa-adds-one-known-exploited-vulnerability-catalog)
 
-## CVE-2026-90581 (risk: 85)
+## Maximum Severity GitLab Flaw Puts Supply Chains at Risk (risk: 60)
 1 related updates.
 
-- [CVE-2026-90581](https://nvd.nist.gov/vuln/detail/CVE-2026-90581)
+- [Maximum Severity GitLab Flaw Puts Supply Chains at Risk](https://www.darkreading.com/cyberattacks-data-breaches/maximum-severity-gitlab-flaw-supply-chains-risk)
 
-## CVE-2026-90519 (risk: 70)
+## CVE-2026-86830 - Incorrect privilege assignment in Temporary Elevated Access Management (TEAM) for AWS IAM Identity Center (risk: 40)
 1 related updates.
 
-- [CVE-2026-90519](https://nvd.nist.gov/vuln/detail/CVE-2026-90519)
-
-## CVE-2026-90520 (risk: 70)
-1 related updates.
-
-- [CVE-2026-90520](https://nvd.nist.gov/vuln/detail/CVE-2026-90520)
-
-## CVE-2026-90521 (risk: 70)
-1 related updates.
-
-- [CVE-2026-90521](https://nvd.nist.gov/vuln/detail/CVE-2026-90521)
-
-## CVE-2026-90522 (risk: 70)
-1 related updates.
-
-- [CVE-2026-90522](https://nvd.nist.gov/vuln/detail/CVE-2026-90522)
-
-## CVE-2026-90523 (risk: 70)
-1 related updates.
-
-- [CVE-2026-90523](https://nvd.nist.gov/vuln/detail/CVE-2026-90523)
-
-## CVE-2026-90524 (risk: 70)
-1 related updates.
-
-- [CVE-2026-90524](https://nvd.nist.gov/vuln/detail/CVE-2026-90524)
-
-## CVE-2026-90525 (risk: 70)
-1 related updates.
-
-- [CVE-2026-90525](https://nvd.nist.gov/vuln/detail/CVE-2026-90525)
-
-## CVE-2026-90526 (risk: 70)
-1 related updates.
-
-- [CVE-2026-90526](https://nvd.nist.gov/vuln/detail/CVE-2026-90526)
-
-## CVE-2026-90565 (risk: 70)
-1 related updates.
-
-- [CVE-2026-90565](https://nvd.nist.gov/vuln/detail/CVE-2026-90565)
-
-## CVE-2026-90566 (risk: 70)
-1 related updates.
-
-- [CVE-2026-90566](https://nvd.nist.gov/vuln/detail/CVE-2026-90566)
-
-## CVE-2026-90571 (risk: 70)
-1 related updates.
-
-- [CVE-2026-90571](https://nvd.nist.gov/vuln/detail/CVE-2026-90571)
-
-## CVE-2026-90572 (risk: 70)
-1 related updates.
-
-- [CVE-2026-90572](https://nvd.nist.gov/vuln/detail/CVE-2026-90572)
-
-## CVE-2026-90573 (risk: 70)
-1 related updates.
-
-- [CVE-2026-90573](https://nvd.nist.gov/vuln/detail/CVE-2026-90573)
+- [CVE-2026-86830 - Incorrect privilege assignment in Temporary Elevated Access Management (TEAM) for AWS IAM Identity Cent](https://aws.amazon.com/security/security-bulletins/rss/2026-112-aws/)
