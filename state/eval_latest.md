@@ -1,15 +1,15 @@
-# Watchtower Pipeline Eval — 2026-09-13T22:20:14Z
+# Watchtower Pipeline Eval — 2026-09-14T00:57:34Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 94 |
-| After dedup + CVE merge | 94 |
-| Sent to Groq | 1 |
+| Items polled (raw) | 82 |
+| After dedup + CVE merge | 81 |
+| Sent to Groq | 81 |
 | Groq findings returned | 0 |
-| Final cards rendered | 1 |
-| **Pipeline yield** | **1/94 (1.1%)** |
+| Final cards rendered | 15 |
+| **Pipeline yield** | **15/82 (18.3%)** |
 
 ## Groq
 - **Model**: `unknown`
@@ -19,14 +19,14 @@
 
 ## Card Quality
 
-**1 cards** — P1: 0, P2: 0, P3: 1
+**15 cards** — P1: 0, P2: 0, P3: 15
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 70 / 70 |
+| Risk score mean / p90 | 72.3 / 70 |
 | Tactic coverage | 0% |
 | CVE coverage | 0% |
-| Patch status | unknown: 1 |
+| Patch status | unknown: 15 |
 
 ### Reasoning Quality
 
@@ -35,7 +35,7 @@
 
 ### Persistence
 
-- New (run=1): **1** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
+- New (run=1): **15** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
 - Mean run_count: 1 | Mean shelf_days: 0
 
 ## Enrichment Hit Rates
@@ -50,7 +50,7 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 89 |
+| `nvd` | 77 |
 | `darkreading` | 2 |
 | `bleepingcomputer` | 1 |
 | `securityweek` | 1 |
@@ -64,9 +64,9 @@
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
 | 2026-09-11 | 1 | ? | 0% | 0% | 0 | 0 |
-| 2026-09-11 | 1 | ? | 0% | 0% | 0 | 0 |
 | 2026-09-11 | 7 | ? | 0% | 0% | 7 | 0 |
 | 2026-09-12 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-09-12 | 2 | ? | 0% | 0% | 0 | 0 |
 | 2026-09-13 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-09-13 | 15 | ? | 0% | 0% | 15 | 0 |
+| 2026-09-13 | 1 | ? | 0% | 0% | 1 | 0 |

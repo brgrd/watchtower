@@ -16960,5 +16960,95 @@
     "last_seen": "2026-09-13",
     "run_count": 1,
     "title": "Hackers exploit Tencent app flaw to deploy GrayRabbit malware"
+  },
+  "cve:CVE-2026-90580": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-90580"
+  },
+  "cve:CVE-2026-90581": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-90581"
+  },
+  "cve:CVE-2026-90519": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-90519"
+  },
+  "cve:CVE-2026-90520": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-90520"
+  },
+  "cve:CVE-2026-90521": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-90521"
+  },
+  "cve:CVE-2026-90522": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-90522"
+  },
+  "cve:CVE-2026-90523": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-90523"
+  },
+  "cve:CVE-2026-90524": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-90524"
+  },
+  "cve:CVE-2026-90525": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-90525"
+  },
+  "cve:CVE-2026-90526": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-90526"
+  },
+  "cve:CVE-2026-90565": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-90565"
+  },
+  "cve:CVE-2026-90566": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-90566"
+  },
+  "cve:CVE-2026-90571": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-90571"
+  },
+  "cve:CVE-2026-90572": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-90572"
+  },
+  "cve:CVE-2026-90573": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "run_count": 1,
+    "title": "CVE-2026-90573"
   }
 }
