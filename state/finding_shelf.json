@@ -17053,8 +17053,8 @@
   },
   "3c3ad75d61a6": {
     "first_seen": "2026-09-14",
-    "last_seen": "2026-09-14",
-    "run_count": 1,
+    "last_seen": "2026-09-15",
+    "run_count": 2,
     "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
   },
   "cve:CVE-2026-86830": {
@@ -17062,5 +17062,23 @@
     "last_seen": "2026-09-14",
     "run_count": 1,
     "title": "CVE-2026-86830 - Incorrect privilege assignment in Temporary Elevated Access Management (TEAM) for AWS IAM Identity Cent"
+  },
+  "8bc583355aee": {
+    "first_seen": "2026-09-15",
+    "last_seen": "2026-09-15",
+    "run_count": 1,
+    "title": "mySCADA myPRO Manager"
+  },
+  "03372cd23506": {
+    "first_seen": "2026-09-15",
+    "last_seen": "2026-09-15",
+    "run_count": 1,
+    "title": "Wärtsilä FOS-Onboard"
+  },
+  "90dc3626312a": {
+    "first_seen": "2026-09-15",
+    "last_seen": "2026-09-15",
+    "run_count": 1,
+    "title": "Siemens Reyrolle 7SR5"
   }
 }

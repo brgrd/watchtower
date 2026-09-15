@@ -1,21 +1,26 @@
 ---
-generated_at: 2026-09-14T23:04:38.669403+00:00
+generated_at: 2026-09-15T22:07:18.135579+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CISA Adds One Known Exploited Vulnerability to Catalog (risk: 70)
+## mySCADA myPRO Manager (risk: 70)
 1 related updates.
 
-- [CISA Adds One Known Exploited Vulnerability to Catalog](https://www.cisa.gov/news-events/alerts/2026/09/14/cisa-adds-one-known-exploited-vulnerability-catalog)
+- [mySCADA myPRO Manager](https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-03)
 
-## Maximum Severity GitLab Flaw Puts Supply Chains at Risk (risk: 60)
+## Wärtsilä FOS-Onboard (risk: 70)
 1 related updates.
 
-- [Maximum Severity GitLab Flaw Puts Supply Chains at Risk](https://www.darkreading.com/cyberattacks-data-breaches/maximum-severity-gitlab-flaw-supply-chains-risk)
+- [Wärtsilä FOS-Onboard](https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-02)
 
-## CVE-2026-86830 - Incorrect privilege assignment in Temporary Elevated Access Management (TEAM) for AWS IAM Identity Center (risk: 40)
+## Cisco Secure Email Gateway Flaw Exploited in the Wild, Enables Root Command Execution (risk: 70)
 1 related updates.
 
-- [CVE-2026-86830 - Incorrect privilege assignment in Temporary Elevated Access Management (TEAM) for AWS IAM Identity Cent](https://aws.amazon.com/security/security-bulletins/rss/2026-112-aws/)
+- [Cisco Secure Email Gateway Flaw Exploited in the Wild, Enables Root Command Execution](https://thehackernews.com/2026/09/cisco-secure-email-gateway-flaw.html)
+
+## Siemens Reyrolle 7SR5 (risk: 40)
+1 related updates.
+
+- [Siemens Reyrolle 7SR5](https://www.cisa.gov/news-events/ics-advisories/icsa-26-258-05)
