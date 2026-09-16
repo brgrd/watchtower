@@ -17080,5 +17080,35 @@
     "last_seen": "2026-09-15",
     "run_count": 1,
     "title": "Siemens Reyrolle 7SR5"
+  },
+  "e5071bbbb971": {
+    "first_seen": "2026-09-16",
+    "last_seen": "2026-09-16",
+    "run_count": 1,
+    "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
+  },
+  "37c7b8fe8f5a": {
+    "first_seen": "2026-09-16",
+    "last_seen": "2026-09-16",
+    "run_count": 1,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "a03bf75de2a8": {
+    "first_seen": "2026-09-16",
+    "last_seen": "2026-09-16",
+    "run_count": 1,
+    "title": "Active Exploitation Attempts Target WSO2 API Manager JWT Bypass With Forged Admin Tokens"
+  },
+  "6470a2b9aed0": {
+    "first_seen": "2026-09-16",
+    "last_seen": "2026-09-16",
+    "run_count": 1,
+    "title": "Attackers Exploit Issabel Framework Flaw Enabling Unauthenticated OS Command Execution"
+  },
+  "cve:CVE-2026-86831": {
+    "first_seen": "2026-09-16",
+    "last_seen": "2026-09-16",
+    "run_count": 1,
+    "title": "CVE-2026-86831: Improper validation of pod identifier uniqueness in aws-network-policy-agent in Amazon EKS"
   }
 }
