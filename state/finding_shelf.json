@@ -17083,8 +17083,8 @@
   },
   "e5071bbbb971": {
     "first_seen": "2026-09-16",
-    "last_seen": "2026-09-16",
-    "run_count": 1,
+    "last_seen": "2026-09-17",
+    "run_count": 2,
     "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
   },
   "37c7b8fe8f5a": {
@@ -17200,5 +17200,23 @@
     "last_seen": "2026-09-17",
     "run_count": 1,
     "title": "CVE-2026-61599"
+  },
+  "712f20015c46": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "Bransys ELD"
+  },
+  "cve:CVE-2026-92943": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-92943 - Improper validation of certificate with host mismatch in AWS IoT Device SDK for Python"
+  },
+  "a76450f5381e": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "Critical Unbound DNSSEC Validator Flaw Could Allow RCE via a Malicious DNS Zone"
   }
 }
