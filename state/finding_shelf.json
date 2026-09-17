@@ -17110,5 +17110,95 @@
     "last_seen": "2026-09-16",
     "run_count": 1,
     "title": "CVE-2026-86831: Improper validation of pod identifier uniqueness in aws-network-policy-agent in Amazon EKS"
+  },
+  "cve:CVE-2026-92838": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-92838"
+  },
+  "cve:CVE-2026-85128": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-85128"
+  },
+  "cve:CVE-2026-91008": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-91008"
+  },
+  "cve:CVE-2026-66269": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-66269"
+  },
+  "cve:CVE-2026-81438": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-81438"
+  },
+  "cve:CVE-2026-81439": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-81439"
+  },
+  "cve:CVE-2026-81474": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-81474"
+  },
+  "cve:CVE-2026-92903": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-92903"
+  },
+  "cve:CVE-2026-58704": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-58704 — Google Pixel Improper Authorization Vulnerability"
+  },
+  "cve:CVE-2026-76460": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-76460 — Cisco Identity Services Engine Incorrect Use of Privileged APIs Vulnerability"
+  },
+  "cve:CVE-2026-87886": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-87886 — Acronis Backup Incorrect Default Permissions Vulnerability"
+  },
+  "cve:CVE-2026-61588": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-61588"
+  },
+  "cve:CVE-2026-61589": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-61589"
+  },
+  "cve:CVE-2026-61596": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-61596"
+  },
+  "cve:CVE-2026-61599": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "run_count": 1,
+    "title": "CVE-2026-61599"
   }
 }
