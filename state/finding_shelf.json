@@ -17083,8 +17083,8 @@
   },
   "e5071bbbb971": {
     "first_seen": "2026-09-16",
-    "last_seen": "2026-09-17",
-    "run_count": 2,
+    "last_seen": "2026-09-18",
+    "run_count": 3,
     "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
   },
   "37c7b8fe8f5a": {
@@ -17224,5 +17224,23 @@
     "last_seen": "2026-09-18",
     "run_count": 1,
     "title": "Critical Orkes Conductor Vulnerability Exploited in Attacks"
+  },
+  "b0d4810ddfb7": {
+    "first_seen": "2026-09-18",
+    "last_seen": "2026-09-18",
+    "run_count": 1,
+    "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
+  },
+  "50e4e2cf22ac": {
+    "first_seen": "2026-09-18",
+    "last_seen": "2026-09-18",
+    "run_count": 1,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "dbdae4c3c727": {
+    "first_seen": "2026-09-18",
+    "last_seen": "2026-09-18",
+    "run_count": 1,
+    "title": "Microsoft Patches CVSS 10.0 Azure AI Foundry Flaw Enabling Unauthorized Privilege Escalation"
   }
 }
