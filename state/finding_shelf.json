@@ -17218,5 +17218,11 @@
     "last_seen": "2026-09-17",
     "run_count": 1,
     "title": "Critical Unbound DNSSEC Validator Flaw Could Allow RCE via a Malicious DNS Zone"
+  },
+  "cdad05c05fd1": {
+    "first_seen": "2026-09-18",
+    "last_seen": "2026-09-18",
+    "run_count": 1,
+    "title": "Critical Orkes Conductor Vulnerability Exploited in Attacks"
   }
 }
