@@ -1,26 +1,81 @@
 ---
-generated_at: 2026-09-18T21:35:53.772923+00:00
+generated_at: 2026-09-19T00:11:17.270388+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CISA Adds Two Known Exploited Vulnerabilities to Catalog (risk: 85)
+## CVE-2026-21806 (risk: 70)
 1 related updates.
 
-- [CISA Adds Two Known Exploited Vulnerabilities to Catalog](https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-two-known-exploited-vulnerabilities-catalog)
+- [CVE-2026-21806](https://nvd.nist.gov/vuln/detail/CVE-2026-21806)
 
-## CISA Adds One Known Exploited Vulnerability to Catalog (risk: 85)
+## CVE-2026-28197 (risk: 70)
 1 related updates.
 
-- [CISA Adds One Known Exploited Vulnerability to Catalog](https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-one-known-exploited-vulnerability-catalog)
+- [CVE-2026-28197](https://nvd.nist.gov/vuln/detail/CVE-2026-28197)
 
-## Microsoft Patches CVSS 10.0 Azure AI Foundry Flaw Enabling Unauthorized Privilege Escalation (risk: 70)
+## CVE-2026-28198 (risk: 70)
 1 related updates.
 
-- [Microsoft Patches CVSS 10.0 Azure AI Foundry Flaw Enabling Unauthorized Privilege Escalation](https://thehackernews.com/2026/09/microsoft-patches-cvss-100-azure-ai.html)
+- [CVE-2026-28198](https://nvd.nist.gov/vuln/detail/CVE-2026-28198)
 
-## Cisco Zero-Day Highlights API Endpoint Authentication Issues (risk: 40)
+## CVE-2026-28199 (risk: 70)
 1 related updates.
 
-- [Cisco Zero-Day Highlights API Endpoint Authentication Issues](https://www.darkreading.com/vulnerabilities-threats/cisco-zero-day-api-endpoint-authentication-issues)
+- [CVE-2026-28199](https://nvd.nist.gov/vuln/detail/CVE-2026-28199)
+
+## CVE-2026-93491 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93491](https://nvd.nist.gov/vuln/detail/CVE-2026-93491)
+
+## CVE-2026-93492 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93492](https://nvd.nist.gov/vuln/detail/CVE-2026-93492)
+
+## CVE-2026-93586 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93586](https://nvd.nist.gov/vuln/detail/CVE-2026-93586)
+
+## CVE-2026-93593 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93593](https://nvd.nist.gov/vuln/detail/CVE-2026-93593)
+
+## CVE-2026-93600 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93600](https://nvd.nist.gov/vuln/detail/CVE-2026-93600)
+
+## CVE-2024-56344 (risk: 70)
+1 related updates.
+
+- [CVE-2024-56344](https://nvd.nist.gov/vuln/detail/CVE-2024-56344)
+
+## CVE-2026-10832 (risk: 70)
+1 related updates.
+
+- [CVE-2026-10832](https://nvd.nist.gov/vuln/detail/CVE-2026-10832)
+
+## CVE-2026-93558 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93558](https://nvd.nist.gov/vuln/detail/CVE-2026-93558)
+
+## CVE-2026-93565 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93565](https://nvd.nist.gov/vuln/detail/CVE-2026-93565)
+
+## CVE-2026-93566 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93566](https://nvd.nist.gov/vuln/detail/CVE-2026-93566)
+
+## CVE-2026-93567 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93567](https://nvd.nist.gov/vuln/detail/CVE-2026-93567)

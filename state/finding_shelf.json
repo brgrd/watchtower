@@ -17242,5 +17242,95 @@
     "last_seen": "2026-09-18",
     "run_count": 1,
     "title": "Microsoft Patches CVSS 10.0 Azure AI Foundry Flaw Enabling Unauthorized Privilege Escalation"
+  },
+  "cve:CVE-2026-21806": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "CVE-2026-21806"
+  },
+  "cve:CVE-2026-28197": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "CVE-2026-28197"
+  },
+  "cve:CVE-2026-28198": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "CVE-2026-28198"
+  },
+  "cve:CVE-2026-28199": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "CVE-2026-28199"
+  },
+  "cve:CVE-2026-93491": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "CVE-2026-93491"
+  },
+  "cve:CVE-2026-93492": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "CVE-2026-93492"
+  },
+  "cve:CVE-2026-93586": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "CVE-2026-93586"
+  },
+  "cve:CVE-2026-93593": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "CVE-2026-93593"
+  },
+  "cve:CVE-2026-93600": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "CVE-2026-93600"
+  },
+  "cve:CVE-2024-56344": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "CVE-2024-56344"
+  },
+  "cve:CVE-2026-10832": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "CVE-2026-10832"
+  },
+  "cve:CVE-2026-93558": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "CVE-2026-93558"
+  },
+  "cve:CVE-2026-93565": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "CVE-2026-93565"
+  },
+  "cve:CVE-2026-93566": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "CVE-2026-93566"
+  },
+  "cve:CVE-2026-93567": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "CVE-2026-93567"
   }
 }
