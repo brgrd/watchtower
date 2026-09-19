@@ -17332,5 +17332,35 @@
     "last_seen": "2026-09-19",
     "run_count": 1,
     "title": "CVE-2026-93567"
+  },
+  "217d1b4da657": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "SolarWinds Patches ARM Hard-Coded Key Flaw Enabling Unauthenticated RCE"
+  },
+  "78251ee30768": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "North Korean WaterPlum hackers infected 30,000 devices worldwide"
+  },
+  "63f4aede3dab": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "BragJack attacks hijack AI browser agents through malicious extensions"
+  },
+  "cb441abab05e": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "Viral AI actress' hotline face-scans every caller, watches their mood"
+  },
+  "747d3e6075ce": {
+    "first_seen": "2026-09-19",
+    "last_seen": "2026-09-19",
+    "run_count": 1,
+    "title": "ShinyHunters hacks Clop leak site, threatens to extort ransomware gang"
   }
 }
