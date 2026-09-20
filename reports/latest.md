@@ -1,31 +1,81 @@
 ---
-generated_at: 2026-09-20T00:58:58.912097+00:00
+generated_at: 2026-09-20T11:15:02.238331+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Can You Prove a New CVE Is Exploitable Before Attackers Do? Learn How in This Webinar (risk: 30)
+## CVE-2026-93964 (risk: 85)
 1 related updates.
 
-- [Can You Prove a New CVE Is Exploitable Before Attackers Do? Learn How in This Webinar](https://thehackernews.com/2026/09/can-you-prove-new-cve-is-exploitable.html)
+- [CVE-2026-93964](https://nvd.nist.gov/vuln/detail/CVE-2026-93964)
 
-## [Virtual Event] Cybersecurity Outlook 2027 (risk: 0)
+## CVE-2026-93955 (risk: 70)
 1 related updates.
 
-- [[Virtual Event] Cybersecurity Outlook 2027](https://www.darkreading.com/events/virtual-event-cybersecurity-outlook-2027)
+- [CVE-2026-93955](https://nvd.nist.gov/vuln/detail/CVE-2026-93955)
 
-## Claude Opus 5 Helped Researchers Take Over OpenAI Staff Accounts via Chained Flaws (risk: 0)
+## CVE-2026-93956 (risk: 70)
 1 related updates.
 
-- [Claude Opus 5 Helped Researchers Take Over OpenAI Staff Accounts via Chained Flaws](https://thehackernews.com/2026/09/claude-opus-5-helped-researchers-take.html)
+- [CVE-2026-93956](https://nvd.nist.gov/vuln/detail/CVE-2026-93956)
 
-## Identity Visibility in 2026: The Foundation of Identity Security (risk: 0)
+## CVE-2026-93957 (risk: 70)
 1 related updates.
 
-- [Identity Visibility in 2026: The Foundation of Identity Security](https://thehackernews.com/2026/09/identity-visibility-in-2026-foundation.html)
+- [CVE-2026-93957](https://nvd.nist.gov/vuln/detail/CVE-2026-93957)
 
-## TigerByte Cyber Emerges From Stealth With $3 Million in Funding (risk: 0)
+## CVE-2026-93958 (risk: 70)
 1 related updates.
 
-- [TigerByte Cyber Emerges From Stealth With $3 Million in Funding](https://www.securityweek.com/tigerbyte-cyber-emerges-from-stealth-with-3-million-in-funding/)
+- [CVE-2026-93958](https://nvd.nist.gov/vuln/detail/CVE-2026-93958)
+
+## CVE-2026-93959 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93959](https://nvd.nist.gov/vuln/detail/CVE-2026-93959)
+
+## CVE-2026-93960 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93960](https://nvd.nist.gov/vuln/detail/CVE-2026-93960)
+
+## CVE-2026-93962 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93962](https://nvd.nist.gov/vuln/detail/CVE-2026-93962)
+
+## CVE-2026-93963 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93963](https://nvd.nist.gov/vuln/detail/CVE-2026-93963)
+
+## CVE-2026-93967 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93967](https://nvd.nist.gov/vuln/detail/CVE-2026-93967)
+
+## CVE-2026-93972 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93972](https://nvd.nist.gov/vuln/detail/CVE-2026-93972)
+
+## CVE-2026-93973 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93973](https://nvd.nist.gov/vuln/detail/CVE-2026-93973)
+
+## CVE-2026-93974 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93974](https://nvd.nist.gov/vuln/detail/CVE-2026-93974)
+
+## CVE-2026-93975 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93975](https://nvd.nist.gov/vuln/detail/CVE-2026-93975)
+
+## CVE-2026-93976 (risk: 70)
+1 related updates.
+
+- [CVE-2026-93976](https://nvd.nist.gov/vuln/detail/CVE-2026-93976)
