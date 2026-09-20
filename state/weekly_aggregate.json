@@ -1,8 +1,8 @@
 {
-  "rebuilt_at": "2026-09-19T00:11:17.687032+00:00",
+  "rebuilt_at": "2026-09-20T00:58:58.938834+00:00",
   "window_days": 7,
-  "total_cards": 57,
-  "unique_cves": 47,
+  "total_cards": 47,
+  "unique_cves": 32,
   "active_domains": [
     "ai_threat",
     "ca_trust",
@@ -12,20 +12,19 @@
     "identity",
     "os_kernel",
     "pkg_maven",
-    "pkg_npm",
     "pkg_pypi",
     "supply_chain",
     "web_framework"
   ],
   "most_active_day": "2026-09-18",
   "day_counts": {
+    "2026-09-19": 5,
     "2026-09-18": 15,
     "2026-09-17": 4,
     "2026-09-16": 1,
     "2026-09-15": 4,
     "2026-09-14": 3,
-    "2026-09-13": 15,
-    "2026-09-12": 15
+    "2026-09-13": 15
   },
   "top_cves": [
     {
@@ -110,5 +109,5 @@
     }
   ],
   "weekly_summary": "Over the past 7 days, our security landscape has been characterized by a diverse range of vulnerabilities, with 17 unique CVEs tracked across various domains, including Cloud and IAM, Containers and K8s, OS and Kernel, npm and Node, PyPI and Python, and Web and Servers. The most frequently seen CVEs, each occurring once, include CVE-2026-73043, CVE-2026-73047, and others, highlighting the broad scope of potential threats. Notably, the majority of these findings were concentrated on a single day, August 16, 2026, underscoring the importance of ongoing vigilance in our security posture.",
-  "weekly_summary_ts": "2026-09-19"
+  "weekly_summary_ts": "2026-09-20"
 }
