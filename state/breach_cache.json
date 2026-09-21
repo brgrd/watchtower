@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-09-20T21:27:37.453933+00:00",
+  "fetched_at": "2026-09-21T23:12:08.891132+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -2795,6 +2795,25 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#BulgarianNationalRevenueAgency",
       "summary": "In July 2019, a massive data breach of the Bulgarian National Revenue Agency began circulating with data on 5 million people. Allegedly obtained in June, the data was broadly shared online and included taxation information alongside names, phone numbers, physical addresses and 471 thousand unique email addresses. The breach is said to have affected \"nearly all adults in Bulgaria\".",
+      "action": "monitor"
+    },
+    {
+      "id": "hibp:burgerkingrussia-2024-08-25",
+      "name": "BurgerKingRussia",
+      "title": "Burger King Russia",
+      "date": "2024-08-25",
+      "added": "2026-09-21",
+      "affected_count": 3155792,
+      "data_classes": [
+        "Dates of birth",
+        "Email addresses",
+        "Genders",
+        "Geographic locations",
+        "Names",
+        "Phone numbers"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#BurgerKingRussia",
+      "summary": "In October 2024, news of a data breach exposing Burger King Russia customers broke following an August attack on the Mindbox marketing automation platform. The breach exposed 3.2M unique email addresses along with names, genders, dates of birth, phone numbers and approximate geolocations, with the data spanning 2018 to August 2024. Burger King Russia acknowledged the incident and advised it did no",
       "action": "monitor"
     },
     {

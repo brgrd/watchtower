@@ -17662,5 +17662,17 @@
     "last_seen": "2026-09-21",
     "run_count": 1,
     "title": "CVE-2026-94048"
+  },
+  "655c5dc898cf": {
+    "first_seen": "2026-09-21",
+    "last_seen": "2026-09-21",
+    "run_count": 1,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "d89dfcd63517": {
+    "first_seen": "2026-09-21",
+    "last_seen": "2026-09-21",
+    "run_count": 1,
+    "title": "Windows Exploitation Techniques: Dangling COM Object Registrations"
   }
 }
