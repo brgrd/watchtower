@@ -1,5 +1,5 @@
 {
-  "rebuilt_at": "2026-09-20T00:58:58.938834+00:00",
+  "rebuilt_at": "2026-09-21T00:08:35.008079+00:00",
   "window_days": 7,
   "total_cards": 47,
   "unique_cves": 32,
@@ -12,21 +12,82 @@
     "identity",
     "os_kernel",
     "pkg_maven",
+    "pkg_npm",
     "pkg_pypi",
     "supply_chain",
     "web_framework"
   ],
-  "most_active_day": "2026-09-18",
+  "most_active_day": "2026-09-20",
   "day_counts": {
+    "2026-09-20": 15,
     "2026-09-19": 5,
     "2026-09-18": 15,
     "2026-09-17": 4,
     "2026-09-16": 1,
     "2026-09-15": 4,
-    "2026-09-14": 3,
-    "2026-09-13": 15
+    "2026-09-14": 3
   },
   "top_cves": [
+    {
+      "cve": "CVE-2026-94033",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-94034",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-94035",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-94036",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-94037",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-94038",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-94039",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-94040",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-94041",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-94042",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-94044",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-94045",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-94046",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-94047",
+      "count": 1
+    },
+    {
+      "cve": "CVE-2026-94048",
+      "count": 1
+    },
     {
       "cve": "CVE-2026-21806",
       "count": 1
@@ -46,68 +107,8 @@
     {
       "cve": "CVE-2026-93491",
       "count": 1
-    },
-    {
-      "cve": "CVE-2026-93492",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-93586",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-93593",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-93600",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2024-56344",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-10832",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-93558",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-93565",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-93566",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-93567",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-92943",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-86830",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-90580",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-90581",
-      "count": 1
-    },
-    {
-      "cve": "CVE-2026-90519",
-      "count": 1
     }
   ],
   "weekly_summary": "Over the past 7 days, our security landscape has been characterized by a diverse range of vulnerabilities, with 17 unique CVEs tracked across various domains, including Cloud and IAM, Containers and K8s, OS and Kernel, npm and Node, PyPI and Python, and Web and Servers. The most frequently seen CVEs, each occurring once, include CVE-2026-73043, CVE-2026-73047, and others, highlighting the broad scope of potential threats. Notably, the majority of these findings were concentrated on a single day, August 16, 2026, underscoring the importance of ongoing vigilance in our security posture.",
-  "weekly_summary_ts": "2026-09-20"
+  "weekly_summary_ts": "2026-09-21"
 }
