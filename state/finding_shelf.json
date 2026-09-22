@@ -16657,8 +16657,8 @@
   },
   "fa51d053d148": {
     "first_seen": "2026-09-11",
-    "last_seen": "2026-09-12",
-    "run_count": 2,
+    "last_seen": "2026-09-22",
+    "run_count": 3,
     "title": "Check Point Patches Critical VPN Vulnerabilities"
   },
   "cve:CVE-2026-89090": {
@@ -17680,5 +17680,53 @@
     "last_seen": "2026-09-22",
     "run_count": 1,
     "title": "WordPress Comment2Shell Flaw Can Turn Anonymous Comment XSS Into RCE via Admin Session"
+  },
+  "da072879ab7f": {
+    "first_seen": "2026-09-22",
+    "last_seen": "2026-09-22",
+    "run_count": 1,
+    "title": "D-Link warns of max severity zero-day bug in DIR-822A routers"
+  },
+  "66c35d578902": {
+    "first_seen": "2026-09-22",
+    "last_seen": "2026-09-22",
+    "run_count": 1,
+    "title": "lwIP (Lightweight IP)"
+  },
+  "2cbae96f4132": {
+    "first_seen": "2026-09-22",
+    "last_seen": "2026-09-22",
+    "run_count": 1,
+    "title": "lwIP TCP/IP Stack MQTT Client Application"
+  },
+  "e317974d072e": {
+    "first_seen": "2026-09-22",
+    "last_seen": "2026-09-22",
+    "run_count": 1,
+    "title": "New Linux Kernel Flaw Gives ARM64 KVM Guests Read-Write Access to Host Memory"
+  },
+  "cfea344a5256": {
+    "first_seen": "2026-09-22",
+    "last_seen": "2026-09-22",
+    "run_count": 1,
+    "title": "Critical Bifrost AI Gateway Flaw Lets Attackers Run Commands Without Credentials"
+  },
+  "318a303a9d6a": {
+    "first_seen": "2026-09-22",
+    "last_seen": "2026-09-22",
+    "run_count": 1,
+    "title": "SharePoint Flaw Initially Listed as Spoofing by Microsoft Enables Authenticated RCE"
+  },
+  "cve:CVE-2026-94384": {
+    "first_seen": "2026-09-22",
+    "last_seen": "2026-09-22",
+    "run_count": 1,
+    "title": "CVE-2026-94384 - Missing Authorization in AmazonConnectSalesforceLambda sfExecuteAWSService"
+  },
+  "cve:CVE-2026-94450": {
+    "first_seen": "2026-09-22",
+    "last_seen": "2026-09-22",
+    "run_count": 1,
+    "title": "CVE-2026-94450 - Potential denial of service when configured to send Retry packets in s2n-quic"
   }
 }
