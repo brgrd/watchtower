@@ -17665,8 +17665,8 @@
   },
   "655c5dc898cf": {
     "first_seen": "2026-09-21",
-    "last_seen": "2026-09-21",
-    "run_count": 1,
+    "last_seen": "2026-09-22",
+    "run_count": 2,
     "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
   },
   "d89dfcd63517": {
@@ -17674,5 +17674,11 @@
     "last_seen": "2026-09-21",
     "run_count": 1,
     "title": "Windows Exploitation Techniques: Dangling COM Object Registrations"
+  },
+  "5ea33af28bee": {
+    "first_seen": "2026-09-22",
+    "last_seen": "2026-09-22",
+    "run_count": 1,
+    "title": "WordPress Comment2Shell Flaw Can Turn Anonymous Comment XSS Into RCE via Admin Session"
   }
 }

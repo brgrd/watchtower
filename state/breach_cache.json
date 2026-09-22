@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-09-21T23:12:08.891132+00:00",
+  "fetched_at": "2026-09-22T09:51:00.078582+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -9520,6 +9520,24 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Liker",
       "summary": "In March 2021, the self-proclaimed \"kinder, smarter social network\" Liker suffered a data breach, allegedly in retaliation for the Gab data breach and scraping of data from Parler. The site remained offline after the breach which exposed 465k email addresses in addition to names, dates of birth, education levels, private messages, security questions and answers in plain text, passwords stored as b",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:limeleads-2019-08-01",
+      "name": "LimeLeads",
+      "title": "LimeLeads",
+      "date": "2019-08-01",
+      "added": "2026-09-22",
+      "affected_count": 17838396,
+      "data_classes": [
+        "Email addresses",
+        "Employers",
+        "Geographic locations",
+        "Job titles",
+        "Phone numbers"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#LimeLeads",
+      "summary": "In 2019, the now-defunct B2B marketing leads database service LimeLeads suffered a data breach due to an exposed, unsecured Elasticsearch server. The incident exposed tens of millions of records of largely corporate contact data containing 17.8M unique email addresses, along with phone numbers, employers, job titles and geographic locations including state, city and postcode.",
+      "action": "monitor"
     },
     {
       "id": "hibp:limevpn-2020-10-08",
