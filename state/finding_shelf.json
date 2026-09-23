@@ -17728,5 +17728,17 @@
     "last_seen": "2026-09-22",
     "run_count": 1,
     "title": "CVE-2026-94450 - Potential denial of service when configured to send Retry packets in s2n-quic"
+  },
+  "0baaf58ad6d0": {
+    "first_seen": "2026-09-23",
+    "last_seen": "2026-09-23",
+    "run_count": 1,
+    "title": "Check Point Warns of Management Server Zero-Day Exploited in Targeted Attacks"
+  },
+  "633f1e5107d8": {
+    "first_seen": "2026-09-23",
+    "last_seen": "2026-09-23",
+    "run_count": 1,
+    "title": "New CVSS 10.0 VeloCloud Orchestrator Flaw Actively Exploited in Certificate-Based Setups"
   }
 }
