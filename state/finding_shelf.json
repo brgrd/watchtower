@@ -2632,14 +2632,14 @@
   },
   "cve:CVE-2026-7191": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-08-20",
-    "run_count": 2,
+    "last_seen": "2026-09-24",
+    "run_count": 3,
     "title": "CVE-2026-7191- Arbitrary Code Execution via Sandbox Bypass in QnABot on AWS"
   },
   "cve:CVE-2026-6437": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-08-20",
-    "run_count": 2,
+    "last_seen": "2026-09-24",
+    "run_count": 3,
     "title": "CVE-2026-6437 - Mount Option Injection in Amazon EFS CSI Driver"
   },
   "cve:CVE-2026-1386": {
@@ -2704,8 +2704,8 @@
   },
   "cve:CVE-2026-5747": {
     "first_seen": "2026-06-06",
-    "last_seen": "2026-06-06",
-    "run_count": 1,
+    "last_seen": "2026-09-24",
+    "run_count": 2,
     "title": "CVE-2026-5747 - Out-of-bounds Write in Firecracker virtio-pci Transport"
   },
   "cve:CVE-2025-6031": {
@@ -2752,8 +2752,8 @@
   },
   "cve:CVE-2026-6911": {
     "first_seen": "2026-06-06",
-    "last_seen": "2026-06-06",
-    "run_count": 1,
+    "last_seen": "2026-09-24",
+    "run_count": 2,
     "title": "Issue with AWS Ops Wheel (CVE-2026-6911 and CVE-2026-6912"
   },
   "cve:CVE-2025-11462": {
@@ -17095,8 +17095,8 @@
   },
   "a03bf75de2a8": {
     "first_seen": "2026-09-16",
-    "last_seen": "2026-09-16",
-    "run_count": 1,
+    "last_seen": "2026-09-24",
+    "run_count": 2,
     "title": "Active Exploitation Attempts Target WSO2 API Manager JWT Bypass With Forged Admin Tokens"
   },
   "6470a2b9aed0": {
@@ -17764,5 +17764,47 @@
     "last_seen": "2026-09-23",
     "run_count": 1,
     "title": "MikroTrick Chain Let Attackers Take Over MikroTik Routers Without a Password or SSH Key"
+  },
+  "f60bda4998d4": {
+    "first_seen": "2026-09-24",
+    "last_seen": "2026-09-24",
+    "run_count": 1,
+    "title": "Eufy Omni C20, Omni X10 Pro"
+  },
+  "45ae8dd7ed2d": {
+    "first_seen": "2026-09-24",
+    "last_seen": "2026-09-24",
+    "run_count": 1,
+    "title": "SolarWinds Patches Critical RCE Flaws in Observability Self-Hosted"
+  },
+  "119884847110": {
+    "first_seen": "2026-09-24",
+    "last_seen": "2026-09-24",
+    "run_count": 1,
+    "title": "Siemens Mendix Runtime (Update A)"
+  },
+  "cve:CVE-2026-96883": {
+    "first_seen": "2026-09-24",
+    "last_seen": "2026-09-24",
+    "run_count": 1,
+    "title": "CVE-2026-96883 - Type confusion in AWS pgcollection allows remote code execution"
+  },
+  "cve:CVE-2026-5190": {
+    "first_seen": "2026-09-24",
+    "last_seen": "2026-09-24",
+    "run_count": 1,
+    "title": "CVE-2026-5190 - AWS C Event Stream Streaming Decoder Stack Buffer Overflow"
+  },
+  "cve:CVE-2026-6550": {
+    "first_seen": "2026-09-24",
+    "last_seen": "2026-09-24",
+    "run_count": 1,
+    "title": "CVE-2026-6550 - Key commitment policy bypass via shared key cache in AWS Encryption SDK for Python"
+  },
+  "cve:CVE-2026-5429": {
+    "first_seen": "2026-09-24",
+    "last_seen": "2026-09-24",
+    "run_count": 1,
+    "title": "CVE-2026-5429 - Kiro IDE Webview Cross-Site Scripting via Workspace Color Theme"
   }
 }
