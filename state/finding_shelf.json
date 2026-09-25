@@ -649,8 +649,8 @@
   },
   "cve:CVE-2026-31431": {
     "first_seen": "2026-04-30",
-    "last_seen": "2026-06-06",
-    "run_count": 3,
+    "last_seen": "2026-09-25",
+    "run_count": 4,
     "title": "geldata gel-mcp Vuln"
   },
   "cve:CVE-2026-2052": {
@@ -832,8 +832,8 @@
   },
   "cve:CVE-2026-8178": {
     "first_seen": "2026-05-08",
-    "last_seen": "2026-08-20",
-    "run_count": 3,
+    "last_seen": "2026-09-25",
+    "run_count": 4,
     "title": "CVE-2026-8178 RCE",
     "last_problem_type": "rce",
     "last_affects": "framework",
@@ -2680,8 +2680,8 @@
   },
   "cve:CVE-2026-7424": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-08-20",
-    "run_count": 2,
+    "last_seen": "2026-09-25",
+    "run_count": 3,
     "title": "CVE-2026-7424 - Integer Underflow in DHCPv6 Sub-Option Parser in FreeRTOS-Plus-TCP"
   },
   "cve:CVE-2026-11400": {
@@ -17095,8 +17095,8 @@
   },
   "a03bf75de2a8": {
     "first_seen": "2026-09-16",
-    "last_seen": "2026-09-24",
-    "run_count": 2,
+    "last_seen": "2026-09-25",
+    "run_count": 3,
     "title": "Active Exploitation Attempts Target WSO2 API Manager JWT Bypass With Forged Admin Tokens"
   },
   "6470a2b9aed0": {
@@ -17713,8 +17713,8 @@
   },
   "318a303a9d6a": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-09-22",
-    "run_count": 1,
+    "last_seen": "2026-09-25",
+    "run_count": 2,
     "title": "SharePoint Flaw Initially Listed as Spoofing by Microsoft Enables Authenticated RCE"
   },
   "cve:CVE-2026-94384": {
@@ -17755,8 +17755,8 @@
   },
   "8dece3b88389": {
     "first_seen": "2026-09-23",
-    "last_seen": "2026-09-24",
-    "run_count": 2,
+    "last_seen": "2026-09-25",
+    "run_count": 3,
     "title": "Hackers start exploiting critical WordPress flaw for code execution"
   },
   "f0e44cb3ce36": {
@@ -17806,5 +17806,23 @@
     "last_seen": "2026-09-24",
     "run_count": 1,
     "title": "CVE-2026-5429 - Kiro IDE Webview Cross-Site Scripting via Workspace Color Theme"
+  },
+  "204caaf94652": {
+    "first_seen": "2026-09-25",
+    "last_seen": "2026-09-25",
+    "run_count": 1,
+    "title": "Roundcube Pre-Auth SQL Injection Flaw Actively Exploited in the Wild"
+  },
+  "cve:CVE-2026-7461": {
+    "first_seen": "2026-09-25",
+    "last_seen": "2026-09-25",
+    "run_count": 1,
+    "title": "CVE-2026-7461 - OS Command Injection in Amazon ECS Agent via FSx Windows File Server Volume Credentials"
+  },
+  "cve:CVE-2026-7791": {
+    "first_seen": "2026-09-25",
+    "last_seen": "2026-09-25",
+    "run_count": 1,
+    "title": "CVE-2026-7791 - Local Privilege Escalation via TOCTOU Race Condition in Amazon WorkSpaces Skylight Agent"
   }
 }
