@@ -17713,8 +17713,8 @@
   },
   "318a303a9d6a": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-09-25",
-    "run_count": 2,
+    "last_seen": "2026-09-26",
+    "run_count": 3,
     "title": "SharePoint Flaw Initially Listed as Spoofing by Microsoft Enables Authenticated RCE"
   },
   "cve:CVE-2026-94384": {
