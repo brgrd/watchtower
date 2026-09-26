@@ -17824,5 +17824,11 @@
     "last_seen": "2026-09-25",
     "run_count": 1,
     "title": "CVE-2026-7791 - Local Privilege Escalation via TOCTOU Race Condition in Amazon WorkSpaces Skylight Agent"
+  },
+  "700c5711bb70": {
+    "first_seen": "2026-09-26",
+    "last_seen": "2026-09-26",
+    "run_count": 1,
+    "title": "Attackers Bypass WAFs to Exploit Oracle PeopleSoft Flaw and Deploy Web Shells"
   }
 }

@@ -1,15 +1,15 @@
-# Watchtower Pipeline Eval — 2026-09-26T12:59:00Z
+# Watchtower Pipeline Eval — 2026-09-26T22:40:06Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 178 |
-| After dedup + CVE merge | 176 |
+| Items polled (raw) | 156 |
+| After dedup + CVE merge | 154 |
 | Sent to Groq | 1 |
 | Groq findings returned | 0 |
 | Final cards rendered | 1 |
-| **Pipeline yield** | **1/178 (0.6%)** |
+| **Pipeline yield** | **1/156 (0.6%)** |
 
 ## Groq
 - **Model**: `unknown`
@@ -23,7 +23,7 @@
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 80 / 80 |
+| Risk score mean / p90 | 70 / 70 |
 | Tactic coverage | 0% |
 | CVE coverage | 0% |
 | Patch status | unknown: 1 |
@@ -35,8 +35,8 @@
 
 ### Persistence
 
-- New (run=1): **0** | Evolving (2–5): **1** | Persistent (>5): **0** | Resolved: **0**
-- Mean run_count: 3 | Mean shelf_days: 4
+- New (run=1): **1** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
+- Mean run_count: 1 | Mean shelf_days: 0
 
 ## Enrichment Hit Rates
 
@@ -50,23 +50,23 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 162 |
-| `thehackernews` | 3 |
-| `cisa_kev` | 3 |
-| `bleepingcomputer` | 2 |
-| `github_changelog` | 2 |
+| `nvd` | 146 |
+| `bleepingcomputer` | 5 |
+| `thehackernews` | 2 |
+| `securityweek` | 2 |
+| `darkreading` | 1 |
 | _(+21 more)_ | … |
 
-**16 feeds returned 0 items this run.**
+**21 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-09-22 | 9 | ? | 0% | 0% | 8 | 0 |
 | 2026-09-23 | 2 | ? | 0% | 0% | 2 | 0 |
 | 2026-09-23 | 2 | ? | 0% | 0% | 1 | 0 |
 | 2026-09-23 | 4 | ? | 0% | 0% | 3 | 0 |
 | 2026-09-24 | 1 | ? | 0% | 0% | 0 | 0 |
 | 2026-09-24 | 12 | ? | 0% | 0% | 7 | 0 |
 | 2026-09-25 | 9 | ? | 0% | 0% | 3 | 0 |
+| 2026-09-26 | 1 | ? | 0% | 0% | 0 | 0 |
