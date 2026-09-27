@@ -17830,5 +17830,17 @@
     "last_seen": "2026-09-26",
     "run_count": 1,
     "title": "Attackers Bypass WAFs to Exploit Oracle PeopleSoft Flaw and Deploy Web Shells"
+  },
+  "2fa12d512dd4": {
+    "first_seen": "2026-09-27",
+    "last_seen": "2026-09-27",
+    "run_count": 1,
+    "title": "Critical Zero-Day Vulnerabilities Exploited in Citrix NetScaler ADC, Gateway"
+  },
+  "cve:CVE-2026-65660": {
+    "first_seen": "2026-09-27",
+    "last_seen": "2026-09-27",
+    "run_count": 1,
+    "title": "Microsoft SharePoint Flaw CVE-2026-65660 Now Exploited in Attacks"
   }
 }

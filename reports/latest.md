@@ -1,11 +1,16 @@
 ---
-generated_at: 2026-09-26T22:40:13.864613+00:00
+generated_at: 2026-09-27T22:01:05.086303+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Attackers Bypass WAFs to Exploit Oracle PeopleSoft Flaw and Deploy Web Shells (risk: 70)
+## Critical Zero-Day Vulnerabilities Exploited in Citrix NetScaler ADC, Gateway (risk: 70)
 1 related updates.
 
-- [Attackers Bypass WAFs to Exploit Oracle PeopleSoft Flaw and Deploy Web Shells](https://thehackernews.com/2026/09/attackers-bypass-wafs-to-exploit-oracle.html)
+- [Critical Zero-Day Vulnerabilities Exploited in Citrix NetScaler ADC, Gateway](https://www.cisa.gov/news-events/alerts/2026/09/27/critical-zero-day-vulnerabilities-exploited-citrix-netscaler-adc-gateway)
+
+## Microsoft SharePoint Flaw CVE-2026-65660 Now Exploited in Attacks (risk: 70)
+1 related updates.
+
+- [Microsoft SharePoint Flaw CVE-2026-65660 Now Exploited in Attacks](https://www.securityweek.com/microsoft-sharepoint-flaw-cve-2026-65660-now-exploited-in-attacks/)
