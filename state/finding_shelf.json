@@ -4591,8 +4591,8 @@
   },
   "4ef43c3ae997": {
     "first_seen": "2026-06-24",
-    "last_seen": "2026-09-08",
-    "run_count": 5,
+    "last_seen": "2026-09-28",
+    "run_count": 6,
     "title": "GCP-2026-041"
   },
   "0149ede49c0d": {
@@ -15055,8 +15055,8 @@
   },
   "81026920ec02": {
     "first_seen": "2026-08-26",
-    "last_seen": "2026-09-08",
-    "run_count": 2,
+    "last_seen": "2026-09-28",
+    "run_count": 3,
     "title": "GCP-2026-054"
   },
   "80d7b640a09f": {
@@ -15811,8 +15811,8 @@
   },
   "1aba8f91d526": {
     "first_seen": "2026-09-04",
-    "last_seen": "2026-09-04",
-    "run_count": 1,
+    "last_seen": "2026-09-28",
+    "run_count": 2,
     "title": "GCP-2026-060"
   },
   "cve:CVE-2026-86113": {
@@ -17827,8 +17827,8 @@
   },
   "700c5711bb70": {
     "first_seen": "2026-09-26",
-    "last_seen": "2026-09-26",
-    "run_count": 1,
+    "last_seen": "2026-09-28",
+    "run_count": 2,
     "title": "Attackers Bypass WAFs to Exploit Oracle PeopleSoft Flaw and Deploy Web Shells"
   },
   "2fa12d512dd4": {
@@ -17932,5 +17932,11 @@
     "last_seen": "2026-09-28",
     "run_count": 1,
     "title": "CVE-2026-100881"
+  },
+  "cve:CVE-2026-88771": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "Threat Brief: NetScaler Zero Days CVE-2026-88771 and CVE-2026-88772 Exploited in the Wild"
   }
 }
