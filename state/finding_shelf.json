@@ -17842,5 +17842,95 @@
     "last_seen": "2026-09-27",
     "run_count": 1,
     "title": "Microsoft SharePoint Flaw CVE-2026-65660 Now Exploited in Attacks"
+  },
+  "cve:CVE-2026-100882": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "CVE-2026-100882"
+  },
+  "cve:CVE-2026-100883": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "CVE-2026-100883"
+  },
+  "cve:CVE-2026-100884": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "CVE-2026-100884"
+  },
+  "cve:CVE-2026-100885": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "CVE-2026-100885"
+  },
+  "cve:CVE-2026-101051": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "CVE-2026-101051"
+  },
+  "cve:CVE-2026-100873": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "CVE-2026-100873"
+  },
+  "cve:CVE-2026-100874": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "CVE-2026-100874"
+  },
+  "cve:CVE-2026-100875": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "CVE-2026-100875"
+  },
+  "cve:CVE-2026-100876": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "CVE-2026-100876"
+  },
+  "cve:CVE-2026-100877": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "CVE-2026-100877"
+  },
+  "cve:CVE-2026-100878": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "CVE-2026-100878"
+  },
+  "cve:CVE-2026-100879": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "CVE-2026-100879"
+  },
+  "cve:CVE-2026-100880": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "CVE-2026-100880"
+  },
+  "cve:CVE-2026-101086": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "CVE-2026-101086"
+  },
+  "cve:CVE-2026-100881": {
+    "first_seen": "2026-09-28",
+    "last_seen": "2026-09-28",
+    "run_count": 1,
+    "title": "CVE-2026-100881"
   }
 }
