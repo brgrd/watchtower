@@ -12655,8 +12655,8 @@
   },
   "cve:CVE-2026-73570": {
     "first_seen": "2026-08-21",
-    "last_seen": "2026-08-21",
-    "run_count": 1,
+    "last_seen": "2026-09-30",
+    "run_count": 2,
     "title": "CVE-2026-73570 — Zimbra Collaboration Suite (ZCS) OS Command Injection Vulnerability"
   },
   "cve:CVE-2026-77763": {
@@ -17935,8 +17935,8 @@
   },
   "cve:CVE-2026-88771": {
     "first_seen": "2026-09-28",
-    "last_seen": "2026-09-28",
-    "run_count": 1,
+    "last_seen": "2026-09-30",
+    "run_count": 2,
     "title": "Threat Brief: NetScaler Zero Days CVE-2026-88771 and CVE-2026-88772 Exploited in the Wild"
   },
   "ffa0c4018f34": {
@@ -17980,5 +17980,11 @@
     "last_seen": "2026-09-30",
     "run_count": 1,
     "title": "CVE-2026-100308 - GluonTS arbitrary command execution during model deserialization"
+  },
+  "062448e79a6b": {
+    "first_seen": "2026-09-30",
+    "last_seen": "2026-09-30",
+    "run_count": 1,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
   }
 }
