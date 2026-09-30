@@ -17938,5 +17938,47 @@
     "last_seen": "2026-09-28",
     "run_count": 1,
     "title": "Threat Brief: NetScaler Zero Days CVE-2026-88771 and CVE-2026-88772 Exploited in the Wild"
+  },
+  "ffa0c4018f34": {
+    "first_seen": "2026-09-30",
+    "last_seen": "2026-09-30",
+    "run_count": 1,
+    "title": "Lantronix G520 Series Cellular Gateway"
+  },
+  "dd3a4b59b84d": {
+    "first_seen": "2026-09-30",
+    "last_seen": "2026-09-30",
+    "run_count": 1,
+    "title": "Toptech TMS7 and TopHAT"
+  },
+  "6f9df72d8cea": {
+    "first_seen": "2026-09-30",
+    "last_seen": "2026-09-30",
+    "run_count": 1,
+    "title": "MikroTik RouterOS"
+  },
+  "853091074647": {
+    "first_seen": "2026-09-30",
+    "last_seen": "2026-09-30",
+    "run_count": 1,
+    "title": "Baicells Nova 430H"
+  },
+  "0878a1c9353a": {
+    "first_seen": "2026-09-30",
+    "last_seen": "2026-09-30",
+    "run_count": 1,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "5b771b280bcd": {
+    "first_seen": "2026-09-30",
+    "last_seen": "2026-09-30",
+    "run_count": 1,
+    "title": "Hackers exploit Citrix NetScaler zero-day to deploy web shells"
+  },
+  "cve:CVE-2026-100308": {
+    "first_seen": "2026-09-30",
+    "last_seen": "2026-09-30",
+    "run_count": 1,
+    "title": "CVE-2026-100308 - GluonTS arbitrary command execution during model deserialization"
   }
 }
