@@ -12151,8 +12151,8 @@
   },
   "e1cdd1824a4c": {
     "first_seen": "2026-08-20",
-    "last_seen": "2026-08-24",
-    "run_count": 3,
+    "last_seen": "2026-10-01",
+    "run_count": 4,
     "title": "Attackers Exploit Zimbra SNMP Flaw for Unauthenticated Remote Code Execution"
   },
   "cve:CVE-2026-18917": {
@@ -17965,8 +17965,8 @@
   },
   "0878a1c9353a": {
     "first_seen": "2026-09-30",
-    "last_seen": "2026-09-30",
-    "run_count": 1,
+    "last_seen": "2026-10-01",
+    "run_count": 2,
     "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
   },
   "5b771b280bcd": {
@@ -17983,8 +17983,50 @@
   },
   "062448e79a6b": {
     "first_seen": "2026-09-30",
-    "last_seen": "2026-09-30",
+    "last_seen": "2026-10-01",
+    "run_count": 2,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "e851a9844354": {
+    "first_seen": "2026-10-01",
+    "last_seen": "2026-10-01",
+    "run_count": 1,
+    "title": "Monta monta.app"
+  },
+  "ebc484112508": {
+    "first_seen": "2026-10-01",
+    "last_seen": "2026-10-01",
     "run_count": 1,
     "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "6daa19df3bad": {
+    "first_seen": "2026-10-01",
+    "last_seen": "2026-10-01",
+    "run_count": 1,
+    "title": "Johnson Controls EasyIO Neo Series EC and CW Controllers"
+  },
+  "3d76ad8e2166": {
+    "first_seen": "2026-10-01",
+    "last_seen": "2026-10-01",
+    "run_count": 1,
+    "title": "ABB Protection and Control IED Manager PCM600"
+  },
+  "cve:CVE-2026-97662": {
+    "first_seen": "2026-10-01",
+    "last_seen": "2026-10-01",
+    "run_count": 1,
+    "title": "CVE-2026-97662 - Argument injection in AWS security-agent-mcp-server diff scan"
+  },
+  "cve:CVE-2026-104002": {
+    "first_seen": "2026-10-01",
+    "last_seen": "2026-10-01",
+    "run_count": 1,
+    "title": "CVE-2026-104002: Fail-open error handling in the data masking utility in Powertools for AWS Lambda (Python)"
+  },
+  "cve:CVE-2026-104020": {
+    "first_seen": "2026-10-01",
+    "last_seen": "2026-10-01",
+    "run_count": 1,
+    "title": "CVE-2026-104020 - Uncontrolled recursion in the Ion reader in Amazon Ion Python"
   }
 }
