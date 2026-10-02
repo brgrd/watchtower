@@ -18028,5 +18028,35 @@
     "last_seen": "2026-10-01",
     "run_count": 1,
     "title": "CVE-2026-104020 - Uncontrolled recursion in the Ion reader in Amazon Ion Python"
+  },
+  "e24d99385382": {
+    "first_seen": "2026-10-02",
+    "last_seen": "2026-10-02",
+    "run_count": 1,
+    "title": "Dell CSM Flaws Enable Unauthenticated Admin Access and Root on Kubernetes Nodes"
+  },
+  "dcec33db1fec": {
+    "first_seen": "2026-10-02",
+    "last_seen": "2026-10-02",
+    "run_count": 1,
+    "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
+  },
+  "cve:CVE-2026-103505": {
+    "first_seen": "2026-10-02",
+    "last_seen": "2026-10-02",
+    "run_count": 1,
+    "title": "CVE-2026-103505 - Mount Option Injection in Amazon EFS CSI Driver"
+  },
+  "cve:CVE-2026-104019": {
+    "first_seen": "2026-10-02",
+    "last_seen": "2026-10-02",
+    "run_count": 1,
+    "title": "CVE-2026-104019 - OS command injection in the Studio Space startup script in Amazon SageMaker Distribution"
+  },
+  "cve:CVE-2026-103956": {
+    "first_seen": "2026-10-02",
+    "last_seen": "2026-10-02",
+    "run_count": 1,
+    "title": "CVE-2026-103956, CVE-2026-103957, and CVE-2026-103958 - Issues in Loom for AWS"
   }
 }
