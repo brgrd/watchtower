@@ -1,81 +1,41 @@
 ---
-generated_at: 2026-10-03T12:26:33.942127+00:00
+generated_at: 2026-10-03T21:07:45.048638+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-104988 (risk: 70)
+## Warlock Exploits SharePoint Flaws to Disable Security Tools and Deploy Ransomware (risk: 30)
 1 related updates.
 
-- [CVE-2026-104988](https://nvd.nist.gov/vuln/detail/CVE-2026-104988)
+- [Warlock Exploits SharePoint Flaws to Disable Security Tools and Deploy Ransomware](https://thehackernews.com/2026/10/warlock-exploits-sharepoint-flaws-to.html)
 
-## CVE-2026-82039 (risk: 70)
+## MI5 Says China’s MSS Funded Research Involving 100+ U.K.-Linked Academics (risk: 0)
 1 related updates.
 
-- [CVE-2026-82039](https://nvd.nist.gov/vuln/detail/CVE-2026-82039)
+- [MI5 Says China’s MSS Funded Research Involving 100+ U.K.-Linked Academics](https://thehackernews.com/2026/10/mi5-says-chinas-mss-funded-research.html)
 
-## CVE-2026-82040 (risk: 70)
+## The State of Cybersecurity in 2026: Key Segments, Insights, and Innovations (risk: 0)
 1 related updates.
 
-- [CVE-2026-82040](https://nvd.nist.gov/vuln/detail/CVE-2026-82040)
+- [The State of Cybersecurity in 2026: Key Segments, Insights, and Innovations](https://thehackernews.com/2026/10/the-state-of-cybersecurity-in-2026key.html)
 
-## CVE-2026-82045 (risk: 70)
+## doxx.net Raises $38 Million to Prevent AI Agent-on-the-Internet Misadventures (risk: 0)
 1 related updates.
 
-- [CVE-2026-82045](https://nvd.nist.gov/vuln/detail/CVE-2026-82045)
+- [doxx.net Raises $38 Million to Prevent AI Agent-on-the-Internet Misadventures](https://www.securityweek.com/doxx-net-raises-38-million-to-prevent-ai-agent-on-the-internet-misadventures/)
 
-## CVE-2026-95102 (risk: 70)
+## Danish university DTU breach exposes data of up to 200,000 people (risk: 0)
 1 related updates.
 
-- [CVE-2026-95102](https://nvd.nist.gov/vuln/detail/CVE-2026-95102)
+- [Danish university DTU breach exposes data of up to 200,000 people](https://www.bleepingcomputer.com/news/security/danish-university-dtu-breach-exposes-data-of-up-to-200-000-people/)
 
-## CVE-2026-92243 (risk: 70)
+## ShinyHunters hacker reportedly detained in Jordan, aiding FBI (risk: 0)
 1 related updates.
 
-- [CVE-2026-92243](https://nvd.nist.gov/vuln/detail/CVE-2026-92243)
+- [ShinyHunters hacker reportedly detained in Jordan, aiding FBI](https://www.bleepingcomputer.com/news/security/shinyhunters-hacker-reportedly-detained-in-jordan-aiding-fbi/)
 
-## CVE-2026-94378 (risk: 70)
+## Fortra Patches Critical Vulnerabilities in BoKS (risk: 0)
 1 related updates.
 
-- [CVE-2026-94378](https://nvd.nist.gov/vuln/detail/CVE-2026-94378)
-
-## CVE-2026-92826 (risk: 70)
-1 related updates.
-
-- [CVE-2026-92826](https://nvd.nist.gov/vuln/detail/CVE-2026-92826)
-
-## CVE-2026-96564 (risk: 70)
-1 related updates.
-
-- [CVE-2026-96564](https://nvd.nist.gov/vuln/detail/CVE-2026-96564)
-
-## CVE-2026-96650 (risk: 70)
-1 related updates.
-
-- [CVE-2026-96650](https://nvd.nist.gov/vuln/detail/CVE-2026-96650)
-
-## CVE-2026-103421 (risk: 70)
-1 related updates.
-
-- [CVE-2026-103421](https://nvd.nist.gov/vuln/detail/CVE-2026-103421)
-
-## CVE-2026-87115 (risk: 70)
-1 related updates.
-
-- [CVE-2026-87115](https://nvd.nist.gov/vuln/detail/CVE-2026-87115)
-
-## CVE-2026-92974 (risk: 70)
-1 related updates.
-
-- [CVE-2026-92974](https://nvd.nist.gov/vuln/detail/CVE-2026-92974)
-
-## CVE-2026-93889 (risk: 70)
-1 related updates.
-
-- [CVE-2026-93889](https://nvd.nist.gov/vuln/detail/CVE-2026-93889)
-
-## CVE-2026-97660 (risk: 70)
-1 related updates.
-
-- [CVE-2026-97660](https://nvd.nist.gov/vuln/detail/CVE-2026-97660)
+- [Fortra Patches Critical Vulnerabilities in BoKS](https://www.securityweek.com/fortra-patches-critical-vulnerabilities-in-boks/)

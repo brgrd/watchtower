@@ -18148,5 +18148,47 @@
     "last_seen": "2026-10-03",
     "run_count": 1,
     "title": "CVE-2026-97660"
+  },
+  "fb550faa4672": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "Warlock Exploits SharePoint Flaws to Disable Security Tools and Deploy Ransomware"
+  },
+  "5ab9719ca23c": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "MI5 Says China’s MSS Funded Research Involving 100+ U.K.-Linked Academics"
+  },
+  "13cf6f288c04": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "The State of Cybersecurity in 2026: Key Segments, Insights, and Innovations"
+  },
+  "b01b18cbcb6b": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "doxx.net Raises $38 Million to Prevent AI Agent-on-the-Internet Misadventures"
+  },
+  "ec5a151667e0": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "Danish university DTU breach exposes data of up to 200,000 people"
+  },
+  "370901ab5ff6": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "ShinyHunters hacker reportedly detained in Jordan, aiding FBI"
+  },
+  "3986c1b052b9": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "Fortra Patches Critical Vulnerabilities in BoKS"
   }
 }
