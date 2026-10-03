@@ -18058,5 +18058,95 @@
     "last_seen": "2026-10-02",
     "run_count": 1,
     "title": "CVE-2026-103956, CVE-2026-103957, and CVE-2026-103958 - Issues in Loom for AWS"
+  },
+  "cve:CVE-2026-104988": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "CVE-2026-104988"
+  },
+  "cve:CVE-2026-82039": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "CVE-2026-82039"
+  },
+  "cve:CVE-2026-82040": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "CVE-2026-82040"
+  },
+  "cve:CVE-2026-82045": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "CVE-2026-82045"
+  },
+  "cve:CVE-2026-95102": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "CVE-2026-95102"
+  },
+  "cve:CVE-2026-92243": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "CVE-2026-92243"
+  },
+  "cve:CVE-2026-94378": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "CVE-2026-94378"
+  },
+  "cve:CVE-2026-92826": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "CVE-2026-92826"
+  },
+  "cve:CVE-2026-96564": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "CVE-2026-96564"
+  },
+  "cve:CVE-2026-96650": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "CVE-2026-96650"
+  },
+  "cve:CVE-2026-103421": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "CVE-2026-103421"
+  },
+  "cve:CVE-2026-87115": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "CVE-2026-87115"
+  },
+  "cve:CVE-2026-92974": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "CVE-2026-92974"
+  },
+  "cve:CVE-2026-93889": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "CVE-2026-93889"
+  },
+  "cve:CVE-2026-97660": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "run_count": 1,
+    "title": "CVE-2026-97660"
   }
 }
