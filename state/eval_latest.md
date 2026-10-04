@@ -1,15 +1,15 @@
-# Watchtower Pipeline Eval — 2026-10-04T00:30:13Z
+# Watchtower Pipeline Eval — 2026-10-04T22:17:37Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 27 |
-| After dedup + CVE merge | 23 |
+| Items polled (raw) | 71 |
+| After dedup + CVE merge | 68 |
 | Sent to Groq | 1 |
 | Groq findings returned | 0 |
 | Final cards rendered | 1 |
-| **Pipeline yield** | **1/27 (3.7%)** |
+| **Pipeline yield** | **1/71 (1.4%)** |
 
 ## Groq
 - **Model**: `unknown`
@@ -23,7 +23,7 @@
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 0 / 0 |
+| Risk score mean / p90 | 70 / 70 |
 | Tactic coverage | 0% |
 | CVE coverage | 0% |
 | Patch status | unknown: 1 |
@@ -50,23 +50,23 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 22 |
-| `bleepingcomputer` | 3 |
+| `nvd` | 62 |
+| `bleepingcomputer` | 2 |
 | `thehackernews` | 2 |
-| `cisa_alerts` | 0 |
-| `cisa_kev` | 0 |
+| `msrc_update_guide` | 2 |
+| `cisa_alerts` | 1 |
 | _(+21 more)_ | … |
 
-**21 feeds returned 0 items this run.**
+**19 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-09-30 | 7 | ? | 0% | 0% | 7 | 0 |
 | 2026-09-30 | 3 | ? | 0% | 0% | 1 | 0 |
 | 2026-10-01 | 10 | ? | 0% | 0% | 7 | 0 |
 | 2026-10-02 | 1 | ? | 0% | 0% | 0 | 0 |
 | 2026-10-02 | 5 | ? | 0% | 0% | 5 | 0 |
 | 2026-10-03 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-10-03 | 7 | ? | 0% | 0% | 7 | 0 |
+| 2026-10-04 | 1 | ? | 0% | 0% | 1 | 0 |
