@@ -5,18 +5,6 @@
     "run_count": 2,
     "title": "Ivanti Endpoint Manager Mobile RCE"
   },
-  "cve:CVE-2026-33439": {
-    "first_seen": "2026-04-08",
-    "last_seen": "2026-04-08",
-    "run_count": 1,
-    "title": "Open Access Management Vulnerability"
-  },
-  "cve:CVE-2026-29181": {
-    "first_seen": "2026-04-08",
-    "last_seen": "2026-04-08",
-    "run_count": 1,
-    "title": "OpenTelemetry-Go Vulnerability"
-  },
   "cve:CVE-2026-40027": {
     "first_seen": "2026-04-09",
     "last_seen": "2026-04-09",
@@ -18199,8 +18187,20 @@
   },
   "3e9f45664c59": {
     "first_seen": "2026-10-04",
-    "last_seen": "2026-10-04",
-    "run_count": 1,
+    "last_seen": "2026-10-06",
+    "run_count": 2,
     "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "77bfc1eff999": {
+    "first_seen": "2026-10-06",
+    "last_seen": "2026-10-06",
+    "run_count": 1,
+    "title": "Attackers Target Rejetto HFS Flaw That Enables Admin Session Forgery and RCE"
+  },
+  "c1156f3e3575": {
+    "first_seen": "2026-10-06",
+    "last_seen": "2026-10-06",
+    "run_count": 1,
+    "title": "Microsoft Exchange Flaw Lets Authenticated Attackers Read Other Users' Mailboxes"
   }
 }
