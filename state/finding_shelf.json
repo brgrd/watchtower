@@ -18208,5 +18208,17 @@
     "last_seen": "2026-10-07",
     "run_count": 1,
     "title": "Critical Atlassian Flaw Lets Unauthenticated Attackers Read Known Files Across 8 Products"
+  },
+  "cve:CVE-2026-107352": {
+    "first_seen": "2026-10-07",
+    "last_seen": "2026-10-07",
+    "run_count": 1,
+    "title": "CVE-2026-107352 - Missing authorization checks in Amazon Athena engine version 3 request handling"
+  },
+  "cve:CVE-2026-105811": {
+    "first_seen": "2026-10-07",
+    "last_seen": "2026-10-07",
+    "run_count": 1,
+    "title": "CVE-2026-105811 - Authorization bypass through a user-controlled key in the Amazon Q Business Lambda hook sample in QnAB"
   }
 }

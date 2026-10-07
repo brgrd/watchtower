@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-07T00:35:59.517446+00:00",
+  "fetched_at": "2026-10-07T21:13:08.652454+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -1029,6 +1029,27 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#AndroidLista",
       "summary": "In July 2021, the Android applications and games review site AndroidLista suffered a data breach. The incident exposed 6.6M user records containing email addresses, names, usernames and passwords stored as salted SHA-1 hashes, all of which were subsequently posted to a popular hacking forum. AndroidLista did not respond when contacted about the breach.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:angelone-2023-04-01",
+      "name": "AngelOne",
+      "title": "Angel One",
+      "date": "2023-04-01",
+      "added": "2026-10-07",
+      "affected_count": 6765054,
+      "data_classes": [
+        "Bank account numbers",
+        "Dates of birth",
+        "Email addresses",
+        "Financial investments",
+        "Government issued IDs",
+        "Names",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#AngelOne",
+      "summary": "In July 2024, the Indian stock brokerage firm Angel One confirmed that data leaked online related to a breach that occurred in April 2023. The leaked data included 7.9M user records containing 6.8M unique email addresses, along with names, physical addresses, phone numbers, bank account numbers, Permanent Account Numbers (PANs) and portfolio holdings. Angel One emphasised that the breach \"has no i",
+      "action": "close"
     },
     {
       "id": "hibp:animaljam-2020-10-12",
@@ -4842,6 +4863,23 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Dota2",
       "summary": "In July 2016, the Dota2 official developers forum suffered a data breach that exposed almost 2 million users. The hack of the vBulletin forum led to the disclosure of email and IP addresses, usernames and passwords stored as salted MD5 hashes.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:doublecounter-2026-10-04",
+      "name": "DoubleCounter",
+      "title": "Double Counter",
+      "date": "2026-10-04",
+      "added": "2026-10-07",
+      "affected_count": 274922,
+      "data_classes": [
+        "Email addresses",
+        "Geographic locations",
+        "Names",
+        "Usernames"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#DoubleCounter",
+      "summary": "In October 2026, the Discord server protection service Double Counter suffered a data breach attributed to a vulnerability in the Metabase analytics tool. In its disclosure notice, Double Counter advised that attackers gained access to a subset of its data. A corpus of data was subsequently published publicly and contained 275k unique email addresses and Discord usernames. A small number of record",
+      "action": "monitor"
     },
     {
       "id": "hibp:doxbin-2022-01-05",

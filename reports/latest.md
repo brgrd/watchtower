@@ -1,26 +1,21 @@
 ---
-generated_at: 2026-10-07T00:35:58.413984+00:00
+generated_at: 2026-10-07T21:13:08.005295+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Savannah lwIP SMTP client (risk: 70)
+## Atlassian Data Center Flaw Draws Exploitation Attempts Within Two Hours of Public Details (risk: 70)
 1 related updates.
 
-- [Savannah lwIP SMTP client](https://www.cisa.gov/news-events/ics-advisories/icsa-26-279-02)
+- [Atlassian Data Center Flaw Draws Exploitation Attempts Within Two Hours of Public Details](https://thehackernews.com/2026/10/atlassian-data-center-flaw-draws.html)
 
-## Johnson Controls EasyIO FG (risk: 70)
+## CVE-2026-107352 - Missing authorization checks in Amazon Athena engine version 3 request handling (risk: 40)
 1 related updates.
 
-- [Johnson Controls EasyIO FG](https://www.cisa.gov/news-events/ics-advisories/icsa-26-279-01)
+- [CVE-2026-107352 - Missing authorization checks in Amazon Athena engine version 3 request handling](https://aws.amazon.com/security/security-bulletins/rss/2026-128-aws/)
 
-## CVE-2026-105812 and CVE-2026-106032: Issue with Bedrock AgentCore Starter Toolkit - Import Agent Code Injection and SSRF (risk: 60)
+## CVE-2026-105811 - Authorization bypass through a user-controlled key in the Amazon Q Business Lambda hook sample in QnABot on AWS (risk: 40)
 1 related updates.
 
-- [CVE-2026-105812 and CVE-2026-106032: Issue with Bedrock AgentCore Starter Toolkit - Import Agent Code Injection and SSRF](https://aws.amazon.com/security/security-bulletins/rss/2026-127-aws/)
-
-## Critical Atlassian Flaw Lets Unauthenticated Attackers Read Known Files Across 8 Products (risk: 40)
-1 related updates.
-
-- [Critical Atlassian Flaw Lets Unauthenticated Attackers Read Known Files Across 8 Products](https://thehackernews.com/2026/10/critical-atlassian-flaw-lets.html)
+- [CVE-2026-105811 - Authorization bypass through a user-controlled key in the Amazon Q Business Lambda hook sample in QnAB](https://aws.amazon.com/security/security-bulletins/rss/2026-126-aws/)
