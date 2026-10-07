@@ -1,22 +1,4 @@
 {
-  "cve:CVE-2026-1340": {
-    "first_seen": "2026-04-08",
-    "last_seen": "2026-04-09",
-    "run_count": 2,
-    "title": "Ivanti Endpoint Manager Mobile RCE"
-  },
-  "cve:CVE-2026-40027": {
-    "first_seen": "2026-04-09",
-    "last_seen": "2026-04-09",
-    "run_count": 1,
-    "title": "ALEAPP Path Traversal"
-  },
-  "cve:CVE-2026-40028": {
-    "first_seen": "2026-04-09",
-    "last_seen": "2026-04-09",
-    "run_count": 1,
-    "title": "Hayabusa XSS"
-  },
   "cve:CVE-2026-39987": {
     "first_seen": "2026-04-10",
     "last_seen": "2026-04-23",
@@ -18202,5 +18184,29 @@
     "last_seen": "2026-10-06",
     "run_count": 1,
     "title": "Microsoft Exchange Flaw Lets Authenticated Attackers Read Other Users' Mailboxes"
+  },
+  "c9bc5bc00a70": {
+    "first_seen": "2026-10-07",
+    "last_seen": "2026-10-07",
+    "run_count": 1,
+    "title": "Savannah lwIP SMTP client"
+  },
+  "f0285a8e3ffa": {
+    "first_seen": "2026-10-07",
+    "last_seen": "2026-10-07",
+    "run_count": 1,
+    "title": "Johnson Controls EasyIO FG"
+  },
+  "cve:CVE-2026-105812": {
+    "first_seen": "2026-10-07",
+    "last_seen": "2026-10-07",
+    "run_count": 1,
+    "title": "CVE-2026-105812 and CVE-2026-106032: Issue with Bedrock AgentCore Starter Toolkit - Import Agent Code Injection and SSRF"
+  },
+  "a058d6bcf301": {
+    "first_seen": "2026-10-07",
+    "last_seen": "2026-10-07",
+    "run_count": 1,
+    "title": "Critical Atlassian Flaw Lets Unauthenticated Attackers Read Known Files Across 8 Products"
   }
 }
