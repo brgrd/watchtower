@@ -5,18 +5,6 @@
     "run_count": 2,
     "title": "Marimo RCE Flaw"
   },
-  "cve:CVE-2026-21904": {
-    "first_seen": "2026-04-10",
-    "last_seen": "2026-04-10",
-    "run_count": 1,
-    "title": "Junos OS Vulnerability"
-  },
-  "cve:CVE-2025-13914": {
-    "first_seen": "2026-04-10",
-    "last_seen": "2026-04-10",
-    "run_count": 1,
-    "title": "SSH Key Exchange Vulnerability"
-  },
   "cve:CVE-2026-4151": {
     "first_seen": "2026-04-11",
     "last_seen": "2026-04-11",
@@ -18205,8 +18193,8 @@
   },
   "a058d6bcf301": {
     "first_seen": "2026-10-07",
-    "last_seen": "2026-10-07",
-    "run_count": 1,
+    "last_seen": "2026-10-08",
+    "run_count": 2,
     "title": "Critical Atlassian Flaw Lets Unauthenticated Attackers Read Known Files Across 8 Products"
   },
   "cve:CVE-2026-107352": {
@@ -18220,5 +18208,29 @@
     "last_seen": "2026-10-07",
     "run_count": 1,
     "title": "CVE-2026-105811 - Authorization bypass through a user-controlled key in the Amazon Q Business Lambda hook sample in QnAB"
+  },
+  "28f45e2ec7c2": {
+    "first_seen": "2026-10-08",
+    "last_seen": "2026-10-08",
+    "run_count": 1,
+    "title": "Grid Protection Alliance openPDC and openHistorian"
+  },
+  "cve:CVE-2026-107332": {
+    "first_seen": "2026-10-08",
+    "last_seen": "2026-10-08",
+    "run_count": 1,
+    "title": "CVE-2026-107332 - Insecure default file permissions on cached credentials in AWS Toolkit for Visual Studio Code"
+  },
+  "cve:CVE-2026-107608": {
+    "first_seen": "2026-10-08",
+    "last_seen": "2026-10-08",
+    "run_count": 1,
+    "title": "CVE-2026-107608: Improper link resolution in asset bundling output handling in aws-cdk-lib"
+  },
+  "cve:CVE-2026-107322": {
+    "first_seen": "2026-10-08",
+    "last_seen": "2026-10-08",
+    "run_count": 1,
+    "title": "CVE-2026-107322 - OS command injection in Amazon Agent Plugins for AWS databases-on-aws"
   }
 }

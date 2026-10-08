@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-07T21:13:08.652454+00:00",
+  "fetched_at": "2026-10-08T21:59:42.458780+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -4161,6 +4161,26 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#CyberServe",
       "summary": "In October 2021, the Israeli hosting provider CyberServe was breached and ransomed before having a substantial amount of their customer data leaked publicly by a group known as \"Black Shadow\". Amongst the data was the LGBTQ dating site Atraf and the Machon Mor medical institute. Due to multiple different sites being compromised, the impacted data is broad and ranges from relationship information t",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:cyrusone-2026-08-05",
+      "name": "CyrusOne",
+      "title": "CyrusOne",
+      "date": "2026-08-05",
+      "added": "2026-10-07",
+      "affected_count": 373460,
+      "data_classes": [
+        "Email addresses",
+        "Employers",
+        "Job titles",
+        "Names",
+        "Phone numbers",
+        "Physical addresses",
+        "Support tickets"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#CyrusOne",
+      "summary": "In August 2026, data centre operator CyrusOne was the target of a ShinyHunters \"pay or leak\" extortion attempt. The group subsequently published data allegedly obtained from the company, which included 373k unique email addresses across records relating to users, sales leads and CyrusOne employees. The data largely consisted of corporate contact information, including names, physical addresses, ph",
+      "action": "monitor"
     },
     {
       "id": "hibp:d3scene-2016-01-01",
