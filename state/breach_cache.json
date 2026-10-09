@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-08T21:59:42.458780+00:00",
+  "fetched_at": "2026-10-09T21:35:41.574770+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -11551,6 +11551,26 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#NemoWeb",
       "summary": "In September 2016, almost 21GB of data from the French website used for \"standardised and decentralized means of exchange for publishing newsgroup articles\" NemoWeb was leaked from what appears to have been an unprotected Mongo DB. The data consisted of a large volume of emails sent to the service and included almost 3.5M unique addresses, albeit many of them auto-generated. Multiple attempts were",
+      "action": "monitor"
+    },
+    {
+      "id": "hibp:neogen-2026-08-29",
+      "name": "Neogen",
+      "title": "Neogen",
+      "date": "2026-08-29",
+      "added": "2026-10-09",
+      "affected_count": 435963,
+      "data_classes": [
+        "Email addresses",
+        "Employers",
+        "Job titles",
+        "Names",
+        "Phone numbers",
+        "Physical addresses",
+        "Salutations"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Neogen",
+      "summary": "In August 2026, the food and animal safety organisation Neogen was the target of a ShinyHunters \"pay or leak\" extortion attempt. The group later published data it claimed had been obtained from Neogen. The data consisted largely of corporate contact records and included 436k unique email addresses from mailing lists, employee records and other contacts.",
       "action": "monitor"
     },
     {

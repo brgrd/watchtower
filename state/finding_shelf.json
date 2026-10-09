@@ -5,42 +5,6 @@
     "run_count": 2,
     "title": "Marimo RCE Flaw"
   },
-  "cve:CVE-2026-4151": {
-    "first_seen": "2026-04-11",
-    "last_seen": "2026-04-11",
-    "run_count": 1,
-    "title": "GIMP RCE Vulnerability"
-  },
-  "cve:CVE-2026-3690": {
-    "first_seen": "2026-04-11",
-    "last_seen": "2026-04-11",
-    "run_count": 1,
-    "title": "OpenClaw Canvas Auth Bypass"
-  },
-  "cve:CVE-2026-3689": {
-    "first_seen": "2026-04-11",
-    "last_seen": "2026-04-11",
-    "run_count": 1,
-    "title": "OpenClaw Canvas Path Traversal"
-  },
-  "2ab96cf8997a": {
-    "first_seen": "2026-04-11",
-    "last_seen": "2026-04-11",
-    "run_count": 1,
-    "title": "Rukovoditel CRM XSS"
-  },
-  "2207b8f874fb": {
-    "first_seen": "2026-04-11",
-    "last_seen": "2026-04-11",
-    "run_count": 1,
-    "title": "Phoc Stored XSS"
-  },
-  "32ce55c9ac29": {
-    "first_seen": "2026-04-11",
-    "last_seen": "2026-04-11",
-    "run_count": 1,
-    "title": "Gleam Compiler Vulnerability"
-  },
   "b672e2384ed2": {
     "first_seen": "2026-04-12",
     "last_seen": "2026-04-12",
@@ -3133,8 +3097,8 @@
   },
   "cve:CVE-2026-10740": {
     "first_seen": "2026-06-10",
-    "last_seen": "2026-06-10",
-    "run_count": 1,
+    "last_seen": "2026-10-09",
+    "run_count": 2,
     "title": "CVE-2026-11417: OS Command Injection in aws-cdk-lib",
     "last_problem_type": "rce",
     "last_affects": "framework",
@@ -3484,8 +3448,8 @@
   },
   "cve:CVE-2026-11931": {
     "first_seen": "2026-06-15",
-    "last_seen": "2026-06-15",
-    "run_count": 1,
+    "last_seen": "2026-10-09",
+    "run_count": 2,
     "title": "CVE-2026-50100: Ricoh and KONICA MINOLTA Printer Drivers",
     "last_problem_type": "data_disclosure",
     "last_affects": "application",
@@ -3973,8 +3937,8 @@
   },
   "cve:CVE-2026-47262": {
     "first_seen": "2026-06-19",
-    "last_seen": "2026-08-20",
-    "run_count": 2,
+    "last_seen": "2026-10-09",
+    "run_count": 3,
     "title": "Issue with containerd CRI Plugin - CVE-2026-50195, CVE-2026-53488, CVE-2026-53492, CVE-2026-53489, CVE-2026-47262"
   },
   "98f3c46dd71a": {
@@ -4489,8 +4453,8 @@
   },
   "cve:CVE-2026-12957": {
     "first_seen": "2026-06-24",
-    "last_seen": "2026-08-20",
-    "run_count": 2,
+    "last_seen": "2026-10-09",
+    "run_count": 3,
     "title": "CVE-2026-12957 and CVE-2026-12958 - Issues in Language Servers for AWS and Amazon Q Developer Plugins"
   },
   "b49587409593": {
@@ -5272,8 +5236,8 @@
   },
   "cve:CVE-2026-13762": {
     "first_seen": "2026-06-30",
-    "last_seen": "2026-08-20",
-    "run_count": 2,
+    "last_seen": "2026-10-09",
+    "run_count": 3,
     "title": "CVE-2026-13762 and CVE-2026-13763: AWS WAF HTTP/2 Vulnerability",
     "last_problem_type": "data_disclosure",
     "last_affects": "service",
@@ -5506,8 +5470,8 @@
   },
   "cve:CVE-2026-13769": {
     "first_seen": "2026-07-02",
-    "last_seen": "2026-08-20",
-    "run_count": 2,
+    "last_seen": "2026-10-09",
+    "run_count": 3,
     "title": "CVE-2026-13769: AWS CLI Insecure File Permissions",
     "last_problem_type": "credential_compromise",
     "last_affects": "user_data",
@@ -18232,5 +18196,47 @@
     "last_seen": "2026-10-08",
     "run_count": 1,
     "title": "CVE-2026-107322 - OS command injection in Amazon Agent Plugins for AWS databases-on-aws"
+  },
+  "cc75b6ade8f4": {
+    "first_seen": "2026-10-09",
+    "last_seen": "2026-10-09",
+    "run_count": 1,
+    "title": "Flax Typhoon Exploits Five Flaws as CISA Sets October 11 Deadline for Federal Agencies"
+  },
+  "4ebc77746d34": {
+    "first_seen": "2026-10-09",
+    "last_seen": "2026-10-09",
+    "run_count": 1,
+    "title": "Max severity SonicWall SMA1000 flaw now exploited in attacks"
+  },
+  "70b09fe9b8cd": {
+    "first_seen": "2026-10-09",
+    "last_seen": "2026-10-09",
+    "run_count": 1,
+    "title": "Attackers Exploit AhsayCBS Flaws to Deploy XMRig Miners Disguised as Microsoft Edge"
+  },
+  "cve:CVE-2026-108096": {
+    "first_seen": "2026-10-09",
+    "last_seen": "2026-10-09",
+    "run_count": 1,
+    "title": "CVE-2026-108096: Improper authorization in query resolvers for SQL-backed models in AWS Amplify API Category"
+  },
+  "cve:CVE-2026-12043": {
+    "first_seen": "2026-10-09",
+    "last_seen": "2026-10-09",
+    "run_count": 1,
+    "title": "CVE-2026-12043 - Heap double-free in AWS Common Runtime aws-c-http"
+  },
+  "cve:CVE-2026-13760": {
+    "first_seen": "2026-10-09",
+    "last_seen": "2026-10-09",
+    "run_count": 1,
+    "title": "CVE-2026-13760 - OS Command Injection in NodejsFunction Docker Bundling in aws-cdk-lib"
+  },
+  "cve:CVE-2026-107783": {
+    "first_seen": "2026-10-09",
+    "last_seen": "2026-10-09",
+    "run_count": 1,
+    "title": "CVE-2026-107783 - Insertion of sensitive information into log file in AWS Tools for PowerShell"
   }
 }
