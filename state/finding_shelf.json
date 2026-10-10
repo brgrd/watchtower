@@ -5,42 +5,6 @@
     "run_count": 2,
     "title": "Marimo RCE Flaw"
   },
-  "b672e2384ed2": {
-    "first_seen": "2026-04-12",
-    "last_seen": "2026-04-12",
-    "run_count": 1,
-    "title": "1Panel-dev MaxKB RCE"
-  },
-  "4fed135c8414": {
-    "first_seen": "2026-04-12",
-    "last_seen": "2026-04-12",
-    "run_count": 1,
-    "title": "perfree go-fastdfs-web Vulnerability"
-  },
-  "1c676338a53a": {
-    "first_seen": "2026-04-12",
-    "last_seen": "2026-04-12",
-    "run_count": 1,
-    "title": "FoundationAgents MetaGPT Vulnerability"
-  },
-  "cve:CVE-2026-6126": {
-    "first_seen": "2026-04-12",
-    "last_seen": "2026-04-12",
-    "run_count": 1,
-    "title": "CVE-2026-6126"
-  },
-  "cve:CVE-2018-25258": {
-    "first_seen": "2026-04-12",
-    "last_seen": "2026-04-12",
-    "run_count": 1,
-    "title": "CVE-2018-25258"
-  },
-  "cve:CVE-2019-25689": {
-    "first_seen": "2026-04-12",
-    "last_seen": "2026-04-12",
-    "run_count": 1,
-    "title": "CVE-2019-25689"
-  },
   "cve:CVE-2020-9715": {
     "first_seen": "2026-04-13",
     "last_seen": "2026-04-14",
@@ -18238,5 +18202,95 @@
     "last_seen": "2026-10-09",
     "run_count": 1,
     "title": "CVE-2026-107783 - Insertion of sensitive information into log file in AWS Tools for PowerShell"
+  },
+  "cve:CVE-2026-93883": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "run_count": 1,
+    "title": "CVE-2026-93883"
+  },
+  "cve:CVE-2026-103424": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "run_count": 1,
+    "title": "CVE-2026-103424"
+  },
+  "cve:CVE-2026-103964": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "run_count": 1,
+    "title": "CVE-2026-103964"
+  },
+  "cve:CVE-2026-96648": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "run_count": 1,
+    "title": "CVE-2026-96648"
+  },
+  "cve:CVE-2026-97630": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "run_count": 1,
+    "title": "CVE-2026-97630"
+  },
+  "cve:CVE-2026-87781": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "run_count": 1,
+    "title": "CVE-2026-87781"
+  },
+  "cve:CVE-2026-94375": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "run_count": 1,
+    "title": "CVE-2026-94375"
+  },
+  "cve:CVE-2026-103427": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "run_count": 1,
+    "title": "CVE-2026-103427"
+  },
+  "cve:CVE-2026-103897": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "run_count": 1,
+    "title": "CVE-2026-103897"
+  },
+  "cve:CVE-2026-107742": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "run_count": 1,
+    "title": "CVE-2026-107742"
+  },
+  "cve:CVE-2026-89100": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "run_count": 1,
+    "title": "CVE-2026-89100"
+  },
+  "cve:CVE-2026-101920": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "run_count": 1,
+    "title": "CVE-2026-101920"
+  },
+  "cve:CVE-2026-108504": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "run_count": 1,
+    "title": "CVE-2026-108504"
+  },
+  "cve:CVE-2026-93949": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "run_count": 1,
+    "title": "CVE-2026-93949"
+  },
+  "cve:CVE-2026-93950": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "run_count": 1,
+    "title": "CVE-2026-93950"
   }
 }
