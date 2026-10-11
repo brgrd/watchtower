@@ -11,18 +11,6 @@
     "run_count": 2,
     "title": "Adobe Acrobat RCE"
   },
-  "cve:CVE-2023-36424": {
-    "first_seen": "2026-04-13",
-    "last_seen": "2026-04-13",
-    "run_count": 1,
-    "title": "Microsoft Windows OOB Read"
-  },
-  "cve:CVE-2026-21643": {
-    "first_seen": "2026-04-13",
-    "last_seen": "2026-04-13",
-    "run_count": 1,
-    "title": "Fortinet FortiClient EMS SQLi"
-  },
   "cve:CVE-2026-32201": {
     "first_seen": "2026-04-14",
     "last_seen": "2026-04-15",
@@ -18292,5 +18280,95 @@
     "last_seen": "2026-10-10",
     "run_count": 1,
     "title": "CVE-2026-93950"
+  },
+  "cve:CVE-2026-108521": {
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "run_count": 1,
+    "title": "CVE-2026-108521"
+  },
+  "cve:CVE-2026-108522": {
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "run_count": 1,
+    "title": "CVE-2026-108522"
+  },
+  "cve:CVE-2026-108523": {
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "run_count": 1,
+    "title": "CVE-2026-108523"
+  },
+  "cve:CVE-2026-108538": {
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "run_count": 1,
+    "title": "CVE-2026-108538"
+  },
+  "cve:CVE-2026-108539": {
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "run_count": 1,
+    "title": "CVE-2026-108539"
+  },
+  "cve:CVE-2026-108540": {
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "run_count": 1,
+    "title": "CVE-2026-108540"
+  },
+  "cve:CVE-2026-108541": {
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "run_count": 1,
+    "title": "CVE-2026-108541"
+  },
+  "cve:CVE-2026-108542": {
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "run_count": 1,
+    "title": "CVE-2026-108542"
+  },
+  "cve:CVE-2026-108543": {
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "run_count": 1,
+    "title": "CVE-2026-108543"
+  },
+  "cve:CVE-2026-108566": {
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "run_count": 1,
+    "title": "CVE-2026-108566"
+  },
+  "cve:CVE-2026-108567": {
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "run_count": 1,
+    "title": "CVE-2026-108567"
+  },
+  "cve:CVE-2026-108568": {
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "run_count": 1,
+    "title": "CVE-2026-108568"
+  },
+  "cve:CVE-2026-108569": {
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "run_count": 1,
+    "title": "CVE-2026-108569"
+  },
+  "cve:CVE-2026-108570": {
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "run_count": 1,
+    "title": "CVE-2026-108570"
+  },
+  "cve:CVE-2026-108571": {
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "run_count": 1,
+    "title": "CVE-2026-108571"
   }
 }
