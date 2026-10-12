@@ -5,12 +5,6 @@
     "run_count": 2,
     "title": "Marimo RCE Flaw"
   },
-  "cve:CVE-2020-9715": {
-    "first_seen": "2026-04-13",
-    "last_seen": "2026-04-14",
-    "run_count": 2,
-    "title": "Adobe Acrobat RCE"
-  },
   "cve:CVE-2026-32201": {
     "first_seen": "2026-04-14",
     "last_seen": "2026-04-15",
@@ -22,18 +16,6 @@
     "last_seen": "2026-04-15",
     "run_count": 2,
     "title": "Microsoft Office Excel RCE"
-  },
-  "cve:CVE-2026-31908": {
-    "first_seen": "2026-04-14",
-    "last_seen": "2026-04-14",
-    "run_count": 1,
-    "title": "Apache APISIX Header Injection"
-  },
-  "cve:CVE-2025-13822": {
-    "first_seen": "2026-04-14",
-    "last_seen": "2026-04-14",
-    "run_count": 1,
-    "title": "MCPHub Authentication Bypass"
   },
   "d2b05cfab2fb": {
     "first_seen": "2026-04-15",
@@ -18157,8 +18139,8 @@
   },
   "4ebc77746d34": {
     "first_seen": "2026-10-09",
-    "last_seen": "2026-10-09",
-    "run_count": 1,
+    "last_seen": "2026-10-12",
+    "run_count": 2,
     "title": "Max severity SonicWall SMA1000 flaw now exploited in attacks"
   },
   "70b09fe9b8cd": {
