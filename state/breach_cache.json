@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-12T09:03:23.197468+00:00",
+  "fetched_at": "2026-10-13T09:18:10.138892+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -14483,6 +14483,29 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Shadow",
       "summary": "In September 2023, the cloud gaming provider Shadow suffered a data breach that exposed over half a million customer records. The data included email and physical addresses, names and dates of birth.",
+      "action": "monitor"
+    },
+    {
+      "id": "hibp:sharecare-2026-08-12",
+      "name": "Sharecare",
+      "title": "Sharecare",
+      "date": "2026-08-12",
+      "added": "2026-10-12",
+      "affected_count": 318185,
+      "data_classes": [
+        "Dates of birth",
+        "Email addresses",
+        "Employers",
+        "Genders",
+        "Government issued IDs",
+        "Job titles",
+        "Marital statuses",
+        "Names",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Sharecare",
+      "summary": "In August 2026, the digital health company Sharecare was the target of a ShinyHunters \"pay or leak\" extortion campaign. The group subsequently published data it claimed was taken from Sharecare's systems, containing 318k unique email addresses. Most of the data consisted of B2B sales and marketing records with names, physical addresses, phone numbers, job titles and employers. The data also includ",
       "action": "monitor"
     },
     {

@@ -5,66 +5,6 @@
     "run_count": 2,
     "title": "Marimo RCE Flaw"
   },
-  "cve:CVE-2026-32201": {
-    "first_seen": "2026-04-14",
-    "last_seen": "2026-04-15",
-    "run_count": 2,
-    "title": "Microsoft SharePoint RCE"
-  },
-  "cve:CVE-2009-0238": {
-    "first_seen": "2026-04-14",
-    "last_seen": "2026-04-15",
-    "run_count": 2,
-    "title": "Microsoft Office Excel RCE"
-  },
-  "d2b05cfab2fb": {
-    "first_seen": "2026-04-15",
-    "last_seen": "2026-04-15",
-    "run_count": 1,
-    "title": "ColdFusion Vulns"
-  },
-  "cve:CVE-2026-33032": {
-    "first_seen": "2026-04-15",
-    "last_seen": "2026-04-15",
-    "run_count": 1,
-    "title": "nginx-ui RCE"
-  },
-  "cve:CVE-2026-3642": {
-    "first_seen": "2026-04-15",
-    "last_seen": "2026-04-15",
-    "run_count": 1,
-    "title": "e-shot form builder plugin vuln"
-  },
-  "cve:CVE-2026-3659": {
-    "first_seen": "2026-04-15",
-    "last_seen": "2026-04-15",
-    "run_count": 1,
-    "title": "WP Circliful plugin vuln"
-  },
-  "8a68b4e30aab": {
-    "first_seen": "2026-04-15",
-    "last_seen": "2026-04-15",
-    "run_count": 1,
-    "title": "Mattermost RCE"
-  },
-  "8206efb11479": {
-    "first_seen": "2026-04-15",
-    "last_seen": "2026-04-15",
-    "run_count": 1,
-    "title": "Themeum Tutor LMS Auth Bypass"
-  },
-  "6f2641b9ae41": {
-    "first_seen": "2026-04-15",
-    "last_seen": "2026-04-15",
-    "run_count": 1,
-    "title": "VillaTheme COM Auth Bypass"
-  },
-  "196f23e99dba": {
-    "first_seen": "2026-04-15",
-    "last_seen": "2026-04-15",
-    "run_count": 1,
-    "title": "BlockArt Magazine Blocks Auth Bypass"
-  },
   "cve:CVE-2026-6388": {
     "first_seen": "2026-04-16",
     "last_seen": "2026-04-16",
@@ -4447,8 +4387,8 @@
   },
   "4ef43c3ae997": {
     "first_seen": "2026-06-24",
-    "last_seen": "2026-09-28",
-    "run_count": 6,
+    "last_seen": "2026-10-13",
+    "run_count": 7,
     "title": "GCP-2026-041"
   },
   "0149ede49c0d": {
@@ -14911,8 +14851,8 @@
   },
   "81026920ec02": {
     "first_seen": "2026-08-26",
-    "last_seen": "2026-09-28",
-    "run_count": 3,
+    "last_seen": "2026-10-13",
+    "run_count": 4,
     "title": "GCP-2026-054"
   },
   "80d7b640a09f": {
@@ -15667,8 +15607,8 @@
   },
   "1aba8f91d526": {
     "first_seen": "2026-09-04",
-    "last_seen": "2026-09-28",
-    "run_count": 2,
+    "last_seen": "2026-10-13",
+    "run_count": 3,
     "title": "GCP-2026-060"
   },
   "cve:CVE-2026-86113": {
@@ -18139,8 +18079,8 @@
   },
   "4ebc77746d34": {
     "first_seen": "2026-10-09",
-    "last_seen": "2026-10-12",
-    "run_count": 2,
+    "last_seen": "2026-10-13",
+    "run_count": 3,
     "title": "Max severity SonicWall SMA1000 flaw now exploited in attacks"
   },
   "70b09fe9b8cd": {
@@ -18442,5 +18382,11 @@
     "last_seen": "2026-10-11",
     "run_count": 1,
     "title": "CVE-2026-108711"
+  },
+  "5d8c71814989": {
+    "first_seen": "2026-10-13",
+    "last_seen": "2026-10-13",
+    "run_count": 1,
+    "title": "Bricksforge WordPress Plugin Vulnerability Exploited in the Wild"
   }
 }
