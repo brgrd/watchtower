@@ -18388,5 +18388,29 @@
     "last_seen": "2026-10-13",
     "run_count": 1,
     "title": "Bricksforge WordPress Plugin Vulnerability Exploited in the Wild"
+  },
+  "f67f5d7af49a": {
+    "first_seen": "2026-10-13",
+    "last_seen": "2026-10-13",
+    "run_count": 1,
+    "title": "Swann Communications SWIFI-SE2KIC"
+  },
+  "e6abe7ef7c05": {
+    "first_seen": "2026-10-13",
+    "last_seen": "2026-10-13",
+    "run_count": 1,
+    "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
+  },
+  "6b23ea12db93": {
+    "first_seen": "2026-10-13",
+    "last_seen": "2026-10-13",
+    "run_count": 1,
+    "title": "Ghostscript flaw lets hackers hijack servers via PDF uploads"
+  },
+  "057395e68b7a": {
+    "first_seen": "2026-10-13",
+    "last_seen": "2026-10-13",
+    "run_count": 1,
+    "title": "Docker Hub flaw let attackers impersonate users, tamper with images"
   }
 }

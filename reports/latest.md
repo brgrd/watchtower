@@ -1,31 +1,26 @@
 ---
-generated_at: 2026-10-13T09:18:09.575014+00:00
+generated_at: 2026-10-13T22:37:26.110159+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Bricksforge WordPress Plugin Vulnerability Exploited in the Wild (risk: 70)
+## Swann Communications SWIFI-SE2KIC (risk: 70)
 1 related updates.
 
-- [Bricksforge WordPress Plugin Vulnerability Exploited in the Wild](https://www.securityweek.com/bricksforge-wordpress-plugin-vulnerability-exploited-in-the-wild/)
+- [Swann Communications SWIFI-SE2KIC](https://www.cisa.gov/news-events/ics-advisories/icsa-26-286-02)
 
-## Critical SonicWall SMA 1000 Flaw Targeted in 135 Exploitation Attempts After Patch (risk: 70)
+## CISA Adds Two Known Exploited Vulnerabilities to Catalog (risk: 70)
 1 related updates.
 
-- [Critical SonicWall SMA 1000 Flaw Targeted in 135 Exploitation Attempts After Patch](https://thehackernews.com/2026/10/critical-sonicwall-sma-1000-flaw.html)
+- [CISA Adds Two Known Exploited Vulnerabilities to Catalog](https://www.cisa.gov/news-events/alerts/2026/10/13/cisa-adds-two-known-exploited-vulnerabilities-catalog)
 
-## GCP-2026-060 (risk: 40)
+## Ghostscript flaw lets hackers hijack servers via PDF uploads (risk: 40)
 1 related updates.
 
-- [GCP-2026-060](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-060)
+- [Ghostscript flaw lets hackers hijack servers via PDF uploads](https://www.bleepingcomputer.com/news/security/ghostscript-flaw-lets-hackers-hijack-servers-via-pdf-uploads/)
 
-## GCP-2026-054 (risk: 40)
+## Docker Hub flaw let attackers impersonate users, tamper with images (risk: 40)
 1 related updates.
 
-- [GCP-2026-054](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-054)
-
-## GCP-2026-041 (risk: 40)
-1 related updates.
-
-- [GCP-2026-041](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-041)
+- [Docker Hub flaw let attackers impersonate users, tamper with images](https://www.bleepingcomputer.com/news/security/docker-hub-flaw-let-attackers-impersonate-users-tamper-with-images/)
