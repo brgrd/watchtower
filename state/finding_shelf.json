@@ -5,42 +5,6 @@
     "run_count": 2,
     "title": "Marimo RCE Flaw"
   },
-  "cve:CVE-2026-6388": {
-    "first_seen": "2026-04-16",
-    "last_seen": "2026-04-16",
-    "run_count": 1,
-    "title": "ArgoCD Image Updater Vuln"
-  },
-  "cve:CVE-2026-40500": {
-    "first_seen": "2026-04-16",
-    "last_seen": "2026-04-16",
-    "run_count": 1,
-    "title": "ProcessWire CMS Vuln"
-  },
-  "cve:CVE-2026-39350": {
-    "first_seen": "2026-04-16",
-    "last_seen": "2026-04-16",
-    "run_count": 1,
-    "title": "Istio Vuln"
-  },
-  "cve:CVE-2026-34197": {
-    "first_seen": "2026-04-16",
-    "last_seen": "2026-04-16",
-    "run_count": 1,
-    "title": "Apache ActiveMQ RCE"
-  },
-  "cve:CVE-2026-23772": {
-    "first_seen": "2026-04-16",
-    "last_seen": "2026-04-16",
-    "run_count": 1,
-    "title": "Dell Storage Manager Vulnerability"
-  },
-  "cve:CVE-2024-10242": {
-    "first_seen": "2026-04-16",
-    "last_seen": "2026-04-16",
-    "run_count": 1,
-    "title": "Unspecified Software Authentication Vulnerability"
-  },
   "cve:CVE-2026-34164": {
     "first_seen": "2026-04-17",
     "last_seen": "2026-04-17",
@@ -628,8 +592,8 @@
   },
   "cve:CVE-2026-8178": {
     "first_seen": "2026-05-08",
-    "last_seen": "2026-09-25",
-    "run_count": 4,
+    "last_seen": "2026-10-14",
+    "run_count": 5,
     "title": "CVE-2026-8178 RCE",
     "last_problem_type": "rce",
     "last_affects": "framework",
@@ -1603,8 +1567,8 @@
   },
   "cve:CVE-2026-9255": {
     "first_seen": "2026-05-23",
-    "last_seen": "2026-06-06",
-    "run_count": 2,
+    "last_seen": "2026-10-14",
+    "run_count": 3,
     "title": "CVE-2026-9255: Kiro CLI",
     "last_problem_type": "rce",
     "last_affects": "application",
@@ -2470,8 +2434,8 @@
   },
   "cve:CVE-2026-8596": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-08-20",
-    "run_count": 3,
+    "last_seen": "2026-10-14",
+    "run_count": 4,
     "title": "Issue with Amazon SageMaker Python SDK - Model artifact integrity verification issues (CVE-2026-8596 &amp; CVE-2026-8597"
   },
   "cve:CVE-2026-7424": {
@@ -2500,8 +2464,8 @@
   },
   "cve:CVE-2026-5747": {
     "first_seen": "2026-06-06",
-    "last_seen": "2026-09-24",
-    "run_count": 2,
+    "last_seen": "2026-10-14",
+    "run_count": 3,
     "title": "CVE-2026-5747 - Out-of-bounds Write in Firecracker virtio-pci Transport"
   },
   "cve:CVE-2025-6031": {
@@ -2512,8 +2476,8 @@
   },
   "cve:CVE-2026-8838": {
     "first_seen": "2026-06-06",
-    "last_seen": "2026-06-06",
-    "run_count": 1,
+    "last_seen": "2026-10-14",
+    "run_count": 2,
     "title": "CVE-2026-8838 - Remote Code Execution in amazon-redshift-python-driver"
   },
   "cve:CVE-2026-28318": {
@@ -7231,8 +7195,8 @@
   },
   "cve:CVE-2026-16317": {
     "first_seen": "2026-07-22",
-    "last_seen": "2026-08-20",
-    "run_count": 2,
+    "last_seen": "2026-10-14",
+    "run_count": 3,
     "title": "CVE-2026-16317 and CVE-2026-16318: Issues with s2n-tls: an open-source implementation of the TLS/SSL protocols"
   },
   "cve:CVE-2026-15957": {
@@ -7411,8 +7375,8 @@
   },
   "cve:CVE-2026-16796": {
     "first_seen": "2026-07-23",
-    "last_seen": "2026-08-20",
-    "run_count": 2,
+    "last_seen": "2026-10-14",
+    "run_count": 3,
     "title": "CVE-2026-16796: AWS Bedrock AgentCore Python SDK RCE",
     "last_problem_type": "rce",
     "last_affects": "framework",
@@ -7429,8 +7393,8 @@
   },
   "cve:CVE-2026-16756": {
     "first_seen": "2026-07-23",
-    "last_seen": "2026-08-20",
-    "run_count": 2,
+    "last_seen": "2026-10-14",
+    "run_count": 3,
     "title": "CVE-2026-16756: aws-smithy-http-server DoS",
     "last_problem_type": "dos",
     "last_affects": "service",
@@ -12031,8 +11995,8 @@
   },
   "cve:CVE-2026-15746": {
     "first_seen": "2026-08-20",
-    "last_seen": "2026-08-20",
-    "run_count": 1,
+    "last_seen": "2026-10-14",
+    "run_count": 2,
     "title": "CVE-2026-15746 - Credential disclosure in Strands Agents Tools elasticsearch_memory tool"
   },
   "cve:CVE-2026-15895": {
@@ -18397,8 +18361,8 @@
   },
   "e6abe7ef7c05": {
     "first_seen": "2026-10-13",
-    "last_seen": "2026-10-13",
-    "run_count": 1,
+    "last_seen": "2026-10-14",
+    "run_count": 2,
     "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
   },
   "6b23ea12db93": {
@@ -18412,5 +18376,35 @@
     "last_seen": "2026-10-13",
     "run_count": 1,
     "title": "Docker Hub flaw let attackers impersonate users, tamper with images"
+  },
+  "87bd27571d22": {
+    "first_seen": "2026-10-14",
+    "last_seen": "2026-10-14",
+    "run_count": 1,
+    "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog"
+  },
+  "3769a5c7047d": {
+    "first_seen": "2026-10-14",
+    "last_seen": "2026-10-14",
+    "run_count": 1,
+    "title": "Unit 42 Uncovers PEERSTITCH, a Stealthy FortiGate Implant"
+  },
+  "2e912b60b0c8": {
+    "first_seen": "2026-10-14",
+    "last_seen": "2026-10-14",
+    "run_count": 1,
+    "title": "CISA Urges Immediate Ivanti Connect Secure Updates as Honeypots Log 105 Exploit Attempts"
+  },
+  "ed77d7d62c64": {
+    "first_seen": "2026-10-14",
+    "last_seen": "2026-10-14",
+    "run_count": 1,
+    "title": "AI-Found Linux Kernel Flaw Gives Local Users Root, and Can Break a Guest Out to the Host"
+  },
+  "cve:CVE-2026-15737": {
+    "first_seen": "2026-10-14",
+    "last_seen": "2026-10-14",
+    "run_count": 1,
+    "title": "CVE-2026-15737 - Sensitive content disclosure via OpenTelemetry spans in AgentCore Python SDK"
   }
 }

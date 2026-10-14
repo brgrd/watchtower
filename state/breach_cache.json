@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-13T22:37:26.625881+00:00",
+  "fetched_at": "2026-10-14T22:12:52.214286+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -4006,6 +4006,26 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#CrossFire",
       "summary": "In August 2016, the Russian gaming forum known as Cross Fire (or cfire.mail.ru) was hacked along with a number of other forums on the Russian mail provider, mail.ru. The vBulletin forum contained 12.8 million accounts including usernames, email addresses and passwords stored as salted MD5 hashes.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:crunchbase-2026-01-22",
+      "name": "Crunchbase",
+      "title": "Crunchbase",
+      "date": "2026-01-22",
+      "added": "2026-10-14",
+      "affected_count": 559908,
+      "data_classes": [
+        "Email addresses",
+        "Employers",
+        "Job titles",
+        "Names",
+        "Phone numbers",
+        "Physical addresses",
+        "Social media profiles"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Crunchbase",
+      "summary": "In January 2026, the private company intelligence platform Crunchbase was targeted in a ShinyHunters \"pay or leak\" extortion attempt. Data allegedly obtained from the company was subsequently published publicly and included 560k unique email addresses, largely belonging to leads and business contacts. Other data included names, physical addresses, phone numbers, job titles, employers and LinkedIn ",
+      "action": "monitor"
     },
     {
       "id": "hibp:crunchyroll-2026-03-12",
