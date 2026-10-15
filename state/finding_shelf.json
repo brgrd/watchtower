@@ -5,42 +5,6 @@
     "run_count": 2,
     "title": "Marimo RCE Flaw"
   },
-  "cve:CVE-2026-34164": {
-    "first_seen": "2026-04-17",
-    "last_seen": "2026-04-17",
-    "run_count": 1,
-    "title": "Valtimo RCE"
-  },
-  "cve:CVE-2026-39313": {
-    "first_seen": "2026-04-17",
-    "last_seen": "2026-04-17",
-    "run_count": 1,
-    "title": "mcp-framework RCE"
-  },
-  "cve:CVE-2026-40170": {
-    "first_seen": "2026-04-17",
-    "last_seen": "2026-04-17",
-    "run_count": 1,
-    "title": "ngtcp2 RCE"
-  },
-  "cve:CVE-2026-23775": {
-    "first_seen": "2026-04-17",
-    "last_seen": "2026-04-17",
-    "run_count": 1,
-    "title": "Dell PowerProtect RCE"
-  },
-  "cve:CVE-2026-6494": {
-    "first_seen": "2026-04-17",
-    "last_seen": "2026-04-17",
-    "run_count": 1,
-    "title": "AAP MCP RCE"
-  },
-  "cve:CVE-2026-6439": {
-    "first_seen": "2026-04-17",
-    "last_seen": "2026-04-17",
-    "run_count": 1,
-    "title": "VideoZen XSS"
-  },
   "cve:CVE-2026-40305": {
     "first_seen": "2026-04-18",
     "last_seen": "2026-04-18",
@@ -17995,8 +17959,8 @@
   },
   "a058d6bcf301": {
     "first_seen": "2026-10-07",
-    "last_seen": "2026-10-08",
-    "run_count": 2,
+    "last_seen": "2026-10-15",
+    "run_count": 3,
     "title": "Critical Atlassian Flaw Lets Unauthenticated Attackers Read Known Files Across 8 Products"
   },
   "cve:CVE-2026-107352": {
@@ -18049,8 +18013,8 @@
   },
   "70b09fe9b8cd": {
     "first_seen": "2026-10-09",
-    "last_seen": "2026-10-09",
-    "run_count": 1,
+    "last_seen": "2026-10-15",
+    "run_count": 2,
     "title": "Attackers Exploit AhsayCBS Flaws to Deploy XMRig Miners Disguised as Microsoft Edge"
   },
   "cve:CVE-2026-108096": {
@@ -18379,8 +18343,8 @@
   },
   "87bd27571d22": {
     "first_seen": "2026-10-14",
-    "last_seen": "2026-10-14",
-    "run_count": 1,
+    "last_seen": "2026-10-15",
+    "run_count": 2,
     "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog"
   },
   "3769a5c7047d": {
@@ -18391,8 +18355,8 @@
   },
   "2e912b60b0c8": {
     "first_seen": "2026-10-14",
-    "last_seen": "2026-10-14",
-    "run_count": 1,
+    "last_seen": "2026-10-15",
+    "run_count": 2,
     "title": "CISA Urges Immediate Ivanti Connect Secure Updates as Honeypots Log 105 Exploit Attempts"
   },
   "ed77d7d62c64": {
@@ -18406,5 +18370,47 @@
     "last_seen": "2026-10-14",
     "run_count": 1,
     "title": "CVE-2026-15737 - Sensitive content disclosure via OpenTelemetry spans in AgentCore Python SDK"
+  },
+  "82dff14b0c5b": {
+    "first_seen": "2026-10-15",
+    "last_seen": "2026-10-15",
+    "run_count": 1,
+    "title": "Thermo Fisher Torrent Suite Software"
+  },
+  "55ce6cdf9ce9": {
+    "first_seen": "2026-10-15",
+    "last_seen": "2026-10-15",
+    "run_count": 1,
+    "title": "Guangzhou Juan IoT Technology EseeCloud"
+  },
+  "dc67a7551840": {
+    "first_seen": "2026-10-15",
+    "last_seen": "2026-10-15",
+    "run_count": 1,
+    "title": "Langflow's Critical Authenticated RCE Flaw Targeted in 1,423 Honeypot Exploit Attempts"
+  },
+  "aa2694ccebe5": {
+    "first_seen": "2026-10-15",
+    "last_seen": "2026-10-15",
+    "run_count": 1,
+    "title": "Hackers exploit Collabora RCE flaw to backdoor Nextcloud servers"
+  },
+  "da55ad2a2684": {
+    "first_seen": "2026-10-15",
+    "last_seen": "2026-10-15",
+    "run_count": 1,
+    "title": "Issue in the Linux kernel virtio-net/TAP networking path affecting KVM-based hypervisors"
+  },
+  "08fd5aad843c": {
+    "first_seen": "2026-10-15",
+    "last_seen": "2026-10-15",
+    "run_count": 1,
+    "title": "CISA Malcolm"
+  },
+  "cve:CVE-2026-110812": {
+    "first_seen": "2026-10-15",
+    "last_seen": "2026-10-15",
+    "run_count": 1,
+    "title": "CVE-2026-110812 - Deserialization of untrusted data in the Gremlin graph-import path in Amazon Neptune"
   }
 }
