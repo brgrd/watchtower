@@ -5,42 +5,6 @@
     "run_count": 2,
     "title": "Marimo RCE Flaw"
   },
-  "cve:CVE-2026-40305": {
-    "first_seen": "2026-04-18",
-    "last_seen": "2026-04-18",
-    "run_count": 1,
-    "title": "DNN RCE"
-  },
-  "cve:CVE-2026-29013": {
-    "first_seen": "2026-04-18",
-    "last_seen": "2026-04-18",
-    "run_count": 1,
-    "title": "libcoap OOB Read"
-  },
-  "cve:CVE-2026-40304": {
-    "first_seen": "2026-04-18",
-    "last_seen": "2026-04-18",
-    "run_count": 1,
-    "title": "zrok Vulnerability"
-  },
-  "cve:CVE-2026-2986": {
-    "first_seen": "2026-04-18",
-    "last_seen": "2026-04-18",
-    "run_count": 1,
-    "title": "WordPress RCE"
-  },
-  "cve:CVE-2026-41242": {
-    "first_seen": "2026-04-18",
-    "last_seen": "2026-04-18",
-    "run_count": 1,
-    "title": "protobufjs RCE"
-  },
-  "cve:CVE-2026-40948": {
-    "first_seen": "2026-04-18",
-    "last_seen": "2026-04-18",
-    "run_count": 1,
-    "title": "apache-airflow-providers-keycloak RCE"
-  },
   "cve:CVE-2026-0868": {
     "first_seen": "2026-04-19",
     "last_seen": "2026-04-19",
@@ -18397,8 +18361,8 @@
   },
   "da55ad2a2684": {
     "first_seen": "2026-10-15",
-    "last_seen": "2026-10-15",
-    "run_count": 1,
+    "last_seen": "2026-10-16",
+    "run_count": 2,
     "title": "Issue in the Linux kernel virtio-net/TAP networking path affecting KVM-based hypervisors"
   },
   "08fd5aad843c": {
@@ -18412,5 +18376,17 @@
     "last_seen": "2026-10-15",
     "run_count": 1,
     "title": "CVE-2026-110812 - Deserialization of untrusted data in the Gremlin graph-import path in Amazon Neptune"
+  },
+  "67b0017dbc17": {
+    "first_seen": "2026-10-16",
+    "last_seen": "2026-10-16",
+    "run_count": 1,
+    "title": "PEERSTITCH Malware Deployed via FortiOS Flaw Bypasses Checks on Tagged VPN Sessions"
+  },
+  "c5d6731deea0": {
+    "first_seen": "2026-10-16",
+    "last_seen": "2026-10-16",
+    "run_count": 1,
+    "title": "China-Linked Hackers Exploited BeyondTrust Zero-Day to Take Over Remote Support Servers"
   }
 }
