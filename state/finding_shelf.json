@@ -5,36 +5,6 @@
     "run_count": 2,
     "title": "Marimo RCE Flaw"
   },
-  "cve:CVE-2026-0868": {
-    "first_seen": "2026-04-19",
-    "last_seen": "2026-04-19",
-    "run_count": 1,
-    "title": "CVE-2026-0868"
-  },
-  "cve:CVE-2026-6560": {
-    "first_seen": "2026-04-19",
-    "last_seen": "2026-04-19",
-    "run_count": 1,
-    "title": "CVE-2026-6560"
-  },
-  "cve:CVE-2026-6564": {
-    "first_seen": "2026-04-19",
-    "last_seen": "2026-04-19",
-    "run_count": 1,
-    "title": "CVE-2026-6564"
-  },
-  "cve:CVE-2026-6570": {
-    "first_seen": "2026-04-19",
-    "last_seen": "2026-04-19",
-    "run_count": 1,
-    "title": "KodExplorer RCE"
-  },
-  "cve:CVE-2026-6576": {
-    "first_seen": "2026-04-19",
-    "last_seen": "2026-04-19",
-    "run_count": 1,
-    "title": "DjangoBlog Vulnerability"
-  },
   "cve:CVE-2026-20122": {
     "first_seen": "2026-04-20",
     "last_seen": "2026-04-20",
@@ -18412,5 +18382,95 @@
     "last_seen": "2026-10-16",
     "run_count": 1,
     "title": "CVE-2026-109587 & CVE-2026-109588 - Issue with FreeRTOS-Kernel"
+  },
+  "cve:CVE-2026-55796": {
+    "first_seen": "2026-10-17",
+    "last_seen": "2026-10-17",
+    "run_count": 1,
+    "title": "CVE-2026-55796"
+  },
+  "cve:CVE-2026-64862": {
+    "first_seen": "2026-10-17",
+    "last_seen": "2026-10-17",
+    "run_count": 1,
+    "title": "CVE-2026-64862"
+  },
+  "cve:CVE-2026-111802": {
+    "first_seen": "2026-10-17",
+    "last_seen": "2026-10-17",
+    "run_count": 1,
+    "title": "CVE-2026-111802"
+  },
+  "cve:CVE-2026-89085": {
+    "first_seen": "2026-10-17",
+    "last_seen": "2026-10-17",
+    "run_count": 1,
+    "title": "CVE-2026-89085"
+  },
+  "cve:CVE-2026-111855": {
+    "first_seen": "2026-10-17",
+    "last_seen": "2026-10-17",
+    "run_count": 1,
+    "title": "CVE-2026-111855"
+  },
+  "cve:CVE-2026-110268": {
+    "first_seen": "2026-10-17",
+    "last_seen": "2026-10-17",
+    "run_count": 1,
+    "title": "CVE-2026-110268"
+  },
+  "cve:CVE-2026-111726": {
+    "first_seen": "2026-10-17",
+    "last_seen": "2026-10-17",
+    "run_count": 1,
+    "title": "CVE-2026-111726"
+  },
+  "cve:CVE-2026-108373": {
+    "first_seen": "2026-10-17",
+    "last_seen": "2026-10-17",
+    "run_count": 1,
+    "title": "CVE-2026-108373"
+  },
+  "cve:CVE-2026-108374": {
+    "first_seen": "2026-10-17",
+    "last_seen": "2026-10-17",
+    "run_count": 1,
+    "title": "CVE-2026-108374"
+  },
+  "cve:CVE-2026-96542": {
+    "first_seen": "2026-10-17",
+    "last_seen": "2026-10-17",
+    "run_count": 1,
+    "title": "CVE-2026-96542"
+  },
+  "cve:CVE-2026-108372": {
+    "first_seen": "2026-10-17",
+    "last_seen": "2026-10-17",
+    "run_count": 1,
+    "title": "CVE-2026-108372"
+  },
+  "cve:CVE-2026-111044": {
+    "first_seen": "2026-10-17",
+    "last_seen": "2026-10-17",
+    "run_count": 1,
+    "title": "CVE-2026-111044"
+  },
+  "cve:CVE-2026-49410": {
+    "first_seen": "2026-10-17",
+    "last_seen": "2026-10-17",
+    "run_count": 1,
+    "title": "CVE-2026-49410"
+  },
+  "cve:CVE-2026-62438": {
+    "first_seen": "2026-10-17",
+    "last_seen": "2026-10-17",
+    "run_count": 1,
+    "title": "CVE-2026-62438"
+  },
+  "cve:CVE-2026-62439": {
+    "first_seen": "2026-10-17",
+    "last_seen": "2026-10-17",
+    "run_count": 1,
+    "title": "CVE-2026-62439"
   }
 }
