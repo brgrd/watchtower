@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-17T22:11:52.927179+00:00",
+  "fetched_at": "2026-10-18T10:53:46.816901+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -7159,6 +7159,24 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Giglio",
       "summary": "In August 2025, over 1M unique email addresses appeared in a breach allegedly obtained from Italian fashion designer Giglio. The data also included names, phone numbers and physical addresses. Giglio did not respond to repeated attempts to disclose the incident.",
+      "action": "monitor"
+    },
+    {
+      "id": "hibp:gitesdefrance-2026-05-16",
+      "name": "GitesDeFrance",
+      "title": "Gîtes de France",
+      "date": "2026-05-16",
+      "added": "2026-10-18",
+      "affected_count": 117574,
+      "data_classes": [
+        "Booking details",
+        "Email addresses",
+        "Names",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#GitesDeFrance",
+      "summary": "In May 2026, the French holiday rental network Gîtes de France suffered a data breach affecting some of its departmental branches. The incident exposed hundreds of thousands of customer records, including 118k unique email addresses alongside names, phone numbers, postal addresses and booking details.",
       "action": "monitor"
     },
     {
