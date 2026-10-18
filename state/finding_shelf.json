@@ -5,24 +5,6 @@
     "run_count": 2,
     "title": "Marimo RCE Flaw"
   },
-  "cve:CVE-2026-20122": {
-    "first_seen": "2026-04-20",
-    "last_seen": "2026-04-20",
-    "run_count": 1,
-    "title": "Cisco SD-WAN Vuln"
-  },
-  "cve:CVE-2025-48700": {
-    "first_seen": "2026-04-20",
-    "last_seen": "2026-04-20",
-    "run_count": 1,
-    "title": "Zimbra Collaboration Vuln"
-  },
-  "cve:CVE-2023-27351": {
-    "first_seen": "2026-04-20",
-    "last_seen": "2026-04-20",
-    "run_count": 1,
-    "title": "PaperCut NG/MF Vuln"
-  },
   "cve:CVE-2026-0930": {
     "first_seen": "2026-04-21",
     "last_seen": "2026-04-21",
@@ -18562,5 +18544,95 @@
     "last_seen": "2026-10-17",
     "run_count": 1,
     "title": "CVE-2026-111885"
+  },
+  "cve:CVE-2026-111886": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "run_count": 1,
+    "title": "CVE-2026-111886"
+  },
+  "cve:CVE-2026-111887": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "run_count": 1,
+    "title": "CVE-2026-111887"
+  },
+  "cve:CVE-2026-111888": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "run_count": 1,
+    "title": "CVE-2026-111888"
+  },
+  "cve:CVE-2026-111889": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "run_count": 1,
+    "title": "CVE-2026-111889"
+  },
+  "cve:CVE-2026-111890": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "run_count": 1,
+    "title": "CVE-2026-111890"
+  },
+  "cve:CVE-2026-111891": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "run_count": 1,
+    "title": "CVE-2026-111891"
+  },
+  "cve:CVE-2026-111892": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "run_count": 1,
+    "title": "CVE-2026-111892"
+  },
+  "cve:CVE-2026-111893": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "run_count": 1,
+    "title": "CVE-2026-111893"
+  },
+  "cve:CVE-2026-111894": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "run_count": 1,
+    "title": "CVE-2026-111894"
+  },
+  "cve:CVE-2026-111895": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "run_count": 1,
+    "title": "CVE-2026-111895"
+  },
+  "cve:CVE-2026-111896": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "run_count": 1,
+    "title": "CVE-2026-111896"
+  },
+  "cve:CVE-2026-111897": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "run_count": 1,
+    "title": "CVE-2026-111897"
+  },
+  "cve:CVE-2026-111898": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "run_count": 1,
+    "title": "CVE-2026-111898"
+  },
+  "cve:CVE-2026-111900": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "run_count": 1,
+    "title": "CVE-2026-111900"
+  },
+  "cve:CVE-2026-111901": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "run_count": 1,
+    "title": "CVE-2026-111901"
   }
 }
