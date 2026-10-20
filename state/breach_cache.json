@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-20T00:13:53.140159+00:00",
+  "fetched_at": "2026-10-20T11:23:46.700261+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -1450,6 +1450,28 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#ANPS",
       "summary": "In January 2026, a data breach impacting the French non-profit Association Nationale des Premiers Secours (ANPS) was posted to a hacking forum. The breach exposed 5.6k unique email addresses along with names, dates of birth and places of birth. ANPS self-submitted the data to HIBP and advised the incident was traced back to a legacy system and did not impact health data, financial information or p",
+      "action": "monitor"
+    },
+    {
+      "id": "hibp:assuranceretraite-2024-09-01",
+      "name": "AssuranceRetraite",
+      "title": "Assurance Retraite",
+      "date": "2024-09-01",
+      "added": "2026-10-20",
+      "affected_count": 70372,
+      "data_classes": [
+        "Dates of birth",
+        "Email addresses",
+        "Family members' names",
+        "Government issued IDs",
+        "Income levels",
+        "Marital statuses",
+        "Names",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#AssuranceRetraite",
+      "summary": "In September 2024, the French national pension fund Assurance Retraite suffered a data breach affecting approximately 370k assistance beneficiaries. The data included 70k unique email addresses along with names, dates of birth, physical addresses, phone numbers, income levels, marital statuses, French social security numbers (NIR) and contact details of relatives or other nominated contacts. In it",
       "action": "monitor"
     },
     {

@@ -1,29 +1,32 @@
-# Watchtower Pipeline Eval — 2026-10-20T00:13:22Z
+# Watchtower Pipeline Eval — 2026-10-20T11:23:38Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 829 |
-| After dedup + CVE merge | 810 |
-| Sent to Groq | 21 |
+| Items polled (raw) | 315 |
+| After dedup + CVE merge | 314 |
+| Sent to Groq | 1 |
 | Groq findings returned | 0 |
-| Final cards rendered | 15 |
-| **Pipeline yield** | **15/829 (1.8%)** |
+| Final cards rendered | 1 |
+| **Pipeline yield** | **1/315 (0.3%)** |
 
 ## Groq
-_Groq not called this run (placeholder mode or no API key)._
+- **Model**: `unknown`
+- **Payload**: ? chars
+- **Parse**: ✗  |  **Retries**: 0
+- **Rate limit remaining** — requests: ?, tokens: ?
 
 ## Card Quality
 
-**15 cards** — P1: 0, P2: 0, P3: 15
+**1 cards** — P1: 0, P2: 0, P3: 1
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 51.7 / 60 |
+| Risk score mean / p90 | 70 / 70 |
 | Tactic coverage | 0% |
 | CVE coverage | 0% |
-| Patch status | unknown: 15 |
+| Patch status | unknown: 1 |
 
 ### Reasoning Quality
 
@@ -32,14 +35,14 @@ _Groq not called this run (placeholder mode or no API key)._
 
 ### Persistence
 
-- New (run=1): **1** | Evolving (2–5): **14** | Persistent (>5): **0** | Resolved: **0**
-- Mean run_count: 2.9 | Mean shelf_days: 91.7
+- New (run=1): **1** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
+- Mean run_count: 1 | Mean shelf_days: 0
 
 ## Enrichment Hit Rates
 
 | Source | Hits | Rate |
 |--------|-----:|-----:|
-| EPSS | 14 | 93% |
+| EPSS | 0 | 0% |
 | NVD (CVE) | 0 | 0% |
 | CISA KEV | 0 | 0% |
 
@@ -47,23 +50,23 @@ _Groq not called this run (placeholder mode or no API key)._
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 500 |
-| `bsi_germany` | 233 |
-| `aws_security_bulletins` | 44 |
-| `bleepingcomputer` | 10 |
-| `securityweek` | 9 |
+| `nvd` | 184 |
+| `bsi_germany` | 121 |
+| `thehackernews` | 4 |
+| `bleepingcomputer` | 2 |
+| `securityweek` | 2 |
 | _(+21 more)_ | … |
 
-**11 feeds returned 0 items this run.**
+**19 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-10-16 | 3 | ? | 0% | 0% | 2 | 0 |
 | 2026-10-16 | 9 | ? | 0% | 0% | 5 | 0 |
 | 2026-10-17 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-10-17 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-10-18 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-10-18 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-10-18 | 15 | ? | 0% | 0% | 15 | 0 |
+| 2026-10-20 | 15 | ? | 0% | 0% | 1 | 0 |

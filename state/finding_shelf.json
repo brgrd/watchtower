@@ -18748,5 +18748,11 @@
     "last_seen": "2026-10-20",
     "run_count": 1,
     "title": "CVE-2026-15415 - Path traversal and arbitrary file write in the workflow linters of aws-healthomics-mcp-server"
+  },
+  "660f8535f8ca": {
+    "first_seen": "2026-10-20",
+    "last_seen": "2026-10-20",
+    "run_count": 1,
+    "title": "ClickFix Attackers Exploit Siemens Software Center Flaw to Deploy Remote Access Trojan"
   }
 }
