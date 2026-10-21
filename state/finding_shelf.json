@@ -1,40 +1,4 @@
 {
-  "cve:CVE-2026-39987": {
-    "first_seen": "2026-04-10",
-    "last_seen": "2026-04-23",
-    "run_count": 2,
-    "title": "Marimo RCE Flaw"
-  },
-  "cve:CVE-2026-33825": {
-    "first_seen": "2026-04-22",
-    "last_seen": "2026-04-23",
-    "run_count": 2,
-    "title": "Microsoft Defender Vuln"
-  },
-  "cve:CVE-2026-41175": {
-    "first_seen": "2026-04-23",
-    "last_seen": "2026-04-23",
-    "run_count": 1,
-    "title": "Statamic Vulnerability"
-  },
-  "cve:CVE-2026-41454": {
-    "first_seen": "2026-04-23",
-    "last_seen": "2026-04-23",
-    "run_count": 1,
-    "title": "WeKan Vulnerability"
-  },
-  "cve:CVE-2026-6885": {
-    "first_seen": "2026-04-23",
-    "last_seen": "2026-04-23",
-    "run_count": 1,
-    "title": "Borg SPM 2007 RCE"
-  },
-  "cve:CVE-2026-3259": {
-    "first_seen": "2026-04-23",
-    "last_seen": "2026-04-23",
-    "run_count": 1,
-    "title": "CVE-2026-3259"
-  },
   "d2674bc4933b": {
     "first_seen": "2026-04-24",
     "last_seen": "2026-04-24",
@@ -18763,8 +18727,8 @@
   },
   "e6bda73e09ff": {
     "first_seen": "2026-10-20",
-    "last_seen": "2026-10-20",
-    "run_count": 1,
+    "last_seen": "2026-10-21",
+    "run_count": 2,
     "title": "CISA Adds Six Known Exploited Vulnerabilities to Catalog"
   },
   "b777c57f57fc": {
@@ -18790,5 +18754,11 @@
     "last_seen": "2026-10-20",
     "run_count": 1,
     "title": "CVE-2026-112407 - Incorrect privilege assignment in AWS CICD-toolchain-for-serverless-applications"
+  },
+  "856f8a5fb1ec": {
+    "first_seen": "2026-10-21",
+    "last_seen": "2026-10-21",
+    "run_count": 1,
+    "title": "PHP2Shell: Mass Exploitation Looms for Leaked Critical PHP Flaws"
   }
 }
