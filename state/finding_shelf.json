@@ -18760,5 +18760,89 @@
     "last_seen": "2026-10-21",
     "run_count": 1,
     "title": "PHP2Shell: Mass Exploitation Looms for Leaked Critical PHP Flaws"
+  },
+  "cve:CVE-2026-112408": {
+    "first_seen": "2026-10-21",
+    "last_seen": "2026-10-21",
+    "run_count": 1,
+    "title": "CVE-2026-112408 - Missing bucket ownership verification in Amazon SageMaker Python SDK default_bucket()"
+  },
+  "e44e44159610": {
+    "first_seen": "2026-10-21",
+    "last_seen": "2026-10-21",
+    "run_count": 1,
+    "title": "CISA: Hackers chain Plex flaws in Plex2Shell attacks to breach servers"
+  },
+  "f5f2e1d84a92": {
+    "first_seen": "2026-10-21",
+    "last_seen": "2026-10-21",
+    "run_count": 1,
+    "title": "PHP Issues Emergency Patches for Two Critical PHP2Shell RCE Flaws as Exploit Attempts Emerge"
+  },
+  "9a134066bb62": {
+    "first_seen": "2026-10-21",
+    "last_seen": "2026-10-21",
+    "run_count": 1,
+    "title": "Widespread PHP Flaw May Cause Many Site Outages Today"
+  },
+  "e79d1f747811": {
+    "first_seen": "2026-10-21",
+    "last_seen": "2026-10-21",
+    "run_count": 1,
+    "title": "LiteLLM Compromised in Supply Chain Attack Delivering Credential Stealer and Backdoor"
+  },
+  "8fecc91b8509": {
+    "first_seen": "2026-10-21",
+    "last_seen": "2026-10-21",
+    "run_count": 1,
+    "title": "Lazarus hackers use post-quantum cryptography for malware delivery"
+  },
+  "6ec06e170c9d": {
+    "first_seen": "2026-10-21",
+    "last_seen": "2026-10-21",
+    "run_count": 1,
+    "title": "Japan's Onamae Desktop Cloud hacked, up to 27,000 servers affected"
+  },
+  "81e4e896998a": {
+    "first_seen": "2026-10-21",
+    "last_seen": "2026-10-21",
+    "run_count": 1,
+    "title": "Google Chrome adds Gemini-powered scam detection, warns users of ClickFix attacks"
+  },
+  "912bc8afe8e7": {
+    "first_seen": "2026-10-21",
+    "last_seen": "2026-10-21",
+    "run_count": 1,
+    "title": "OpenAI agents disabled safety monitoring, one lied about it"
+  },
+  "072d84439917": {
+    "first_seen": "2026-10-21",
+    "last_seen": "2026-10-21",
+    "run_count": 1,
+    "title": "ClickFix has never been bigger, and AI tools are its most convincing lure yet"
+  },
+  "31045680a425": {
+    "first_seen": "2026-10-21",
+    "last_seen": "2026-10-21",
+    "run_count": 1,
+    "title": "Critical GitLab Flaw (CVSS 10.0) Could Allow Unauthenticated RCE Across 12 Years of Releases"
+  },
+  "034ee1de0b62": {
+    "first_seen": "2026-10-21",
+    "last_seen": "2026-10-21",
+    "run_count": 1,
+    "title": "Microsoft says October updates didn’t actually fix VPN issues"
+  },
+  "ef19045635a6": {
+    "first_seen": "2026-10-21",
+    "last_seen": "2026-10-21",
+    "run_count": 1,
+    "title": "Microsoft PowerToys adds CursorHide, Button Lock mouse tools"
+  },
+  "05dba2b4eeba": {
+    "first_seen": "2026-10-21",
+    "last_seen": "2026-10-21",
+    "run_count": 1,
+    "title": "OpenAI's GPT-6 Agent Removed Safety Monitoring, Then Falsely Denied Doing So"
   }
 }
