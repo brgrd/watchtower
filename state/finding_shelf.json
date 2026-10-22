@@ -18826,5 +18826,35 @@
     "last_seen": "2026-10-21",
     "run_count": 1,
     "title": "OpenAI's GPT-6 Agent Removed Safety Monitoring, Then Falsely Denied Doing So"
+  },
+  "69ed88b50927": {
+    "first_seen": "2026-10-22",
+    "last_seen": "2026-10-22",
+    "run_count": 1,
+    "title": "Kiloview E3 NDI Encoder"
+  },
+  "cve:CVE-2026-115419": {
+    "first_seen": "2026-10-22",
+    "last_seen": "2026-10-22",
+    "run_count": 1,
+    "title": "CVE-2026-115419 - Unintended disclosure of data element to wrong session in Strands Agents SDK A2A Server"
+  },
+  "cve:CVE-2026-115416": {
+    "first_seen": "2026-10-22",
+    "last_seen": "2026-10-22",
+    "run_count": 1,
+    "title": "CVE-2026-115416 - Incorrect authorization checks in Amazon Athena engine version 3 query processing"
+  },
+  "cve:CVE-2026-115414": {
+    "first_seen": "2026-10-22",
+    "last_seen": "2026-10-22",
+    "run_count": 1,
+    "title": "CVE-2026-115414 - OS Command Injection Issue in SAM CLI Terraform Hook"
+  },
+  "cve:CVE-2026-115417": {
+    "first_seen": "2026-10-22",
+    "last_seen": "2026-10-22",
+    "run_count": 1,
+    "title": "CVE-2026-115417 - Memory allocation with excessive size value in the MQTT 3.1.1 compatibility adapter in aws-c-mqtt"
   }
 }

@@ -1,15 +1,15 @@
-# Watchtower Pipeline Eval — 2026-10-22T10:01:25Z
+# Watchtower Pipeline Eval — 2026-10-22T23:14:08Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 264 |
-| After dedup + CVE merge | 262 |
-| Sent to Groq | 1 |
+| Items polled (raw) | 633 |
+| After dedup + CVE merge | 619 |
+| Sent to Groq | 5 |
 | Groq findings returned | 0 |
-| Final cards rendered | 1 |
-| **Pipeline yield** | **1/264 (0.4%)** |
+| Final cards rendered | 5 |
+| **Pipeline yield** | **5/633 (0.8%)** |
 
 ## Groq
 - **Model**: `unknown`
@@ -19,14 +19,14 @@
 
 ## Card Quality
 
-**1 cards** — P1: 0, P2: 0, P3: 1
+**5 cards** — P1: 0, P2: 0, P3: 5
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 75 / 75 |
+| Risk score mean / p90 | 46 / 40 |
 | Tactic coverage | 0% |
 | CVE coverage | 0% |
-| Patch status | unknown: 1 |
+| Patch status | unknown: 5 |
 
 ### Reasoning Quality
 
@@ -35,8 +35,8 @@
 
 ### Persistence
 
-- New (run=1): **0** | Evolving (2–5): **1** | Persistent (>5): **0** | Resolved: **0**
-- Mean run_count: 2 | Mean shelf_days: 1
+- New (run=1): **5** | Evolving (2–5): **0** | Persistent (>5): **0** | Resolved: **0**
+- Mean run_count: 1 | Mean shelf_days: 0
 
 ## Enrichment Hit Rates
 
@@ -50,23 +50,23 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 239 |
-| `bsi_germany` | 12 |
-| `thehackernews` | 5 |
-| `securityweek` | 3 |
-| `bleepingcomputer` | 2 |
+| `nvd` | 327 |
+| `bsi_germany` | 227 |
+| `cisa_alerts` | 20 |
+| `thehackernews` | 10 |
+| `bleepingcomputer` | 9 |
 | _(+21 more)_ | … |
 
-**19 feeds returned 0 items this run.**
+**10 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
 | 2026-10-18 | 15 | ? | 0% | 0% | 15 | 0 |
-| 2026-10-18 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-10-20 | 15 | ? | 0% | 0% | 1 | 0 |
 | 2026-10-20 | 1 | ? | 0% | 0% | 1 | 0 |
 | 2026-10-20 | 7 | ? | 0% | 0% | 6 | 0 |
 | 2026-10-21 | 2 | ? | 0% | 0% | 1 | 0 |
 | 2026-10-21 | 15 | ? | 0% | 0% | 15 | 0 |
+| 2026-10-22 | 1 | ? | 0% | 0% | 0 | 0 |
