@@ -1,16 +1,4 @@
 {
-  "d2674bc4933b": {
-    "first_seen": "2026-04-24",
-    "last_seen": "2026-04-24",
-    "run_count": 1,
-    "title": "Samsung MagicINFO 9 RCE"
-  },
-  "5c520c23d0b9": {
-    "first_seen": "2026-04-24",
-    "last_seen": "2026-04-24",
-    "run_count": 1,
-    "title": "Marimo Pre-Auth RCE"
-  },
   "3d6dffcfa824": {
     "first_seen": "2026-04-24",
     "last_seen": "2026-04-25",
@@ -22,12 +10,6 @@
     "last_seen": "2026-04-25",
     "run_count": 2,
     "title": "SimpleHelp Path Traversal"
-  },
-  "127453722592": {
-    "first_seen": "2026-04-24",
-    "last_seen": "2026-04-24",
-    "run_count": 1,
-    "title": "SimpleHelp Missing Authorization"
   },
   "b78f2a0c5f03": {
     "first_seen": "2026-04-25",
@@ -18757,8 +18739,8 @@
   },
   "856f8a5fb1ec": {
     "first_seen": "2026-10-21",
-    "last_seen": "2026-10-21",
-    "run_count": 1,
+    "last_seen": "2026-10-22",
+    "run_count": 2,
     "title": "PHP2Shell: Mass Exploitation Looms for Leaked Critical PHP Flaws"
   },
   "cve:CVE-2026-112408": {
