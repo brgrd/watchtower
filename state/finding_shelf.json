@@ -1,52 +1,4 @@
 {
-  "3d6dffcfa824": {
-    "first_seen": "2026-04-24",
-    "last_seen": "2026-04-25",
-    "run_count": 2,
-    "title": "D-Link DIR-823X Command Injection"
-  },
-  "39bc6031a001": {
-    "first_seen": "2026-04-24",
-    "last_seen": "2026-04-25",
-    "run_count": 2,
-    "title": "SimpleHelp Path Traversal"
-  },
-  "b78f2a0c5f03": {
-    "first_seen": "2026-04-25",
-    "last_seen": "2026-04-25",
-    "run_count": 1,
-    "title": "Samsung MagicINFO 9 Server Path Traversal"
-  },
-  "cve:CVE-2026-6980": {
-    "first_seen": "2026-04-25",
-    "last_seen": "2026-04-25",
-    "run_count": 1,
-    "title": "CVE-2026-6980"
-  },
-  "cve:CVE-2026-6981": {
-    "first_seen": "2026-04-25",
-    "last_seen": "2026-04-25",
-    "run_count": 1,
-    "title": "CVE-2026-6981"
-  },
-  "cve:CVE-2026-6982": {
-    "first_seen": "2026-04-25",
-    "last_seen": "2026-04-25",
-    "run_count": 1,
-    "title": "CVE-2026-6982"
-  },
-  "855a5f50e083": {
-    "first_seen": "2026-04-25",
-    "last_seen": "2026-04-25",
-    "run_count": 1,
-    "title": "Cesanta Mongoose Vulnerability"
-  },
-  "8372e8ed3295": {
-    "first_seen": "2026-04-25",
-    "last_seen": "2026-04-25",
-    "run_count": 1,
-    "title": "Tenda HG10 Vulnerability"
-  },
   "cve:CVE-2026-7000": {
     "first_seen": "2026-04-26",
     "last_seen": "2026-04-26",
@@ -18739,8 +18691,8 @@
   },
   "856f8a5fb1ec": {
     "first_seen": "2026-10-21",
-    "last_seen": "2026-10-22",
-    "run_count": 2,
+    "last_seen": "2026-10-23",
+    "run_count": 3,
     "title": "PHP2Shell: Mass Exploitation Looms for Leaked Critical PHP Flaws"
   },
   "cve:CVE-2026-112408": {
@@ -18856,5 +18808,11 @@
     "last_seen": "2026-10-22",
     "run_count": 1,
     "title": "CVE-2026-115417 - Memory allocation with excessive size value in the MQTT 3.1.1 compatibility adapter in aws-c-mqtt"
+  },
+  "4b2e88bc5b2b": {
+    "first_seen": "2026-10-23",
+    "last_seen": "2026-10-23",
+    "run_count": 1,
+    "title": "Researchers Demonstrate Node2Shell RCE Exploit on Node.js Build Using Crafted Brotli Data"
   }
 }
