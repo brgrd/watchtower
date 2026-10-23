@@ -14521,8 +14521,8 @@
   },
   "81026920ec02": {
     "first_seen": "2026-08-26",
-    "last_seen": "2026-10-13",
-    "run_count": 4,
+    "last_seen": "2026-10-23",
+    "run_count": 5,
     "title": "GCP-2026-054"
   },
   "80d7b640a09f": {
@@ -15271,14 +15271,14 @@
   },
   "cve:CVE-2026-85787": {
     "first_seen": "2026-09-04",
-    "last_seen": "2026-09-10",
-    "run_count": 3,
+    "last_seen": "2026-10-23",
+    "run_count": 4,
     "title": "CVE-2026-85787 - An incomplete list of disallowed inputs in the SQL validation component in Amazon awslabs postgres-mcp-"
   },
   "1aba8f91d526": {
     "first_seen": "2026-09-04",
-    "last_seen": "2026-10-13",
-    "run_count": 3,
+    "last_seen": "2026-10-23",
+    "run_count": 4,
     "title": "GCP-2026-060"
   },
   "cve:CVE-2026-86113": {
@@ -16009,8 +16009,8 @@
   },
   "cve:CVE-2026-84942": {
     "first_seen": "2026-09-08",
-    "last_seen": "2026-09-08",
-    "run_count": 1,
+    "last_seen": "2026-10-23",
+    "run_count": 2,
     "title": "CVE-2026-84942 - Stored Cross-Site Scripting via Vega Expression Function Bypass in OpenSearch Dashboards"
   },
   "c15235cabeb8": {
@@ -16051,8 +16051,8 @@
   },
   "cve:CVE-2026-85788": {
     "first_seen": "2026-09-09",
-    "last_seen": "2026-09-09",
-    "run_count": 1,
+    "last_seen": "2026-10-23",
+    "run_count": 2,
     "title": "CVE-2026-85788 - Issue with awslabs mysql-mcp-server"
   },
   "cve:CVE-2026-75910": {
@@ -18133,8 +18133,8 @@
   },
   "aa2694ccebe5": {
     "first_seen": "2026-10-15",
-    "last_seen": "2026-10-15",
-    "run_count": 1,
+    "last_seen": "2026-10-23",
+    "run_count": 2,
     "title": "Hackers exploit Collabora RCE flaw to backdoor Nextcloud servers"
   },
   "da55ad2a2684": {
@@ -18814,5 +18814,53 @@
     "last_seen": "2026-10-23",
     "run_count": 1,
     "title": "Researchers Demonstrate Node2Shell RCE Exploit on Node.js Build Using Crafted Brotli Data"
+  },
+  "1989268dfedc": {
+    "first_seen": "2026-10-23",
+    "last_seen": "2026-10-23",
+    "run_count": 1,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "cve:CVE-2026-109618": {
+    "first_seen": "2026-10-23",
+    "last_seen": "2026-10-23",
+    "run_count": 1,
+    "title": "Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 23)"
+  },
+  "41efb83682ff": {
+    "first_seen": "2026-10-23",
+    "last_seen": "2026-10-23",
+    "run_count": 1,
+    "title": "Critical Flaw in Python’s Popular Pillow Image Library Allows Code Execution via a Crafted Image"
+  },
+  "e8ef4f4f8e4f": {
+    "first_seen": "2026-10-23",
+    "last_seen": "2026-10-23",
+    "run_count": 1,
+    "title": "PHP Warns of Another Unpatched RCE Risk Two Days After Emergency PHP2Shell Patches"
+  },
+  "cve:CVE-2026-115845": {
+    "first_seen": "2026-10-23",
+    "last_seen": "2026-10-23",
+    "run_count": 1,
+    "title": "CVE-2026-115845 - Incomplete validation in the run_script Python sandbox in AWS MCP Server"
+  },
+  "cve:CVE-2026-115812": {
+    "first_seen": "2026-10-23",
+    "last_seen": "2026-10-23",
+    "run_count": 1,
+    "title": "CVE-2026-115812 and CVE-2026-115813: Issue in Amazon Web Services Multi Model Server"
+  },
+  "cve:CVE-2026-87912": {
+    "first_seen": "2026-10-23",
+    "last_seen": "2026-10-23",
+    "run_count": 1,
+    "title": "CVE-2026-87912 and CVE-2026-87913: Missing S3 bucket ownership verification in the AWS Security Agent plugin for aws-age"
+  },
+  "cve:CVE-2026-87911": {
+    "first_seen": "2026-10-23",
+    "last_seen": "2026-10-23",
+    "run_count": 1,
+    "title": "CVE-2026-87911"
   }
 }
