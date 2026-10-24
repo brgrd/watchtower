@@ -1,58 +1,4 @@
 {
-  "cve:CVE-2026-7000": {
-    "first_seen": "2026-04-26",
-    "last_seen": "2026-04-26",
-    "run_count": 1,
-    "title": "Datacom DM4100 Vuln"
-  },
-  "cve:CVE-2026-6999": {
-    "first_seen": "2026-04-26",
-    "last_seen": "2026-04-26",
-    "run_count": 1,
-    "title": "BIVOCOM TR321 Vuln"
-  },
-  "cve:CVE-2026-7011": {
-    "first_seen": "2026-04-26",
-    "last_seen": "2026-04-26",
-    "run_count": 1,
-    "title": "MaxSite CMS Vuln"
-  },
-  "cve:CVE-2026-7014": {
-    "first_seen": "2026-04-26",
-    "last_seen": "2026-04-26",
-    "run_count": 1,
-    "title": "MaxSite CMS RCE"
-  },
-  "cve:CVE-2026-42254": {
-    "first_seen": "2026-04-26",
-    "last_seen": "2026-04-26",
-    "run_count": 1,
-    "title": "Hickory DNS Poisoning"
-  },
-  "cve:CVE-2026-7015": {
-    "first_seen": "2026-04-26",
-    "last_seen": "2026-04-26",
-    "run_count": 1,
-    "title": "MaxSite CMS Vulnerability"
-  },
-  "cve:CVE-2026-7031": {
-    "first_seen": "2026-04-26",
-    "last_seen": "2026-04-26",
-    "run_count": 1,
-    "title": "Tenda F456 RCE"
-  },
-  "cve:CVE-2026-7034": {
-    "first_seen": "2026-04-26",
-    "last_seen": "2026-04-26",
-    "run_count": 1,
-    "title": "Tenda FH1202 Vulnerability"
-  },
-  "cve:CVE-2026-7037": {
-    "first_seen": "2026-04-26",
-    "last_seen": "2026-04-26",
-    "run_count": 1,
-    "title": "Totolink A8000RU Flaw"
-  },
   "a8d31a962944": {
     "first_seen": "2026-04-27",
     "last_seen": "2026-04-27",
@@ -15271,8 +15217,8 @@
   },
   "cve:CVE-2026-85787": {
     "first_seen": "2026-09-04",
-    "last_seen": "2026-10-23",
-    "run_count": 4,
+    "last_seen": "2026-10-24",
+    "run_count": 5,
     "title": "CVE-2026-85787 - An incomplete list of disallowed inputs in the SQL validation component in Amazon awslabs postgres-mcp-"
   },
   "1aba8f91d526": {
@@ -18853,8 +18799,8 @@
   },
   "cve:CVE-2026-87912": {
     "first_seen": "2026-10-23",
-    "last_seen": "2026-10-23",
-    "run_count": 1,
+    "last_seen": "2026-10-24",
+    "run_count": 2,
     "title": "CVE-2026-87912 and CVE-2026-87913: Missing S3 bucket ownership verification in the AWS Security Agent plugin for aws-age"
   },
   "cve:CVE-2026-87911": {
