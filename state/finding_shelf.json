@@ -18079,8 +18079,8 @@
   },
   "aa2694ccebe5": {
     "first_seen": "2026-10-15",
-    "last_seen": "2026-10-23",
-    "run_count": 2,
+    "last_seen": "2026-10-24",
+    "run_count": 3,
     "title": "Hackers exploit Collabora RCE flaw to backdoor Nextcloud servers"
   },
   "da55ad2a2684": {
@@ -18757,8 +18757,8 @@
   },
   "4b2e88bc5b2b": {
     "first_seen": "2026-10-23",
-    "last_seen": "2026-10-23",
-    "run_count": 1,
+    "last_seen": "2026-10-24",
+    "run_count": 2,
     "title": "Researchers Demonstrate Node2Shell RCE Exploit on Node.js Build Using Crafted Brotli Data"
   },
   "1989268dfedc": {
@@ -18808,5 +18808,83 @@
     "last_seen": "2026-10-23",
     "run_count": 1,
     "title": "CVE-2026-87911"
+  },
+  "cve:CVE-2026-115802": {
+    "first_seen": "2026-10-24",
+    "last_seen": "2026-10-24",
+    "run_count": 1,
+    "title": "CVE-2026-115802"
+  },
+  "cve:CVE-2026-115803": {
+    "first_seen": "2026-10-24",
+    "last_seen": "2026-10-24",
+    "run_count": 1,
+    "title": "CVE-2026-115803"
+  },
+  "cve:CVE-2026-110892": {
+    "first_seen": "2026-10-24",
+    "last_seen": "2026-10-24",
+    "run_count": 1,
+    "title": "CVE-2026-110892"
+  },
+  "cve:CVE-2026-114705": {
+    "first_seen": "2026-10-24",
+    "last_seen": "2026-10-24",
+    "run_count": 1,
+    "title": "CVE-2026-114705"
+  },
+  "cve:CVE-2026-114625": {
+    "first_seen": "2026-10-24",
+    "last_seen": "2026-10-24",
+    "run_count": 1,
+    "title": "CVE-2026-114625 — Arista VeloCloud Orchestrator SQL Injection Vulnerability"
+  },
+  "cve:CVE-2026-108537": {
+    "first_seen": "2026-10-24",
+    "last_seen": "2026-10-24",
+    "run_count": 1,
+    "title": "CVE-2026-108537"
+  },
+  "cve:CVE-2026-108793": {
+    "first_seen": "2026-10-24",
+    "last_seen": "2026-10-24",
+    "run_count": 1,
+    "title": "CVE-2026-108793"
+  },
+  "cve:CVE-2026-110814": {
+    "first_seen": "2026-10-24",
+    "last_seen": "2026-10-24",
+    "run_count": 1,
+    "title": "CVE-2026-110814"
+  },
+  "cve:CVE-2026-115931": {
+    "first_seen": "2026-10-24",
+    "last_seen": "2026-10-24",
+    "run_count": 1,
+    "title": "CVE-2026-115931"
+  },
+  "cve:CVE-2026-115929": {
+    "first_seen": "2026-10-24",
+    "last_seen": "2026-10-24",
+    "run_count": 1,
+    "title": "CVE-2026-115929"
+  },
+  "cve:CVE-2026-115806": {
+    "first_seen": "2026-10-24",
+    "last_seen": "2026-10-24",
+    "run_count": 1,
+    "title": "CVE-2026-115806"
+  },
+  "cve:CVE-2026-115807": {
+    "first_seen": "2026-10-24",
+    "last_seen": "2026-10-24",
+    "run_count": 1,
+    "title": "CVE-2026-115807"
+  },
+  "cve:CVE-2026-105199": {
+    "first_seen": "2026-10-24",
+    "last_seen": "2026-10-24",
+    "run_count": 1,
+    "title": "CVE-2026-105199"
   }
 }
