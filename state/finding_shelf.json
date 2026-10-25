@@ -18619,8 +18619,8 @@
   },
   "856f8a5fb1ec": {
     "first_seen": "2026-10-21",
-    "last_seen": "2026-10-23",
-    "run_count": 3,
+    "last_seen": "2026-10-25",
+    "run_count": 4,
     "title": "PHP2Shell: Mass Exploitation Looms for Leaked Critical PHP Flaws"
   },
   "cve:CVE-2026-112408": {
