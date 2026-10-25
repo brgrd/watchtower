@@ -1,22 +1,4 @@
 {
-  "a8d31a962944": {
-    "first_seen": "2026-04-27",
-    "last_seen": "2026-04-27",
-    "run_count": 1,
-    "title": "InfraRecorder Vuln"
-  },
-  "a27aa348fc84": {
-    "first_seen": "2026-04-27",
-    "last_seen": "2026-04-27",
-    "run_count": 1,
-    "title": "CrossFont Vuln"
-  },
-  "4247c2086684": {
-    "first_seen": "2026-04-27",
-    "last_seen": "2026-04-27",
-    "run_count": 1,
-    "title": "Faleemi Desktop Software Vuln"
-  },
   "cve:CVE-2024-1708": {
     "first_seen": "2026-04-28",
     "last_seen": "2026-04-29",
@@ -18976,5 +18958,95 @@
     "last_seen": "2026-10-24",
     "run_count": 1,
     "title": "CVE-2026-116009"
+  },
+  "cve:CVE-2026-115996": {
+    "first_seen": "2026-10-25",
+    "last_seen": "2026-10-25",
+    "run_count": 1,
+    "title": "CVE-2026-115996"
+  },
+  "cve:CVE-2026-115997": {
+    "first_seen": "2026-10-25",
+    "last_seen": "2026-10-25",
+    "run_count": 1,
+    "title": "CVE-2026-115997"
+  },
+  "cve:CVE-2026-115999": {
+    "first_seen": "2026-10-25",
+    "last_seen": "2026-10-25",
+    "run_count": 1,
+    "title": "CVE-2026-115999"
+  },
+  "cve:CVE-2026-116000": {
+    "first_seen": "2026-10-25",
+    "last_seen": "2026-10-25",
+    "run_count": 1,
+    "title": "CVE-2026-116000"
+  },
+  "cve:CVE-2026-116004": {
+    "first_seen": "2026-10-25",
+    "last_seen": "2026-10-25",
+    "run_count": 1,
+    "title": "CVE-2026-116004"
+  },
+  "cve:CVE-2026-116006": {
+    "first_seen": "2026-10-25",
+    "last_seen": "2026-10-25",
+    "run_count": 1,
+    "title": "CVE-2026-116006"
+  },
+  "cve:CVE-2026-116007": {
+    "first_seen": "2026-10-25",
+    "last_seen": "2026-10-25",
+    "run_count": 1,
+    "title": "CVE-2026-116007"
+  },
+  "cve:CVE-2026-116044": {
+    "first_seen": "2026-10-25",
+    "last_seen": "2026-10-25",
+    "run_count": 1,
+    "title": "CVE-2026-116044"
+  },
+  "cve:CVE-2026-116045": {
+    "first_seen": "2026-10-25",
+    "last_seen": "2026-10-25",
+    "run_count": 1,
+    "title": "CVE-2026-116045"
+  },
+  "cve:CVE-2026-116047": {
+    "first_seen": "2026-10-25",
+    "last_seen": "2026-10-25",
+    "run_count": 1,
+    "title": "CVE-2026-116047"
+  },
+  "cve:CVE-2026-116048": {
+    "first_seen": "2026-10-25",
+    "last_seen": "2026-10-25",
+    "run_count": 1,
+    "title": "CVE-2026-116048"
+  },
+  "cve:CVE-2026-116049": {
+    "first_seen": "2026-10-25",
+    "last_seen": "2026-10-25",
+    "run_count": 1,
+    "title": "CVE-2026-116049"
+  },
+  "cve:CVE-2026-116050": {
+    "first_seen": "2026-10-25",
+    "last_seen": "2026-10-25",
+    "run_count": 1,
+    "title": "CVE-2026-116050"
+  },
+  "cve:CVE-2026-116046": {
+    "first_seen": "2026-10-25",
+    "last_seen": "2026-10-25",
+    "run_count": 1,
+    "title": "CVE-2026-116046"
+  },
+  "cve:CVE-2026-109111": {
+    "first_seen": "2026-10-25",
+    "last_seen": "2026-10-25",
+    "run_count": 1,
+    "title": "CVE-2026-109111"
   }
 }
