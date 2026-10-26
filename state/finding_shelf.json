@@ -18727,8 +18727,8 @@
   },
   "4b2e88bc5b2b": {
     "first_seen": "2026-10-23",
-    "last_seen": "2026-10-24",
-    "run_count": 2,
+    "last_seen": "2026-10-26",
+    "run_count": 3,
     "title": "Researchers Demonstrate Node2Shell RCE Exploit on Node.js Build Using Crafted Brotli Data"
   },
   "1989268dfedc": {
@@ -19126,5 +19126,11 @@
     "last_seen": "2026-10-26",
     "run_count": 1,
     "title": "CVE-2026-102870 ASP.NET Core Remote Code Execution Vulnerability"
+  },
+  "cve:CVE-2026-115418": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-115418 - SQL injection in the database-query custom resource handlers in Amazon Web Services (AWS)"
   }
 }
