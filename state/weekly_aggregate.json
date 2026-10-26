@@ -1,5 +1,5 @@
 {
-  "rebuilt_at": "2026-10-25T09:44:03.540546+00:00",
+  "rebuilt_at": "2026-10-26T00:07:58.362362+00:00",
   "window_days": 7,
   "total_cards": 74,
   "unique_cves": 56,
@@ -32,63 +32,63 @@
       "count": 2
     },
     {
-      "cve": "CVE-2026-115996",
+      "cve": "CVE-2026-116053",
       "count": 1
     },
     {
-      "cve": "CVE-2026-115997",
+      "cve": "CVE-2026-116096",
       "count": 1
     },
     {
-      "cve": "CVE-2026-115999",
+      "cve": "CVE-2026-116052",
       "count": 1
     },
     {
-      "cve": "CVE-2026-116000",
+      "cve": "CVE-2026-116201",
       "count": 1
     },
     {
-      "cve": "CVE-2026-116004",
+      "cve": "CVE-2026-116054",
       "count": 1
     },
     {
-      "cve": "CVE-2026-116006",
+      "cve": "CVE-2026-116055",
       "count": 1
     },
     {
-      "cve": "CVE-2026-116007",
+      "cve": "CVE-2026-116057",
       "count": 1
     },
     {
-      "cve": "CVE-2026-116044",
+      "cve": "CVE-2026-116060",
       "count": 1
     },
     {
-      "cve": "CVE-2026-116045",
+      "cve": "CVE-2026-116061",
       "count": 1
     },
     {
-      "cve": "CVE-2026-116047",
+      "cve": "CVE-2026-116062",
       "count": 1
     },
     {
-      "cve": "CVE-2026-116048",
+      "cve": "CVE-2026-116063",
       "count": 1
     },
     {
-      "cve": "CVE-2026-116049",
+      "cve": "CVE-2026-116094",
       "count": 1
     },
     {
-      "cve": "CVE-2026-116050",
+      "cve": "CVE-2026-116095",
       "count": 1
     },
     {
-      "cve": "CVE-2026-116046",
+      "cve": "CVE-2026-70197",
       "count": 1
     },
     {
-      "cve": "CVE-2026-109111",
+      "cve": "CVE-2026-102870",
       "count": 1
     },
     {
@@ -109,5 +109,5 @@
     }
   ],
   "weekly_summary": "Over the past 7 days, our security landscape has been characterized by a diverse range of vulnerabilities, with 17 unique CVEs tracked across various domains, including Cloud and IAM, Containers and K8s, OS and Kernel, npm and Node, PyPI and Python, and Web and Servers. The most frequently seen CVEs, each occurring once, include CVE-2026-73043, CVE-2026-73047, and others, highlighting the broad scope of potential threats. Notably, the majority of these findings were concentrated on a single day, August 16, 2026, underscoring the importance of ongoing vigilance in our security posture.",
-  "weekly_summary_ts": "2026-10-25"
+  "weekly_summary_ts": "2026-10-26"
 }

@@ -5,18 +5,6 @@
     "run_count": 2,
     "title": "CVE-2024-1708 RCE"
   },
-  "cve:CVE-2026-5394": {
-    "first_seen": "2026-04-28",
-    "last_seen": "2026-04-28",
-    "run_count": 1,
-    "title": "CVE-2026-5394 Auth Bypass"
-  },
-  "cve:CVE-2026-7151": {
-    "first_seen": "2026-04-28",
-    "last_seen": "2026-04-28",
-    "run_count": 1,
-    "title": "CVE-2026-7151 Tenda HG3 RCE"
-  },
   "cve:CVE-2026-33467": {
     "first_seen": "2026-04-29",
     "last_seen": "2026-04-29",
@@ -19048,5 +19036,95 @@
     "last_seen": "2026-10-25",
     "run_count": 1,
     "title": "CVE-2026-109111"
+  },
+  "cve:CVE-2026-116053": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-116053"
+  },
+  "cve:CVE-2026-116096": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-116096"
+  },
+  "cve:CVE-2026-116052": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-116052"
+  },
+  "cve:CVE-2026-116201": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-116201"
+  },
+  "cve:CVE-2026-116054": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-116054"
+  },
+  "cve:CVE-2026-116055": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-116055"
+  },
+  "cve:CVE-2026-116057": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-116057"
+  },
+  "cve:CVE-2026-116060": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-116060"
+  },
+  "cve:CVE-2026-116061": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-116061"
+  },
+  "cve:CVE-2026-116062": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-116062"
+  },
+  "cve:CVE-2026-116063": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-116063"
+  },
+  "cve:CVE-2026-116094": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-116094"
+  },
+  "cve:CVE-2026-116095": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-116095"
+  },
+  "cve:CVE-2026-70197": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-70197 .NET and Visual Studio Remote Code Execution Vulnerability"
+  },
+  "cve:CVE-2026-102870": {
+    "first_seen": "2026-10-26",
+    "last_seen": "2026-10-26",
+    "run_count": 1,
+    "title": "CVE-2026-102870 ASP.NET Core Remote Code Execution Vulnerability"
   }
 }
