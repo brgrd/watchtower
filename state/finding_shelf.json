@@ -17329,8 +17329,8 @@
   },
   "0878a1c9353a": {
     "first_seen": "2026-09-30",
-    "last_seen": "2026-10-01",
-    "run_count": 2,
+    "last_seen": "2026-10-27",
+    "run_count": 3,
     "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
   },
   "5b771b280bcd": {
@@ -19114,5 +19114,35 @@
     "last_seen": "2026-10-26",
     "run_count": 1,
     "title": "CVE-2026-115418 - SQL injection in the database-query custom resource handlers in Amazon Web Services (AWS)"
+  },
+  "3aec7328e07e": {
+    "first_seen": "2026-10-27",
+    "last_seen": "2026-10-27",
+    "run_count": 1,
+    "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
+  },
+  "340626942ecb": {
+    "first_seen": "2026-10-27",
+    "last_seen": "2026-10-27",
+    "run_count": 1,
+    "title": "EPICS Base"
+  },
+  "9ea4d3903c2e": {
+    "first_seen": "2026-10-27",
+    "last_seen": "2026-10-27",
+    "run_count": 1,
+    "title": "Mitsubishi Electric GENESIS, GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, MobileHMI, IoTWorX, MC Works64, GENESI"
+  },
+  "cve:CVE-2026-115413": {
+    "first_seen": "2026-10-27",
+    "last_seen": "2026-10-27",
+    "run_count": 1,
+    "title": "CVE-2026-115413 - AWS API MCP Server OAuth token audience validation bypass"
+  },
+  "7d0269fafcd7": {
+    "first_seen": "2026-10-27",
+    "last_seen": "2026-10-27",
+    "run_count": 1,
+    "title": "Microsoft Authenticator Flaw Let Permissionless Android Apps Steal Work Account Tokens"
   }
 }
