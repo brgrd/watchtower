@@ -1,36 +1,46 @@
 ---
-generated_at: 2026-10-27T21:13:29.383520+00:00
+generated_at: 2026-10-29T00:47:10.640081+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CISA Adds Two Known Exploited Vulnerabilities to Catalog (risk: 70)
+## CISA Adds Two Known Exploited Vulnerabilities to Catalog (risk: 85)
 1 related updates.
 
-- [CISA Adds Two Known Exploited Vulnerabilities to Catalog](https://www.cisa.gov/news-events/alerts/2026/10/27/cisa-adds-two-known-exploited-vulnerabilities-catalog)
+- [CISA Adds Two Known Exploited Vulnerabilities to Catalog](https://www.cisa.gov/news-events/alerts/2026/10/28/cisa-adds-two-known-exploited-vulnerabilities-catalog)
 
-## EPICS Base (risk: 70)
+## Inside KeyDrift: Analyzing historical UAT-11473 activity on Cisco SD-WAN (risk: 70)
 1 related updates.
 
-- [EPICS Base](https://www.cisa.gov/news-events/ics-advisories/icsa-26-300-01)
+- [Inside KeyDrift: Analyzing historical UAT-11473 activity on Cisco SD-WAN](https://blog.talosintelligence.com/uat-11473-keydrift/)
 
-## Mitsubishi Electric GENESIS, GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, MobileHMI, IoTWorX, MC Works64, GENESIS32 and BizViz (risk: 70)
+## ShinyHunters-Exploited Oracle PeopleSoft Zero-Day Turns Out to Be Three Chained Flaws (risk: 70)
 1 related updates.
 
-- [Mitsubishi Electric GENESIS, GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, MobileHMI, IoTWorX, MC Works64, GENESI](https://www.cisa.gov/news-events/ics-advisories/icsa-26-300-02)
+- [ShinyHunters-Exploited Oracle PeopleSoft Zero-Day Turns Out to Be Three Chained Flaws](https://thehackernews.com/2026/10/shinyhunters-exploited-oracle.html)
 
-## Apple Backports Fix for Exploited CoreGraphics Flaw to Older iPhones and iPads (risk: 70)
+## Adobe Fixes 8 Critical Campaign Classic Flaws Allowing Code Execution and Security Bypass (risk: 70)
 1 related updates.
 
-- [Apple Backports Fix for Exploited CoreGraphics Flaw to Older iPhones and iPads](https://thehackernews.com/2026/10/apple-backports-fix-for-exploited.html)
+- [Adobe Fixes 8 Critical Campaign Classic Flaws Allowing Code Execution and Security Bypass](https://thehackernews.com/2026/10/adobe-fixes-8-critical-campaign-classic.html)
 
-## CVE-2026-115413 - AWS API MCP Server OAuth token audience validation bypass (risk: 40)
+## CVE-2026-111497: Native Brotli Decoder Remote Code Execution and Memory Disclosure (risk: 40)
 1 related updates.
 
-- [CVE-2026-115413 - AWS API MCP Server OAuth token audience validation bypass](https://aws.amazon.com/security/security-bulletins/rss/2026-152-aws/)
+- [CVE-2026-111497: Native Brotli Decoder Remote Code Execution and Memory Disclosure](https://aws.amazon.com/security/security-bulletins/rss/2026-155-aws/)
 
-## Microsoft Authenticator Flaw Let Permissionless Android Apps Steal Work Account Tokens (risk: 40)
+## CVE-2026-118029 - Unverified ownership of the default Athena query result location in AWS SDK for pandas (risk: 40)
 1 related updates.
 
-- [Microsoft Authenticator Flaw Let Permissionless Android Apps Steal Work Account Tokens](https://thehackernews.com/2026/10/microsoft-authenticator-flaw-let.html)
+- [CVE-2026-118029 - Unverified ownership of the default Athena query result location in AWS SDK for pandas](https://aws.amazon.com/security/security-bulletins/rss/2026-153-aws/)
+
+## CVE-2026-115415 - Secret masking bypass in the environment tool in Strands Agents Tools (risk: 40)
+1 related updates.
+
+- [CVE-2026-115415 - Secret masking bypass in the environment tool in Strands Agents Tools](https://aws.amazon.com/security/security-bulletins/rss/2026-154-aws/)
+
+## Hackers Target Critical Oracle E-Business Suite RCE Flaw Days After Security Patch (risk: 40)
+1 related updates.
+
+- [Hackers Target Critical Oracle E-Business Suite RCE Flaw Days After Security Patch](https://thehackernews.com/2026/10/hackers-target-critical-oracle-e.html)

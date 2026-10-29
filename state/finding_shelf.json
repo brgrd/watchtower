@@ -1,10 +1,4 @@
 {
-  "cve:CVE-2026-1858": {
-    "first_seen": "2026-04-30",
-    "last_seen": "2026-04-30",
-    "run_count": 1,
-    "title": "wget2 Vuln"
-  },
   "cve:CVE-2026-41940": {
     "first_seen": "2026-04-30",
     "last_seen": "2026-05-11",
@@ -17191,8 +17185,8 @@
   },
   "700c5711bb70": {
     "first_seen": "2026-09-26",
-    "last_seen": "2026-09-28",
-    "run_count": 2,
+    "last_seen": "2026-10-29",
+    "run_count": 3,
     "title": "Attackers Bypass WAFs to Exploit Oracle PeopleSoft Flaw and Deploy Web Shells"
   },
   "2fa12d512dd4": {
@@ -19144,5 +19138,47 @@
     "last_seen": "2026-10-27",
     "run_count": 1,
     "title": "Microsoft Authenticator Flaw Let Permissionless Android Apps Steal Work Account Tokens"
+  },
+  "0a175b52221e": {
+    "first_seen": "2026-10-29",
+    "last_seen": "2026-10-29",
+    "run_count": 1,
+    "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
+  },
+  "5b61a38e836c": {
+    "first_seen": "2026-10-29",
+    "last_seen": "2026-10-29",
+    "run_count": 1,
+    "title": "Inside KeyDrift: Analyzing historical UAT-11473 activity on Cisco SD-WAN"
+  },
+  "5a0e56635950": {
+    "first_seen": "2026-10-29",
+    "last_seen": "2026-10-29",
+    "run_count": 1,
+    "title": "Adobe Fixes 8 Critical Campaign Classic Flaws Allowing Code Execution and Security Bypass"
+  },
+  "cve:CVE-2026-111497": {
+    "first_seen": "2026-10-29",
+    "last_seen": "2026-10-29",
+    "run_count": 1,
+    "title": "CVE-2026-111497: Native Brotli Decoder Remote Code Execution and Memory Disclosure"
+  },
+  "cve:CVE-2026-118029": {
+    "first_seen": "2026-10-29",
+    "last_seen": "2026-10-29",
+    "run_count": 1,
+    "title": "CVE-2026-118029 - Unverified ownership of the default Athena query result location in AWS SDK for pandas"
+  },
+  "cve:CVE-2026-115415": {
+    "first_seen": "2026-10-29",
+    "last_seen": "2026-10-29",
+    "run_count": 1,
+    "title": "CVE-2026-115415 - Secret masking bypass in the environment tool in Strands Agents Tools"
+  },
+  "f6519e626a9b": {
+    "first_seen": "2026-10-29",
+    "last_seen": "2026-10-29",
+    "run_count": 1,
+    "title": "Hackers Target Critical Oracle E-Business Suite RCE Flaw Days After Security Patch"
   }
 }
