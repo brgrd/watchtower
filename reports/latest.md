@@ -1,36 +1,41 @@
 ---
-generated_at: 2026-10-30T00:48:25.989480+00:00
+generated_at: 2026-10-30T23:37:55.074998+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Linux Kernel TCP Flaw With 9.8 CVSS Score Affects Ubuntu, Red Hat and Other Distributions (risk: 85)
-1 related updates.
-
-- [Linux Kernel TCP Flaw With 9.8 CVSS Score Affects Ubuntu, Red Hat and Other Distributions](https://thehackernews.com/2026/10/linux-kernel-tcp-flaw-with-98-cvss.html)
-
 ## CISA Adds Two Known Exploited Vulnerabilities to Catalog (risk: 70)
 1 related updates.
 
-- [CISA Adds Two Known Exploited Vulnerabilities to Catalog](https://www.cisa.gov/news-events/alerts/2026/10/29/cisa-adds-two-known-exploited-vulnerabilities-catalog)
+- [CISA Adds Two Known Exploited Vulnerabilities to Catalog](https://www.cisa.gov/news-events/alerts/2026/10/30/cisa-adds-two-known-exploited-vulnerabilities-catalog)
 
-## China-Linked Hackers Exploited VMware ESX Zero-Day to Reduce Audit Trail Visibility (risk: 70)
+## CISA Adds Actively Exploited GitLab RCE and Cisco Firewall DoS Flaws to KEV (risk: 70)
 1 related updates.
 
-- [China-Linked Hackers Exploited VMware ESX Zero-Day to Reduce Audit Trail Visibility](https://thehackernews.com/2026/10/china-linked-hackers-exploited-vmware.html)
+- [CISA Adds Actively Exploited GitLab RCE and Cisco Firewall DoS Flaws to KEV](https://thehackernews.com/2026/10/cisa-adds-actively-exploited-gitlab-rce.html)
 
-## Hackers exploit Cisco SD-WAN flaw to deploy custom KeyDrift malware (risk: 70)
+## Hackers Actively Exploit Highly Critical Drupal Commerce Core Authorization Bypass Flaw (risk: 70)
 1 related updates.
 
-- [Hackers exploit Cisco SD-WAN flaw to deploy custom KeyDrift malware](https://www.bleepingcomputer.com/news/security/hackers-exploit-cisco-sd-wan-flaw-to-deploy-custom-keydrift-malware/)
+- [Hackers Actively Exploit Highly Critical Drupal Commerce Core Authorization Bypass Flaw](https://thehackernews.com/2026/10/hackers-actively-exploit-highly.html)
 
-## CVE-2026-119115 - Incorrect authorization in issuer resolution in AWS Private CA Connector for Kubernetes (risk: 55)
+## CVE-2026-119117 - Insertion of sensitive information into a log file and process argument list in the Amazon Kinesis Producer Library for Ja (risk: 40)
 1 related updates.
 
-- [CVE-2026-119115 - Incorrect authorization in issuer resolution in AWS Private CA Connector for Kubernetes](https://aws.amazon.com/security/security-bulletins/rss/2026-156-aws/)
+- [CVE-2026-119117 - Insertion of sensitive information into a log file and process argument list in the Amazon Kinesis Pro](https://aws.amazon.com/security/security-bulletins/rss/2026-159-aws/)
 
-## Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 29) (risk: 40)
+## TeamViewer Flaw Could Let Malicious Hosts Take Over Support Technicians’ Machines (risk: 40)
 1 related updates.
 
-- [Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 29)](https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/)
+- [TeamViewer Flaw Could Let Malicious Hosts Take Over Support Technicians’ Machines](https://www.securityweek.com/teamviewer-flaw-could-let-malicious-hosts-take-over-support-technicians-machines/)
+
+## CVE-2026-119086 - Missing type validation in xQueueSelectFromSet in FreeRTOS-Kernel (risk: 40)
+1 related updates.
+
+- [CVE-2026-119086 - Missing type validation in xQueueSelectFromSet in FreeRTOS-Kernel](https://aws.amazon.com/security/security-bulletins/rss/2026-158-aws/)
+
+## CVE-2026-119116 and CVE-2026-119148 - Issues in AWS Nitro Enclaves SDK for C (risk: 40)
+1 related updates.
+
+- [CVE-2026-119116 and CVE-2026-119148 - Issues in AWS Nitro Enclaves SDK for C](https://aws.amazon.com/security/security-bulletins/rss/2026-157-aws/)
