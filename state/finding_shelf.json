@@ -11,42 +11,6 @@
     "run_count": 5,
     "title": "geldata gel-mcp Vuln"
   },
-  "cve:CVE-2026-2052": {
-    "first_seen": "2026-05-02",
-    "last_seen": "2026-05-02",
-    "run_count": 1,
-    "title": "Widget Options Vulnerability"
-  },
-  "cve:CVE-2026-7592": {
-    "first_seen": "2026-05-02",
-    "last_seen": "2026-05-02",
-    "run_count": 1,
-    "title": "itsourcecode Courier Management System Vulnerability"
-  },
-  "cve:CVE-2026-39805": {
-    "first_seen": "2026-05-02",
-    "last_seen": "2026-05-02",
-    "run_count": 1,
-    "title": "mtrudel bandit Vulnerability"
-  },
-  "df690726a6d1": {
-    "first_seen": "2026-05-02",
-    "last_seen": "2026-05-02",
-    "run_count": 1,
-    "title": "TRENDnet TEW-821DAP Vulnerability"
-  },
-  "5ca61f4d534a": {
-    "first_seen": "2026-05-02",
-    "last_seen": "2026-05-02",
-    "run_count": 1,
-    "title": "WordPress Plugin RCE"
-  },
-  "63e33b23738f": {
-    "first_seen": "2026-05-02",
-    "last_seen": "2026-05-02",
-    "run_count": 1,
-    "title": "CTMS SQL Injection"
-  },
   "665afed76e78": {
     "first_seen": "2026-05-03",
     "last_seen": "2026-05-03",
@@ -18715,8 +18679,8 @@
   },
   "cve:CVE-2026-109618": {
     "first_seen": "2026-10-23",
-    "last_seen": "2026-10-23",
-    "run_count": 1,
+    "last_seen": "2026-10-30",
+    "run_count": 2,
     "title": "Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 23)"
   },
   "41efb83682ff": {
@@ -19141,14 +19105,14 @@
   },
   "0a175b52221e": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "run_count": 1,
+    "last_seen": "2026-10-30",
+    "run_count": 2,
     "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
   },
   "5b61a38e836c": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "run_count": 1,
+    "last_seen": "2026-10-30",
+    "run_count": 2,
     "title": "Inside KeyDrift: Analyzing historical UAT-11473 activity on Cisco SD-WAN"
   },
   "5a0e56635950": {
@@ -19180,5 +19144,23 @@
     "last_seen": "2026-10-29",
     "run_count": 1,
     "title": "Hackers Target Critical Oracle E-Business Suite RCE Flaw Days After Security Patch"
+  },
+  "2964a4d67468": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "run_count": 1,
+    "title": "Linux Kernel TCP Flaw With 9.8 CVSS Score Affects Ubuntu, Red Hat and Other Distributions"
+  },
+  "b90166323eaf": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "run_count": 1,
+    "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
+  },
+  "cve:CVE-2026-119115": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "run_count": 1,
+    "title": "CVE-2026-119115 - Incorrect authorization in issuer resolution in AWS Private CA Connector for Kubernetes"
   }
 }
