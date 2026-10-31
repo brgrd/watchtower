@@ -11,42 +11,6 @@
     "run_count": 5,
     "title": "geldata gel-mcp Vuln"
   },
-  "665afed76e78": {
-    "first_seen": "2026-05-03",
-    "last_seen": "2026-05-03",
-    "run_count": 1,
-    "title": "Jinher OA 1.0 Vulnerability"
-  },
-  "09451aded72d": {
-    "first_seen": "2026-05-03",
-    "last_seen": "2026-05-03",
-    "run_count": 1,
-    "title": "CodeWise Tornet Scooter Mobile App 4.75 Vulnerability"
-  },
-  "ef3e90183c2f": {
-    "first_seen": "2026-05-03",
-    "last_seen": "2026-05-03",
-    "run_count": 1,
-    "title": "MikroTik RouterOS 6.49.8 Vulnerability"
-  },
-  "cve:CVE-2026-7687": {
-    "first_seen": "2026-05-03",
-    "last_seen": "2026-05-03",
-    "run_count": 1,
-    "title": "Langflow-ai vuln"
-  },
-  "cve:CVE-2026-7689": {
-    "first_seen": "2026-05-03",
-    "last_seen": "2026-05-03",
-    "run_count": 1,
-    "title": "Dolibarr ERP CRM vuln"
-  },
-  "cve:CVE-2026-7691": {
-    "first_seen": "2026-05-03",
-    "last_seen": "2026-05-03",
-    "run_count": 1,
-    "title": "Wavlink WL-WN570HA1 vuln"
-  },
   "04e6bb16a3c9": {
     "first_seen": "2026-05-04",
     "last_seen": "2026-05-04",
@@ -19165,8 +19129,8 @@
   },
   "aa5c53d08bc6": {
     "first_seen": "2026-10-30",
-    "last_seen": "2026-10-30",
-    "run_count": 1,
+    "last_seen": "2026-10-31",
+    "run_count": 2,
     "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
   },
   "29d0471fbfea": {
@@ -19198,5 +19162,11 @@
     "last_seen": "2026-10-30",
     "run_count": 1,
     "title": "CVE-2026-119116 and CVE-2026-119148 - Issues in AWS Nitro Enclaves SDK for C"
+  },
+  "cve:CVE-2026-98432": {
+    "first_seen": "2026-10-31",
+    "last_seen": "2026-10-31",
+    "run_count": 1,
+    "title": "CVE-2026-98432 - Linux kernel IPv4 TCP use-after-free Issue"
   }
 }
