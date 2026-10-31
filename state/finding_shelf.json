@@ -19168,5 +19168,11 @@
     "last_seen": "2026-10-31",
     "run_count": 1,
     "title": "CVE-2026-98432 - Linux kernel IPv4 TCP use-after-free Issue"
+  },
+  "4f37274187a1": {
+    "first_seen": "2026-10-31",
+    "last_seen": "2026-10-31",
+    "run_count": 1,
+    "title": "New Android SMS of Death exploit can remotely crash unpatched phones"
   }
 }
