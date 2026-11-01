@@ -11,24 +11,6 @@
     "run_count": 5,
     "title": "geldata gel-mcp Vuln"
   },
-  "04e6bb16a3c9": {
-    "first_seen": "2026-05-04",
-    "last_seen": "2026-05-04",
-    "run_count": 1,
-    "title": "Open5GS RCE"
-  },
-  "b428308a39ec": {
-    "first_seen": "2026-05-04",
-    "last_seen": "2026-05-04",
-    "run_count": 1,
-    "title": "Calibre-Web Vulnerability"
-  },
-  "04622a81ea9b": {
-    "first_seen": "2026-05-04",
-    "last_seen": "2026-05-04",
-    "run_count": 1,
-    "title": "Velociraptor Resource Exhaustion"
-  },
   "cve:CVE-2026-23918": {
     "first_seen": "2026-05-05",
     "last_seen": "2026-05-05",
@@ -19174,5 +19156,95 @@
     "last_seen": "2026-10-31",
     "run_count": 1,
     "title": "New Android SMS of Death exploit can remotely crash unpatched phones"
+  },
+  "cve:CVE-2026-120210": {
+    "first_seen": "2026-11-01",
+    "last_seen": "2026-11-01",
+    "run_count": 1,
+    "title": "CVE-2026-120210"
+  },
+  "cve:CVE-2026-78188": {
+    "first_seen": "2026-11-01",
+    "last_seen": "2026-11-01",
+    "run_count": 1,
+    "title": "CVE-2026-78188"
+  },
+  "cve:CVE-2026-78189": {
+    "first_seen": "2026-11-01",
+    "last_seen": "2026-11-01",
+    "run_count": 1,
+    "title": "CVE-2026-78189"
+  },
+  "cve:CVE-2026-78190": {
+    "first_seen": "2026-11-01",
+    "last_seen": "2026-11-01",
+    "run_count": 1,
+    "title": "CVE-2026-78190"
+  },
+  "cve:CVE-2026-78191": {
+    "first_seen": "2026-11-01",
+    "last_seen": "2026-11-01",
+    "run_count": 1,
+    "title": "CVE-2026-78191"
+  },
+  "cve:CVE-2026-78192": {
+    "first_seen": "2026-11-01",
+    "last_seen": "2026-11-01",
+    "run_count": 1,
+    "title": "CVE-2026-78192"
+  },
+  "cve:CVE-2026-102212": {
+    "first_seen": "2026-11-01",
+    "last_seen": "2026-11-01",
+    "run_count": 1,
+    "title": "CVE-2026-102212"
+  },
+  "cve:CVE-2026-120199": {
+    "first_seen": "2026-11-01",
+    "last_seen": "2026-11-01",
+    "run_count": 1,
+    "title": "CVE-2026-120199"
+  },
+  "cve:CVE-2026-120200": {
+    "first_seen": "2026-11-01",
+    "last_seen": "2026-11-01",
+    "run_count": 1,
+    "title": "CVE-2026-120200"
+  },
+  "cve:CVE-2026-120201": {
+    "first_seen": "2026-11-01",
+    "last_seen": "2026-11-01",
+    "run_count": 1,
+    "title": "CVE-2026-120201"
+  },
+  "cve:CVE-2026-120202": {
+    "first_seen": "2026-11-01",
+    "last_seen": "2026-11-01",
+    "run_count": 1,
+    "title": "CVE-2026-120202"
+  },
+  "cve:CVE-2026-120203": {
+    "first_seen": "2026-11-01",
+    "last_seen": "2026-11-01",
+    "run_count": 1,
+    "title": "CVE-2026-120203"
+  },
+  "cve:CVE-2026-120204": {
+    "first_seen": "2026-11-01",
+    "last_seen": "2026-11-01",
+    "run_count": 1,
+    "title": "CVE-2026-120204"
+  },
+  "cve:CVE-2026-120205": {
+    "first_seen": "2026-11-01",
+    "last_seen": "2026-11-01",
+    "run_count": 1,
+    "title": "CVE-2026-120205"
+  },
+  "cve:CVE-2026-120206": {
+    "first_seen": "2026-11-01",
+    "last_seen": "2026-11-01",
+    "run_count": 1,
+    "title": "CVE-2026-120206"
   }
 }
