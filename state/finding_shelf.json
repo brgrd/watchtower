@@ -11,18 +11,6 @@
     "run_count": 5,
     "title": "geldata gel-mcp Vuln"
   },
-  "cve:CVE-2026-23918": {
-    "first_seen": "2026-05-05",
-    "last_seen": "2026-05-05",
-    "run_count": 1,
-    "title": "Apache HTTP/2 RCE"
-  },
-  "cve:CVE-2026-22679": {
-    "first_seen": "2026-05-05",
-    "last_seen": "2026-05-05",
-    "run_count": 1,
-    "title": "Weaver E-cology RCE"
-  },
   "cve:CVE-2026-35527": {
     "first_seen": "2026-05-06",
     "last_seen": "2026-05-06",
@@ -17515,8 +17503,8 @@
   },
   "cve:CVE-2026-105811": {
     "first_seen": "2026-10-07",
-    "last_seen": "2026-10-07",
-    "run_count": 1,
+    "last_seen": "2026-11-02",
+    "run_count": 2,
     "title": "CVE-2026-105811 - Authorization bypass through a user-controlled key in the Amazon Q Business Lambda hook sample in QnAB"
   },
   "28f45e2ec7c2": {
@@ -19111,8 +19099,8 @@
   },
   "aa5c53d08bc6": {
     "first_seen": "2026-10-30",
-    "last_seen": "2026-10-31",
-    "run_count": 2,
+    "last_seen": "2026-11-02",
+    "run_count": 3,
     "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
   },
   "29d0471fbfea": {
@@ -19336,5 +19324,29 @@
     "last_seen": "2026-11-01",
     "run_count": 1,
     "title": "CVE-2026-120224"
+  },
+  "cve:CVE-2026-119301": {
+    "first_seen": "2026-11-02",
+    "last_seen": "2026-11-02",
+    "run_count": 1,
+    "title": "CVE-2026-119301 - Improper neutralization of quoting syntax in Apache Iceberg SQL identifier generation in AWS SDK for p"
+  },
+  "cve:CVE-2026-119085": {
+    "first_seen": "2026-11-02",
+    "last_seen": "2026-11-02",
+    "run_count": 1,
+    "title": "CVE-2026-119085 - Template injection in the publishing component of Virtual Engineering Workbench"
+  },
+  "cve:CVE-2026-116635": {
+    "first_seen": "2026-11-02",
+    "last_seen": "2026-11-02",
+    "run_count": 1,
+    "title": "CVE-2026-116635 - Improper limitation of a pathname to a restricted directory in the deployment status component of the "
+  },
+  "cve:CVE-2026-120497": {
+    "first_seen": "2026-11-02",
+    "last_seen": "2026-11-02",
+    "run_count": 1,
+    "title": "CVE-2026-120497 - Stored cross-site scripting in the HTML report generator of aidlc-traceability in AWS AI-DLC Workflows"
   }
 }
