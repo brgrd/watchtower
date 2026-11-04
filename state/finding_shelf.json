@@ -19366,5 +19366,29 @@
     "last_seen": "2026-11-04",
     "run_count": 1,
     "title": "CVE-2026-121652 - Stored cross-site scripting (XSS) in AWS Amplify maplibre-gl-js-amplify popup rendering"
+  },
+  "cve:CVE-2026-122266": {
+    "first_seen": "2026-11-04",
+    "last_seen": "2026-11-04",
+    "run_count": 1,
+    "title": "CVE-2026-122266 - Improper isolation of shared resources in aws-network-policy-agent in Amazon EKS"
+  },
+  "322257dd486d": {
+    "first_seen": "2026-11-04",
+    "last_seen": "2026-11-04",
+    "run_count": 1,
+    "title": "Google Issues Patches for Critical Android Flaw That Could Allow RCE Without User Interaction"
+  },
+  "3eaa2684de27": {
+    "first_seen": "2026-11-04",
+    "last_seen": "2026-11-04",
+    "run_count": 1,
+    "title": "SonicWall Won't Patch EoL GMS Flaws That Could Expose Files, Alter Database Records"
+  },
+  "cve:CVE-2026-122192": {
+    "first_seen": "2026-11-04",
+    "last_seen": "2026-11-04",
+    "run_count": 1,
+    "title": "CVE-2026-122192 - Guest Access to Firecracker Process Memory After a Failed Memory Discard"
   }
 }
