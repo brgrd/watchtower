@@ -1,36 +1,61 @@
 ---
-generated_at: 2026-11-02T23:25:33.664600+00:00
+generated_at: 2026-11-04T01:13:45.611188+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Ivanti Patches Two More Zero-Days Exploited in Connect Secure Attack Chain (risk: 70)
+## CISA Adds One Known Exploited Vulnerability to Catalog (risk: 70)
 1 related updates.
 
-- [Ivanti Patches Two More Zero-Days Exploited in Connect Secure Attack Chain](https://www.securityweek.com/ivanti-patches-two-more-zero-days-exploited-in-connect-secure-attack-chain/)
+- [CISA Adds One Known Exploited Vulnerability to Catalog](https://www.cisa.gov/news-events/alerts/2026/11/03/cisa-adds-one-known-exploited-vulnerability-catalog)
 
-## CVE-2026-105811 - Authorization bypass through a user-controlled key in the Amazon Q Business Lambda hook sample in QnABot on AWS (risk: 40)
+## Attackers Exploit Critical Siemens IoT2050 Flaw to Plant Remote Command Backdoors (risk: 70)
 1 related updates.
 
-- [CVE-2026-105811 - Authorization bypass through a user-controlled key in the Amazon Q Business Lambda hook sample in QnAB](https://aws.amazon.com/security/security-bulletins/rss/2026-126-aws/)
+- [Attackers Exploit Critical Siemens IoT2050 Flaw to Plant Remote Command Backdoors](https://thehackernews.com/2026/11/attackers-exploit-critical-siemens.html)
 
-## CVE-2026-119301 - Improper neutralization of quoting syntax in Apache Iceberg SQL identifier generation in AWS SDK for pandas (risk: 40)
+## Attackers Target Unpatched CryptoPayment Gateway Flaw That Can Expose Wallet Credentials (risk: 70)
 1 related updates.
 
-- [CVE-2026-119301 - Improper neutralization of quoting syntax in Apache Iceberg SQL identifier generation in AWS SDK for p](https://aws.amazon.com/security/security-bulletins/rss/2026-161-aws/)
+- [Attackers Target Unpatched CryptoPayment Gateway Flaw That Can Expose Wallet Credentials](https://thehackernews.com/2026/11/attackers-target-unpatched.html)
 
-## CVE-2026-119085 - Template injection in the publishing component of Virtual Engineering Workbench (risk: 40)
+## Subnet Solutions PowerSYSTEM Center (risk: 70)
 1 related updates.
 
-- [CVE-2026-119085 - Template injection in the publishing component of Virtual Engineering Workbench](https://aws.amazon.com/security/security-bulletins/rss/2026-162-aws/)
+- [Subnet Solutions PowerSYSTEM Center](https://www.cisa.gov/news-events/ics-advisories/icsa-26-307-01)
 
-## CVE-2026-116635 - Improper limitation of a pathname to a restricted directory in the deployment status component of the AWS Serverless MCP S (risk: 40)
+## Red Hat Patches 9.8-Rated Linux TCP RCE Flaw While Ubuntu Releases Fixes for Testing (risk: 55)
 1 related updates.
 
-- [CVE-2026-116635 - Improper limitation of a pathname to a restricted directory in the deployment status component of the ](https://aws.amazon.com/security/security-bulletins/rss/2026-164-aws/)
+- [Red Hat Patches 9.8-Rated Linux TCP RCE Flaw While Ubuntu Releases Fixes for Testing](https://thehackernews.com/2026/11/red-hat-patches-98-rated-linux-tcp-rce.html)
 
-## CVE-2026-120497 - Stored cross-site scripting in the HTML report generator of aidlc-traceability in AWS AI-DLC Workflows (risk: 40)
+## Barracuda Flaws Could Be Chained to Bypass Authorization and Gain Root Access (risk: 40)
 1 related updates.
 
-- [CVE-2026-120497 - Stored cross-site scripting in the HTML report generator of aidlc-traceability in AWS AI-DLC Workflows](https://aws.amazon.com/security/security-bulletins/rss/2026-163-aws/)
+- [Barracuda Flaws Could Be Chained to Bypass Authorization and Gain Root Access](https://thehackernews.com/2026/11/barracuda-flaws-could-be-chained-to.html)
+
+## CVE-2026-119084 - Remote Code Execution via Unsafe Class Loading in Amazon Redshift JDBC Driver Connection Parameters (risk: 40)
+1 related updates.
+
+- [CVE-2026-119084 - Remote Code Execution via Unsafe Class Loading in Amazon Redshift JDBC Driver Connection Parameters](https://aws.amazon.com/security/security-bulletins/rss/2026-168-aws/)
+
+## CVE-2026-119922 - Babelfish for PostgreSQL Privilege Escalation (risk: 40)
+1 related updates.
+
+- [CVE-2026-119922 - Babelfish for PostgreSQL Privilege Escalation](https://aws.amazon.com/security/security-bulletins/rss/2026-165-aws/)
+
+## CVE-2026-121652 - Stored cross-site scripting (XSS) in AWS Amplify maplibre-gl-js-amplify popup rendering (risk: 40)
+1 related updates.
+
+- [CVE-2026-121652 - Stored cross-site scripting (XSS) in AWS Amplify maplibre-gl-js-amplify popup rendering](https://aws.amazon.com/security/security-bulletins/rss/2026-167-aws/)
+
+## GCP-2026-054 (risk: 40)
+1 related updates.
+
+- [GCP-2026-054](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-054)
+
+## GCP-2026-060 (risk: 40)
+1 related updates.
+
+- [GCP-2026-060](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-060)

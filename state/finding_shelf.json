@@ -11,36 +11,6 @@
     "run_count": 5,
     "title": "geldata gel-mcp Vuln"
   },
-  "cve:CVE-2026-35527": {
-    "first_seen": "2026-05-06",
-    "last_seen": "2026-05-06",
-    "run_count": 1,
-    "title": "Incus Vulnerability"
-  },
-  "cve:CVE-2026-0300": {
-    "first_seen": "2026-05-06",
-    "last_seen": "2026-05-07",
-    "run_count": 2,
-    "title": "User-ID Authentication Portal Vulnerability"
-  },
-  "cve:CVE-2026-39383": {
-    "first_seen": "2026-05-06",
-    "last_seen": "2026-05-06",
-    "run_count": 1,
-    "title": "Gotenberg Vulnerability"
-  },
-  "cve:CVE-2026-1281": {
-    "first_seen": "2026-05-07",
-    "last_seen": "2026-05-07",
-    "run_count": 1,
-    "title": "Ivanti EPMM RCE"
-  },
-  "cve:CVE-2026-43575": {
-    "first_seen": "2026-05-07",
-    "last_seen": "2026-05-07",
-    "run_count": 1,
-    "title": "OpenClaw Auth Bypass"
-  },
   "cve:CVE-2026-42047": {
     "first_seen": "2026-05-08",
     "last_seen": "2026-05-08",
@@ -14311,8 +14281,8 @@
   },
   "81026920ec02": {
     "first_seen": "2026-08-26",
-    "last_seen": "2026-10-23",
-    "run_count": 5,
+    "last_seen": "2026-11-04",
+    "run_count": 6,
     "title": "GCP-2026-054"
   },
   "80d7b640a09f": {
@@ -15067,8 +15037,8 @@
   },
   "1aba8f91d526": {
     "first_seen": "2026-09-04",
-    "last_seen": "2026-10-23",
-    "run_count": 4,
+    "last_seen": "2026-11-04",
+    "run_count": 5,
     "title": "GCP-2026-060"
   },
   "cve:CVE-2026-86113": {
@@ -19081,8 +19051,8 @@
   },
   "2964a4d67468": {
     "first_seen": "2026-10-30",
-    "last_seen": "2026-10-30",
-    "run_count": 1,
+    "last_seen": "2026-11-04",
+    "run_count": 2,
     "title": "Linux Kernel TCP Flaw With 9.8 CVSS Score Affects Ubuntu, Red Hat and Other Distributions"
   },
   "b90166323eaf": {
@@ -19348,5 +19318,53 @@
     "last_seen": "2026-11-02",
     "run_count": 1,
     "title": "CVE-2026-120497 - Stored cross-site scripting in the HTML report generator of aidlc-traceability in AWS AI-DLC Workflows"
+  },
+  "c82dca350ee3": {
+    "first_seen": "2026-11-04",
+    "last_seen": "2026-11-04",
+    "run_count": 1,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "6889a96951cf": {
+    "first_seen": "2026-11-04",
+    "last_seen": "2026-11-04",
+    "run_count": 1,
+    "title": "Attackers Exploit Critical Siemens IoT2050 Flaw to Plant Remote Command Backdoors"
+  },
+  "ebc2ee25b942": {
+    "first_seen": "2026-11-04",
+    "last_seen": "2026-11-04",
+    "run_count": 1,
+    "title": "Attackers Target Unpatched CryptoPayment Gateway Flaw That Can Expose Wallet Credentials"
+  },
+  "22a1f9868a2b": {
+    "first_seen": "2026-11-04",
+    "last_seen": "2026-11-04",
+    "run_count": 1,
+    "title": "Subnet Solutions PowerSYSTEM Center"
+  },
+  "5c7543738e1a": {
+    "first_seen": "2026-11-04",
+    "last_seen": "2026-11-04",
+    "run_count": 1,
+    "title": "Barracuda Flaws Could Be Chained to Bypass Authorization and Gain Root Access"
+  },
+  "cve:CVE-2026-119084": {
+    "first_seen": "2026-11-04",
+    "last_seen": "2026-11-04",
+    "run_count": 1,
+    "title": "CVE-2026-119084 - Remote Code Execution via Unsafe Class Loading in Amazon Redshift JDBC Driver Connection Parameters"
+  },
+  "cve:CVE-2026-119922": {
+    "first_seen": "2026-11-04",
+    "last_seen": "2026-11-04",
+    "run_count": 1,
+    "title": "CVE-2026-119922 - Babelfish for PostgreSQL Privilege Escalation"
+  },
+  "cve:CVE-2026-121652": {
+    "first_seen": "2026-11-04",
+    "last_seen": "2026-11-04",
+    "run_count": 1,
+    "title": "CVE-2026-121652 - Stored cross-site scripting (XSS) in AWS Amplify maplibre-gl-js-amplify popup rendering"
   }
 }
