@@ -19219,8 +19219,8 @@
   },
   "5c7543738e1a": {
     "first_seen": "2026-11-04",
-    "last_seen": "2026-11-04",
-    "run_count": 1,
+    "last_seen": "2026-11-06",
+    "run_count": 2,
     "title": "Barracuda Flaws Could Be Chained to Bypass Authorization and Gain Root Access"
   },
   "cve:CVE-2026-119084": {
@@ -19282,5 +19282,41 @@
     "last_seen": "2026-11-06",
     "run_count": 1,
     "title": "CVE-2026-119083 - GluonTS arbitrary file write during archive extraction"
+  },
+  "6b269532bd37": {
+    "first_seen": "2026-11-06",
+    "last_seen": "2026-11-06",
+    "run_count": 1,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "43fdb4e93d26": {
+    "first_seen": "2026-11-06",
+    "last_seen": "2026-11-06",
+    "run_count": 1,
+    "title": "Hackers Target OpenSSH SSHole Flaw Within Hours of Disclosure, Gain Root on Honeypot"
+  },
+  "cve:CVE-2026-109518": {
+    "first_seen": "2026-11-06",
+    "last_seen": "2026-11-06",
+    "run_count": 1,
+    "title": "CVE-2026-109518 - APT package manager that affects Ubuntu and Debian operating systems"
+  },
+  "cve:CVE-2026-122193": {
+    "first_seen": "2026-11-06",
+    "last_seen": "2026-11-06",
+    "run_count": 1,
+    "title": "CVE-2026-122193 - Issue with Trusted Remote Execution Setup Guide - OS command injection in the example SSM documents in"
+  },
+  "cve:CVE-2026-119923": {
+    "first_seen": "2026-11-06",
+    "last_seen": "2026-11-06",
+    "run_count": 1,
+    "title": "CVE-2026-119923 and CVE-2026-119924: Issues with Babelfish for Aurora PostgreSQL"
+  },
+  "41d65fdd0b91": {
+    "first_seen": "2026-11-06",
+    "last_seen": "2026-11-06",
+    "run_count": 1,
+    "title": "Microsoft Paint RCE Fix Now Available, but Windows Update Won't Deliver It"
   }
 }
