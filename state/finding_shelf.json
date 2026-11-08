@@ -19252,5 +19252,95 @@
     "last_seen": "2026-11-06",
     "run_count": 1,
     "title": "Microsoft Paint RCE Fix Now Available, but Windows Update Won't Deliver It"
+  },
+  "cve:CVE-2026-123541": {
+    "first_seen": "2026-11-08",
+    "last_seen": "2026-11-08",
+    "run_count": 1,
+    "title": "CVE-2026-123541"
+  },
+  "cve:CVE-2026-123583": {
+    "first_seen": "2026-11-08",
+    "last_seen": "2026-11-08",
+    "run_count": 1,
+    "title": "CVE-2026-123583"
+  },
+  "cve:CVE-2026-104338": {
+    "first_seen": "2026-11-08",
+    "last_seen": "2026-11-08",
+    "run_count": 1,
+    "title": "CVE-2026-104338"
+  },
+  "cve:CVE-2026-124326": {
+    "first_seen": "2026-11-08",
+    "last_seen": "2026-11-08",
+    "run_count": 1,
+    "title": "CVE-2026-124326"
+  },
+  "cve:CVE-2026-124328": {
+    "first_seen": "2026-11-08",
+    "last_seen": "2026-11-08",
+    "run_count": 1,
+    "title": "CVE-2026-124328"
+  },
+  "cve:CVE-2026-124329": {
+    "first_seen": "2026-11-08",
+    "last_seen": "2026-11-08",
+    "run_count": 1,
+    "title": "CVE-2026-124329"
+  },
+  "cve:CVE-2026-124330": {
+    "first_seen": "2026-11-08",
+    "last_seen": "2026-11-08",
+    "run_count": 1,
+    "title": "CVE-2026-124330"
+  },
+  "cve:CVE-2026-124331": {
+    "first_seen": "2026-11-08",
+    "last_seen": "2026-11-08",
+    "run_count": 1,
+    "title": "CVE-2026-124331"
+  },
+  "cve:CVE-2025-36075": {
+    "first_seen": "2026-11-08",
+    "last_seen": "2026-11-08",
+    "run_count": 1,
+    "title": "CVE-2025-36075"
+  },
+  "cve:CVE-2026-109899": {
+    "first_seen": "2026-11-08",
+    "last_seen": "2026-11-08",
+    "run_count": 1,
+    "title": "CVE-2026-109899"
+  },
+  "cve:CVE-2026-114186": {
+    "first_seen": "2026-11-08",
+    "last_seen": "2026-11-08",
+    "run_count": 1,
+    "title": "CVE-2026-114186"
+  },
+  "cve:CVE-2026-120858": {
+    "first_seen": "2026-11-08",
+    "last_seen": "2026-11-08",
+    "run_count": 1,
+    "title": "CVE-2026-120858"
+  },
+  "cve:CVE-2026-15266": {
+    "first_seen": "2026-11-08",
+    "last_seen": "2026-11-08",
+    "run_count": 1,
+    "title": "CVE-2026-15266"
+  },
+  "cve:CVE-2026-6715": {
+    "first_seen": "2026-11-08",
+    "last_seen": "2026-11-08",
+    "run_count": 1,
+    "title": "CVE-2026-6715"
+  },
+  "cve:CVE-2026-124498": {
+    "first_seen": "2026-11-08",
+    "last_seen": "2026-11-08",
+    "run_count": 1,
+    "title": "CVE-2026-124498"
   }
 }
