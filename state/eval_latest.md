@@ -1,15 +1,15 @@
-# Watchtower Pipeline Eval — 2026-11-06T22:59:30Z
+# Watchtower Pipeline Eval — 2026-11-08T00:24:30Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 734 |
-| After dedup + CVE merge | 727 |
-| Sent to Groq | 7 |
+| Items polled (raw) | 512 |
+| After dedup + CVE merge | 511 |
+| Sent to Groq | 1 |
 | Groq findings returned | 0 |
-| Final cards rendered | 7 |
-| **Pipeline yield** | **7/734 (1.0%)** |
+| Final cards rendered | 1 |
+| **Pipeline yield** | **1/512 (0.2%)** |
 
 ## Groq
 - **Model**: `unknown`
@@ -19,14 +19,14 @@
 
 ## Card Quality
 
-**7 cards** — P1: 0, P2: 0, P3: 7
+**1 cards** — P1: 0, P2: 0, P3: 1
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 52.1 / 70 |
+| Risk score mean / p90 | 75 / 75 |
 | Tactic coverage | 0% |
 | CVE coverage | 0% |
-| Patch status | unknown: 7 |
+| Patch status | unknown: 1 |
 
 ### Reasoning Quality
 
@@ -35,14 +35,14 @@
 
 ### Persistence
 
-- New (run=1): **6** | Evolving (2–5): **1** | Persistent (>5): **0** | Resolved: **0**
-- Mean run_count: 1.1 | Mean shelf_days: 0.3
+- New (run=1): **0** | Evolving (2–5): **1** | Persistent (>5): **0** | Resolved: **0**
+- Mean run_count: 2 | Mean shelf_days: 2
 
 ## Enrichment Hit Rates
 
 | Source | Hits | Rate |
 |--------|-----:|-----:|
-| EPSS | 1 | 14% |
+| EPSS | 0 | 0% |
 | NVD (CVE) | 0 | 0% |
 | CISA KEV | 0 | 0% |
 
@@ -50,23 +50,23 @@
 
 | Feed | Items |
 |------|------:|
-| `nvd` | 455 |
-| `bsi_germany` | 227 |
-| `bleepingcomputer` | 10 |
-| `securityweek` | 10 |
-| `thehackernews` | 9 |
+| `nvd` | 500 |
+| `bleepingcomputer` | 4 |
+| `github_changelog` | 2 |
+| `thehackernews` | 1 |
+| `cisa_kev` | 1 |
 | _(+21 more)_ | … |
 
-**9 feeds returned 0 items this run.**
+**17 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
 | 2026-11-01 | 15 | ? | 0% | 0% | 15 | 0 |
-| 2026-11-01 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-11-02 | 6 | ? | 0% | 0% | 4 | 0 |
 | 2026-11-04 | 11 | ? | 0% | 0% | 8 | 1 |
 | 2026-11-04 | 6 | ? | 0% | 0% | 5 | 0 |
 | 2026-11-05 | 2 | ? | 0% | 0% | 2 | 0 |
 | 2026-11-06 | 1 | ? | 0% | 0% | 1 | 0 |
+| 2026-11-06 | 7 | ? | 0% | 0% | 6 | 0 |
