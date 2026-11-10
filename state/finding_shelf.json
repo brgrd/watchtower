@@ -17206,8 +17206,8 @@
   },
   "70b09fe9b8cd": {
     "first_seen": "2026-10-09",
-    "last_seen": "2026-10-15",
-    "run_count": 2,
+    "last_seen": "2026-11-10",
+    "run_count": 3,
     "title": "Attackers Exploit AhsayCBS Flaws to Deploy XMRig Miners Disguised as Microsoft Edge"
   },
   "cve:CVE-2026-108096": {
@@ -18142,8 +18142,8 @@
   },
   "856f8a5fb1ec": {
     "first_seen": "2026-10-21",
-    "last_seen": "2026-10-27",
-    "run_count": 6,
+    "last_seen": "2026-11-10",
+    "run_count": 7,
     "title": "PHP2Shell: Mass Exploitation Looms for Leaked Critical PHP Flaws"
   },
   "cve:CVE-2026-112408": {
@@ -19243,5 +19243,59 @@
     "last_seen": "2026-11-10",
     "run_count": 1,
     "title": "CVE-2026-124033 - Relative path traversal in the log export commands in AWS ParallelCluster CLI"
+  },
+  "f02b6c7a8dd0": {
+    "first_seen": "2026-11-10",
+    "last_seen": "2026-11-10",
+    "run_count": 1,
+    "title": "CISA Adds Six Known Exploited Vulnerabilities to Catalog"
+  },
+  "0e9ec2e1cd9f": {
+    "first_seen": "2026-11-10",
+    "last_seen": "2026-11-10",
+    "run_count": 1,
+    "title": "Exploited Outlook Zero-Day Among 1,094 Flaws Patched by Microsoft"
+  },
+  "19f1c75fdce6": {
+    "first_seen": "2026-11-10",
+    "last_seen": "2026-11-10",
+    "run_count": 1,
+    "title": "CISA Warns of Active Exploitation of OpenSSH, GPUStack, FreeSWITCH, and IBM Flaws"
+  },
+  "06d2944a023d": {
+    "first_seen": "2026-11-10",
+    "last_seen": "2026-11-10",
+    "run_count": 1,
+    "title": "Google Issues Chrome Security Update for Eighth Actively Exploited Zero-Day of 2026"
+  },
+  "ecaa4cd6de9a": {
+    "first_seen": "2026-11-10",
+    "last_seen": "2026-11-10",
+    "run_count": 1,
+    "title": "Git Patches Flaw That Lets Malicious Repositories Execute Code During Recursive Clones"
+  },
+  "cve:CVE-2026-125271": {
+    "first_seen": "2026-11-10",
+    "last_seen": "2026-11-10",
+    "run_count": 1,
+    "title": "CVE-2026-125271 - AWS API MCP Server Security Policy Bypass via Incorrect Operation Name Normalization"
+  },
+  "cve:CVE-2026-126087": {
+    "first_seen": "2026-11-10",
+    "last_seen": "2026-11-10",
+    "run_count": 1,
+    "title": "CVE-2026-126087 - Untrusted search path in OpenJD Sessions for Python and the AWS Deadline Cloud worker agent"
+  },
+  "cve:CVE-2026-124848": {
+    "first_seen": "2026-11-10",
+    "last_seen": "2026-11-10",
+    "run_count": 1,
+    "title": "CVE-2026-124848 - Incorrect default permissions on session transcripts and prompt history in Kiro CLI"
+  },
+  "39ea431ef563": {
+    "first_seen": "2026-11-10",
+    "last_seen": "2026-11-10",
+    "run_count": 1,
+    "title": "GCP-2026-081"
   }
 }
