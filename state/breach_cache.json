@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-10T22:17:54.354658+00:00",
+  "fetched_at": "2026-11-11T10:42:48.528665+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -18750,6 +18750,23 @@
       "action": "rotate"
     },
     {
+      "id": "hibp:youhack-2013-05-29",
+      "name": "YouHack",
+      "title": "YouHack",
+      "date": "2013-05-29",
+      "added": "2026-11-11",
+      "affected_count": 7160849,
+      "data_classes": [
+        "Email addresses",
+        "IP addresses",
+        "Passwords",
+        "Usernames"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#YouHack",
+      "summary": "In May 2013, the Russian-language hacking forum YouHack suffered a data breach that was later redistributed as part of a larger corpus of data. The breach exposed 107k forum members' email addresses, usernames, IP addresses and MD5 password hashes, most of which were unsalted. Forum posts also contained email address and password pairs belonging to other victims, bringing the total to 7.2M unique ",
+      "action": "rotate"
+    },
+    {
       "id": "hibp:youku-2016-12-01",
       "name": "Youku",
       "title": "Youku",
@@ -19185,6 +19202,24 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Parapa",
       "summary": "In August 2016, the Russian gaming site known as Пара Па (or parapa.mail.ru) was hacked along with a number of other forums on the Russian mail provider, mail.ru. The vBulletin forum contained 4.9 million accounts including usernames, email addresses and passwords stored as salted MD5 hashes.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:sberspasibo-2023-03-09",
+      "name": "SberSpasibo",
+      "title": "СберСпасибо (SberSpasibo)",
+      "date": "2023-03-09",
+      "added": "2026-11-11",
+      "affected_count": 3288711,
+      "data_classes": [
+        "Bank card numbers",
+        "Dates of birth",
+        "Email addresses",
+        "Loyalty program details",
+        "Phone numbers"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#SberSpasibo",
+      "summary": "In March 2023, data allegedly taken from СберСпасибо (SberSpasibo), the loyalty program of Russian bank Сбербанк (Sberbank), was published online. The data contained records relating to 48M users, including 3.3M unique email addresses alongside phone numbers and dates of birth. Data also included bank card numbers stored as unsalted SHA-1 hashes, plus loyalty program details such as membership dat",
+      "action": "monitor"
     },
     {
       "id": "hibp:sprashivairu-2015-05-11",
