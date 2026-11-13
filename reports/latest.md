@@ -1,51 +1,81 @@
 ---
-generated_at: 2026-11-13T00:08:35.994515+00:00
+generated_at: 2026-11-13T22:30:47.281744+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## SCKit Malware Turns ScreenConnect Support Sessions Into Potential MSP Attack Paths (risk: 70)
+## PostgreSQL Patches 52 Flaws, Including 22-Year-Old Bug Enabling Authenticated RCE (risk: 40)
 1 related updates.
 
-- [SCKit Malware Turns ScreenConnect Support Sessions Into Potential MSP Attack Paths](https://thehackernews.com/2026/11/sckit-malware-targets-screenconnect.html)
+- [PostgreSQL Patches 52 Flaws, Including 22-Year-Old Bug Enabling Authenticated RCE](https://thehackernews.com/2026/11/postgresql-patches-52-flaws-including.html)
 
-## PTC Patches Critical Windchill and FlexPLM Flaw That Could Enable Remote Code Execution (risk: 70)
+## Check Point warns of zero-day flaw exploited for root access (risk: 30)
 1 related updates.
 
-- [PTC Patches Critical Windchill and FlexPLM Flaw That Could Enable Remote Code Execution](https://thehackernews.com/2026/11/ptc-patches-critical-windchill-and.html)
+- [Check Point warns of zero-day flaw exploited for root access](https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/)
 
-## Apache Patches Critical HTTP Server RCE Found by Anthropic, Google (risk: 40)
+## Hackers Exploit PHP2Shell Flaws in Check Point Gateways to Deploy TSGA Backdoor and Wipe ESXi Files (risk: 30)
 1 related updates.
 
-- [Apache Patches Critical HTTP Server RCE Found by Anthropic, Google](https://www.securityweek.com/apache-patches-critical-http-server-rce-found-by-anthropic-google/)
+- [Hackers Exploit PHP2Shell Flaws in Check Point Gateways to Deploy TSGA Backdoor and Wipe ESXi Files](https://thehackernews.com/2026/11/hackers-exploit-php2shell-flaws-in.html)
 
-## Citrix Patches 12 NetScaler and Secure Access Client Flaws, Including Authentication Bypass (risk: 40)
+## Hackers Exploit N-central Flaws to Infect 21 Servers, Including 19 Running Hotfix 2 (risk: 30)
 1 related updates.
 
-- [Citrix Patches 12 NetScaler and Secure Access Client Flaws, Including Authentication Bypass](https://thehackernews.com/2026/11/citrix-patches-12-netscaler-and-secure.html)
+- [Hackers Exploit N-central Flaws to Infect 21 Servers, Including 19 Running Hotfix 2](https://thehackernews.com/2026/11/hackers-exploit-n-central-flaws-to.html)
 
-## Critical Pre-Auth MongoDB Flaw (CVE-2026-118383) Can Crash Lagging Servers on Failover (risk: 40)
+## German military drone operations disrupted by cyberattack (risk: 0)
 1 related updates.
 
-- [Critical Pre-Auth MongoDB Flaw (CVE-2026-118383) Can Crash Lagging Servers on Failover](https://thehackernews.com/2026/11/critical-pre-auth-mongodb-flaw-cve-2026.html)
+- [German military drone operations disrupted by cyberattack](https://www.bleepingcomputer.com/news/security/german-military-drone-operations-disrupted-by-cyberattack/)
 
-## Siemens RUGGEDCOM APE1808 (risk: 40)
+## Trezor confirms crypto-stealing implants in three wallets, releases fix (risk: 0)
 1 related updates.
 
-- [Siemens RUGGEDCOM APE1808](https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-05)
+- [Trezor confirms crypto-stealing implants in three wallets, releases fix](https://www.bleepingcomputer.com/news/cryptocurrency/trezor-confirms-crypto-stealing-implants-in-three-wallets-releases-fix/)
 
-## Siemens Desigo, Gridscale (risk: 40)
+## How one AI agent exposed five critical enterprise security gaps (risk: 0)
 1 related updates.
 
-- [Siemens Desigo, Gridscale](https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-02)
+- [How one AI agent exposed five critical enterprise security gaps](https://www.bleepingcomputer.com/news/security/how-one-ai-agent-exposed-five-critical-enterprise-security-gaps/)
 
-## CVE-2026-127119 - Unverified ownership of the default EMR cluster log location in AWS SDK for pandas (risk: 40)
+## Check Point gateways hacked via PHP2Shell to deploy VMware ESXi wiper (risk: 0)
 1 related updates.
 
-- [CVE-2026-127119 - Unverified ownership of the default EMR cluster log location in AWS SDK for pandas](https://aws.amazon.com/security/security-bulletins/rss/2026-181-aws/)
+- [Check Point gateways hacked via PHP2Shell to deploy VMware ESXi wiper](https://www.bleepingcomputer.com/news/security/check-point-gateways-hacked-via-php2shell-to-deploy-vmware-esxi-wiper/)
 
-## CVE-2026-126793 - Privilege escalation in Aurora PostgreSQL dialect detection in AWS Advanced Go Wrapper (risk: 40)
+## Microsoft says November security updates cause printing issues (risk: 0)
 1 related updates.
 
-- [CVE-2026-126793 - Privilege escalation in Aurora PostgreSQL dialect detection in AWS Advanced Go Wrapper](https://aws.amazon.com/security/security-bulletins/rss/2026-182-aws/)
+- [Microsoft says November security updates cause printing issues](https://www.bleepingcomputer.com/news/microsoft/microsoft-says-november-security-updates-cause-printing-issues/)
+
+## New Mior and Skyfall Attacks Let Rogue Cloud Hosts Steal Secrets From AMD SEV-SNP VMs (risk: 0)
+1 related updates.
+
+- [New Mior and Skyfall Attacks Let Rogue Cloud Hosts Steal Secrets From AMD SEV-SNP VMs](https://thehackernews.com/2026/11/new-mior-and-skyfall-attacks-let-rogue.html)
+
+## Trezor Confirms Hidden Implants in CryptoBilis-Sold Wallets That Can Steal Recovery Phrases (risk: 0)
+1 related updates.
+
+- [Trezor Confirms Hidden Implants in CryptoBilis-Sold Wallets That Can Steal Recovery Phrases](https://thehackernews.com/2026/11/trezor-confirms-hidden-hardware.html)
+
+## FBI Says North Korean Hackers Stole Over $400 Million in Crypto Using Deepfake Video Calls (risk: 0)
+1 related updates.
+
+- [FBI Says North Korean Hackers Stole Over $400 Million in Crypto Using Deepfake Video Calls](https://thehackernews.com/2026/11/fbi-says-north-korean-hackers-stole.html)
+
+## Microsoft confirms Windows activation failures after November updates (risk: 0)
+1 related updates.
+
+- [Microsoft confirms Windows activation failures after November updates](https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-windows-activation-failures-after-november-updates/)
+
+## New worm-like 'SCKit' malware targets MSPs in ScreenConnect attacks (risk: 0)
+1 related updates.
+
+- [New worm-like 'SCKit' malware targets MSPs in ScreenConnect attacks](https://www.bleepingcomputer.com/news/security/new-worm-like-sckit-malware-targets-msps-in-screenconnect-attacks/)
+
+## When an AI Agent Goes Wrong, Can You Stop It? (risk: 0)
+1 related updates.
+
+- [When an AI Agent Goes Wrong, Can You Stop It?](https://thehackernews.com/2026/11/when-ai-agent-goes-wrong-can-you-stop-it.html)

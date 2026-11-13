@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-13T00:08:36.907015+00:00",
+  "fetched_at": "2026-11-13T22:30:47.942669+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -3168,6 +3168,21 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#CashCrate",
       "summary": "In June 2017, news broke that CashCrate had suffered a data breach exposing 6.8 million records. The breach of the cash-for-surveys site dated back to November 2016 and exposed names, physical addresses, email addresses and passwords stored in plain text for older accounts along with weak MD5 hashes for newer ones.",
+      "action": "rotate"
+    },
+    {
+      "id": "hibp:castlerat-2026-11-12",
+      "name": "CastleRAT",
+      "title": "CastleRAT",
+      "date": "2026-11-12",
+      "added": "2026-11-13",
+      "affected_count": 179745,
+      "data_classes": [
+        "Email addresses",
+        "Passwords"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#CastleRAT",
+      "summary": "In November 2026, Europol and international law enforcement partners dismantled infrastructure supporting several malware operations. Among them was CastleRAT, a remote access trojan (RAT) that enabled criminals to remotely control infected computers. Europol provided HIBP with 180k email addresses associated with CastleRAT infections, along with 893k unique passwords observed more than 3M times a",
       "action": "rotate"
     },
     {
