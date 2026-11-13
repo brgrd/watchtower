@@ -56,69 +56,6 @@
     "run_count": 4,
     "title": "GCP-2026-017"
   },
-  "cve:CVE-2026-41552": {
-    "first_seen": "2026-05-16",
-    "last_seen": "2026-05-16",
-    "run_count": 1,
-    "title": "CVE-2026-41552: DHTMLX Gantt Scheduler RCE",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-8503": {
-    "first_seen": "2026-05-16",
-    "last_seen": "2026-05-16",
-    "run_count": 1,
-    "title": "CVE-2026-8503: Apache::Session::Generate::SHA256 Insecure Randomness",
-    "last_problem_type": "auth_bypass",
-    "last_affects": "framework",
-    "last_classification_confidence": 0.8
-  },
-  "cve:CVE-2026-8454": {
-    "first_seen": "2026-05-16",
-    "last_seen": "2026-05-16",
-    "run_count": 1,
-    "title": "CVE-2026-8454: Imager::File::GIF Heap Out-of-Bounds Read",
-    "last_problem_type": "dos",
-    "last_affects": "application",
-    "last_classification_confidence": 0.7
-  },
-  "cve:CVE-2026-42897": {
-    "first_seen": "2026-05-16",
-    "last_seen": "2026-05-16",
-    "run_count": 1,
-    "title": "CVE-2026-42897: Microsoft Exchange RCE",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.95
-  },
-  "cve:CVE-2026-8704": {
-    "first_seen": "2026-05-16",
-    "last_seen": "2026-05-16",
-    "run_count": 1,
-    "title": "CVE-2026-8704: Crypt::DSA Code Execution",
-    "last_problem_type": "rce",
-    "last_affects": "framework",
-    "last_classification_confidence": 0.85
-  },
-  "cve:CVE-2026-8681": {
-    "first_seen": "2026-05-16",
-    "last_seen": "2026-05-16",
-    "run_count": 1,
-    "title": "CVE-2026-8681: WordPress Auth Bypass",
-    "last_problem_type": "auth_bypass",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-8657": {
-    "first_seen": "2026-05-16",
-    "last_seen": "2026-05-16",
-    "run_count": 1,
-    "title": "CVE-2026-8657: jsondiffpatch RCE",
-    "last_problem_type": "rce",
-    "last_affects": "framework",
-    "last_classification_confidence": 0.9
-  },
   "cve:CVE-2026-46719": {
     "first_seen": "2026-05-16",
     "last_seen": "2026-05-17",
@@ -128,24 +65,6 @@
     "last_affects": "application",
     "last_classification_confidence": 0.9
   },
-  "cve:CVE-2020-37228": {
-    "first_seen": "2026-05-16",
-    "last_seen": "2026-05-16",
-    "run_count": 1,
-    "title": "CVE-2020-37228: iDS6 DSSPro Digital Signage System CAPTCHA Bypass",
-    "last_problem_type": "auth_bypass",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2020-37230": {
-    "first_seen": "2026-05-16",
-    "last_seen": "2026-05-16",
-    "run_count": 1,
-    "title": "CVE-2020-37230: Syncplify.me Server Unquoted Service Path Vulnerability",
-    "last_problem_type": "privilege_escalation",
-    "last_affects": "application",
-    "last_classification_confidence": 0.8
-  },
   "cve:CVE-2025-4202": {
     "first_seen": "2026-05-16",
     "last_seen": "2026-05-17",
@@ -154,15 +73,6 @@
     "last_problem_type": "data_tampering",
     "last_affects": "application",
     "last_classification_confidence": 0.85
-  },
-  "cve:CVE-2020-37229": {
-    "first_seen": "2026-05-16",
-    "last_seen": "2026-05-16",
-    "run_count": 1,
-    "title": "CVE-2020-37229: OKI sPSV Port Manager Unquoted Service Path Vulnerability",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.7
   },
   "cve:CVE-2020-37227": {
     "first_seen": "2026-05-17",
@@ -18016,8 +17926,8 @@
   },
   "856f8a5fb1ec": {
     "first_seen": "2026-10-21",
-    "last_seen": "2026-11-10",
-    "run_count": 7,
+    "last_seen": "2026-11-13",
+    "run_count": 8,
     "title": "PHP2Shell: Mass Exploitation Looms for Leaked Critical PHP Flaws"
   },
   "cve:CVE-2026-112408": {
@@ -18136,8 +18046,8 @@
   },
   "4b2e88bc5b2b": {
     "first_seen": "2026-10-23",
-    "last_seen": "2026-10-26",
-    "run_count": 3,
+    "last_seen": "2026-11-13",
+    "run_count": 4,
     "title": "Researchers Demonstrate Node2Shell RCE Exploit on Node.js Build Using Crafted Brotli Data"
   },
   "1989268dfedc": {
@@ -19189,5 +19099,47 @@
     "last_seen": "2026-11-12",
     "run_count": 1,
     "title": "CVE-2026-125926 - Server-side request forgery in the server registration and update API in mcp-gateway-registry"
+  },
+  "192a19d79c28": {
+    "first_seen": "2026-11-13",
+    "last_seen": "2026-11-13",
+    "run_count": 1,
+    "title": "SCKit Malware Turns ScreenConnect Support Sessions Into Potential MSP Attack Paths"
+  },
+  "80b3e81e6b74": {
+    "first_seen": "2026-11-13",
+    "last_seen": "2026-11-13",
+    "run_count": 1,
+    "title": "PTC Patches Critical Windchill and FlexPLM Flaw That Could Enable Remote Code Execution"
+  },
+  "6691ba794054": {
+    "first_seen": "2026-11-13",
+    "last_seen": "2026-11-13",
+    "run_count": 1,
+    "title": "Apache Patches Critical HTTP Server RCE Found by Anthropic, Google"
+  },
+  "aa4ec4c1b21d": {
+    "first_seen": "2026-11-13",
+    "last_seen": "2026-11-13",
+    "run_count": 1,
+    "title": "Citrix Patches 12 NetScaler and Secure Access Client Flaws, Including Authentication Bypass"
+  },
+  "cve:CVE-2026-118383": {
+    "first_seen": "2026-11-13",
+    "last_seen": "2026-11-13",
+    "run_count": 1,
+    "title": "Critical Pre-Auth MongoDB Flaw (CVE-2026-118383) Can Crash Lagging Servers on Failover"
+  },
+  "cve:CVE-2026-127119": {
+    "first_seen": "2026-11-13",
+    "last_seen": "2026-11-13",
+    "run_count": 1,
+    "title": "CVE-2026-127119 - Unverified ownership of the default EMR cluster log location in AWS SDK for pandas"
+  },
+  "cve:CVE-2026-126793": {
+    "first_seen": "2026-11-13",
+    "last_seen": "2026-11-13",
+    "run_count": 1,
+    "title": "CVE-2026-126793 - Privilege escalation in Aurora PostgreSQL dialect detection in AWS Advanced Go Wrapper"
   }
 }
