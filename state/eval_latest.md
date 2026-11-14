@@ -1,18 +1,21 @@
-# Watchtower Pipeline Eval — 2026-11-13T22:29:44Z
+# Watchtower Pipeline Eval — 2026-11-14T10:11:57Z
 
 ## Pipeline Yield
 
 | Stage | Count |
 |-------|------:|
-| Items polled (raw) | 309 |
-| After dedup + CVE merge | 308 |
-| Sent to Groq | 20 |
+| Items polled (raw) | 87 |
+| After dedup + CVE merge | 87 |
+| Sent to Groq | 87 |
 | Groq findings returned | 0 |
 | Final cards rendered | 15 |
-| **Pipeline yield** | **15/309 (4.9%)** |
+| **Pipeline yield** | **15/87 (17.2%)** |
 
 ## Groq
-_Groq not called this run (placeholder mode or no API key)._
+- **Model**: `unknown`
+- **Payload**: ? chars
+- **Parse**: ✗  |  **Retries**: 0
+- **Rate limit remaining** — requests: ?, tokens: ?
 
 ## Card Quality
 
@@ -20,7 +23,7 @@ _Groq not called this run (placeholder mode or no API key)._
 
 | Metric | Value |
 |--------|-------|
-| Risk score mean / p90 | 8.7 / 30 |
+| Risk score mean / p90 | 68.7 / 70 |
 | Tactic coverage | 0% |
 | CVE coverage | 0% |
 | Patch status | unknown: 15 |
@@ -47,23 +50,23 @@ _Groq not called this run (placeholder mode or no API key)._
 
 | Feed | Items |
 |------|------:|
-| `bsi_germany` | 250 |
-| `securityweek` | 10 |
-| `bleepingcomputer` | 9 |
-| `thehackernews` | 9 |
-| `msrc_update_guide` | 8 |
+| `nvd` | 80 |
+| `cisa_kev` | 2 |
+| `securityweek` | 2 |
+| `cyberscoop` | 1 |
+| `therecord` | 1 |
 | _(+21 more)_ | … |
 
-**11 feeds returned 0 items this run.**
+**20 feeds returned 0 items this run.**
 
 ## 7-Run Trend
 
 | Date | Cards | P1 | Tactic% | CVE% | New | Persistent |
 |------|---------|----|---------|------|-----|------------|
-| 2026-11-08 | 1 | ? | 0% | 0% | 0 | 0 |
 | 2026-11-08 | 15 | ? | 0% | 0% | 15 | 0 |
 | 2026-11-10 | 5 | ? | 0% | 0% | 3 | 0 |
 | 2026-11-10 | 11 | ? | 0% | 0% | 9 | 1 |
 | 2026-11-11 | 1 | ? | 0% | 0% | 0 | 0 |
 | 2026-11-12 | 3 | ? | 0% | 0% | 3 | 0 |
 | 2026-11-13 | 9 | ? | 0% | 0% | 7 | 1 |
+| 2026-11-13 | 15 | ? | 0% | 0% | 15 | 0 |

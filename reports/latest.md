@@ -1,81 +1,81 @@
 ---
-generated_at: 2026-11-13T22:30:47.281744+00:00
+generated_at: 2026-11-14T10:12:05.492485+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## PostgreSQL Patches 52 Flaws, Including 22-Year-Old Bug Enabling Authenticated RCE (risk: 40)
+## CVE-2026-127216 (risk: 70)
 1 related updates.
 
-- [PostgreSQL Patches 52 Flaws, Including 22-Year-Old Bug Enabling Authenticated RCE](https://thehackernews.com/2026/11/postgresql-patches-52-flaws-including.html)
+- [CVE-2026-127216](https://nvd.nist.gov/vuln/detail/CVE-2026-127216)
 
-## Check Point warns of zero-day flaw exploited for root access (risk: 30)
+## CVE-2026-127217 (risk: 70)
 1 related updates.
 
-- [Check Point warns of zero-day flaw exploited for root access](https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/)
+- [CVE-2026-127217](https://nvd.nist.gov/vuln/detail/CVE-2026-127217)
 
-## Hackers Exploit PHP2Shell Flaws in Check Point Gateways to Deploy TSGA Backdoor and Wipe ESXi Files (risk: 30)
+## CVE-2026-128885 (risk: 70)
 1 related updates.
 
-- [Hackers Exploit PHP2Shell Flaws in Check Point Gateways to Deploy TSGA Backdoor and Wipe ESXi Files](https://thehackernews.com/2026/11/hackers-exploit-php2shell-flaws-in.html)
+- [CVE-2026-128885](https://nvd.nist.gov/vuln/detail/CVE-2026-128885)
 
-## Hackers Exploit N-central Flaws to Infect 21 Servers, Including 19 Running Hotfix 2 (risk: 30)
+## CVE-2026-128987 (risk: 70)
 1 related updates.
 
-- [Hackers Exploit N-central Flaws to Infect 21 Servers, Including 19 Running Hotfix 2](https://thehackernews.com/2026/11/hackers-exploit-n-central-flaws-to.html)
+- [CVE-2026-128987](https://nvd.nist.gov/vuln/detail/CVE-2026-128987)
 
-## German military drone operations disrupted by cyberattack (risk: 0)
+## CVE-2026-124021 (risk: 70)
 1 related updates.
 
-- [German military drone operations disrupted by cyberattack](https://www.bleepingcomputer.com/news/security/german-military-drone-operations-disrupted-by-cyberattack/)
+- [CVE-2026-124021](https://nvd.nist.gov/vuln/detail/CVE-2026-124021)
 
-## Trezor confirms crypto-stealing implants in three wallets, releases fix (risk: 0)
+## CVE-2026-19194 (risk: 70)
 1 related updates.
 
-- [Trezor confirms crypto-stealing implants in three wallets, releases fix](https://www.bleepingcomputer.com/news/cryptocurrency/trezor-confirms-crypto-stealing-implants-in-three-wallets-releases-fix/)
+- [CVE-2026-19194](https://nvd.nist.gov/vuln/detail/CVE-2026-19194)
 
-## How one AI agent exposed five critical enterprise security gaps (risk: 0)
+## CVE-2026-129173 (risk: 70)
 1 related updates.
 
-- [How one AI agent exposed five critical enterprise security gaps](https://www.bleepingcomputer.com/news/security/how-one-ai-agent-exposed-five-critical-enterprise-security-gaps/)
+- [CVE-2026-129173](https://nvd.nist.gov/vuln/detail/CVE-2026-129173)
 
-## Check Point gateways hacked via PHP2Shell to deploy VMware ESXi wiper (risk: 0)
+## CVE-2026-129180 (risk: 70)
 1 related updates.
 
-- [Check Point gateways hacked via PHP2Shell to deploy VMware ESXi wiper](https://www.bleepingcomputer.com/news/security/check-point-gateways-hacked-via-php2shell-to-deploy-vmware-esxi-wiper/)
+- [CVE-2026-129180](https://nvd.nist.gov/vuln/detail/CVE-2026-129180)
 
-## Microsoft says November security updates cause printing issues (risk: 0)
+## CVE-2026-71519 (risk: 70)
 1 related updates.
 
-- [Microsoft says November security updates cause printing issues](https://www.bleepingcomputer.com/news/microsoft/microsoft-says-november-security-updates-cause-printing-issues/)
+- [CVE-2026-71519](https://nvd.nist.gov/vuln/detail/CVE-2026-71519)
 
-## New Mior and Skyfall Attacks Let Rogue Cloud Hosts Steal Secrets From AMD SEV-SNP VMs (risk: 0)
+## CVE-2026-71531 (risk: 70)
 1 related updates.
 
-- [New Mior and Skyfall Attacks Let Rogue Cloud Hosts Steal Secrets From AMD SEV-SNP VMs](https://thehackernews.com/2026/11/new-mior-and-skyfall-attacks-let-rogue.html)
+- [CVE-2026-71531](https://nvd.nist.gov/vuln/detail/CVE-2026-71531)
 
-## Trezor Confirms Hidden Implants in CryptoBilis-Sold Wallets That Can Steal Recovery Phrases (risk: 0)
+## CVE-2026-124969 (risk: 70)
 1 related updates.
 
-- [Trezor Confirms Hidden Implants in CryptoBilis-Sold Wallets That Can Steal Recovery Phrases](https://thehackernews.com/2026/11/trezor-confirms-hidden-hardware.html)
+- [CVE-2026-124969](https://nvd.nist.gov/vuln/detail/CVE-2026-124969)
 
-## FBI Says North Korean Hackers Stole Over $400 Million in Crypto Using Deepfake Video Calls (risk: 0)
+## CVE-2026-126173 (risk: 70)
 1 related updates.
 
-- [FBI Says North Korean Hackers Stole Over $400 Million in Crypto Using Deepfake Video Calls](https://thehackernews.com/2026/11/fbi-says-north-korean-hackers-stole.html)
+- [CVE-2026-126173](https://nvd.nist.gov/vuln/detail/CVE-2026-126173)
 
-## Microsoft confirms Windows activation failures after November updates (risk: 0)
+## CVE-2026-129181 (risk: 70)
 1 related updates.
 
-- [Microsoft confirms Windows activation failures after November updates](https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-windows-activation-failures-after-november-updates/)
+- [CVE-2026-129181](https://nvd.nist.gov/vuln/detail/CVE-2026-129181)
 
-## New worm-like 'SCKit' malware targets MSPs in ScreenConnect attacks (risk: 0)
+## CVE-2025-43867 (risk: 60)
 1 related updates.
 
-- [New worm-like 'SCKit' malware targets MSPs in ScreenConnect attacks](https://www.bleepingcomputer.com/news/security/new-worm-like-sckit-malware-targets-msps-in-screenconnect-attacks/)
+- [CVE-2025-43867](https://nvd.nist.gov/vuln/detail/CVE-2025-43867)
 
-## When an AI Agent Goes Wrong, Can You Stop It? (risk: 0)
+## CVE-2026-128134 (risk: 60)
 1 related updates.
 
-- [When an AI Agent Goes Wrong, Can You Stop It?](https://thehackernews.com/2026/11/when-ai-agent-goes-wrong-can-you-stop-it.html)
+- [CVE-2026-128134](https://nvd.nist.gov/vuln/detail/CVE-2026-128134)
