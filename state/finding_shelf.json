@@ -56,60 +56,6 @@
     "run_count": 4,
     "title": "GCP-2026-017"
   },
-  "cve:CVE-2026-8766": {
-    "first_seen": "2026-05-18",
-    "last_seen": "2026-05-18",
-    "run_count": 1,
-    "title": "CVE-2026-8766: Kilo-Org kilocode RCE",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-8768": {
-    "first_seen": "2026-05-18",
-    "last_seen": "2026-05-18",
-    "run_count": 1,
-    "title": "CVE-2026-8768: vercel ai RCE",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-8774": {
-    "first_seen": "2026-05-18",
-    "last_seen": "2026-05-18",
-    "run_count": 1,
-    "title": "CVE-2026-8774: Edimax BR-6228NC RCE",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-4320": {
-    "first_seen": "2026-05-18",
-    "last_seen": "2026-05-18",
-    "run_count": 1,
-    "title": "CVE-2026-4320: Creartia ICMS Auth Bypass",
-    "last_problem_type": "auth_bypass",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-7301": {
-    "first_seen": "2026-05-18",
-    "last_seen": "2026-05-18",
-    "run_count": 1,
-    "title": "CVE-2026-7301: SGLangs Multimodal Generation Runtime Vulnerability",
-    "last_problem_type": "rce",
-    "last_affects": "runtime",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-41119": {
-    "first_seen": "2026-05-18",
-    "last_seen": "2026-05-18",
-    "run_count": 1,
-    "title": "CVE-2026-41119: Dell Live Optics Windows and Personal Edition Collectors Vulnerability",
-    "last_problem_type": "auth_bypass",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
   "cve:CVE-2026-26462": {
     "first_seen": "2026-05-19",
     "last_seen": "2026-05-19",
@@ -19204,5 +19150,35 @@
     "last_seen": "2026-11-14",
     "run_count": 1,
     "title": "CVE-2026-128134"
+  },
+  "14a6214dc3ec": {
+    "first_seen": "2026-11-15",
+    "last_seen": "2026-11-15",
+    "run_count": 1,
+    "title": "Attackers Exploit UnrealIRCd Flaw That Enables Server-Level Command Injection"
+  },
+  "b59db0b97ed7": {
+    "first_seen": "2026-11-15",
+    "last_seen": "2026-11-15",
+    "run_count": 1,
+    "title": "Apple Reveals How Secure Exclaves Shield Camera and Microphone Data"
+  },
+  "8e2a393fcf8f": {
+    "first_seen": "2026-11-15",
+    "last_seen": "2026-11-15",
+    "run_count": 1,
+    "title": "Is AI Making Us Worse at Cybersecurity?"
+  },
+  "26cb37c23232": {
+    "first_seen": "2026-11-15",
+    "last_seen": "2026-11-15",
+    "run_count": 1,
+    "title": "US disrupts North Korean campaign behind $400 million crypto theft"
+  },
+  "8fb2d9ad90e2": {
+    "first_seen": "2026-11-15",
+    "last_seen": "2026-11-15",
+    "run_count": 1,
+    "title": "Cursor confirms security breach led to malicious Claude Code extension"
   }
 }

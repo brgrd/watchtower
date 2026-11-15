@@ -1,81 +1,31 @@
 ---
-generated_at: 2026-11-14T10:12:05.492485+00:00
+generated_at: 2026-11-15T01:46:25.814821+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-127216 (risk: 70)
+## Attackers Exploit UnrealIRCd Flaw That Enables Server-Level Command Injection (risk: 70)
 1 related updates.
 
-- [CVE-2026-127216](https://nvd.nist.gov/vuln/detail/CVE-2026-127216)
+- [Attackers Exploit UnrealIRCd Flaw That Enables Server-Level Command Injection](https://thehackernews.com/2026/11/attackers-exploit-unrealircd-flaw-that.html)
 
-## CVE-2026-127217 (risk: 70)
+## Apple Reveals How Secure Exclaves Shield Camera and Microphone Data (risk: 0)
 1 related updates.
 
-- [CVE-2026-127217](https://nvd.nist.gov/vuln/detail/CVE-2026-127217)
+- [Apple Reveals How Secure Exclaves Shield Camera and Microphone Data](https://www.securityweek.com/apple-reveals-how-secure-exclaves-shield-camera-and-microphone-data/)
 
-## CVE-2026-128885 (risk: 70)
+## Is AI Making Us Worse at Cybersecurity? (risk: 0)
 1 related updates.
 
-- [CVE-2026-128885](https://nvd.nist.gov/vuln/detail/CVE-2026-128885)
+- [Is AI Making Us Worse at Cybersecurity?](https://www.securityweek.com/is-ai-making-us-worse-at-cybersecurity/)
 
-## CVE-2026-128987 (risk: 70)
+## US disrupts North Korean campaign behind $400 million crypto theft (risk: 0)
 1 related updates.
 
-- [CVE-2026-128987](https://nvd.nist.gov/vuln/detail/CVE-2026-128987)
+- [US disrupts North Korean campaign behind $400 million crypto theft](https://www.bleepingcomputer.com/news/security/us-disrupts-north-korean-campaign-behind-400-million-crypto-theft/)
 
-## CVE-2026-124021 (risk: 70)
+## Cursor confirms security breach led to malicious Claude Code extension (risk: 0)
 1 related updates.
 
-- [CVE-2026-124021](https://nvd.nist.gov/vuln/detail/CVE-2026-124021)
-
-## CVE-2026-19194 (risk: 70)
-1 related updates.
-
-- [CVE-2026-19194](https://nvd.nist.gov/vuln/detail/CVE-2026-19194)
-
-## CVE-2026-129173 (risk: 70)
-1 related updates.
-
-- [CVE-2026-129173](https://nvd.nist.gov/vuln/detail/CVE-2026-129173)
-
-## CVE-2026-129180 (risk: 70)
-1 related updates.
-
-- [CVE-2026-129180](https://nvd.nist.gov/vuln/detail/CVE-2026-129180)
-
-## CVE-2026-71519 (risk: 70)
-1 related updates.
-
-- [CVE-2026-71519](https://nvd.nist.gov/vuln/detail/CVE-2026-71519)
-
-## CVE-2026-71531 (risk: 70)
-1 related updates.
-
-- [CVE-2026-71531](https://nvd.nist.gov/vuln/detail/CVE-2026-71531)
-
-## CVE-2026-124969 (risk: 70)
-1 related updates.
-
-- [CVE-2026-124969](https://nvd.nist.gov/vuln/detail/CVE-2026-124969)
-
-## CVE-2026-126173 (risk: 70)
-1 related updates.
-
-- [CVE-2026-126173](https://nvd.nist.gov/vuln/detail/CVE-2026-126173)
-
-## CVE-2026-129181 (risk: 70)
-1 related updates.
-
-- [CVE-2026-129181](https://nvd.nist.gov/vuln/detail/CVE-2026-129181)
-
-## CVE-2025-43867 (risk: 60)
-1 related updates.
-
-- [CVE-2025-43867](https://nvd.nist.gov/vuln/detail/CVE-2025-43867)
-
-## CVE-2026-128134 (risk: 60)
-1 related updates.
-
-- [CVE-2026-128134](https://nvd.nist.gov/vuln/detail/CVE-2026-128134)
+- [Cursor confirms security breach led to malicious Claude Code extension](https://www.bleepingcomputer.com/news/security/cursor-confirms-security-breach-led-to-malicious-claude-code-extension/)
