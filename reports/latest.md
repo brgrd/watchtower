@@ -1,31 +1,81 @@
 ---
-generated_at: 2026-11-15T01:46:25.814821+00:00
+generated_at: 2026-11-16T01:52:04.285009+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## Attackers Exploit UnrealIRCd Flaw That Enables Server-Level Command Injection (risk: 70)
+## CVE-2026-129353 (risk: 70)
 1 related updates.
 
-- [Attackers Exploit UnrealIRCd Flaw That Enables Server-Level Command Injection](https://thehackernews.com/2026/11/attackers-exploit-unrealircd-flaw-that.html)
+- [CVE-2026-129353](https://nvd.nist.gov/vuln/detail/CVE-2026-129353)
 
-## Apple Reveals How Secure Exclaves Shield Camera and Microphone Data (risk: 0)
+## CVE-2026-129354 (risk: 70)
 1 related updates.
 
-- [Apple Reveals How Secure Exclaves Shield Camera and Microphone Data](https://www.securityweek.com/apple-reveals-how-secure-exclaves-shield-camera-and-microphone-data/)
+- [CVE-2026-129354](https://nvd.nist.gov/vuln/detail/CVE-2026-129354)
 
-## Is AI Making Us Worse at Cybersecurity? (risk: 0)
+## CVE-2026-129356 (risk: 70)
 1 related updates.
 
-- [Is AI Making Us Worse at Cybersecurity?](https://www.securityweek.com/is-ai-making-us-worse-at-cybersecurity/)
+- [CVE-2026-129356](https://nvd.nist.gov/vuln/detail/CVE-2026-129356)
 
-## US disrupts North Korean campaign behind $400 million crypto theft (risk: 0)
+## CVE-2026-129357 (risk: 70)
 1 related updates.
 
-- [US disrupts North Korean campaign behind $400 million crypto theft](https://www.bleepingcomputer.com/news/security/us-disrupts-north-korean-campaign-behind-400-million-crypto-theft/)
+- [CVE-2026-129357](https://nvd.nist.gov/vuln/detail/CVE-2026-129357)
 
-## Cursor confirms security breach led to malicious Claude Code extension (risk: 0)
+## CVE-2026-129358 (risk: 70)
 1 related updates.
 
-- [Cursor confirms security breach led to malicious Claude Code extension](https://www.bleepingcomputer.com/news/security/cursor-confirms-security-breach-led-to-malicious-claude-code-extension/)
+- [CVE-2026-129358](https://nvd.nist.gov/vuln/detail/CVE-2026-129358)
+
+## CVE-2026-129359 (risk: 70)
+1 related updates.
+
+- [CVE-2026-129359](https://nvd.nist.gov/vuln/detail/CVE-2026-129359)
+
+## CVE-2026-129443 (risk: 70)
+1 related updates.
+
+- [CVE-2026-129443](https://nvd.nist.gov/vuln/detail/CVE-2026-129443)
+
+## CVE-2026-129444 (risk: 70)
+1 related updates.
+
+- [CVE-2026-129444](https://nvd.nist.gov/vuln/detail/CVE-2026-129444)
+
+## CVE-2026-129445 (risk: 70)
+1 related updates.
+
+- [CVE-2026-129445](https://nvd.nist.gov/vuln/detail/CVE-2026-129445)
+
+## CVE-2026-82568 (risk: 70)
+1 related updates.
+
+- [CVE-2026-82568](https://nvd.nist.gov/vuln/detail/CVE-2026-82568)
+
+## CVE-2026-129449 (risk: 70)
+1 related updates.
+
+- [CVE-2026-129449](https://nvd.nist.gov/vuln/detail/CVE-2026-129449)
+
+## CVE-2026-129450 (risk: 70)
+1 related updates.
+
+- [CVE-2026-129450](https://nvd.nist.gov/vuln/detail/CVE-2026-129450)
+
+## CVE-2026-129451 (risk: 70)
+1 related updates.
+
+- [CVE-2026-129451](https://nvd.nist.gov/vuln/detail/CVE-2026-129451)
+
+## CVE-2026-129452 (risk: 70)
+1 related updates.
+
+- [CVE-2026-129452](https://nvd.nist.gov/vuln/detail/CVE-2026-129452)
+
+## CVE-2026-129453 (risk: 70)
+1 related updates.
+
+- [CVE-2026-129453](https://nvd.nist.gov/vuln/detail/CVE-2026-129453)

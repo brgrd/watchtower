@@ -56,141 +56,6 @@
     "run_count": 4,
     "title": "GCP-2026-017"
   },
-  "cve:CVE-2026-26462": {
-    "first_seen": "2026-05-19",
-    "last_seen": "2026-05-19",
-    "run_count": 1,
-    "title": "CVE-2026-26462: Offline Hospital Management System RCE",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.95
-  },
-  "cve:CVE-2026-7302": {
-    "first_seen": "2026-05-19",
-    "last_seen": "2026-05-19",
-    "run_count": 1,
-    "title": "CVE-2026-7302: SGLangs Multimodal Generation Runtime Path Traversal",
-    "last_problem_type": "data_disclosure",
-    "last_affects": "application",
-    "last_classification_confidence": 0.95
-  },
-  "cve:CVE-2026-41949": {
-    "first_seen": "2026-05-19",
-    "last_seen": "2026-05-19",
-    "run_count": 1,
-    "title": "CVE-2026-41949: Dify Authorization Bypass",
-    "last_problem_type": "auth_bypass",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-27964": {
-    "first_seen": "2026-05-19",
-    "last_seen": "2026-05-19",
-    "run_count": 1,
-    "title": "CVE-2026-27964: FacturaScripts RCE",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-27892": {
-    "first_seen": "2026-05-19",
-    "last_seen": "2026-05-19",
-    "run_count": 1,
-    "title": "CVE-2026-27892: FacturaScripts Auth Bypass",
-    "last_problem_type": "auth_bypass",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-32312": {
-    "first_seen": "2026-05-19",
-    "last_seen": "2026-05-19",
-    "run_count": 1,
-    "title": "CVE-2026-32312: GLPI RCE",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-33514": {
-    "first_seen": "2026-05-19",
-    "last_seen": "2026-05-19",
-    "run_count": 1,
-    "title": "CVE-2026-33514: Discourse RCE",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-24792": {
-    "first_seen": "2026-05-19",
-    "last_seen": "2026-05-19",
-    "run_count": 1,
-    "title": "CVE-2026-24792: OpenHarmony RCE",
-    "last_problem_type": "rce",
-    "last_affects": "framework",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-27648": {
-    "first_seen": "2026-05-19",
-    "last_seen": "2026-05-19",
-    "run_count": 1,
-    "title": "CVE-2026-27648: OpenHarmony RCE",
-    "last_problem_type": "rce",
-    "last_affects": "framework",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-31635": {
-    "first_seen": "2026-05-19",
-    "last_seen": "2026-05-19",
-    "run_count": 1,
-    "title": "CVE-2026-31635: Linux Kernel LPE",
-    "last_problem_type": "privilege_escalation",
-    "last_affects": "foundation",
-    "last_classification_confidence": 0.95
-  },
-  "cve:CVE-2026-31387": {
-    "first_seen": "2026-05-19",
-    "last_seen": "2026-05-19",
-    "run_count": 1,
-    "title": "CVE-2026-31387: Apache OFBiz Authentication Bypass",
-    "last_problem_type": "auth_bypass",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-29226": {
-    "first_seen": "2026-05-19",
-    "last_seen": "2026-05-19",
-    "run_count": 1,
-    "title": "CVE-2026-29226: Apache OFBiz SSRF",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-37979": {
-    "first_seen": "2026-05-19",
-    "last_seen": "2026-05-19",
-    "run_count": 1,
-    "title": "CVE-2026-37979: Keycloak Access Control Vuln",
-    "last_problem_type": "auth_bypass",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-43492": {
-    "first_seen": "2026-05-19",
-    "last_seen": "2026-05-19",
-    "run_count": 1,
-    "title": "CVE-2026-43492: Linux Kernel Crypto Vuln",
-    "last_problem_type": "crypto_weakness",
-    "last_affects": "foundation",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-37981": {
-    "first_seen": "2026-05-19",
-    "last_seen": "2026-05-19",
-    "run_count": 1,
-    "title": "CVE-2026-37981: Keycloak Broken Access Control Vuln",
-    "last_problem_type": "auth_bypass",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
   "cve:CVE-2026-45585": {
     "first_seen": "2026-05-20",
     "last_seen": "2026-05-20",
@@ -19180,5 +19045,95 @@
     "last_seen": "2026-11-15",
     "run_count": 1,
     "title": "Cursor confirms security breach led to malicious Claude Code extension"
+  },
+  "cve:CVE-2026-129353": {
+    "first_seen": "2026-11-16",
+    "last_seen": "2026-11-16",
+    "run_count": 1,
+    "title": "CVE-2026-129353"
+  },
+  "cve:CVE-2026-129354": {
+    "first_seen": "2026-11-16",
+    "last_seen": "2026-11-16",
+    "run_count": 1,
+    "title": "CVE-2026-129354"
+  },
+  "cve:CVE-2026-129356": {
+    "first_seen": "2026-11-16",
+    "last_seen": "2026-11-16",
+    "run_count": 1,
+    "title": "CVE-2026-129356"
+  },
+  "cve:CVE-2026-129357": {
+    "first_seen": "2026-11-16",
+    "last_seen": "2026-11-16",
+    "run_count": 1,
+    "title": "CVE-2026-129357"
+  },
+  "cve:CVE-2026-129358": {
+    "first_seen": "2026-11-16",
+    "last_seen": "2026-11-16",
+    "run_count": 1,
+    "title": "CVE-2026-129358"
+  },
+  "cve:CVE-2026-129359": {
+    "first_seen": "2026-11-16",
+    "last_seen": "2026-11-16",
+    "run_count": 1,
+    "title": "CVE-2026-129359"
+  },
+  "cve:CVE-2026-129443": {
+    "first_seen": "2026-11-16",
+    "last_seen": "2026-11-16",
+    "run_count": 1,
+    "title": "CVE-2026-129443"
+  },
+  "cve:CVE-2026-129444": {
+    "first_seen": "2026-11-16",
+    "last_seen": "2026-11-16",
+    "run_count": 1,
+    "title": "CVE-2026-129444"
+  },
+  "cve:CVE-2026-129445": {
+    "first_seen": "2026-11-16",
+    "last_seen": "2026-11-16",
+    "run_count": 1,
+    "title": "CVE-2026-129445"
+  },
+  "cve:CVE-2026-82568": {
+    "first_seen": "2026-11-16",
+    "last_seen": "2026-11-16",
+    "run_count": 1,
+    "title": "CVE-2026-82568"
+  },
+  "cve:CVE-2026-129449": {
+    "first_seen": "2026-11-16",
+    "last_seen": "2026-11-16",
+    "run_count": 1,
+    "title": "CVE-2026-129449"
+  },
+  "cve:CVE-2026-129450": {
+    "first_seen": "2026-11-16",
+    "last_seen": "2026-11-16",
+    "run_count": 1,
+    "title": "CVE-2026-129450"
+  },
+  "cve:CVE-2026-129451": {
+    "first_seen": "2026-11-16",
+    "last_seen": "2026-11-16",
+    "run_count": 1,
+    "title": "CVE-2026-129451"
+  },
+  "cve:CVE-2026-129452": {
+    "first_seen": "2026-11-16",
+    "last_seen": "2026-11-16",
+    "run_count": 1,
+    "title": "CVE-2026-129452"
+  },
+  "cve:CVE-2026-129453": {
+    "first_seen": "2026-11-16",
+    "last_seen": "2026-11-16",
+    "run_count": 1,
+    "title": "CVE-2026-129453"
   }
 }
