@@ -1,21 +1,51 @@
 ---
-generated_at: 2026-11-17T13:06:49.407732+00:00
+generated_at: 2026-11-17T22:11:20.333371+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-129266 - Arbitrary local file read via unvalidated resource location in model archive metadata in Deep Java Library (risk: 40)
+## CISA Adds One Known Exploited Vulnerability to Catalog (risk: 70)
 1 related updates.
 
-- [CVE-2026-129266 - Arbitrary local file read via unvalidated resource location in model archive metadata in Deep Java Lib](https://aws.amazon.com/security/security-bulletins/rss/2026-183-aws/)
+- [CISA Adds One Known Exploited Vulnerability to Catalog](https://www.cisa.gov/news-events/alerts/2026/11/17/cisa-adds-one-known-exploited-vulnerability-catalog)
 
-## CVE-2026-126816 - Path traversal and arbitrary file write in the cost report generator of aws-pricing-mcp-server (risk: 40)
+## MSP ScreenConnect Servers Targeted in Month-Long Campaign (risk: 70)
 1 related updates.
 
-- [CVE-2026-126816 - Path traversal and arbitrary file write in the cost report generator of aws-pricing-mcp-server](https://aws.amazon.com/security/security-bulletins/rss/2026-184-aws/)
+- [MSP ScreenConnect Servers Targeted in Month-Long Campaign](https://www.securityweek.com/msp-screenconnect-servers-targeted-in-month-long-campaign/)
 
-## CVE-2026-126681 - Improper restriction of intended endpoints in AWS Labs Timestream for InfluxDB MCP Server (risk: 40)
+## CVE-2026-130622 and CVE-2026-130623 - Incorrect authorization in credential loading and handling for namespace-scoped issuers in AWS Private (risk: 55)
 1 related updates.
 
-- [CVE-2026-126681 - Improper restriction of intended endpoints in AWS Labs Timestream for InfluxDB MCP Server](https://aws.amazon.com/security/security-bulletins/rss/2026-185-aws/)
+- [CVE-2026-130622 and CVE-2026-130623 - Incorrect authorization in credential loading and handling for namespace-scoped is](https://aws.amazon.com/security/security-bulletins/rss/2026-187-aws/)
+
+## GCP-2026-078 (risk: 55)
+1 related updates.
+
+- [GCP-2026-078](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-078)
+
+## Siemens Industrial Automation Software Products (risk: 40)
+1 related updates.
+
+- [Siemens Industrial Automation Software Products](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-03)
+
+## CVE-2026-130621- Time-of-check time-of-use race condition in the port selection in AWS efs-utils (risk: 40)
+1 related updates.
+
+- [CVE-2026-130621- Time-of-check time-of-use race condition in the port selection in AWS efs-utils](https://aws.amazon.com/security/security-bulletins/rss/2026-186-aws/)
+
+## GCP-2026-082 (risk: 40)
+1 related updates.
+
+- [GCP-2026-082](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-082)
+
+## GCP-2026-054 (risk: 40)
+1 related updates.
+
+- [GCP-2026-054](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-054)
+
+## GCP-2026-060 (risk: 40)
+1 related updates.
+
+- [GCP-2026-060](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-060)

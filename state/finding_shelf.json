@@ -13387,8 +13387,8 @@
   },
   "81026920ec02": {
     "first_seen": "2026-08-26",
-    "last_seen": "2026-11-04",
-    "run_count": 6,
+    "last_seen": "2026-11-17",
+    "run_count": 7,
     "title": "GCP-2026-054"
   },
   "80d7b640a09f": {
@@ -14143,8 +14143,8 @@
   },
   "1aba8f91d526": {
     "first_seen": "2026-09-04",
-    "last_seen": "2026-11-04",
-    "run_count": 5,
+    "last_seen": "2026-11-17",
+    "run_count": 6,
     "title": "GCP-2026-060"
   },
   "cve:CVE-2026-86113": {
@@ -17677,8 +17677,8 @@
   },
   "4b2e88bc5b2b": {
     "first_seen": "2026-10-23",
-    "last_seen": "2026-11-13",
-    "run_count": 4,
+    "last_seen": "2026-11-17",
+    "run_count": 5,
     "title": "Researchers Demonstrate Node2Shell RCE Exploit on Node.js Build Using Crafted Brotli Data"
   },
   "1989268dfedc": {
@@ -18157,8 +18157,8 @@
   },
   "2964a4d67468": {
     "first_seen": "2026-10-30",
-    "last_seen": "2026-11-04",
-    "run_count": 2,
+    "last_seen": "2026-11-17",
+    "run_count": 3,
     "title": "Linux Kernel TCP Flaw With 9.8 CVSS Score Affects Ubuntu, Red Hat and Other Distributions"
   },
   "b90166323eaf": {
@@ -18733,8 +18733,8 @@
   },
   "192a19d79c28": {
     "first_seen": "2026-11-13",
-    "last_seen": "2026-11-13",
-    "run_count": 1,
+    "last_seen": "2026-11-17",
+    "run_count": 2,
     "title": "SCKit Malware Turns ScreenConnect Support Sessions Into Potential MSP Attack Paths"
   },
   "80b3e81e6b74": {
@@ -19090,5 +19090,29 @@
     "last_seen": "2026-11-17",
     "run_count": 1,
     "title": "CVE-2026-126681 - Improper restriction of intended endpoints in AWS Labs Timestream for InfluxDB MCP Server"
+  },
+  "39e2131f95cb": {
+    "first_seen": "2026-11-17",
+    "last_seen": "2026-11-17",
+    "run_count": 1,
+    "title": "CISA Adds One Known Exploited Vulnerability to Catalog"
+  },
+  "cve:CVE-2026-130622": {
+    "first_seen": "2026-11-17",
+    "last_seen": "2026-11-17",
+    "run_count": 1,
+    "title": "CVE-2026-130622 and CVE-2026-130623 - Incorrect authorization in credential loading and handling for namespace-scoped is"
+  },
+  "cve:CVE-2026-130621": {
+    "first_seen": "2026-11-17",
+    "last_seen": "2026-11-17",
+    "run_count": 1,
+    "title": "CVE-2026-130621- Time-of-check time-of-use race condition in the port selection in AWS efs-utils"
+  },
+  "e447a31da35f": {
+    "first_seen": "2026-11-17",
+    "last_seen": "2026-11-17",
+    "run_count": 1,
+    "title": "GCP-2026-082"
   }
 }
