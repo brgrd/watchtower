@@ -1,51 +1,81 @@
 ---
-generated_at: 2026-11-17T22:11:20.333371+00:00
+generated_at: 2026-11-18T13:48:34.248130+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CISA Adds One Known Exploited Vulnerability to Catalog (risk: 70)
+## CVE-2026-101563 (risk: 90)
 1 related updates.
 
-- [CISA Adds One Known Exploited Vulnerability to Catalog](https://www.cisa.gov/news-events/alerts/2026/11/17/cisa-adds-one-known-exploited-vulnerability-catalog)
+- [CVE-2026-101563](https://nvd.nist.gov/vuln/detail/CVE-2026-101563)
 
-## MSP ScreenConnect Servers Targeted in Month-Long Campaign (risk: 70)
+## CVE-2026-114980 (risk: 90)
 1 related updates.
 
-- [MSP ScreenConnect Servers Targeted in Month-Long Campaign](https://www.securityweek.com/msp-screenconnect-servers-targeted-in-month-long-campaign/)
+- [CVE-2026-114980](https://nvd.nist.gov/vuln/detail/CVE-2026-114980)
 
-## CVE-2026-130622 and CVE-2026-130623 - Incorrect authorization in credential loading and handling for namespace-scoped issuers in AWS Private (risk: 55)
+## CVE-2026-114981 (risk: 90)
 1 related updates.
 
-- [CVE-2026-130622 and CVE-2026-130623 - Incorrect authorization in credential loading and handling for namespace-scoped is](https://aws.amazon.com/security/security-bulletins/rss/2026-187-aws/)
+- [CVE-2026-114981](https://nvd.nist.gov/vuln/detail/CVE-2026-114981)
 
-## GCP-2026-078 (risk: 55)
+## CVE-2026-114982 (risk: 90)
 1 related updates.
 
-- [GCP-2026-078](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-078)
+- [CVE-2026-114982](https://nvd.nist.gov/vuln/detail/CVE-2026-114982)
 
-## Siemens Industrial Automation Software Products (risk: 40)
+## CVE-2026-114983 (risk: 90)
 1 related updates.
 
-- [Siemens Industrial Automation Software Products](https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-03)
+- [CVE-2026-114983](https://nvd.nist.gov/vuln/detail/CVE-2026-114983)
 
-## CVE-2026-130621- Time-of-check time-of-use race condition in the port selection in AWS efs-utils (risk: 40)
+## CVE-2026-114984 (risk: 90)
 1 related updates.
 
-- [CVE-2026-130621- Time-of-check time-of-use race condition in the port selection in AWS efs-utils](https://aws.amazon.com/security/security-bulletins/rss/2026-186-aws/)
+- [CVE-2026-114984](https://nvd.nist.gov/vuln/detail/CVE-2026-114984)
 
-## GCP-2026-082 (risk: 40)
+## CVE-2026-114985 (risk: 90)
 1 related updates.
 
-- [GCP-2026-082](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-082)
+- [CVE-2026-114985](https://nvd.nist.gov/vuln/detail/CVE-2026-114985)
 
-## GCP-2026-054 (risk: 40)
+## CVE-2026-114986 (risk: 90)
 1 related updates.
 
-- [GCP-2026-054](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-054)
+- [CVE-2026-114986](https://nvd.nist.gov/vuln/detail/CVE-2026-114986)
 
-## GCP-2026-060 (risk: 40)
+## CVE-2026-114987 (risk: 90)
 1 related updates.
 
-- [GCP-2026-060](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-060)
+- [CVE-2026-114987](https://nvd.nist.gov/vuln/detail/CVE-2026-114987)
+
+## CVE-2026-114988 (risk: 90)
+1 related updates.
+
+- [CVE-2026-114988](https://nvd.nist.gov/vuln/detail/CVE-2026-114988)
+
+## CVE-2026-114989 (risk: 90)
+1 related updates.
+
+- [CVE-2026-114989](https://nvd.nist.gov/vuln/detail/CVE-2026-114989)
+
+## CVE-2026-114990 (risk: 90)
+1 related updates.
+
+- [CVE-2026-114990](https://nvd.nist.gov/vuln/detail/CVE-2026-114990)
+
+## CVE-2026-114991 (risk: 90)
+1 related updates.
+
+- [CVE-2026-114991](https://nvd.nist.gov/vuln/detail/CVE-2026-114991)
+
+## CVE-2026-114938 (risk: 70)
+1 related updates.
+
+- [CVE-2026-114938](https://nvd.nist.gov/vuln/detail/CVE-2026-114938)
+
+## CVE-2026-115731 — Perforce Puppet Enterprise Deserialization of Untrusted Data Vulnerability (risk: 70)
+1 related updates.
+
+- [CVE-2026-115731 — Perforce Puppet Enterprise Deserialization of Untrusted Data Vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2026-115731)
