@@ -17485,8 +17485,8 @@
   },
   "856f8a5fb1ec": {
     "first_seen": "2026-10-21",
-    "last_seen": "2026-11-13",
-    "run_count": 8,
+    "last_seen": "2026-11-19",
+    "run_count": 9,
     "title": "PHP2Shell: Mass Exploitation Looms for Leaked Critical PHP Flaws"
   },
   "cve:CVE-2026-112408": {
@@ -17629,8 +17629,8 @@
   },
   "e8ef4f4f8e4f": {
     "first_seen": "2026-10-23",
-    "last_seen": "2026-10-23",
-    "run_count": 1,
+    "last_seen": "2026-11-19",
+    "run_count": 2,
     "title": "PHP Warns of Another Unpatched RCE Risk Two Days After Emergency PHP2Shell Patches"
   },
   "cve:CVE-2026-115845": {
@@ -19123,8 +19123,8 @@
   },
   "cve:CVE-2026-114938": {
     "first_seen": "2026-11-18",
-    "last_seen": "2026-11-18",
-    "run_count": 1,
+    "last_seen": "2026-11-19",
+    "run_count": 2,
     "title": "CVE-2026-114938"
   },
   "cve:CVE-2026-115731": {
@@ -19132,5 +19132,23 @@
     "last_seen": "2026-11-18",
     "run_count": 1,
     "title": "CVE-2026-115731 — Perforce Puppet Enterprise Deserialization of Untrusted Data Vulnerability"
+  },
+  "c52965e35f08": {
+    "first_seen": "2026-11-19",
+    "last_seen": "2026-11-19",
+    "run_count": 1,
+    "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog"
+  },
+  "e510cda14733": {
+    "first_seen": "2026-11-19",
+    "last_seen": "2026-11-19",
+    "run_count": 1,
+    "title": "Critical Apache Roller RCE Flaw Under Active Exploitation, No Authentication Required"
+  },
+  "cve:CVE-2026-130638": {
+    "first_seen": "2026-11-19",
+    "last_seen": "2026-11-19",
+    "run_count": 1,
+    "title": "CVE-2026-130638 - Path traversal in the object detection dataset preparation tool in AutoGluon MultiModal"
   }
 }
