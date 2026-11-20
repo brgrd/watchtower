@@ -1,36 +1,46 @@
 ---
-generated_at: 2026-11-19T12:50:52.376812+00:00
+generated_at: 2026-11-20T11:21:35.724391+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CISA Adds Four Known Exploited Vulnerabilities to Catalog (risk: 70)
+## Hackers Exploit Critical Cisco Expressway Flaw, Breach Four Devices and Reach Internal Network (risk: 85)
 1 related updates.
 
-- [CISA Adds Four Known Exploited Vulnerabilities to Catalog](https://www.cisa.gov/news-events/alerts/2026/11/18/cisa-adds-four-known-exploited-vulnerabilities-catalog)
+- [Hackers Exploit Critical Cisco Expressway Flaw, Breach Four Devices and Reach Internal Network](https://thehackernews.com/2026/11/hackers-exploit-critical-cisco.html)
 
-## Critical Apache Roller RCE Flaw Under Active Exploitation, No Authentication Required (risk: 70)
+## libumqtt (risk: 70)
 1 related updates.
 
-- [Critical Apache Roller RCE Flaw Under Active Exploitation, No Authentication Required](https://thehackernews.com/2026/11/critical-apache-roller-rce-flaw-under.html)
+- [libumqtt](https://www.cisa.gov/news-events/ics-advisories/icsa-26-323-03)
 
-## Everything Is a Web Application, Including Your Firewall (risk: 70)
+## Autonomy Logic OpenPLC Runtime (risk: 70)
 1 related updates.
 
-- [Everything Is a Web Application, Including Your Firewall](https://thehackernews.com/2026/11/everything-is-web-application-including.html)
+- [Autonomy Logic OpenPLC Runtime](https://www.cisa.gov/news-events/ics-advisories/icsa-26-323-01)
 
-## CVE-2026-114938 - OpenJDK Base64 Decoder Intrinsic Out-of-Bounds Write Issue (risk: 40)
+## China-Linked Hackers Exploit Critical VMware vCenter Zero-Day to Gain Admin Access and Steal Data (risk: 70)
 1 related updates.
 
-- [CVE-2026-114938 - OpenJDK Base64 Decoder Intrinsic Out-of-Bounds Write Issue](https://aws.amazon.com/security/security-bulletins/rss/2026-189-aws/)
+- [China-Linked Hackers Exploit Critical VMware vCenter Zero-Day to Gain Admin Access and Steal Data](https://thehackernews.com/2026/11/china-linked-hackers-exploit-critical.html)
 
-## PHP Readies Critical Security Updates to Patch Another RCE Flaw (risk: 40)
+## GCP-2026-088 (risk: 55)
 1 related updates.
 
-- [PHP Readies Critical Security Updates to Patch Another RCE Flaw](https://www.securityweek.com/php-readies-critical-security-updates-to-patch-another-rce-flaw/)
+- [GCP-2026-088](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-088)
 
-## CVE-2026-130638 - Path traversal in the object detection dataset preparation tool in AutoGluon MultiModal (risk: 40)
+## GCP-2026-087 (risk: 55)
 1 related updates.
 
-- [CVE-2026-130638 - Path traversal in the object detection dataset preparation tool in AutoGluon MultiModal](https://aws.amazon.com/security/security-bulletins/rss/2026-188-aws/)
+- [GCP-2026-087](https://docs.cloud.google.com/support/bulletins/index#gcp-2026-087)
+
+## CVE-2026-132825 and related issues – Ruby regular expression engine and string case conversion (risk: 40)
+1 related updates.
+
+- [CVE-2026-132825 and related issues – Ruby regular expression engine and string case conversion](https://aws.amazon.com/security/security-bulletins/rss/2026-193-aws/)
+
+## CVE-2026-132607 - GCM authentication tag length downgrade in Amazon S3 Encryption Client for PHP (risk: 40)
+1 related updates.
+
+- [CVE-2026-132607 - GCM authentication tag length downgrade in Amazon S3 Encryption Client for PHP](https://aws.amazon.com/security/security-bulletins/rss/2026-191-aws/)

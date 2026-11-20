@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-19T12:50:52.624286+00:00",
+  "fetched_at": "2026-11-20T11:21:39.015353+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -3080,6 +3080,25 @@
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#CardingMafia",
       "summary": "In March 2021, the Carding Mafia forum suffered a data breach that exposed almost 300k members' email addresses. Dedicated to the theft and trading of stolen credit cards, the forum breach also exposed usernames, IP addresses and passwords stored as salted MD5 hashes.",
       "action": "rotate"
+    },
+    {
+      "id": "hibp:careers360-2026-11-14",
+      "name": "Careers360",
+      "title": "Careers360",
+      "date": "2026-11-14",
+      "added": "2026-11-20",
+      "affected_count": 3609421,
+      "data_classes": [
+        "Academic records",
+        "Castes",
+        "Email addresses",
+        "Genders",
+        "Names",
+        "Phone numbers"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Careers360",
+      "summary": "In November 2026, data allegedly taken from the Indian education and careers platform Careers360 appeared on a public hacking forum. The 22M records included 3.6M unique email addresses alongside names, phone numbers, genders and caste categories, and most also contained students' entrance exam results, including ranks and marks.",
+      "action": "monitor"
     },
     {
       "id": "hibp:cargurus-2026-02-14",
