@@ -17431,8 +17431,8 @@
   },
   "856f8a5fb1ec": {
     "first_seen": "2026-10-21",
-    "last_seen": "2026-11-19",
-    "run_count": 9,
+    "last_seen": "2026-11-21",
+    "run_count": 10,
     "title": "PHP2Shell: Mass Exploitation Looms for Leaked Critical PHP Flaws"
   },
   "cve:CVE-2026-112408": {
@@ -18583,8 +18583,8 @@
   },
   "39ea431ef563": {
     "first_seen": "2026-11-10",
-    "last_seen": "2026-11-10",
-    "run_count": 1,
+    "last_seen": "2026-11-21",
+    "run_count": 2,
     "title": "GCP-2026-081"
   },
   "cve:CVE-2026-100307": {
@@ -19087,8 +19087,8 @@
   },
   "e510cda14733": {
     "first_seen": "2026-11-19",
-    "last_seen": "2026-11-19",
-    "run_count": 1,
+    "last_seen": "2026-11-21",
+    "run_count": 2,
     "title": "Critical Apache Roller RCE Flaw Under Active Exploitation, No Authentication Required"
   },
   "cve:CVE-2026-130638": {
@@ -19228,5 +19228,11 @@
     "last_seen": "2026-11-21",
     "run_count": 1,
     "title": "N-able says recent security breach led to major service outage"
+  },
+  "ee667d41fce3": {
+    "first_seen": "2026-11-21",
+    "last_seen": "2026-11-21",
+    "run_count": 1,
+    "title": "GnuPG Warns Critical GPGME Flaw Could Expose App Data via Malicious OpenPGP Keys"
   }
 }
