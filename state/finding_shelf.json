@@ -65,15 +65,6 @@
     "last_affects": "application",
     "last_classification_confidence": 0.95
   },
-  "cve:CVE-2026-41054": {
-    "first_seen": "2026-05-24",
-    "last_seen": "2026-05-24",
-    "run_count": 1,
-    "title": "CVE-2026-41054: haveged Root Exploit",
-    "last_problem_type": "privilege_escalation",
-    "last_affects": "foundation",
-    "last_classification_confidence": 0.95
-  },
   "cve:CVE-2026-26980": {
     "first_seen": "2026-05-25",
     "last_seen": "2026-05-25",
@@ -19138,8 +19129,8 @@
   },
   "ad497e7529ee": {
     "first_seen": "2026-11-20",
-    "last_seen": "2026-11-20",
-    "run_count": 1,
+    "last_seen": "2026-11-21",
+    "run_count": 2,
     "title": "GCP-2026-087"
   },
   "cve:CVE-2026-132825": {
@@ -19153,5 +19144,89 @@
     "last_seen": "2026-11-20",
     "run_count": 1,
     "title": "CVE-2026-132607 - GCM authentication tag length downgrade in Amazon S3 Encryption Client for PHP"
+  },
+  "022a7e051e84": {
+    "first_seen": "2026-11-21",
+    "last_seen": "2026-11-21",
+    "run_count": 1,
+    "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog"
+  },
+  "cve:CVE-2026-99312": {
+    "first_seen": "2026-11-21",
+    "last_seen": "2026-11-21",
+    "run_count": 1,
+    "title": "Linux KVM Flaw CVE-2026-99312 Lets Guest VMs Access Host Memory on AMD Hosts"
+  },
+  "dedcd8613039": {
+    "first_seen": "2026-11-21",
+    "last_seen": "2026-11-21",
+    "run_count": 1,
+    "title": "In Other News: Norwegian Energy Firm Cyberattacks, Supercomputer Hack, New Nightmare Eclipse Exploit"
+  },
+  "d3f85e5c5d8b": {
+    "first_seen": "2026-11-21",
+    "last_seen": "2026-11-21",
+    "run_count": 1,
+    "title": "WhatsApp Fixes Flaw Uncovered While Disrupting Scam Campaign"
+  },
+  "8f5238ba02ca": {
+    "first_seen": "2026-11-21",
+    "last_seen": "2026-11-21",
+    "run_count": 1,
+    "title": "Ruby Patches Ruby2Shell Vulnerability That Could Lead to RCE"
+  },
+  "cve:CVE-2026-133199": {
+    "first_seen": "2026-11-21",
+    "last_seen": "2026-11-21",
+    "run_count": 1,
+    "title": "CVE-2026-133199 - Incorrect privilege assignment on reused e-mail addresses or group names in AWS ssosync"
+  },
+  "cve:CVE-2026-130901": {
+    "first_seen": "2026-11-21",
+    "last_seen": "2026-11-21",
+    "run_count": 1,
+    "title": "CVE-2026-130901 - Improper limitation of a pathname to a restricted directory in Amazon awslabs.document-loader-mcp-serv"
+  },
+  "5da3fca49ba3": {
+    "first_seen": "2026-11-21",
+    "last_seen": "2026-11-21",
+    "run_count": 1,
+    "title": "F5 releases emergency patches for critical BIG-IP RCE flaws"
+  },
+  "65289a3fd13a": {
+    "first_seen": "2026-11-21",
+    "last_seen": "2026-11-21",
+    "run_count": 1,
+    "title": "SonicWall Warns Gen 6 Firewalls Won't Get Security Patches, Even for Critical Flaws"
+  },
+  "71ce6c8b57fa": {
+    "first_seen": "2026-11-21",
+    "last_seen": "2026-11-21",
+    "run_count": 1,
+    "title": "Bell Canada says 'agentic' hacker stole enterprise customer data"
+  },
+  "2b655e50a229": {
+    "first_seen": "2026-11-21",
+    "last_seen": "2026-11-21",
+    "run_count": 1,
+    "title": "Vendor data breach exposes Chase, Visa, Mastercard customer info"
+  },
+  "ecc2fbe3b082": {
+    "first_seen": "2026-11-21",
+    "last_seen": "2026-11-21",
+    "run_count": 1,
+    "title": "Hackers use autonomous AI tool Cairn to find zero-day, take over server"
+  },
+  "15073df5fd19": {
+    "first_seen": "2026-11-21",
+    "last_seen": "2026-11-21",
+    "run_count": 1,
+    "title": "Still tracking company passwords in spreadsheets? You’re flying blind."
+  },
+  "49a2a523fb94": {
+    "first_seen": "2026-11-21",
+    "last_seen": "2026-11-21",
+    "run_count": 1,
+    "title": "N-able says recent security breach led to major service outage"
   }
 }

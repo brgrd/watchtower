@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-20T11:21:39.015353+00:00",
+  "fetched_at": "2026-11-21T01:23:21.965005+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -16721,6 +16721,33 @@
       ],
       "source_url": "https://haveibeenpwned.com/PwnedWebsites#Tokopedia",
       "summary": "In April 2020, Indonesia's largest online store Tokopedia suffered a data breach. The incident resulted in 15M rows of data being posted to a popular hacking forum. An additional 76M rows were later provided to HIBP in July 2020. In total, the data included over 71M unique email addresses alongside names, genders, birth dates and passwords stored as SHA2-384 hashes.",
+      "action": "rotate"
+    },
+    {
+      "id": "hibp:toolost-2026-11-02",
+      "name": "TooLost",
+      "title": "Too Lost",
+      "date": "2026-11-02",
+      "added": "2026-11-20",
+      "affected_count": 724323,
+      "data_classes": [
+        "Dates of birth",
+        "Driver's licenses",
+        "Email addresses",
+        "Government issued IDs",
+        "IP addresses",
+        "Names",
+        "Partial credit card data",
+        "Passport numbers",
+        "Passwords",
+        "Payment histories",
+        "Physical addresses",
+        "Places of birth",
+        "Social media profiles",
+        "Usernames"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#TooLost",
+      "summary": "In November 2026, an unauthorised party claimed to have obtained data from the music distributor for independent artists, Too Lost. The data contained 724k unique email addresses belonging to artists, their collaborators and fans. Some records also contained bcrypt password hashes, while a small subset included partial credit card data (last 4 digits and card type), identity verification informati",
       "action": "rotate"
     },
     {
