@@ -65,33 +65,6 @@
     "last_affects": "application",
     "last_classification_confidence": 0.95
   },
-  "cve:CVE-2026-26980": {
-    "first_seen": "2026-05-25",
-    "last_seen": "2026-05-25",
-    "run_count": 1,
-    "title": "CVE-2026-26980: Ghost CMS SQL Injection",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.95
-  },
-  "cve:CVE-2026-43029": {
-    "first_seen": "2026-05-25",
-    "last_seen": "2026-05-25",
-    "run_count": 1,
-    "title": "CVE-2026-43029: mptcp Soft Lockup",
-    "last_problem_type": "dos",
-    "last_affects": "network",
-    "last_classification_confidence": 0.8
-  },
-  "cve:CVE-2026-43414": {
-    "first_seen": "2026-05-25",
-    "last_seen": "2026-05-25",
-    "run_count": 1,
-    "title": "CVE-2026-43414: scsi: qla2xxx Double Free",
-    "last_problem_type": "dos",
-    "last_affects": "network",
-    "last_classification_confidence": 0.8
-  },
   "cve:CVE-2026-9453": {
     "first_seen": "2026-05-26",
     "last_seen": "2026-05-26",
@@ -19234,5 +19207,95 @@
     "last_seen": "2026-11-21",
     "run_count": 1,
     "title": "GnuPG Warns Critical GPGME Flaw Could Expose App Data via Malicious OpenPGP Keys"
+  },
+  "cve:CVE-2026-134623": {
+    "first_seen": "2026-11-22",
+    "last_seen": "2026-11-22",
+    "run_count": 1,
+    "title": "CVE-2026-134623"
+  },
+  "cve:CVE-2026-134540": {
+    "first_seen": "2026-11-22",
+    "last_seen": "2026-11-22",
+    "run_count": 1,
+    "title": "CVE-2026-134540"
+  },
+  "cve:CVE-2026-134541": {
+    "first_seen": "2026-11-22",
+    "last_seen": "2026-11-22",
+    "run_count": 1,
+    "title": "CVE-2026-134541"
+  },
+  "cve:CVE-2026-134543": {
+    "first_seen": "2026-11-22",
+    "last_seen": "2026-11-22",
+    "run_count": 1,
+    "title": "CVE-2026-134543"
+  },
+  "cve:CVE-2026-134544": {
+    "first_seen": "2026-11-22",
+    "last_seen": "2026-11-22",
+    "run_count": 1,
+    "title": "CVE-2026-134544"
+  },
+  "cve:CVE-2026-134545": {
+    "first_seen": "2026-11-22",
+    "last_seen": "2026-11-22",
+    "run_count": 1,
+    "title": "CVE-2026-134545"
+  },
+  "cve:CVE-2026-134553": {
+    "first_seen": "2026-11-22",
+    "last_seen": "2026-11-22",
+    "run_count": 1,
+    "title": "CVE-2026-134553"
+  },
+  "cve:CVE-2026-134566": {
+    "first_seen": "2026-11-22",
+    "last_seen": "2026-11-22",
+    "run_count": 1,
+    "title": "CVE-2026-134566"
+  },
+  "cve:CVE-2026-134567": {
+    "first_seen": "2026-11-22",
+    "last_seen": "2026-11-22",
+    "run_count": 1,
+    "title": "CVE-2026-134567"
+  },
+  "cve:CVE-2026-134568": {
+    "first_seen": "2026-11-22",
+    "last_seen": "2026-11-22",
+    "run_count": 1,
+    "title": "CVE-2026-134568"
+  },
+  "cve:CVE-2026-134569": {
+    "first_seen": "2026-11-22",
+    "last_seen": "2026-11-22",
+    "run_count": 1,
+    "title": "CVE-2026-134569"
+  },
+  "cve:CVE-2026-134570": {
+    "first_seen": "2026-11-22",
+    "last_seen": "2026-11-22",
+    "run_count": 1,
+    "title": "CVE-2026-134570"
+  },
+  "cve:CVE-2026-134571": {
+    "first_seen": "2026-11-22",
+    "last_seen": "2026-11-22",
+    "run_count": 1,
+    "title": "CVE-2026-134571"
+  },
+  "cve:CVE-2026-134572": {
+    "first_seen": "2026-11-22",
+    "last_seen": "2026-11-22",
+    "run_count": 1,
+    "title": "CVE-2026-134572"
+  },
+  "cve:CVE-2026-134616": {
+    "first_seen": "2026-11-22",
+    "last_seen": "2026-11-22",
+    "run_count": 1,
+    "title": "CVE-2026-134616"
   }
 }
