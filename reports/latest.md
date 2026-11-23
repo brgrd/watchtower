@@ -1,81 +1,21 @@
 ---
-generated_at: 2026-11-22T11:06:40.205337+00:00
+generated_at: 2026-11-23T00:45:33.119466+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CVE-2026-134623 (risk: 90)
+## Hackers exploit GL.iNet cloud flaw to infect routers, KVM devices (risk: 30)
 1 related updates.
 
-- [CVE-2026-134623](https://nvd.nist.gov/vuln/detail/CVE-2026-134623)
+- [Hackers exploit GL.iNet cloud flaw to infect routers, KVM devices](https://www.bleepingcomputer.com/news/security/hackers-exploit-glinet-cloud-flaw-to-infect-routers-kvm-devices/)
 
-## CVE-2026-134540 (risk: 70)
+## Signal to block Siri, Gemini AI from capturing chats on iOS, Android (risk: 0)
 1 related updates.
 
-- [CVE-2026-134540](https://nvd.nist.gov/vuln/detail/CVE-2026-134540)
+- [Signal to block Siri, Gemini AI from capturing chats on iOS, Android](https://www.bleepingcomputer.com/news/security/signal-to-block-siri-gemini-ai-from-capturing-chats-on-ios-android/)
 
-## CVE-2026-134541 (risk: 70)
+## Cleverbridge warns hackers stole credit card numbers, CVVs in data breach (risk: 0)
 1 related updates.
 
-- [CVE-2026-134541](https://nvd.nist.gov/vuln/detail/CVE-2026-134541)
-
-## CVE-2026-134543 (risk: 70)
-1 related updates.
-
-- [CVE-2026-134543](https://nvd.nist.gov/vuln/detail/CVE-2026-134543)
-
-## CVE-2026-134544 (risk: 70)
-1 related updates.
-
-- [CVE-2026-134544](https://nvd.nist.gov/vuln/detail/CVE-2026-134544)
-
-## CVE-2026-134545 (risk: 70)
-1 related updates.
-
-- [CVE-2026-134545](https://nvd.nist.gov/vuln/detail/CVE-2026-134545)
-
-## CVE-2026-134553 (risk: 70)
-1 related updates.
-
-- [CVE-2026-134553](https://nvd.nist.gov/vuln/detail/CVE-2026-134553)
-
-## CVE-2026-134566 (risk: 70)
-1 related updates.
-
-- [CVE-2026-134566](https://nvd.nist.gov/vuln/detail/CVE-2026-134566)
-
-## CVE-2026-134567 (risk: 70)
-1 related updates.
-
-- [CVE-2026-134567](https://nvd.nist.gov/vuln/detail/CVE-2026-134567)
-
-## CVE-2026-134568 (risk: 70)
-1 related updates.
-
-- [CVE-2026-134568](https://nvd.nist.gov/vuln/detail/CVE-2026-134568)
-
-## CVE-2026-134569 (risk: 70)
-1 related updates.
-
-- [CVE-2026-134569](https://nvd.nist.gov/vuln/detail/CVE-2026-134569)
-
-## CVE-2026-134570 (risk: 70)
-1 related updates.
-
-- [CVE-2026-134570](https://nvd.nist.gov/vuln/detail/CVE-2026-134570)
-
-## CVE-2026-134571 (risk: 70)
-1 related updates.
-
-- [CVE-2026-134571](https://nvd.nist.gov/vuln/detail/CVE-2026-134571)
-
-## CVE-2026-134572 (risk: 70)
-1 related updates.
-
-- [CVE-2026-134572](https://nvd.nist.gov/vuln/detail/CVE-2026-134572)
-
-## CVE-2026-134616 (risk: 70)
-1 related updates.
-
-- [CVE-2026-134616](https://nvd.nist.gov/vuln/detail/CVE-2026-134616)
+- [Cleverbridge warns hackers stole credit card numbers, CVVs in data breach](https://www.bleepingcomputer.com/news/security/cleverbridge-warns-hackers-stole-credit-card-numbers-cvvs-in-data-breach/)

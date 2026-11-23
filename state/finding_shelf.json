@@ -65,24 +65,6 @@
     "last_affects": "application",
     "last_classification_confidence": 0.95
   },
-  "cve:CVE-2026-9453": {
-    "first_seen": "2026-05-26",
-    "last_seen": "2026-05-26",
-    "run_count": 1,
-    "title": "CVE-2026-9453: FoundDream miniclawd RCE",
-    "last_problem_type": "rce",
-    "last_affects": "framework",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-7766": {
-    "first_seen": "2026-05-26",
-    "last_seen": "2026-05-26",
-    "run_count": 1,
-    "title": "CVE-2026-7766: Kenik Camera management Panel Path Traversal",
-    "last_problem_type": "data_disclosure",
-    "last_affects": "application",
-    "last_classification_confidence": 0.8
-  },
   "cve:CVE-2026-45659": {
     "first_seen": "2026-05-26",
     "last_seen": "2026-07-02",
@@ -91,24 +73,6 @@
     "last_problem_type": "rce",
     "last_affects": "application",
     "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-48132": {
-    "first_seen": "2026-05-26",
-    "last_seen": "2026-05-26",
-    "run_count": 1,
-    "title": "CVE-2026-48132: Check Point Security Gateway IKE Vuln",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-48134": {
-    "first_seen": "2026-05-26",
-    "last_seen": "2026-05-26",
-    "run_count": 1,
-    "title": "CVE-2026-48134: Check Point DLP Input Handling Vuln",
-    "last_problem_type": "data_tampering",
-    "last_affects": "application",
-    "last_classification_confidence": 0.8
   },
   "cve:CVE-2026-27771": {
     "first_seen": "2026-05-27",
@@ -19297,5 +19261,23 @@
     "last_seen": "2026-11-22",
     "run_count": 1,
     "title": "CVE-2026-134616"
+  },
+  "5266e5452ddc": {
+    "first_seen": "2026-11-23",
+    "last_seen": "2026-11-23",
+    "run_count": 1,
+    "title": "Hackers exploit GL.iNet cloud flaw to infect routers, KVM devices"
+  },
+  "57a7f3a865e5": {
+    "first_seen": "2026-11-23",
+    "last_seen": "2026-11-23",
+    "run_count": 1,
+    "title": "Signal to block Siri, Gemini AI from capturing chats on iOS, Android"
+  },
+  "749d43b387c0": {
+    "first_seen": "2026-11-23",
+    "last_seen": "2026-11-23",
+    "run_count": 1,
+    "title": "Cleverbridge warns hackers stole credit card numbers, CVVs in data breach"
   }
 }
