@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-23T00:45:33.708155+00:00",
+  "fetched_at": "2026-11-25T12:36:08.788076+00:00",
   "source": "hibp",
   "breaches": [
     {
@@ -2748,6 +2748,20 @@
       "action": "monitor"
     },
     {
+      "id": "hibp:bromcom-2026-09-06",
+      "name": "Bromcom",
+      "title": "Bromcom",
+      "date": "2026-09-06",
+      "added": "2026-11-23",
+      "affected_count": 355051,
+      "data_classes": [
+        "Email addresses"
+      ],
+      "source_url": "https://haveibeenpwned.com/PwnedWebsites#Bromcom",
+      "summary": "In September 2026, UK education software provider Bromcom suffered a data breach involving a legacy single sign-on (SSO) registration system. The incident exposed 355k unique email addresses belonging to staff and pupils at UK schools, alongside SSO registration reference numbers. Bromcom confirmed that no passwords or authentication tokens were exposed, and that the incident did not enable access",
+      "action": "monitor"
+    },
+    {
       "id": "hibp:btcalpha-2021-11-02",
       "name": "BTCAlpha",
       "title": "BTC-Alpha",
@@ -3195,7 +3209,7 @@
       "title": "CastleRAT",
       "date": "2026-11-12",
       "added": "2026-11-13",
-      "affected_count": 179745,
+      "affected_count": 430557,
       "data_classes": [
         "Email addresses",
         "Passwords"

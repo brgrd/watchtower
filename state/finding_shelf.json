@@ -74,141 +74,6 @@
     "last_affects": "application",
     "last_classification_confidence": 0.9
   },
-  "cve:CVE-2026-27771": {
-    "first_seen": "2026-05-27",
-    "last_seen": "2026-05-27",
-    "run_count": 1,
-    "title": "CVE-2026-48172: LiteSpeed cPanel Plugin Privilege Escalation",
-    "last_problem_type": "privilege_escalation",
-    "last_affects": "application",
-    "last_classification_confidence": 0.95
-  },
-  "cve:CVE-2026-2280": {
-    "first_seen": "2026-05-27",
-    "last_seen": "2026-05-27",
-    "run_count": 1,
-    "title": "CVE-2026-2280: rexCrawler SQL Injection",
-    "last_problem_type": "data_tampering",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-3348": {
-    "first_seen": "2026-05-27",
-    "last_seen": "2026-05-27",
-    "run_count": 1,
-    "title": "CVE-2026-3348: MinhNhut Link Gateway SQL Injection",
-    "last_problem_type": "data_tampering",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-42727": {
-    "first_seen": "2026-05-27",
-    "last_seen": "2026-05-27",
-    "run_count": 1,
-    "title": "CVE-2026-42727: WP Wham Checkout SQL Injection",
-    "last_problem_type": "data_tampering",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-9689": {
-    "first_seen": "2026-05-27",
-    "last_seen": "2026-05-27",
-    "run_count": 1,
-    "title": "CVE-2026-9689: Keycloak Vulnerability",
-    "last_problem_type": "auth_bypass",
-    "last_affects": "application",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-48027": {
-    "first_seen": "2026-05-27",
-    "last_seen": "2026-05-28",
-    "run_count": 2,
-    "title": "CVE-2026-48027: Nx Console Vulnerability",
-    "last_problem_type": "rce",
-    "last_affects": "framework",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2025-71304": {
-    "first_seen": "2026-05-27",
-    "last_seen": "2026-05-27",
-    "run_count": 1,
-    "title": "CVE-2025-71304: Linux Kernel Vulnerability",
-    "last_problem_type": "privilege_escalation",
-    "last_affects": "foundation",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-8398": {
-    "first_seen": "2026-05-28",
-    "last_seen": "2026-05-28",
-    "run_count": 1,
-    "title": "CVE-2026-8398: Daemon Tools RCE",
-    "last_problem_type": "rce",
-    "last_affects": "framework",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-45321": {
-    "first_seen": "2026-05-28",
-    "last_seen": "2026-05-28",
-    "run_count": 1,
-    "title": "CVE-2026-45321: TanStack RCE",
-    "last_problem_type": "rce",
-    "last_affects": "framework",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-46104": {
-    "first_seen": "2026-05-28",
-    "last_seen": "2026-05-28",
-    "run_count": 1,
-    "title": "CVE-2026-46104: Linux Kernel Vulnerability",
-    "last_problem_type": "rce",
-    "last_affects": "foundation",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2026-46105": {
-    "first_seen": "2026-05-28",
-    "last_seen": "2026-05-28",
-    "run_count": 1,
-    "title": "CVE-2026-46105: Linux Kernel Vulnerability",
-    "last_problem_type": "rce",
-    "last_affects": "foundation",
-    "last_classification_confidence": 0.9
-  },
-  "cve:CVE-2025-48977": {
-    "first_seen": "2026-05-28",
-    "last_seen": "2026-05-28",
-    "run_count": 1,
-    "title": "CVE-2025-48977: Apache Ignite REST API Vulnerability",
-    "last_problem_type": "data_disclosure",
-    "last_affects": "application",
-    "last_classification_confidence": 0.8
-  },
-  "cve:CVE-2026-9818": {
-    "first_seen": "2026-05-28",
-    "last_seen": "2026-05-28",
-    "run_count": 1,
-    "title": "CVE-2026-9818: Rejected CVE",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.85
-  },
-  "cve:CVE-2026-40914": {
-    "first_seen": "2026-05-28",
-    "last_seen": "2026-05-28",
-    "run_count": 1,
-    "title": "CVE-2026-40914: Apache Artemis STOMP Vuln",
-    "last_problem_type": "rce",
-    "last_affects": "application",
-    "last_classification_confidence": 0.85
-  },
-  "cve:CVE-2026-9658": {
-    "first_seen": "2026-05-28",
-    "last_seen": "2026-05-28",
-    "run_count": 1,
-    "title": "CVE-2026-9658: Plack::Middleware::Security::Common Vuln",
-    "last_problem_type": "data_disclosure",
-    "last_affects": "application",
-    "last_classification_confidence": 0.85
-  },
   "cve:CVE-2026-46062": {
     "first_seen": "2026-05-29",
     "last_seen": "2026-05-29",
@@ -18544,8 +18409,8 @@
   },
   "192a19d79c28": {
     "first_seen": "2026-11-13",
-    "last_seen": "2026-11-17",
-    "run_count": 2,
+    "last_seen": "2026-11-25",
+    "run_count": 3,
     "title": "SCKit Malware Turns ScreenConnect Support Sessions Into Potential MSP Attack Paths"
   },
   "80b3e81e6b74": {
@@ -19279,5 +19144,89 @@
     "last_seen": "2026-11-23",
     "run_count": 1,
     "title": "Cleverbridge warns hackers stole credit card numbers, CVVs in data breach"
+  },
+  "94af8d4e536c": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "CISA Adds Three Known Exploited Vulnerabilities to Catalog"
+  },
+  "81ed96094003": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog"
+  },
+  "31d3ccd261f8": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "Danfoss AK-SM 8xxA Series"
+  },
+  "b853b9354f08": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "Drupal Fail2Install Exploit Details Emerge as Critical RCE Flaw Faces Active Exploitation"
+  },
+  "0cf307d25f38": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "VMware vCenter Hit by Another Critical 9.8-Rated Auth Bypass Flaw After Zero-Day Exploitation"
+  },
+  "d05f62dc17d8": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "Hackers Exploit N-able MailAssure Flaw While AI Agents Exploit MONAI Label Zero-Day"
+  },
+  "cve:CVE-2026-123633": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "NGINX HTTP/2 Use-After-Free: CVE-2026-123633"
+  },
+  "d6f3eb14df1e": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "Google Researcher Shows How a Single Bit Change in .NET Files Bypassed Windows Code Integrity"
+  },
+  "cve:CVE-2026-124251": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "WPIDE ≤ 3.6.4 — CSRF Nonce Bypass Leading to Unauthenticated RCE (CVE-2026-124251)"
+  },
+  "cve:CVE-2026-134056": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "CVE-2026-134056 - Out-of-bounds write in padded block cipher decryption in AWS-LC"
+  },
+  "cve:CVE-2026-134069": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "CVE-2026-134069 - Use of a default cryptographic key in the instance registration of Amazon SSM Agent on AWS Windows Ser"
+  },
+  "cve:CVE-2026-134068": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "CVE-2026-134068 - Stack-based buffer overflow in replication origin name parsing in AWS pgactive"
+  },
+  "cve:CVE-2026-134066": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "CVE-2026-134066 - Query injection via schema-derived identifiers in Graph Explorer"
+  },
+  "cve:CVE-2026-135614": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "CVE-2026-135614 - Sensitive data redaction bypass in the troubleshooting tool in Amazon ECS MCP Server"
   }
 }
