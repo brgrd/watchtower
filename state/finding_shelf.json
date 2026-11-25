@@ -19228,5 +19228,29 @@
     "last_seen": "2026-11-25",
     "run_count": 1,
     "title": "CVE-2026-135614 - Sensitive data redaction bypass in the troubleshooting tool in Amazon ECS MCP Server"
+  },
+  "0dffc3a1d8f9": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "CISA Adds 10 Known Exploited Vulnerabilities to Catalog"
+  },
+  "2932e76b678d": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "Hackers Exploit Two GeoServer Flaws as Researchers Warn of Unauthenticated RCE Chains"
+  },
+  "cve:CVE-2026-136267": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "CVE-2026-136267 - Improper neutralization of special elements used in an OS command in Kiro Web"
+  },
+  "cve:CVE-2026-134070": {
+    "first_seen": "2026-11-25",
+    "last_seen": "2026-11-25",
+    "run_count": 1,
+    "title": "CVE-2026-134070 - Improper input sanitization in the AWS Config remediation runbook AWSConfigRemediation-EnableSystemsMa"
   }
 }
