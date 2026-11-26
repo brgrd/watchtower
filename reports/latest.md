@@ -1,26 +1,21 @@
 ---
-generated_at: 2026-11-25T22:24:31.404934+00:00
+generated_at: 2026-11-26T23:43:48.767514+00:00
 model: llama-3.3-70b-versatile
 project: Watchtower
 ---
 # Watchtower — Infrastructure Security Briefing
 
-## CISA Adds 10 Known Exploited Vulnerabilities to Catalog (risk: 70)
+## Critical Juniper Session Smart Conductor Flaw Exploited in Attacks (risk: 70)
 1 related updates.
 
-- [CISA Adds 10 Known Exploited Vulnerabilities to Catalog](https://www.cisa.gov/news-events/alerts/2026/11/25/cisa-adds-10-known-exploited-vulnerabilities-catalog)
+- [Critical Juniper Session Smart Conductor Flaw Exploited in Attacks](https://www.securityweek.com/critical-juniper-session-smart-conductor-flaw-exploited-in-attacks/)
 
-## Hackers Exploit Two GeoServer Flaws as Researchers Warn of Unauthenticated RCE Chains (risk: 70)
+## Drupal Warns of New Highly Critical Site Takeover Vulnerability Under Active Exploitation (risk: 70)
 1 related updates.
 
-- [Hackers Exploit Two GeoServer Flaws as Researchers Warn of Unauthenticated RCE Chains](https://thehackernews.com/2026/11/hackers-exploit-two-geoserver-flaws-as.html)
+- [Drupal Warns of New Highly Critical Site Takeover Vulnerability Under Active Exploitation](https://thehackernews.com/2026/11/drupal-warns-of-new-highly-critical.html)
 
-## CVE-2026-136267 - Improper neutralization of special elements used in an OS command in Kiro Web (risk: 40)
+## Hackers Exploit 10 Vulnerabilities Across Mitel, Juniper, Vates, and Danfoss Products (risk: 70)
 1 related updates.
 
-- [CVE-2026-136267 - Improper neutralization of special elements used in an OS command in Kiro Web](https://aws.amazon.com/security/security-bulletins/rss/2026-202-aws/)
-
-## CVE-2026-134070 - Improper input sanitization in the AWS Config remediation runbook AWSConfigRemediation-EnableSystemsManagerSessionManagerA (risk: 40)
-1 related updates.
-
-- [CVE-2026-134070 - Improper input sanitization in the AWS Config remediation runbook AWSConfigRemediation-EnableSystemsMa](https://aws.amazon.com/security/security-bulletins/rss/2026-203-aws/)
+- [Hackers Exploit 10 Vulnerabilities Across Mitel, Juniper, Vates, and Danfoss Products](https://thehackernews.com/2026/11/hackers-exploit-10-vulnerabilities.html)
