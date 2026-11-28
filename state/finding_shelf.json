@@ -19051,5 +19051,95 @@
     "last_seen": "2026-11-28",
     "run_count": 1,
     "title": "New NFS2ROOT Linux flaw can let attackers gain root privileges"
+  },
+  "cve:CVE-2026-138003": {
+    "first_seen": "2026-11-28",
+    "last_seen": "2026-11-28",
+    "run_count": 1,
+    "title": "CVE-2026-138003"
+  },
+  "cve:CVE-2026-138004": {
+    "first_seen": "2026-11-28",
+    "last_seen": "2026-11-28",
+    "run_count": 1,
+    "title": "CVE-2026-138004"
+  },
+  "cve:CVE-2026-120705": {
+    "first_seen": "2026-11-28",
+    "last_seen": "2026-11-28",
+    "run_count": 1,
+    "title": "CVE-2026-120705 — OSGeo GeoServer XML Injection Vulnerability"
+  },
+  "cve:CVE-2026-136716": {
+    "first_seen": "2026-11-28",
+    "last_seen": "2026-11-28",
+    "run_count": 1,
+    "title": "CVE-2026-136716 — Drupal Core Improper Check for Unusual or Exceptional Conditions Vulnerability"
+  },
+  "cve:CVE-2026-107967": {
+    "first_seen": "2026-11-28",
+    "last_seen": "2026-11-28",
+    "run_count": 1,
+    "title": "CVE-2026-107967"
+  },
+  "cve:CVE-2026-107951": {
+    "first_seen": "2026-11-28",
+    "last_seen": "2026-11-28",
+    "run_count": 1,
+    "title": "CVE-2026-107951"
+  },
+  "cve:CVE-2026-138117": {
+    "first_seen": "2026-11-28",
+    "last_seen": "2026-11-28",
+    "run_count": 1,
+    "title": "CVE-2026-138117"
+  },
+  "cve:CVE-2026-138118": {
+    "first_seen": "2026-11-28",
+    "last_seen": "2026-11-28",
+    "run_count": 1,
+    "title": "CVE-2026-138118"
+  },
+  "cve:CVE-2026-138119": {
+    "first_seen": "2026-11-28",
+    "last_seen": "2026-11-28",
+    "run_count": 1,
+    "title": "CVE-2026-138119"
+  },
+  "cve:CVE-2026-138120": {
+    "first_seen": "2026-11-28",
+    "last_seen": "2026-11-28",
+    "run_count": 1,
+    "title": "CVE-2026-138120"
+  },
+  "cve:CVE-2026-138121": {
+    "first_seen": "2026-11-28",
+    "last_seen": "2026-11-28",
+    "run_count": 1,
+    "title": "CVE-2026-138121"
+  },
+  "cve:CVE-2026-138122": {
+    "first_seen": "2026-11-28",
+    "last_seen": "2026-11-28",
+    "run_count": 1,
+    "title": "CVE-2026-138122"
+  },
+  "cve:CVE-2026-138148": {
+    "first_seen": "2026-11-28",
+    "last_seen": "2026-11-28",
+    "run_count": 1,
+    "title": "CVE-2026-138148"
+  },
+  "cve:CVE-2026-138149": {
+    "first_seen": "2026-11-28",
+    "last_seen": "2026-11-28",
+    "run_count": 1,
+    "title": "CVE-2026-138149"
+  },
+  "cve:CVE-2026-138150": {
+    "first_seen": "2026-11-28",
+    "last_seen": "2026-11-28",
+    "run_count": 1,
+    "title": "CVE-2026-138150"
   }
 }
